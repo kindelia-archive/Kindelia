@@ -1,0 +1,84 @@
+// TODO
+// - fix call parser (to accept commas)
+// - input from stdin
+LitTest: String
+`
+// Unit
+
+name Unit
+name new
+type Unit {
+  new{}
+}
+
+// Bool
+
+name Bool
+name false
+name true
+type Bool {
+  false{}
+  true{}
+}
+
+// Bits
+
+name Bits
+name e
+name o
+name i
+name pred
+type Bits {
+  e{}
+  o{pred: Bits}
+  i{pred: Bits}
+}
+
+name Bits.inc
+name x
+
+bond Bits.inc(x: Bits): Bits
+  case x : Bits {
+    e: i{e{}}
+    o: i{x.pred}
+    i: o{x.pred}
+  }
+
+name Bits.add
+name y
+name rest
+
+bond Bits.add(x: Bits, y: Bits): Bits
+  case y : Bits {
+    e: e{}
+    o:
+      case x : Bits {
+        e: y
+        o: o{Bits.add(x.pred y.pred)}
+        i: i{Bits.add(x.pred y.pred)}
+      }
+    i:
+      case x : Bits {
+        e: y
+        o: i{Bits.add(x.pred y.pred)}
+        i:
+          let rest : Bits = Bits.add(x.pred y.pred)
+          o{Bits.inc(rest)}
+      }
+  }
+
+name Bits.from_word
+bond Bits.from_word(x: #word): Bits
+  e{}
+
+// Nat
+
+name Nat
+name zero
+name succ
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+`
