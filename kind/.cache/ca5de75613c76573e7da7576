@@ -1,0 +1,1 @@
+#x #y #aux (((y #y Nat) x) #y.pred (((Nat.pow.aux x) y.pred) ((Nat.mul aux) +2)))

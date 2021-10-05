@@ -1,0 +1,1 @@
+#world #bits ((((bits #bits ((Pair Bits) Litereum.Type)) ((((Pair.new Bits) Litereum.Type) bits) Litereum.Type.word)) #bits.pred ((((Pair.new Bits) Litereum.Type) bits.pred) Litereum.Type.word)) #bits.pred ((((Litereum.deserialize.name.old world) bits.pred) # ((Pair Bits) Litereum.Type)) #bits #name ((((Pair.new Bits) Litereum.Type) bits) (Litereum.Type.data name))))

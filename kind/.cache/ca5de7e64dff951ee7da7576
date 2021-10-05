@@ -1,0 +1,1 @@
+#n #m (((Nat.div_mod.go n) m) Nat.zero)

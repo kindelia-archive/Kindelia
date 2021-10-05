@@ -1,0 +1,1 @@
+#V #parse #pst ((pst #pst (Parser.Reply (Maybe V))) #pst.err #pst.nam #pst.ini #pst.idx #pst.str ((((parse pst) #reply (Parser.Reply (Maybe V))) #reply.err (((Parser.Reply.value (Maybe V)) pst) (Maybe.none V))) #reply.pst #reply.val (((Parser.Reply.value (Maybe V)) reply.pst) ((Maybe.some V) reply.val))))

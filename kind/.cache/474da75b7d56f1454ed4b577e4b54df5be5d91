@@ -1,0 +1,1 @@
+%Litereum.Constructor.Self(P:@(:Litereum.Constructor) *) @(new:@(name:String) @(field_names:(List String)) @(field_types:(List Litereum.Type)) (P (((Litereum.Constructor.new name) field_names) field_types))) (P Litereum.Constructor.Self)

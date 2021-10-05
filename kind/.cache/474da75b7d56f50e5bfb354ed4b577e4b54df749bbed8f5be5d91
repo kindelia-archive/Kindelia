@@ -1,0 +1,1 @@
+#data #name ((((Maybe.mapped ((Pair Nat) Litereum.Constructor)) (((List.ifind Litereum.Constructor) #i #ctr ((String.eql ((ctr # String) #name #field_names #field_types name)) name)) ((data # (List Litereum.Constructor)) #name #constructors constructors))) Nat) #x ((x # Nat) #fst #snd fst))

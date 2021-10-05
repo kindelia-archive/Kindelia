@@ -1,0 +1,1 @@
+%Litereum.Eval.Self(P:@(:Litereum.Eval) *) @(new:@(term:Litereum.Term) @(type:Litereum.Type) (P ((Litereum.Eval.new term) type))) (P Litereum.Eval.Self)

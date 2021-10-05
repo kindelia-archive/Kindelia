@@ -1,0 +1,1 @@
+#size #b_size #a #b #acc ((((a #a.size #a (Word b_size)) acc) #a.size #a.pred (((((Word.mul.go a.size) b_size) a.pred) (((Word.shift_left b_size) b) +1)) acc)) #a.size #a.pred (((((Word.mul.go a.size) b_size) a.pred) (((Word.shift_left b_size) b) +1)) (((Word.add b_size) b) acc)))

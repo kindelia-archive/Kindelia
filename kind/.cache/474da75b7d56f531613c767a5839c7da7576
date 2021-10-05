@@ -1,0 +1,1 @@
+#world #block (((block #block String) "") #block.head #block.tail !head = ((Litereum.show.transaction world) block.head); !tail = ((Litereum.show.block ((Litereum.reg world) block.head)) block.tail); ((String.concat head) ((String.concat "\u{a}") tail)))

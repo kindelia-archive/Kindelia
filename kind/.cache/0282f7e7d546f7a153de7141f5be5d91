@@ -1,0 +1,1 @@
+#K #V #cmp #acc #xs (((xs #xs ((BBT K) V)) acc) #xs.head #xs.tail !key = (((Pair.fst K) V) xs.head); !val = (((Pair.snd K) V) xs.head); !new_acc = ((((((BBT.insert K) V) cmp) key) val) acc); (((((BBT.from_list.go K) V) cmp) new_acc) xs.tail))

@@ -1,0 +1,1 @@
+#n #m (((m #m Nat) Nat.zero) #m.pred ((Nat.add n) ((Nat.mul n) m.pred)))

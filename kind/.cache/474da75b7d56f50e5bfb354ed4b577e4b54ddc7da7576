@@ -1,0 +1,1 @@
+#world #name (((((Litereum.get_data world) name) #got (Maybe (List Litereum.Constructor))) (Maybe.none (List Litereum.Constructor))) #got.value ((Maybe.some (List Litereum.Constructor)) ((got.value # (List Litereum.Constructor)) #name #constructors constructors)))

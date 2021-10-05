@@ -1,0 +1,1 @@
+%Litereum.Data.Self(P:@(:Litereum.Data) *) @(new:@(name:String) @(constructors:(List Litereum.Constructor)) (P ((Litereum.Data.new name) constructors))) (P Litereum.Data.Self)

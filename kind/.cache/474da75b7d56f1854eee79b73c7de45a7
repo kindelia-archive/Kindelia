@@ -1,0 +1,1 @@
+@(name:String) @(owners:(List String)) @(input_names:(List String)) @(input_types:(List Litereum.Type)) @(output_type:Litereum.Type) @(main:Litereum.Term) Litereum.Bond

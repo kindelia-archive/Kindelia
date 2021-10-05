@@ -1,0 +1,1 @@
+%Litereum.Type.Self(P:@(:Litereum.Type) *) @(word:(P Litereum.Type.word)) @(data:@(name:String) (P (Litereum.Type.data name))) (P Litereum.Type.Self)

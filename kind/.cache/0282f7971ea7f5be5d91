@@ -1,0 +1,1 @@
+#K #V #key #val #left #right !size_left = (((BBT.size K) V) left); !size_right = (((BBT.size K) V) right); !new_size = ((U32.add (U32.from_nat +1)) ((U32.add size_left) size_right)); (((((((BBT.bin K) V) new_size) key) val) left) right)

@@ -1,0 +1,1 @@
+#a #b (((a #a Cmp) (((b #b Cmp) Cmp.eql) #b.head #b.tail Cmp.ltn)) #a.head #a.tail (((b #b Cmp) Cmp.gtn) #b.head #b.tail ((((((U16.cmp a.head) b.head) #self Cmp) Cmp.ltn) ((String.cmp a.tail) b.tail)) Cmp.gtn)))

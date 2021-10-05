@@ -1,0 +1,1 @@
+@(context:(Map Litereum.Type)) @(world:Litereum.World) @(term:Litereum.Term) @(type:Litereum.Type) Bool

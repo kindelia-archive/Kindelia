@@ -1,0 +1,1 @@
+%(A:*) @(world:Litereum.World) @(subst:(Map Litereum.Term)) @(gas:Nat) @(term:A) (Litereum.State A)

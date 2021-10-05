@@ -1,0 +1,1 @@
+#world #bits ((world #world ((Pair Bits) String)) #world.name_count #world.name_to_index #world.index_to_name #world.entry (((Litereum.deserialize.varlen bits) # ((Pair Bits) String)) #bits #value ((((((Map.get String) (Nat.show value)) world.index_to_name) # ((Pair Bits) String)) ((((Pair.new Bits) String) bits) "")) #text ((((Pair.new Bits) String) bits) text))))

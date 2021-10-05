@@ -1,0 +1,1 @@
+#base #ds ((((Nat.from_base.go base) ((List.reverse Nat) ds)) +1) +0)

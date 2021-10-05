@@ -1,0 +1,1 @@
+#world ((((((Monad.bind Parser) Parser.monad) String) Litereum.Term) Litereum.parse.name) #ctor ((((((Monad.bind Parser) Parser.monad) (List Litereum.Term)) Litereum.Term) ((((Parser.wrap Litereum.Term) (Litereum.parse.text "(")) (Litereum.parse.term world)) (Litereum.parse.text ")"))) #args ((((Monad.pure Parser) Parser.monad) Litereum.Term) ((Litereum.Term.call ctor) args))))

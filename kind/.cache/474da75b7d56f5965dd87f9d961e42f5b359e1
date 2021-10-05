@@ -1,0 +1,1 @@
+@(world:Litereum.World) (Parser (List Litereum.Transaction))

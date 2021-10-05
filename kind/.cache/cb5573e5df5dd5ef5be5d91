@@ -1,0 +1,1 @@
+#A #parser #code ((((parser (((((Parser.State.new (Maybe.none Parser.Error)) "") +0) +0) code)) #parsed (Maybe A)) #parsed.err (Maybe.none A)) #parsed.pst #parsed.val ((Maybe.some A) parsed.val))

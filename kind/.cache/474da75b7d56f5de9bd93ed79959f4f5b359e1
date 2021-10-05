@@ -1,0 +1,1 @@
+@(subst:(Map Litereum.Term)) @(world:Litereum.World) @(vals:(List Litereum.Term)) @(gas:Nat) (((Triple Nat) Litereum.World) (List Litereum.Term))

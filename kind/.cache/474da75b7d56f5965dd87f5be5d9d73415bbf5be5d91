@@ -1,0 +1,1 @@
+#world ((((((Monad.bind Parser) Parser.monad) Unit) Litereum.Term) (Litereum.parse.text "#")) # ((((((Monad.bind Parser) Parser.monad) Nat) Litereum.Term) Parser.nat) #num (((((Nat.gte num) ((Nat.pow +2) +64)) # (Parser Litereum.Term)) ((Parser.fail Litereum.Term) "Number out of bound")) ((((Monad.pure Parser) Parser.monad) Litereum.Term) (Litereum.Term.word (Nat.to_u64 num))))))

@@ -1,0 +1,1 @@
+#n #m (((m #m ((Either Nat) Nat)) (((Either.left Nat) Nat) n)) #m.pred (((n #n ((Either Nat) Nat)) (((Either.right Nat) Nat) (Nat.succ m.pred))) #n.pred ((Nat.sub_rem n.pred) m.pred)))

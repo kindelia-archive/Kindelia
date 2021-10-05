@@ -1,0 +1,1 @@
+@(name:String) @(constructors:(List Litereum.Constructor)) Litereum.Data
