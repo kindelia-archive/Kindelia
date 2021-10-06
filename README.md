@@ -75,7 +75,7 @@ take a minimalist approach, keeping the blockchain structure as simple as
 possible: blocks store the previous block hash, a nonce and a list of
 transactions, and nothing more.
 
-### 4. A simple concensus algorithm
+### 4. A simple consensus algorithm
 
 Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
 will bring several benefits, such as lower energy consumption and faster
@@ -90,7 +90,14 @@ Litereum is, essentially, just a bare-bones functional programming language
 running in a peer-to-peer network. Or, in other words, it is a decentralized
 read-print-eval loop (REPL). That REPL is split into blocks, which are split
 into transactions, which can either declare a new name, a new type, a new
-function, or execute a script. For example:
+function, or evaluate an expression.
+
+Litereum nodes keep an ever-growing chain of blocks that are submitted by users,
+and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
+in order, a node can compute the final state of the blockchain, which is just
+the of set of global names, types and bonds defined on these blocks.
+
+### An example block
 
 ```
 name Nat
@@ -119,53 +126,69 @@ eval {
 The snippet above is a Litereum block that contains 9 transactions. The first 6
 transactions just declare names (more on that later). The next 2 declare a type
 called "Nat", and a bond (function) called "double". The last one executes an
-script that computes the double of the natural number 3. In this case, it does
-nothing interesting, but it could do anything. For example:
+expression that computes the double of the natural number 3. In this case, it
+does nothing interesting, but arbitrarily useful transactions can be performed
+with suitable expressions.
+
+### An example monetary transaction
+
+Conventional cryptocurrency transactions do 3 things: verify a signature, pay
+miner fees and send tokens to someone. These can be replicated as follows:
 
 ```
 eval {
-  Bob(send_cat_tokens{$block_miner, 100, "<mike's sig>"})
-  Bob(send_cat_tokens{@Alice, 50000, "<mike's sig>"})
+  do Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
   return #0
 }
 ```
 
-The script above causes Bob to pay 100 cat tokens in miner fees, to send 50000
-cat tokens to Alice.
+The expression above causes Bob to send 50000 cat tokens to alice, leaving 100
+cat tokens as miner fees. Bob would send this expression to miners, which would
+be incentived include it in a block, in order to collect fees.
 
-Note that there isn't a built-in currency nor account system. Instead, here, Bob
-is any hypothetical bond (function) that can only be called by Bob. That bond
-defines what Bob can do. For example:
+### An example user account
 
+Since there isn't a built-in account system, users must upload bonds that they
+control, in order to use these bonds as their accounts. For example:
 
 ```
+type Bob.Command {
+  send_cat_tokens{
+    amount     : #word
+    to_address : #word
+    miner_fee  : #word
+  }
+  (...)
+}
+
 bond Bob(command: Bob.Command): #word {
   case command : Bob.Command {
     send_cat_tokens:
-      if ECDSA.check(Bob.hash(command), Bob.address) then {
-        CatCoin.send(command.amount, command.to)
+      if ECDSA.check(Bob.hash(command), Bob.address) then
+        do CatCoin.send(command.amount, command.to_address)
+        do CatCoin.send(command.miner_fee, $block_miner)
         return #0
-      } else {
+      else
         return #0
-      }
     ...
   }
 }
 ```
 
-The bond above allows Bob to send cat tokens based on ECDSA authentication. In
-other words, the Bob bond is like a smart-contract that only Bob controls, so,
-for all intents and purposes, that bond is Bob's account.
+The bond above can be used by Bob to send cat tokens via ECDSA authentication.
+That bond **is** Bob's account. If Bob wished to, he could add more features and
+different signature schemes to his account.
 
-Litereum nodes keep an ever-growing chain of blocks that are submitted by users,
-and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
-in order, a node can compute the final state of the blockchain. That state is
-just the set of global names, types and bonds currently defined.
+This is very flexible and powerful, because it allows users to limit what their
+accounts can do, and choose their own authentication methods. While most
+crypto-currencies would be destroyed by sufficiently powerful quantum computers,
+in Litereum, users can simply opt to use quantum-resistant signatures.
+
+### An example currency
 
 In order to implement stateful applications, bonds are granted the power to
 redefine (**def**) other static bonds that they own. A currency can, thus, be
-implemented by creating a map of balances and a bond that controls it. For
-example:
+implemented by deploying a map of balances that is mutated by its bond.
 
 ```
 type CatCoin.Command {
@@ -180,7 +203,7 @@ bond CatCoin.balances() : Map {
 CatCoin(command: CatCoin.Command): #word {
   case command {
     mint: {
-      def @CatCoin.balances = Map.set(CatCoin.balances(), caller, command.amount)
+      def @CatCoin.balances = Map.set(CatCoin.balances(), $caller, command.amount)
       return #0
     }
     send:
@@ -192,109 +215,84 @@ CatCoin(command: CatCoin.Command): #word {
 The block above defines a bond named `CatCoin.balances`, which is just a map of
 balances (initially empty), and another bond named `CatCoin`, which is a
 function. When `CatCoin` is called with the "mint" command, it redefines the
-`CatCoin.balances` bond to include the updated balance.
-
-Litereum's simplicity doesn't make it powerless. Arbitrarily complex currencies,
-tokens, contracts and applications can be created with the few primitives it
-has.
+`CatCoin.balances` bond with the updated balances.
 
 Litereum's Execution Environment
 --------------------------------
 
-Litereum's execution environment is based on a core term language that is pure,
-low-order and functional. It features native algebraic datatypes and 64-bit
-unsigned integers. That language, while functional, doesn't feature lambdas nor
-high-order functions. Unfortunatelly, that is necessary to allow it to have a
-well-defined gas cost model that isn't susceptible to spam attacks (more on that
-later). It does, though, feature branching (via pattern-matching) and global
-recursive functions, which make it expressive and Turing-complete.
+Litereum's execution environment is based on a core expression language that is
+pure, low-order and functional. It features algebraic datatypes and 64-bit
+unsigned integers. It doesn't feature high-order functions. That limitation is
+necessary for strong confluence (i.e., to have a cost model that doesn't depend
+on the evaluation strategy). It does, though, feature branching (via
+pattern-matching) and recursive functions, which make it expressive and Turing
+complete.
 
-### Terms
+### Expressions
 
-Litereum's core AST has 8 constructors:
+A Litereum expression, or term, is defined by a syntax tree with 8 constructors.
+A term can be either:
 
-In other words, a Litereum term can be one of these:
+- A variable, holding its name.
 
-    name: String
-  )
-  // Call external function
-  call(
-    bond: String
-    args: List<Litereum.Term>
-  )
-  // Binds a variable
-  let(
-    name: String
-    type: Litereum.Type
-    expr: Litereum.Term
-    body: Litereum.Term
-  )
-  // Creates a value
-  create(
-    ctor: String
-    vals: List<Litereum.Term>
-  )
-  // Pattern-matches a value
-  match(
-    name: String
-    data: String
-    cses: List<Litereum.Term>
-  )
-  // Creates a new 64-bit word
-  word(
-    numb: U64
-  )
-  // Compares two words
-  compare(
-    val0: Litereum.Term
-    val1: Litereum.Term
-    iflt: Litereum.Term
-    ifeq: Litereum.Term
-    ifgt: Litereum.Term
-  )
-  // Binary operation on words
-  operate(
-    oper: Litereum.Operation
-    val0: Litereum.Term
-    val1: Litereum.Term
-  )
-}
-```
+    ```
+    var
+    - name: String
+    ```
 
+- A let-expression, holding the bound name, type, expression and body.
 
+    ```
+    let
+    - name: String
+    - type: Type
+    - expr: Term
+    - body: Term
+    ```
 
-- `var(name: String)`
+- An external call, holding the called bond name and a list of arguments.
 
-    A variable, holding its name.
+    ```
+    call
+    - bond: String
+    - args: List<Term>
+    ```
 
-- `let(name: String, type: Type, expr: Term, body: Term)`
+- A constructor creation, holding its name and fields.
 
-    A let-expression, holding the bound name, type, expression and body.
+    ```
+    create
+    - ctor: String
+    - vals: List<Term>
+    ```
 
-- `call(bond: String, args: List<Term>)`
+- A pattern-match, holding the name of the matched variable, the name of the matched datatype, and a list of values to be returned on each case.
 
-    An external call, holding the called bond name and a list of arguments.
+    ```
+    match
+    - name: String
+    - data: String
+    - cses: List<Term>
+    ```
 
-- `create(ctor: String, vals: List<Term>)`
+- An less-than, equal-to, greater-than comparison, holding the two values to be compared, and the 3 possible branches to be returned.
 
-    A constructor creation, holding its name and fields.
+    ```
+    compare
+    - val0: Term
+    - val1: Term
+    - iflt: Term
+    - ifeq: Term
+    - ifgt: Term
+    ```
+- A binary operation on words. It can be one of these: `add`, `sub`, `mul`, `div`, `mod`, `or`, `and`, `xor`.
 
-- `match(name: String, data: String, cses: List<Term>)`
-
-    A pattern-match, holding the name of the matched variable, the name of the matched datatype, and a list of values to be returned on each case.
-
-- `compare(val0: Term, val1: Term, iflt: Term, ifeq: Term, ifgt: Term)`
-
-    An less-than, equal-to, greater-than comparison, holding the two values to be compared, and the 3 possible branches to be returned.
-
-- `operate(oper: Operation, val0: Term, val1: Term)`
-
-    A binary operation on words. It can be one of these: `add`, `sub`, `mul`, `div`, `mod`, `or`, `and`, `xor`.
-
-Unlike the lambda calculus, which fails to have a well-defined cost model, the
-cost of computing a Litereum term can be measured in a way that is consistent
-across any evaluation strategy; it is strongly confluent. This is essential to
-avoid spam. The evaluation and type-checking rules will be detailed below.
+    ```
+    operate
+    - oper: Operation
+    - val0: Term
+    - val1: Term
+    ```
 
 (...)
 
