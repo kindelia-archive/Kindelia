@@ -1529,14 +1529,13 @@ Litereum: _
       double(succ{succ{succ{zero{}}}})
     } : Nat
 
-    // x is used to test if we can rebind bonds with args
-    bond get_count(x: #word): #word {
-      +(#0, x)
-    }
+    bond get_count(): #word {
+      #0
+    } @inc_count
 
     bond inc_count(): #word {
       bind get_count {
-        +(+(get_count(#0), #1), x)
+        +(get_count(), #1)
       }
       #0
     }
@@ -1544,8 +1543,7 @@ Litereum: _
     eval { inc_count() } : #word
     eval { inc_count() } : #word
     eval { inc_count() } : #word
-    eval { inc_count() } : #word
-    eval { get_count(#100) } : #word
+    eval { get_count() } : #word
   `
 
   let block = Parser.run!(Litereum.parse.block(world), code) abort IO.print("deu ruim")

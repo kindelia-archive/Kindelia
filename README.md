@@ -148,21 +148,21 @@ maintain a mutable state, allowing it to implement real-world applications. The
 simplest stateful bond is a counter:
 
 ```
-name get_count
-name inc_count
-
 bond get_count(): #word {
   #0
 } @inc_count
 
 bond inc_count(): #word {
-  bind get_count { +(get_count(), #1) }
+  bind get_count {
+    +(get_count(), #1)
+  }
+  #0
 }
 
-eval { inc_count() }
-eval { inc_count() }
-eval { inc_count() }
-eval { get_count() }
+eval { inc_count() } : #word
+eval { inc_count() } : #word
+eval { inc_count() } : #word
+eval { get_count() } : #word
 ```
 
 The block above declares two bonds: `get_count`, which, when called, returns a
