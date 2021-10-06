@@ -1332,7 +1332,10 @@ Litereum.parse.term.call(world: Litereum.World): Parser<Litereum.Term>
     get ctor = Litereum.parse.name
     get args = Parser.wrap!(
       Litereum.parse.text("(")
-      Litereum.parse.term(world)
+      Parser {
+        Parser.maybe!(Litereum.parse.text(","))
+        Litereum.parse.term(world)
+      }
       Litereum.parse.text(")"))
     return Litereum.Term.call(ctor, args)
  }
@@ -1512,7 +1515,7 @@ Litereum: _
     }
 
     eval {
-      and(true{} false{})
+      and(true{}, false{})
     } : Bool
 
     bond double(x: Nat): Nat {
