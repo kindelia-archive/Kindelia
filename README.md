@@ -112,11 +112,12 @@ type Nat {
   succ{pred: Nat}
 }
 
-bond double(x: Nat) : Nat
+bond double(x: Nat) : Nat {
   case x : Nat {
     zero: zero{}
     succ: succ{succ{double(x.pred)}}
   }
+}
 
 eval {
   double(succ{succ{succ{zero}}})
@@ -137,8 +138,7 @@ miner fees and send tokens to someone. These can be replicated as follows:
 
 ```
 eval {
-  do Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
-  return #0
+  Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
 }
 ```
 
@@ -164,13 +164,14 @@ type Bob.Command {
 bond Bob(command: Bob.Command): #word {
   case command : Bob.Command {
     send_cat_tokens:
-      if ECDSA.check(Bob.hash(command), Bob.address) then
-        do CatCoin.send(command.amount, command.to_address)
-        do CatCoin.send(command.miner_fee, $block_miner)
-        return #0
-      else
-        return #0
-    ...
+      case ECDSA.check(Bob.hash(command), Bob.address) : Bool {
+        true:
+          CatCoin.send(command.amount, command.to_address)
+          CatCoin.send(command.miner_fee, $block_miner)
+        false:
+          #0
+      }
+    (...)
   }
 }
 ```
@@ -202,9 +203,11 @@ bond CatCoin.balances() : Map {
 
 CatCoin(command: CatCoin.Command): #word {
   case command {
-    mint: {
-      def @CatCoin.balances = Map.set(CatCoin.balances(), $caller, command.amount)
-      return #0
+    mint:
+      bind CatCoin.balances {
+        Map.set(CatCoin.balances(), $caller, command.amount)
+      }
+      #0
     }
     send:
       (...)
