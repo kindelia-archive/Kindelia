@@ -40,8 +40,8 @@ private entities. Litereum's simplicity make it trivial for companies and
 individuals implement their own full nodes, which, in turn, eliminates the class
 of "core developers", making it as politically decentralized as possible.
 
-How is that possible?
----------------------
+How is it so small?
+-------------------
 
 In order to become so minimal, Litereum made several compromises, trading
 features, throughput and efficiency for sheer simplicity, security and
@@ -75,13 +75,21 @@ take a minimalist approach, keeping the blockchain structure as simple as
 possible: blocks store the previous block hash, a nonce and a list of
 transactions, and nothing more.
 
-### 4. A simple consensus algorithm
+### 4. A simpler consensus algorithm
 
 Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
 will bring several benefits, such as lower energy consumption and faster
 finality times. It also has neat features such as Ethash, for ASIC-resistance,
 and GHOST, for mining efficiency. Litereum drops these features for the sake of
 simplicity, featuring just a simple Proof-of-Work onsensus.
+
+### 5. A simpler execution environment
+
+Instead of a stack-machine with several complex opcodes, Litereum's built-in
+scripting language is a minimal calculus with a very minimal set of operations.
+Specifically, it has algebraic datatypes (with pattern-matching), 64-bit
+integers (with 8 binary operations and a comparison), recursive functions, and
+one side-effective primitive for persistent state. And that's all.
 
 How it works?
 -------------
