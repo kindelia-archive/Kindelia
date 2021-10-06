@@ -1,0 +1,71 @@
+name Bool
+name true
+name false
+name Nat
+name zero
+name succ
+name pred
+name x
+name y
+name not
+name and
+name or
+name double
+name get_count
+name inc_count
+
+eval {
+  #50
+} : #word
+
+type Bool {
+  true{}
+  false{}
+}
+
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+eval {
+  +(#10, #20)
+} : #word
+
+bond and(x: Bool, y: Bool): Bool {
+  case x : Bool {
+    true: y
+    false: false{}
+  }
+}
+
+eval {
+  and(true{}, false{})
+} : Bool
+
+bond double(x: Nat): Nat {
+  case x : Nat {
+    zero: zero{}
+    succ: succ{succ{double(x.pred)}}
+  }
+}
+
+eval {
+  double(succ{succ{succ{zero{}}}})
+} : Nat
+
+bond get_count(): #word {
+  #0
+} @inc_count
+
+bond inc_count(): #word {
+  bind get_count {
+    +(get_count(), #1)
+  }
+  #0
+}
+
+eval { inc_count() } : #word
+eval { inc_count() } : #word
+eval { inc_count() } : #word
+eval { get_count() } : #word

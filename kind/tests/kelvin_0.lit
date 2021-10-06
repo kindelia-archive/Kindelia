@@ -1,8 +1,3 @@
-// TODO
-// - fix call parser (to accept commas)
-// - input from stdin
-LitTest: String
-`
 // Unit
 
 name Unit
@@ -80,5 +75,3 @@ type Nat {
   zero{}
   succ{pred: Nat}
 }
-
-`

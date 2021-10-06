@@ -1471,85 +1471,11 @@ Litereum.parse.block(world: Litereum.World): Parser<List<Litereum.Transaction>>
 // Testing
 // -------
 
-Litereum: _
+Litereum.api.run_block(code: String): IO<Unit>
   let world = Litereum.genesis
-  let code = `
-    name Bool
-    name true
-    name false
-    name Nat
-    name zero
-    name succ
-    name pred
-    name x
-    name y
-    name not
-    name and
-    name or
-    name double
-    name get_count
-    name inc_count
-
-    eval {
-      #50
-    } : #word
-
-    type Bool {
-      true{}
-      false{}
-    }
-
-    type Nat {
-      zero{}
-      succ{pred: Nat}
-    }
-
-    eval {
-      +(#10, #20)
-    } : #word
-
-    bond and(x: Bool, y: Bool): Bool {
-      case x : Bool {
-        true: y
-        false: false{}
-      }
-    }
-
-    eval {
-      and(true{}, false{})
-    } : Bool
-
-    bond double(x: Nat): Nat {
-      case x : Nat {
-        zero: zero{}
-        succ: succ{succ{double(x.pred)}}
-      }
-    }
-
-    eval {
-      double(succ{succ{succ{zero{}}}})
-    } : Nat
-
-    bond get_count(): #word {
-      #0
-    } @inc_count
-
-    bond inc_count(): #word {
-      bind get_count {
-        +(get_count(), #1)
-      }
-      #0
-    }
-
-    eval { inc_count() } : #word
-    eval { inc_count() } : #word
-    eval { inc_count() } : #word
-    eval { get_count() } : #word
-`
-
-  let block = Parser.run!(Litereum.parse.block(world), code) abort IO.print("deu ruim")
+  let block = Parser.run!(Litereum.parse.block(world), code) abort IO.print("Invalid block syntax.")
   IO {
-    log("Block: ")
+    IO.print("Block: ")
     IO.print(Litereum.show.block(world, block))
 
     IO.print("Serialization:")
@@ -1563,5 +1489,10 @@ Litereum: _
 
     log("Evaluation: ")
     let world = Litereum.run.block(world, block) abort IO.print("failed execution")
+
+    IO.print("")
     IO.print("Done!")
   }
+
+Litereum: _
+  Litereum.api.run_block(`eval { +(#21,#21) } : #word`)

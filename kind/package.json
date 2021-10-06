@@ -1,0 +1,22 @@
+{
+  "name": "litereum",
+  "version": "0.1.0",
+  "description": "",
+  "bin": {
+    "lit": "bin/main.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "kind Litereum --js | js-beautify >> bin/litereum.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/litereum/litereum.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/litereum/litereum/issues"
+  },
+  "homepage": "https://github.com/litereum/litereum#readme"
+}
