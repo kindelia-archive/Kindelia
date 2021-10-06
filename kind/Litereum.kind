@@ -1075,7 +1075,7 @@ Litereum.show.bond(
   | " }"
   | case bond.owners {
     nil: ""
-    cons: String.join(" ", List.map!!(String.concat("@"),bond.owners))
+    cons: " " | String.join(" ", List.map!!(String.concat("@"),bond.owners))
   }
 
 Litereum.show.entry(
