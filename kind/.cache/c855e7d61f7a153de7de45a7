@@ -1,0 +1,1 @@
+%(A:*) @(xs:(Map A)) (List ((Pair String) A))

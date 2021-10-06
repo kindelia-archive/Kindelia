@@ -1,1 +1,1 @@
-#A #world #subst #gas #term #P #new ((((new world) subst) gas) term)
+#A #world #subst #fresh #gas #term #P #new (((((new world) subst) fresh) gas) term)
