@@ -105,7 +105,7 @@ and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
 in order, a node can compute the final state of the blockchain, which is just
 the of set of global names, types and bonds defined on these blocks.
 
-### An example block
+### Example: a block
 
 ```
 name Nat
@@ -139,7 +139,39 @@ expression that computes the double of the natural number 3. In this case, it
 does nothing interesting, but arbitrarily useful transactions can be performed
 with suitable expressions.
 
-### An example monetary transaction
+### Example: a stateful bond
+
+Litereum's core language is mostly pure, except for one operation that allows a
+bond to rebind another bond that it owns. With that operation, a bond can
+maintain a mutable state, allowing it to implement real-world applications. The
+simplest stateful bond is a counter:
+
+```
+name get_count
+name inc_count
+
+bond get_count(): #word {
+  #0
+} @inc_count
+
+bond inc_count(): #word {
+  bind get_count { +(get_count(), #1) }
+}
+
+eval { inc_count() }
+eval { inc_count() }
+eval { inc_count() }
+eval { get_count() }
+```
+
+The block above declares two bonds: `get_count`, which, when called, returns a
+counter, and `inc_count`, which, when called, rebinds the `get_count`
+definition, adding `1` to it. The `inc_count` bound can only rebind `get_count`
+because it is listed on `get_count`'s owner list (the `@`'s after its
+declaration). The last `eval` of this block will output `3`, because `get_count`
+was incremented `3` times.
+
+### Example: a monetary transaction
 
 Conventional cryptocurrency transactions do 3 things: verify a signature, pay
 miner fees and send tokens to someone. These can be replicated as follows:
@@ -154,7 +186,7 @@ The expression above causes Bob to send 50000 cat tokens to alice, leaving 100
 cat tokens as miner fees. Bob would send this expression to miners, which would
 be incentived include it in a block, in order to collect fees.
 
-### An example user account
+### Example: an account
 
 Since there isn't a built-in account system, users must upload bonds that they
 control, in order to use these bonds as their accounts. For example:
@@ -193,7 +225,7 @@ accounts can do, and choose their own authentication methods. While most
 crypto-currencies would be destroyed by sufficiently powerful quantum computers,
 in Litereum, users can simply opt to use quantum-resistant signatures.
 
-### An example currency
+### Example: a currency
 
 In order to implement stateful applications, bonds are granted the power to
 redefine (**def**) other static bonds that they own. A currency can, thus, be
