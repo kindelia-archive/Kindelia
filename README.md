@@ -88,8 +88,9 @@ simplicity, featuring just a simple Proof-of-Work onsensus.
 Instead of a stack-machine with several complex opcodes, Litereum's built-in
 scripting language is a minimal calculus with a very minimal set of operations.
 Specifically, it has algebraic datatypes (with pattern-matching), 64-bit
-integers (with 8 binary operations and a comparison), recursive functions, and
-one side-effective primitive for persistent state. And that's all.
+integers (with 8 binary operations and a comparison primitive), recursive
+functions, and one side-effective primitive for persistent state. And that's
+all.
 
 How it works?
 -------------
