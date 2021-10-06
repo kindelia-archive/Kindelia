@@ -91,11 +91,11 @@ type Litereum.Constructor {
 type Litereum.Bond {
   new(
     name: String
-    owners: List<String>
     input_names: List<String>
     input_types: List<Litereum.Type>
     output_type: Litereum.Type
     main: Litereum.Term
+    owners: List<String>
   )
 }
 
@@ -903,21 +903,21 @@ Litereum.deserialize.constructor(world: Litereum.World, bits: Bits): Pair<Bits,L
 Litereum.serialize.bond(world: Litereum.World, bond: Litereum.Bond): Bits
   open bond
   let name = Litereum.serialize.name.old(world, bond.name)
-  let owners = Litereum.serialize.list!(Litereum.serialize.name.old(world), bond.owners)
   let input_names = Litereum.serialize.list!(Litereum.serialize.name.old(world), bond.input_names)
   let input_types = Litereum.serialize.list!(Litereum.serialize.type(world), bond.input_types)
   let output_type = Litereum.serialize.type(world, bond.output_type)
   let main = Litereum.serialize.term(world, List.reverse!(bond.input_names), bond.main)
-  Bits.concat(name, Bits.concat(owners, Bits.concat(input_names, Bits.concat(input_types, Bits.concat(output_type, main)))))
+  let owners = Litereum.serialize.list!(Litereum.serialize.name.old(world), bond.owners)
+  Bits.concat(name, Bits.concat(input_names, Bits.concat(input_types, Bits.concat(output_type, Bits.concat(main, owners)))))
 
 Litereum.deserialize.bond(world: Litereum.World, bits: Bits): Pair<Bits,Litereum.Bond>
   let {bits,name} = Litereum.deserialize.name.old(world,bits)
-  let {bits,owners} = Litereum.deserialize.list!(Litereum.deserialize.name.old(world), bits)
   let {bits,input_names} = Litereum.deserialize.list!(Litereum.deserialize.name.old(world), bits)
   let {bits,input_types} = Litereum.deserialize.list!(Litereum.deserialize.type(world), bits)
   let {bits,output_type} = Litereum.deserialize.type(world, bits)
   let {bits,main} = Litereum.deserialize.term(world,List.reverse!(input_names),bits)
-  {bits, Litereum.Bond.new(name, owners, input_names, input_types, output_type, main)}
+  let {bits,owners} = Litereum.deserialize.list!(Litereum.deserialize.name.old(world), bits)
+  {bits, Litereum.Bond.new(name, input_names, input_types, output_type, main, owners)}
 
 Litereum.serialize.transaction(world: Litereum.World, transaction: Litereum.Transaction): Bits
   case transaction {
@@ -1064,11 +1064,7 @@ Litereum.show.bond(
   bond: Litereum.Bond
 ): String
   open bond
-  case bond.owners {
-    nil: ""
-    cons: String.join(",",bond.owners)  | " owns "
-  }
-  | bond.name
+  bond.name
   | "("
   | String.join(",",List.zipped_with!!(bond.input_names,bond.input_types)!((name,type) name|": "|Litereum.show.type(world,type)))
   | "): "
@@ -1076,6 +1072,10 @@ Litereum.show.bond(
   | " { "
   | Litereum.show.term(world,bond.main)
   | " }"
+  | case bond.owners {
+    nil: ""
+    cons: String.join(" ", List.map!!(String.concat("@"),bond.owners))
+  }
 
 Litereum.show.entry(
   world: Litereum.World
@@ -1387,11 +1387,6 @@ Litereum.parse.constructor(world: Litereum.World): Parser<Litereum.Constructor>
 
 Litereum.parse.bond(world: Litereum.World): Parser<Litereum.Bond>
   Parser {
-    get ownr = Parser.many!(Parser {
-      Litereum.parse.text("@")
-      get name = Litereum.parse.name
-      return name
-    })
     get name = Litereum.parse.name
     get args = Parser.wrap!(
       Litereum.parse.text("(")
@@ -1404,7 +1399,12 @@ Litereum.parse.bond(world: Litereum.World): Parser<Litereum.Bond>
     Litereum.parse.text("{")
     get main = Litereum.parse.term(world)
     Litereum.parse.text("}")
-    return Litereum.Bond.new(name, ownr, iarg, ityp, otyp, main)
+    get ownr = Parser.many!(Parser {
+      Litereum.parse.text("@")
+      get name = Litereum.parse.name
+      return name
+    })
+    return Litereum.Bond.new(name, iarg, ityp, otyp, main, ownr)
  }
 
 Litereum.parse.ann(world: Litereum.World): Parser<Pair<String,Litereum.Type>>

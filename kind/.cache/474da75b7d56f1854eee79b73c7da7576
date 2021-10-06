@@ -1,1 +1,1 @@
-#name #owners #input_names #input_types #output_type #main #P #new ((((((new name) owners) input_names) input_types) output_type) main)
+#name #input_names #input_types #output_type #main #owners #P #new ((((((new name) input_names) input_types) output_type) main) owners)
