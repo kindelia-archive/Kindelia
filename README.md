@@ -75,7 +75,7 @@ take a minimalist approach, keeping the blockchain structure as simple as
 possible: blocks store the previous block hash, a nonce and a list of
 transactions, and nothing more.
 
-### 4. A simple concensus algorithm
+### 4. A simple consensus algorithm
 
 Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
 will bring several benefits, such as lower energy consumption and faster
