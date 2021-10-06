@@ -228,8 +228,8 @@ in Litereum, users can simply opt to use quantum-resistant signatures.
 ### Example: a currency
 
 In order to implement stateful applications, bonds are granted the power to
-redefine (**def**) other static bonds that they own. A currency can, thus, be
-implemented by deploying a map of balances that is mutated by its bond.
+rebind other static bonds that they own. A currency can, thus, be implemented by
+deploying a map of balances that is mutated by its bond.
 
 ```
 type CatCoin.Command {
