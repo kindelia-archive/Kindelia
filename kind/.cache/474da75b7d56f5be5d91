@@ -1,1 +1,1 @@
-!tmp = (Litereum.api.run_block "eval { +(#21,#21) } : #word"); ((((Monad.pure IO) IO.monad) Unit) Unit.new)
+!_ = (Litereum.api.run_block "eval { +(#21,#21) } : #word"); ((((Monad.pure IO) IO.monad) Unit) Unit.new)

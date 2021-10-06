@@ -287,7 +287,8 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   case term {
     var:
       let term = subst{term.name} <> term
-      Litereum.reduce({world, subst, fresh, gas, term})
+      let {world, subst, fresh, gas, term} = Litereum.reduce({world, subst, fresh, gas, term})
+      {world, subst{term.name} <- term, fresh, gas, term}
     let:
       Litereum.reduce({world, subst{term.name} <- term.expr, fresh, gas, term.body})
     call:

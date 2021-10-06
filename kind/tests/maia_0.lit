@@ -5,6 +5,7 @@ name Nat
 name zero
 name succ
 name pred
+name r
 name x
 name y
 name not
@@ -76,10 +77,10 @@ bond power(x: #word): #word {
   compare x #0 { 
     _<_: #1
     _=_: #1
-    _>_: +(power(-(x,#1)), power(-(x,#1)))
+    _>_: let r : #word = power(-(x,#1)); +(r, r)
   }
 }
 
 eval {
-  power(#14)
+  power(#63)
 } : #word
