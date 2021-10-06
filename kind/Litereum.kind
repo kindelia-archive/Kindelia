@@ -152,6 +152,15 @@ Litereum.Runtime.Terms: Type
 Litereum.genesis: Litereum.World
   Litereum.World.new(0, {}, {}, {})
 
+Litereum.get_bond(world: Litereum.World, name: String): Maybe<Litereum.Bond>
+  open world
+  Maybe {
+    get entry = world.entry{name}
+    case entry {
+      bond: some(entry.value)
+    } default none
+  }
+
 Litereum.get_data(world: Litereum.World, name: String): Maybe<Litereum.Data>
   open world
   Maybe {
@@ -165,15 +174,6 @@ Litereum.get_constructors(world: Litereum.World, name: String): Maybe<List<Liter
   case Litereum.get_data(world, name) as got {
     none: none
     some: some(got.value@constructors)
-  }
-
-Litereum.get_bond(world: Litereum.World, name: String): Maybe<Litereum.Bond>
-  open world
-  Maybe {
-    get entry = world.entry{name}
-    case entry {
-      bond: some(entry.value)
-    } default none
   }
 
 Litereum.get_constructor_index(data: Litereum.Data, name: String): Maybe<Nat>
@@ -286,7 +286,8 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   //log("")
   case term {
     var:
-      {world, subst, fresh, gas, subst{term.name} <> term}
+      let term = subst{term.name} <> term
+      Litereum.reduce({world, subst, fresh, gas, term})
     let:
       Litereum.reduce({world, subst{term.name} <- term.expr, fresh, gas, term.body})
     call:
@@ -1544,7 +1545,7 @@ Litereum: _
     eval { inc_count() } : #word
     eval { inc_count() } : #word
     eval { get_count() } : #word
-  `
+`
 
   let block = Parser.run!(Litereum.parse.block(world), code) abort IO.print("deu ruim")
   IO {
