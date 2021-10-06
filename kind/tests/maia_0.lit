@@ -13,6 +13,7 @@ name or
 name double
 name get_count
 name inc_count
+name power
 
 eval {
   #50
@@ -69,3 +70,16 @@ eval { inc_count() } : #word
 eval { inc_count() } : #word
 eval { inc_count() } : #word
 eval { get_count() } : #word
+
+
+bond power(x: #word): #word {
+  compare x #0 { 
+    _<_: #1
+    _=_: #1
+    _>_: +(power(-(x,#1)), power(-(x,#1)))
+  }
+}
+
+eval {
+  power(#14)
+} : #word

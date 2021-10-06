@@ -1,13 +1,13 @@
 {
   "name": "litereum",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "bin": {
     "lit": "bin/main.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "kind Litereum --js | js-beautify >> bin/litereum.js"
+    "build": "rm bin/litereum.js; kind Litereum --js | js-beautify >> bin/litereum.js"
   },
   "repository": {
     "type": "git",

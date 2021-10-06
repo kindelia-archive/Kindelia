@@ -317,7 +317,7 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
       let {world, subst, fresh, gas, val0} = Litereum.reduce({world, subst, fresh, gas, term.val0})
       let {world, subst, fresh, gas, val1} = Litereum.reduce({world, subst, fresh, gas, term.val1})
       case val0 val1 {
-        word word: case U64.cmp(val0.numb, val0.numb) {
+        word word: case U64.cmp(val0.numb, val1.numb) {
           ltn: Litereum.reduce({world, subst, fresh, gas, term.iflt})
           eql: Litereum.reduce({world, subst, fresh, gas, term.ifeq})
           gtn: Litereum.reduce({world, subst, fresh, gas, term.ifgt})
@@ -1249,7 +1249,6 @@ Litereum.parse.term.compare(world: Litereum.World): Parser<Litereum.Term>
   Parser {
     Litereum.parse.text("compare")
     get val0 = Litereum.parse.term(world)
-    Litereum.parse.text(" ")
     get val1 = Litereum.parse.term(world)
     Litereum.parse.text("{")
     Litereum.parse.text("_<_:")
@@ -1495,4 +1494,7 @@ Litereum.api.run_block(code: String): IO<Unit>
   }
 
 Litereum: _
-  Litereum.api.run_block(`eval { +(#21,#21) } : #word`)
+  IO {
+    let _ = Litereum.api.run_block(`eval { +(#21,#21) } : #word`)
+    return unit
+  }

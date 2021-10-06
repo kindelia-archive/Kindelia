@@ -4706,7 +4706,7 @@ module.exports = (function() {
                                                         switch (self._) {
                                                             case 'Parser.State.new':
                                                                 var $1255 = self.err;
-                                                                var _reply$36 = Litereum$parse$text$(" ", _reply$pst$30);
+                                                                var _reply$36 = Litereum$parse$term$(_world$1)(_reply$pst$30);
                                                                 var self = _reply$36;
                                                                 switch (self._) {
                                                                     case 'Parser.Reply.error':
@@ -4727,42 +4727,42 @@ module.exports = (function() {
                                                                         break;
                                                                     case 'Parser.Reply.value':
                                                                         var $1262 = self.pst;
+                                                                        var $1263 = self.val;
                                                                         var self = $1262;
                                                                         switch (self._) {
                                                                             case 'Parser.State.new':
-                                                                                var $1264 = self.err;
-                                                                                var $1265 = self.nam;
-                                                                                var $1266 = self.ini;
-                                                                                var $1267 = self.idx;
-                                                                                var $1268 = self.str;
-                                                                                var _reply$pst$44 = Parser$State$new$(Parser$Error$maybe_combine$($1255, $1264), $1265, $1266, $1267, $1268);
+                                                                                var $1265 = self.err;
+                                                                                var $1266 = self.nam;
+                                                                                var $1267 = self.ini;
+                                                                                var $1268 = self.idx;
+                                                                                var $1269 = self.str;
+                                                                                var _reply$pst$44 = Parser$State$new$(Parser$Error$maybe_combine$($1255, $1265), $1266, $1267, $1268, $1269);
                                                                                 var self = _reply$pst$44;
                                                                                 switch (self._) {
                                                                                     case 'Parser.State.new':
-                                                                                        var $1270 = self.err;
-                                                                                        var _reply$50 = Litereum$parse$term$(_world$1)(_reply$pst$44);
+                                                                                        var $1271 = self.err;
+                                                                                        var _reply$50 = Litereum$parse$text$("{", _reply$pst$44);
                                                                                         var self = _reply$50;
                                                                                         switch (self._) {
                                                                                             case 'Parser.Reply.error':
-                                                                                                var $1272 = self.err;
-                                                                                                var self = $1270;
+                                                                                                var $1273 = self.err;
+                                                                                                var self = $1271;
                                                                                                 switch (self._) {
                                                                                                     case 'Maybe.some':
-                                                                                                        var $1274 = self.value;
-                                                                                                        var $1275 = Parser$Reply$error$(Parser$Error$combine$($1274, $1272));
-                                                                                                        var $1273 = $1275;
+                                                                                                        var $1275 = self.value;
+                                                                                                        var $1276 = Parser$Reply$error$(Parser$Error$combine$($1275, $1273));
+                                                                                                        var $1274 = $1276;
                                                                                                         break;
                                                                                                     case 'Maybe.none':
-                                                                                                        var $1276 = Parser$Reply$error$($1272);
-                                                                                                        var $1273 = $1276;
+                                                                                                        var $1277 = Parser$Reply$error$($1273);
+                                                                                                        var $1274 = $1277;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $1271 = $1273;
+                                                                                                var $1272 = $1274;
                                                                                                 break;
                                                                                             case 'Parser.Reply.value':
-                                                                                                var $1277 = self.pst;
-                                                                                                var $1278 = self.val;
-                                                                                                var self = $1277;
+                                                                                                var $1278 = self.pst;
+                                                                                                var self = $1278;
                                                                                                 switch (self._) {
                                                                                                     case 'Parser.State.new':
                                                                                                         var $1280 = self.err;
@@ -4770,12 +4770,12 @@ module.exports = (function() {
                                                                                                         var $1282 = self.ini;
                                                                                                         var $1283 = self.idx;
                                                                                                         var $1284 = self.str;
-                                                                                                        var _reply$pst$58 = Parser$State$new$(Parser$Error$maybe_combine$($1270, $1280), $1281, $1282, $1283, $1284);
+                                                                                                        var _reply$pst$58 = Parser$State$new$(Parser$Error$maybe_combine$($1271, $1280), $1281, $1282, $1283, $1284);
                                                                                                         var self = _reply$pst$58;
                                                                                                         switch (self._) {
                                                                                                             case 'Parser.State.new':
                                                                                                                 var $1286 = self.err;
-                                                                                                                var _reply$64 = Litereum$parse$text$("{", _reply$pst$58);
+                                                                                                                var _reply$64 = Litereum$parse$text$("_<_:", _reply$pst$58);
                                                                                                                 var self = _reply$64;
                                                                                                                 switch (self._) {
                                                                                                                     case 'Parser.Reply.error':
@@ -4809,7 +4809,7 @@ module.exports = (function() {
                                                                                                                                 switch (self._) {
                                                                                                                                     case 'Parser.State.new':
                                                                                                                                         var $1301 = self.err;
-                                                                                                                                        var _reply$78 = Litereum$parse$text$("_<_:", _reply$pst$72);
+                                                                                                                                        var _reply$78 = Litereum$parse$term$(_world$1)(_reply$pst$72);
                                                                                                                                         var self = _reply$78;
                                                                                                                                         switch (self._) {
                                                                                                                                             case 'Parser.Reply.error':
@@ -4830,42 +4830,42 @@ module.exports = (function() {
                                                                                                                                                 break;
                                                                                                                                             case 'Parser.Reply.value':
                                                                                                                                                 var $1308 = self.pst;
+                                                                                                                                                var $1309 = self.val;
                                                                                                                                                 var self = $1308;
                                                                                                                                                 switch (self._) {
                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                        var $1310 = self.err;
-                                                                                                                                                        var $1311 = self.nam;
-                                                                                                                                                        var $1312 = self.ini;
-                                                                                                                                                        var $1313 = self.idx;
-                                                                                                                                                        var $1314 = self.str;
-                                                                                                                                                        var _reply$pst$86 = Parser$State$new$(Parser$Error$maybe_combine$($1301, $1310), $1311, $1312, $1313, $1314);
+                                                                                                                                                        var $1311 = self.err;
+                                                                                                                                                        var $1312 = self.nam;
+                                                                                                                                                        var $1313 = self.ini;
+                                                                                                                                                        var $1314 = self.idx;
+                                                                                                                                                        var $1315 = self.str;
+                                                                                                                                                        var _reply$pst$86 = Parser$State$new$(Parser$Error$maybe_combine$($1301, $1311), $1312, $1313, $1314, $1315);
                                                                                                                                                         var self = _reply$pst$86;
                                                                                                                                                         switch (self._) {
                                                                                                                                                             case 'Parser.State.new':
-                                                                                                                                                                var $1316 = self.err;
-                                                                                                                                                                var _reply$92 = Litereum$parse$term$(_world$1)(_reply$pst$86);
+                                                                                                                                                                var $1317 = self.err;
+                                                                                                                                                                var _reply$92 = Litereum$parse$text$("_=_:", _reply$pst$86);
                                                                                                                                                                 var self = _reply$92;
                                                                                                                                                                 switch (self._) {
                                                                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                                                                        var $1318 = self.err;
-                                                                                                                                                                        var self = $1316;
+                                                                                                                                                                        var $1319 = self.err;
+                                                                                                                                                                        var self = $1317;
                                                                                                                                                                         switch (self._) {
                                                                                                                                                                             case 'Maybe.some':
-                                                                                                                                                                                var $1320 = self.value;
-                                                                                                                                                                                var $1321 = Parser$Reply$error$(Parser$Error$combine$($1320, $1318));
-                                                                                                                                                                                var $1319 = $1321;
+                                                                                                                                                                                var $1321 = self.value;
+                                                                                                                                                                                var $1322 = Parser$Reply$error$(Parser$Error$combine$($1321, $1319));
+                                                                                                                                                                                var $1320 = $1322;
                                                                                                                                                                                 break;
                                                                                                                                                                             case 'Maybe.none':
-                                                                                                                                                                                var $1322 = Parser$Reply$error$($1318);
-                                                                                                                                                                                var $1319 = $1322;
+                                                                                                                                                                                var $1323 = Parser$Reply$error$($1319);
+                                                                                                                                                                                var $1320 = $1323;
                                                                                                                                                                                 break;
                                                                                                                                                                         };
-                                                                                                                                                                        var $1317 = $1319;
+                                                                                                                                                                        var $1318 = $1320;
                                                                                                                                                                         break;
                                                                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                                                                        var $1323 = self.pst;
-                                                                                                                                                                        var $1324 = self.val;
-                                                                                                                                                                        var self = $1323;
+                                                                                                                                                                        var $1324 = self.pst;
+                                                                                                                                                                        var self = $1324;
                                                                                                                                                                         switch (self._) {
                                                                                                                                                                             case 'Parser.State.new':
                                                                                                                                                                                 var $1326 = self.err;
@@ -4873,12 +4873,12 @@ module.exports = (function() {
                                                                                                                                                                                 var $1328 = self.ini;
                                                                                                                                                                                 var $1329 = self.idx;
                                                                                                                                                                                 var $1330 = self.str;
-                                                                                                                                                                                var _reply$pst$100 = Parser$State$new$(Parser$Error$maybe_combine$($1316, $1326), $1327, $1328, $1329, $1330);
+                                                                                                                                                                                var _reply$pst$100 = Parser$State$new$(Parser$Error$maybe_combine$($1317, $1326), $1327, $1328, $1329, $1330);
                                                                                                                                                                                 var self = _reply$pst$100;
                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                     case 'Parser.State.new':
                                                                                                                                                                                         var $1332 = self.err;
-                                                                                                                                                                                        var _reply$106 = Litereum$parse$text$("_=_:", _reply$pst$100);
+                                                                                                                                                                                        var _reply$106 = Litereum$parse$term$(_world$1)(_reply$pst$100);
                                                                                                                                                                                         var self = _reply$106;
                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                             case 'Parser.Reply.error':
@@ -4899,42 +4899,42 @@ module.exports = (function() {
                                                                                                                                                                                                 break;
                                                                                                                                                                                             case 'Parser.Reply.value':
                                                                                                                                                                                                 var $1339 = self.pst;
+                                                                                                                                                                                                var $1340 = self.val;
                                                                                                                                                                                                 var self = $1339;
                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                                                                        var $1341 = self.err;
-                                                                                                                                                                                                        var $1342 = self.nam;
-                                                                                                                                                                                                        var $1343 = self.ini;
-                                                                                                                                                                                                        var $1344 = self.idx;
-                                                                                                                                                                                                        var $1345 = self.str;
-                                                                                                                                                                                                        var _reply$pst$114 = Parser$State$new$(Parser$Error$maybe_combine$($1332, $1341), $1342, $1343, $1344, $1345);
+                                                                                                                                                                                                        var $1342 = self.err;
+                                                                                                                                                                                                        var $1343 = self.nam;
+                                                                                                                                                                                                        var $1344 = self.ini;
+                                                                                                                                                                                                        var $1345 = self.idx;
+                                                                                                                                                                                                        var $1346 = self.str;
+                                                                                                                                                                                                        var _reply$pst$114 = Parser$State$new$(Parser$Error$maybe_combine$($1332, $1342), $1343, $1344, $1345, $1346);
                                                                                                                                                                                                         var self = _reply$pst$114;
                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                             case 'Parser.State.new':
-                                                                                                                                                                                                                var $1347 = self.err;
-                                                                                                                                                                                                                var _reply$120 = Litereum$parse$term$(_world$1)(_reply$pst$114);
+                                                                                                                                                                                                                var $1348 = self.err;
+                                                                                                                                                                                                                var _reply$120 = Litereum$parse$text$("_>_:", _reply$pst$114);
                                                                                                                                                                                                                 var self = _reply$120;
                                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                                                                                                                        var $1349 = self.err;
-                                                                                                                                                                                                                        var self = $1347;
+                                                                                                                                                                                                                        var $1350 = self.err;
+                                                                                                                                                                                                                        var self = $1348;
                                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                                             case 'Maybe.some':
-                                                                                                                                                                                                                                var $1351 = self.value;
-                                                                                                                                                                                                                                var $1352 = Parser$Reply$error$(Parser$Error$combine$($1351, $1349));
-                                                                                                                                                                                                                                var $1350 = $1352;
+                                                                                                                                                                                                                                var $1352 = self.value;
+                                                                                                                                                                                                                                var $1353 = Parser$Reply$error$(Parser$Error$combine$($1352, $1350));
+                                                                                                                                                                                                                                var $1351 = $1353;
                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                             case 'Maybe.none':
-                                                                                                                                                                                                                                var $1353 = Parser$Reply$error$($1349);
-                                                                                                                                                                                                                                var $1350 = $1353;
+                                                                                                                                                                                                                                var $1354 = Parser$Reply$error$($1350);
+                                                                                                                                                                                                                                var $1351 = $1354;
                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                         };
-                                                                                                                                                                                                                        var $1348 = $1350;
+                                                                                                                                                                                                                        var $1349 = $1351;
                                                                                                                                                                                                                         break;
                                                                                                                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                                                                                                                        var $1354 = self.pst;
-                                                                                                                                                                                                                        var $1355 = self.val;
-                                                                                                                                                                                                                        var self = $1354;
+                                                                                                                                                                                                                        var $1355 = self.pst;
+                                                                                                                                                                                                                        var self = $1355;
                                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                                             case 'Parser.State.new':
                                                                                                                                                                                                                                 var $1357 = self.err;
@@ -4942,12 +4942,12 @@ module.exports = (function() {
                                                                                                                                                                                                                                 var $1359 = self.ini;
                                                                                                                                                                                                                                 var $1360 = self.idx;
                                                                                                                                                                                                                                 var $1361 = self.str;
-                                                                                                                                                                                                                                var _reply$pst$128 = Parser$State$new$(Parser$Error$maybe_combine$($1347, $1357), $1358, $1359, $1360, $1361);
+                                                                                                                                                                                                                                var _reply$pst$128 = Parser$State$new$(Parser$Error$maybe_combine$($1348, $1357), $1358, $1359, $1360, $1361);
                                                                                                                                                                                                                                 var self = _reply$pst$128;
                                                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                                                     case 'Parser.State.new':
                                                                                                                                                                                                                                         var $1363 = self.err;
-                                                                                                                                                                                                                                        var _reply$134 = Litereum$parse$text$("_>_:", _reply$pst$128);
+                                                                                                                                                                                                                                        var _reply$134 = Litereum$parse$term$(_world$1)(_reply$pst$128);
                                                                                                                                                                                                                                         var self = _reply$134;
                                                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                                                             case 'Parser.Reply.error':
@@ -4968,42 +4968,42 @@ module.exports = (function() {
                                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                                             case 'Parser.Reply.value':
                                                                                                                                                                                                                                                 var $1370 = self.pst;
+                                                                                                                                                                                                                                                var $1371 = self.val;
                                                                                                                                                                                                                                                 var self = $1370;
                                                                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                                                                                                                        var $1372 = self.err;
-                                                                                                                                                                                                                                                        var $1373 = self.nam;
-                                                                                                                                                                                                                                                        var $1374 = self.ini;
-                                                                                                                                                                                                                                                        var $1375 = self.idx;
-                                                                                                                                                                                                                                                        var $1376 = self.str;
-                                                                                                                                                                                                                                                        var _reply$pst$142 = Parser$State$new$(Parser$Error$maybe_combine$($1363, $1372), $1373, $1374, $1375, $1376);
+                                                                                                                                                                                                                                                        var $1373 = self.err;
+                                                                                                                                                                                                                                                        var $1374 = self.nam;
+                                                                                                                                                                                                                                                        var $1375 = self.ini;
+                                                                                                                                                                                                                                                        var $1376 = self.idx;
+                                                                                                                                                                                                                                                        var $1377 = self.str;
+                                                                                                                                                                                                                                                        var _reply$pst$142 = Parser$State$new$(Parser$Error$maybe_combine$($1363, $1373), $1374, $1375, $1376, $1377);
                                                                                                                                                                                                                                                         var self = _reply$pst$142;
                                                                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                                                                             case 'Parser.State.new':
-                                                                                                                                                                                                                                                                var $1378 = self.err;
-                                                                                                                                                                                                                                                                var _reply$148 = Litereum$parse$term$(_world$1)(_reply$pst$142);
+                                                                                                                                                                                                                                                                var $1379 = self.err;
+                                                                                                                                                                                                                                                                var _reply$148 = Litereum$parse$text$("}", _reply$pst$142);
                                                                                                                                                                                                                                                                 var self = _reply$148;
                                                                                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                                                                                                                                                                        var $1380 = self.err;
-                                                                                                                                                                                                                                                                        var self = $1378;
+                                                                                                                                                                                                                                                                        var $1381 = self.err;
+                                                                                                                                                                                                                                                                        var self = $1379;
                                                                                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                                                                                             case 'Maybe.some':
-                                                                                                                                                                                                                                                                                var $1382 = self.value;
-                                                                                                                                                                                                                                                                                var $1383 = Parser$Reply$error$(Parser$Error$combine$($1382, $1380));
-                                                                                                                                                                                                                                                                                var $1381 = $1383;
+                                                                                                                                                                                                                                                                                var $1383 = self.value;
+                                                                                                                                                                                                                                                                                var $1384 = Parser$Reply$error$(Parser$Error$combine$($1383, $1381));
+                                                                                                                                                                                                                                                                                var $1382 = $1384;
                                                                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                                                                             case 'Maybe.none':
-                                                                                                                                                                                                                                                                                var $1384 = Parser$Reply$error$($1380);
-                                                                                                                                                                                                                                                                                var $1381 = $1384;
+                                                                                                                                                                                                                                                                                var $1385 = Parser$Reply$error$($1381);
+                                                                                                                                                                                                                                                                                var $1382 = $1385;
                                                                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                                                                         };
-                                                                                                                                                                                                                                                                        var $1379 = $1381;
+                                                                                                                                                                                                                                                                        var $1380 = $1382;
                                                                                                                                                                                                                                                                         break;
                                                                                                                                                                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                                                                                                                                                                        var $1385 = self.pst;
-                                                                                                                                                                                                                                                                        var $1386 = self.val;
-                                                                                                                                                                                                                                                                        var self = $1385;
+                                                                                                                                                                                                                                                                        var $1386 = self.pst;
+                                                                                                                                                                                                                                                                        var self = $1386;
                                                                                                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                                                                                                             case 'Parser.State.new':
                                                                                                                                                                                                                                                                                 var $1388 = self.err;
@@ -5011,64 +5011,21 @@ module.exports = (function() {
                                                                                                                                                                                                                                                                                 var $1390 = self.ini;
                                                                                                                                                                                                                                                                                 var $1391 = self.idx;
                                                                                                                                                                                                                                                                                 var $1392 = self.str;
-                                                                                                                                                                                                                                                                                var _reply$pst$156 = Parser$State$new$(Parser$Error$maybe_combine$($1378, $1388), $1389, $1390, $1391, $1392);
-                                                                                                                                                                                                                                                                                var self = _reply$pst$156;
-                                                                                                                                                                                                                                                                                switch (self._) {
-                                                                                                                                                                                                                                                                                    case 'Parser.State.new':
-                                                                                                                                                                                                                                                                                        var $1394 = self.err;
-                                                                                                                                                                                                                                                                                        var _reply$162 = Litereum$parse$text$("}", _reply$pst$156);
-                                                                                                                                                                                                                                                                                        var self = _reply$162;
-                                                                                                                                                                                                                                                                                        switch (self._) {
-                                                                                                                                                                                                                                                                                            case 'Parser.Reply.error':
-                                                                                                                                                                                                                                                                                                var $1396 = self.err;
-                                                                                                                                                                                                                                                                                                var self = $1394;
-                                                                                                                                                                                                                                                                                                switch (self._) {
-                                                                                                                                                                                                                                                                                                    case 'Maybe.some':
-                                                                                                                                                                                                                                                                                                        var $1398 = self.value;
-                                                                                                                                                                                                                                                                                                        var $1399 = Parser$Reply$error$(Parser$Error$combine$($1398, $1396));
-                                                                                                                                                                                                                                                                                                        var $1397 = $1399;
-                                                                                                                                                                                                                                                                                                        break;
-                                                                                                                                                                                                                                                                                                    case 'Maybe.none':
-                                                                                                                                                                                                                                                                                                        var $1400 = Parser$Reply$error$($1396);
-                                                                                                                                                                                                                                                                                                        var $1397 = $1400;
-                                                                                                                                                                                                                                                                                                        break;
-                                                                                                                                                                                                                                                                                                };
-                                                                                                                                                                                                                                                                                                var $1395 = $1397;
-                                                                                                                                                                                                                                                                                                break;
-                                                                                                                                                                                                                                                                                            case 'Parser.Reply.value':
-                                                                                                                                                                                                                                                                                                var $1401 = self.pst;
-                                                                                                                                                                                                                                                                                                var self = $1401;
-                                                                                                                                                                                                                                                                                                switch (self._) {
-                                                                                                                                                                                                                                                                                                    case 'Parser.State.new':
-                                                                                                                                                                                                                                                                                                        var $1403 = self.err;
-                                                                                                                                                                                                                                                                                                        var $1404 = self.nam;
-                                                                                                                                                                                                                                                                                                        var $1405 = self.ini;
-                                                                                                                                                                                                                                                                                                        var $1406 = self.idx;
-                                                                                                                                                                                                                                                                                                        var $1407 = self.str;
-                                                                                                                                                                                                                                                                                                        var _reply$pst$170 = Parser$State$new$(Parser$Error$maybe_combine$($1394, $1403), $1404, $1405, $1406, $1407);
-                                                                                                                                                                                                                                                                                                        var $1408 = Parser$Reply$value$(_reply$pst$170, Litereum$Term$compare$($1247, $1278, $1324, $1355, $1386));
-                                                                                                                                                                                                                                                                                                        var $1402 = $1408;
-                                                                                                                                                                                                                                                                                                        break;
-                                                                                                                                                                                                                                                                                                };
-                                                                                                                                                                                                                                                                                                var $1395 = $1402;
-                                                                                                                                                                                                                                                                                                break;
-                                                                                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                                                                                        var $1393 = $1395;
-                                                                                                                                                                                                                                                                                        break;
-                                                                                                                                                                                                                                                                                };
+                                                                                                                                                                                                                                                                                var _reply$pst$156 = Parser$State$new$(Parser$Error$maybe_combine$($1379, $1388), $1389, $1390, $1391, $1392);
+                                                                                                                                                                                                                                                                                var $1393 = Parser$Reply$value$(_reply$pst$156, Litereum$Term$compare$($1247, $1263, $1309, $1340, $1371));
                                                                                                                                                                                                                                                                                 var $1387 = $1393;
                                                                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                                                                         };
-                                                                                                                                                                                                                                                                        var $1379 = $1387;
+                                                                                                                                                                                                                                                                        var $1380 = $1387;
                                                                                                                                                                                                                                                                         break;
                                                                                                                                                                                                                                                                 };
-                                                                                                                                                                                                                                                                var $1377 = $1379;
+                                                                                                                                                                                                                                                                var $1378 = $1380;
                                                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                                                         };
-                                                                                                                                                                                                                                                        var $1371 = $1377;
+                                                                                                                                                                                                                                                        var $1372 = $1378;
                                                                                                                                                                                                                                                         break;
                                                                                                                                                                                                                                                 };
-                                                                                                                                                                                                                                                var $1364 = $1371;
+                                                                                                                                                                                                                                                var $1364 = $1372;
                                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                                         };
                                                                                                                                                                                                                                         var $1362 = $1364;
@@ -5077,16 +5034,16 @@ module.exports = (function() {
                                                                                                                                                                                                                                 var $1356 = $1362;
                                                                                                                                                                                                                                 break;
                                                                                                                                                                                                                         };
-                                                                                                                                                                                                                        var $1348 = $1356;
+                                                                                                                                                                                                                        var $1349 = $1356;
                                                                                                                                                                                                                         break;
                                                                                                                                                                                                                 };
-                                                                                                                                                                                                                var $1346 = $1348;
+                                                                                                                                                                                                                var $1347 = $1349;
                                                                                                                                                                                                                 break;
                                                                                                                                                                                                         };
-                                                                                                                                                                                                        var $1340 = $1346;
+                                                                                                                                                                                                        var $1341 = $1347;
                                                                                                                                                                                                         break;
                                                                                                                                                                                                 };
-                                                                                                                                                                                                var $1333 = $1340;
+                                                                                                                                                                                                var $1333 = $1341;
                                                                                                                                                                                                 break;
                                                                                                                                                                                         };
                                                                                                                                                                                         var $1331 = $1333;
@@ -5095,16 +5052,16 @@ module.exports = (function() {
                                                                                                                                                                                 var $1325 = $1331;
                                                                                                                                                                                 break;
                                                                                                                                                                         };
-                                                                                                                                                                        var $1317 = $1325;
+                                                                                                                                                                        var $1318 = $1325;
                                                                                                                                                                         break;
                                                                                                                                                                 };
-                                                                                                                                                                var $1315 = $1317;
+                                                                                                                                                                var $1316 = $1318;
                                                                                                                                                                 break;
                                                                                                                                                         };
-                                                                                                                                                        var $1309 = $1315;
+                                                                                                                                                        var $1310 = $1316;
                                                                                                                                                         break;
                                                                                                                                                 };
-                                                                                                                                                var $1302 = $1309;
+                                                                                                                                                var $1302 = $1310;
                                                                                                                                                 break;
                                                                                                                                         };
                                                                                                                                         var $1300 = $1302;
@@ -5122,16 +5079,16 @@ module.exports = (function() {
                                                                                                         var $1279 = $1285;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $1271 = $1279;
+                                                                                                var $1272 = $1279;
                                                                                                 break;
                                                                                         };
-                                                                                        var $1269 = $1271;
+                                                                                        var $1270 = $1272;
                                                                                         break;
                                                                                 };
-                                                                                var $1263 = $1269;
+                                                                                var $1264 = $1270;
                                                                                 break;
                                                                         };
-                                                                        var $1256 = $1263;
+                                                                        var $1256 = $1264;
                                                                         break;
                                                                 };
                                                                 var $1254 = $1256;
@@ -5186,383 +5143,383 @@ module.exports = (function() {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1410 = self.err;
+                var $1395 = self.err;
                 var _reply$7 = Litereum$parse$text$("+", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1412 = self.err;
-                        var self = $1410;
+                        var $1397 = self.err;
+                        var self = $1395;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1414 = self.value;
-                                var $1415 = Parser$Reply$error$(Parser$Error$combine$($1414, $1412));
-                                var $1413 = $1415;
+                                var $1399 = self.value;
+                                var $1400 = Parser$Reply$error$(Parser$Error$combine$($1399, $1397));
+                                var $1398 = $1400;
                                 break;
                             case 'Maybe.none':
-                                var $1416 = Parser$Reply$error$($1412);
-                                var $1413 = $1416;
+                                var $1401 = Parser$Reply$error$($1397);
+                                var $1398 = $1401;
                                 break;
                         };
-                        var $1411 = $1413;
+                        var $1396 = $1398;
                         break;
                     case 'Parser.Reply.value':
-                        var $1417 = self.pst;
-                        var self = $1417;
+                        var $1402 = self.pst;
+                        var self = $1402;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1419 = self.err;
-                                var $1420 = self.nam;
-                                var $1421 = self.ini;
-                                var $1422 = self.idx;
-                                var $1423 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1410, $1419), $1420, $1421, $1422, $1423);
-                                var $1424 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$add));
-                                var $1418 = $1424;
+                                var $1404 = self.err;
+                                var $1405 = self.nam;
+                                var $1406 = self.ini;
+                                var $1407 = self.idx;
+                                var $1408 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1395, $1404), $1405, $1406, $1407, $1408);
+                                var $1409 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$add));
+                                var $1403 = $1409;
                                 break;
                         };
-                        var $1411 = $1418;
+                        var $1396 = $1403;
                         break;
                 };
-                var $1409 = $1411;
+                var $1394 = $1396;
                 break;
         };
-        return $1409;
+        return $1394;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1426 = self.err;
+                var $1411 = self.err;
                 var _reply$7 = Litereum$parse$text$("-", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1428 = self.err;
-                        var self = $1426;
+                        var $1413 = self.err;
+                        var self = $1411;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1430 = self.value;
-                                var $1431 = Parser$Reply$error$(Parser$Error$combine$($1430, $1428));
-                                var $1429 = $1431;
+                                var $1415 = self.value;
+                                var $1416 = Parser$Reply$error$(Parser$Error$combine$($1415, $1413));
+                                var $1414 = $1416;
                                 break;
                             case 'Maybe.none':
-                                var $1432 = Parser$Reply$error$($1428);
-                                var $1429 = $1432;
+                                var $1417 = Parser$Reply$error$($1413);
+                                var $1414 = $1417;
                                 break;
                         };
-                        var $1427 = $1429;
+                        var $1412 = $1414;
                         break;
                     case 'Parser.Reply.value':
-                        var $1433 = self.pst;
-                        var self = $1433;
+                        var $1418 = self.pst;
+                        var self = $1418;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1435 = self.err;
-                                var $1436 = self.nam;
-                                var $1437 = self.ini;
-                                var $1438 = self.idx;
-                                var $1439 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1426, $1435), $1436, $1437, $1438, $1439);
-                                var $1440 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$sub));
-                                var $1434 = $1440;
+                                var $1420 = self.err;
+                                var $1421 = self.nam;
+                                var $1422 = self.ini;
+                                var $1423 = self.idx;
+                                var $1424 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1411, $1420), $1421, $1422, $1423, $1424);
+                                var $1425 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$sub));
+                                var $1419 = $1425;
                                 break;
                         };
-                        var $1427 = $1434;
+                        var $1412 = $1419;
                         break;
                 };
-                var $1425 = $1427;
+                var $1410 = $1412;
                 break;
         };
-        return $1425;
+        return $1410;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1442 = self.err;
+                var $1427 = self.err;
                 var _reply$7 = Litereum$parse$text$("*", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1444 = self.err;
-                        var self = $1442;
+                        var $1429 = self.err;
+                        var self = $1427;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1446 = self.value;
-                                var $1447 = Parser$Reply$error$(Parser$Error$combine$($1446, $1444));
-                                var $1445 = $1447;
+                                var $1431 = self.value;
+                                var $1432 = Parser$Reply$error$(Parser$Error$combine$($1431, $1429));
+                                var $1430 = $1432;
                                 break;
                             case 'Maybe.none':
-                                var $1448 = Parser$Reply$error$($1444);
-                                var $1445 = $1448;
+                                var $1433 = Parser$Reply$error$($1429);
+                                var $1430 = $1433;
                                 break;
                         };
-                        var $1443 = $1445;
+                        var $1428 = $1430;
                         break;
                     case 'Parser.Reply.value':
-                        var $1449 = self.pst;
-                        var self = $1449;
+                        var $1434 = self.pst;
+                        var self = $1434;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1451 = self.err;
-                                var $1452 = self.nam;
-                                var $1453 = self.ini;
-                                var $1454 = self.idx;
-                                var $1455 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1442, $1451), $1452, $1453, $1454, $1455);
-                                var $1456 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$mul));
-                                var $1450 = $1456;
+                                var $1436 = self.err;
+                                var $1437 = self.nam;
+                                var $1438 = self.ini;
+                                var $1439 = self.idx;
+                                var $1440 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1427, $1436), $1437, $1438, $1439, $1440);
+                                var $1441 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$mul));
+                                var $1435 = $1441;
                                 break;
                         };
-                        var $1443 = $1450;
+                        var $1428 = $1435;
                         break;
                 };
-                var $1441 = $1443;
+                var $1426 = $1428;
                 break;
         };
-        return $1441;
+        return $1426;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1458 = self.err;
+                var $1443 = self.err;
                 var _reply$7 = Litereum$parse$text$("/", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1460 = self.err;
-                        var self = $1458;
+                        var $1445 = self.err;
+                        var self = $1443;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1462 = self.value;
-                                var $1463 = Parser$Reply$error$(Parser$Error$combine$($1462, $1460));
-                                var $1461 = $1463;
+                                var $1447 = self.value;
+                                var $1448 = Parser$Reply$error$(Parser$Error$combine$($1447, $1445));
+                                var $1446 = $1448;
                                 break;
                             case 'Maybe.none':
-                                var $1464 = Parser$Reply$error$($1460);
-                                var $1461 = $1464;
+                                var $1449 = Parser$Reply$error$($1445);
+                                var $1446 = $1449;
                                 break;
                         };
-                        var $1459 = $1461;
+                        var $1444 = $1446;
                         break;
                     case 'Parser.Reply.value':
-                        var $1465 = self.pst;
-                        var self = $1465;
+                        var $1450 = self.pst;
+                        var self = $1450;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1467 = self.err;
-                                var $1468 = self.nam;
-                                var $1469 = self.ini;
-                                var $1470 = self.idx;
-                                var $1471 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1458, $1467), $1468, $1469, $1470, $1471);
-                                var $1472 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$div));
-                                var $1466 = $1472;
+                                var $1452 = self.err;
+                                var $1453 = self.nam;
+                                var $1454 = self.ini;
+                                var $1455 = self.idx;
+                                var $1456 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1443, $1452), $1453, $1454, $1455, $1456);
+                                var $1457 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$div));
+                                var $1451 = $1457;
                                 break;
                         };
-                        var $1459 = $1466;
+                        var $1444 = $1451;
                         break;
                 };
-                var $1457 = $1459;
+                var $1442 = $1444;
                 break;
         };
-        return $1457;
+        return $1442;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1474 = self.err;
+                var $1459 = self.err;
                 var _reply$7 = Litereum$parse$text$("%", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1476 = self.err;
-                        var self = $1474;
+                        var $1461 = self.err;
+                        var self = $1459;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1478 = self.value;
-                                var $1479 = Parser$Reply$error$(Parser$Error$combine$($1478, $1476));
-                                var $1477 = $1479;
+                                var $1463 = self.value;
+                                var $1464 = Parser$Reply$error$(Parser$Error$combine$($1463, $1461));
+                                var $1462 = $1464;
                                 break;
                             case 'Maybe.none':
-                                var $1480 = Parser$Reply$error$($1476);
-                                var $1477 = $1480;
+                                var $1465 = Parser$Reply$error$($1461);
+                                var $1462 = $1465;
                                 break;
                         };
-                        var $1475 = $1477;
+                        var $1460 = $1462;
                         break;
                     case 'Parser.Reply.value':
-                        var $1481 = self.pst;
-                        var self = $1481;
+                        var $1466 = self.pst;
+                        var self = $1466;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1483 = self.err;
-                                var $1484 = self.nam;
-                                var $1485 = self.ini;
-                                var $1486 = self.idx;
-                                var $1487 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1474, $1483), $1484, $1485, $1486, $1487);
-                                var $1488 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$mod));
-                                var $1482 = $1488;
+                                var $1468 = self.err;
+                                var $1469 = self.nam;
+                                var $1470 = self.ini;
+                                var $1471 = self.idx;
+                                var $1472 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1459, $1468), $1469, $1470, $1471, $1472);
+                                var $1473 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$mod));
+                                var $1467 = $1473;
                                 break;
                         };
-                        var $1475 = $1482;
+                        var $1460 = $1467;
                         break;
                 };
-                var $1473 = $1475;
+                var $1458 = $1460;
                 break;
         };
-        return $1473;
+        return $1458;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1490 = self.err;
+                var $1475 = self.err;
                 var _reply$7 = Litereum$parse$text$("|", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1492 = self.err;
-                        var self = $1490;
+                        var $1477 = self.err;
+                        var self = $1475;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1494 = self.value;
-                                var $1495 = Parser$Reply$error$(Parser$Error$combine$($1494, $1492));
-                                var $1493 = $1495;
+                                var $1479 = self.value;
+                                var $1480 = Parser$Reply$error$(Parser$Error$combine$($1479, $1477));
+                                var $1478 = $1480;
                                 break;
                             case 'Maybe.none':
-                                var $1496 = Parser$Reply$error$($1492);
-                                var $1493 = $1496;
+                                var $1481 = Parser$Reply$error$($1477);
+                                var $1478 = $1481;
                                 break;
                         };
-                        var $1491 = $1493;
+                        var $1476 = $1478;
                         break;
                     case 'Parser.Reply.value':
-                        var $1497 = self.pst;
-                        var self = $1497;
+                        var $1482 = self.pst;
+                        var self = $1482;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1499 = self.err;
-                                var $1500 = self.nam;
-                                var $1501 = self.ini;
-                                var $1502 = self.idx;
-                                var $1503 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1490, $1499), $1500, $1501, $1502, $1503);
-                                var $1504 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$or));
-                                var $1498 = $1504;
+                                var $1484 = self.err;
+                                var $1485 = self.nam;
+                                var $1486 = self.ini;
+                                var $1487 = self.idx;
+                                var $1488 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1475, $1484), $1485, $1486, $1487, $1488);
+                                var $1489 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$or));
+                                var $1483 = $1489;
                                 break;
                         };
-                        var $1491 = $1498;
+                        var $1476 = $1483;
                         break;
                 };
-                var $1489 = $1491;
+                var $1474 = $1476;
                 break;
         };
-        return $1489;
+        return $1474;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1506 = self.err;
+                var $1491 = self.err;
                 var _reply$7 = Litereum$parse$text$("&", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1508 = self.err;
-                        var self = $1506;
+                        var $1493 = self.err;
+                        var self = $1491;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1510 = self.value;
-                                var $1511 = Parser$Reply$error$(Parser$Error$combine$($1510, $1508));
-                                var $1509 = $1511;
+                                var $1495 = self.value;
+                                var $1496 = Parser$Reply$error$(Parser$Error$combine$($1495, $1493));
+                                var $1494 = $1496;
                                 break;
                             case 'Maybe.none':
-                                var $1512 = Parser$Reply$error$($1508);
-                                var $1509 = $1512;
+                                var $1497 = Parser$Reply$error$($1493);
+                                var $1494 = $1497;
                                 break;
                         };
-                        var $1507 = $1509;
+                        var $1492 = $1494;
                         break;
                     case 'Parser.Reply.value':
-                        var $1513 = self.pst;
-                        var self = $1513;
+                        var $1498 = self.pst;
+                        var self = $1498;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1515 = self.err;
-                                var $1516 = self.nam;
-                                var $1517 = self.ini;
-                                var $1518 = self.idx;
-                                var $1519 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1506, $1515), $1516, $1517, $1518, $1519);
-                                var $1520 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$and));
-                                var $1514 = $1520;
+                                var $1500 = self.err;
+                                var $1501 = self.nam;
+                                var $1502 = self.ini;
+                                var $1503 = self.idx;
+                                var $1504 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1491, $1500), $1501, $1502, $1503, $1504);
+                                var $1505 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$and));
+                                var $1499 = $1505;
                                 break;
                         };
-                        var $1507 = $1514;
+                        var $1492 = $1499;
                         break;
                 };
-                var $1505 = $1507;
+                var $1490 = $1492;
                 break;
         };
-        return $1505;
+        return $1490;
     }), List$cons$((_pst$1 => {
         var self = _pst$1;
         switch (self._) {
             case 'Parser.State.new':
-                var $1522 = self.err;
+                var $1507 = self.err;
                 var _reply$7 = Litereum$parse$text$("^", _pst$1);
                 var self = _reply$7;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1524 = self.err;
-                        var self = $1522;
+                        var $1509 = self.err;
+                        var self = $1507;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1526 = self.value;
-                                var $1527 = Parser$Reply$error$(Parser$Error$combine$($1526, $1524));
-                                var $1525 = $1527;
+                                var $1511 = self.value;
+                                var $1512 = Parser$Reply$error$(Parser$Error$combine$($1511, $1509));
+                                var $1510 = $1512;
                                 break;
                             case 'Maybe.none':
-                                var $1528 = Parser$Reply$error$($1524);
-                                var $1525 = $1528;
+                                var $1513 = Parser$Reply$error$($1509);
+                                var $1510 = $1513;
                                 break;
                         };
-                        var $1523 = $1525;
+                        var $1508 = $1510;
                         break;
                     case 'Parser.Reply.value':
-                        var $1529 = self.pst;
-                        var self = $1529;
+                        var $1514 = self.pst;
+                        var self = $1514;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1531 = self.err;
-                                var $1532 = self.nam;
-                                var $1533 = self.ini;
-                                var $1534 = self.idx;
-                                var $1535 = self.str;
-                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1522, $1531), $1532, $1533, $1534, $1535);
-                                var $1536 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$xor));
-                                var $1530 = $1536;
+                                var $1516 = self.err;
+                                var $1517 = self.nam;
+                                var $1518 = self.ini;
+                                var $1519 = self.idx;
+                                var $1520 = self.str;
+                                var _reply$pst$15 = Parser$State$new$(Parser$Error$maybe_combine$($1507, $1516), $1517, $1518, $1519, $1520);
+                                var $1521 = Parser$Reply$value$(_reply$pst$15, Maybe$some$(Litereum$Operation$xor));
+                                var $1515 = $1521;
                                 break;
                         };
-                        var $1523 = $1530;
+                        var $1508 = $1515;
                         break;
                 };
-                var $1521 = $1523;
+                var $1506 = $1508;
                 break;
         };
-        return $1521;
+        return $1506;
     }), List$cons$((_pst$1 => {
-        var $1537 = Parser$Reply$value$(_pst$1, Maybe$none);
-        return $1537;
+        var $1522 = Parser$Reply$value$(_pst$1, Maybe$none);
+        return $1522;
     }), List$nil))))))))));
 
     function Litereum$Term$operate$(_oper$1, _val0$2, _val1$3) {
-        var $1538 = ({
+        var $1523 = ({
             _: 'Litereum.Term.operate',
             'oper': _oper$1,
             'val0': _val0$2,
             'val1': _val1$3
         });
-        return $1538;
+        return $1523;
     };
     const Litereum$Term$operate = x0 => x1 => x2 => Litereum$Term$operate$(x0, x1, x2);
 
@@ -5570,292 +5527,292 @@ module.exports = (function() {
         var self = _pst$2;
         switch (self._) {
             case 'Parser.State.new':
-                var $1540 = self.err;
+                var $1525 = self.err;
                 var _reply$8 = Litereum$parse$term$operation(_pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1542 = self.err;
-                        var self = $1540;
+                        var $1527 = self.err;
+                        var self = $1525;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1544 = self.value;
-                                var $1545 = Parser$Reply$error$(Parser$Error$combine$($1544, $1542));
-                                var $1543 = $1545;
+                                var $1529 = self.value;
+                                var $1530 = Parser$Reply$error$(Parser$Error$combine$($1529, $1527));
+                                var $1528 = $1530;
                                 break;
                             case 'Maybe.none':
-                                var $1546 = Parser$Reply$error$($1542);
-                                var $1543 = $1546;
+                                var $1531 = Parser$Reply$error$($1527);
+                                var $1528 = $1531;
                                 break;
                         };
-                        var $1541 = $1543;
+                        var $1526 = $1528;
                         break;
                     case 'Parser.Reply.value':
-                        var $1547 = self.pst;
-                        var $1548 = self.val;
-                        var self = $1547;
+                        var $1532 = self.pst;
+                        var $1533 = self.val;
+                        var self = $1532;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1550 = self.err;
-                                var $1551 = self.nam;
-                                var $1552 = self.ini;
-                                var $1553 = self.idx;
-                                var $1554 = self.str;
-                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1540, $1550), $1551, $1552, $1553, $1554);
-                                var self = $1548;
+                                var $1535 = self.err;
+                                var $1536 = self.nam;
+                                var $1537 = self.ini;
+                                var $1538 = self.idx;
+                                var $1539 = self.str;
+                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1525, $1535), $1536, $1537, $1538, $1539);
+                                var self = $1533;
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $1556 = self.value;
-                                        var $1557 = (_pst$18 => {
+                                        var $1541 = self.value;
+                                        var $1542 = (_pst$18 => {
                                             var self = _pst$18;
                                             switch (self._) {
                                                 case 'Parser.State.new':
-                                                    var $1559 = self.err;
+                                                    var $1544 = self.err;
                                                     var _reply$24 = Litereum$parse$text$("(", _pst$18);
                                                     var self = _reply$24;
                                                     switch (self._) {
                                                         case 'Parser.Reply.error':
-                                                            var $1561 = self.err;
-                                                            var self = $1559;
+                                                            var $1546 = self.err;
+                                                            var self = $1544;
                                                             switch (self._) {
                                                                 case 'Maybe.some':
-                                                                    var $1563 = self.value;
-                                                                    var $1564 = Parser$Reply$error$(Parser$Error$combine$($1563, $1561));
-                                                                    var $1562 = $1564;
+                                                                    var $1548 = self.value;
+                                                                    var $1549 = Parser$Reply$error$(Parser$Error$combine$($1548, $1546));
+                                                                    var $1547 = $1549;
                                                                     break;
                                                                 case 'Maybe.none':
-                                                                    var $1565 = Parser$Reply$error$($1561);
-                                                                    var $1562 = $1565;
+                                                                    var $1550 = Parser$Reply$error$($1546);
+                                                                    var $1547 = $1550;
                                                                     break;
                                                             };
-                                                            var $1560 = $1562;
+                                                            var $1545 = $1547;
                                                             break;
                                                         case 'Parser.Reply.value':
-                                                            var $1566 = self.pst;
-                                                            var self = $1566;
+                                                            var $1551 = self.pst;
+                                                            var self = $1551;
                                                             switch (self._) {
                                                                 case 'Parser.State.new':
-                                                                    var $1568 = self.err;
-                                                                    var $1569 = self.nam;
-                                                                    var $1570 = self.ini;
-                                                                    var $1571 = self.idx;
-                                                                    var $1572 = self.str;
-                                                                    var _reply$pst$32 = Parser$State$new$(Parser$Error$maybe_combine$($1559, $1568), $1569, $1570, $1571, $1572);
+                                                                    var $1553 = self.err;
+                                                                    var $1554 = self.nam;
+                                                                    var $1555 = self.ini;
+                                                                    var $1556 = self.idx;
+                                                                    var $1557 = self.str;
+                                                                    var _reply$pst$32 = Parser$State$new$(Parser$Error$maybe_combine$($1544, $1553), $1554, $1555, $1556, $1557);
                                                                     var self = _reply$pst$32;
                                                                     switch (self._) {
                                                                         case 'Parser.State.new':
-                                                                            var $1574 = self.err;
+                                                                            var $1559 = self.err;
                                                                             var _reply$38 = Litereum$parse$term$(_world$1)(_reply$pst$32);
                                                                             var self = _reply$38;
                                                                             switch (self._) {
                                                                                 case 'Parser.Reply.error':
-                                                                                    var $1576 = self.err;
-                                                                                    var self = $1574;
+                                                                                    var $1561 = self.err;
+                                                                                    var self = $1559;
                                                                                     switch (self._) {
                                                                                         case 'Maybe.some':
-                                                                                            var $1578 = self.value;
-                                                                                            var $1579 = Parser$Reply$error$(Parser$Error$combine$($1578, $1576));
-                                                                                            var $1577 = $1579;
+                                                                                            var $1563 = self.value;
+                                                                                            var $1564 = Parser$Reply$error$(Parser$Error$combine$($1563, $1561));
+                                                                                            var $1562 = $1564;
                                                                                             break;
                                                                                         case 'Maybe.none':
-                                                                                            var $1580 = Parser$Reply$error$($1576);
-                                                                                            var $1577 = $1580;
+                                                                                            var $1565 = Parser$Reply$error$($1561);
+                                                                                            var $1562 = $1565;
                                                                                             break;
                                                                                     };
-                                                                                    var $1575 = $1577;
+                                                                                    var $1560 = $1562;
                                                                                     break;
                                                                                 case 'Parser.Reply.value':
-                                                                                    var $1581 = self.pst;
-                                                                                    var $1582 = self.val;
-                                                                                    var self = $1581;
+                                                                                    var $1566 = self.pst;
+                                                                                    var $1567 = self.val;
+                                                                                    var self = $1566;
                                                                                     switch (self._) {
                                                                                         case 'Parser.State.new':
-                                                                                            var $1584 = self.err;
-                                                                                            var $1585 = self.nam;
-                                                                                            var $1586 = self.ini;
-                                                                                            var $1587 = self.idx;
-                                                                                            var $1588 = self.str;
-                                                                                            var _reply$pst$46 = Parser$State$new$(Parser$Error$maybe_combine$($1574, $1584), $1585, $1586, $1587, $1588);
+                                                                                            var $1569 = self.err;
+                                                                                            var $1570 = self.nam;
+                                                                                            var $1571 = self.ini;
+                                                                                            var $1572 = self.idx;
+                                                                                            var $1573 = self.str;
+                                                                                            var _reply$pst$46 = Parser$State$new$(Parser$Error$maybe_combine$($1559, $1569), $1570, $1571, $1572, $1573);
                                                                                             var self = _reply$pst$46;
                                                                                             switch (self._) {
                                                                                                 case 'Parser.State.new':
-                                                                                                    var $1590 = self.err;
+                                                                                                    var $1575 = self.err;
                                                                                                     var _reply$52 = Parser$maybe$(Litereum$parse$text(","), _reply$pst$46);
                                                                                                     var self = _reply$52;
                                                                                                     switch (self._) {
                                                                                                         case 'Parser.Reply.error':
-                                                                                                            var $1592 = self.err;
-                                                                                                            var self = $1590;
+                                                                                                            var $1577 = self.err;
+                                                                                                            var self = $1575;
                                                                                                             switch (self._) {
                                                                                                                 case 'Maybe.some':
-                                                                                                                    var $1594 = self.value;
-                                                                                                                    var $1595 = Parser$Reply$error$(Parser$Error$combine$($1594, $1592));
-                                                                                                                    var $1593 = $1595;
+                                                                                                                    var $1579 = self.value;
+                                                                                                                    var $1580 = Parser$Reply$error$(Parser$Error$combine$($1579, $1577));
+                                                                                                                    var $1578 = $1580;
                                                                                                                     break;
                                                                                                                 case 'Maybe.none':
-                                                                                                                    var $1596 = Parser$Reply$error$($1592);
-                                                                                                                    var $1593 = $1596;
+                                                                                                                    var $1581 = Parser$Reply$error$($1577);
+                                                                                                                    var $1578 = $1581;
                                                                                                                     break;
                                                                                                             };
-                                                                                                            var $1591 = $1593;
+                                                                                                            var $1576 = $1578;
                                                                                                             break;
                                                                                                         case 'Parser.Reply.value':
-                                                                                                            var $1597 = self.pst;
-                                                                                                            var self = $1597;
+                                                                                                            var $1582 = self.pst;
+                                                                                                            var self = $1582;
                                                                                                             switch (self._) {
                                                                                                                 case 'Parser.State.new':
-                                                                                                                    var $1599 = self.err;
-                                                                                                                    var $1600 = self.nam;
-                                                                                                                    var $1601 = self.ini;
-                                                                                                                    var $1602 = self.idx;
-                                                                                                                    var $1603 = self.str;
-                                                                                                                    var _reply$pst$60 = Parser$State$new$(Parser$Error$maybe_combine$($1590, $1599), $1600, $1601, $1602, $1603);
+                                                                                                                    var $1584 = self.err;
+                                                                                                                    var $1585 = self.nam;
+                                                                                                                    var $1586 = self.ini;
+                                                                                                                    var $1587 = self.idx;
+                                                                                                                    var $1588 = self.str;
+                                                                                                                    var _reply$pst$60 = Parser$State$new$(Parser$Error$maybe_combine$($1575, $1584), $1585, $1586, $1587, $1588);
                                                                                                                     var self = _reply$pst$60;
                                                                                                                     switch (self._) {
                                                                                                                         case 'Parser.State.new':
-                                                                                                                            var $1605 = self.err;
+                                                                                                                            var $1590 = self.err;
                                                                                                                             var _reply$66 = Litereum$parse$term$(_world$1)(_reply$pst$60);
                                                                                                                             var self = _reply$66;
                                                                                                                             switch (self._) {
                                                                                                                                 case 'Parser.Reply.error':
-                                                                                                                                    var $1607 = self.err;
-                                                                                                                                    var self = $1605;
+                                                                                                                                    var $1592 = self.err;
+                                                                                                                                    var self = $1590;
                                                                                                                                     switch (self._) {
                                                                                                                                         case 'Maybe.some':
-                                                                                                                                            var $1609 = self.value;
-                                                                                                                                            var $1610 = Parser$Reply$error$(Parser$Error$combine$($1609, $1607));
-                                                                                                                                            var $1608 = $1610;
+                                                                                                                                            var $1594 = self.value;
+                                                                                                                                            var $1595 = Parser$Reply$error$(Parser$Error$combine$($1594, $1592));
+                                                                                                                                            var $1593 = $1595;
                                                                                                                                             break;
                                                                                                                                         case 'Maybe.none':
-                                                                                                                                            var $1611 = Parser$Reply$error$($1607);
-                                                                                                                                            var $1608 = $1611;
+                                                                                                                                            var $1596 = Parser$Reply$error$($1592);
+                                                                                                                                            var $1593 = $1596;
                                                                                                                                             break;
                                                                                                                                     };
-                                                                                                                                    var $1606 = $1608;
+                                                                                                                                    var $1591 = $1593;
                                                                                                                                     break;
                                                                                                                                 case 'Parser.Reply.value':
-                                                                                                                                    var $1612 = self.pst;
-                                                                                                                                    var $1613 = self.val;
-                                                                                                                                    var self = $1612;
+                                                                                                                                    var $1597 = self.pst;
+                                                                                                                                    var $1598 = self.val;
+                                                                                                                                    var self = $1597;
                                                                                                                                     switch (self._) {
                                                                                                                                         case 'Parser.State.new':
-                                                                                                                                            var $1615 = self.err;
-                                                                                                                                            var $1616 = self.nam;
-                                                                                                                                            var $1617 = self.ini;
-                                                                                                                                            var $1618 = self.idx;
-                                                                                                                                            var $1619 = self.str;
-                                                                                                                                            var _reply$pst$74 = Parser$State$new$(Parser$Error$maybe_combine$($1605, $1615), $1616, $1617, $1618, $1619);
+                                                                                                                                            var $1600 = self.err;
+                                                                                                                                            var $1601 = self.nam;
+                                                                                                                                            var $1602 = self.ini;
+                                                                                                                                            var $1603 = self.idx;
+                                                                                                                                            var $1604 = self.str;
+                                                                                                                                            var _reply$pst$74 = Parser$State$new$(Parser$Error$maybe_combine$($1590, $1600), $1601, $1602, $1603, $1604);
                                                                                                                                             var self = _reply$pst$74;
                                                                                                                                             switch (self._) {
                                                                                                                                                 case 'Parser.State.new':
-                                                                                                                                                    var $1621 = self.err;
+                                                                                                                                                    var $1606 = self.err;
                                                                                                                                                     var _reply$80 = Litereum$parse$text$(")", _reply$pst$74);
                                                                                                                                                     var self = _reply$80;
                                                                                                                                                     switch (self._) {
                                                                                                                                                         case 'Parser.Reply.error':
-                                                                                                                                                            var $1623 = self.err;
-                                                                                                                                                            var self = $1621;
+                                                                                                                                                            var $1608 = self.err;
+                                                                                                                                                            var self = $1606;
                                                                                                                                                             switch (self._) {
                                                                                                                                                                 case 'Maybe.some':
-                                                                                                                                                                    var $1625 = self.value;
-                                                                                                                                                                    var $1626 = Parser$Reply$error$(Parser$Error$combine$($1625, $1623));
-                                                                                                                                                                    var $1624 = $1626;
+                                                                                                                                                                    var $1610 = self.value;
+                                                                                                                                                                    var $1611 = Parser$Reply$error$(Parser$Error$combine$($1610, $1608));
+                                                                                                                                                                    var $1609 = $1611;
                                                                                                                                                                     break;
                                                                                                                                                                 case 'Maybe.none':
-                                                                                                                                                                    var $1627 = Parser$Reply$error$($1623);
-                                                                                                                                                                    var $1624 = $1627;
+                                                                                                                                                                    var $1612 = Parser$Reply$error$($1608);
+                                                                                                                                                                    var $1609 = $1612;
                                                                                                                                                                     break;
                                                                                                                                                             };
-                                                                                                                                                            var $1622 = $1624;
+                                                                                                                                                            var $1607 = $1609;
                                                                                                                                                             break;
                                                                                                                                                         case 'Parser.Reply.value':
-                                                                                                                                                            var $1628 = self.pst;
-                                                                                                                                                            var self = $1628;
+                                                                                                                                                            var $1613 = self.pst;
+                                                                                                                                                            var self = $1613;
                                                                                                                                                             switch (self._) {
                                                                                                                                                                 case 'Parser.State.new':
-                                                                                                                                                                    var $1630 = self.err;
-                                                                                                                                                                    var $1631 = self.nam;
-                                                                                                                                                                    var $1632 = self.ini;
-                                                                                                                                                                    var $1633 = self.idx;
-                                                                                                                                                                    var $1634 = self.str;
-                                                                                                                                                                    var _reply$pst$88 = Parser$State$new$(Parser$Error$maybe_combine$($1621, $1630), $1631, $1632, $1633, $1634);
-                                                                                                                                                                    var $1635 = Parser$Reply$value$(_reply$pst$88, Litereum$Term$operate$($1556, $1582, $1613));
-                                                                                                                                                                    var $1629 = $1635;
+                                                                                                                                                                    var $1615 = self.err;
+                                                                                                                                                                    var $1616 = self.nam;
+                                                                                                                                                                    var $1617 = self.ini;
+                                                                                                                                                                    var $1618 = self.idx;
+                                                                                                                                                                    var $1619 = self.str;
+                                                                                                                                                                    var _reply$pst$88 = Parser$State$new$(Parser$Error$maybe_combine$($1606, $1615), $1616, $1617, $1618, $1619);
+                                                                                                                                                                    var $1620 = Parser$Reply$value$(_reply$pst$88, Litereum$Term$operate$($1541, $1567, $1598));
+                                                                                                                                                                    var $1614 = $1620;
                                                                                                                                                                     break;
                                                                                                                                                             };
-                                                                                                                                                            var $1622 = $1629;
+                                                                                                                                                            var $1607 = $1614;
                                                                                                                                                             break;
                                                                                                                                                     };
-                                                                                                                                                    var $1620 = $1622;
+                                                                                                                                                    var $1605 = $1607;
                                                                                                                                                     break;
                                                                                                                                             };
-                                                                                                                                            var $1614 = $1620;
+                                                                                                                                            var $1599 = $1605;
                                                                                                                                             break;
                                                                                                                                     };
-                                                                                                                                    var $1606 = $1614;
+                                                                                                                                    var $1591 = $1599;
                                                                                                                                     break;
                                                                                                                             };
-                                                                                                                            var $1604 = $1606;
+                                                                                                                            var $1589 = $1591;
                                                                                                                             break;
                                                                                                                     };
-                                                                                                                    var $1598 = $1604;
+                                                                                                                    var $1583 = $1589;
                                                                                                                     break;
                                                                                                             };
-                                                                                                            var $1591 = $1598;
+                                                                                                            var $1576 = $1583;
                                                                                                             break;
                                                                                                     };
-                                                                                                    var $1589 = $1591;
+                                                                                                    var $1574 = $1576;
                                                                                                     break;
                                                                                             };
-                                                                                            var $1583 = $1589;
+                                                                                            var $1568 = $1574;
                                                                                             break;
                                                                                     };
-                                                                                    var $1575 = $1583;
+                                                                                    var $1560 = $1568;
                                                                                     break;
                                                                             };
-                                                                            var $1573 = $1575;
+                                                                            var $1558 = $1560;
                                                                             break;
                                                                     };
-                                                                    var $1567 = $1573;
+                                                                    var $1552 = $1558;
                                                                     break;
                                                             };
-                                                            var $1560 = $1567;
+                                                            var $1545 = $1552;
                                                             break;
                                                     };
-                                                    var $1558 = $1560;
+                                                    var $1543 = $1545;
                                                     break;
                                             };
-                                            return $1558;
+                                            return $1543;
                                         });
-                                        var $1555 = $1557;
+                                        var $1540 = $1542;
                                         break;
                                     case 'Maybe.none':
-                                        var $1636 = Parser$fail("Not an operation.");
-                                        var $1555 = $1636;
+                                        var $1621 = Parser$fail("Not an operation.");
+                                        var $1540 = $1621;
                                         break;
                                 };
-                                var $1555 = $1555(_reply$pst$16);
-                                var $1549 = $1555;
+                                var $1540 = $1540(_reply$pst$16);
+                                var $1534 = $1540;
                                 break;
                         };
-                        var $1541 = $1549;
+                        var $1526 = $1534;
                         break;
                 };
-                var $1539 = $1541;
+                var $1524 = $1526;
                 break;
         };
-        return $1539;
+        return $1524;
     };
     const Litereum$parse$term$operate = x0 => x1 => Litereum$parse$term$operate$(x0, x1);
 
     function Litereum$Term$bind$(_name$1, _main$2, _body$3) {
-        var $1637 = ({
+        var $1622 = ({
             _: 'Litereum.Term.bind',
             'name': _name$1,
             'main': _main$2,
             'body': _body$3
         });
-        return $1637;
+        return $1622;
     };
     const Litereum$Term$bind = x0 => x1 => x2 => Litereum$Term$bind$(x0, x1, x2);
 
@@ -5863,276 +5820,276 @@ module.exports = (function() {
         var self = _pst$2;
         switch (self._) {
             case 'Parser.State.new':
-                var $1639 = self.err;
+                var $1624 = self.err;
                 var _reply$8 = Litereum$parse$text$("bind", _pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1641 = self.err;
-                        var self = $1639;
+                        var $1626 = self.err;
+                        var self = $1624;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1643 = self.value;
-                                var $1644 = Parser$Reply$error$(Parser$Error$combine$($1643, $1641));
-                                var $1642 = $1644;
+                                var $1628 = self.value;
+                                var $1629 = Parser$Reply$error$(Parser$Error$combine$($1628, $1626));
+                                var $1627 = $1629;
                                 break;
                             case 'Maybe.none':
-                                var $1645 = Parser$Reply$error$($1641);
-                                var $1642 = $1645;
+                                var $1630 = Parser$Reply$error$($1626);
+                                var $1627 = $1630;
                                 break;
                         };
-                        var $1640 = $1642;
+                        var $1625 = $1627;
                         break;
                     case 'Parser.Reply.value':
-                        var $1646 = self.pst;
-                        var self = $1646;
+                        var $1631 = self.pst;
+                        var self = $1631;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1648 = self.err;
-                                var $1649 = self.nam;
-                                var $1650 = self.ini;
-                                var $1651 = self.idx;
-                                var $1652 = self.str;
-                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1639, $1648), $1649, $1650, $1651, $1652);
+                                var $1633 = self.err;
+                                var $1634 = self.nam;
+                                var $1635 = self.ini;
+                                var $1636 = self.idx;
+                                var $1637 = self.str;
+                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1624, $1633), $1634, $1635, $1636, $1637);
                                 var self = _reply$pst$16;
                                 switch (self._) {
                                     case 'Parser.State.new':
-                                        var $1654 = self.err;
+                                        var $1639 = self.err;
                                         var _reply$22 = Litereum$parse$name$(_reply$pst$16);
                                         var self = _reply$22;
                                         switch (self._) {
                                             case 'Parser.Reply.error':
-                                                var $1656 = self.err;
-                                                var self = $1654;
+                                                var $1641 = self.err;
+                                                var self = $1639;
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $1658 = self.value;
-                                                        var $1659 = Parser$Reply$error$(Parser$Error$combine$($1658, $1656));
-                                                        var $1657 = $1659;
+                                                        var $1643 = self.value;
+                                                        var $1644 = Parser$Reply$error$(Parser$Error$combine$($1643, $1641));
+                                                        var $1642 = $1644;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $1660 = Parser$Reply$error$($1656);
-                                                        var $1657 = $1660;
+                                                        var $1645 = Parser$Reply$error$($1641);
+                                                        var $1642 = $1645;
                                                         break;
                                                 };
-                                                var $1655 = $1657;
+                                                var $1640 = $1642;
                                                 break;
                                             case 'Parser.Reply.value':
-                                                var $1661 = self.pst;
-                                                var $1662 = self.val;
-                                                var self = $1661;
+                                                var $1646 = self.pst;
+                                                var $1647 = self.val;
+                                                var self = $1646;
                                                 switch (self._) {
                                                     case 'Parser.State.new':
-                                                        var $1664 = self.err;
-                                                        var $1665 = self.nam;
-                                                        var $1666 = self.ini;
-                                                        var $1667 = self.idx;
-                                                        var $1668 = self.str;
-                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1654, $1664), $1665, $1666, $1667, $1668);
+                                                        var $1649 = self.err;
+                                                        var $1650 = self.nam;
+                                                        var $1651 = self.ini;
+                                                        var $1652 = self.idx;
+                                                        var $1653 = self.str;
+                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1639, $1649), $1650, $1651, $1652, $1653);
                                                         var self = _reply$pst$30;
                                                         switch (self._) {
                                                             case 'Parser.State.new':
-                                                                var $1670 = self.err;
+                                                                var $1655 = self.err;
                                                                 var _reply$36 = Litereum$parse$text$("{", _reply$pst$30);
                                                                 var self = _reply$36;
                                                                 switch (self._) {
                                                                     case 'Parser.Reply.error':
-                                                                        var $1672 = self.err;
-                                                                        var self = $1670;
+                                                                        var $1657 = self.err;
+                                                                        var self = $1655;
                                                                         switch (self._) {
                                                                             case 'Maybe.some':
-                                                                                var $1674 = self.value;
-                                                                                var $1675 = Parser$Reply$error$(Parser$Error$combine$($1674, $1672));
-                                                                                var $1673 = $1675;
+                                                                                var $1659 = self.value;
+                                                                                var $1660 = Parser$Reply$error$(Parser$Error$combine$($1659, $1657));
+                                                                                var $1658 = $1660;
                                                                                 break;
                                                                             case 'Maybe.none':
-                                                                                var $1676 = Parser$Reply$error$($1672);
-                                                                                var $1673 = $1676;
+                                                                                var $1661 = Parser$Reply$error$($1657);
+                                                                                var $1658 = $1661;
                                                                                 break;
                                                                         };
-                                                                        var $1671 = $1673;
+                                                                        var $1656 = $1658;
                                                                         break;
                                                                     case 'Parser.Reply.value':
-                                                                        var $1677 = self.pst;
-                                                                        var self = $1677;
+                                                                        var $1662 = self.pst;
+                                                                        var self = $1662;
                                                                         switch (self._) {
                                                                             case 'Parser.State.new':
-                                                                                var $1679 = self.err;
-                                                                                var $1680 = self.nam;
-                                                                                var $1681 = self.ini;
-                                                                                var $1682 = self.idx;
-                                                                                var $1683 = self.str;
-                                                                                var _reply$pst$44 = Parser$State$new$(Parser$Error$maybe_combine$($1670, $1679), $1680, $1681, $1682, $1683);
+                                                                                var $1664 = self.err;
+                                                                                var $1665 = self.nam;
+                                                                                var $1666 = self.ini;
+                                                                                var $1667 = self.idx;
+                                                                                var $1668 = self.str;
+                                                                                var _reply$pst$44 = Parser$State$new$(Parser$Error$maybe_combine$($1655, $1664), $1665, $1666, $1667, $1668);
                                                                                 var self = _reply$pst$44;
                                                                                 switch (self._) {
                                                                                     case 'Parser.State.new':
-                                                                                        var $1685 = self.err;
+                                                                                        var $1670 = self.err;
                                                                                         var _reply$50 = Litereum$parse$term$(_world$1)(_reply$pst$44);
                                                                                         var self = _reply$50;
                                                                                         switch (self._) {
                                                                                             case 'Parser.Reply.error':
-                                                                                                var $1687 = self.err;
-                                                                                                var self = $1685;
+                                                                                                var $1672 = self.err;
+                                                                                                var self = $1670;
                                                                                                 switch (self._) {
                                                                                                     case 'Maybe.some':
-                                                                                                        var $1689 = self.value;
-                                                                                                        var $1690 = Parser$Reply$error$(Parser$Error$combine$($1689, $1687));
-                                                                                                        var $1688 = $1690;
+                                                                                                        var $1674 = self.value;
+                                                                                                        var $1675 = Parser$Reply$error$(Parser$Error$combine$($1674, $1672));
+                                                                                                        var $1673 = $1675;
                                                                                                         break;
                                                                                                     case 'Maybe.none':
-                                                                                                        var $1691 = Parser$Reply$error$($1687);
-                                                                                                        var $1688 = $1691;
+                                                                                                        var $1676 = Parser$Reply$error$($1672);
+                                                                                                        var $1673 = $1676;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $1686 = $1688;
+                                                                                                var $1671 = $1673;
                                                                                                 break;
                                                                                             case 'Parser.Reply.value':
-                                                                                                var $1692 = self.pst;
-                                                                                                var $1693 = self.val;
-                                                                                                var self = $1692;
+                                                                                                var $1677 = self.pst;
+                                                                                                var $1678 = self.val;
+                                                                                                var self = $1677;
                                                                                                 switch (self._) {
                                                                                                     case 'Parser.State.new':
-                                                                                                        var $1695 = self.err;
-                                                                                                        var $1696 = self.nam;
-                                                                                                        var $1697 = self.ini;
-                                                                                                        var $1698 = self.idx;
-                                                                                                        var $1699 = self.str;
-                                                                                                        var _reply$pst$58 = Parser$State$new$(Parser$Error$maybe_combine$($1685, $1695), $1696, $1697, $1698, $1699);
+                                                                                                        var $1680 = self.err;
+                                                                                                        var $1681 = self.nam;
+                                                                                                        var $1682 = self.ini;
+                                                                                                        var $1683 = self.idx;
+                                                                                                        var $1684 = self.str;
+                                                                                                        var _reply$pst$58 = Parser$State$new$(Parser$Error$maybe_combine$($1670, $1680), $1681, $1682, $1683, $1684);
                                                                                                         var self = _reply$pst$58;
                                                                                                         switch (self._) {
                                                                                                             case 'Parser.State.new':
-                                                                                                                var $1701 = self.err;
+                                                                                                                var $1686 = self.err;
                                                                                                                 var _reply$64 = Litereum$parse$text$("}", _reply$pst$58);
                                                                                                                 var self = _reply$64;
                                                                                                                 switch (self._) {
                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                        var $1703 = self.err;
-                                                                                                                        var self = $1701;
+                                                                                                                        var $1688 = self.err;
+                                                                                                                        var self = $1686;
                                                                                                                         switch (self._) {
                                                                                                                             case 'Maybe.some':
-                                                                                                                                var $1705 = self.value;
-                                                                                                                                var $1706 = Parser$Reply$error$(Parser$Error$combine$($1705, $1703));
-                                                                                                                                var $1704 = $1706;
+                                                                                                                                var $1690 = self.value;
+                                                                                                                                var $1691 = Parser$Reply$error$(Parser$Error$combine$($1690, $1688));
+                                                                                                                                var $1689 = $1691;
                                                                                                                                 break;
                                                                                                                             case 'Maybe.none':
-                                                                                                                                var $1707 = Parser$Reply$error$($1703);
-                                                                                                                                var $1704 = $1707;
+                                                                                                                                var $1692 = Parser$Reply$error$($1688);
+                                                                                                                                var $1689 = $1692;
                                                                                                                                 break;
                                                                                                                         };
-                                                                                                                        var $1702 = $1704;
+                                                                                                                        var $1687 = $1689;
                                                                                                                         break;
                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                        var $1708 = self.pst;
-                                                                                                                        var self = $1708;
+                                                                                                                        var $1693 = self.pst;
+                                                                                                                        var self = $1693;
                                                                                                                         switch (self._) {
                                                                                                                             case 'Parser.State.new':
-                                                                                                                                var $1710 = self.err;
-                                                                                                                                var $1711 = self.nam;
-                                                                                                                                var $1712 = self.ini;
-                                                                                                                                var $1713 = self.idx;
-                                                                                                                                var $1714 = self.str;
-                                                                                                                                var _reply$pst$72 = Parser$State$new$(Parser$Error$maybe_combine$($1701, $1710), $1711, $1712, $1713, $1714);
+                                                                                                                                var $1695 = self.err;
+                                                                                                                                var $1696 = self.nam;
+                                                                                                                                var $1697 = self.ini;
+                                                                                                                                var $1698 = self.idx;
+                                                                                                                                var $1699 = self.str;
+                                                                                                                                var _reply$pst$72 = Parser$State$new$(Parser$Error$maybe_combine$($1686, $1695), $1696, $1697, $1698, $1699);
                                                                                                                                 var self = _reply$pst$72;
                                                                                                                                 switch (self._) {
                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                        var $1716 = self.err;
+                                                                                                                                        var $1701 = self.err;
                                                                                                                                         var _reply$78 = Litereum$parse$term$(_world$1)(_reply$pst$72);
                                                                                                                                         var self = _reply$78;
                                                                                                                                         switch (self._) {
                                                                                                                                             case 'Parser.Reply.error':
-                                                                                                                                                var $1718 = self.err;
-                                                                                                                                                var self = $1716;
+                                                                                                                                                var $1703 = self.err;
+                                                                                                                                                var self = $1701;
                                                                                                                                                 switch (self._) {
                                                                                                                                                     case 'Maybe.some':
-                                                                                                                                                        var $1720 = self.value;
-                                                                                                                                                        var $1721 = Parser$Reply$error$(Parser$Error$combine$($1720, $1718));
-                                                                                                                                                        var $1719 = $1721;
+                                                                                                                                                        var $1705 = self.value;
+                                                                                                                                                        var $1706 = Parser$Reply$error$(Parser$Error$combine$($1705, $1703));
+                                                                                                                                                        var $1704 = $1706;
                                                                                                                                                         break;
                                                                                                                                                     case 'Maybe.none':
-                                                                                                                                                        var $1722 = Parser$Reply$error$($1718);
-                                                                                                                                                        var $1719 = $1722;
+                                                                                                                                                        var $1707 = Parser$Reply$error$($1703);
+                                                                                                                                                        var $1704 = $1707;
                                                                                                                                                         break;
                                                                                                                                                 };
-                                                                                                                                                var $1717 = $1719;
+                                                                                                                                                var $1702 = $1704;
                                                                                                                                                 break;
                                                                                                                                             case 'Parser.Reply.value':
-                                                                                                                                                var $1723 = self.pst;
-                                                                                                                                                var $1724 = self.val;
-                                                                                                                                                var self = $1723;
+                                                                                                                                                var $1708 = self.pst;
+                                                                                                                                                var $1709 = self.val;
+                                                                                                                                                var self = $1708;
                                                                                                                                                 switch (self._) {
                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                        var $1726 = self.err;
-                                                                                                                                                        var $1727 = self.nam;
-                                                                                                                                                        var $1728 = self.ini;
-                                                                                                                                                        var $1729 = self.idx;
-                                                                                                                                                        var $1730 = self.str;
-                                                                                                                                                        var _reply$pst$86 = Parser$State$new$(Parser$Error$maybe_combine$($1716, $1726), $1727, $1728, $1729, $1730);
-                                                                                                                                                        var $1731 = Parser$Reply$value$(_reply$pst$86, Litereum$Term$bind$($1662, $1693, $1724));
-                                                                                                                                                        var $1725 = $1731;
+                                                                                                                                                        var $1711 = self.err;
+                                                                                                                                                        var $1712 = self.nam;
+                                                                                                                                                        var $1713 = self.ini;
+                                                                                                                                                        var $1714 = self.idx;
+                                                                                                                                                        var $1715 = self.str;
+                                                                                                                                                        var _reply$pst$86 = Parser$State$new$(Parser$Error$maybe_combine$($1701, $1711), $1712, $1713, $1714, $1715);
+                                                                                                                                                        var $1716 = Parser$Reply$value$(_reply$pst$86, Litereum$Term$bind$($1647, $1678, $1709));
+                                                                                                                                                        var $1710 = $1716;
                                                                                                                                                         break;
                                                                                                                                                 };
-                                                                                                                                                var $1717 = $1725;
+                                                                                                                                                var $1702 = $1710;
                                                                                                                                                 break;
                                                                                                                                         };
-                                                                                                                                        var $1715 = $1717;
+                                                                                                                                        var $1700 = $1702;
                                                                                                                                         break;
                                                                                                                                 };
-                                                                                                                                var $1709 = $1715;
+                                                                                                                                var $1694 = $1700;
                                                                                                                                 break;
                                                                                                                         };
-                                                                                                                        var $1702 = $1709;
+                                                                                                                        var $1687 = $1694;
                                                                                                                         break;
                                                                                                                 };
-                                                                                                                var $1700 = $1702;
+                                                                                                                var $1685 = $1687;
                                                                                                                 break;
                                                                                                         };
-                                                                                                        var $1694 = $1700;
+                                                                                                        var $1679 = $1685;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $1686 = $1694;
+                                                                                                var $1671 = $1679;
                                                                                                 break;
                                                                                         };
-                                                                                        var $1684 = $1686;
+                                                                                        var $1669 = $1671;
                                                                                         break;
                                                                                 };
-                                                                                var $1678 = $1684;
+                                                                                var $1663 = $1669;
                                                                                 break;
                                                                         };
-                                                                        var $1671 = $1678;
+                                                                        var $1656 = $1663;
                                                                         break;
                                                                 };
-                                                                var $1669 = $1671;
+                                                                var $1654 = $1656;
                                                                 break;
                                                         };
-                                                        var $1663 = $1669;
+                                                        var $1648 = $1654;
                                                         break;
                                                 };
-                                                var $1655 = $1663;
+                                                var $1640 = $1648;
                                                 break;
                                         };
-                                        var $1653 = $1655;
+                                        var $1638 = $1640;
                                         break;
                                 };
-                                var $1647 = $1653;
+                                var $1632 = $1638;
                                 break;
                         };
-                        var $1640 = $1647;
+                        var $1625 = $1632;
                         break;
                 };
-                var $1638 = $1640;
+                var $1623 = $1625;
                 break;
         };
-        return $1638;
+        return $1623;
     };
     const Litereum$parse$term$bind = x0 => x1 => Litereum$parse$term$bind$(x0, x1);
 
     function Litereum$Term$call$(_bond$1, _args$2) {
-        var $1732 = ({
+        var $1717 = ({
             _: 'Litereum.Term.call',
             'bond': _bond$1,
             'args': _args$2
         });
-        return $1732;
+        return $1717;
     };
     const Litereum$Term$call = x0 => x1 => Litereum$Term$call$(x0, x1);
 
@@ -6140,148 +6097,148 @@ module.exports = (function() {
         var self = _pst$2;
         switch (self._) {
             case 'Parser.State.new':
-                var $1734 = self.err;
+                var $1719 = self.err;
                 var _reply$8 = Litereum$parse$name$(_pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1736 = self.err;
-                        var self = $1734;
+                        var $1721 = self.err;
+                        var self = $1719;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1738 = self.value;
-                                var $1739 = Parser$Reply$error$(Parser$Error$combine$($1738, $1736));
-                                var $1737 = $1739;
+                                var $1723 = self.value;
+                                var $1724 = Parser$Reply$error$(Parser$Error$combine$($1723, $1721));
+                                var $1722 = $1724;
                                 break;
                             case 'Maybe.none':
-                                var $1740 = Parser$Reply$error$($1736);
-                                var $1737 = $1740;
+                                var $1725 = Parser$Reply$error$($1721);
+                                var $1722 = $1725;
                                 break;
                         };
-                        var $1735 = $1737;
+                        var $1720 = $1722;
                         break;
                     case 'Parser.Reply.value':
-                        var $1741 = self.pst;
-                        var $1742 = self.val;
-                        var self = $1741;
+                        var $1726 = self.pst;
+                        var $1727 = self.val;
+                        var self = $1726;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1744 = self.err;
-                                var $1745 = self.nam;
-                                var $1746 = self.ini;
-                                var $1747 = self.idx;
-                                var $1748 = self.str;
-                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1734, $1744), $1745, $1746, $1747, $1748);
+                                var $1729 = self.err;
+                                var $1730 = self.nam;
+                                var $1731 = self.ini;
+                                var $1732 = self.idx;
+                                var $1733 = self.str;
+                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1719, $1729), $1730, $1731, $1732, $1733);
                                 var self = _reply$pst$16;
                                 switch (self._) {
                                     case 'Parser.State.new':
-                                        var $1750 = self.err;
+                                        var $1735 = self.err;
                                         var _reply$22 = Parser$wrap$(Litereum$parse$text("("), (_pst$22 => {
                                             var self = _pst$22;
                                             switch (self._) {
                                                 case 'Parser.State.new':
-                                                    var $1753 = self.err;
+                                                    var $1738 = self.err;
                                                     var _reply$28 = Parser$maybe$(Litereum$parse$text(","), _pst$22);
                                                     var self = _reply$28;
                                                     switch (self._) {
                                                         case 'Parser.Reply.error':
-                                                            var $1755 = self.err;
-                                                            var self = $1753;
+                                                            var $1740 = self.err;
+                                                            var self = $1738;
                                                             switch (self._) {
                                                                 case 'Maybe.some':
-                                                                    var $1757 = self.value;
-                                                                    var $1758 = Parser$Reply$error$(Parser$Error$combine$($1757, $1755));
-                                                                    var $1756 = $1758;
+                                                                    var $1742 = self.value;
+                                                                    var $1743 = Parser$Reply$error$(Parser$Error$combine$($1742, $1740));
+                                                                    var $1741 = $1743;
                                                                     break;
                                                                 case 'Maybe.none':
-                                                                    var $1759 = Parser$Reply$error$($1755);
-                                                                    var $1756 = $1759;
+                                                                    var $1744 = Parser$Reply$error$($1740);
+                                                                    var $1741 = $1744;
                                                                     break;
                                                             };
-                                                            var $1754 = $1756;
+                                                            var $1739 = $1741;
                                                             break;
                                                         case 'Parser.Reply.value':
-                                                            var $1760 = self.pst;
-                                                            var self = $1760;
+                                                            var $1745 = self.pst;
+                                                            var self = $1745;
                                                             switch (self._) {
                                                                 case 'Parser.State.new':
-                                                                    var $1762 = self.err;
-                                                                    var $1763 = self.nam;
-                                                                    var $1764 = self.ini;
-                                                                    var $1765 = self.idx;
-                                                                    var $1766 = self.str;
-                                                                    var _reply$pst$36 = Parser$State$new$(Parser$Error$maybe_combine$($1753, $1762), $1763, $1764, $1765, $1766);
-                                                                    var $1767 = Litereum$parse$term$(_world$1)(_reply$pst$36);
-                                                                    var $1761 = $1767;
+                                                                    var $1747 = self.err;
+                                                                    var $1748 = self.nam;
+                                                                    var $1749 = self.ini;
+                                                                    var $1750 = self.idx;
+                                                                    var $1751 = self.str;
+                                                                    var _reply$pst$36 = Parser$State$new$(Parser$Error$maybe_combine$($1738, $1747), $1748, $1749, $1750, $1751);
+                                                                    var $1752 = Litereum$parse$term$(_world$1)(_reply$pst$36);
+                                                                    var $1746 = $1752;
                                                                     break;
                                                             };
-                                                            var $1754 = $1761;
+                                                            var $1739 = $1746;
                                                             break;
                                                     };
-                                                    var $1752 = $1754;
+                                                    var $1737 = $1739;
                                                     break;
                                             };
-                                            return $1752;
+                                            return $1737;
                                         }), Litereum$parse$text(")"), _reply$pst$16);
                                         var self = _reply$22;
                                         switch (self._) {
                                             case 'Parser.Reply.error':
-                                                var $1768 = self.err;
-                                                var self = $1750;
+                                                var $1753 = self.err;
+                                                var self = $1735;
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $1770 = self.value;
-                                                        var $1771 = Parser$Reply$error$(Parser$Error$combine$($1770, $1768));
-                                                        var $1769 = $1771;
+                                                        var $1755 = self.value;
+                                                        var $1756 = Parser$Reply$error$(Parser$Error$combine$($1755, $1753));
+                                                        var $1754 = $1756;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $1772 = Parser$Reply$error$($1768);
-                                                        var $1769 = $1772;
+                                                        var $1757 = Parser$Reply$error$($1753);
+                                                        var $1754 = $1757;
                                                         break;
                                                 };
-                                                var $1751 = $1769;
+                                                var $1736 = $1754;
                                                 break;
                                             case 'Parser.Reply.value':
-                                                var $1773 = self.pst;
-                                                var $1774 = self.val;
-                                                var self = $1773;
+                                                var $1758 = self.pst;
+                                                var $1759 = self.val;
+                                                var self = $1758;
                                                 switch (self._) {
                                                     case 'Parser.State.new':
-                                                        var $1776 = self.err;
-                                                        var $1777 = self.nam;
-                                                        var $1778 = self.ini;
-                                                        var $1779 = self.idx;
-                                                        var $1780 = self.str;
-                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1750, $1776), $1777, $1778, $1779, $1780);
-                                                        var $1781 = Parser$Reply$value$(_reply$pst$30, Litereum$Term$call$($1742, $1774));
-                                                        var $1775 = $1781;
+                                                        var $1761 = self.err;
+                                                        var $1762 = self.nam;
+                                                        var $1763 = self.ini;
+                                                        var $1764 = self.idx;
+                                                        var $1765 = self.str;
+                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1735, $1761), $1762, $1763, $1764, $1765);
+                                                        var $1766 = Parser$Reply$value$(_reply$pst$30, Litereum$Term$call$($1727, $1759));
+                                                        var $1760 = $1766;
                                                         break;
                                                 };
-                                                var $1751 = $1775;
+                                                var $1736 = $1760;
                                                 break;
                                         };
-                                        var $1749 = $1751;
+                                        var $1734 = $1736;
                                         break;
                                 };
-                                var $1743 = $1749;
+                                var $1728 = $1734;
                                 break;
                         };
-                        var $1735 = $1743;
+                        var $1720 = $1728;
                         break;
                 };
-                var $1733 = $1735;
+                var $1718 = $1720;
                 break;
         };
-        return $1733;
+        return $1718;
     };
     const Litereum$parse$term$call = x0 => x1 => Litereum$parse$term$call$(x0, x1);
 
     function Litereum$Term$var$(_name$1) {
-        var $1782 = ({
+        var $1767 = ({
             _: 'Litereum.Term.var',
             'name': _name$1
         });
-        return $1782;
+        return $1767;
     };
     const Litereum$Term$var = x0 => Litereum$Term$var$(x0);
 
@@ -6289,60 +6246,60 @@ module.exports = (function() {
         var self = _pst$2;
         switch (self._) {
             case 'Parser.State.new':
-                var $1784 = self.err;
+                var $1769 = self.err;
                 var _reply$8 = Litereum$parse$name$(_pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1786 = self.err;
-                        var self = $1784;
+                        var $1771 = self.err;
+                        var self = $1769;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1788 = self.value;
-                                var $1789 = Parser$Reply$error$(Parser$Error$combine$($1788, $1786));
-                                var $1787 = $1789;
+                                var $1773 = self.value;
+                                var $1774 = Parser$Reply$error$(Parser$Error$combine$($1773, $1771));
+                                var $1772 = $1774;
                                 break;
                             case 'Maybe.none':
-                                var $1790 = Parser$Reply$error$($1786);
-                                var $1787 = $1790;
+                                var $1775 = Parser$Reply$error$($1771);
+                                var $1772 = $1775;
                                 break;
                         };
-                        var $1785 = $1787;
+                        var $1770 = $1772;
                         break;
                     case 'Parser.Reply.value':
-                        var $1791 = self.pst;
-                        var $1792 = self.val;
-                        var self = $1791;
+                        var $1776 = self.pst;
+                        var $1777 = self.val;
+                        var self = $1776;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1794 = self.err;
-                                var $1795 = self.nam;
-                                var $1796 = self.ini;
-                                var $1797 = self.idx;
-                                var $1798 = self.str;
-                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1784, $1794), $1795, $1796, $1797, $1798);
-                                var $1799 = Parser$Reply$value$(_reply$pst$16, Litereum$Term$var$($1792));
-                                var $1793 = $1799;
+                                var $1779 = self.err;
+                                var $1780 = self.nam;
+                                var $1781 = self.ini;
+                                var $1782 = self.idx;
+                                var $1783 = self.str;
+                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1769, $1779), $1780, $1781, $1782, $1783);
+                                var $1784 = Parser$Reply$value$(_reply$pst$16, Litereum$Term$var$($1777));
+                                var $1778 = $1784;
                                 break;
                         };
-                        var $1785 = $1793;
+                        var $1770 = $1778;
                         break;
                 };
-                var $1783 = $1785;
+                var $1768 = $1770;
                 break;
         };
-        return $1783;
+        return $1768;
     };
     const Litereum$parse$term$var = x0 => x1 => Litereum$parse$term$var$(x0, x1);
 
     function Litereum$parse$term$(_world$1) {
-        var $1800 = Parser$choice(List$cons$(Litereum$parse$term$let(_world$1), List$cons$(Litereum$parse$term$create(_world$1), List$cons$(Litereum$parse$term$match(_world$1), List$cons$(Litereum$parse$term$word(_world$1), List$cons$(Litereum$parse$term$compare(_world$1), List$cons$(Litereum$parse$term$operate(_world$1), List$cons$(Litereum$parse$term$bind(_world$1), List$cons$(Litereum$parse$term$call(_world$1), List$cons$(Litereum$parse$term$var(_world$1), List$nil))))))))));
-        return $1800;
+        var $1785 = Parser$choice(List$cons$(Litereum$parse$term$let(_world$1), List$cons$(Litereum$parse$term$create(_world$1), List$cons$(Litereum$parse$term$match(_world$1), List$cons$(Litereum$parse$term$word(_world$1), List$cons$(Litereum$parse$term$compare(_world$1), List$cons$(Litereum$parse$term$operate(_world$1), List$cons$(Litereum$parse$term$bind(_world$1), List$cons$(Litereum$parse$term$call(_world$1), List$cons$(Litereum$parse$term$var(_world$1), List$nil))))))))));
+        return $1785;
     };
     const Litereum$parse$term = x0 => Litereum$parse$term$(x0);
 
     function Litereum$Bond$new$(_name$1, _input_names$2, _input_types$3, _output_type$4, _main$5, _owners$6) {
-        var $1801 = ({
+        var $1786 = ({
             _: 'Litereum.Bond.new',
             'name': _name$1,
             'input_names': _input_names$2,
@@ -6351,7 +6308,7 @@ module.exports = (function() {
             'main': _main$5,
             'owners': _owners$6
         });
-        return $1801;
+        return $1786;
     };
     const Litereum$Bond$new = x0 => x1 => x2 => x3 => x4 => x5 => Litereum$Bond$new$(x0, x1, x2, x3, x4, x5);
 
@@ -6359,485 +6316,485 @@ module.exports = (function() {
         var self = _pst$2;
         switch (self._) {
             case 'Parser.State.new':
-                var $1803 = self.err;
+                var $1788 = self.err;
                 var _reply$8 = Litereum$parse$name$(_pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1805 = self.err;
-                        var self = $1803;
+                        var $1790 = self.err;
+                        var self = $1788;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1807 = self.value;
-                                var $1808 = Parser$Reply$error$(Parser$Error$combine$($1807, $1805));
-                                var $1806 = $1808;
+                                var $1792 = self.value;
+                                var $1793 = Parser$Reply$error$(Parser$Error$combine$($1792, $1790));
+                                var $1791 = $1793;
                                 break;
                             case 'Maybe.none':
-                                var $1809 = Parser$Reply$error$($1805);
-                                var $1806 = $1809;
+                                var $1794 = Parser$Reply$error$($1790);
+                                var $1791 = $1794;
                                 break;
                         };
-                        var $1804 = $1806;
+                        var $1789 = $1791;
                         break;
                     case 'Parser.Reply.value':
-                        var $1810 = self.pst;
-                        var $1811 = self.val;
-                        var self = $1810;
+                        var $1795 = self.pst;
+                        var $1796 = self.val;
+                        var self = $1795;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1813 = self.err;
-                                var $1814 = self.nam;
-                                var $1815 = self.ini;
-                                var $1816 = self.idx;
-                                var $1817 = self.str;
-                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1803, $1813), $1814, $1815, $1816, $1817);
+                                var $1798 = self.err;
+                                var $1799 = self.nam;
+                                var $1800 = self.ini;
+                                var $1801 = self.idx;
+                                var $1802 = self.str;
+                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1788, $1798), $1799, $1800, $1801, $1802);
                                 var self = _reply$pst$16;
                                 switch (self._) {
                                     case 'Parser.State.new':
-                                        var $1819 = self.err;
+                                        var $1804 = self.err;
                                         var _reply$22 = Parser$wrap$(Litereum$parse$text("("), Litereum$parse$ann(_world$1), Litereum$parse$text(")"), _reply$pst$16);
                                         var self = _reply$22;
                                         switch (self._) {
                                             case 'Parser.Reply.error':
-                                                var $1821 = self.err;
-                                                var self = $1819;
+                                                var $1806 = self.err;
+                                                var self = $1804;
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $1823 = self.value;
-                                                        var $1824 = Parser$Reply$error$(Parser$Error$combine$($1823, $1821));
-                                                        var $1822 = $1824;
+                                                        var $1808 = self.value;
+                                                        var $1809 = Parser$Reply$error$(Parser$Error$combine$($1808, $1806));
+                                                        var $1807 = $1809;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $1825 = Parser$Reply$error$($1821);
-                                                        var $1822 = $1825;
+                                                        var $1810 = Parser$Reply$error$($1806);
+                                                        var $1807 = $1810;
                                                         break;
                                                 };
-                                                var $1820 = $1822;
+                                                var $1805 = $1807;
                                                 break;
                                             case 'Parser.Reply.value':
-                                                var $1826 = self.pst;
-                                                var $1827 = self.val;
-                                                var self = $1826;
+                                                var $1811 = self.pst;
+                                                var $1812 = self.val;
+                                                var self = $1811;
                                                 switch (self._) {
                                                     case 'Parser.State.new':
-                                                        var $1829 = self.err;
-                                                        var $1830 = self.nam;
-                                                        var $1831 = self.ini;
-                                                        var $1832 = self.idx;
-                                                        var $1833 = self.str;
-                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1819, $1829), $1830, $1831, $1832, $1833);
-                                                        var _iarg$31 = List$mapped$($1827, (_x$31 => {
+                                                        var $1814 = self.err;
+                                                        var $1815 = self.nam;
+                                                        var $1816 = self.ini;
+                                                        var $1817 = self.idx;
+                                                        var $1818 = self.str;
+                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1804, $1814), $1815, $1816, $1817, $1818);
+                                                        var _iarg$31 = List$mapped$($1812, (_x$31 => {
                                                             var self = _x$31;
                                                             switch (self._) {
                                                                 case 'Pair.new':
-                                                                    var $1836 = self.fst;
-                                                                    var $1837 = $1836;
-                                                                    var $1835 = $1837;
+                                                                    var $1821 = self.fst;
+                                                                    var $1822 = $1821;
+                                                                    var $1820 = $1822;
                                                                     break;
                                                             };
-                                                            return $1835;
+                                                            return $1820;
                                                         }));
-                                                        var _ityp$32 = List$mapped$($1827, (_x$32 => {
+                                                        var _ityp$32 = List$mapped$($1812, (_x$32 => {
                                                             var self = _x$32;
                                                             switch (self._) {
                                                                 case 'Pair.new':
-                                                                    var $1839 = self.snd;
-                                                                    var $1840 = $1839;
-                                                                    var $1838 = $1840;
+                                                                    var $1824 = self.snd;
+                                                                    var $1825 = $1824;
+                                                                    var $1823 = $1825;
                                                                     break;
                                                             };
-                                                            return $1838;
+                                                            return $1823;
                                                         }));
                                                         var self = _reply$pst$30;
                                                         switch (self._) {
                                                             case 'Parser.State.new':
-                                                                var $1841 = self.err;
+                                                                var $1826 = self.err;
                                                                 var _reply$38 = Litereum$parse$text$(":", _reply$pst$30);
                                                                 var self = _reply$38;
                                                                 switch (self._) {
                                                                     case 'Parser.Reply.error':
-                                                                        var $1843 = self.err;
-                                                                        var self = $1841;
+                                                                        var $1828 = self.err;
+                                                                        var self = $1826;
                                                                         switch (self._) {
                                                                             case 'Maybe.some':
-                                                                                var $1845 = self.value;
-                                                                                var $1846 = Parser$Reply$error$(Parser$Error$combine$($1845, $1843));
-                                                                                var $1844 = $1846;
+                                                                                var $1830 = self.value;
+                                                                                var $1831 = Parser$Reply$error$(Parser$Error$combine$($1830, $1828));
+                                                                                var $1829 = $1831;
                                                                                 break;
                                                                             case 'Maybe.none':
-                                                                                var $1847 = Parser$Reply$error$($1843);
-                                                                                var $1844 = $1847;
+                                                                                var $1832 = Parser$Reply$error$($1828);
+                                                                                var $1829 = $1832;
                                                                                 break;
                                                                         };
-                                                                        var $1842 = $1844;
+                                                                        var $1827 = $1829;
                                                                         break;
                                                                     case 'Parser.Reply.value':
-                                                                        var $1848 = self.pst;
-                                                                        var self = $1848;
+                                                                        var $1833 = self.pst;
+                                                                        var self = $1833;
                                                                         switch (self._) {
                                                                             case 'Parser.State.new':
-                                                                                var $1850 = self.err;
-                                                                                var $1851 = self.nam;
-                                                                                var $1852 = self.ini;
-                                                                                var $1853 = self.idx;
-                                                                                var $1854 = self.str;
-                                                                                var _reply$pst$46 = Parser$State$new$(Parser$Error$maybe_combine$($1841, $1850), $1851, $1852, $1853, $1854);
+                                                                                var $1835 = self.err;
+                                                                                var $1836 = self.nam;
+                                                                                var $1837 = self.ini;
+                                                                                var $1838 = self.idx;
+                                                                                var $1839 = self.str;
+                                                                                var _reply$pst$46 = Parser$State$new$(Parser$Error$maybe_combine$($1826, $1835), $1836, $1837, $1838, $1839);
                                                                                 var self = _reply$pst$46;
                                                                                 switch (self._) {
                                                                                     case 'Parser.State.new':
-                                                                                        var $1856 = self.err;
+                                                                                        var $1841 = self.err;
                                                                                         var _reply$52 = Litereum$parse$type$(_world$1)(_reply$pst$46);
                                                                                         var self = _reply$52;
                                                                                         switch (self._) {
                                                                                             case 'Parser.Reply.error':
-                                                                                                var $1858 = self.err;
-                                                                                                var self = $1856;
+                                                                                                var $1843 = self.err;
+                                                                                                var self = $1841;
                                                                                                 switch (self._) {
                                                                                                     case 'Maybe.some':
-                                                                                                        var $1860 = self.value;
-                                                                                                        var $1861 = Parser$Reply$error$(Parser$Error$combine$($1860, $1858));
-                                                                                                        var $1859 = $1861;
+                                                                                                        var $1845 = self.value;
+                                                                                                        var $1846 = Parser$Reply$error$(Parser$Error$combine$($1845, $1843));
+                                                                                                        var $1844 = $1846;
                                                                                                         break;
                                                                                                     case 'Maybe.none':
-                                                                                                        var $1862 = Parser$Reply$error$($1858);
-                                                                                                        var $1859 = $1862;
+                                                                                                        var $1847 = Parser$Reply$error$($1843);
+                                                                                                        var $1844 = $1847;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $1857 = $1859;
+                                                                                                var $1842 = $1844;
                                                                                                 break;
                                                                                             case 'Parser.Reply.value':
-                                                                                                var $1863 = self.pst;
-                                                                                                var $1864 = self.val;
-                                                                                                var self = $1863;
+                                                                                                var $1848 = self.pst;
+                                                                                                var $1849 = self.val;
+                                                                                                var self = $1848;
                                                                                                 switch (self._) {
                                                                                                     case 'Parser.State.new':
-                                                                                                        var $1866 = self.err;
-                                                                                                        var $1867 = self.nam;
-                                                                                                        var $1868 = self.ini;
-                                                                                                        var $1869 = self.idx;
-                                                                                                        var $1870 = self.str;
-                                                                                                        var _reply$pst$60 = Parser$State$new$(Parser$Error$maybe_combine$($1856, $1866), $1867, $1868, $1869, $1870);
+                                                                                                        var $1851 = self.err;
+                                                                                                        var $1852 = self.nam;
+                                                                                                        var $1853 = self.ini;
+                                                                                                        var $1854 = self.idx;
+                                                                                                        var $1855 = self.str;
+                                                                                                        var _reply$pst$60 = Parser$State$new$(Parser$Error$maybe_combine$($1841, $1851), $1852, $1853, $1854, $1855);
                                                                                                         var self = _reply$pst$60;
                                                                                                         switch (self._) {
                                                                                                             case 'Parser.State.new':
-                                                                                                                var $1872 = self.err;
+                                                                                                                var $1857 = self.err;
                                                                                                                 var _reply$66 = Litereum$parse$text$("{", _reply$pst$60);
                                                                                                                 var self = _reply$66;
                                                                                                                 switch (self._) {
                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                        var $1874 = self.err;
-                                                                                                                        var self = $1872;
+                                                                                                                        var $1859 = self.err;
+                                                                                                                        var self = $1857;
                                                                                                                         switch (self._) {
                                                                                                                             case 'Maybe.some':
-                                                                                                                                var $1876 = self.value;
-                                                                                                                                var $1877 = Parser$Reply$error$(Parser$Error$combine$($1876, $1874));
-                                                                                                                                var $1875 = $1877;
+                                                                                                                                var $1861 = self.value;
+                                                                                                                                var $1862 = Parser$Reply$error$(Parser$Error$combine$($1861, $1859));
+                                                                                                                                var $1860 = $1862;
                                                                                                                                 break;
                                                                                                                             case 'Maybe.none':
-                                                                                                                                var $1878 = Parser$Reply$error$($1874);
-                                                                                                                                var $1875 = $1878;
+                                                                                                                                var $1863 = Parser$Reply$error$($1859);
+                                                                                                                                var $1860 = $1863;
                                                                                                                                 break;
                                                                                                                         };
-                                                                                                                        var $1873 = $1875;
+                                                                                                                        var $1858 = $1860;
                                                                                                                         break;
                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                        var $1879 = self.pst;
-                                                                                                                        var self = $1879;
+                                                                                                                        var $1864 = self.pst;
+                                                                                                                        var self = $1864;
                                                                                                                         switch (self._) {
                                                                                                                             case 'Parser.State.new':
-                                                                                                                                var $1881 = self.err;
-                                                                                                                                var $1882 = self.nam;
-                                                                                                                                var $1883 = self.ini;
-                                                                                                                                var $1884 = self.idx;
-                                                                                                                                var $1885 = self.str;
-                                                                                                                                var _reply$pst$74 = Parser$State$new$(Parser$Error$maybe_combine$($1872, $1881), $1882, $1883, $1884, $1885);
+                                                                                                                                var $1866 = self.err;
+                                                                                                                                var $1867 = self.nam;
+                                                                                                                                var $1868 = self.ini;
+                                                                                                                                var $1869 = self.idx;
+                                                                                                                                var $1870 = self.str;
+                                                                                                                                var _reply$pst$74 = Parser$State$new$(Parser$Error$maybe_combine$($1857, $1866), $1867, $1868, $1869, $1870);
                                                                                                                                 var self = _reply$pst$74;
                                                                                                                                 switch (self._) {
                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                        var $1887 = self.err;
+                                                                                                                                        var $1872 = self.err;
                                                                                                                                         var _reply$80 = Litereum$parse$term$(_world$1)(_reply$pst$74);
                                                                                                                                         var self = _reply$80;
                                                                                                                                         switch (self._) {
                                                                                                                                             case 'Parser.Reply.error':
-                                                                                                                                                var $1889 = self.err;
-                                                                                                                                                var self = $1887;
+                                                                                                                                                var $1874 = self.err;
+                                                                                                                                                var self = $1872;
                                                                                                                                                 switch (self._) {
                                                                                                                                                     case 'Maybe.some':
-                                                                                                                                                        var $1891 = self.value;
-                                                                                                                                                        var $1892 = Parser$Reply$error$(Parser$Error$combine$($1891, $1889));
-                                                                                                                                                        var $1890 = $1892;
+                                                                                                                                                        var $1876 = self.value;
+                                                                                                                                                        var $1877 = Parser$Reply$error$(Parser$Error$combine$($1876, $1874));
+                                                                                                                                                        var $1875 = $1877;
                                                                                                                                                         break;
                                                                                                                                                     case 'Maybe.none':
-                                                                                                                                                        var $1893 = Parser$Reply$error$($1889);
-                                                                                                                                                        var $1890 = $1893;
+                                                                                                                                                        var $1878 = Parser$Reply$error$($1874);
+                                                                                                                                                        var $1875 = $1878;
                                                                                                                                                         break;
                                                                                                                                                 };
-                                                                                                                                                var $1888 = $1890;
+                                                                                                                                                var $1873 = $1875;
                                                                                                                                                 break;
                                                                                                                                             case 'Parser.Reply.value':
-                                                                                                                                                var $1894 = self.pst;
-                                                                                                                                                var $1895 = self.val;
-                                                                                                                                                var self = $1894;
+                                                                                                                                                var $1879 = self.pst;
+                                                                                                                                                var $1880 = self.val;
+                                                                                                                                                var self = $1879;
                                                                                                                                                 switch (self._) {
                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                        var $1897 = self.err;
-                                                                                                                                                        var $1898 = self.nam;
-                                                                                                                                                        var $1899 = self.ini;
-                                                                                                                                                        var $1900 = self.idx;
-                                                                                                                                                        var $1901 = self.str;
-                                                                                                                                                        var _reply$pst$88 = Parser$State$new$(Parser$Error$maybe_combine$($1887, $1897), $1898, $1899, $1900, $1901);
+                                                                                                                                                        var $1882 = self.err;
+                                                                                                                                                        var $1883 = self.nam;
+                                                                                                                                                        var $1884 = self.ini;
+                                                                                                                                                        var $1885 = self.idx;
+                                                                                                                                                        var $1886 = self.str;
+                                                                                                                                                        var _reply$pst$88 = Parser$State$new$(Parser$Error$maybe_combine$($1872, $1882), $1883, $1884, $1885, $1886);
                                                                                                                                                         var self = _reply$pst$88;
                                                                                                                                                         switch (self._) {
                                                                                                                                                             case 'Parser.State.new':
-                                                                                                                                                                var $1903 = self.err;
+                                                                                                                                                                var $1888 = self.err;
                                                                                                                                                                 var _reply$94 = Litereum$parse$text$("}", _reply$pst$88);
                                                                                                                                                                 var self = _reply$94;
                                                                                                                                                                 switch (self._) {
                                                                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                                                                        var $1905 = self.err;
-                                                                                                                                                                        var self = $1903;
+                                                                                                                                                                        var $1890 = self.err;
+                                                                                                                                                                        var self = $1888;
                                                                                                                                                                         switch (self._) {
                                                                                                                                                                             case 'Maybe.some':
-                                                                                                                                                                                var $1907 = self.value;
-                                                                                                                                                                                var $1908 = Parser$Reply$error$(Parser$Error$combine$($1907, $1905));
-                                                                                                                                                                                var $1906 = $1908;
+                                                                                                                                                                                var $1892 = self.value;
+                                                                                                                                                                                var $1893 = Parser$Reply$error$(Parser$Error$combine$($1892, $1890));
+                                                                                                                                                                                var $1891 = $1893;
                                                                                                                                                                                 break;
                                                                                                                                                                             case 'Maybe.none':
-                                                                                                                                                                                var $1909 = Parser$Reply$error$($1905);
-                                                                                                                                                                                var $1906 = $1909;
+                                                                                                                                                                                var $1894 = Parser$Reply$error$($1890);
+                                                                                                                                                                                var $1891 = $1894;
                                                                                                                                                                                 break;
                                                                                                                                                                         };
-                                                                                                                                                                        var $1904 = $1906;
+                                                                                                                                                                        var $1889 = $1891;
                                                                                                                                                                         break;
                                                                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                                                                        var $1910 = self.pst;
-                                                                                                                                                                        var self = $1910;
+                                                                                                                                                                        var $1895 = self.pst;
+                                                                                                                                                                        var self = $1895;
                                                                                                                                                                         switch (self._) {
                                                                                                                                                                             case 'Parser.State.new':
-                                                                                                                                                                                var $1912 = self.err;
-                                                                                                                                                                                var $1913 = self.nam;
-                                                                                                                                                                                var $1914 = self.ini;
-                                                                                                                                                                                var $1915 = self.idx;
-                                                                                                                                                                                var $1916 = self.str;
-                                                                                                                                                                                var _reply$pst$102 = Parser$State$new$(Parser$Error$maybe_combine$($1903, $1912), $1913, $1914, $1915, $1916);
+                                                                                                                                                                                var $1897 = self.err;
+                                                                                                                                                                                var $1898 = self.nam;
+                                                                                                                                                                                var $1899 = self.ini;
+                                                                                                                                                                                var $1900 = self.idx;
+                                                                                                                                                                                var $1901 = self.str;
+                                                                                                                                                                                var _reply$pst$102 = Parser$State$new$(Parser$Error$maybe_combine$($1888, $1897), $1898, $1899, $1900, $1901);
                                                                                                                                                                                 var self = _reply$pst$102;
                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                                                        var $1918 = self.err;
+                                                                                                                                                                                        var $1903 = self.err;
                                                                                                                                                                                         var _reply$108 = Parser$many$((_pst$108 => {
                                                                                                                                                                                             var self = _pst$108;
                                                                                                                                                                                             switch (self._) {
                                                                                                                                                                                                 case 'Parser.State.new':
-                                                                                                                                                                                                    var $1921 = self.err;
+                                                                                                                                                                                                    var $1906 = self.err;
                                                                                                                                                                                                     var _reply$114 = Litereum$parse$text$("@", _pst$108);
                                                                                                                                                                                                     var self = _reply$114;
                                                                                                                                                                                                     switch (self._) {
                                                                                                                                                                                                         case 'Parser.Reply.error':
-                                                                                                                                                                                                            var $1923 = self.err;
-                                                                                                                                                                                                            var self = $1921;
+                                                                                                                                                                                                            var $1908 = self.err;
+                                                                                                                                                                                                            var self = $1906;
                                                                                                                                                                                                             switch (self._) {
                                                                                                                                                                                                                 case 'Maybe.some':
-                                                                                                                                                                                                                    var $1925 = self.value;
-                                                                                                                                                                                                                    var $1926 = Parser$Reply$error$(Parser$Error$combine$($1925, $1923));
-                                                                                                                                                                                                                    var $1924 = $1926;
+                                                                                                                                                                                                                    var $1910 = self.value;
+                                                                                                                                                                                                                    var $1911 = Parser$Reply$error$(Parser$Error$combine$($1910, $1908));
+                                                                                                                                                                                                                    var $1909 = $1911;
                                                                                                                                                                                                                     break;
                                                                                                                                                                                                                 case 'Maybe.none':
-                                                                                                                                                                                                                    var $1927 = Parser$Reply$error$($1923);
-                                                                                                                                                                                                                    var $1924 = $1927;
+                                                                                                                                                                                                                    var $1912 = Parser$Reply$error$($1908);
+                                                                                                                                                                                                                    var $1909 = $1912;
                                                                                                                                                                                                                     break;
                                                                                                                                                                                                             };
-                                                                                                                                                                                                            var $1922 = $1924;
+                                                                                                                                                                                                            var $1907 = $1909;
                                                                                                                                                                                                             break;
                                                                                                                                                                                                         case 'Parser.Reply.value':
-                                                                                                                                                                                                            var $1928 = self.pst;
-                                                                                                                                                                                                            var self = $1928;
+                                                                                                                                                                                                            var $1913 = self.pst;
+                                                                                                                                                                                                            var self = $1913;
                                                                                                                                                                                                             switch (self._) {
                                                                                                                                                                                                                 case 'Parser.State.new':
-                                                                                                                                                                                                                    var $1930 = self.err;
-                                                                                                                                                                                                                    var $1931 = self.nam;
-                                                                                                                                                                                                                    var $1932 = self.ini;
-                                                                                                                                                                                                                    var $1933 = self.idx;
-                                                                                                                                                                                                                    var $1934 = self.str;
-                                                                                                                                                                                                                    var _reply$pst$122 = Parser$State$new$(Parser$Error$maybe_combine$($1921, $1930), $1931, $1932, $1933, $1934);
+                                                                                                                                                                                                                    var $1915 = self.err;
+                                                                                                                                                                                                                    var $1916 = self.nam;
+                                                                                                                                                                                                                    var $1917 = self.ini;
+                                                                                                                                                                                                                    var $1918 = self.idx;
+                                                                                                                                                                                                                    var $1919 = self.str;
+                                                                                                                                                                                                                    var _reply$pst$122 = Parser$State$new$(Parser$Error$maybe_combine$($1906, $1915), $1916, $1917, $1918, $1919);
                                                                                                                                                                                                                     var self = _reply$pst$122;
                                                                                                                                                                                                                     switch (self._) {
                                                                                                                                                                                                                         case 'Parser.State.new':
-                                                                                                                                                                                                                            var $1936 = self.err;
+                                                                                                                                                                                                                            var $1921 = self.err;
                                                                                                                                                                                                                             var _reply$128 = Litereum$parse$name$(_reply$pst$122);
                                                                                                                                                                                                                             var self = _reply$128;
                                                                                                                                                                                                                             switch (self._) {
                                                                                                                                                                                                                                 case 'Parser.Reply.error':
-                                                                                                                                                                                                                                    var $1938 = self.err;
-                                                                                                                                                                                                                                    var self = $1936;
+                                                                                                                                                                                                                                    var $1923 = self.err;
+                                                                                                                                                                                                                                    var self = $1921;
                                                                                                                                                                                                                                     switch (self._) {
                                                                                                                                                                                                                                         case 'Maybe.some':
-                                                                                                                                                                                                                                            var $1940 = self.value;
-                                                                                                                                                                                                                                            var $1941 = Parser$Reply$error$(Parser$Error$combine$($1940, $1938));
-                                                                                                                                                                                                                                            var $1939 = $1941;
+                                                                                                                                                                                                                                            var $1925 = self.value;
+                                                                                                                                                                                                                                            var $1926 = Parser$Reply$error$(Parser$Error$combine$($1925, $1923));
+                                                                                                                                                                                                                                            var $1924 = $1926;
                                                                                                                                                                                                                                             break;
                                                                                                                                                                                                                                         case 'Maybe.none':
-                                                                                                                                                                                                                                            var $1942 = Parser$Reply$error$($1938);
-                                                                                                                                                                                                                                            var $1939 = $1942;
+                                                                                                                                                                                                                                            var $1927 = Parser$Reply$error$($1923);
+                                                                                                                                                                                                                                            var $1924 = $1927;
                                                                                                                                                                                                                                             break;
                                                                                                                                                                                                                                     };
-                                                                                                                                                                                                                                    var $1937 = $1939;
+                                                                                                                                                                                                                                    var $1922 = $1924;
                                                                                                                                                                                                                                     break;
                                                                                                                                                                                                                                 case 'Parser.Reply.value':
-                                                                                                                                                                                                                                    var $1943 = self.pst;
-                                                                                                                                                                                                                                    var $1944 = self.val;
-                                                                                                                                                                                                                                    var self = $1943;
+                                                                                                                                                                                                                                    var $1928 = self.pst;
+                                                                                                                                                                                                                                    var $1929 = self.val;
+                                                                                                                                                                                                                                    var self = $1928;
                                                                                                                                                                                                                                     switch (self._) {
                                                                                                                                                                                                                                         case 'Parser.State.new':
-                                                                                                                                                                                                                                            var $1946 = self.err;
-                                                                                                                                                                                                                                            var $1947 = self.nam;
-                                                                                                                                                                                                                                            var $1948 = self.ini;
-                                                                                                                                                                                                                                            var $1949 = self.idx;
-                                                                                                                                                                                                                                            var $1950 = self.str;
-                                                                                                                                                                                                                                            var _reply$pst$136 = Parser$State$new$(Parser$Error$maybe_combine$($1936, $1946), $1947, $1948, $1949, $1950);
-                                                                                                                                                                                                                                            var $1951 = Parser$Reply$value$(_reply$pst$136, $1944);
-                                                                                                                                                                                                                                            var $1945 = $1951;
+                                                                                                                                                                                                                                            var $1931 = self.err;
+                                                                                                                                                                                                                                            var $1932 = self.nam;
+                                                                                                                                                                                                                                            var $1933 = self.ini;
+                                                                                                                                                                                                                                            var $1934 = self.idx;
+                                                                                                                                                                                                                                            var $1935 = self.str;
+                                                                                                                                                                                                                                            var _reply$pst$136 = Parser$State$new$(Parser$Error$maybe_combine$($1921, $1931), $1932, $1933, $1934, $1935);
+                                                                                                                                                                                                                                            var $1936 = Parser$Reply$value$(_reply$pst$136, $1929);
+                                                                                                                                                                                                                                            var $1930 = $1936;
                                                                                                                                                                                                                                             break;
                                                                                                                                                                                                                                     };
-                                                                                                                                                                                                                                    var $1937 = $1945;
+                                                                                                                                                                                                                                    var $1922 = $1930;
                                                                                                                                                                                                                                     break;
                                                                                                                                                                                                                             };
-                                                                                                                                                                                                                            var $1935 = $1937;
+                                                                                                                                                                                                                            var $1920 = $1922;
                                                                                                                                                                                                                             break;
                                                                                                                                                                                                                     };
-                                                                                                                                                                                                                    var $1929 = $1935;
+                                                                                                                                                                                                                    var $1914 = $1920;
                                                                                                                                                                                                                     break;
                                                                                                                                                                                                             };
-                                                                                                                                                                                                            var $1922 = $1929;
+                                                                                                                                                                                                            var $1907 = $1914;
                                                                                                                                                                                                             break;
                                                                                                                                                                                                     };
-                                                                                                                                                                                                    var $1920 = $1922;
+                                                                                                                                                                                                    var $1905 = $1907;
                                                                                                                                                                                                     break;
                                                                                                                                                                                             };
-                                                                                                                                                                                            return $1920;
+                                                                                                                                                                                            return $1905;
                                                                                                                                                                                         }))(_reply$pst$102);
                                                                                                                                                                                         var self = _reply$108;
                                                                                                                                                                                         switch (self._) {
                                                                                                                                                                                             case 'Parser.Reply.error':
-                                                                                                                                                                                                var $1952 = self.err;
-                                                                                                                                                                                                var self = $1918;
+                                                                                                                                                                                                var $1937 = self.err;
+                                                                                                                                                                                                var self = $1903;
                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                     case 'Maybe.some':
-                                                                                                                                                                                                        var $1954 = self.value;
-                                                                                                                                                                                                        var $1955 = Parser$Reply$error$(Parser$Error$combine$($1954, $1952));
-                                                                                                                                                                                                        var $1953 = $1955;
+                                                                                                                                                                                                        var $1939 = self.value;
+                                                                                                                                                                                                        var $1940 = Parser$Reply$error$(Parser$Error$combine$($1939, $1937));
+                                                                                                                                                                                                        var $1938 = $1940;
                                                                                                                                                                                                         break;
                                                                                                                                                                                                     case 'Maybe.none':
-                                                                                                                                                                                                        var $1956 = Parser$Reply$error$($1952);
-                                                                                                                                                                                                        var $1953 = $1956;
+                                                                                                                                                                                                        var $1941 = Parser$Reply$error$($1937);
+                                                                                                                                                                                                        var $1938 = $1941;
                                                                                                                                                                                                         break;
                                                                                                                                                                                                 };
-                                                                                                                                                                                                var $1919 = $1953;
+                                                                                                                                                                                                var $1904 = $1938;
                                                                                                                                                                                                 break;
                                                                                                                                                                                             case 'Parser.Reply.value':
-                                                                                                                                                                                                var $1957 = self.pst;
-                                                                                                                                                                                                var $1958 = self.val;
-                                                                                                                                                                                                var self = $1957;
+                                                                                                                                                                                                var $1942 = self.pst;
+                                                                                                                                                                                                var $1943 = self.val;
+                                                                                                                                                                                                var self = $1942;
                                                                                                                                                                                                 switch (self._) {
                                                                                                                                                                                                     case 'Parser.State.new':
-                                                                                                                                                                                                        var $1960 = self.err;
-                                                                                                                                                                                                        var $1961 = self.nam;
-                                                                                                                                                                                                        var $1962 = self.ini;
-                                                                                                                                                                                                        var $1963 = self.idx;
-                                                                                                                                                                                                        var $1964 = self.str;
-                                                                                                                                                                                                        var _reply$pst$116 = Parser$State$new$(Parser$Error$maybe_combine$($1918, $1960), $1961, $1962, $1963, $1964);
-                                                                                                                                                                                                        var $1965 = Parser$Reply$value$(_reply$pst$116, Litereum$Bond$new$($1811, _iarg$31, _ityp$32, $1864, $1895, $1958));
-                                                                                                                                                                                                        var $1959 = $1965;
+                                                                                                                                                                                                        var $1945 = self.err;
+                                                                                                                                                                                                        var $1946 = self.nam;
+                                                                                                                                                                                                        var $1947 = self.ini;
+                                                                                                                                                                                                        var $1948 = self.idx;
+                                                                                                                                                                                                        var $1949 = self.str;
+                                                                                                                                                                                                        var _reply$pst$116 = Parser$State$new$(Parser$Error$maybe_combine$($1903, $1945), $1946, $1947, $1948, $1949);
+                                                                                                                                                                                                        var $1950 = Parser$Reply$value$(_reply$pst$116, Litereum$Bond$new$($1796, _iarg$31, _ityp$32, $1849, $1880, $1943));
+                                                                                                                                                                                                        var $1944 = $1950;
                                                                                                                                                                                                         break;
                                                                                                                                                                                                 };
-                                                                                                                                                                                                var $1919 = $1959;
+                                                                                                                                                                                                var $1904 = $1944;
                                                                                                                                                                                                 break;
                                                                                                                                                                                         };
-                                                                                                                                                                                        var $1917 = $1919;
+                                                                                                                                                                                        var $1902 = $1904;
                                                                                                                                                                                         break;
                                                                                                                                                                                 };
-                                                                                                                                                                                var $1911 = $1917;
+                                                                                                                                                                                var $1896 = $1902;
                                                                                                                                                                                 break;
                                                                                                                                                                         };
-                                                                                                                                                                        var $1904 = $1911;
+                                                                                                                                                                        var $1889 = $1896;
                                                                                                                                                                         break;
                                                                                                                                                                 };
-                                                                                                                                                                var $1902 = $1904;
+                                                                                                                                                                var $1887 = $1889;
                                                                                                                                                                 break;
                                                                                                                                                         };
-                                                                                                                                                        var $1896 = $1902;
+                                                                                                                                                        var $1881 = $1887;
                                                                                                                                                         break;
                                                                                                                                                 };
-                                                                                                                                                var $1888 = $1896;
+                                                                                                                                                var $1873 = $1881;
                                                                                                                                                 break;
                                                                                                                                         };
-                                                                                                                                        var $1886 = $1888;
+                                                                                                                                        var $1871 = $1873;
                                                                                                                                         break;
                                                                                                                                 };
-                                                                                                                                var $1880 = $1886;
+                                                                                                                                var $1865 = $1871;
                                                                                                                                 break;
                                                                                                                         };
-                                                                                                                        var $1873 = $1880;
+                                                                                                                        var $1858 = $1865;
                                                                                                                         break;
                                                                                                                 };
-                                                                                                                var $1871 = $1873;
+                                                                                                                var $1856 = $1858;
                                                                                                                 break;
                                                                                                         };
-                                                                                                        var $1865 = $1871;
+                                                                                                        var $1850 = $1856;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $1857 = $1865;
+                                                                                                var $1842 = $1850;
                                                                                                 break;
                                                                                         };
-                                                                                        var $1855 = $1857;
+                                                                                        var $1840 = $1842;
                                                                                         break;
                                                                                 };
-                                                                                var $1849 = $1855;
+                                                                                var $1834 = $1840;
                                                                                 break;
                                                                         };
-                                                                        var $1842 = $1849;
+                                                                        var $1827 = $1834;
                                                                         break;
                                                                 };
-                                                                var $1834 = $1842;
+                                                                var $1819 = $1827;
                                                                 break;
                                                         };
-                                                        var $1828 = $1834;
+                                                        var $1813 = $1819;
                                                         break;
                                                 };
-                                                var $1820 = $1828;
+                                                var $1805 = $1813;
                                                 break;
                                         };
-                                        var $1818 = $1820;
+                                        var $1803 = $1805;
                                         break;
                                 };
-                                var $1812 = $1818;
+                                var $1797 = $1803;
                                 break;
                         };
-                        var $1804 = $1812;
+                        var $1789 = $1797;
                         break;
                 };
-                var $1802 = $1804;
+                var $1787 = $1789;
                 break;
         };
-        return $1802;
+        return $1787;
     };
     const Litereum$parse$bond = x0 => x1 => Litereum$parse$bond$(x0, x1);
 
     function Litereum$Transaction$new_bond$(_bond$1) {
-        var $1966 = ({
+        var $1951 = ({
             _: 'Litereum.Transaction.new_bond',
             'bond': _bond$1
         });
-        return $1966;
+        return $1951;
     };
     const Litereum$Transaction$new_bond = x0 => Litereum$Transaction$new_bond$(x0);
 
     function Litereum$Eval$new$(_term$1, _type$2) {
-        var $1967 = ({
+        var $1952 = ({
             _: 'Litereum.Eval.new',
             'term': _term$1,
             'type': _type$2
         });
-        return $1967;
+        return $1952;
     };
     const Litereum$Eval$new = x0 => x1 => Litereum$Eval$new$(x0, x1);
 
@@ -6845,597 +6802,597 @@ module.exports = (function() {
         var self = _pst$2;
         switch (self._) {
             case 'Parser.State.new':
-                var $1969 = self.err;
+                var $1954 = self.err;
                 var _reply$8 = Litereum$parse$text$("{", _pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
-                        var $1971 = self.err;
-                        var self = $1969;
+                        var $1956 = self.err;
+                        var self = $1954;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $1973 = self.value;
-                                var $1974 = Parser$Reply$error$(Parser$Error$combine$($1973, $1971));
-                                var $1972 = $1974;
+                                var $1958 = self.value;
+                                var $1959 = Parser$Reply$error$(Parser$Error$combine$($1958, $1956));
+                                var $1957 = $1959;
                                 break;
                             case 'Maybe.none':
-                                var $1975 = Parser$Reply$error$($1971);
-                                var $1972 = $1975;
+                                var $1960 = Parser$Reply$error$($1956);
+                                var $1957 = $1960;
                                 break;
                         };
-                        var $1970 = $1972;
+                        var $1955 = $1957;
                         break;
                     case 'Parser.Reply.value':
-                        var $1976 = self.pst;
-                        var self = $1976;
+                        var $1961 = self.pst;
+                        var self = $1961;
                         switch (self._) {
                             case 'Parser.State.new':
-                                var $1978 = self.err;
-                                var $1979 = self.nam;
-                                var $1980 = self.ini;
-                                var $1981 = self.idx;
-                                var $1982 = self.str;
-                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1969, $1978), $1979, $1980, $1981, $1982);
+                                var $1963 = self.err;
+                                var $1964 = self.nam;
+                                var $1965 = self.ini;
+                                var $1966 = self.idx;
+                                var $1967 = self.str;
+                                var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($1954, $1963), $1964, $1965, $1966, $1967);
                                 var self = _reply$pst$16;
                                 switch (self._) {
                                     case 'Parser.State.new':
-                                        var $1984 = self.err;
+                                        var $1969 = self.err;
                                         var _reply$22 = Litereum$parse$term$(_world$1)(_reply$pst$16);
                                         var self = _reply$22;
                                         switch (self._) {
                                             case 'Parser.Reply.error':
-                                                var $1986 = self.err;
-                                                var self = $1984;
+                                                var $1971 = self.err;
+                                                var self = $1969;
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $1988 = self.value;
-                                                        var $1989 = Parser$Reply$error$(Parser$Error$combine$($1988, $1986));
-                                                        var $1987 = $1989;
+                                                        var $1973 = self.value;
+                                                        var $1974 = Parser$Reply$error$(Parser$Error$combine$($1973, $1971));
+                                                        var $1972 = $1974;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $1990 = Parser$Reply$error$($1986);
-                                                        var $1987 = $1990;
+                                                        var $1975 = Parser$Reply$error$($1971);
+                                                        var $1972 = $1975;
                                                         break;
                                                 };
-                                                var $1985 = $1987;
+                                                var $1970 = $1972;
                                                 break;
                                             case 'Parser.Reply.value':
-                                                var $1991 = self.pst;
-                                                var $1992 = self.val;
-                                                var self = $1991;
+                                                var $1976 = self.pst;
+                                                var $1977 = self.val;
+                                                var self = $1976;
                                                 switch (self._) {
                                                     case 'Parser.State.new':
-                                                        var $1994 = self.err;
-                                                        var $1995 = self.nam;
-                                                        var $1996 = self.ini;
-                                                        var $1997 = self.idx;
-                                                        var $1998 = self.str;
-                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1984, $1994), $1995, $1996, $1997, $1998);
+                                                        var $1979 = self.err;
+                                                        var $1980 = self.nam;
+                                                        var $1981 = self.ini;
+                                                        var $1982 = self.idx;
+                                                        var $1983 = self.str;
+                                                        var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($1969, $1979), $1980, $1981, $1982, $1983);
                                                         var self = _reply$pst$30;
                                                         switch (self._) {
                                                             case 'Parser.State.new':
-                                                                var $2000 = self.err;
+                                                                var $1985 = self.err;
                                                                 var _reply$36 = Litereum$parse$text$("}", _reply$pst$30);
                                                                 var self = _reply$36;
                                                                 switch (self._) {
                                                                     case 'Parser.Reply.error':
-                                                                        var $2002 = self.err;
-                                                                        var self = $2000;
+                                                                        var $1987 = self.err;
+                                                                        var self = $1985;
                                                                         switch (self._) {
                                                                             case 'Maybe.some':
-                                                                                var $2004 = self.value;
-                                                                                var $2005 = Parser$Reply$error$(Parser$Error$combine$($2004, $2002));
-                                                                                var $2003 = $2005;
+                                                                                var $1989 = self.value;
+                                                                                var $1990 = Parser$Reply$error$(Parser$Error$combine$($1989, $1987));
+                                                                                var $1988 = $1990;
                                                                                 break;
                                                                             case 'Maybe.none':
-                                                                                var $2006 = Parser$Reply$error$($2002);
-                                                                                var $2003 = $2006;
+                                                                                var $1991 = Parser$Reply$error$($1987);
+                                                                                var $1988 = $1991;
                                                                                 break;
                                                                         };
-                                                                        var $2001 = $2003;
+                                                                        var $1986 = $1988;
                                                                         break;
                                                                     case 'Parser.Reply.value':
-                                                                        var $2007 = self.pst;
-                                                                        var self = $2007;
+                                                                        var $1992 = self.pst;
+                                                                        var self = $1992;
                                                                         switch (self._) {
                                                                             case 'Parser.State.new':
-                                                                                var $2009 = self.err;
-                                                                                var $2010 = self.nam;
-                                                                                var $2011 = self.ini;
-                                                                                var $2012 = self.idx;
-                                                                                var $2013 = self.str;
-                                                                                var _reply$pst$44 = Parser$State$new$(Parser$Error$maybe_combine$($2000, $2009), $2010, $2011, $2012, $2013);
+                                                                                var $1994 = self.err;
+                                                                                var $1995 = self.nam;
+                                                                                var $1996 = self.ini;
+                                                                                var $1997 = self.idx;
+                                                                                var $1998 = self.str;
+                                                                                var _reply$pst$44 = Parser$State$new$(Parser$Error$maybe_combine$($1985, $1994), $1995, $1996, $1997, $1998);
                                                                                 var self = _reply$pst$44;
                                                                                 switch (self._) {
                                                                                     case 'Parser.State.new':
-                                                                                        var $2015 = self.err;
+                                                                                        var $2000 = self.err;
                                                                                         var _reply$50 = Litereum$parse$text$(":", _reply$pst$44);
                                                                                         var self = _reply$50;
                                                                                         switch (self._) {
                                                                                             case 'Parser.Reply.error':
-                                                                                                var $2017 = self.err;
-                                                                                                var self = $2015;
+                                                                                                var $2002 = self.err;
+                                                                                                var self = $2000;
                                                                                                 switch (self._) {
                                                                                                     case 'Maybe.some':
-                                                                                                        var $2019 = self.value;
-                                                                                                        var $2020 = Parser$Reply$error$(Parser$Error$combine$($2019, $2017));
-                                                                                                        var $2018 = $2020;
+                                                                                                        var $2004 = self.value;
+                                                                                                        var $2005 = Parser$Reply$error$(Parser$Error$combine$($2004, $2002));
+                                                                                                        var $2003 = $2005;
                                                                                                         break;
                                                                                                     case 'Maybe.none':
-                                                                                                        var $2021 = Parser$Reply$error$($2017);
-                                                                                                        var $2018 = $2021;
+                                                                                                        var $2006 = Parser$Reply$error$($2002);
+                                                                                                        var $2003 = $2006;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $2016 = $2018;
+                                                                                                var $2001 = $2003;
                                                                                                 break;
                                                                                             case 'Parser.Reply.value':
-                                                                                                var $2022 = self.pst;
-                                                                                                var self = $2022;
+                                                                                                var $2007 = self.pst;
+                                                                                                var self = $2007;
                                                                                                 switch (self._) {
                                                                                                     case 'Parser.State.new':
-                                                                                                        var $2024 = self.err;
-                                                                                                        var $2025 = self.nam;
-                                                                                                        var $2026 = self.ini;
-                                                                                                        var $2027 = self.idx;
-                                                                                                        var $2028 = self.str;
-                                                                                                        var _reply$pst$58 = Parser$State$new$(Parser$Error$maybe_combine$($2015, $2024), $2025, $2026, $2027, $2028);
+                                                                                                        var $2009 = self.err;
+                                                                                                        var $2010 = self.nam;
+                                                                                                        var $2011 = self.ini;
+                                                                                                        var $2012 = self.idx;
+                                                                                                        var $2013 = self.str;
+                                                                                                        var _reply$pst$58 = Parser$State$new$(Parser$Error$maybe_combine$($2000, $2009), $2010, $2011, $2012, $2013);
                                                                                                         var self = _reply$pst$58;
                                                                                                         switch (self._) {
                                                                                                             case 'Parser.State.new':
-                                                                                                                var $2030 = self.err;
+                                                                                                                var $2015 = self.err;
                                                                                                                 var _reply$64 = Litereum$parse$type$(_world$1)(_reply$pst$58);
                                                                                                                 var self = _reply$64;
                                                                                                                 switch (self._) {
                                                                                                                     case 'Parser.Reply.error':
-                                                                                                                        var $2032 = self.err;
-                                                                                                                        var self = $2030;
+                                                                                                                        var $2017 = self.err;
+                                                                                                                        var self = $2015;
                                                                                                                         switch (self._) {
                                                                                                                             case 'Maybe.some':
-                                                                                                                                var $2034 = self.value;
-                                                                                                                                var $2035 = Parser$Reply$error$(Parser$Error$combine$($2034, $2032));
-                                                                                                                                var $2033 = $2035;
+                                                                                                                                var $2019 = self.value;
+                                                                                                                                var $2020 = Parser$Reply$error$(Parser$Error$combine$($2019, $2017));
+                                                                                                                                var $2018 = $2020;
                                                                                                                                 break;
                                                                                                                             case 'Maybe.none':
-                                                                                                                                var $2036 = Parser$Reply$error$($2032);
-                                                                                                                                var $2033 = $2036;
+                                                                                                                                var $2021 = Parser$Reply$error$($2017);
+                                                                                                                                var $2018 = $2021;
                                                                                                                                 break;
                                                                                                                         };
-                                                                                                                        var $2031 = $2033;
+                                                                                                                        var $2016 = $2018;
                                                                                                                         break;
                                                                                                                     case 'Parser.Reply.value':
-                                                                                                                        var $2037 = self.pst;
-                                                                                                                        var $2038 = self.val;
-                                                                                                                        var self = $2037;
+                                                                                                                        var $2022 = self.pst;
+                                                                                                                        var $2023 = self.val;
+                                                                                                                        var self = $2022;
                                                                                                                         switch (self._) {
                                                                                                                             case 'Parser.State.new':
-                                                                                                                                var $2040 = self.err;
-                                                                                                                                var $2041 = self.nam;
-                                                                                                                                var $2042 = self.ini;
-                                                                                                                                var $2043 = self.idx;
-                                                                                                                                var $2044 = self.str;
-                                                                                                                                var _reply$pst$72 = Parser$State$new$(Parser$Error$maybe_combine$($2030, $2040), $2041, $2042, $2043, $2044);
-                                                                                                                                var $2045 = Parser$Reply$value$(_reply$pst$72, Litereum$Eval$new$($1992, $2038));
-                                                                                                                                var $2039 = $2045;
+                                                                                                                                var $2025 = self.err;
+                                                                                                                                var $2026 = self.nam;
+                                                                                                                                var $2027 = self.ini;
+                                                                                                                                var $2028 = self.idx;
+                                                                                                                                var $2029 = self.str;
+                                                                                                                                var _reply$pst$72 = Parser$State$new$(Parser$Error$maybe_combine$($2015, $2025), $2026, $2027, $2028, $2029);
+                                                                                                                                var $2030 = Parser$Reply$value$(_reply$pst$72, Litereum$Eval$new$($1977, $2023));
+                                                                                                                                var $2024 = $2030;
                                                                                                                                 break;
                                                                                                                         };
-                                                                                                                        var $2031 = $2039;
+                                                                                                                        var $2016 = $2024;
                                                                                                                         break;
                                                                                                                 };
-                                                                                                                var $2029 = $2031;
+                                                                                                                var $2014 = $2016;
                                                                                                                 break;
                                                                                                         };
-                                                                                                        var $2023 = $2029;
+                                                                                                        var $2008 = $2014;
                                                                                                         break;
                                                                                                 };
-                                                                                                var $2016 = $2023;
+                                                                                                var $2001 = $2008;
                                                                                                 break;
                                                                                         };
-                                                                                        var $2014 = $2016;
+                                                                                        var $1999 = $2001;
                                                                                         break;
                                                                                 };
-                                                                                var $2008 = $2014;
+                                                                                var $1993 = $1999;
                                                                                 break;
                                                                         };
-                                                                        var $2001 = $2008;
+                                                                        var $1986 = $1993;
                                                                         break;
                                                                 };
-                                                                var $1999 = $2001;
+                                                                var $1984 = $1986;
                                                                 break;
                                                         };
-                                                        var $1993 = $1999;
+                                                        var $1978 = $1984;
                                                         break;
                                                 };
-                                                var $1985 = $1993;
+                                                var $1970 = $1978;
                                                 break;
                                         };
-                                        var $1983 = $1985;
+                                        var $1968 = $1970;
                                         break;
                                 };
-                                var $1977 = $1983;
+                                var $1962 = $1968;
                                 break;
                         };
-                        var $1970 = $1977;
+                        var $1955 = $1962;
                         break;
                 };
-                var $1968 = $1970;
+                var $1953 = $1955;
                 break;
         };
-        return $1968;
+        return $1953;
     };
     const Litereum$parse$eval = x0 => x1 => Litereum$parse$eval$(x0, x1);
 
     function Litereum$Transaction$new_eval$(_eval$1) {
-        var $2046 = ({
+        var $2031 = ({
             _: 'Litereum.Transaction.new_eval',
             'eval': _eval$1
         });
-        return $2046;
+        return $2031;
     };
     const Litereum$Transaction$new_eval = x0 => Litereum$Transaction$new_eval$(x0);
 
     function Litereum$parse$transaction$(_world$1) {
-        var $2047 = Parser$choice(List$cons$((_pst$2 => {
+        var $2032 = Parser$choice(List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $2049 = self.err;
+                    var $2034 = self.err;
                     var _reply$8 = Litereum$parse$text$("name", _pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $2051 = self.err;
-                            var self = $2049;
+                            var $2036 = self.err;
+                            var self = $2034;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $2053 = self.value;
-                                    var $2054 = Parser$Reply$error$(Parser$Error$combine$($2053, $2051));
-                                    var $2052 = $2054;
+                                    var $2038 = self.value;
+                                    var $2039 = Parser$Reply$error$(Parser$Error$combine$($2038, $2036));
+                                    var $2037 = $2039;
                                     break;
                                 case 'Maybe.none':
-                                    var $2055 = Parser$Reply$error$($2051);
-                                    var $2052 = $2055;
+                                    var $2040 = Parser$Reply$error$($2036);
+                                    var $2037 = $2040;
                                     break;
                             };
-                            var $2050 = $2052;
+                            var $2035 = $2037;
                             break;
                         case 'Parser.Reply.value':
-                            var $2056 = self.pst;
-                            var self = $2056;
+                            var $2041 = self.pst;
+                            var self = $2041;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $2058 = self.err;
-                                    var $2059 = self.nam;
-                                    var $2060 = self.ini;
-                                    var $2061 = self.idx;
-                                    var $2062 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2049, $2058), $2059, $2060, $2061, $2062);
+                                    var $2043 = self.err;
+                                    var $2044 = self.nam;
+                                    var $2045 = self.ini;
+                                    var $2046 = self.idx;
+                                    var $2047 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2034, $2043), $2044, $2045, $2046, $2047);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $2064 = self.err;
+                                            var $2049 = self.err;
                                             var _reply$22 = Litereum$parse$name$(_reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $2066 = self.err;
-                                                    var self = $2064;
+                                                    var $2051 = self.err;
+                                                    var self = $2049;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $2068 = self.value;
-                                                            var $2069 = Parser$Reply$error$(Parser$Error$combine$($2068, $2066));
-                                                            var $2067 = $2069;
+                                                            var $2053 = self.value;
+                                                            var $2054 = Parser$Reply$error$(Parser$Error$combine$($2053, $2051));
+                                                            var $2052 = $2054;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $2070 = Parser$Reply$error$($2066);
-                                                            var $2067 = $2070;
+                                                            var $2055 = Parser$Reply$error$($2051);
+                                                            var $2052 = $2055;
                                                             break;
                                                     };
-                                                    var $2065 = $2067;
+                                                    var $2050 = $2052;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $2071 = self.pst;
-                                                    var $2072 = self.val;
-                                                    var self = $2071;
+                                                    var $2056 = self.pst;
+                                                    var $2057 = self.val;
+                                                    var self = $2056;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $2074 = self.err;
-                                                            var $2075 = self.nam;
-                                                            var $2076 = self.ini;
-                                                            var $2077 = self.idx;
-                                                            var $2078 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2064, $2074), $2075, $2076, $2077, $2078);
-                                                            var $2079 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_name$($2072));
-                                                            var $2073 = $2079;
+                                                            var $2059 = self.err;
+                                                            var $2060 = self.nam;
+                                                            var $2061 = self.ini;
+                                                            var $2062 = self.idx;
+                                                            var $2063 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2049, $2059), $2060, $2061, $2062, $2063);
+                                                            var $2064 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_name$($2057));
+                                                            var $2058 = $2064;
                                                             break;
                                                     };
-                                                    var $2065 = $2073;
+                                                    var $2050 = $2058;
                                                     break;
                                             };
-                                            var $2063 = $2065;
+                                            var $2048 = $2050;
                                             break;
                                     };
-                                    var $2057 = $2063;
+                                    var $2042 = $2048;
                                     break;
                             };
-                            var $2050 = $2057;
+                            var $2035 = $2042;
                             break;
                     };
-                    var $2048 = $2050;
+                    var $2033 = $2035;
                     break;
             };
-            return $2048;
+            return $2033;
         }), List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $2081 = self.err;
+                    var $2066 = self.err;
                     var _reply$8 = Litereum$parse$text$("type", _pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $2083 = self.err;
-                            var self = $2081;
+                            var $2068 = self.err;
+                            var self = $2066;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $2085 = self.value;
-                                    var $2086 = Parser$Reply$error$(Parser$Error$combine$($2085, $2083));
-                                    var $2084 = $2086;
+                                    var $2070 = self.value;
+                                    var $2071 = Parser$Reply$error$(Parser$Error$combine$($2070, $2068));
+                                    var $2069 = $2071;
                                     break;
                                 case 'Maybe.none':
-                                    var $2087 = Parser$Reply$error$($2083);
-                                    var $2084 = $2087;
+                                    var $2072 = Parser$Reply$error$($2068);
+                                    var $2069 = $2072;
                                     break;
                             };
-                            var $2082 = $2084;
+                            var $2067 = $2069;
                             break;
                         case 'Parser.Reply.value':
-                            var $2088 = self.pst;
-                            var self = $2088;
+                            var $2073 = self.pst;
+                            var self = $2073;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $2090 = self.err;
-                                    var $2091 = self.nam;
-                                    var $2092 = self.ini;
-                                    var $2093 = self.idx;
-                                    var $2094 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2081, $2090), $2091, $2092, $2093, $2094);
+                                    var $2075 = self.err;
+                                    var $2076 = self.nam;
+                                    var $2077 = self.ini;
+                                    var $2078 = self.idx;
+                                    var $2079 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2066, $2075), $2076, $2077, $2078, $2079);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $2096 = self.err;
+                                            var $2081 = self.err;
                                             var _reply$22 = Litereum$parse$data$(_world$1, _reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $2098 = self.err;
-                                                    var self = $2096;
+                                                    var $2083 = self.err;
+                                                    var self = $2081;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $2100 = self.value;
-                                                            var $2101 = Parser$Reply$error$(Parser$Error$combine$($2100, $2098));
-                                                            var $2099 = $2101;
+                                                            var $2085 = self.value;
+                                                            var $2086 = Parser$Reply$error$(Parser$Error$combine$($2085, $2083));
+                                                            var $2084 = $2086;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $2102 = Parser$Reply$error$($2098);
-                                                            var $2099 = $2102;
+                                                            var $2087 = Parser$Reply$error$($2083);
+                                                            var $2084 = $2087;
                                                             break;
                                                     };
-                                                    var $2097 = $2099;
+                                                    var $2082 = $2084;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $2103 = self.pst;
-                                                    var $2104 = self.val;
-                                                    var self = $2103;
+                                                    var $2088 = self.pst;
+                                                    var $2089 = self.val;
+                                                    var self = $2088;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $2106 = self.err;
-                                                            var $2107 = self.nam;
-                                                            var $2108 = self.ini;
-                                                            var $2109 = self.idx;
-                                                            var $2110 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2096, $2106), $2107, $2108, $2109, $2110);
-                                                            var $2111 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_data$($2104));
-                                                            var $2105 = $2111;
+                                                            var $2091 = self.err;
+                                                            var $2092 = self.nam;
+                                                            var $2093 = self.ini;
+                                                            var $2094 = self.idx;
+                                                            var $2095 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2081, $2091), $2092, $2093, $2094, $2095);
+                                                            var $2096 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_data$($2089));
+                                                            var $2090 = $2096;
                                                             break;
                                                     };
-                                                    var $2097 = $2105;
+                                                    var $2082 = $2090;
                                                     break;
                                             };
-                                            var $2095 = $2097;
+                                            var $2080 = $2082;
                                             break;
                                     };
-                                    var $2089 = $2095;
+                                    var $2074 = $2080;
                                     break;
                             };
-                            var $2082 = $2089;
+                            var $2067 = $2074;
                             break;
                     };
-                    var $2080 = $2082;
+                    var $2065 = $2067;
                     break;
             };
-            return $2080;
+            return $2065;
         }), List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $2113 = self.err;
+                    var $2098 = self.err;
                     var _reply$8 = Litereum$parse$text$("bond", _pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $2115 = self.err;
-                            var self = $2113;
+                            var $2100 = self.err;
+                            var self = $2098;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $2117 = self.value;
-                                    var $2118 = Parser$Reply$error$(Parser$Error$combine$($2117, $2115));
-                                    var $2116 = $2118;
+                                    var $2102 = self.value;
+                                    var $2103 = Parser$Reply$error$(Parser$Error$combine$($2102, $2100));
+                                    var $2101 = $2103;
                                     break;
                                 case 'Maybe.none':
-                                    var $2119 = Parser$Reply$error$($2115);
-                                    var $2116 = $2119;
+                                    var $2104 = Parser$Reply$error$($2100);
+                                    var $2101 = $2104;
                                     break;
                             };
-                            var $2114 = $2116;
+                            var $2099 = $2101;
                             break;
                         case 'Parser.Reply.value':
-                            var $2120 = self.pst;
-                            var self = $2120;
+                            var $2105 = self.pst;
+                            var self = $2105;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $2122 = self.err;
-                                    var $2123 = self.nam;
-                                    var $2124 = self.ini;
-                                    var $2125 = self.idx;
-                                    var $2126 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2113, $2122), $2123, $2124, $2125, $2126);
+                                    var $2107 = self.err;
+                                    var $2108 = self.nam;
+                                    var $2109 = self.ini;
+                                    var $2110 = self.idx;
+                                    var $2111 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2098, $2107), $2108, $2109, $2110, $2111);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $2128 = self.err;
+                                            var $2113 = self.err;
                                             var _reply$22 = Litereum$parse$bond$(_world$1, _reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $2130 = self.err;
-                                                    var self = $2128;
+                                                    var $2115 = self.err;
+                                                    var self = $2113;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $2132 = self.value;
-                                                            var $2133 = Parser$Reply$error$(Parser$Error$combine$($2132, $2130));
-                                                            var $2131 = $2133;
+                                                            var $2117 = self.value;
+                                                            var $2118 = Parser$Reply$error$(Parser$Error$combine$($2117, $2115));
+                                                            var $2116 = $2118;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $2134 = Parser$Reply$error$($2130);
-                                                            var $2131 = $2134;
+                                                            var $2119 = Parser$Reply$error$($2115);
+                                                            var $2116 = $2119;
                                                             break;
                                                     };
-                                                    var $2129 = $2131;
+                                                    var $2114 = $2116;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $2135 = self.pst;
-                                                    var $2136 = self.val;
-                                                    var self = $2135;
+                                                    var $2120 = self.pst;
+                                                    var $2121 = self.val;
+                                                    var self = $2120;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $2138 = self.err;
-                                                            var $2139 = self.nam;
-                                                            var $2140 = self.ini;
-                                                            var $2141 = self.idx;
-                                                            var $2142 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2128, $2138), $2139, $2140, $2141, $2142);
-                                                            var $2143 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_bond$($2136));
-                                                            var $2137 = $2143;
+                                                            var $2123 = self.err;
+                                                            var $2124 = self.nam;
+                                                            var $2125 = self.ini;
+                                                            var $2126 = self.idx;
+                                                            var $2127 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2113, $2123), $2124, $2125, $2126, $2127);
+                                                            var $2128 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_bond$($2121));
+                                                            var $2122 = $2128;
                                                             break;
                                                     };
-                                                    var $2129 = $2137;
+                                                    var $2114 = $2122;
                                                     break;
                                             };
-                                            var $2127 = $2129;
+                                            var $2112 = $2114;
                                             break;
                                     };
-                                    var $2121 = $2127;
+                                    var $2106 = $2112;
                                     break;
                             };
-                            var $2114 = $2121;
+                            var $2099 = $2106;
                             break;
                     };
-                    var $2112 = $2114;
+                    var $2097 = $2099;
                     break;
             };
-            return $2112;
+            return $2097;
         }), List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $2145 = self.err;
+                    var $2130 = self.err;
                     var _reply$8 = Litereum$parse$text$("eval", _pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $2147 = self.err;
-                            var self = $2145;
+                            var $2132 = self.err;
+                            var self = $2130;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $2149 = self.value;
-                                    var $2150 = Parser$Reply$error$(Parser$Error$combine$($2149, $2147));
-                                    var $2148 = $2150;
+                                    var $2134 = self.value;
+                                    var $2135 = Parser$Reply$error$(Parser$Error$combine$($2134, $2132));
+                                    var $2133 = $2135;
                                     break;
                                 case 'Maybe.none':
-                                    var $2151 = Parser$Reply$error$($2147);
-                                    var $2148 = $2151;
+                                    var $2136 = Parser$Reply$error$($2132);
+                                    var $2133 = $2136;
                                     break;
                             };
-                            var $2146 = $2148;
+                            var $2131 = $2133;
                             break;
                         case 'Parser.Reply.value':
-                            var $2152 = self.pst;
-                            var self = $2152;
+                            var $2137 = self.pst;
+                            var self = $2137;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $2154 = self.err;
-                                    var $2155 = self.nam;
-                                    var $2156 = self.ini;
-                                    var $2157 = self.idx;
-                                    var $2158 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2145, $2154), $2155, $2156, $2157, $2158);
+                                    var $2139 = self.err;
+                                    var $2140 = self.nam;
+                                    var $2141 = self.ini;
+                                    var $2142 = self.idx;
+                                    var $2143 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($2130, $2139), $2140, $2141, $2142, $2143);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $2160 = self.err;
+                                            var $2145 = self.err;
                                             var _reply$22 = Litereum$parse$eval$(_world$1, _reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $2162 = self.err;
-                                                    var self = $2160;
+                                                    var $2147 = self.err;
+                                                    var self = $2145;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $2164 = self.value;
-                                                            var $2165 = Parser$Reply$error$(Parser$Error$combine$($2164, $2162));
-                                                            var $2163 = $2165;
+                                                            var $2149 = self.value;
+                                                            var $2150 = Parser$Reply$error$(Parser$Error$combine$($2149, $2147));
+                                                            var $2148 = $2150;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $2166 = Parser$Reply$error$($2162);
-                                                            var $2163 = $2166;
+                                                            var $2151 = Parser$Reply$error$($2147);
+                                                            var $2148 = $2151;
                                                             break;
                                                     };
-                                                    var $2161 = $2163;
+                                                    var $2146 = $2148;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $2167 = self.pst;
-                                                    var $2168 = self.val;
-                                                    var self = $2167;
+                                                    var $2152 = self.pst;
+                                                    var $2153 = self.val;
+                                                    var self = $2152;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $2170 = self.err;
-                                                            var $2171 = self.nam;
-                                                            var $2172 = self.ini;
-                                                            var $2173 = self.idx;
-                                                            var $2174 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2160, $2170), $2171, $2172, $2173, $2174);
-                                                            var $2175 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_eval$($2168));
-                                                            var $2169 = $2175;
+                                                            var $2155 = self.err;
+                                                            var $2156 = self.nam;
+                                                            var $2157 = self.ini;
+                                                            var $2158 = self.idx;
+                                                            var $2159 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($2145, $2155), $2156, $2157, $2158, $2159);
+                                                            var $2160 = Parser$Reply$value$(_reply$pst$30, Litereum$Transaction$new_eval$($2153));
+                                                            var $2154 = $2160;
                                                             break;
                                                     };
-                                                    var $2161 = $2169;
+                                                    var $2146 = $2154;
                                                     break;
                                             };
-                                            var $2159 = $2161;
+                                            var $2144 = $2146;
                                             break;
                                     };
-                                    var $2153 = $2159;
+                                    var $2138 = $2144;
                                     break;
                             };
-                            var $2146 = $2153;
+                            var $2131 = $2138;
                             break;
                     };
-                    var $2144 = $2146;
+                    var $2129 = $2131;
                     break;
             };
-            return $2144;
+            return $2129;
         }), List$nil)))));
-        return $2047;
+        return $2032;
     };
     const Litereum$parse$transaction = x0 => Litereum$parse$transaction$(x0);
 
@@ -7443,52 +7400,52 @@ module.exports = (function() {
         var self = _m$2;
         switch (self._) {
             case 'Maybe.some':
-                var $2177 = self.value;
-                var $2178 = $2177;
-                var $2176 = $2178;
+                var $2162 = self.value;
+                var $2163 = $2162;
+                var $2161 = $2163;
                 break;
             case 'Maybe.none':
-                var $2179 = _a$3;
-                var $2176 = $2179;
+                var $2164 = _a$3;
+                var $2161 = $2164;
                 break;
         };
-        return $2176;
+        return $2161;
     };
     const Maybe$default = x0 => x1 => Maybe$default$(x0, x1);
 
     function Map$(_V$1) {
-        var $2180 = null;
-        return $2180;
+        var $2165 = null;
+        return $2165;
     };
     const Map = x0 => Map$(x0);
 
     function Map$set$(_key$2, _val$3, _map$4) {
-        var $2181 = BBT$insert$(String$cmp, _key$2, _val$3, _map$4);
-        return $2181;
+        var $2166 = BBT$insert$(String$cmp, _key$2, _val$3, _map$4);
+        return $2166;
     };
     const Map$set = x0 => x1 => x2 => Map$set$(x0, x1, x2);
 
     function Either$(_A$1, _B$2) {
-        var $2182 = null;
-        return $2182;
+        var $2167 = null;
+        return $2167;
     };
     const Either = x0 => x1 => Either$(x0, x1);
 
     function Either$left$(_value$3) {
-        var $2183 = ({
+        var $2168 = ({
             _: 'Either.left',
             'value': _value$3
         });
-        return $2183;
+        return $2168;
     };
     const Either$left = x0 => Either$left$(x0);
 
     function Either$right$(_value$3) {
-        var $2184 = ({
+        var $2169 = ({
             _: 'Either.right',
             'value': _value$3
         });
-        return $2184;
+        return $2169;
     };
     const Either$right = x0 => Either$right$(x0);
 
@@ -7504,20 +7461,20 @@ module.exports = (function() {
             var R = (() => {
                 var self = _m$2;
                 if (self === 0n) {
-                    var $2185 = Either$left$(_n$1);
-                    return $2185;
+                    var $2170 = Either$left$(_n$1);
+                    return $2170;
                 } else {
-                    var $2186 = (self - 1n);
+                    var $2171 = (self - 1n);
                     var self = _n$1;
                     if (self === 0n) {
-                        var $2188 = Either$right$(Nat$succ$($2186));
-                        var $2187 = $2188;
+                        var $2173 = Either$right$(Nat$succ$($2171));
+                        var $2172 = $2173;
                     } else {
-                        var $2189 = (self - 1n);
-                        var $2190 = Nat$sub_rem$($2189, $2186);
-                        var $2187 = $2190;
+                        var $2174 = (self - 1n);
+                        var $2175 = Nat$sub_rem$($2174, $2171);
+                        var $2172 = $2175;
                     };
-                    return $2187;
+                    return $2172;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7539,12 +7496,12 @@ module.exports = (function() {
                 var self = Nat$sub_rem$(_n$1, _m$2);
                 switch (self._) {
                     case 'Either.left':
-                        var $2191 = self.value;
-                        var $2192 = Nat$div_mod$go$($2191, _m$2, Nat$succ$(_d$3));
-                        return $2192;
+                        var $2176 = self.value;
+                        var $2177 = Nat$div_mod$go$($2176, _m$2, Nat$succ$(_d$3));
+                        return $2177;
                     case 'Either.right':
-                        var $2193 = Pair$new$(_d$3, _n$1);
-                        return $2193;
+                        var $2178 = Pair$new$(_d$3, _n$1);
+                        return $2178;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7575,18 +7532,18 @@ module.exports = (function() {
                 }));
                 switch (self._) {
                     case 'Pair.new':
-                        var $2194 = self.fst;
-                        var $2195 = self.snd;
-                        var self = $2194;
+                        var $2179 = self.fst;
+                        var $2180 = self.snd;
+                        var self = $2179;
                         if (self === 0n) {
-                            var $2197 = List$cons$($2195, _res$3);
-                            var $2196 = $2197;
+                            var $2182 = List$cons$($2180, _res$3);
+                            var $2181 = $2182;
                         } else {
-                            var $2198 = (self - 1n);
-                            var $2199 = Nat$to_base$go$(_base$1, $2194, List$cons$($2195, _res$3));
-                            var $2196 = $2199;
+                            var $2183 = (self - 1n);
+                            var $2184 = Nat$to_base$go$(_base$1, $2179, List$cons$($2180, _res$3));
+                            var $2181 = $2184;
                         };
-                        return $2196;
+                        return $2181;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7596,8 +7553,8 @@ module.exports = (function() {
     const Nat$to_base$go = x0 => x1 => x2 => Nat$to_base$go$(x0, x1, x2);
 
     function Nat$to_base$(_base$1, _nat$2) {
-        var $2200 = Nat$to_base$go$(_base$1, _nat$2, List$nil);
-        return $2200;
+        var $2185 = Nat$to_base$go$(_base$1, _nat$2, List$nil);
+        return $2185;
     };
     const Nat$to_base = x0 => x1 => Nat$to_base$(x0, x1);
 
@@ -7613,20 +7570,20 @@ module.exports = (function() {
             var R = (() => {
                 var self = _m$2;
                 if (self === 0n) {
-                    var $2201 = Nat$mod$go$(_n$1, _r$3, _m$2);
-                    return $2201;
+                    var $2186 = Nat$mod$go$(_n$1, _r$3, _m$2);
+                    return $2186;
                 } else {
-                    var $2202 = (self - 1n);
+                    var $2187 = (self - 1n);
                     var self = _n$1;
                     if (self === 0n) {
-                        var $2204 = _r$3;
-                        var $2203 = $2204;
+                        var $2189 = _r$3;
+                        var $2188 = $2189;
                     } else {
-                        var $2205 = (self - 1n);
-                        var $2206 = Nat$mod$go$($2205, $2202, Nat$succ$(_r$3));
-                        var $2203 = $2206;
+                        var $2190 = (self - 1n);
+                        var $2191 = Nat$mod$go$($2190, $2187, Nat$succ$(_r$3));
+                        var $2188 = $2191;
                     };
-                    return $2203;
+                    return $2188;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7650,21 +7607,21 @@ module.exports = (function() {
                 var self = _list$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $2207 = self.head;
-                        var $2208 = self.tail;
+                        var $2192 = self.head;
+                        var $2193 = self.tail;
                         var self = _index$2;
                         if (self === 0n) {
-                            var $2210 = Maybe$some$($2207);
-                            var $2209 = $2210;
+                            var $2195 = Maybe$some$($2192);
+                            var $2194 = $2195;
                         } else {
-                            var $2211 = (self - 1n);
-                            var $2212 = List$at$($2211, $2208);
-                            var $2209 = $2212;
+                            var $2196 = (self - 1n);
+                            var $2197 = List$at$($2196, $2193);
+                            var $2194 = $2197;
                         };
-                        return $2209;
+                        return $2194;
                     case 'List.nil':
-                        var $2213 = Maybe$none;
-                        return $2213;
+                        var $2198 = Maybe$none;
+                        return $2198;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7681,55 +7638,55 @@ module.exports = (function() {
             var self = List$at$(_m$3, _base64$4);
             switch (self._) {
                 case 'Maybe.some':
-                    var $2216 = self.value;
-                    var $2217 = $2216;
-                    var $2215 = $2217;
+                    var $2201 = self.value;
+                    var $2202 = $2201;
+                    var $2200 = $2202;
                     break;
                 case 'Maybe.none':
-                    var $2218 = 35;
-                    var $2215 = $2218;
+                    var $2203 = 35;
+                    var $2200 = $2203;
                     break;
             };
-            var $2214 = $2215;
+            var $2199 = $2200;
         } else {
-            var $2219 = 35;
-            var $2214 = $2219;
+            var $2204 = 35;
+            var $2199 = $2204;
         };
-        return $2214;
+        return $2199;
     };
     const Nat$show_digit = x0 => x1 => Nat$show_digit$(x0, x1);
 
     function Nat$to_string_base$(_base$1, _nat$2) {
-        var $2220 = List$fold$(Nat$to_base$(_base$1, _nat$2), String$nil, (_n$3 => _str$4 => {
-            var $2221 = String$cons$(Nat$show_digit$(_base$1, _n$3), _str$4);
-            return $2221;
+        var $2205 = List$fold$(Nat$to_base$(_base$1, _nat$2), String$nil, (_n$3 => _str$4 => {
+            var $2206 = String$cons$(Nat$show_digit$(_base$1, _n$3), _str$4);
+            return $2206;
         }));
-        return $2220;
+        return $2205;
     };
     const Nat$to_string_base = x0 => x1 => Nat$to_string_base$(x0, x1);
 
     function Nat$show$(_n$1) {
-        var $2222 = Nat$to_string_base$(10n, _n$1);
-        return $2222;
+        var $2207 = Nat$to_string_base$(10n, _n$1);
+        return $2207;
     };
     const Nat$show = x0 => Nat$show$(x0);
     const Debug$log = a0 => a1 => ((console.log(a0), a1()));
 
     function Litereum$Entry$data$(_value$1) {
-        var $2223 = ({
+        var $2208 = ({
             _: 'Litereum.Entry.data',
             'value': _value$1
         });
-        return $2223;
+        return $2208;
     };
     const Litereum$Entry$data = x0 => Litereum$Entry$data$(x0);
 
     function Litereum$Entry$bond$(_value$1) {
-        var $2224 = ({
+        var $2209 = ({
             _: 'Litereum.Entry.bond',
             'value': _value$1
         });
-        return $2224;
+        return $2209;
     };
     const Litereum$Entry$bond = x0 => Litereum$Entry$bond$(x0);
 
@@ -7746,32 +7703,32 @@ module.exports = (function() {
                 var self = _keys$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $2225 = self.head;
-                        var $2226 = self.tail;
+                        var $2210 = self.head;
+                        var $2211 = self.tail;
                         var self = _vals$4;
                         switch (self._) {
                             case 'List.cons':
-                                var $2228 = self.head;
-                                var $2229 = self.tail;
-                                var $2230 = Litereum$extend$(Map$set$($2225, $2228, _map$2), $2226, $2229);
-                                var $2227 = $2230;
+                                var $2213 = self.head;
+                                var $2214 = self.tail;
+                                var $2215 = Litereum$extend$(Map$set$($2210, $2213, _map$2), $2211, $2214);
+                                var $2212 = $2215;
                                 break;
                             case 'List.nil':
-                                var $2231 = _map$2;
-                                var $2227 = $2231;
+                                var $2216 = _map$2;
+                                var $2212 = $2216;
                                 break;
                         };
-                        return $2227;
+                        return $2212;
                     case 'List.nil':
                         var self = _vals$4;
                         switch (self._) {
                             case 'List.nil':
                             case 'List.cons':
-                                var $2233 = _map$2;
-                                var $2232 = $2233;
+                                var $2218 = _map$2;
+                                var $2217 = $2218;
                                 break;
                         };
-                        return $2232;
+                        return $2217;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7785,37 +7742,37 @@ module.exports = (function() {
         var self = _a$1;
         switch (self._) {
             case 'Litereum.Type.data':
-                var $2235 = self.name;
+                var $2220 = self.name;
                 var self = _b$2;
                 switch (self._) {
                     case 'Litereum.Type.data':
-                        var $2237 = self.name;
-                        var $2238 = ($2235 === $2237);
-                        var $2236 = $2238;
+                        var $2222 = self.name;
+                        var $2223 = ($2220 === $2222);
+                        var $2221 = $2223;
                         break;
                     case 'Litereum.Type.word':
-                        var $2239 = Bool$false;
-                        var $2236 = $2239;
+                        var $2224 = Bool$false;
+                        var $2221 = $2224;
                         break;
                 };
-                var $2234 = $2236;
+                var $2219 = $2221;
                 break;
             case 'Litereum.Type.word':
                 var self = _b$2;
                 switch (self._) {
                     case 'Litereum.Type.word':
-                        var $2241 = Bool$true;
-                        var $2240 = $2241;
+                        var $2226 = Bool$true;
+                        var $2225 = $2226;
                         break;
                     case 'Litereum.Type.data':
-                        var $2242 = Bool$false;
-                        var $2240 = $2242;
+                        var $2227 = Bool$false;
+                        var $2225 = $2227;
                         break;
                 };
-                var $2234 = $2240;
+                var $2219 = $2225;
                 break;
         };
-        return $2234;
+        return $2219;
     };
     const Litereum$equal = x0 => x1 => Litereum$equal$(x0, x1);
 
@@ -7823,15 +7780,15 @@ module.exports = (function() {
         var self = _m$2;
         switch (self._) {
             case 'Maybe.none':
-                var $2244 = Bool$false;
-                var $2243 = $2244;
+                var $2229 = Bool$false;
+                var $2228 = $2229;
                 break;
             case 'Maybe.some':
-                var $2245 = Bool$true;
-                var $2243 = $2245;
+                var $2230 = Bool$true;
+                var $2228 = $2230;
                 break;
         };
-        return $2243;
+        return $2228;
     };
     const Maybe$is_some = x0 => Maybe$is_some$(x0);
 
@@ -7839,29 +7796,29 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $2247 = self.entry;
-                var $2248 = Maybe$monad$((_m$bind$7 => _m$pure$8 => {
-                    var $2249 = _m$bind$7;
-                    return $2249;
-                }))(Map$get$(_name$2, $2247))((_entry$7 => {
+                var $2232 = self.entry;
+                var $2233 = Maybe$monad$((_m$bind$7 => _m$pure$8 => {
+                    var $2234 = _m$bind$7;
+                    return $2234;
+                }))(Map$get$(_name$2, $2232))((_entry$7 => {
                     var self = _entry$7;
                     switch (self._) {
                         case 'Litereum.Entry.bond':
-                            var $2251 = self.value;
-                            var $2252 = Maybe$some$($2251);
-                            var $2250 = $2252;
+                            var $2236 = self.value;
+                            var $2237 = Maybe$some$($2236);
+                            var $2235 = $2237;
                             break;
                         case 'Litereum.Entry.data':
-                            var $2253 = Maybe$none;
-                            var $2250 = $2253;
+                            var $2238 = Maybe$none;
+                            var $2235 = $2238;
                             break;
                     };
-                    return $2250;
+                    return $2235;
                 }));
-                var $2246 = $2248;
+                var $2231 = $2233;
                 break;
         };
-        return $2246;
+        return $2231;
     };
     const Litereum$get_bond = x0 => x1 => Litereum$get_bond$(x0, x1);
 
@@ -7869,29 +7826,29 @@ module.exports = (function() {
         var self = _as$3;
         switch (self._) {
             case 'List.cons':
-                var $2255 = self.head;
-                var $2256 = self.tail;
+                var $2240 = self.head;
+                var $2241 = self.tail;
                 var self = _bs$4;
                 switch (self._) {
                     case 'List.cons':
-                        var $2258 = self.head;
-                        var $2259 = self.tail;
-                        var $2260 = List$cons$(Pair$new$($2255, $2258), List$zip$($2256, $2259));
-                        var $2257 = $2260;
+                        var $2243 = self.head;
+                        var $2244 = self.tail;
+                        var $2245 = List$cons$(Pair$new$($2240, $2243), List$zip$($2241, $2244));
+                        var $2242 = $2245;
                         break;
                     case 'List.nil':
-                        var $2261 = List$nil;
-                        var $2257 = $2261;
+                        var $2246 = List$nil;
+                        var $2242 = $2246;
                         break;
                 };
-                var $2254 = $2257;
+                var $2239 = $2242;
                 break;
             case 'List.nil':
-                var $2262 = List$nil;
-                var $2254 = $2262;
+                var $2247 = List$nil;
+                var $2239 = $2247;
                 break;
         };
-        return $2254;
+        return $2239;
     };
     const List$zip = x0 => x1 => List$zip$(x0, x1);
 
@@ -7908,20 +7865,20 @@ module.exports = (function() {
                 var self = _list$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $2263 = self.head;
-                        var $2264 = self.tail;
-                        var self = _cond$2($2263);
+                        var $2248 = self.head;
+                        var $2249 = self.tail;
+                        var self = _cond$2($2248);
                         if (self) {
-                            var $2266 = List$all$(_cond$2, $2264);
-                            var $2265 = $2266;
+                            var $2251 = List$all$(_cond$2, $2249);
+                            var $2250 = $2251;
                         } else {
-                            var $2267 = Bool$false;
-                            var $2265 = $2267;
+                            var $2252 = Bool$false;
+                            var $2250 = $2252;
                         };
-                        return $2265;
+                        return $2250;
                     case 'List.nil':
-                        var $2268 = Bool$true;
-                        return $2268;
+                        var $2253 = Bool$true;
+                        return $2253;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7934,16 +7891,16 @@ module.exports = (function() {
         var self = _m$2;
         switch (self._) {
             case 'Maybe.some':
-                var $2270 = self.value;
-                var $2271 = Maybe$some$(_f$4($2270));
-                var $2269 = $2271;
+                var $2255 = self.value;
+                var $2256 = Maybe$some$(_f$4($2255));
+                var $2254 = $2256;
                 break;
             case 'Maybe.none':
-                var $2272 = Maybe$none;
-                var $2269 = $2272;
+                var $2257 = Maybe$none;
+                var $2254 = $2257;
                 break;
         };
-        return $2269;
+        return $2254;
     };
     const Maybe$mapped = x0 => x1 => Maybe$mapped$(x0, x1);
 
@@ -7960,20 +7917,20 @@ module.exports = (function() {
                 var self = _xs$2;
                 switch (self._) {
                     case 'List.cons':
-                        var $2273 = self.head;
-                        var $2274 = self.tail;
-                        var self = _f$3(_i$4)($2273);
+                        var $2258 = self.head;
+                        var $2259 = self.tail;
+                        var self = _f$3(_i$4)($2258);
                         if (self) {
-                            var $2276 = Maybe$some$(Pair$new$(_i$4, $2273));
-                            var $2275 = $2276;
+                            var $2261 = Maybe$some$(Pair$new$(_i$4, $2258));
+                            var $2260 = $2261;
                         } else {
-                            var $2277 = List$ifind$go$($2274, _f$3, Nat$succ$(_i$4));
-                            var $2275 = $2277;
+                            var $2262 = List$ifind$go$($2259, _f$3, Nat$succ$(_i$4));
+                            var $2260 = $2262;
                         };
-                        return $2275;
+                        return $2260;
                     case 'List.nil':
-                        var $2278 = Maybe$none;
-                        return $2278;
+                        var $2263 = Maybe$none;
+                        return $2263;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -7983,43 +7940,43 @@ module.exports = (function() {
     const List$ifind$go = x0 => x1 => x2 => List$ifind$go$(x0, x1, x2);
 
     function List$ifind$(_f$2, _xs$3) {
-        var $2279 = List$ifind$go$(_xs$3, _f$2, Nat$zero);
-        return $2279;
+        var $2264 = List$ifind$go$(_xs$3, _f$2, Nat$zero);
+        return $2264;
     };
     const List$ifind = x0 => x1 => List$ifind$(x0, x1);
 
     function Litereum$get_constructor_value$(_data$1, _name$2) {
-        var $2280 = Maybe$mapped$(List$ifind$((_i$3 => _ctr$4 => {
-            var $2281 = ((() => {
+        var $2265 = Maybe$mapped$(List$ifind$((_i$3 => _ctr$4 => {
+            var $2266 = ((() => {
                 var self = _ctr$4;
                 switch (self._) {
                     case 'Litereum.Constructor.new':
-                        var $2282 = self.name;
-                        var $2283 = $2282;
-                        return $2283;
+                        var $2267 = self.name;
+                        var $2268 = $2267;
+                        return $2268;
                 };
             })() === _name$2);
-            return $2281;
+            return $2266;
         }), (() => {
             var self = _data$1;
             switch (self._) {
                 case 'Litereum.Data.new':
-                    var $2284 = self.constructors;
-                    var $2285 = $2284;
-                    return $2285;
+                    var $2269 = self.constructors;
+                    var $2270 = $2269;
+                    return $2270;
             };
         })()), (_x$3 => {
             var self = _x$3;
             switch (self._) {
                 case 'Pair.new':
-                    var $2287 = self.snd;
-                    var $2288 = $2287;
-                    var $2286 = $2288;
+                    var $2272 = self.snd;
+                    var $2273 = $2272;
+                    var $2271 = $2273;
                     break;
             };
-            return $2286;
+            return $2271;
         }));
-        return $2280;
+        return $2265;
     };
     const Litereum$get_constructor_value = x0 => x1 => Litereum$get_constructor_value$(x0, x1);
     const Nat$eql = a0 => a1 => (a0 === a1);
@@ -8029,35 +7986,35 @@ module.exports = (function() {
         var self = _as$5;
         switch (self._) {
             case 'List.cons':
-                var $2290 = self.head;
-                var $2291 = self.tail;
+                var $2275 = self.head;
+                var $2276 = self.tail;
                 var self = _bs$6;
                 switch (self._) {
                     case 'List.cons':
-                        var $2293 = self.head;
-                        var $2294 = self.tail;
-                        var $2295 = List$cons$(_f$4($2290)($2293), List$zip_with$(_f$4, $2291, $2294));
-                        var $2292 = $2295;
+                        var $2278 = self.head;
+                        var $2279 = self.tail;
+                        var $2280 = List$cons$(_f$4($2275)($2278), List$zip_with$(_f$4, $2276, $2279));
+                        var $2277 = $2280;
                         break;
                     case 'List.nil':
-                        var $2296 = List$nil;
-                        var $2292 = $2296;
+                        var $2281 = List$nil;
+                        var $2277 = $2281;
                         break;
                 };
-                var $2289 = $2292;
+                var $2274 = $2277;
                 break;
             case 'List.nil':
-                var $2297 = List$nil;
-                var $2289 = $2297;
+                var $2282 = List$nil;
+                var $2274 = $2282;
                 break;
         };
-        return $2289;
+        return $2274;
     };
     const List$zip_with = x0 => x1 => x2 => List$zip_with$(x0, x1, x2);
 
     function List$zipped_with$(_as$3, _bs$4, _f$6) {
-        var $2298 = List$zip_with$(_f$6, _as$3, _bs$4);
-        return $2298;
+        var $2283 = List$zip_with$(_f$6, _as$3, _bs$4);
+        return $2283;
     };
     const List$zipped_with = x0 => x1 => x2 => List$zipped_with$(x0, x1, x2);
 
@@ -8065,26 +8022,26 @@ module.exports = (function() {
         var self = _as$4;
         switch (self._) {
             case 'List.cons':
-                var $2300 = self.head;
-                var $2301 = self.tail;
-                var $2302 = List$cons$(_f$3($2300), List$map$(_f$3, $2301));
-                var $2299 = $2302;
+                var $2285 = self.head;
+                var $2286 = self.tail;
+                var $2287 = List$cons$(_f$3($2285), List$map$(_f$3, $2286));
+                var $2284 = $2287;
                 break;
             case 'List.nil':
-                var $2303 = List$nil;
-                var $2299 = $2303;
+                var $2288 = List$nil;
+                var $2284 = $2288;
                 break;
         };
-        return $2299;
+        return $2284;
     };
     const List$map = x0 => x1 => List$map$(x0, x1);
 
     function List$and$(_list$1) {
-        var $2304 = List$all$((_x$2 => {
-            var $2305 = _x$2;
-            return $2305;
+        var $2289 = List$all$((_x$2 => {
+            var $2290 = _x$2;
+            return $2290;
         }), _list$1);
-        return $2304;
+        return $2289;
     };
     const List$and = x0 => List$and$(x0);
 
@@ -8095,603 +8052,603 @@ module.exports = (function() {
                 var self = _world$2;
                 switch (self._) {
                     case 'Litereum.World.new':
-                        var $2308 = self.name_to_index;
+                        var $2293 = self.name_to_index;
                         var self = _term$3;
                         switch (self._) {
                             case 'Litereum.Term.var':
-                                var $2310 = self.name;
-                                var self = Map$get$($2310, _context$1);
+                                var $2295 = self.name;
+                                var self = Map$get$($2295, _context$1);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2312 = self.value;
-                                        var $2313 = Litereum$equal$($2312, _type$4);
-                                        var $2311 = $2313;
+                                        var $2297 = self.value;
+                                        var $2298 = Litereum$equal$($2297, _type$4);
+                                        var $2296 = $2298;
                                         break;
                                     case 'Maybe.none':
-                                        var $2314 = Bool$false;
-                                        var $2311 = $2314;
+                                        var $2299 = Bool$false;
+                                        var $2296 = $2299;
                                         break;
                                 };
-                                var $2309 = $2311;
+                                var $2294 = $2296;
                                 break;
                             case 'Litereum.Term.call':
-                                var $2315 = self.bond;
-                                var $2316 = self.args;
-                                var _def0$11 = Maybe$is_some$(Map$get$($2315, $2308));
-                                var self = Litereum$get_bond$(_world$2, $2315);
+                                var $2300 = self.bond;
+                                var $2301 = self.args;
+                                var _def0$11 = Maybe$is_some$(Map$get$($2300, $2293));
+                                var self = Litereum$get_bond$(_world$2, $2300);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2318 = self.value;
-                                        var _bond$13 = $2318;
+                                        var $2303 = self.value;
+                                        var _bond$13 = $2303;
                                         var self = _bond$13;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2320 = self.input_types;
-                                                var $2321 = self.output_type;
-                                                var _otyp$20 = Litereum$equal$($2321, _type$4);
-                                                var _args$21 = List$zip$($2316, $2320);
+                                                var $2305 = self.input_types;
+                                                var $2306 = self.output_type;
+                                                var _otyp$20 = Litereum$equal$($2306, _type$4);
+                                                var _args$21 = List$zip$($2301, $2305);
                                                 var _args$22 = List$all$((_x$22 => {
-                                                    var $2323 = Litereum$check$(_context$1, _world$2, (() => {
+                                                    var $2308 = Litereum$check$(_context$1, _world$2, (() => {
                                                         var self = _x$22;
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2324 = self.fst;
-                                                                var $2325 = $2324;
-                                                                return $2325;
+                                                                var $2309 = self.fst;
+                                                                var $2310 = $2309;
+                                                                return $2310;
                                                         };
                                                     })(), (() => {
                                                         var self = _x$22;
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2326 = self.snd;
-                                                                var $2327 = $2326;
-                                                                return $2327;
+                                                                var $2311 = self.snd;
+                                                                var $2312 = $2311;
+                                                                return $2312;
                                                         };
                                                     })());
-                                                    return $2323;
+                                                    return $2308;
                                                 }), _args$21);
-                                                var $2322 = (_def0$11 && (_otyp$20 && _args$22));
-                                                var $2319 = $2322;
+                                                var $2307 = (_def0$11 && (_otyp$20 && _args$22));
+                                                var $2304 = $2307;
                                                 break;
                                         };
-                                        var $2317 = $2319;
+                                        var $2302 = $2304;
                                         break;
                                     case 'Maybe.none':
-                                        var $2328 = Bool$false;
-                                        var $2317 = $2328;
+                                        var $2313 = Bool$false;
+                                        var $2302 = $2313;
                                         break;
                                 };
-                                var $2309 = $2317;
+                                var $2294 = $2302;
                                 break;
                             case 'Litereum.Term.let':
-                                var $2329 = self.name;
-                                var $2330 = self.type;
-                                var $2331 = self.expr;
-                                var $2332 = self.body;
-                                var _def0$13 = Maybe$is_some$(Map$get$($2329, $2308));
-                                var _expr$14 = Litereum$check$(_context$1, _world$2, $2331, $2330);
-                                var _ctx2$15 = Map$set$($2329, $2330, _context$1);
-                                var _cont$16 = Litereum$check$(_ctx2$15, _world$2, $2332, _type$4);
-                                var $2333 = (_def0$13 && (_expr$14 && _cont$16));
-                                var $2309 = $2333;
+                                var $2314 = self.name;
+                                var $2315 = self.type;
+                                var $2316 = self.expr;
+                                var $2317 = self.body;
+                                var _def0$13 = Maybe$is_some$(Map$get$($2314, $2293));
+                                var _expr$14 = Litereum$check$(_context$1, _world$2, $2316, $2315);
+                                var _ctx2$15 = Map$set$($2314, $2315, _context$1);
+                                var _cont$16 = Litereum$check$(_ctx2$15, _world$2, $2317, _type$4);
+                                var $2318 = (_def0$13 && (_expr$14 && _cont$16));
+                                var $2294 = $2318;
                                 break;
                             case 'Litereum.Term.create':
-                                var $2334 = self.ctor;
-                                var $2335 = self.vals;
+                                var $2319 = self.ctor;
+                                var $2320 = self.vals;
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.data':
-                                        var $2337 = self.name;
-                                        var self = Litereum$get_data$(_world$2, $2337);
+                                        var $2322 = self.name;
+                                        var self = Litereum$get_data$(_world$2, $2322);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $2339 = self.value;
-                                                var _data$13 = $2339;
+                                                var $2324 = self.value;
+                                                var _data$13 = $2324;
                                                 var self = _data$13;
                                                 switch (self._) {
                                                     case 'Litereum.Data.new':
-                                                        var self = Litereum$get_constructor_value$(_data$13, $2334);
+                                                        var self = Litereum$get_constructor_value$(_data$13, $2319);
                                                         switch (self._) {
                                                             case 'Maybe.some':
-                                                                var $2342 = self.value;
-                                                                var _ctor$17 = $2342;
+                                                                var $2327 = self.value;
+                                                                var _ctor$17 = $2327;
                                                                 var self = _ctor$17;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $2344 = self.field_types;
-                                                                        var _size$21 = ((list_length($2335)) === (list_length($2344)));
-                                                                        var _vals$22 = List$zip$($2335, $2344);
+                                                                        var $2329 = self.field_types;
+                                                                        var _size$21 = ((list_length($2320)) === (list_length($2329)));
+                                                                        var _vals$22 = List$zip$($2320, $2329);
                                                                         var _vals$23 = List$all$((_x$23 => {
-                                                                            var $2346 = Litereum$check$(_context$1, _world$2, (() => {
+                                                                            var $2331 = Litereum$check$(_context$1, _world$2, (() => {
                                                                                 var self = _x$23;
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2347 = self.fst;
-                                                                                        var $2348 = $2347;
-                                                                                        return $2348;
+                                                                                        var $2332 = self.fst;
+                                                                                        var $2333 = $2332;
+                                                                                        return $2333;
                                                                                 };
                                                                             })(), (() => {
                                                                                 var self = _x$23;
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2349 = self.snd;
-                                                                                        var $2350 = $2349;
-                                                                                        return $2350;
+                                                                                        var $2334 = self.snd;
+                                                                                        var $2335 = $2334;
+                                                                                        return $2335;
                                                                                 };
                                                                             })());
-                                                                            return $2346;
+                                                                            return $2331;
                                                                         }), _vals$22);
-                                                                        var $2345 = (_size$21 && _vals$23);
-                                                                        var $2343 = $2345;
+                                                                        var $2330 = (_size$21 && _vals$23);
+                                                                        var $2328 = $2330;
                                                                         break;
                                                                 };
-                                                                var $2341 = $2343;
+                                                                var $2326 = $2328;
                                                                 break;
                                                             case 'Maybe.none':
-                                                                var $2351 = Bool$false;
-                                                                var $2341 = $2351;
+                                                                var $2336 = Bool$false;
+                                                                var $2326 = $2336;
                                                                 break;
                                                         };
-                                                        var $2340 = $2341;
+                                                        var $2325 = $2326;
                                                         break;
                                                 };
-                                                var $2338 = $2340;
+                                                var $2323 = $2325;
                                                 break;
                                             case 'Maybe.none':
-                                                var $2352 = Bool$false;
-                                                var $2338 = $2352;
+                                                var $2337 = Bool$false;
+                                                var $2323 = $2337;
                                                 break;
                                         };
-                                        var $2336 = $2338;
+                                        var $2321 = $2323;
                                         break;
                                     case 'Litereum.Type.word':
-                                        var $2353 = Bool$false;
-                                        var $2336 = $2353;
+                                        var $2338 = Bool$false;
+                                        var $2321 = $2338;
                                         break;
                                 };
-                                var $2309 = $2336;
+                                var $2294 = $2321;
                                 break;
                             case 'Litereum.Term.match':
-                                var $2354 = self.name;
-                                var $2355 = self.data;
-                                var $2356 = self.cses;
-                                var self = Litereum$get_data$(_world$2, $2355);
+                                var $2339 = self.name;
+                                var $2340 = self.data;
+                                var $2341 = self.cses;
+                                var self = Litereum$get_data$(_world$2, $2340);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2358 = self.value;
-                                        var _data$13 = $2358;
+                                        var $2343 = self.value;
+                                        var _data$13 = $2343;
                                         var self = _data$13;
                                         switch (self._) {
                                             case 'Litereum.Data.new':
-                                                var $2360 = self.constructors;
-                                                var _def0$16 = Maybe$is_some$(Map$get$($2355, $2308));
-                                                var self = Map$get$($2354, _context$1);
+                                                var $2345 = self.constructors;
+                                                var _def0$16 = Maybe$is_some$(Map$get$($2340, $2293));
+                                                var self = Map$get$($2339, _context$1);
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $2362 = self.value;
-                                                        var _size$18 = ((list_length($2356)) === (list_length($2360)));
-                                                        var _expr$19 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2354), Litereum$Type$data$($2355));
-                                                        var _cses$20 = List$zipped_with$($2356, $2360, (_case_body$20 => _case_ctor$21 => {
-                                                            var _nams$22 = List$map$(a1 => (($2354 + ".") + a1), (() => {
+                                                        var $2347 = self.value;
+                                                        var _size$18 = ((list_length($2341)) === (list_length($2345)));
+                                                        var _expr$19 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2339), Litereum$Type$data$($2340));
+                                                        var _cses$20 = List$zipped_with$($2341, $2345, (_case_body$20 => _case_ctor$21 => {
+                                                            var _nams$22 = List$map$(a1 => (($2339 + ".") + a1), (() => {
                                                                 var self = _case_ctor$21;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $2365 = self.field_names;
-                                                                        var $2366 = $2365;
-                                                                        return $2366;
+                                                                        var $2350 = self.field_names;
+                                                                        var $2351 = $2350;
+                                                                        return $2351;
                                                                 };
                                                             })());
                                                             var self = _case_ctor$21;
                                                             switch (self._) {
                                                                 case 'Litereum.Constructor.new':
-                                                                    var $2367 = self.field_types;
-                                                                    var $2368 = $2367;
-                                                                    var _typs$23 = $2368;
+                                                                    var $2352 = self.field_types;
+                                                                    var $2353 = $2352;
+                                                                    var _typs$23 = $2353;
                                                                     break;
                                                             };
                                                             var _ctx2$24 = Litereum$extend$(_context$1, _nams$22, _typs$23);
-                                                            var $2364 = Litereum$check$(_ctx2$24, _world$2, _case_body$20, $2362);
-                                                            return $2364;
+                                                            var $2349 = Litereum$check$(_ctx2$24, _world$2, _case_body$20, $2347);
+                                                            return $2349;
                                                         }));
-                                                        var $2363 = (_def0$16 && (_size$18 && List$and$(_cses$20)));
-                                                        var $2361 = $2363;
+                                                        var $2348 = (_def0$16 && (_size$18 && List$and$(_cses$20)));
+                                                        var $2346 = $2348;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $2369 = Bool$false;
-                                                        var $2361 = $2369;
+                                                        var $2354 = Bool$false;
+                                                        var $2346 = $2354;
                                                         break;
                                                 };
-                                                var $2359 = $2361;
+                                                var $2344 = $2346;
                                                 break;
                                         };
-                                        var $2357 = $2359;
+                                        var $2342 = $2344;
                                         break;
                                     case 'Maybe.none':
-                                        var $2370 = Bool$false;
-                                        var $2357 = $2370;
+                                        var $2355 = Bool$false;
+                                        var $2342 = $2355;
                                         break;
                                 };
-                                var $2309 = $2357;
+                                var $2294 = $2342;
                                 break;
                             case 'Litereum.Term.compare':
-                                var $2371 = self.val0;
-                                var $2372 = self.iflt;
-                                var $2373 = self.ifeq;
-                                var $2374 = self.ifgt;
-                                var _val0$14 = Litereum$check$(_context$1, _world$2, $2371, Litereum$Type$word);
-                                var _val1$15 = Litereum$check$(_context$1, _world$2, $2371, Litereum$Type$word);
-                                var _iflt$16 = Litereum$check$(_context$1, _world$2, $2372, _type$4);
-                                var _ifeq$17 = Litereum$check$(_context$1, _world$2, $2373, _type$4);
-                                var _ifgt$18 = Litereum$check$(_context$1, _world$2, $2374, _type$4);
-                                var $2375 = (_val0$14 && (_val1$15 && (_iflt$16 && (_ifeq$17 && _ifgt$18))));
-                                var $2309 = $2375;
+                                var $2356 = self.val0;
+                                var $2357 = self.iflt;
+                                var $2358 = self.ifeq;
+                                var $2359 = self.ifgt;
+                                var _val0$14 = Litereum$check$(_context$1, _world$2, $2356, Litereum$Type$word);
+                                var _val1$15 = Litereum$check$(_context$1, _world$2, $2356, Litereum$Type$word);
+                                var _iflt$16 = Litereum$check$(_context$1, _world$2, $2357, _type$4);
+                                var _ifeq$17 = Litereum$check$(_context$1, _world$2, $2358, _type$4);
+                                var _ifgt$18 = Litereum$check$(_context$1, _world$2, $2359, _type$4);
+                                var $2360 = (_val0$14 && (_val1$15 && (_iflt$16 && (_ifeq$17 && _ifgt$18))));
+                                var $2294 = $2360;
                                 break;
                             case 'Litereum.Term.operate':
-                                var $2376 = self.val0;
-                                var $2377 = self.val1;
-                                var _val0$12 = Litereum$check$(_context$1, _world$2, $2376, Litereum$Type$word);
-                                var _val1$13 = Litereum$check$(_context$1, _world$2, $2377, Litereum$Type$word);
-                                var $2378 = (_val0$12 && _val1$13);
-                                var $2309 = $2378;
+                                var $2361 = self.val0;
+                                var $2362 = self.val1;
+                                var _val0$12 = Litereum$check$(_context$1, _world$2, $2361, Litereum$Type$word);
+                                var _val1$13 = Litereum$check$(_context$1, _world$2, $2362, Litereum$Type$word);
+                                var $2363 = (_val0$12 && _val1$13);
+                                var $2294 = $2363;
                                 break;
                             case 'Litereum.Term.bind':
-                                var $2379 = self.name;
-                                var $2380 = self.main;
-                                var $2381 = self.body;
-                                var self = Litereum$get_bond$(_world$2, $2379);
+                                var $2364 = self.name;
+                                var $2365 = self.main;
+                                var $2366 = self.body;
+                                var self = Litereum$get_bond$(_world$2, $2364);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2383 = self.value;
-                                        var _bond$13 = $2383;
+                                        var $2368 = self.value;
+                                        var _bond$13 = $2368;
                                         var self = _bond$13;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2385 = self.input_names;
-                                                var $2386 = self.input_types;
-                                                var $2387 = self.output_type;
-                                                var _ctx2$20 = Litereum$extend$(_context$1, $2385, $2386);
-                                                var _main$21 = Litereum$check$(_ctx2$20, _world$2, $2380, $2387);
-                                                var _body$22 = Litereum$check$(_context$1, _world$2, $2381, _type$4);
-                                                var $2388 = (_main$21 && _body$22);
-                                                var $2384 = $2388;
+                                                var $2370 = self.input_names;
+                                                var $2371 = self.input_types;
+                                                var $2372 = self.output_type;
+                                                var _ctx2$20 = Litereum$extend$(_context$1, $2370, $2371);
+                                                var _main$21 = Litereum$check$(_ctx2$20, _world$2, $2365, $2372);
+                                                var _body$22 = Litereum$check$(_context$1, _world$2, $2366, _type$4);
+                                                var $2373 = (_main$21 && _body$22);
+                                                var $2369 = $2373;
                                                 break;
                                         };
-                                        var $2382 = $2384;
+                                        var $2367 = $2369;
                                         break;
                                     case 'Maybe.none':
-                                        var $2389 = Bool$false;
-                                        var $2382 = $2389;
+                                        var $2374 = Bool$false;
+                                        var $2367 = $2374;
                                         break;
                                 };
-                                var $2309 = $2382;
+                                var $2294 = $2367;
                                 break;
                             case 'Litereum.Term.word':
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.word':
-                                        var $2391 = Bool$true;
-                                        var $2390 = $2391;
+                                        var $2376 = Bool$true;
+                                        var $2375 = $2376;
                                         break;
                                     case 'Litereum.Type.data':
-                                        var $2392 = Bool$false;
-                                        var $2390 = $2392;
+                                        var $2377 = Bool$false;
+                                        var $2375 = $2377;
                                         break;
                                 };
-                                var $2309 = $2390;
+                                var $2294 = $2375;
                                 break;
                         };
-                        var $2307 = $2309;
+                        var $2292 = $2294;
                         break;
                 };
-                var $2306 = $2307;
+                var $2291 = $2292;
                 break;
             case 'BBT.bin':
                 var self = _world$2;
                 switch (self._) {
                     case 'Litereum.World.new':
-                        var $2394 = self.name_to_index;
+                        var $2379 = self.name_to_index;
                         var self = _term$3;
                         switch (self._) {
                             case 'Litereum.Term.var':
-                                var $2396 = self.name;
-                                var self = Map$get$($2396, _context$1);
+                                var $2381 = self.name;
+                                var self = Map$get$($2381, _context$1);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2398 = self.value;
-                                        var $2399 = Litereum$equal$($2398, _type$4);
-                                        var $2397 = $2399;
+                                        var $2383 = self.value;
+                                        var $2384 = Litereum$equal$($2383, _type$4);
+                                        var $2382 = $2384;
                                         break;
                                     case 'Maybe.none':
-                                        var $2400 = Bool$false;
-                                        var $2397 = $2400;
+                                        var $2385 = Bool$false;
+                                        var $2382 = $2385;
                                         break;
                                 };
-                                var $2395 = $2397;
+                                var $2380 = $2382;
                                 break;
                             case 'Litereum.Term.call':
-                                var $2401 = self.bond;
-                                var $2402 = self.args;
-                                var _def0$16 = Maybe$is_some$(Map$get$($2401, $2394));
-                                var self = Litereum$get_bond$(_world$2, $2401);
+                                var $2386 = self.bond;
+                                var $2387 = self.args;
+                                var _def0$16 = Maybe$is_some$(Map$get$($2386, $2379));
+                                var self = Litereum$get_bond$(_world$2, $2386);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2404 = self.value;
-                                        var _bond$18 = $2404;
+                                        var $2389 = self.value;
+                                        var _bond$18 = $2389;
                                         var self = _bond$18;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2406 = self.input_types;
-                                                var $2407 = self.output_type;
-                                                var _otyp$25 = Litereum$equal$($2407, _type$4);
-                                                var _args$26 = List$zip$($2402, $2406);
+                                                var $2391 = self.input_types;
+                                                var $2392 = self.output_type;
+                                                var _otyp$25 = Litereum$equal$($2392, _type$4);
+                                                var _args$26 = List$zip$($2387, $2391);
                                                 var _args$27 = List$all$((_x$27 => {
-                                                    var $2409 = Litereum$check$(_context$1, _world$2, (() => {
+                                                    var $2394 = Litereum$check$(_context$1, _world$2, (() => {
                                                         var self = _x$27;
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2410 = self.fst;
-                                                                var $2411 = $2410;
-                                                                return $2411;
+                                                                var $2395 = self.fst;
+                                                                var $2396 = $2395;
+                                                                return $2396;
                                                         };
                                                     })(), (() => {
                                                         var self = _x$27;
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2412 = self.snd;
-                                                                var $2413 = $2412;
-                                                                return $2413;
+                                                                var $2397 = self.snd;
+                                                                var $2398 = $2397;
+                                                                return $2398;
                                                         };
                                                     })());
-                                                    return $2409;
+                                                    return $2394;
                                                 }), _args$26);
-                                                var $2408 = (_def0$16 && (_otyp$25 && _args$27));
-                                                var $2405 = $2408;
+                                                var $2393 = (_def0$16 && (_otyp$25 && _args$27));
+                                                var $2390 = $2393;
                                                 break;
                                         };
-                                        var $2403 = $2405;
+                                        var $2388 = $2390;
                                         break;
                                     case 'Maybe.none':
-                                        var $2414 = Bool$false;
-                                        var $2403 = $2414;
+                                        var $2399 = Bool$false;
+                                        var $2388 = $2399;
                                         break;
                                 };
-                                var $2395 = $2403;
+                                var $2380 = $2388;
                                 break;
                             case 'Litereum.Term.let':
-                                var $2415 = self.name;
-                                var $2416 = self.type;
-                                var $2417 = self.expr;
-                                var $2418 = self.body;
-                                var _def0$18 = Maybe$is_some$(Map$get$($2415, $2394));
-                                var _expr$19 = Litereum$check$(_context$1, _world$2, $2417, $2416);
-                                var _ctx2$20 = Map$set$($2415, $2416, _context$1);
-                                var _cont$21 = Litereum$check$(_ctx2$20, _world$2, $2418, _type$4);
-                                var $2419 = (_def0$18 && (_expr$19 && _cont$21));
-                                var $2395 = $2419;
+                                var $2400 = self.name;
+                                var $2401 = self.type;
+                                var $2402 = self.expr;
+                                var $2403 = self.body;
+                                var _def0$18 = Maybe$is_some$(Map$get$($2400, $2379));
+                                var _expr$19 = Litereum$check$(_context$1, _world$2, $2402, $2401);
+                                var _ctx2$20 = Map$set$($2400, $2401, _context$1);
+                                var _cont$21 = Litereum$check$(_ctx2$20, _world$2, $2403, _type$4);
+                                var $2404 = (_def0$18 && (_expr$19 && _cont$21));
+                                var $2380 = $2404;
                                 break;
                             case 'Litereum.Term.create':
-                                var $2420 = self.ctor;
-                                var $2421 = self.vals;
+                                var $2405 = self.ctor;
+                                var $2406 = self.vals;
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.data':
-                                        var $2423 = self.name;
-                                        var self = Litereum$get_data$(_world$2, $2423);
+                                        var $2408 = self.name;
+                                        var self = Litereum$get_data$(_world$2, $2408);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $2425 = self.value;
-                                                var _data$18 = $2425;
+                                                var $2410 = self.value;
+                                                var _data$18 = $2410;
                                                 var self = _data$18;
                                                 switch (self._) {
                                                     case 'Litereum.Data.new':
-                                                        var self = Litereum$get_constructor_value$(_data$18, $2420);
+                                                        var self = Litereum$get_constructor_value$(_data$18, $2405);
                                                         switch (self._) {
                                                             case 'Maybe.some':
-                                                                var $2428 = self.value;
-                                                                var _ctor$22 = $2428;
+                                                                var $2413 = self.value;
+                                                                var _ctor$22 = $2413;
                                                                 var self = _ctor$22;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $2430 = self.field_types;
-                                                                        var _size$26 = ((list_length($2421)) === (list_length($2430)));
-                                                                        var _vals$27 = List$zip$($2421, $2430);
+                                                                        var $2415 = self.field_types;
+                                                                        var _size$26 = ((list_length($2406)) === (list_length($2415)));
+                                                                        var _vals$27 = List$zip$($2406, $2415);
                                                                         var _vals$28 = List$all$((_x$28 => {
-                                                                            var $2432 = Litereum$check$(_context$1, _world$2, (() => {
+                                                                            var $2417 = Litereum$check$(_context$1, _world$2, (() => {
                                                                                 var self = _x$28;
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2433 = self.fst;
-                                                                                        var $2434 = $2433;
-                                                                                        return $2434;
+                                                                                        var $2418 = self.fst;
+                                                                                        var $2419 = $2418;
+                                                                                        return $2419;
                                                                                 };
                                                                             })(), (() => {
                                                                                 var self = _x$28;
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2435 = self.snd;
-                                                                                        var $2436 = $2435;
-                                                                                        return $2436;
+                                                                                        var $2420 = self.snd;
+                                                                                        var $2421 = $2420;
+                                                                                        return $2421;
                                                                                 };
                                                                             })());
-                                                                            return $2432;
+                                                                            return $2417;
                                                                         }), _vals$27);
-                                                                        var $2431 = (_size$26 && _vals$28);
-                                                                        var $2429 = $2431;
+                                                                        var $2416 = (_size$26 && _vals$28);
+                                                                        var $2414 = $2416;
                                                                         break;
                                                                 };
-                                                                var $2427 = $2429;
+                                                                var $2412 = $2414;
                                                                 break;
                                                             case 'Maybe.none':
-                                                                var $2437 = Bool$false;
-                                                                var $2427 = $2437;
+                                                                var $2422 = Bool$false;
+                                                                var $2412 = $2422;
                                                                 break;
                                                         };
-                                                        var $2426 = $2427;
+                                                        var $2411 = $2412;
                                                         break;
                                                 };
-                                                var $2424 = $2426;
+                                                var $2409 = $2411;
                                                 break;
                                             case 'Maybe.none':
-                                                var $2438 = Bool$false;
-                                                var $2424 = $2438;
+                                                var $2423 = Bool$false;
+                                                var $2409 = $2423;
                                                 break;
                                         };
-                                        var $2422 = $2424;
+                                        var $2407 = $2409;
                                         break;
                                     case 'Litereum.Type.word':
-                                        var $2439 = Bool$false;
-                                        var $2422 = $2439;
+                                        var $2424 = Bool$false;
+                                        var $2407 = $2424;
                                         break;
                                 };
-                                var $2395 = $2422;
+                                var $2380 = $2407;
                                 break;
                             case 'Litereum.Term.match':
-                                var $2440 = self.name;
-                                var $2441 = self.data;
-                                var $2442 = self.cses;
-                                var self = Litereum$get_data$(_world$2, $2441);
+                                var $2425 = self.name;
+                                var $2426 = self.data;
+                                var $2427 = self.cses;
+                                var self = Litereum$get_data$(_world$2, $2426);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2444 = self.value;
-                                        var _data$18 = $2444;
+                                        var $2429 = self.value;
+                                        var _data$18 = $2429;
                                         var self = _data$18;
                                         switch (self._) {
                                             case 'Litereum.Data.new':
-                                                var $2446 = self.constructors;
-                                                var _def0$21 = Maybe$is_some$(Map$get$($2441, $2394));
-                                                var self = Map$get$($2440, _context$1);
+                                                var $2431 = self.constructors;
+                                                var _def0$21 = Maybe$is_some$(Map$get$($2426, $2379));
+                                                var self = Map$get$($2425, _context$1);
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $2448 = self.value;
-                                                        var _size$23 = ((list_length($2442)) === (list_length($2446)));
-                                                        var _expr$24 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2440), Litereum$Type$data$($2441));
-                                                        var _cses$25 = List$zipped_with$($2442, $2446, (_case_body$25 => _case_ctor$26 => {
-                                                            var _nams$27 = List$map$(a1 => (($2440 + ".") + a1), (() => {
+                                                        var $2433 = self.value;
+                                                        var _size$23 = ((list_length($2427)) === (list_length($2431)));
+                                                        var _expr$24 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2425), Litereum$Type$data$($2426));
+                                                        var _cses$25 = List$zipped_with$($2427, $2431, (_case_body$25 => _case_ctor$26 => {
+                                                            var _nams$27 = List$map$(a1 => (($2425 + ".") + a1), (() => {
                                                                 var self = _case_ctor$26;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $2451 = self.field_names;
-                                                                        var $2452 = $2451;
-                                                                        return $2452;
+                                                                        var $2436 = self.field_names;
+                                                                        var $2437 = $2436;
+                                                                        return $2437;
                                                                 };
                                                             })());
                                                             var self = _case_ctor$26;
                                                             switch (self._) {
                                                                 case 'Litereum.Constructor.new':
-                                                                    var $2453 = self.field_types;
-                                                                    var $2454 = $2453;
-                                                                    var _typs$28 = $2454;
+                                                                    var $2438 = self.field_types;
+                                                                    var $2439 = $2438;
+                                                                    var _typs$28 = $2439;
                                                                     break;
                                                             };
                                                             var _ctx2$29 = Litereum$extend$(_context$1, _nams$27, _typs$28);
-                                                            var $2450 = Litereum$check$(_ctx2$29, _world$2, _case_body$25, $2448);
-                                                            return $2450;
+                                                            var $2435 = Litereum$check$(_ctx2$29, _world$2, _case_body$25, $2433);
+                                                            return $2435;
                                                         }));
-                                                        var $2449 = (_def0$21 && (_size$23 && List$and$(_cses$25)));
-                                                        var $2447 = $2449;
+                                                        var $2434 = (_def0$21 && (_size$23 && List$and$(_cses$25)));
+                                                        var $2432 = $2434;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $2455 = Bool$false;
-                                                        var $2447 = $2455;
+                                                        var $2440 = Bool$false;
+                                                        var $2432 = $2440;
                                                         break;
                                                 };
-                                                var $2445 = $2447;
+                                                var $2430 = $2432;
                                                 break;
                                         };
-                                        var $2443 = $2445;
+                                        var $2428 = $2430;
                                         break;
                                     case 'Maybe.none':
-                                        var $2456 = Bool$false;
-                                        var $2443 = $2456;
+                                        var $2441 = Bool$false;
+                                        var $2428 = $2441;
                                         break;
                                 };
-                                var $2395 = $2443;
+                                var $2380 = $2428;
                                 break;
                             case 'Litereum.Term.compare':
-                                var $2457 = self.val0;
-                                var $2458 = self.iflt;
-                                var $2459 = self.ifeq;
-                                var $2460 = self.ifgt;
-                                var _val0$19 = Litereum$check$(_context$1, _world$2, $2457, Litereum$Type$word);
-                                var _val1$20 = Litereum$check$(_context$1, _world$2, $2457, Litereum$Type$word);
-                                var _iflt$21 = Litereum$check$(_context$1, _world$2, $2458, _type$4);
-                                var _ifeq$22 = Litereum$check$(_context$1, _world$2, $2459, _type$4);
-                                var _ifgt$23 = Litereum$check$(_context$1, _world$2, $2460, _type$4);
-                                var $2461 = (_val0$19 && (_val1$20 && (_iflt$21 && (_ifeq$22 && _ifgt$23))));
-                                var $2395 = $2461;
+                                var $2442 = self.val0;
+                                var $2443 = self.iflt;
+                                var $2444 = self.ifeq;
+                                var $2445 = self.ifgt;
+                                var _val0$19 = Litereum$check$(_context$1, _world$2, $2442, Litereum$Type$word);
+                                var _val1$20 = Litereum$check$(_context$1, _world$2, $2442, Litereum$Type$word);
+                                var _iflt$21 = Litereum$check$(_context$1, _world$2, $2443, _type$4);
+                                var _ifeq$22 = Litereum$check$(_context$1, _world$2, $2444, _type$4);
+                                var _ifgt$23 = Litereum$check$(_context$1, _world$2, $2445, _type$4);
+                                var $2446 = (_val0$19 && (_val1$20 && (_iflt$21 && (_ifeq$22 && _ifgt$23))));
+                                var $2380 = $2446;
                                 break;
                             case 'Litereum.Term.operate':
-                                var $2462 = self.val0;
-                                var $2463 = self.val1;
-                                var _val0$17 = Litereum$check$(_context$1, _world$2, $2462, Litereum$Type$word);
-                                var _val1$18 = Litereum$check$(_context$1, _world$2, $2463, Litereum$Type$word);
-                                var $2464 = (_val0$17 && _val1$18);
-                                var $2395 = $2464;
+                                var $2447 = self.val0;
+                                var $2448 = self.val1;
+                                var _val0$17 = Litereum$check$(_context$1, _world$2, $2447, Litereum$Type$word);
+                                var _val1$18 = Litereum$check$(_context$1, _world$2, $2448, Litereum$Type$word);
+                                var $2449 = (_val0$17 && _val1$18);
+                                var $2380 = $2449;
                                 break;
                             case 'Litereum.Term.bind':
-                                var $2465 = self.name;
-                                var $2466 = self.main;
-                                var $2467 = self.body;
-                                var self = Litereum$get_bond$(_world$2, $2465);
+                                var $2450 = self.name;
+                                var $2451 = self.main;
+                                var $2452 = self.body;
+                                var self = Litereum$get_bond$(_world$2, $2450);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2469 = self.value;
-                                        var _bond$18 = $2469;
+                                        var $2454 = self.value;
+                                        var _bond$18 = $2454;
                                         var self = _bond$18;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2471 = self.input_names;
-                                                var $2472 = self.input_types;
-                                                var $2473 = self.output_type;
-                                                var _ctx2$25 = Litereum$extend$(_context$1, $2471, $2472);
-                                                var _main$26 = Litereum$check$(_ctx2$25, _world$2, $2466, $2473);
-                                                var _body$27 = Litereum$check$(_context$1, _world$2, $2467, _type$4);
-                                                var $2474 = (_main$26 && _body$27);
-                                                var $2470 = $2474;
+                                                var $2456 = self.input_names;
+                                                var $2457 = self.input_types;
+                                                var $2458 = self.output_type;
+                                                var _ctx2$25 = Litereum$extend$(_context$1, $2456, $2457);
+                                                var _main$26 = Litereum$check$(_ctx2$25, _world$2, $2451, $2458);
+                                                var _body$27 = Litereum$check$(_context$1, _world$2, $2452, _type$4);
+                                                var $2459 = (_main$26 && _body$27);
+                                                var $2455 = $2459;
                                                 break;
                                         };
-                                        var $2468 = $2470;
+                                        var $2453 = $2455;
                                         break;
                                     case 'Maybe.none':
-                                        var $2475 = Bool$false;
-                                        var $2468 = $2475;
+                                        var $2460 = Bool$false;
+                                        var $2453 = $2460;
                                         break;
                                 };
-                                var $2395 = $2468;
+                                var $2380 = $2453;
                                 break;
                             case 'Litereum.Term.word':
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.word':
-                                        var $2477 = Bool$true;
-                                        var $2476 = $2477;
+                                        var $2462 = Bool$true;
+                                        var $2461 = $2462;
                                         break;
                                     case 'Litereum.Type.data':
-                                        var $2478 = Bool$false;
-                                        var $2476 = $2478;
+                                        var $2463 = Bool$false;
+                                        var $2461 = $2463;
                                         break;
                                 };
-                                var $2395 = $2476;
+                                var $2380 = $2461;
                                 break;
                         };
-                        var $2393 = $2395;
+                        var $2378 = $2380;
                         break;
                 };
-                var $2306 = $2393;
+                var $2291 = $2378;
                 break;
         };
-        return $2306;
+        return $2291;
     };
     const Litereum$check = x0 => x1 => x2 => x3 => Litereum$check$(x0, x1, x2, x3);
 
     function Litereum$Runtime$(_A$1) {
-        var $2479 = null;
-        return $2479;
+        var $2464 = null;
+        return $2464;
     };
     const Litereum$Runtime = x0 => Litereum$Runtime$(x0);
 
     function Litereum$Runtime$new$(_world$2, _subst$3, _fresh$4, _gas$5, _term$6) {
-        var $2480 = ({
+        var $2465 = ({
             _: 'Litereum.Runtime.new',
             'world': _world$2,
             'subst': _subst$3,
@@ -8699,24 +8656,24 @@ module.exports = (function() {
             'gas': _gas$5,
             'term': _term$6
         });
-        return $2480;
+        return $2465;
     };
     const Litereum$Runtime$new = x0 => x1 => x2 => x3 => x4 => Litereum$Runtime$new$(x0, x1, x2, x3, x4);
 
     function Triple$(_A$1, _B$2, _C$3) {
-        var $2481 = null;
-        return $2481;
+        var $2466 = null;
+        return $2466;
     };
     const Triple = x0 => x1 => x2 => Triple$(x0, x1, x2);
 
     function Triple$new$(_fst$4, _snd$5, _trd$6) {
-        var $2482 = ({
+        var $2467 = ({
             _: 'Triple.new',
             'fst': _fst$4,
             'snd': _snd$5,
             'trd': _trd$6
         });
-        return $2482;
+        return $2467;
     };
     const Triple$new = x0 => x1 => x2 => Triple$new$(x0, x1, x2);
 
@@ -8724,8 +8681,8 @@ module.exports = (function() {
         var _new_name$4 = ("$" + Nat$show$(_fresh$2));
         var _table$5 = Map$set$(_old_name$3, _new_name$4, _table$1);
         var _fresh$6 = Nat$succ$(_fresh$2);
-        var $2483 = Triple$new$(_table$5, _fresh$6, _new_name$4);
-        return $2483;
+        var $2468 = Triple$new$(_table$5, _fresh$6, _new_name$4);
+        return $2468;
     };
     const Litereum$rename = x0 => x1 => x2 => Litereum$rename$(x0, x1, x2);
 
@@ -8733,35 +8690,35 @@ module.exports = (function() {
         var self = _names$3;
         switch (self._) {
             case 'List.cons':
-                var $2485 = self.head;
-                var $2486 = self.tail;
-                var self = Litereum$rename$(_table$1, _fresh$2, $2485);
+                var $2470 = self.head;
+                var $2471 = self.tail;
+                var self = Litereum$rename$(_table$1, _fresh$2, $2470);
                 switch (self._) {
                     case 'Triple.new':
-                        var $2488 = self.fst;
-                        var $2489 = self.snd;
-                        var $2490 = self.trd;
-                        var self = Litereum$rename$many$($2488, $2489, $2486);
+                        var $2473 = self.fst;
+                        var $2474 = self.snd;
+                        var $2475 = self.trd;
+                        var self = Litereum$rename$many$($2473, $2474, $2471);
                         switch (self._) {
                             case 'Triple.new':
-                                var $2492 = self.fst;
-                                var $2493 = self.snd;
-                                var $2494 = self.trd;
-                                var $2495 = Triple$new$($2492, $2493, List$cons$($2490, $2494));
-                                var $2491 = $2495;
+                                var $2477 = self.fst;
+                                var $2478 = self.snd;
+                                var $2479 = self.trd;
+                                var $2480 = Triple$new$($2477, $2478, List$cons$($2475, $2479));
+                                var $2476 = $2480;
                                 break;
                         };
-                        var $2487 = $2491;
+                        var $2472 = $2476;
                         break;
                 };
-                var $2484 = $2487;
+                var $2469 = $2472;
                 break;
             case 'List.nil':
-                var $2496 = Triple$new$(_table$1, _fresh$2, List$nil);
-                var $2484 = $2496;
+                var $2481 = Triple$new$(_table$1, _fresh$2, List$nil);
+                var $2469 = $2481;
                 break;
         };
-        return $2484;
+        return $2469;
     };
     const Litereum$rename$many = x0 => x1 => x2 => Litereum$rename$many$(x0, x1, x2);
 
@@ -8769,33 +8726,33 @@ module.exports = (function() {
         var self = _terms$4;
         switch (self._) {
             case 'List.cons':
-                var $2498 = self.head;
-                var $2499 = self.tail;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2498);
+                var $2483 = self.head;
+                var $2484 = self.tail;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2483);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2501 = self.fst;
-                        var $2502 = self.snd;
-                        var self = Litereum$sanitize$many$(_world$1, _table$2, $2501, $2499);
+                        var $2486 = self.fst;
+                        var $2487 = self.snd;
+                        var self = Litereum$sanitize$many$(_world$1, _table$2, $2486, $2484);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2504 = self.fst;
-                                var $2505 = self.snd;
-                                var $2506 = Pair$new$($2504, List$cons$($2502, $2505));
-                                var $2503 = $2506;
+                                var $2489 = self.fst;
+                                var $2490 = self.snd;
+                                var $2491 = Pair$new$($2489, List$cons$($2487, $2490));
+                                var $2488 = $2491;
                                 break;
                         };
-                        var $2500 = $2503;
+                        var $2485 = $2488;
                         break;
                 };
-                var $2497 = $2500;
+                var $2482 = $2485;
                 break;
             case 'List.nil':
-                var $2507 = Pair$new$(_fresh$3, List$nil);
-                var $2497 = $2507;
+                var $2492 = Pair$new$(_fresh$3, List$nil);
+                var $2482 = $2492;
                 break;
         };
-        return $2497;
+        return $2482;
     };
     const Litereum$sanitize$many = x0 => x1 => x2 => x3 => Litereum$sanitize$many$(x0, x1, x2, x3);
 
@@ -8803,24 +8760,24 @@ module.exports = (function() {
         var self = Litereum$get_data$(_world$1, _name$2);
         switch (self._) {
             case 'Maybe.some':
-                var $2509 = self.value;
-                var $2510 = Maybe$some$((() => {
-                    var self = $2509;
+                var $2494 = self.value;
+                var $2495 = Maybe$some$((() => {
+                    var self = $2494;
                     switch (self._) {
                         case 'Litereum.Data.new':
-                            var $2511 = self.constructors;
-                            var $2512 = $2511;
-                            return $2512;
+                            var $2496 = self.constructors;
+                            var $2497 = $2496;
+                            return $2497;
                     };
                 })());
-                var $2508 = $2510;
+                var $2493 = $2495;
                 break;
             case 'Maybe.none':
-                var $2513 = Maybe$none;
-                var $2508 = $2513;
+                var $2498 = Maybe$none;
+                var $2493 = $2498;
                 break;
         };
-        return $2508;
+        return $2493;
     };
     const Litereum$get_constructors = x0 => x1 => Litereum$get_constructors$(x0, x1);
     const List$for = a0 => a1 => a2 => (list_for(a0)(a1)(a2));
@@ -8829,73 +8786,73 @@ module.exports = (function() {
         var self = _ctrs$6;
         switch (self._) {
             case 'List.cons':
-                var $2515 = self.head;
-                var $2516 = self.tail;
+                var $2500 = self.head;
+                var $2501 = self.tail;
                 var self = _cses$7;
                 switch (self._) {
                     case 'List.cons':
-                        var $2518 = self.head;
-                        var $2519 = self.tail;
+                        var $2503 = self.head;
+                        var $2504 = self.tail;
                         var _new_table$12 = _table$2;
                         var _new_table$13 = (() => {
-                            var $2522 = _new_table$12;
-                            var self = $2515;
+                            var $2507 = _new_table$12;
+                            var self = $2500;
                             switch (self._) {
                                 case 'Litereum.Constructor.new':
-                                    var $2524 = self.field_names;
-                                    var $2525 = $2524;
-                                    var $2523 = $2525;
+                                    var $2509 = self.field_names;
+                                    var $2510 = $2509;
+                                    var $2508 = $2510;
                                     break;
                             };
-                            let _new_table$14 = $2522;
+                            let _new_table$14 = $2507;
                             let _field$13;
-                            while ($2523._ === 'List.cons') {
-                                _field$13 = $2523.head;
-                                var $2522 = Map$set$((_old_name$4 + ("." + _field$13)), (_new_name$5 + ("." + _field$13)), _new_table$14);
-                                _new_table$14 = $2522;
-                                $2523 = $2523.tail;
+                            while ($2508._ === 'List.cons') {
+                                _field$13 = $2508.head;
+                                var $2507 = Map$set$((_old_name$4 + ("." + _field$13)), (_new_name$5 + ("." + _field$13)), _new_table$14);
+                                _new_table$14 = $2507;
+                                $2508 = $2508.tail;
                             }
                             return _new_table$14;
                         })();
-                        var self = Litereum$sanitize$(_world$1, _new_table$13, _fresh$3, $2518);
+                        var self = Litereum$sanitize$(_world$1, _new_table$13, _fresh$3, $2503);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2526 = self.fst;
-                                var $2527 = self.snd;
-                                var self = Litereum$sanitize$cases$(_world$1, _table$2, $2526, _old_name$4, _new_name$5, $2516, $2519);
+                                var $2511 = self.fst;
+                                var $2512 = self.snd;
+                                var self = Litereum$sanitize$cases$(_world$1, _table$2, $2511, _old_name$4, _new_name$5, $2501, $2504);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2529 = self.fst;
-                                        var $2530 = self.snd;
-                                        var $2531 = Pair$new$($2529, List$cons$($2527, $2530));
-                                        var $2528 = $2531;
+                                        var $2514 = self.fst;
+                                        var $2515 = self.snd;
+                                        var $2516 = Pair$new$($2514, List$cons$($2512, $2515));
+                                        var $2513 = $2516;
                                         break;
                                 };
-                                var $2520 = $2528;
+                                var $2505 = $2513;
                                 break;
                         };
-                        var $2517 = $2520;
+                        var $2502 = $2505;
                         break;
                     case 'List.nil':
-                        var $2532 = Pair$new$(_fresh$3, List$nil);
-                        var $2517 = $2532;
+                        var $2517 = Pair$new$(_fresh$3, List$nil);
+                        var $2502 = $2517;
                         break;
                 };
-                var $2514 = $2517;
+                var $2499 = $2502;
                 break;
             case 'List.nil':
                 var self = _cses$7;
                 switch (self._) {
                     case 'List.nil':
                     case 'List.cons':
-                        var $2534 = Pair$new$(_fresh$3, List$nil);
-                        var $2533 = $2534;
+                        var $2519 = Pair$new$(_fresh$3, List$nil);
+                        var $2518 = $2519;
                         break;
                 };
-                var $2514 = $2533;
+                var $2499 = $2518;
                 break;
         };
-        return $2514;
+        return $2499;
     };
     const Litereum$sanitize$cases = x0 => x1 => x2 => x3 => x4 => x5 => x6 => Litereum$sanitize$cases$(x0, x1, x2, x3, x4, x5, x6);
 
@@ -8903,228 +8860,228 @@ module.exports = (function() {
         var self = _term$4;
         switch (self._) {
             case 'Litereum.Term.var':
-                var $2536 = self.name;
-                var _term$6 = Litereum$Term$var$(Maybe$default$(Map$get$($2536, _table$2), $2536));
-                var $2537 = Pair$new$(_fresh$3, _term$6);
-                var $2535 = $2537;
+                var $2521 = self.name;
+                var _term$6 = Litereum$Term$var$(Maybe$default$(Map$get$($2521, _table$2), $2521));
+                var $2522 = Pair$new$(_fresh$3, _term$6);
+                var $2520 = $2522;
                 break;
             case 'Litereum.Term.call':
-                var $2538 = self.bond;
-                var $2539 = self.args;
-                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2539);
+                var $2523 = self.bond;
+                var $2524 = self.args;
+                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2524);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2541 = self.fst;
-                        var $2542 = self.snd;
-                        var $2543 = Pair$new$($2541, Litereum$Term$call$($2538, $2542));
-                        var $2540 = $2543;
+                        var $2526 = self.fst;
+                        var $2527 = self.snd;
+                        var $2528 = Pair$new$($2526, Litereum$Term$call$($2523, $2527));
+                        var $2525 = $2528;
                         break;
                 };
-                var $2535 = $2540;
+                var $2520 = $2525;
                 break;
             case 'Litereum.Term.let':
-                var $2544 = self.name;
-                var $2545 = self.type;
-                var $2546 = self.expr;
-                var $2547 = self.body;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2546);
+                var $2529 = self.name;
+                var $2530 = self.type;
+                var $2531 = self.expr;
+                var $2532 = self.body;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2531);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2549 = self.fst;
-                        var $2550 = self.snd;
-                        var self = Litereum$rename$(_table$2, $2549, $2544);
+                        var $2534 = self.fst;
+                        var $2535 = self.snd;
+                        var self = Litereum$rename$(_table$2, $2534, $2529);
                         switch (self._) {
                             case 'Triple.new':
-                                var $2552 = self.fst;
-                                var $2553 = self.snd;
-                                var $2554 = self.trd;
-                                var self = Litereum$sanitize$(_world$1, $2552, $2553, $2547);
+                                var $2537 = self.fst;
+                                var $2538 = self.snd;
+                                var $2539 = self.trd;
+                                var self = Litereum$sanitize$(_world$1, $2537, $2538, $2532);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2556 = self.fst;
-                                        var $2557 = self.snd;
-                                        var $2558 = Pair$new$($2556, Litereum$Term$let$($2554, $2545, $2550, $2557));
-                                        var $2555 = $2558;
+                                        var $2541 = self.fst;
+                                        var $2542 = self.snd;
+                                        var $2543 = Pair$new$($2541, Litereum$Term$let$($2539, $2530, $2535, $2542));
+                                        var $2540 = $2543;
                                         break;
                                 };
-                                var $2551 = $2555;
+                                var $2536 = $2540;
                                 break;
                         };
-                        var $2548 = $2551;
+                        var $2533 = $2536;
                         break;
                 };
-                var $2535 = $2548;
+                var $2520 = $2533;
                 break;
             case 'Litereum.Term.create':
-                var $2559 = self.ctor;
-                var $2560 = self.vals;
-                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2560);
+                var $2544 = self.ctor;
+                var $2545 = self.vals;
+                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2545);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2562 = self.fst;
-                        var $2563 = self.snd;
-                        var $2564 = Pair$new$($2562, Litereum$Term$create$($2559, $2563));
-                        var $2561 = $2564;
+                        var $2547 = self.fst;
+                        var $2548 = self.snd;
+                        var $2549 = Pair$new$($2547, Litereum$Term$create$($2544, $2548));
+                        var $2546 = $2549;
                         break;
                 };
-                var $2535 = $2561;
+                var $2520 = $2546;
                 break;
             case 'Litereum.Term.match':
-                var $2565 = self.name;
-                var $2566 = self.data;
-                var $2567 = self.cses;
-                var _ctrs$8 = Maybe$default$(Litereum$get_constructors$(_world$1, $2566), List$nil);
-                var _old_name$9 = $2565;
-                var _new_name$10 = Maybe$default$(Map$get$($2565, _table$2), $2565);
-                var self = Litereum$sanitize$cases$(_world$1, _table$2, _fresh$3, _old_name$9, _new_name$10, _ctrs$8, $2567);
+                var $2550 = self.name;
+                var $2551 = self.data;
+                var $2552 = self.cses;
+                var _ctrs$8 = Maybe$default$(Litereum$get_constructors$(_world$1, $2551), List$nil);
+                var _old_name$9 = $2550;
+                var _new_name$10 = Maybe$default$(Map$get$($2550, _table$2), $2550);
+                var self = Litereum$sanitize$cases$(_world$1, _table$2, _fresh$3, _old_name$9, _new_name$10, _ctrs$8, $2552);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2569 = self.fst;
-                        var $2570 = self.snd;
-                        var $2571 = Pair$new$($2569, Litereum$Term$match$(_new_name$10, $2566, $2570));
-                        var $2568 = $2571;
+                        var $2554 = self.fst;
+                        var $2555 = self.snd;
+                        var $2556 = Pair$new$($2554, Litereum$Term$match$(_new_name$10, $2551, $2555));
+                        var $2553 = $2556;
                         break;
                 };
-                var $2535 = $2568;
+                var $2520 = $2553;
                 break;
             case 'Litereum.Term.word':
-                var $2572 = self.numb;
-                var $2573 = Pair$new$(_fresh$3, Litereum$Term$word$($2572));
-                var $2535 = $2573;
+                var $2557 = self.numb;
+                var $2558 = Pair$new$(_fresh$3, Litereum$Term$word$($2557));
+                var $2520 = $2558;
                 break;
             case 'Litereum.Term.compare':
-                var $2574 = self.val0;
-                var $2575 = self.val1;
-                var $2576 = self.iflt;
-                var $2577 = self.ifeq;
-                var $2578 = self.ifgt;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2574);
+                var $2559 = self.val0;
+                var $2560 = self.val1;
+                var $2561 = self.iflt;
+                var $2562 = self.ifeq;
+                var $2563 = self.ifgt;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2559);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2580 = self.fst;
-                        var $2581 = self.snd;
-                        var self = Litereum$sanitize$(_world$1, _table$2, $2580, $2575);
+                        var $2565 = self.fst;
+                        var $2566 = self.snd;
+                        var self = Litereum$sanitize$(_world$1, _table$2, $2565, $2560);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2583 = self.fst;
-                                var $2584 = self.snd;
-                                var self = Litereum$sanitize$(_world$1, _table$2, $2583, $2576);
+                                var $2568 = self.fst;
+                                var $2569 = self.snd;
+                                var self = Litereum$sanitize$(_world$1, _table$2, $2568, $2561);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2586 = self.fst;
-                                        var $2587 = self.snd;
-                                        var self = Litereum$sanitize$(_world$1, _table$2, $2586, $2577);
+                                        var $2571 = self.fst;
+                                        var $2572 = self.snd;
+                                        var self = Litereum$sanitize$(_world$1, _table$2, $2571, $2562);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $2589 = self.fst;
-                                                var $2590 = self.snd;
-                                                var self = Litereum$sanitize$(_world$1, _table$2, $2589, $2578);
+                                                var $2574 = self.fst;
+                                                var $2575 = self.snd;
+                                                var self = Litereum$sanitize$(_world$1, _table$2, $2574, $2563);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $2592 = self.fst;
-                                                        var $2593 = self.snd;
-                                                        var $2594 = Pair$new$($2592, Litereum$Term$compare$($2581, $2584, $2587, $2590, $2593));
-                                                        var $2591 = $2594;
+                                                        var $2577 = self.fst;
+                                                        var $2578 = self.snd;
+                                                        var $2579 = Pair$new$($2577, Litereum$Term$compare$($2566, $2569, $2572, $2575, $2578));
+                                                        var $2576 = $2579;
                                                         break;
                                                 };
-                                                var $2588 = $2591;
+                                                var $2573 = $2576;
                                                 break;
                                         };
-                                        var $2585 = $2588;
+                                        var $2570 = $2573;
                                         break;
                                 };
-                                var $2582 = $2585;
+                                var $2567 = $2570;
                                 break;
                         };
-                        var $2579 = $2582;
+                        var $2564 = $2567;
                         break;
                 };
-                var $2535 = $2579;
+                var $2520 = $2564;
                 break;
             case 'Litereum.Term.operate':
-                var $2595 = self.oper;
-                var $2596 = self.val0;
-                var $2597 = self.val1;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2596);
+                var $2580 = self.oper;
+                var $2581 = self.val0;
+                var $2582 = self.val1;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2581);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2599 = self.fst;
-                        var $2600 = self.snd;
-                        var self = Litereum$sanitize$(_world$1, _table$2, $2599, $2597);
+                        var $2584 = self.fst;
+                        var $2585 = self.snd;
+                        var self = Litereum$sanitize$(_world$1, _table$2, $2584, $2582);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2602 = self.fst;
-                                var $2603 = self.snd;
-                                var $2604 = Pair$new$($2602, Litereum$Term$operate$($2595, $2600, $2603));
-                                var $2601 = $2604;
+                                var $2587 = self.fst;
+                                var $2588 = self.snd;
+                                var $2589 = Pair$new$($2587, Litereum$Term$operate$($2580, $2585, $2588));
+                                var $2586 = $2589;
                                 break;
                         };
-                        var $2598 = $2601;
+                        var $2583 = $2586;
                         break;
                 };
-                var $2535 = $2598;
+                var $2520 = $2583;
                 break;
             case 'Litereum.Term.bind':
-                var $2605 = self.name;
-                var $2606 = self.main;
-                var $2607 = self.body;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2606);
+                var $2590 = self.name;
+                var $2591 = self.main;
+                var $2592 = self.body;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2591);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2609 = self.fst;
-                        var $2610 = self.snd;
-                        var self = Litereum$sanitize$(_world$1, _table$2, $2609, $2607);
+                        var $2594 = self.fst;
+                        var $2595 = self.snd;
+                        var self = Litereum$sanitize$(_world$1, _table$2, $2594, $2592);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2612 = self.fst;
-                                var $2613 = self.snd;
-                                var $2614 = Pair$new$($2612, Litereum$Term$bind$($2605, $2610, $2613));
-                                var $2611 = $2614;
+                                var $2597 = self.fst;
+                                var $2598 = self.snd;
+                                var $2599 = Pair$new$($2597, Litereum$Term$bind$($2590, $2595, $2598));
+                                var $2596 = $2599;
                                 break;
                         };
-                        var $2608 = $2611;
+                        var $2593 = $2596;
                         break;
                 };
-                var $2535 = $2608;
+                var $2520 = $2593;
                 break;
         };
-        return $2535;
+        return $2520;
     };
     const Litereum$sanitize = x0 => x1 => x2 => x3 => Litereum$sanitize$(x0, x1, x2, x3);
     const U64$from_nat = a0 => (a0 & 0xFFFFFFFFFFFFFFFFn);
 
     function Litereum$get_constructor_index$(_data$1, _name$2) {
-        var $2615 = Maybe$mapped$(List$ifind$((_i$3 => _ctr$4 => {
-            var $2616 = ((() => {
+        var $2600 = Maybe$mapped$(List$ifind$((_i$3 => _ctr$4 => {
+            var $2601 = ((() => {
                 var self = _ctr$4;
                 switch (self._) {
                     case 'Litereum.Constructor.new':
-                        var $2617 = self.name;
-                        var $2618 = $2617;
-                        return $2618;
+                        var $2602 = self.name;
+                        var $2603 = $2602;
+                        return $2603;
                 };
             })() === _name$2);
-            return $2616;
+            return $2601;
         }), (() => {
             var self = _data$1;
             switch (self._) {
                 case 'Litereum.Data.new':
-                    var $2619 = self.constructors;
-                    var $2620 = $2619;
-                    return $2620;
+                    var $2604 = self.constructors;
+                    var $2605 = $2604;
+                    return $2605;
             };
         })()), (_x$3 => {
             var self = _x$3;
             switch (self._) {
                 case 'Pair.new':
-                    var $2622 = self.fst;
-                    var $2623 = $2622;
-                    var $2621 = $2623;
+                    var $2607 = self.fst;
+                    var $2608 = $2607;
+                    var $2606 = $2608;
                     break;
             };
-            return $2621;
+            return $2606;
         }));
-        return $2615;
+        return $2600;
     };
     const Litereum$get_constructor_index = x0 => x1 => Litereum$get_constructor_index$(x0, x1);
 
@@ -9141,21 +9098,21 @@ module.exports = (function() {
                 var self = _list$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $2624 = self.head;
-                        var $2625 = self.tail;
+                        var $2609 = self.head;
+                        var $2610 = self.tail;
                         var self = _index$2;
                         if (self === 0n) {
-                            var $2627 = Maybe$some$($2624);
-                            var $2626 = $2627;
+                            var $2612 = Maybe$some$($2609);
+                            var $2611 = $2612;
                         } else {
-                            var $2628 = (self - 1n);
-                            var $2629 = List$get$($2628, $2625);
-                            var $2626 = $2629;
+                            var $2613 = (self - 1n);
+                            var $2614 = List$get$($2613, $2610);
+                            var $2611 = $2614;
                         };
-                        return $2626;
+                        return $2611;
                     case 'List.nil':
-                        var $2630 = Maybe$none;
-                        return $2630;
+                        var $2615 = Maybe$none;
+                        return $2615;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9169,20 +9126,20 @@ module.exports = (function() {
     function U64$cmp$(_a$1, _b$2) {
         var self = (_a$1 < _b$2);
         if (self) {
-            var $2632 = Cmp$ltn;
-            var $2631 = $2632;
+            var $2617 = Cmp$ltn;
+            var $2616 = $2617;
         } else {
             var self = (_a$1 === _b$2);
             if (self) {
-                var $2634 = Cmp$eql;
-                var $2633 = $2634;
+                var $2619 = Cmp$eql;
+                var $2618 = $2619;
             } else {
-                var $2635 = Cmp$gtn;
-                var $2633 = $2635;
+                var $2620 = Cmp$gtn;
+                var $2618 = $2620;
             };
-            var $2631 = $2633;
+            var $2616 = $2618;
         };
-        return $2631;
+        return $2616;
     };
     const U64$cmp = x0 => x1 => U64$cmp$(x0, x1);
     const U64$add = a0 => a1 => ((a0 + a1) & 0xFFFFFFFFFFFFFFFFn);
@@ -9191,6 +9148,54 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
+                var $2622 = self.pred;
+                var $2623 = (_b$7 => {
+                    var self = _b$7;
+                    switch (self._) {
+                        case 'Word.o':
+                            var $2625 = self.pred;
+                            var $2626 = (_a$pred$10 => {
+                                var self = _c$4;
+                                if (self) {
+                                    var $2628 = Word$i$(Word$subber$(_a$pred$10, $2625, Bool$true));
+                                    var $2627 = $2628;
+                                } else {
+                                    var $2629 = Word$o$(Word$subber$(_a$pred$10, $2625, Bool$false));
+                                    var $2627 = $2629;
+                                };
+                                return $2627;
+                            });
+                            var $2624 = $2626;
+                            break;
+                        case 'Word.i':
+                            var $2630 = self.pred;
+                            var $2631 = (_a$pred$10 => {
+                                var self = _c$4;
+                                if (self) {
+                                    var $2633 = Word$o$(Word$subber$(_a$pred$10, $2630, Bool$true));
+                                    var $2632 = $2633;
+                                } else {
+                                    var $2634 = Word$i$(Word$subber$(_a$pred$10, $2630, Bool$true));
+                                    var $2632 = $2634;
+                                };
+                                return $2632;
+                            });
+                            var $2624 = $2631;
+                            break;
+                        case 'Word.e':
+                            var $2635 = (_a$pred$8 => {
+                                var $2636 = Word$e;
+                                return $2636;
+                            });
+                            var $2624 = $2635;
+                            break;
+                    };
+                    var $2624 = $2624($2622);
+                    return $2624;
+                });
+                var $2621 = $2623;
+                break;
+            case 'Word.i':
                 var $2637 = self.pred;
                 var $2638 = (_b$7 => {
                     var self = _b$7;
@@ -9200,10 +9205,10 @@ module.exports = (function() {
                             var $2641 = (_a$pred$10 => {
                                 var self = _c$4;
                                 if (self) {
-                                    var $2643 = Word$i$(Word$subber$(_a$pred$10, $2640, Bool$true));
+                                    var $2643 = Word$o$(Word$subber$(_a$pred$10, $2640, Bool$false));
                                     var $2642 = $2643;
                                 } else {
-                                    var $2644 = Word$o$(Word$subber$(_a$pred$10, $2640, Bool$false));
+                                    var $2644 = Word$i$(Word$subber$(_a$pred$10, $2640, Bool$false));
                                     var $2642 = $2644;
                                 };
                                 return $2642;
@@ -9215,10 +9220,10 @@ module.exports = (function() {
                             var $2646 = (_a$pred$10 => {
                                 var self = _c$4;
                                 if (self) {
-                                    var $2648 = Word$o$(Word$subber$(_a$pred$10, $2645, Bool$true));
+                                    var $2648 = Word$i$(Word$subber$(_a$pred$10, $2645, Bool$true));
                                     var $2647 = $2648;
                                 } else {
-                                    var $2649 = Word$i$(Word$subber$(_a$pred$10, $2645, Bool$true));
+                                    var $2649 = Word$o$(Word$subber$(_a$pred$10, $2645, Bool$false));
                                     var $2647 = $2649;
                                 };
                                 return $2647;
@@ -9236,72 +9241,24 @@ module.exports = (function() {
                     var $2639 = $2639($2637);
                     return $2639;
                 });
-                var $2636 = $2638;
-                break;
-            case 'Word.i':
-                var $2652 = self.pred;
-                var $2653 = (_b$7 => {
-                    var self = _b$7;
-                    switch (self._) {
-                        case 'Word.o':
-                            var $2655 = self.pred;
-                            var $2656 = (_a$pred$10 => {
-                                var self = _c$4;
-                                if (self) {
-                                    var $2658 = Word$o$(Word$subber$(_a$pred$10, $2655, Bool$false));
-                                    var $2657 = $2658;
-                                } else {
-                                    var $2659 = Word$i$(Word$subber$(_a$pred$10, $2655, Bool$false));
-                                    var $2657 = $2659;
-                                };
-                                return $2657;
-                            });
-                            var $2654 = $2656;
-                            break;
-                        case 'Word.i':
-                            var $2660 = self.pred;
-                            var $2661 = (_a$pred$10 => {
-                                var self = _c$4;
-                                if (self) {
-                                    var $2663 = Word$i$(Word$subber$(_a$pred$10, $2660, Bool$true));
-                                    var $2662 = $2663;
-                                } else {
-                                    var $2664 = Word$o$(Word$subber$(_a$pred$10, $2660, Bool$false));
-                                    var $2662 = $2664;
-                                };
-                                return $2662;
-                            });
-                            var $2654 = $2661;
-                            break;
-                        case 'Word.e':
-                            var $2665 = (_a$pred$8 => {
-                                var $2666 = Word$e;
-                                return $2666;
-                            });
-                            var $2654 = $2665;
-                            break;
-                    };
-                    var $2654 = $2654($2652);
-                    return $2654;
-                });
-                var $2636 = $2653;
+                var $2621 = $2638;
                 break;
             case 'Word.e':
-                var $2667 = (_b$5 => {
-                    var $2668 = Word$e;
-                    return $2668;
+                var $2652 = (_b$5 => {
+                    var $2653 = Word$e;
+                    return $2653;
                 });
-                var $2636 = $2667;
+                var $2621 = $2652;
                 break;
         };
-        var $2636 = $2636(_b$3);
-        return $2636;
+        var $2621 = $2621(_b$3);
+        return $2621;
     };
     const Word$subber = x0 => x1 => x2 => Word$subber$(x0, x1, x2);
 
     function Word$sub$(_a$2, _b$3) {
-        var $2669 = Word$subber$(_a$2, _b$3, Bool$false);
-        return $2669;
+        var $2654 = Word$subber$(_a$2, _b$3, Bool$false);
+        return $2654;
     };
     const Word$sub = x0 => x1 => Word$sub$(x0, x1);
     const U64$sub = a0 => a1 => ((a0 - a1) & 0xFFFFFFFFFFFFFFFFn);
@@ -9320,16 +9277,16 @@ module.exports = (function() {
                 var self = _word$2;
                 switch (self._) {
                     case 'Word.o':
-                        var $2670 = self.pred;
-                        var $2671 = Word$bit_length$go$($2670, Nat$succ$(_c$3), _n$4);
-                        return $2671;
+                        var $2655 = self.pred;
+                        var $2656 = Word$bit_length$go$($2655, Nat$succ$(_c$3), _n$4);
+                        return $2656;
                     case 'Word.i':
-                        var $2672 = self.pred;
-                        var $2673 = Word$bit_length$go$($2672, Nat$succ$(_c$3), Nat$succ$(_c$3));
-                        return $2673;
+                        var $2657 = self.pred;
+                        var $2658 = Word$bit_length$go$($2657, Nat$succ$(_c$3), Nat$succ$(_c$3));
+                        return $2658;
                     case 'Word.e':
-                        var $2674 = _n$4;
-                        return $2674;
+                        var $2659 = _n$4;
+                        return $2659;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9339,8 +9296,8 @@ module.exports = (function() {
     const Word$bit_length$go = x0 => x1 => x2 => Word$bit_length$go$(x0, x1, x2);
 
     function Word$bit_length$(_word$2) {
-        var $2675 = Word$bit_length$go$(_word$2, 0n, 0n);
-        return $2675;
+        var $2660 = Word$bit_length$go$(_word$2, 0n, 0n);
+        return $2660;
     };
     const Word$bit_length = x0 => Word$bit_length$(x0);
     const Nat$ltn = a0 => a1 => (a0 < a1);
@@ -9350,22 +9307,22 @@ module.exports = (function() {
         var self = _cmp$1;
         switch (self._) {
             case 'Cmp.ltn':
-                var $2677 = Bool$false;
-                var $2676 = $2677;
+                var $2662 = Bool$false;
+                var $2661 = $2662;
                 break;
             case 'Cmp.eql':
             case 'Cmp.gtn':
-                var $2678 = Bool$true;
-                var $2676 = $2678;
+                var $2663 = Bool$true;
+                var $2661 = $2663;
                 break;
         };
-        return $2676;
+        return $2661;
     };
     const Cmp$as_gte = x0 => Cmp$as_gte$(x0);
 
     function Word$gte$(_a$2, _b$3) {
-        var $2679 = Cmp$as_gte$(Word$cmp$(_a$2, _b$3));
-        return $2679;
+        var $2664 = Cmp$as_gte$(Word$cmp$(_a$2, _b$3));
+        return $2664;
     };
     const Word$gte = x0 => x1 => Word$gte$(x0, x1);
 
@@ -9373,83 +9330,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2681 = self.pred;
-                var $2682 = (_b$6 => {
+                var $2666 = self.pred;
+                var $2667 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2684 = self.pred;
-                            var $2685 = (_a$pred$9 => {
-                                var $2686 = Word$o$(Word$or$(_a$pred$9, $2684));
-                                return $2686;
+                            var $2669 = self.pred;
+                            var $2670 = (_a$pred$9 => {
+                                var $2671 = Word$o$(Word$or$(_a$pred$9, $2669));
+                                return $2671;
                             });
-                            var $2683 = $2685;
+                            var $2668 = $2670;
                             break;
                         case 'Word.i':
-                            var $2687 = self.pred;
-                            var $2688 = (_a$pred$9 => {
-                                var $2689 = Word$i$(Word$or$(_a$pred$9, $2687));
-                                return $2689;
+                            var $2672 = self.pred;
+                            var $2673 = (_a$pred$9 => {
+                                var $2674 = Word$i$(Word$or$(_a$pred$9, $2672));
+                                return $2674;
                             });
-                            var $2683 = $2688;
+                            var $2668 = $2673;
                             break;
                         case 'Word.e':
-                            var $2690 = (_a$pred$7 => {
-                                var $2691 = Word$e;
-                                return $2691;
+                            var $2675 = (_a$pred$7 => {
+                                var $2676 = Word$e;
+                                return $2676;
                             });
-                            var $2683 = $2690;
+                            var $2668 = $2675;
                             break;
                     };
-                    var $2683 = $2683($2681);
-                    return $2683;
+                    var $2668 = $2668($2666);
+                    return $2668;
                 });
-                var $2680 = $2682;
+                var $2665 = $2667;
                 break;
             case 'Word.i':
-                var $2692 = self.pred;
-                var $2693 = (_b$6 => {
+                var $2677 = self.pred;
+                var $2678 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2695 = self.pred;
-                            var $2696 = (_a$pred$9 => {
-                                var $2697 = Word$i$(Word$or$(_a$pred$9, $2695));
-                                return $2697;
+                            var $2680 = self.pred;
+                            var $2681 = (_a$pred$9 => {
+                                var $2682 = Word$i$(Word$or$(_a$pred$9, $2680));
+                                return $2682;
                             });
-                            var $2694 = $2696;
+                            var $2679 = $2681;
                             break;
                         case 'Word.i':
-                            var $2698 = self.pred;
-                            var $2699 = (_a$pred$9 => {
-                                var $2700 = Word$i$(Word$or$(_a$pred$9, $2698));
-                                return $2700;
+                            var $2683 = self.pred;
+                            var $2684 = (_a$pred$9 => {
+                                var $2685 = Word$i$(Word$or$(_a$pred$9, $2683));
+                                return $2685;
                             });
-                            var $2694 = $2699;
+                            var $2679 = $2684;
                             break;
                         case 'Word.e':
-                            var $2701 = (_a$pred$7 => {
-                                var $2702 = Word$e;
-                                return $2702;
+                            var $2686 = (_a$pred$7 => {
+                                var $2687 = Word$e;
+                                return $2687;
                             });
-                            var $2694 = $2701;
+                            var $2679 = $2686;
                             break;
                     };
-                    var $2694 = $2694($2692);
-                    return $2694;
+                    var $2679 = $2679($2677);
+                    return $2679;
                 });
-                var $2680 = $2693;
+                var $2665 = $2678;
                 break;
             case 'Word.e':
-                var $2703 = (_b$4 => {
-                    var $2704 = Word$e;
-                    return $2704;
+                var $2688 = (_b$4 => {
+                    var $2689 = Word$e;
+                    return $2689;
                 });
-                var $2680 = $2703;
+                var $2665 = $2688;
                 break;
         };
-        var $2680 = $2680(_b$3);
-        return $2680;
+        var $2665 = $2665(_b$3);
+        return $2665;
     };
     const Word$or = x0 => x1 => Word$or$(x0, x1);
 
@@ -9457,21 +9414,21 @@ module.exports = (function() {
         var self = _word$2;
         switch (self._) {
             case 'Word.o':
-                var $2706 = self.pred;
-                var $2707 = Word$o$(Word$shift_right$one$go$($2706));
-                var $2705 = $2707;
+                var $2691 = self.pred;
+                var $2692 = Word$o$(Word$shift_right$one$go$($2691));
+                var $2690 = $2692;
                 break;
             case 'Word.i':
-                var $2708 = self.pred;
-                var $2709 = Word$i$(Word$shift_right$one$go$($2708));
-                var $2705 = $2709;
+                var $2693 = self.pred;
+                var $2694 = Word$i$(Word$shift_right$one$go$($2693));
+                var $2690 = $2694;
                 break;
             case 'Word.e':
-                var $2710 = Word$o$(Word$e);
-                var $2705 = $2710;
+                var $2695 = Word$o$(Word$e);
+                var $2690 = $2695;
                 break;
         };
-        return $2705;
+        return $2690;
     };
     const Word$shift_right$one$go = x0 => Word$shift_right$one$go$(x0);
 
@@ -9479,21 +9436,21 @@ module.exports = (function() {
         var self = _word$2;
         switch (self._) {
             case 'Word.o':
-                var $2712 = self.pred;
-                var $2713 = Word$shift_right$one$go$($2712);
-                var $2711 = $2713;
+                var $2697 = self.pred;
+                var $2698 = Word$shift_right$one$go$($2697);
+                var $2696 = $2698;
                 break;
             case 'Word.i':
-                var $2714 = self.pred;
-                var $2715 = Word$shift_right$one$go$($2714);
-                var $2711 = $2715;
+                var $2699 = self.pred;
+                var $2700 = Word$shift_right$one$go$($2699);
+                var $2696 = $2700;
                 break;
             case 'Word.e':
-                var $2716 = Word$e;
-                var $2711 = $2716;
+                var $2701 = Word$e;
+                var $2696 = $2701;
                 break;
         };
-        return $2711;
+        return $2696;
     };
     const Word$shift_right$one = x0 => Word$shift_right$one$(x0);
 
@@ -9509,12 +9466,12 @@ module.exports = (function() {
             var R = (() => {
                 var self = _n$3;
                 if (self === 0n) {
-                    var $2717 = _value$2;
-                    return $2717;
+                    var $2702 = _value$2;
+                    return $2702;
                 } else {
-                    var $2718 = (self - 1n);
-                    var $2719 = Word$shift_right$(Word$shift_right$one$(_value$2), $2718);
-                    return $2719;
+                    var $2703 = (self - 1n);
+                    var $2704 = Word$shift_right$(Word$shift_right$one$(_value$2), $2703);
+                    return $2704;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9536,34 +9493,34 @@ module.exports = (function() {
                 var self = Word$gte$(_sub_copy$3, _shift_copy$4);
                 if (self) {
                     var _mask$6 = Word$shift_left$(Word$inc$(Word$to_zero$(_sub_copy$3)), _shift$2);
-                    var $2720 = Pair$new$(Bool$true, Word$or$(_value$5, _mask$6));
-                    var self = $2720;
+                    var $2705 = Pair$new$(Bool$true, Word$or$(_value$5, _mask$6));
+                    var self = $2705;
                 } else {
-                    var $2721 = Pair$new$(Bool$false, _value$5);
-                    var self = $2721;
+                    var $2706 = Pair$new$(Bool$false, _value$5);
+                    var self = $2706;
                 };
                 switch (self._) {
                     case 'Pair.new':
-                        var $2722 = self.fst;
-                        var $2723 = self.snd;
+                        var $2707 = self.fst;
+                        var $2708 = self.snd;
                         var self = _shift$2;
                         if (self === 0n) {
-                            var $2725 = $2723;
-                            var $2724 = $2725;
+                            var $2710 = $2708;
+                            var $2709 = $2710;
                         } else {
-                            var $2726 = (self - 1n);
+                            var $2711 = (self - 1n);
                             var _new_shift_copy$9 = Word$shift_right$(_shift_copy$4, 1n);
-                            var self = $2722;
+                            var self = $2707;
                             if (self) {
-                                var $2728 = Word$div$go$($2726, Word$sub$(_sub_copy$3, _shift_copy$4), _new_shift_copy$9, $2723);
-                                var $2727 = $2728;
+                                var $2713 = Word$div$go$($2711, Word$sub$(_sub_copy$3, _shift_copy$4), _new_shift_copy$9, $2708);
+                                var $2712 = $2713;
                             } else {
-                                var $2729 = Word$div$go$($2726, _sub_copy$3, _new_shift_copy$9, $2723);
-                                var $2727 = $2729;
+                                var $2714 = Word$div$go$($2711, _sub_copy$3, _new_shift_copy$9, $2708);
+                                var $2712 = $2714;
                             };
-                            var $2724 = $2727;
+                            var $2709 = $2712;
                         };
-                        return $2724;
+                        return $2709;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9577,23 +9534,23 @@ module.exports = (function() {
         var _b_bits$5 = Word$bit_length$(_b$3);
         var self = (_a_bits$4 < _b_bits$5);
         if (self) {
-            var $2731 = Word$to_zero$(_a$2);
-            var $2730 = $2731;
+            var $2716 = Word$to_zero$(_a$2);
+            var $2715 = $2716;
         } else {
             var _shift$6 = (_a_bits$4 - _b_bits$5 <= 0n ? 0n : _a_bits$4 - _b_bits$5);
             var _shift_copy$7 = Word$shift_left$(_b$3, _shift$6);
-            var $2732 = Word$div$go$(_shift$6, _a$2, _shift_copy$7, Word$to_zero$(_a$2));
-            var $2730 = $2732;
+            var $2717 = Word$div$go$(_shift$6, _a$2, _shift_copy$7, Word$to_zero$(_a$2));
+            var $2715 = $2717;
         };
-        return $2730;
+        return $2715;
     };
     const Word$div = x0 => x1 => Word$div$(x0, x1);
     const U64$div = a0 => a1 => ((a0 / a1) & 0xFFFFFFFFFFFFFFFFn);
 
     function Word$mod$(_a$2, _b$3) {
         var _q$4 = Word$div$(_a$2, _b$3);
-        var $2733 = Word$sub$(_a$2, Word$mul$(_b$3, _q$4));
-        return $2733;
+        var $2718 = Word$sub$(_a$2, Word$mul$(_b$3, _q$4));
+        return $2718;
     };
     const Word$mod = x0 => x1 => Word$mod$(x0, x1);
     const U64$mod = a0 => a1 => (a0 % a1);
@@ -9603,83 +9560,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2735 = self.pred;
-                var $2736 = (_b$6 => {
+                var $2720 = self.pred;
+                var $2721 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2738 = self.pred;
-                            var $2739 = (_a$pred$9 => {
-                                var $2740 = Word$o$(Word$and$(_a$pred$9, $2738));
-                                return $2740;
+                            var $2723 = self.pred;
+                            var $2724 = (_a$pred$9 => {
+                                var $2725 = Word$o$(Word$and$(_a$pred$9, $2723));
+                                return $2725;
                             });
-                            var $2737 = $2739;
+                            var $2722 = $2724;
                             break;
                         case 'Word.i':
-                            var $2741 = self.pred;
-                            var $2742 = (_a$pred$9 => {
-                                var $2743 = Word$o$(Word$and$(_a$pred$9, $2741));
-                                return $2743;
+                            var $2726 = self.pred;
+                            var $2727 = (_a$pred$9 => {
+                                var $2728 = Word$o$(Word$and$(_a$pred$9, $2726));
+                                return $2728;
                             });
-                            var $2737 = $2742;
+                            var $2722 = $2727;
                             break;
                         case 'Word.e':
-                            var $2744 = (_a$pred$7 => {
-                                var $2745 = Word$e;
-                                return $2745;
+                            var $2729 = (_a$pred$7 => {
+                                var $2730 = Word$e;
+                                return $2730;
                             });
-                            var $2737 = $2744;
+                            var $2722 = $2729;
                             break;
                     };
-                    var $2737 = $2737($2735);
-                    return $2737;
+                    var $2722 = $2722($2720);
+                    return $2722;
                 });
-                var $2734 = $2736;
+                var $2719 = $2721;
                 break;
             case 'Word.i':
-                var $2746 = self.pred;
-                var $2747 = (_b$6 => {
+                var $2731 = self.pred;
+                var $2732 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2749 = self.pred;
-                            var $2750 = (_a$pred$9 => {
-                                var $2751 = Word$o$(Word$and$(_a$pred$9, $2749));
-                                return $2751;
+                            var $2734 = self.pred;
+                            var $2735 = (_a$pred$9 => {
+                                var $2736 = Word$o$(Word$and$(_a$pred$9, $2734));
+                                return $2736;
                             });
-                            var $2748 = $2750;
+                            var $2733 = $2735;
                             break;
                         case 'Word.i':
-                            var $2752 = self.pred;
-                            var $2753 = (_a$pred$9 => {
-                                var $2754 = Word$i$(Word$and$(_a$pred$9, $2752));
-                                return $2754;
+                            var $2737 = self.pred;
+                            var $2738 = (_a$pred$9 => {
+                                var $2739 = Word$i$(Word$and$(_a$pred$9, $2737));
+                                return $2739;
                             });
-                            var $2748 = $2753;
+                            var $2733 = $2738;
                             break;
                         case 'Word.e':
-                            var $2755 = (_a$pred$7 => {
-                                var $2756 = Word$e;
-                                return $2756;
+                            var $2740 = (_a$pred$7 => {
+                                var $2741 = Word$e;
+                                return $2741;
                             });
-                            var $2748 = $2755;
+                            var $2733 = $2740;
                             break;
                     };
-                    var $2748 = $2748($2746);
-                    return $2748;
+                    var $2733 = $2733($2731);
+                    return $2733;
                 });
-                var $2734 = $2747;
+                var $2719 = $2732;
                 break;
             case 'Word.e':
-                var $2757 = (_b$4 => {
-                    var $2758 = Word$e;
-                    return $2758;
+                var $2742 = (_b$4 => {
+                    var $2743 = Word$e;
+                    return $2743;
                 });
-                var $2734 = $2757;
+                var $2719 = $2742;
                 break;
         };
-        var $2734 = $2734(_b$3);
-        return $2734;
+        var $2719 = $2719(_b$3);
+        return $2719;
     };
     const Word$and = x0 => x1 => Word$and$(x0, x1);
     const U64$and = a0 => a1 => (a0 & a1);
@@ -9688,83 +9645,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2760 = self.pred;
-                var $2761 = (_b$6 => {
+                var $2745 = self.pred;
+                var $2746 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2763 = self.pred;
-                            var $2764 = (_a$pred$9 => {
-                                var $2765 = Word$o$(Word$xor$(_a$pred$9, $2763));
-                                return $2765;
+                            var $2748 = self.pred;
+                            var $2749 = (_a$pred$9 => {
+                                var $2750 = Word$o$(Word$xor$(_a$pred$9, $2748));
+                                return $2750;
                             });
-                            var $2762 = $2764;
+                            var $2747 = $2749;
                             break;
                         case 'Word.i':
-                            var $2766 = self.pred;
-                            var $2767 = (_a$pred$9 => {
-                                var $2768 = Word$i$(Word$xor$(_a$pred$9, $2766));
-                                return $2768;
+                            var $2751 = self.pred;
+                            var $2752 = (_a$pred$9 => {
+                                var $2753 = Word$i$(Word$xor$(_a$pred$9, $2751));
+                                return $2753;
                             });
-                            var $2762 = $2767;
+                            var $2747 = $2752;
                             break;
                         case 'Word.e':
-                            var $2769 = (_a$pred$7 => {
-                                var $2770 = Word$e;
-                                return $2770;
+                            var $2754 = (_a$pred$7 => {
+                                var $2755 = Word$e;
+                                return $2755;
                             });
-                            var $2762 = $2769;
+                            var $2747 = $2754;
                             break;
                     };
-                    var $2762 = $2762($2760);
-                    return $2762;
+                    var $2747 = $2747($2745);
+                    return $2747;
                 });
-                var $2759 = $2761;
+                var $2744 = $2746;
                 break;
             case 'Word.i':
-                var $2771 = self.pred;
-                var $2772 = (_b$6 => {
+                var $2756 = self.pred;
+                var $2757 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2774 = self.pred;
-                            var $2775 = (_a$pred$9 => {
-                                var $2776 = Word$i$(Word$xor$(_a$pred$9, $2774));
-                                return $2776;
+                            var $2759 = self.pred;
+                            var $2760 = (_a$pred$9 => {
+                                var $2761 = Word$i$(Word$xor$(_a$pred$9, $2759));
+                                return $2761;
                             });
-                            var $2773 = $2775;
+                            var $2758 = $2760;
                             break;
                         case 'Word.i':
-                            var $2777 = self.pred;
-                            var $2778 = (_a$pred$9 => {
-                                var $2779 = Word$o$(Word$xor$(_a$pred$9, $2777));
-                                return $2779;
+                            var $2762 = self.pred;
+                            var $2763 = (_a$pred$9 => {
+                                var $2764 = Word$o$(Word$xor$(_a$pred$9, $2762));
+                                return $2764;
                             });
-                            var $2773 = $2778;
+                            var $2758 = $2763;
                             break;
                         case 'Word.e':
-                            var $2780 = (_a$pred$7 => {
-                                var $2781 = Word$e;
-                                return $2781;
+                            var $2765 = (_a$pred$7 => {
+                                var $2766 = Word$e;
+                                return $2766;
                             });
-                            var $2773 = $2780;
+                            var $2758 = $2765;
                             break;
                     };
-                    var $2773 = $2773($2771);
-                    return $2773;
+                    var $2758 = $2758($2756);
+                    return $2758;
                 });
-                var $2759 = $2772;
+                var $2744 = $2757;
                 break;
             case 'Word.e':
-                var $2782 = (_b$4 => {
-                    var $2783 = Word$e;
-                    return $2783;
+                var $2767 = (_b$4 => {
+                    var $2768 = Word$e;
+                    return $2768;
                 });
-                var $2759 = $2782;
+                var $2744 = $2767;
                 break;
         };
-        var $2759 = $2759(_b$3);
-        return $2759;
+        var $2744 = $2744(_b$3);
+        return $2744;
     };
     const Word$xor = x0 => x1 => Word$xor$(x0, x1);
     const U64$xor = a0 => a1 => (a0 ^ a1);
@@ -9773,157 +9730,157 @@ module.exports = (function() {
         var self = _state$1;
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2785 = self.world;
-                var $2786 = self.subst;
-                var $2787 = self.fresh;
-                var $2788 = self.gas;
-                var $2789 = self.term;
-                var self = $2789;
+                var $2770 = self.world;
+                var $2771 = self.subst;
+                var $2772 = self.fresh;
+                var $2773 = self.gas;
+                var $2774 = self.term;
+                var self = $2774;
                 switch (self._) {
                     case 'Litereum.Term.var':
-                        var $2791 = self.name;
-                        var _term$8 = Maybe$default$(Map$get$($2791, $2786), $2789);
-                        var $2792 = Litereum$reduce$(Litereum$Runtime$new$($2785, $2786, $2787, $2788, _term$8));
-                        var $2790 = $2792;
+                        var $2776 = self.name;
+                        var _term$8 = Maybe$default$(Map$get$($2776, $2771), $2774);
+                        var $2777 = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, _term$8));
+                        var $2775 = $2777;
                         break;
                     case 'Litereum.Term.call':
-                        var $2793 = self.bond;
-                        var $2794 = self.args;
-                        var self = Litereum$get_bond$($2785, $2793);
+                        var $2778 = self.bond;
+                        var $2779 = self.args;
+                        var self = Litereum$get_bond$($2770, $2778);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $2796 = self.value;
-                                var _bond$10 = $2796;
+                                var $2781 = self.value;
+                                var _bond$10 = $2781;
                                 var self = _bond$10;
                                 switch (self._) {
                                     case 'Litereum.Bond.new':
-                                        var $2798 = self.input_names;
-                                        var $2799 = self.main;
-                                        var self = Litereum$rename$many$(Map$from_list$(List$nil), $2787, $2798);
+                                        var $2783 = self.input_names;
+                                        var $2784 = self.main;
+                                        var self = Litereum$rename$many$(Map$from_list$(List$nil), $2772, $2783);
                                         switch (self._) {
                                             case 'Triple.new':
-                                                var $2801 = self.fst;
-                                                var $2802 = self.snd;
-                                                var $2803 = self.trd;
-                                                var self = Litereum$sanitize$($2785, $2801, $2802, $2799);
+                                                var $2786 = self.fst;
+                                                var $2787 = self.snd;
+                                                var $2788 = self.trd;
+                                                var self = Litereum$sanitize$($2770, $2786, $2787, $2784);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $2805 = self.fst;
-                                                        var $2806 = self.snd;
-                                                        var _subst$22 = Litereum$extend$($2786, $2803, $2794);
-                                                        var $2807 = Litereum$reduce$(Litereum$Runtime$new$($2785, _subst$22, $2805, $2788, $2806));
-                                                        var $2804 = $2807;
+                                                        var $2790 = self.fst;
+                                                        var $2791 = self.snd;
+                                                        var _subst$22 = Litereum$extend$($2771, $2788, $2779);
+                                                        var $2792 = Litereum$reduce$(Litereum$Runtime$new$($2770, _subst$22, $2790, $2773, $2791));
+                                                        var $2789 = $2792;
                                                         break;
                                                 };
-                                                var $2800 = $2804;
+                                                var $2785 = $2789;
                                                 break;
                                         };
-                                        var $2797 = $2800;
+                                        var $2782 = $2785;
                                         break;
                                 };
-                                var $2795 = $2797;
+                                var $2780 = $2782;
                                 break;
                             case 'Maybe.none':
-                                var $2808 = _state$1;
-                                var $2795 = $2808;
+                                var $2793 = _state$1;
+                                var $2780 = $2793;
                                 break;
                         };
-                        var $2790 = $2795;
+                        var $2775 = $2780;
                         break;
                     case 'Litereum.Term.let':
-                        var $2809 = self.name;
-                        var $2810 = self.expr;
-                        var $2811 = self.body;
-                        var $2812 = Litereum$reduce$(Litereum$Runtime$new$($2785, Map$set$($2809, $2810, $2786), $2787, $2788, $2811));
-                        var $2790 = $2812;
+                        var $2794 = self.name;
+                        var $2795 = self.expr;
+                        var $2796 = self.body;
+                        var $2797 = Litereum$reduce$(Litereum$Runtime$new$($2770, Map$set$($2794, $2795, $2771), $2772, $2773, $2796));
+                        var $2775 = $2797;
                         break;
                     case 'Litereum.Term.match':
-                        var $2813 = self.name;
-                        var $2814 = self.data;
-                        var $2815 = self.cses;
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2785, $2786, $2787, $2788, Maybe$default$(Map$get$($2813, $2786), Litereum$Term$word$(0n))));
+                        var $2798 = self.name;
+                        var $2799 = self.data;
+                        var $2800 = self.cses;
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, Maybe$default$(Map$get$($2798, $2771), Litereum$Term$word$(0n))));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2817 = self.world;
-                                var $2818 = self.subst;
-                                var $2819 = self.fresh;
-                                var $2820 = self.gas;
-                                var $2821 = self.term;
-                                var self = $2821;
+                                var $2802 = self.world;
+                                var $2803 = self.subst;
+                                var $2804 = self.fresh;
+                                var $2805 = self.gas;
+                                var $2806 = self.term;
+                                var self = $2806;
                                 switch (self._) {
                                     case 'Litereum.Term.create':
-                                        var $2823 = self.ctor;
-                                        var $2824 = self.vals;
-                                        var self = Litereum$get_data$($2817, $2814);
+                                        var $2808 = self.ctor;
+                                        var $2809 = self.vals;
+                                        var self = Litereum$get_data$($2802, $2799);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $2826 = self.value;
-                                                var _data$18 = $2826;
+                                                var $2811 = self.value;
+                                                var _data$18 = $2811;
                                                 var self = _data$18;
                                                 switch (self._) {
                                                     case 'Litereum.Data.new':
-                                                        var self = Litereum$get_constructor_value$(_data$18, $2823);
+                                                        var self = Litereum$get_constructor_value$(_data$18, $2808);
                                                         switch (self._) {
                                                             case 'Maybe.some':
-                                                                var $2829 = self.value;
-                                                                var _ctor$22 = $2829;
+                                                                var $2814 = self.value;
+                                                                var _ctor$22 = $2814;
                                                                 var self = _ctor$22;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var self = Litereum$get_constructor_index$(_data$18, $2823);
+                                                                        var self = Litereum$get_constructor_index$(_data$18, $2808);
                                                                         switch (self._) {
                                                                             case 'Maybe.some':
-                                                                                var $2832 = self.value;
-                                                                                var self = List$get$($2832, $2815);
+                                                                                var $2817 = self.value;
+                                                                                var self = List$get$($2817, $2800);
                                                                                 switch (self._) {
                                                                                     case 'Maybe.some':
-                                                                                        var $2834 = self.value;
-                                                                                        var _nams$28 = List$map$(a1 => (($2813 + ".") + a1), (() => {
+                                                                                        var $2819 = self.value;
+                                                                                        var _nams$28 = List$map$(a1 => (($2798 + ".") + a1), (() => {
                                                                                             var self = _ctor$22;
                                                                                             switch (self._) {
                                                                                                 case 'Litereum.Constructor.new':
-                                                                                                    var $2836 = self.field_names;
-                                                                                                    var $2837 = $2836;
-                                                                                                    return $2837;
+                                                                                                    var $2821 = self.field_names;
+                                                                                                    var $2822 = $2821;
+                                                                                                    return $2822;
                                                                                             };
                                                                                         })());
-                                                                                        var _subst$29 = Litereum$extend$($2818, _nams$28, $2824);
-                                                                                        var $2835 = Litereum$reduce$(Litereum$Runtime$new$($2817, _subst$29, $2819, $2820, $2834));
-                                                                                        var $2833 = $2835;
+                                                                                        var _subst$29 = Litereum$extend$($2803, _nams$28, $2809);
+                                                                                        var $2820 = Litereum$reduce$(Litereum$Runtime$new$($2802, _subst$29, $2804, $2805, $2819));
+                                                                                        var $2818 = $2820;
                                                                                         break;
                                                                                     case 'Maybe.none':
-                                                                                        var $2838 = _state$1;
-                                                                                        var $2833 = $2838;
+                                                                                        var $2823 = _state$1;
+                                                                                        var $2818 = $2823;
                                                                                         break;
                                                                                 };
-                                                                                var $2831 = $2833;
+                                                                                var $2816 = $2818;
                                                                                 break;
                                                                             case 'Maybe.none':
-                                                                                var $2839 = _state$1;
-                                                                                var $2831 = $2839;
+                                                                                var $2824 = _state$1;
+                                                                                var $2816 = $2824;
                                                                                 break;
                                                                         };
-                                                                        var $2830 = $2831;
+                                                                        var $2815 = $2816;
                                                                         break;
                                                                 };
-                                                                var $2828 = $2830;
+                                                                var $2813 = $2815;
                                                                 break;
                                                             case 'Maybe.none':
-                                                                var $2840 = _state$1;
-                                                                var $2828 = $2840;
+                                                                var $2825 = _state$1;
+                                                                var $2813 = $2825;
                                                                 break;
                                                         };
-                                                        var $2827 = $2828;
+                                                        var $2812 = $2813;
                                                         break;
                                                 };
-                                                var $2825 = $2827;
+                                                var $2810 = $2812;
                                                 break;
                                             case 'Maybe.none':
-                                                var $2841 = _state$1;
-                                                var $2825 = $2841;
+                                                var $2826 = _state$1;
+                                                var $2810 = $2826;
                                                 break;
                                         };
-                                        var $2822 = $2825;
+                                        var $2807 = $2810;
                                         break;
                                     case 'Litereum.Term.var':
                                     case 'Litereum.Term.call':
@@ -9933,241 +9890,242 @@ module.exports = (function() {
                                     case 'Litereum.Term.compare':
                                     case 'Litereum.Term.operate':
                                     case 'Litereum.Term.bind':
-                                        var $2842 = _state$1;
-                                        var $2822 = $2842;
+                                        var $2827 = _state$1;
+                                        var $2807 = $2827;
                                         break;
                                 };
-                                var $2816 = $2822;
+                                var $2801 = $2807;
                                 break;
                         };
-                        var $2790 = $2816;
+                        var $2775 = $2801;
                         break;
                     case 'Litereum.Term.compare':
-                        var $2843 = self.val0;
-                        var $2844 = self.val1;
-                        var $2845 = self.iflt;
-                        var $2846 = self.ifeq;
-                        var $2847 = self.ifgt;
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2785, $2786, $2787, $2788, $2843));
+                        var $2828 = self.val0;
+                        var $2829 = self.val1;
+                        var $2830 = self.iflt;
+                        var $2831 = self.ifeq;
+                        var $2832 = self.ifgt;
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, $2828));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2849 = self.world;
-                                var $2850 = self.subst;
-                                var $2851 = self.fresh;
-                                var $2852 = self.gas;
-                                var $2853 = self.term;
-                                var self = Litereum$reduce$(Litereum$Runtime$new$($2849, $2850, $2851, $2852, $2844));
+                                var $2834 = self.world;
+                                var $2835 = self.subst;
+                                var $2836 = self.fresh;
+                                var $2837 = self.gas;
+                                var $2838 = self.term;
+                                var self = Litereum$reduce$(Litereum$Runtime$new$($2834, $2835, $2836, $2837, $2829));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2855 = self.world;
-                                        var $2856 = self.subst;
-                                        var $2857 = self.fresh;
-                                        var $2858 = self.gas;
-                                        var $2859 = self.term;
-                                        var self = $2853;
+                                        var $2840 = self.world;
+                                        var $2841 = self.subst;
+                                        var $2842 = self.fresh;
+                                        var $2843 = self.gas;
+                                        var $2844 = self.term;
+                                        var self = $2838;
                                         switch (self._) {
                                             case 'Litereum.Term.word':
-                                                var $2861 = self.numb;
-                                                var self = $2859;
+                                                var $2846 = self.numb;
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.word':
+                                                        var $2848 = self.numb;
+                                                        var self = U64$cmp$($2846, $2848);
+                                                        switch (self._) {
+                                                            case 'Cmp.ltn':
+                                                                var $2850 = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2830));
+                                                                var $2849 = $2850;
+                                                                break;
+                                                            case 'Cmp.eql':
+                                                                var $2851 = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2831));
+                                                                var $2849 = $2851;
+                                                                break;
+                                                            case 'Cmp.gtn':
+                                                                var $2852 = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2832));
+                                                                var $2849 = $2852;
+                                                                break;
+                                                        };
+                                                        var $2847 = $2849;
+                                                        break;
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2853 = _state$1;
+                                                        var $2847 = $2853;
+                                                        break;
+                                                };
+                                                var $2845 = $2847;
+                                                break;
+                                            case 'Litereum.Term.var':
+                                                var self = $2844;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
                                                     case 'Litereum.Term.let':
                                                     case 'Litereum.Term.create':
                                                     case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2855 = _state$1;
+                                                        var $2854 = $2855;
+                                                        break;
+                                                };
+                                                var $2845 = $2854;
+                                                break;
+                                            case 'Litereum.Term.call':
+                                            case 'Litereum.Term.create':
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2857 = _state$1;
+                                                        var $2856 = $2857;
+                                                        break;
+                                                };
+                                                var $2845 = $2856;
+                                                break;
+                                            case 'Litereum.Term.let':
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2859 = _state$1;
+                                                        var $2858 = $2859;
+                                                        break;
+                                                };
+                                                var $2845 = $2858;
+                                                break;
+                                            case 'Litereum.Term.match':
+                                            case 'Litereum.Term.operate':
+                                            case 'Litereum.Term.bind':
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2861 = _state$1;
+                                                        var $2860 = $2861;
+                                                        break;
+                                                };
+                                                var $2845 = $2860;
+                                                break;
+                                            case 'Litereum.Term.compare':
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
                                                         var $2863 = _state$1;
                                                         var $2862 = $2863;
                                                         break;
-                                                    case 'Litereum.Term.word':
-                                                        var self = U64$cmp$($2861, $2861);
-                                                        switch (self._) {
-                                                            case 'Cmp.ltn':
-                                                                var $2865 = Litereum$reduce$(Litereum$Runtime$new$($2855, $2856, $2857, $2858, $2845));
-                                                                var $2864 = $2865;
-                                                                break;
-                                                            case 'Cmp.eql':
-                                                                var $2866 = Litereum$reduce$(Litereum$Runtime$new$($2855, $2856, $2857, $2858, $2846));
-                                                                var $2864 = $2866;
-                                                                break;
-                                                            case 'Cmp.gtn':
-                                                                var $2867 = Litereum$reduce$(Litereum$Runtime$new$($2855, $2856, $2857, $2858, $2847));
-                                                                var $2864 = $2867;
-                                                                break;
-                                                        };
-                                                        var $2862 = $2864;
-                                                        break;
                                                 };
-                                                var $2860 = $2862;
-                                                break;
-                                            case 'Litereum.Term.var':
-                                                var self = $2859;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2869 = _state$1;
-                                                        var $2868 = $2869;
-                                                        break;
-                                                };
-                                                var $2860 = $2868;
-                                                break;
-                                            case 'Litereum.Term.call':
-                                            case 'Litereum.Term.create':
-                                                var self = $2859;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2871 = _state$1;
-                                                        var $2870 = $2871;
-                                                        break;
-                                                };
-                                                var $2860 = $2870;
-                                                break;
-                                            case 'Litereum.Term.let':
-                                                var self = $2859;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2873 = _state$1;
-                                                        var $2872 = $2873;
-                                                        break;
-                                                };
-                                                var $2860 = $2872;
-                                                break;
-                                            case 'Litereum.Term.match':
-                                            case 'Litereum.Term.operate':
-                                            case 'Litereum.Term.bind':
-                                                var self = $2859;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2875 = _state$1;
-                                                        var $2874 = $2875;
-                                                        break;
-                                                };
-                                                var $2860 = $2874;
-                                                break;
-                                            case 'Litereum.Term.compare':
-                                                var self = $2859;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2877 = _state$1;
-                                                        var $2876 = $2877;
-                                                        break;
-                                                };
-                                                var $2860 = $2876;
+                                                var $2845 = $2862;
                                                 break;
                                         };
-                                        var $2854 = $2860;
+                                        var $2839 = $2845;
                                         break;
                                 };
-                                var $2848 = $2854;
+                                var $2833 = $2839;
                                 break;
                         };
-                        var $2790 = $2848;
+                        var $2775 = $2833;
                         break;
                     case 'Litereum.Term.operate':
-                        var $2878 = self.oper;
-                        var $2879 = self.val0;
-                        var $2880 = self.val1;
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2785, $2786, $2787, $2788, $2879));
+                        var $2864 = self.oper;
+                        var $2865 = self.val0;
+                        var $2866 = self.val1;
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, $2865));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2882 = self.world;
-                                var $2883 = self.subst;
-                                var $2884 = self.fresh;
-                                var $2885 = self.gas;
-                                var $2886 = self.term;
-                                var self = Litereum$reduce$(Litereum$Runtime$new$($2882, $2883, $2884, $2885, $2880));
+                                var $2868 = self.world;
+                                var $2869 = self.subst;
+                                var $2870 = self.fresh;
+                                var $2871 = self.gas;
+                                var $2872 = self.term;
+                                var self = Litereum$reduce$(Litereum$Runtime$new$($2868, $2869, $2870, $2871, $2866));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2888 = self.world;
-                                        var $2889 = self.subst;
-                                        var $2890 = self.fresh;
-                                        var $2891 = self.gas;
-                                        var $2892 = self.term;
-                                        var self = $2886;
+                                        var $2874 = self.world;
+                                        var $2875 = self.subst;
+                                        var $2876 = self.fresh;
+                                        var $2877 = self.gas;
+                                        var $2878 = self.term;
+                                        var self = $2872;
                                         switch (self._) {
                                             case 'Litereum.Term.word':
-                                                var $2894 = self.numb;
-                                                var self = $2892;
+                                                var $2880 = self.numb;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.word':
-                                                        var $2896 = self.numb;
-                                                        var self = $2878;
+                                                        var $2882 = self.numb;
+                                                        var self = $2864;
                                                         switch (self._) {
                                                             case 'Litereum.Operation.add':
-                                                                var $2898 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$((($2894 + $2896) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2897 = $2898;
+                                                                var $2884 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 + $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2884;
                                                                 break;
                                                             case 'Litereum.Operation.sub':
-                                                                var $2899 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$((($2894 - $2896) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2897 = $2899;
+                                                                var $2885 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 - $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2885;
                                                                 break;
                                                             case 'Litereum.Operation.mul':
-                                                                var $2900 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$((($2894 * $2896) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2897 = $2900;
+                                                                var $2886 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 * $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2886;
                                                                 break;
                                                             case 'Litereum.Operation.div':
-                                                                var $2901 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$((($2894 / $2896) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2897 = $2901;
+                                                                var $2887 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 / $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2887;
                                                                 break;
                                                             case 'Litereum.Operation.mod':
-                                                                var $2902 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$(($2894 % $2896)));
-                                                                var $2897 = $2902;
+                                                                var $2888 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 % $2882)));
+                                                                var $2883 = $2888;
                                                                 break;
                                                             case 'Litereum.Operation.or':
-                                                                var $2903 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$(($2894 | $2896)));
-                                                                var $2897 = $2903;
+                                                                var $2889 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 | $2882)));
+                                                                var $2883 = $2889;
                                                                 break;
                                                             case 'Litereum.Operation.and':
-                                                                var $2904 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$(($2894 & $2896)));
-                                                                var $2897 = $2904;
+                                                                var $2890 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 & $2882)));
+                                                                var $2883 = $2890;
                                                                 break;
                                                             case 'Litereum.Operation.xor':
-                                                                var $2905 = Litereum$Runtime$new$($2888, $2889, $2890, $2891, Litereum$Term$word$(($2894 ^ $2896)));
-                                                                var $2897 = $2905;
+                                                                var $2891 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 ^ $2882)));
+                                                                var $2883 = $2891;
                                                                 break;
                                                         };
-                                                        var $2895 = $2897;
+                                                        var $2881 = $2883;
                                                         break;
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10177,14 +10135,14 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2906 = _state$1;
-                                                        var $2895 = $2906;
+                                                        var $2892 = _state$1;
+                                                        var $2881 = $2892;
                                                         break;
                                                 };
-                                                var $2893 = $2895;
+                                                var $2879 = $2881;
                                                 break;
                                             case 'Litereum.Term.var':
-                                                var self = $2892;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10195,15 +10153,15 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2908 = _state$1;
-                                                        var $2907 = $2908;
+                                                        var $2894 = _state$1;
+                                                        var $2893 = $2894;
                                                         break;
                                                 };
-                                                var $2893 = $2907;
+                                                var $2879 = $2893;
                                                 break;
                                             case 'Litereum.Term.call':
                                             case 'Litereum.Term.create':
-                                                var self = $2892;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10214,14 +10172,14 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2910 = _state$1;
-                                                        var $2909 = $2910;
+                                                        var $2896 = _state$1;
+                                                        var $2895 = $2896;
                                                         break;
                                                 };
-                                                var $2893 = $2909;
+                                                var $2879 = $2895;
                                                 break;
                                             case 'Litereum.Term.let':
-                                                var self = $2892;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10232,16 +10190,16 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2912 = _state$1;
-                                                        var $2911 = $2912;
+                                                        var $2898 = _state$1;
+                                                        var $2897 = $2898;
                                                         break;
                                                 };
-                                                var $2893 = $2911;
+                                                var $2879 = $2897;
                                                 break;
                                             case 'Litereum.Term.match':
                                             case 'Litereum.Term.operate':
                                             case 'Litereum.Term.bind':
-                                                var self = $2892;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10252,14 +10210,14 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2914 = _state$1;
-                                                        var $2913 = $2914;
+                                                        var $2900 = _state$1;
+                                                        var $2899 = $2900;
                                                         break;
                                                 };
-                                                var $2893 = $2913;
+                                                var $2879 = $2899;
                                                 break;
                                             case 'Litereum.Term.compare':
-                                                var self = $2892;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10270,110 +10228,110 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2916 = _state$1;
-                                                        var $2915 = $2916;
+                                                        var $2902 = _state$1;
+                                                        var $2901 = $2902;
                                                         break;
                                                 };
-                                                var $2893 = $2915;
+                                                var $2879 = $2901;
                                                 break;
                                         };
-                                        var $2887 = $2893;
+                                        var $2873 = $2879;
                                         break;
                                 };
-                                var $2881 = $2887;
+                                var $2867 = $2873;
                                 break;
                         };
-                        var $2790 = $2881;
+                        var $2775 = $2867;
                         break;
                     case 'Litereum.Term.bind':
-                        var $2917 = self.name;
-                        var $2918 = self.main;
-                        var $2919 = self.body;
-                        var self = Litereum$get_bond$($2785, $2917);
+                        var $2903 = self.name;
+                        var $2904 = self.main;
+                        var $2905 = self.body;
+                        var self = Litereum$get_bond$($2770, $2903);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $2921 = self.value;
-                                var _bond$11 = $2921;
+                                var $2907 = self.value;
+                                var _bond$11 = $2907;
                                 var self = _bond$11;
                                 switch (self._) {
                                     case 'Litereum.Bond.new':
-                                        var $2923 = self.input_names;
-                                        var _nams$18 = $2923;
-                                        var _vals$19 = List$map$(Litereum$Term$var, $2923);
+                                        var $2909 = self.input_names;
+                                        var _nams$18 = $2909;
+                                        var _vals$19 = List$map$(Litereum$Term$var, $2909);
                                         var self = _state$1;
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $2925 = self.world;
-                                                var $2926 = self.subst;
-                                                var $2927 = self.fresh;
-                                                var $2928 = self.gas;
-                                                var self = Litereum$normalize$(Litereum$Runtime$new$($2925, Litereum$extend$($2926, _nams$18, _vals$19), $2927, $2928, $2918));
+                                                var $2911 = self.world;
+                                                var $2912 = self.subst;
+                                                var $2913 = self.fresh;
+                                                var $2914 = self.gas;
+                                                var self = Litereum$normalize$(Litereum$Runtime$new$($2911, Litereum$extend$($2912, _nams$18, _vals$19), $2913, $2914, $2904));
                                                 switch (self._) {
                                                     case 'Litereum.Runtime.new':
-                                                        var $2930 = self.world;
-                                                        var $2931 = self.fresh;
-                                                        var $2932 = self.gas;
-                                                        var $2933 = self.term;
+                                                        var $2916 = self.world;
+                                                        var $2917 = self.fresh;
+                                                        var $2918 = self.gas;
+                                                        var $2919 = self.term;
                                                         var _new_entry$30 = Litereum$Entry$bond$((() => {
                                                             var self = _bond$11;
                                                             switch (self._) {
                                                                 case 'Litereum.Bond.new':
-                                                                    var $2935 = self.name;
-                                                                    var $2936 = self.input_names;
-                                                                    var $2937 = self.input_types;
-                                                                    var $2938 = self.output_type;
-                                                                    var $2939 = self.owners;
-                                                                    var $2940 = Litereum$Bond$new$($2935, $2936, $2937, $2938, $2933, $2939);
-                                                                    return $2940;
+                                                                    var $2921 = self.name;
+                                                                    var $2922 = self.input_names;
+                                                                    var $2923 = self.input_types;
+                                                                    var $2924 = self.output_type;
+                                                                    var $2925 = self.owners;
+                                                                    var $2926 = Litereum$Bond$new$($2921, $2922, $2923, $2924, $2919, $2925);
+                                                                    return $2926;
                                                             };
                                                         })());
-                                                        var self = $2930;
+                                                        var self = $2916;
                                                         switch (self._) {
                                                             case 'Litereum.World.new':
-                                                                var $2941 = self.name_count;
-                                                                var $2942 = self.name_to_index;
-                                                                var $2943 = self.index_to_name;
-                                                                var $2944 = Litereum$World$new$($2941, $2942, $2943, Map$set$($2917, _new_entry$30, (() => {
-                                                                    var self = $2930;
+                                                                var $2927 = self.name_count;
+                                                                var $2928 = self.name_to_index;
+                                                                var $2929 = self.index_to_name;
+                                                                var $2930 = Litereum$World$new$($2927, $2928, $2929, Map$set$($2903, _new_entry$30, (() => {
+                                                                    var self = $2916;
                                                                     switch (self._) {
                                                                         case 'Litereum.World.new':
-                                                                            var $2945 = self.entry;
-                                                                            var $2946 = $2945;
-                                                                            return $2946;
+                                                                            var $2931 = self.entry;
+                                                                            var $2932 = $2931;
+                                                                            return $2932;
                                                                     };
                                                                 })()));
-                                                                var _new_world$31 = $2944;
+                                                                var _new_world$31 = $2930;
                                                                 break;
                                                         };
-                                                        var $2934 = Litereum$reduce$(Litereum$Runtime$new$(_new_world$31, $2926, $2931, $2932, $2919));
-                                                        var $2929 = $2934;
+                                                        var $2920 = Litereum$reduce$(Litereum$Runtime$new$(_new_world$31, $2912, $2917, $2918, $2905));
+                                                        var $2915 = $2920;
                                                         break;
                                                 };
-                                                var $2924 = $2929;
+                                                var $2910 = $2915;
                                                 break;
                                         };
-                                        var $2922 = $2924;
+                                        var $2908 = $2910;
                                         break;
                                 };
-                                var $2920 = $2922;
+                                var $2906 = $2908;
                                 break;
                             case 'Maybe.none':
-                                var $2947 = _state$1;
-                                var $2920 = $2947;
+                                var $2933 = _state$1;
+                                var $2906 = $2933;
                                 break;
                         };
-                        var $2790 = $2920;
+                        var $2775 = $2906;
                         break;
                     case 'Litereum.Term.create':
                     case 'Litereum.Term.word':
-                        var $2948 = _state$1;
-                        var $2790 = $2948;
+                        var $2934 = _state$1;
+                        var $2775 = $2934;
                         break;
                 };
-                var $2784 = $2790;
+                var $2769 = $2775;
                 break;
         };
-        return $2784;
+        return $2769;
     };
     const Litereum$reduce = x0 => Litereum$reduce$(x0);
 
@@ -10381,50 +10339,50 @@ module.exports = (function() {
         var self = _state$1;
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2950 = self.world;
-                var $2951 = self.subst;
-                var $2952 = self.fresh;
-                var $2953 = self.gas;
-                var $2954 = self.term;
-                var self = $2954;
+                var $2936 = self.world;
+                var $2937 = self.subst;
+                var $2938 = self.fresh;
+                var $2939 = self.gas;
+                var $2940 = self.term;
+                var self = $2940;
                 switch (self._) {
                     case 'List.cons':
-                        var $2956 = self.head;
-                        var $2957 = self.tail;
-                        var self = Litereum$normalize$(Litereum$Runtime$new$($2950, $2951, $2952, $2953, $2956));
+                        var $2942 = self.head;
+                        var $2943 = self.tail;
+                        var self = Litereum$normalize$(Litereum$Runtime$new$($2936, $2937, $2938, $2939, $2942));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2959 = self.world;
-                                var $2960 = self.subst;
-                                var $2961 = self.fresh;
-                                var $2962 = self.gas;
-                                var $2963 = self.term;
-                                var self = Litereum$normalize$many$(Litereum$Runtime$new$($2959, $2960, $2961, $2962, $2957));
+                                var $2945 = self.world;
+                                var $2946 = self.subst;
+                                var $2947 = self.fresh;
+                                var $2948 = self.gas;
+                                var $2949 = self.term;
+                                var self = Litereum$normalize$many$(Litereum$Runtime$new$($2945, $2946, $2947, $2948, $2943));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2965 = self.world;
-                                        var $2966 = self.subst;
-                                        var $2967 = self.fresh;
-                                        var $2968 = self.gas;
-                                        var $2969 = self.term;
-                                        var $2970 = Litereum$Runtime$new$($2965, $2966, $2967, $2968, List$cons$($2963, $2969));
-                                        var $2964 = $2970;
+                                        var $2951 = self.world;
+                                        var $2952 = self.subst;
+                                        var $2953 = self.fresh;
+                                        var $2954 = self.gas;
+                                        var $2955 = self.term;
+                                        var $2956 = Litereum$Runtime$new$($2951, $2952, $2953, $2954, List$cons$($2949, $2955));
+                                        var $2950 = $2956;
                                         break;
                                 };
-                                var $2958 = $2964;
+                                var $2944 = $2950;
                                 break;
                         };
-                        var $2955 = $2958;
+                        var $2941 = $2944;
                         break;
                     case 'List.nil':
-                        var $2971 = _state$1;
-                        var $2955 = $2971;
+                        var $2957 = _state$1;
+                        var $2941 = $2957;
                         break;
                 };
-                var $2949 = $2955;
+                var $2935 = $2941;
                 break;
         };
-        return $2949;
+        return $2935;
     };
     const Litereum$normalize$many = x0 => Litereum$normalize$many$(x0);
 
@@ -10432,80 +10390,80 @@ module.exports = (function() {
         var self = _state$3;
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2973 = self.world;
-                var $2974 = self.subst;
-                var $2975 = self.fresh;
-                var $2976 = self.gas;
-                var $2977 = self.term;
+                var $2959 = self.world;
+                var $2960 = self.subst;
+                var $2961 = self.fresh;
+                var $2962 = self.gas;
+                var $2963 = self.term;
                 var self = _ctrs$1;
                 switch (self._) {
                     case 'List.cons':
-                        var $2979 = self.head;
-                        var $2980 = self.tail;
-                        var self = $2977;
+                        var $2965 = self.head;
+                        var $2966 = self.tail;
+                        var self = $2963;
                         switch (self._) {
                             case 'List.cons':
-                                var $2982 = self.head;
-                                var $2983 = self.tail;
+                                var $2968 = self.head;
+                                var $2969 = self.tail;
                                 var _nams$13 = List$map$(a1 => ((_name$2 + ".") + a1), (() => {
-                                    var self = $2979;
+                                    var self = $2965;
                                     switch (self._) {
                                         case 'Litereum.Constructor.new':
-                                            var $2985 = self.field_names;
-                                            var $2986 = $2985;
-                                            return $2986;
+                                            var $2971 = self.field_names;
+                                            var $2972 = $2971;
+                                            return $2972;
                                     };
                                 })());
                                 var _vals$14 = List$map$(Litereum$Term$var, _nams$13);
-                                var _subst$15 = Litereum$extend$($2974, _nams$13, _vals$14);
-                                var self = Litereum$normalize$(Litereum$Runtime$new$($2973, _subst$15, $2975, $2976, $2982));
+                                var _subst$15 = Litereum$extend$($2960, _nams$13, _vals$14);
+                                var self = Litereum$normalize$(Litereum$Runtime$new$($2959, _subst$15, $2961, $2962, $2968));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2987 = self.world;
-                                        var $2988 = self.subst;
-                                        var $2989 = self.fresh;
-                                        var $2990 = self.gas;
-                                        var $2991 = self.term;
-                                        var self = Litereum$normalize$cases$($2980, _name$2, Litereum$Runtime$new$($2987, $2988, $2989, $2990, $2983));
+                                        var $2973 = self.world;
+                                        var $2974 = self.subst;
+                                        var $2975 = self.fresh;
+                                        var $2976 = self.gas;
+                                        var $2977 = self.term;
+                                        var self = Litereum$normalize$cases$($2966, _name$2, Litereum$Runtime$new$($2973, $2974, $2975, $2976, $2969));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $2993 = self.world;
-                                                var $2994 = self.subst;
-                                                var $2995 = self.fresh;
-                                                var $2996 = self.gas;
-                                                var $2997 = self.term;
-                                                var $2998 = Litereum$Runtime$new$($2993, $2994, $2995, $2996, List$cons$($2991, $2997));
-                                                var $2992 = $2998;
+                                                var $2979 = self.world;
+                                                var $2980 = self.subst;
+                                                var $2981 = self.fresh;
+                                                var $2982 = self.gas;
+                                                var $2983 = self.term;
+                                                var $2984 = Litereum$Runtime$new$($2979, $2980, $2981, $2982, List$cons$($2977, $2983));
+                                                var $2978 = $2984;
                                                 break;
                                         };
-                                        var $2984 = $2992;
+                                        var $2970 = $2978;
                                         break;
                                 };
-                                var $2981 = $2984;
+                                var $2967 = $2970;
                                 break;
                             case 'List.nil':
-                                var $2999 = _state$3;
-                                var $2981 = $2999;
+                                var $2985 = _state$3;
+                                var $2967 = $2985;
                                 break;
                         };
-                        var $2978 = $2981;
+                        var $2964 = $2967;
                         break;
                     case 'List.nil':
-                        var self = $2977;
+                        var self = $2963;
                         switch (self._) {
                             case 'List.nil':
                             case 'List.cons':
-                                var $3001 = _state$3;
-                                var $3000 = $3001;
+                                var $2987 = _state$3;
+                                var $2986 = $2987;
                                 break;
                         };
-                        var $2978 = $3000;
+                        var $2964 = $2986;
                         break;
                 };
-                var $2972 = $2978;
+                var $2958 = $2964;
                 break;
         };
-        return $2972;
+        return $2958;
     };
     const Litereum$normalize$cases = x0 => x1 => x2 => Litereum$normalize$cases$(x0, x1, x2);
 
@@ -10513,187 +10471,187 @@ module.exports = (function() {
         var self = Litereum$reduce$(_state$1);
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $3003 = self.world;
-                var $3004 = self.subst;
-                var $3005 = self.fresh;
-                var $3006 = self.gas;
-                var $3007 = self.term;
-                var self = $3007;
+                var $2989 = self.world;
+                var $2990 = self.subst;
+                var $2991 = self.fresh;
+                var $2992 = self.gas;
+                var $2993 = self.term;
+                var self = $2993;
                 switch (self._) {
                     case 'Litereum.Term.create':
-                        var $3009 = self.ctor;
-                        var $3010 = self.vals;
-                        var self = Litereum$normalize$many$(Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3010));
+                        var $2995 = self.ctor;
+                        var $2996 = self.vals;
+                        var self = Litereum$normalize$many$(Litereum$Runtime$new$($2989, $2990, $2991, $2992, $2996));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $3012 = self.world;
-                                var $3013 = self.subst;
-                                var $3014 = self.fresh;
-                                var $3015 = self.gas;
-                                var $3016 = self.term;
-                                var $3017 = Litereum$Runtime$new$($3012, $3013, $3014, $3015, Litereum$Term$create$($3009, $3016));
-                                var $3011 = $3017;
+                                var $2998 = self.world;
+                                var $2999 = self.subst;
+                                var $3000 = self.fresh;
+                                var $3001 = self.gas;
+                                var $3002 = self.term;
+                                var $3003 = Litereum$Runtime$new$($2998, $2999, $3000, $3001, Litereum$Term$create$($2995, $3002));
+                                var $2997 = $3003;
                                 break;
                         };
-                        var $3008 = $3011;
+                        var $2994 = $2997;
                         break;
                     case 'Litereum.Term.match':
-                        var $3018 = self.name;
-                        var $3019 = self.data;
-                        var $3020 = self.cses;
-                        var self = Litereum$get_constructors$($3003, $3019);
+                        var $3004 = self.name;
+                        var $3005 = self.data;
+                        var $3006 = self.cses;
+                        var self = Litereum$get_constructors$($2989, $3005);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3022 = self.value;
-                                var _ctrs$11 = $3022;
+                                var $3008 = self.value;
+                                var _ctrs$11 = $3008;
                                 var self = _ctrs$11;
                                 switch (self._) {
                                     case 'List.nil':
-                                        var self = Litereum$normalize$cases$(_ctrs$11, $3018, Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3020));
+                                        var self = Litereum$normalize$cases$(_ctrs$11, $3004, Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3006));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3025 = self.world;
-                                                var $3026 = self.subst;
-                                                var $3027 = self.fresh;
-                                                var $3028 = self.gas;
-                                                var $3029 = self.term;
-                                                var $3030 = Litereum$Runtime$new$($3025, $3026, $3027, $3028, Litereum$Term$match$($3018, $3019, $3029));
-                                                var $3024 = $3030;
+                                                var $3011 = self.world;
+                                                var $3012 = self.subst;
+                                                var $3013 = self.fresh;
+                                                var $3014 = self.gas;
+                                                var $3015 = self.term;
+                                                var $3016 = Litereum$Runtime$new$($3011, $3012, $3013, $3014, Litereum$Term$match$($3004, $3005, $3015));
+                                                var $3010 = $3016;
                                                 break;
                                         };
-                                        var $3023 = $3024;
+                                        var $3009 = $3010;
                                         break;
                                     case 'List.cons':
-                                        var self = Litereum$normalize$cases$(_ctrs$11, $3018, Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3020));
+                                        var self = Litereum$normalize$cases$(_ctrs$11, $3004, Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3006));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3032 = self.world;
-                                                var $3033 = self.subst;
-                                                var $3034 = self.fresh;
-                                                var $3035 = self.gas;
-                                                var $3036 = self.term;
-                                                var $3037 = Litereum$Runtime$new$($3032, $3033, $3034, $3035, Litereum$Term$match$($3018, $3019, $3036));
-                                                var $3031 = $3037;
+                                                var $3018 = self.world;
+                                                var $3019 = self.subst;
+                                                var $3020 = self.fresh;
+                                                var $3021 = self.gas;
+                                                var $3022 = self.term;
+                                                var $3023 = Litereum$Runtime$new$($3018, $3019, $3020, $3021, Litereum$Term$match$($3004, $3005, $3022));
+                                                var $3017 = $3023;
                                                 break;
                                         };
-                                        var $3023 = $3031;
+                                        var $3009 = $3017;
                                         break;
                                 };
-                                var $3021 = $3023;
+                                var $3007 = $3009;
                                 break;
                             case 'Maybe.none':
-                                var $3038 = Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3007);
-                                var $3021 = $3038;
+                                var $3024 = Litereum$Runtime$new$($2989, $2990, $2991, $2992, $2993);
+                                var $3007 = $3024;
                                 break;
                         };
-                        var $3008 = $3021;
+                        var $2994 = $3007;
                         break;
                     case 'Litereum.Term.compare':
-                        var $3039 = self.val0;
-                        var $3040 = self.val1;
-                        var $3041 = self.iflt;
-                        var $3042 = self.ifeq;
-                        var $3043 = self.ifgt;
-                        var self = Litereum$normalize$(Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3039));
+                        var $3025 = self.val0;
+                        var $3026 = self.val1;
+                        var $3027 = self.iflt;
+                        var $3028 = self.ifeq;
+                        var $3029 = self.ifgt;
+                        var self = Litereum$normalize$(Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3025));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $3045 = self.world;
-                                var $3046 = self.subst;
-                                var $3047 = self.fresh;
-                                var $3048 = self.gas;
-                                var $3049 = self.term;
-                                var self = Litereum$normalize$(Litereum$Runtime$new$($3045, $3046, $3047, $3048, $3040));
+                                var $3031 = self.world;
+                                var $3032 = self.subst;
+                                var $3033 = self.fresh;
+                                var $3034 = self.gas;
+                                var $3035 = self.term;
+                                var self = Litereum$normalize$(Litereum$Runtime$new$($3031, $3032, $3033, $3034, $3026));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $3051 = self.world;
-                                        var $3052 = self.subst;
-                                        var $3053 = self.fresh;
-                                        var $3054 = self.gas;
-                                        var $3055 = self.term;
-                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3051, $3052, $3053, $3054, $3041));
+                                        var $3037 = self.world;
+                                        var $3038 = self.subst;
+                                        var $3039 = self.fresh;
+                                        var $3040 = self.gas;
+                                        var $3041 = self.term;
+                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3037, $3038, $3039, $3040, $3027));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3057 = self.world;
-                                                var $3058 = self.subst;
-                                                var $3059 = self.fresh;
-                                                var $3060 = self.gas;
-                                                var $3061 = self.term;
-                                                var self = Litereum$normalize$(Litereum$Runtime$new$($3057, $3058, $3059, $3060, $3042));
+                                                var $3043 = self.world;
+                                                var $3044 = self.subst;
+                                                var $3045 = self.fresh;
+                                                var $3046 = self.gas;
+                                                var $3047 = self.term;
+                                                var self = Litereum$normalize$(Litereum$Runtime$new$($3043, $3044, $3045, $3046, $3028));
                                                 switch (self._) {
                                                     case 'Litereum.Runtime.new':
-                                                        var $3063 = self.world;
-                                                        var $3064 = self.subst;
-                                                        var $3065 = self.fresh;
-                                                        var $3066 = self.gas;
-                                                        var $3067 = self.term;
-                                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3063, $3064, $3065, $3066, $3043));
+                                                        var $3049 = self.world;
+                                                        var $3050 = self.subst;
+                                                        var $3051 = self.fresh;
+                                                        var $3052 = self.gas;
+                                                        var $3053 = self.term;
+                                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3049, $3050, $3051, $3052, $3029));
                                                         switch (self._) {
                                                             case 'Litereum.Runtime.new':
-                                                                var $3069 = self.world;
-                                                                var $3070 = self.subst;
-                                                                var $3071 = self.fresh;
-                                                                var $3072 = self.gas;
-                                                                var $3073 = self.term;
-                                                                var $3074 = Litereum$Runtime$new$($3069, $3070, $3071, $3072, Litereum$Term$compare$($3049, $3055, $3061, $3067, $3073));
-                                                                var $3068 = $3074;
+                                                                var $3055 = self.world;
+                                                                var $3056 = self.subst;
+                                                                var $3057 = self.fresh;
+                                                                var $3058 = self.gas;
+                                                                var $3059 = self.term;
+                                                                var $3060 = Litereum$Runtime$new$($3055, $3056, $3057, $3058, Litereum$Term$compare$($3035, $3041, $3047, $3053, $3059));
+                                                                var $3054 = $3060;
                                                                 break;
                                                         };
-                                                        var $3062 = $3068;
+                                                        var $3048 = $3054;
                                                         break;
                                                 };
-                                                var $3056 = $3062;
+                                                var $3042 = $3048;
                                                 break;
                                         };
-                                        var $3050 = $3056;
+                                        var $3036 = $3042;
                                         break;
                                 };
-                                var $3044 = $3050;
+                                var $3030 = $3036;
                                 break;
                         };
-                        var $3008 = $3044;
+                        var $2994 = $3030;
                         break;
                     case 'Litereum.Term.operate':
-                        var $3075 = self.oper;
-                        var $3076 = self.val0;
-                        var $3077 = self.val1;
-                        var self = Litereum$normalize$(Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3076));
+                        var $3061 = self.oper;
+                        var $3062 = self.val0;
+                        var $3063 = self.val1;
+                        var self = Litereum$normalize$(Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3062));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $3079 = self.world;
-                                var $3080 = self.subst;
-                                var $3081 = self.fresh;
-                                var $3082 = self.gas;
-                                var $3083 = self.term;
-                                var self = Litereum$normalize$(Litereum$Runtime$new$($3079, $3080, $3081, $3082, $3077));
+                                var $3065 = self.world;
+                                var $3066 = self.subst;
+                                var $3067 = self.fresh;
+                                var $3068 = self.gas;
+                                var $3069 = self.term;
+                                var self = Litereum$normalize$(Litereum$Runtime$new$($3065, $3066, $3067, $3068, $3063));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $3085 = self.world;
-                                        var $3086 = self.subst;
-                                        var $3087 = self.fresh;
-                                        var $3088 = self.gas;
-                                        var $3089 = self.term;
-                                        var $3090 = Litereum$Runtime$new$($3085, $3086, $3087, $3088, Litereum$Term$operate$($3075, $3083, $3089));
-                                        var $3084 = $3090;
+                                        var $3071 = self.world;
+                                        var $3072 = self.subst;
+                                        var $3073 = self.fresh;
+                                        var $3074 = self.gas;
+                                        var $3075 = self.term;
+                                        var $3076 = Litereum$Runtime$new$($3071, $3072, $3073, $3074, Litereum$Term$operate$($3061, $3069, $3075));
+                                        var $3070 = $3076;
                                         break;
                                 };
-                                var $3078 = $3084;
+                                var $3064 = $3070;
                                 break;
                         };
-                        var $3008 = $3078;
+                        var $2994 = $3064;
                         break;
                     case 'Litereum.Term.var':
                     case 'Litereum.Term.call':
                     case 'Litereum.Term.let':
                     case 'Litereum.Term.word':
                     case 'Litereum.Term.bind':
-                        var $3091 = Litereum$Runtime$new$($3003, $3004, $3005, $3006, $3007);
-                        var $3008 = $3091;
+                        var $3077 = Litereum$Runtime$new$($2989, $2990, $2991, $2992, $2993);
+                        var $2994 = $3077;
                         break;
                 };
-                var $3002 = $3008;
+                var $2988 = $2994;
                 break;
         };
-        return $3002;
+        return $2988;
     };
     const Litereum$normalize = x0 => Litereum$normalize$(x0);
 
@@ -10710,13 +10668,13 @@ module.exports = (function() {
                 var self = _xs$1;
                 switch (self._) {
                     case 'List.cons':
-                        var $3092 = self.head;
-                        var $3093 = self.tail;
-                        var $3094 = String$flatten$go$($3093, (_res$2 + $3092));
-                        return $3094;
+                        var $3078 = self.head;
+                        var $3079 = self.tail;
+                        var $3080 = String$flatten$go$($3079, (_res$2 + $3078));
+                        return $3080;
                     case 'List.nil':
-                        var $3095 = _res$2;
-                        return $3095;
+                        var $3081 = _res$2;
+                        return $3081;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -10726,8 +10684,8 @@ module.exports = (function() {
     const String$flatten$go = x0 => x1 => String$flatten$go$(x0, x1);
 
     function String$flatten$(_xs$1) {
-        var $3096 = String$flatten$go$(_xs$1, "");
-        return $3096;
+        var $3082 = String$flatten$go$(_xs$1, "");
+        return $3082;
     };
     const String$flatten = x0 => String$flatten$(x0);
 
@@ -10735,32 +10693,32 @@ module.exports = (function() {
         var self = _list$2;
         switch (self._) {
             case 'List.cons':
-                var $3098 = self.head;
-                var $3099 = self.tail;
-                var $3100 = String$flatten$(List$cons$((() => {
+                var $3084 = self.head;
+                var $3085 = self.tail;
+                var $3086 = String$flatten$(List$cons$((() => {
                     var self = _fst$3;
                     if (self) {
-                        var $3101 = "";
-                        return $3101;
+                        var $3087 = "";
+                        return $3087;
                     } else {
-                        var $3102 = _sep$1;
-                        return $3102;
+                        var $3088 = _sep$1;
+                        return $3088;
                     };
-                })(), List$cons$($3098, List$cons$(String$join$go$(_sep$1, $3099, Bool$false), List$nil))));
-                var $3097 = $3100;
+                })(), List$cons$($3084, List$cons$(String$join$go$(_sep$1, $3085, Bool$false), List$nil))));
+                var $3083 = $3086;
                 break;
             case 'List.nil':
-                var $3103 = "";
-                var $3097 = $3103;
+                var $3089 = "";
+                var $3083 = $3089;
                 break;
         };
-        return $3097;
+        return $3083;
     };
     const String$join$go = x0 => x1 => x2 => String$join$go$(x0, x1, x2);
 
     function String$join$(_sep$1, _list$2) {
-        var $3104 = String$join$go$(_sep$1, _list$2, Bool$true);
-        return $3104;
+        var $3090 = String$join$go$(_sep$1, _list$2, Bool$true);
+        return $3090;
     };
     const String$join = x0 => x1 => String$join$(x0, x1);
 
@@ -10768,16 +10726,16 @@ module.exports = (function() {
         var self = _type$2;
         switch (self._) {
             case 'Litereum.Type.data':
-                var $3106 = self.name;
-                var $3107 = $3106;
-                var $3105 = $3107;
+                var $3092 = self.name;
+                var $3093 = $3092;
+                var $3091 = $3093;
                 break;
             case 'Litereum.Type.word':
-                var $3108 = "#word";
-                var $3105 = $3108;
+                var $3094 = "#word";
+                var $3091 = $3094;
                 break;
         };
-        return $3105;
+        return $3091;
     };
     const Litereum$show$type = x0 => x1 => Litereum$show$type$(x0, x1);
 
@@ -10785,36 +10743,36 @@ module.exports = (function() {
         var self = _word$6;
         switch (self._) {
             case 'Word.o':
-                var $3110 = self.pred;
-                var $3111 = _w0$4(Word$fold$(_nil$3, _w0$4, _w1$5, $3110));
-                var $3109 = $3111;
+                var $3096 = self.pred;
+                var $3097 = _w0$4(Word$fold$(_nil$3, _w0$4, _w1$5, $3096));
+                var $3095 = $3097;
                 break;
             case 'Word.i':
-                var $3112 = self.pred;
-                var $3113 = _w1$5(Word$fold$(_nil$3, _w0$4, _w1$5, $3112));
-                var $3109 = $3113;
+                var $3098 = self.pred;
+                var $3099 = _w1$5(Word$fold$(_nil$3, _w0$4, _w1$5, $3098));
+                var $3095 = $3099;
                 break;
             case 'Word.e':
-                var $3114 = _nil$3;
-                var $3109 = $3114;
+                var $3100 = _nil$3;
+                var $3095 = $3100;
                 break;
         };
-        return $3109;
+        return $3095;
     };
     const Word$fold = x0 => x1 => x2 => x3 => Word$fold$(x0, x1, x2, x3);
 
     function Word$to_nat$(_word$2) {
-        var $3115 = Word$fold$(0n, a1 => (2n * a1), (_x$4 => {
-            var $3116 = Nat$succ$((2n * _x$4));
-            return $3116;
+        var $3101 = Word$fold$(0n, a1 => (2n * a1), (_x$4 => {
+            var $3102 = Nat$succ$((2n * _x$4));
+            return $3102;
         }), _word$2);
-        return $3115;
+        return $3101;
     };
     const Word$to_nat = x0 => Word$to_nat$(x0);
 
     function Word$show$(_size$1, _a$2) {
-        var $3117 = Nat$show$(Word$to_nat$(_a$2));
-        return $3117;
+        var $3103 = Nat$show$(Word$to_nat$(_a$2));
+        return $3103;
     };
     const Word$show = x0 => x1 => Word$show$(x0, x1);
     const U64$show = a0 => (String(a0));
@@ -10823,151 +10781,151 @@ module.exports = (function() {
         var self = _term$2;
         switch (self._) {
             case 'Litereum.Term.var':
-                var $3119 = self.name;
-                var $3120 = $3119;
-                var $3118 = $3120;
+                var $3105 = self.name;
+                var $3106 = $3105;
+                var $3104 = $3106;
                 break;
             case 'Litereum.Term.call':
-                var $3121 = self.bond;
-                var $3122 = self.args;
-                var _bond$5 = $3121;
-                var _args$6 = List$map$(Litereum$show$term(_world$1), $3122);
-                var $3123 = (_bond$5 + ("(" + (String$join$(",", _args$6) + ")")));
-                var $3118 = $3123;
+                var $3107 = self.bond;
+                var $3108 = self.args;
+                var _bond$5 = $3107;
+                var _args$6 = List$map$(Litereum$show$term(_world$1), $3108);
+                var $3109 = (_bond$5 + ("(" + (String$join$(",", _args$6) + ")")));
+                var $3104 = $3109;
                 break;
             case 'Litereum.Term.let':
-                var $3124 = self.name;
-                var $3125 = self.type;
-                var $3126 = self.expr;
-                var $3127 = self.body;
-                var _name$7 = $3124;
-                var _type$8 = Litereum$show$type$(_world$1, $3125);
-                var _expr$9 = Litereum$show$term$(_world$1, $3126);
-                var _body$10 = Litereum$show$term$(_world$1, $3127);
-                var $3128 = ("let " + (_name$7 + (" : " + (_type$8 + (" = " + (_expr$9 + (" " + _body$10)))))));
-                var $3118 = $3128;
+                var $3110 = self.name;
+                var $3111 = self.type;
+                var $3112 = self.expr;
+                var $3113 = self.body;
+                var _name$7 = $3110;
+                var _type$8 = Litereum$show$type$(_world$1, $3111);
+                var _expr$9 = Litereum$show$term$(_world$1, $3112);
+                var _body$10 = Litereum$show$term$(_world$1, $3113);
+                var $3114 = ("let " + (_name$7 + (" : " + (_type$8 + (" = " + (_expr$9 + (" " + _body$10)))))));
+                var $3104 = $3114;
                 break;
             case 'Litereum.Term.create':
-                var $3129 = self.ctor;
-                var $3130 = self.vals;
-                var _vals$5 = List$mapped$($3130, Litereum$show$term(_world$1));
-                var $3131 = ($3129 + ("{" + (String$join$(",", _vals$5) + "}")));
-                var $3118 = $3131;
+                var $3115 = self.ctor;
+                var $3116 = self.vals;
+                var _vals$5 = List$mapped$($3116, Litereum$show$term(_world$1));
+                var $3117 = ($3115 + ("{" + (String$join$(",", _vals$5) + "}")));
+                var $3104 = $3117;
                 break;
             case 'Litereum.Term.match':
-                var $3132 = self.name;
-                var $3133 = self.data;
-                var $3134 = self.cses;
-                var self = Litereum$get_data$(_world$1, $3133);
+                var $3118 = self.name;
+                var $3119 = self.data;
+                var $3120 = self.cses;
+                var self = Litereum$get_data$(_world$1, $3119);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3136 = self.value;
-                        var _data$7 = $3136;
+                        var $3122 = self.value;
+                        var _data$7 = $3122;
                         var self = _data$7;
                         switch (self._) {
                             case 'Litereum.Data.new':
-                                var $3138 = self.constructors;
-                                var _name$10 = $3132;
-                                var _cses$11 = List$zipped_with$($3138, $3134, (_case_ctor$11 => _case_body$12 => {
-                                    var $3140 = ((() => {
+                                var $3124 = self.constructors;
+                                var _name$10 = $3118;
+                                var _cses$11 = List$zipped_with$($3124, $3120, (_case_ctor$11 => _case_body$12 => {
+                                    var $3126 = ((() => {
                                         var self = _case_ctor$11;
                                         switch (self._) {
                                             case 'Litereum.Constructor.new':
-                                                var $3141 = self.name;
-                                                var $3142 = $3141;
-                                                return $3142;
+                                                var $3127 = self.name;
+                                                var $3128 = $3127;
+                                                return $3128;
                                         };
                                     })() + (": " + Litereum$show$term$(_world$1, _case_body$12)));
-                                    return $3140;
+                                    return $3126;
                                 }));
-                                var $3139 = ("case " + (_name$10 + (" : " + ($3133 + (" { " + (String$join$(", ", _cses$11) + " }"))))));
-                                var $3137 = $3139;
+                                var $3125 = ("case " + (_name$10 + (" : " + ($3119 + (" { " + (String$join$(", ", _cses$11) + " }"))))));
+                                var $3123 = $3125;
                                 break;
                         };
-                        var $3135 = $3137;
+                        var $3121 = $3123;
                         break;
                     case 'Maybe.none':
-                        var $3143 = "?";
-                        var $3135 = $3143;
+                        var $3129 = "?";
+                        var $3121 = $3129;
                         break;
                 };
-                var $3118 = $3135;
+                var $3104 = $3121;
                 break;
             case 'Litereum.Term.word':
-                var $3144 = self.numb;
-                var $3145 = ("#" + (String($3144)));
-                var $3118 = $3145;
+                var $3130 = self.numb;
+                var $3131 = ("#" + (String($3130)));
+                var $3104 = $3131;
                 break;
             case 'Litereum.Term.compare':
-                var $3146 = self.val0;
-                var $3147 = self.val1;
-                var $3148 = self.iflt;
-                var $3149 = self.ifeq;
-                var $3150 = self.ifgt;
-                var _val0$8 = Litereum$show$term$(_world$1, $3146);
-                var _val1$9 = Litereum$show$term$(_world$1, $3147);
-                var _iflt$10 = Litereum$show$term$(_world$1, $3148);
-                var _ifeq$11 = Litereum$show$term$(_world$1, $3149);
-                var _ifgt$12 = Litereum$show$term$(_world$1, $3150);
-                var $3151 = ("compare " + (_val0$8 + (" " + (_val1$9 + (" { _<_: " + (_iflt$10 + (" _=_: " + (_ifeq$11 + (" _>_: " + (_ifgt$12 + " }"))))))))));
-                var $3118 = $3151;
+                var $3132 = self.val0;
+                var $3133 = self.val1;
+                var $3134 = self.iflt;
+                var $3135 = self.ifeq;
+                var $3136 = self.ifgt;
+                var _val0$8 = Litereum$show$term$(_world$1, $3132);
+                var _val1$9 = Litereum$show$term$(_world$1, $3133);
+                var _iflt$10 = Litereum$show$term$(_world$1, $3134);
+                var _ifeq$11 = Litereum$show$term$(_world$1, $3135);
+                var _ifgt$12 = Litereum$show$term$(_world$1, $3136);
+                var $3137 = ("compare " + (_val0$8 + (" " + (_val1$9 + (" { _<_: " + (_iflt$10 + (" _=_: " + (_ifeq$11 + (" _>_: " + (_ifgt$12 + " }"))))))))));
+                var $3104 = $3137;
                 break;
             case 'Litereum.Term.operate':
-                var $3152 = self.oper;
-                var $3153 = self.val0;
-                var $3154 = self.val1;
-                var self = $3152;
+                var $3138 = self.oper;
+                var $3139 = self.val0;
+                var $3140 = self.val1;
+                var self = $3138;
                 switch (self._) {
                     case 'Litereum.Operation.add':
-                        var $3156 = "+";
-                        var _oper$6 = $3156;
+                        var $3142 = "+";
+                        var _oper$6 = $3142;
                         break;
                     case 'Litereum.Operation.sub':
-                        var $3157 = "-";
-                        var _oper$6 = $3157;
+                        var $3143 = "-";
+                        var _oper$6 = $3143;
                         break;
                     case 'Litereum.Operation.mul':
-                        var $3158 = "*";
-                        var _oper$6 = $3158;
+                        var $3144 = "*";
+                        var _oper$6 = $3144;
                         break;
                     case 'Litereum.Operation.div':
-                        var $3159 = "/";
-                        var _oper$6 = $3159;
+                        var $3145 = "/";
+                        var _oper$6 = $3145;
                         break;
                     case 'Litereum.Operation.mod':
-                        var $3160 = "%";
-                        var _oper$6 = $3160;
+                        var $3146 = "%";
+                        var _oper$6 = $3146;
                         break;
                     case 'Litereum.Operation.or':
-                        var $3161 = "|";
-                        var _oper$6 = $3161;
+                        var $3147 = "|";
+                        var _oper$6 = $3147;
                         break;
                     case 'Litereum.Operation.and':
-                        var $3162 = "&";
-                        var _oper$6 = $3162;
+                        var $3148 = "&";
+                        var _oper$6 = $3148;
                         break;
                     case 'Litereum.Operation.xor':
-                        var $3163 = "^";
-                        var _oper$6 = $3163;
+                        var $3149 = "^";
+                        var _oper$6 = $3149;
                         break;
                 };
-                var _val0$7 = Litereum$show$term$(_world$1, $3153);
-                var _val1$8 = Litereum$show$term$(_world$1, $3154);
-                var $3155 = (_oper$6 + ("(" + (_val0$7 + ("," + (_val1$8 + ")")))));
-                var $3118 = $3155;
+                var _val0$7 = Litereum$show$term$(_world$1, $3139);
+                var _val1$8 = Litereum$show$term$(_world$1, $3140);
+                var $3141 = (_oper$6 + ("(" + (_val0$7 + ("," + (_val1$8 + ")")))));
+                var $3104 = $3141;
                 break;
             case 'Litereum.Term.bind':
-                var $3164 = self.name;
-                var $3165 = self.main;
-                var $3166 = self.body;
-                var _name$6 = $3164;
-                var _main$7 = Litereum$show$term$(_world$1, $3165);
-                var _body$8 = Litereum$show$term$(_world$1, $3166);
-                var $3167 = ("bind " + (_name$6 + (" { " + (_main$7 + (" } " + _body$8)))));
-                var $3118 = $3167;
+                var $3150 = self.name;
+                var $3151 = self.main;
+                var $3152 = self.body;
+                var _name$6 = $3150;
+                var _main$7 = Litereum$show$term$(_world$1, $3151);
+                var _body$8 = Litereum$show$term$(_world$1, $3152);
+                var $3153 = ("bind " + (_name$6 + (" { " + (_main$7 + (" } " + _body$8)))));
+                var $3104 = $3153;
                 break;
         };
-        return $3118;
+        return $3104;
     };
     const Litereum$show$term = x0 => x1 => Litereum$show$term$(x0, x1);
 
@@ -10975,22 +10933,22 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $3169 = self.name_count;
-                var $3170 = self.name_to_index;
-                var $3171 = self.index_to_name;
-                var $3172 = self.entry;
+                var $3155 = self.name_count;
+                var $3156 = self.name_to_index;
+                var $3157 = self.index_to_name;
+                var $3158 = self.entry;
                 var self = _transaction$2;
                 switch (self._) {
                     case 'Litereum.Transaction.new_name':
-                        var $3174 = self.name;
-                        var _name$9 = $3174;
+                        var $3160 = self.name;
+                        var _name$9 = $3160;
                         var self = Map$get$(_name$9, (() => {
                             var self = _world$1;
                             switch (self._) {
                                 case 'Litereum.World.new':
-                                    var $3176 = self.name_to_index;
-                                    var $3177 = $3176;
-                                    return $3177;
+                                    var $3162 = self.name_to_index;
+                                    var $3163 = $3162;
+                                    return $3163;
                             };
                         })());
                         switch (self._) {
@@ -10998,468 +10956,468 @@ module.exports = (function() {
                                 var self = _world$1;
                                 switch (self._) {
                                     case 'Litereum.World.new':
-                                        var $3179 = self.name_to_index;
-                                        var $3180 = self.index_to_name;
-                                        var $3181 = self.entry;
-                                        var $3182 = Litereum$World$new$(($3169 + 1n), $3179, $3180, $3181);
-                                        var _world$10 = $3182;
+                                        var $3165 = self.name_to_index;
+                                        var $3166 = self.index_to_name;
+                                        var $3167 = self.entry;
+                                        var $3168 = Litereum$World$new$(($3155 + 1n), $3165, $3166, $3167);
+                                        var _world$10 = $3168;
                                         break;
                                 };
                                 var self = _world$10;
                                 switch (self._) {
                                     case 'Litereum.World.new':
-                                        var $3183 = self.name_count;
-                                        var $3184 = self.index_to_name;
-                                        var $3185 = self.entry;
-                                        var $3186 = Litereum$World$new$($3183, Map$set$(_name$9, $3169, $3170), $3184, $3185);
-                                        var _world$11 = $3186;
+                                        var $3169 = self.name_count;
+                                        var $3170 = self.index_to_name;
+                                        var $3171 = self.entry;
+                                        var $3172 = Litereum$World$new$($3169, Map$set$(_name$9, $3155, $3156), $3170, $3171);
+                                        var _world$11 = $3172;
                                         break;
                                 };
                                 var self = _world$11;
                                 switch (self._) {
                                     case 'Litereum.World.new':
-                                        var $3187 = self.name_count;
-                                        var $3188 = self.name_to_index;
-                                        var $3189 = self.entry;
-                                        var $3190 = Litereum$World$new$($3187, $3188, Map$set$(Nat$show$($3169), _name$9, $3171), $3189);
-                                        var _world$12 = $3190;
+                                        var $3173 = self.name_count;
+                                        var $3174 = self.name_to_index;
+                                        var $3175 = self.entry;
+                                        var $3176 = Litereum$World$new$($3173, $3174, Map$set$(Nat$show$($3155), _name$9, $3157), $3175);
+                                        var _world$12 = $3176;
                                         break;
                                 };
-                                var $3178 = Maybe$some$(_world$12);
-                                var $3175 = $3178;
+                                var $3164 = Maybe$some$(_world$12);
+                                var $3161 = $3164;
                                 break;
                             case 'Maybe.some':
-                                var $3191 = Maybe$none;
-                                var $3175 = $3191;
+                                var $3177 = Maybe$none;
+                                var $3161 = $3177;
                                 break;
                         };
-                        var $3173 = $3175;
+                        var $3159 = $3161;
                         break;
                     case 'Litereum.Transaction.new_data':
-                        var $3192 = self.data;
-                        var _data$9 = $3192;
+                        var $3178 = self.data;
+                        var _data$9 = $3178;
                         var self = _data$9;
                         switch (self._) {
                             case 'Litereum.Data.new':
-                                var $3194 = self.name;
-                                var self = Map$get$($3194, $3172);
+                                var $3180 = self.name;
+                                var self = Map$get$($3180, $3158);
                                 switch (self._) {
                                     case 'Maybe.none':
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3197 = Unit$new;
-                                            var _logger$12 = $3197;
+                                            var $3183 = Unit$new;
+                                            var _logger$12 = $3183;
                                         } else {
-                                            var $3198 = ((console.log(("- data " + $3194)), (_$12 => {
-                                                var $3199 = Unit$new;
-                                                return $3199;
+                                            var $3184 = ((console.log(("- data " + $3180)), (_$12 => {
+                                                var $3185 = Unit$new;
+                                                return $3185;
                                             })()));
-                                            var _logger$12 = $3198;
+                                            var _logger$12 = $3184;
                                         };
+                                        var self = _world$1;
+                                        switch (self._) {
+                                            case 'Litereum.World.new':
+                                                var $3186 = self.name_count;
+                                                var $3187 = self.name_to_index;
+                                                var $3188 = self.index_to_name;
+                                                var $3189 = Litereum$World$new$($3186, $3187, $3188, Map$set$($3180, Litereum$Entry$data$(_data$9), $3158));
+                                                var _world$13 = $3189;
+                                                break;
+                                        };
+                                        var $3182 = Maybe$some$(_world$13);
+                                        var $3181 = $3182;
+                                        break;
+                                    case 'Maybe.some':
+                                        var $3190 = Maybe$none;
+                                        var $3181 = $3190;
+                                        break;
+                                };
+                                var $3179 = $3181;
+                                break;
+                        };
+                        var $3159 = $3179;
+                        break;
+                    case 'Litereum.Transaction.new_bond':
+                        var $3191 = self.bond;
+                        var _bond$9 = $3191;
+                        var self = _bond$9;
+                        switch (self._) {
+                            case 'Litereum.Bond.new':
+                                var $3193 = self.name;
+                                var $3194 = self.input_names;
+                                var $3195 = self.input_types;
+                                var $3196 = self.output_type;
+                                var $3197 = self.main;
+                                var self = Map$get$($3193, $3158);
+                                switch (self._) {
+                                    case 'Maybe.none':
                                         var self = _world$1;
                                         switch (self._) {
                                             case 'Litereum.World.new':
                                                 var $3200 = self.name_count;
                                                 var $3201 = self.name_to_index;
                                                 var $3202 = self.index_to_name;
-                                                var $3203 = Litereum$World$new$($3200, $3201, $3202, Map$set$($3194, Litereum$Entry$data$(_data$9), $3172));
-                                                var _world$13 = $3203;
+                                                var $3203 = Litereum$World$new$($3200, $3201, $3202, Map$set$($3193, Litereum$Entry$bond$(_bond$9), $3158));
+                                                var _world$16 = $3203;
                                                 break;
                                         };
-                                        var $3196 = Maybe$some$(_world$13);
-                                        var $3195 = $3196;
-                                        break;
-                                    case 'Maybe.some':
-                                        var $3204 = Maybe$none;
-                                        var $3195 = $3204;
-                                        break;
-                                };
-                                var $3193 = $3195;
-                                break;
-                        };
-                        var $3173 = $3193;
-                        break;
-                    case 'Litereum.Transaction.new_bond':
-                        var $3205 = self.bond;
-                        var _bond$9 = $3205;
-                        var self = _bond$9;
-                        switch (self._) {
-                            case 'Litereum.Bond.new':
-                                var $3207 = self.name;
-                                var $3208 = self.input_names;
-                                var $3209 = self.input_types;
-                                var $3210 = self.output_type;
-                                var $3211 = self.main;
-                                var self = Map$get$($3207, $3172);
-                                switch (self._) {
-                                    case 'Maybe.none':
-                                        var self = _world$1;
-                                        switch (self._) {
-                                            case 'Litereum.World.new':
-                                                var $3214 = self.name_count;
-                                                var $3215 = self.name_to_index;
-                                                var $3216 = self.index_to_name;
-                                                var $3217 = Litereum$World$new$($3214, $3215, $3216, Map$set$($3207, Litereum$Entry$bond$(_bond$9), $3172));
-                                                var _world$16 = $3217;
-                                                break;
-                                        };
-                                        var _context$17 = Litereum$extend$(Map$from_list$(List$nil), $3208, $3209);
+                                        var _context$17 = Litereum$extend$(Map$from_list$(List$nil), $3194, $3195);
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3218 = Maybe$some$(_world$16);
-                                            var $3213 = $3218;
+                                            var $3204 = Maybe$some$(_world$16);
+                                            var $3199 = $3204;
                                         } else {
-                                            var self = Litereum$check$(_context$17, _world$16, $3211, $3210);
+                                            var self = Litereum$check$(_context$17, _world$16, $3197, $3196);
                                             if (self) {
                                                 var self = _bipass$3;
                                                 if (self) {
-                                                    var $3221 = Unit$new;
-                                                    var _logger$18 = $3221;
+                                                    var $3207 = Unit$new;
+                                                    var _logger$18 = $3207;
                                                 } else {
-                                                    var $3222 = ((console.log(("- bond " + $3207)), (_$18 => {
-                                                        var $3223 = Unit$new;
-                                                        return $3223;
+                                                    var $3208 = ((console.log(("- bond " + $3193)), (_$18 => {
+                                                        var $3209 = Unit$new;
+                                                        return $3209;
                                                     })()));
-                                                    var _logger$18 = $3222;
+                                                    var _logger$18 = $3208;
                                                 };
-                                                var $3220 = Maybe$some$(_world$16);
-                                                var $3219 = $3220;
+                                                var $3206 = Maybe$some$(_world$16);
+                                                var $3205 = $3206;
                                             } else {
                                                 var self = _bipass$3;
                                                 if (self) {
-                                                    var $3225 = Unit$new;
-                                                    var _logger$18 = $3225;
+                                                    var $3211 = Unit$new;
+                                                    var _logger$18 = $3211;
                                                 } else {
-                                                    var $3226 = ((console.log(("- bond error: ill-typed bond " + $3207)), (_$18 => {
-                                                        var $3227 = Unit$new;
-                                                        return $3227;
+                                                    var $3212 = ((console.log(("- bond error: ill-typed bond " + $3193)), (_$18 => {
+                                                        var $3213 = Unit$new;
+                                                        return $3213;
                                                     })()));
-                                                    var _logger$18 = $3226;
+                                                    var _logger$18 = $3212;
                                                 };
-                                                var $3224 = Maybe$none;
-                                                var $3219 = $3224;
+                                                var $3210 = Maybe$none;
+                                                var $3205 = $3210;
                                             };
-                                            var $3213 = $3219;
+                                            var $3199 = $3205;
                                         };
-                                        var $3212 = $3213;
+                                        var $3198 = $3199;
                                         break;
                                     case 'Maybe.some':
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3229 = Unit$new;
-                                            var _logger$17 = $3229;
+                                            var $3215 = Unit$new;
+                                            var _logger$17 = $3215;
                                         } else {
-                                            var $3230 = ((console.log(("- bond error: redefinition of " + $3207)), (_$17 => {
-                                                var $3231 = Unit$new;
-                                                return $3231;
+                                            var $3216 = ((console.log(("- bond error: redefinition of " + $3193)), (_$17 => {
+                                                var $3217 = Unit$new;
+                                                return $3217;
                                             })()));
-                                            var _logger$17 = $3230;
+                                            var _logger$17 = $3216;
                                         };
-                                        var $3228 = Maybe$none;
-                                        var $3212 = $3228;
+                                        var $3214 = Maybe$none;
+                                        var $3198 = $3214;
                                         break;
                                 };
-                                var $3206 = $3212;
+                                var $3192 = $3198;
                                 break;
                         };
-                        var $3173 = $3206;
+                        var $3159 = $3192;
                         break;
                     case 'Litereum.Transaction.new_eval':
-                        var $3232 = self.eval;
-                        var _eval$9 = $3232;
+                        var $3218 = self.eval;
+                        var _eval$9 = $3218;
                         var self = _eval$9;
                         switch (self._) {
                             case 'Litereum.Eval.new':
-                                var $3234 = self.term;
-                                var $3235 = self.type;
+                                var $3220 = self.term;
+                                var $3221 = self.type;
                                 var self = _bipass$3;
                                 if (self) {
-                                    var $3237 = Maybe$some$(_world$1);
-                                    var $3236 = $3237;
+                                    var $3223 = Maybe$some$(_world$1);
+                                    var $3222 = $3223;
                                 } else {
-                                    var self = Litereum$check$(Map$from_list$(List$nil), _world$1, $3234, $3235);
+                                    var self = Litereum$check$(Map$from_list$(List$nil), _world$1, $3220, $3221);
                                     if (self) {
-                                        var self = Litereum$normalize$(Litereum$Runtime$new$(_world$1, Map$from_list$(List$nil), 0n, 0n, $3234));
+                                        var self = Litereum$normalize$(Litereum$Runtime$new$(_world$1, Map$from_list$(List$nil), 0n, 0n, $3220));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3240 = self.world;
-                                                var $3241 = self.term;
+                                                var $3226 = self.world;
+                                                var $3227 = self.term;
                                                 var self = _bipass$3;
                                                 if (self) {
-                                                    var $3243 = Unit$new;
-                                                    var _logger$17 = $3243;
+                                                    var $3229 = Unit$new;
+                                                    var _logger$17 = $3229;
                                                 } else {
-                                                    var $3244 = ((console.log(("- eval " + Litereum$show$term$($3240, $3241))), (_$17 => {
-                                                        var $3245 = Unit$new;
-                                                        return $3245;
+                                                    var $3230 = ((console.log(("- eval " + Litereum$show$term$($3226, $3227))), (_$17 => {
+                                                        var $3231 = Unit$new;
+                                                        return $3231;
                                                     })()));
-                                                    var _logger$17 = $3244;
+                                                    var _logger$17 = $3230;
                                                 };
-                                                var $3242 = Maybe$some$($3240);
-                                                var $3239 = $3242;
+                                                var $3228 = Maybe$some$($3226);
+                                                var $3225 = $3228;
                                                 break;
                                         };
-                                        var $3238 = $3239;
+                                        var $3224 = $3225;
                                     } else {
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3247 = Unit$new;
-                                            var _logger$12 = $3247;
+                                            var $3233 = Unit$new;
+                                            var _logger$12 = $3233;
                                         } else {
-                                            var $3248 = ((console.log("- eval error: ill-typed term"), (_$12 => {
-                                                var $3249 = Unit$new;
-                                                return $3249;
+                                            var $3234 = ((console.log("- eval error: ill-typed term"), (_$12 => {
+                                                var $3235 = Unit$new;
+                                                return $3235;
                                             })()));
-                                            var _logger$12 = $3248;
+                                            var _logger$12 = $3234;
                                         };
-                                        var $3246 = Maybe$none;
-                                        var $3238 = $3246;
+                                        var $3232 = Maybe$none;
+                                        var $3224 = $3232;
                                     };
-                                    var $3236 = $3238;
+                                    var $3222 = $3224;
                                 };
-                                var $3233 = $3236;
+                                var $3219 = $3222;
                                 break;
                         };
-                        var $3173 = $3233;
+                        var $3159 = $3219;
                         break;
                 };
-                var $3168 = $3173;
+                var $3154 = $3159;
                 break;
         };
-        return $3168;
+        return $3154;
     };
     const Litereum$run = x0 => x1 => x2 => Litereum$run$(x0, x1, x2);
 
     function Litereum$reg$(_world$1, _transaction$2) {
-        var $3250 = Maybe$default$(Litereum$run$(_world$1, _transaction$2, Bool$true), _world$1);
-        return $3250;
+        var $3236 = Maybe$default$(Litereum$run$(_world$1, _transaction$2, Bool$true), _world$1);
+        return $3236;
     };
     const Litereum$reg = x0 => x1 => Litereum$reg$(x0, x1);
 
     function Litereum$parse$block$(_world$1) {
-        var $3251 = Parser$choice(List$cons$((_pst$2 => {
+        var $3237 = Parser$choice(List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $3253 = self.err;
+                    var $3239 = self.err;
                     var _reply$8 = Litereum$parse$transaction$(_world$1)(_pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $3255 = self.err;
-                            var self = $3253;
+                            var $3241 = self.err;
+                            var self = $3239;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $3257 = self.value;
-                                    var $3258 = Parser$Reply$error$(Parser$Error$combine$($3257, $3255));
-                                    var $3256 = $3258;
+                                    var $3243 = self.value;
+                                    var $3244 = Parser$Reply$error$(Parser$Error$combine$($3243, $3241));
+                                    var $3242 = $3244;
                                     break;
                                 case 'Maybe.none':
-                                    var $3259 = Parser$Reply$error$($3255);
-                                    var $3256 = $3259;
+                                    var $3245 = Parser$Reply$error$($3241);
+                                    var $3242 = $3245;
                                     break;
                             };
-                            var $3254 = $3256;
+                            var $3240 = $3242;
                             break;
                         case 'Parser.Reply.value':
-                            var $3260 = self.pst;
-                            var $3261 = self.val;
-                            var self = $3260;
+                            var $3246 = self.pst;
+                            var $3247 = self.val;
+                            var self = $3246;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $3263 = self.err;
-                                    var $3264 = self.nam;
-                                    var $3265 = self.ini;
-                                    var $3266 = self.idx;
-                                    var $3267 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3253, $3263), $3264, $3265, $3266, $3267);
+                                    var $3249 = self.err;
+                                    var $3250 = self.nam;
+                                    var $3251 = self.ini;
+                                    var $3252 = self.idx;
+                                    var $3253 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3239, $3249), $3250, $3251, $3252, $3253);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $3269 = self.err;
-                                            var _reply$22 = Litereum$parse$block$(Litereum$reg$(_world$1, $3261))(_reply$pst$16);
+                                            var $3255 = self.err;
+                                            var _reply$22 = Litereum$parse$block$(Litereum$reg$(_world$1, $3247))(_reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $3271 = self.err;
-                                                    var self = $3269;
+                                                    var $3257 = self.err;
+                                                    var self = $3255;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $3273 = self.value;
-                                                            var $3274 = Parser$Reply$error$(Parser$Error$combine$($3273, $3271));
-                                                            var $3272 = $3274;
+                                                            var $3259 = self.value;
+                                                            var $3260 = Parser$Reply$error$(Parser$Error$combine$($3259, $3257));
+                                                            var $3258 = $3260;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $3275 = Parser$Reply$error$($3271);
-                                                            var $3272 = $3275;
+                                                            var $3261 = Parser$Reply$error$($3257);
+                                                            var $3258 = $3261;
                                                             break;
                                                     };
-                                                    var $3270 = $3272;
+                                                    var $3256 = $3258;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $3276 = self.pst;
-                                                    var $3277 = self.val;
-                                                    var self = $3276;
+                                                    var $3262 = self.pst;
+                                                    var $3263 = self.val;
+                                                    var self = $3262;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $3279 = self.err;
-                                                            var $3280 = self.nam;
-                                                            var $3281 = self.ini;
-                                                            var $3282 = self.idx;
-                                                            var $3283 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3269, $3279), $3280, $3281, $3282, $3283);
-                                                            var $3284 = Parser$Reply$value$(_reply$pst$30, List$cons$($3261, $3277));
-                                                            var $3278 = $3284;
+                                                            var $3265 = self.err;
+                                                            var $3266 = self.nam;
+                                                            var $3267 = self.ini;
+                                                            var $3268 = self.idx;
+                                                            var $3269 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3255, $3265), $3266, $3267, $3268, $3269);
+                                                            var $3270 = Parser$Reply$value$(_reply$pst$30, List$cons$($3247, $3263));
+                                                            var $3264 = $3270;
                                                             break;
                                                     };
-                                                    var $3270 = $3278;
+                                                    var $3256 = $3264;
                                                     break;
                                             };
-                                            var $3268 = $3270;
+                                            var $3254 = $3256;
                                             break;
                                     };
-                                    var $3262 = $3268;
+                                    var $3248 = $3254;
                                     break;
                             };
-                            var $3254 = $3262;
+                            var $3240 = $3248;
                             break;
                     };
-                    var $3252 = $3254;
+                    var $3238 = $3240;
                     break;
             };
-            return $3252;
+            return $3238;
         }), List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $3286 = self.err;
+                    var $3272 = self.err;
                     var _reply$8 = Litereum$parse$ignore(_pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $3288 = self.err;
-                            var self = $3286;
+                            var $3274 = self.err;
+                            var self = $3272;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $3290 = self.value;
-                                    var $3291 = Parser$Reply$error$(Parser$Error$combine$($3290, $3288));
-                                    var $3289 = $3291;
+                                    var $3276 = self.value;
+                                    var $3277 = Parser$Reply$error$(Parser$Error$combine$($3276, $3274));
+                                    var $3275 = $3277;
                                     break;
                                 case 'Maybe.none':
-                                    var $3292 = Parser$Reply$error$($3288);
-                                    var $3289 = $3292;
+                                    var $3278 = Parser$Reply$error$($3274);
+                                    var $3275 = $3278;
                                     break;
                             };
-                            var $3287 = $3289;
+                            var $3273 = $3275;
                             break;
                         case 'Parser.Reply.value':
-                            var $3293 = self.pst;
-                            var self = $3293;
+                            var $3279 = self.pst;
+                            var self = $3279;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $3295 = self.err;
-                                    var $3296 = self.nam;
-                                    var $3297 = self.ini;
-                                    var $3298 = self.idx;
-                                    var $3299 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3286, $3295), $3296, $3297, $3298, $3299);
+                                    var $3281 = self.err;
+                                    var $3282 = self.nam;
+                                    var $3283 = self.ini;
+                                    var $3284 = self.idx;
+                                    var $3285 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3272, $3281), $3282, $3283, $3284, $3285);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $3301 = self.err;
+                                            var $3287 = self.err;
                                             var _reply$22 = Parser$eof$(_reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $3303 = self.err;
-                                                    var self = $3301;
+                                                    var $3289 = self.err;
+                                                    var self = $3287;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $3305 = self.value;
-                                                            var $3306 = Parser$Reply$error$(Parser$Error$combine$($3305, $3303));
-                                                            var $3304 = $3306;
+                                                            var $3291 = self.value;
+                                                            var $3292 = Parser$Reply$error$(Parser$Error$combine$($3291, $3289));
+                                                            var $3290 = $3292;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $3307 = Parser$Reply$error$($3303);
-                                                            var $3304 = $3307;
+                                                            var $3293 = Parser$Reply$error$($3289);
+                                                            var $3290 = $3293;
                                                             break;
                                                     };
-                                                    var $3302 = $3304;
+                                                    var $3288 = $3290;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $3308 = self.pst;
-                                                    var self = $3308;
+                                                    var $3294 = self.pst;
+                                                    var self = $3294;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $3310 = self.err;
-                                                            var $3311 = self.nam;
-                                                            var $3312 = self.ini;
-                                                            var $3313 = self.idx;
-                                                            var $3314 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3301, $3310), $3311, $3312, $3313, $3314);
-                                                            var $3315 = Parser$Reply$value$(_reply$pst$30, List$nil);
-                                                            var $3309 = $3315;
+                                                            var $3296 = self.err;
+                                                            var $3297 = self.nam;
+                                                            var $3298 = self.ini;
+                                                            var $3299 = self.idx;
+                                                            var $3300 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3287, $3296), $3297, $3298, $3299, $3300);
+                                                            var $3301 = Parser$Reply$value$(_reply$pst$30, List$nil);
+                                                            var $3295 = $3301;
                                                             break;
                                                     };
-                                                    var $3302 = $3309;
+                                                    var $3288 = $3295;
                                                     break;
                                             };
-                                            var $3300 = $3302;
+                                            var $3286 = $3288;
                                             break;
                                     };
-                                    var $3294 = $3300;
+                                    var $3280 = $3286;
                                     break;
                             };
-                            var $3287 = $3294;
+                            var $3273 = $3280;
                             break;
                     };
-                    var $3285 = $3287;
+                    var $3271 = $3273;
                     break;
             };
-            return $3285;
+            return $3271;
         }), List$nil)));
-        return $3251;
+        return $3237;
     };
     const Litereum$parse$block = x0 => Litereum$parse$block$(x0);
 
     function IO$(_A$1) {
-        var $3316 = null;
-        return $3316;
+        var $3302 = null;
+        return $3302;
     };
     const IO = x0 => IO$(x0);
 
     function IO$ask$(_query$2, _param$3, _then$4) {
-        var $3317 = ({
+        var $3303 = ({
             _: 'IO.ask',
             'query': _query$2,
             'param': _param$3,
             'then': _then$4
         });
-        return $3317;
+        return $3303;
     };
     const IO$ask = x0 => x1 => x2 => IO$ask$(x0, x1, x2);
 
     function IO$end$(_value$2) {
-        var $3318 = ({
+        var $3304 = ({
             _: 'IO.end',
             'value': _value$2
         });
-        return $3318;
+        return $3304;
     };
     const IO$end = x0 => IO$end$(x0);
 
     function IO$put_string$(_text$1) {
-        var $3319 = IO$ask$("put_string", _text$1, (_skip$2 => {
-            var $3320 = IO$end$(Unit$new);
-            return $3320;
+        var $3305 = IO$ask$("put_string", _text$1, (_skip$2 => {
+            var $3306 = IO$end$(Unit$new);
+            return $3306;
         }));
-        return $3319;
+        return $3305;
     };
     const IO$put_string = x0 => IO$put_string$(x0);
 
     function IO$print$(_text$1) {
-        var $3321 = IO$put_string$((_text$1 + "\u{a}"));
-        return $3321;
+        var $3307 = IO$put_string$((_text$1 + "\u{a}"));
+        return $3307;
     };
     const IO$print = x0 => IO$print$(x0);
 
@@ -11467,28 +11425,28 @@ module.exports = (function() {
         var self = _a$3;
         switch (self._) {
             case 'IO.end':
-                var $3323 = self.value;
-                var $3324 = _f$4($3323);
-                var $3322 = $3324;
+                var $3309 = self.value;
+                var $3310 = _f$4($3309);
+                var $3308 = $3310;
                 break;
             case 'IO.ask':
-                var $3325 = self.query;
-                var $3326 = self.param;
-                var $3327 = self.then;
-                var $3328 = IO$ask$($3325, $3326, (_x$8 => {
-                    var $3329 = IO$bind$($3327(_x$8), _f$4);
-                    return $3329;
+                var $3311 = self.query;
+                var $3312 = self.param;
+                var $3313 = self.then;
+                var $3314 = IO$ask$($3311, $3312, (_x$8 => {
+                    var $3315 = IO$bind$($3313(_x$8), _f$4);
+                    return $3315;
                 }));
-                var $3322 = $3328;
+                var $3308 = $3314;
                 break;
         };
-        return $3322;
+        return $3308;
     };
     const IO$bind = x0 => x1 => IO$bind$(x0, x1);
 
     function IO$monad$(_new$2) {
-        var $3330 = _new$2(IO$bind)(IO$end);
-        return $3330;
+        var $3316 = _new$2(IO$bind)(IO$end);
+        return $3316;
     };
     const IO$monad = x0 => IO$monad$(x0);
 
@@ -11496,20 +11454,20 @@ module.exports = (function() {
         var self = _constructor$2;
         switch (self._) {
             case 'Litereum.Constructor.new':
-                var $3332 = self.name;
-                var $3333 = self.field_names;
-                var $3334 = self.field_types;
-                var _names$6 = $3333;
-                var _types$7 = List$mapped$($3334, Litereum$show$type(_world$1));
+                var $3318 = self.name;
+                var $3319 = self.field_names;
+                var $3320 = self.field_types;
+                var _names$6 = $3319;
+                var _types$7 = List$mapped$($3320, Litereum$show$type(_world$1));
                 var _fields$8 = List$zip_with$((_name$8 => _type$9 => {
-                    var $3336 = (_name$8 + (": " + _type$9));
-                    return $3336;
+                    var $3322 = (_name$8 + (": " + _type$9));
+                    return $3322;
                 }), _names$6, _types$7);
-                var $3335 = ($3332 + ("{" + (String$join$(", ", _fields$8) + "}")));
-                var $3331 = $3335;
+                var $3321 = ($3318 + ("{" + (String$join$(", ", _fields$8) + "}")));
+                var $3317 = $3321;
                 break;
         };
-        return $3331;
+        return $3317;
     };
     const Litereum$show$constructor = x0 => x1 => Litereum$show$constructor$(x0, x1);
 
@@ -11517,13 +11475,13 @@ module.exports = (function() {
         var self = _data$2;
         switch (self._) {
             case 'Litereum.Data.new':
-                var $3338 = self.name;
-                var $3339 = self.constructors;
-                var $3340 = ($3338 + (" { " + (String$join$(", ", List$mapped$($3339, Litereum$show$constructor(_world$1))) + " }")));
-                var $3337 = $3340;
+                var $3324 = self.name;
+                var $3325 = self.constructors;
+                var $3326 = ($3324 + (" { " + (String$join$(", ", List$mapped$($3325, Litereum$show$constructor(_world$1))) + " }")));
+                var $3323 = $3326;
                 break;
         };
-        return $3337;
+        return $3323;
     };
     const Litereum$show$data = x0 => x1 => Litereum$show$data$(x0, x1);
 
@@ -11531,30 +11489,30 @@ module.exports = (function() {
         var self = _bond$2;
         switch (self._) {
             case 'Litereum.Bond.new':
-                var $3342 = self.name;
-                var $3343 = self.input_names;
-                var $3344 = self.input_types;
-                var $3345 = self.output_type;
-                var $3346 = self.main;
-                var $3347 = self.owners;
-                var $3348 = ($3342 + ("(" + (String$join$(",", List$zipped_with$($3343, $3344, (_name$9 => _type$10 => {
-                    var $3349 = (_name$9 + (": " + Litereum$show$type$(_world$1, _type$10)));
-                    return $3349;
-                }))) + ("): " + (Litereum$show$type$(_world$1, $3345) + (" { " + (Litereum$show$term$(_world$1, $3346) + (" }" + (() => {
-                    var self = $3347;
+                var $3328 = self.name;
+                var $3329 = self.input_names;
+                var $3330 = self.input_types;
+                var $3331 = self.output_type;
+                var $3332 = self.main;
+                var $3333 = self.owners;
+                var $3334 = ($3328 + ("(" + (String$join$(",", List$zipped_with$($3329, $3330, (_name$9 => _type$10 => {
+                    var $3335 = (_name$9 + (": " + Litereum$show$type$(_world$1, _type$10)));
+                    return $3335;
+                }))) + ("): " + (Litereum$show$type$(_world$1, $3331) + (" { " + (Litereum$show$term$(_world$1, $3332) + (" }" + (() => {
+                    var self = $3333;
                     switch (self._) {
                         case 'List.nil':
-                            var $3350 = "";
-                            return $3350;
+                            var $3336 = "";
+                            return $3336;
                         case 'List.cons':
-                            var $3351 = (" " + String$join$(" ", List$map$(a1 => ("@" + a1), $3347)));
-                            return $3351;
+                            var $3337 = (" " + String$join$(" ", List$map$(a1 => ("@" + a1), $3333)));
+                            return $3337;
                     };
                 })()))))))));
-                var $3341 = $3348;
+                var $3327 = $3334;
                 break;
         };
-        return $3341;
+        return $3327;
     };
     const Litereum$show$bond = x0 => x1 => Litereum$show$bond$(x0, x1);
 
@@ -11562,15 +11520,15 @@ module.exports = (function() {
         var self = _eval$2;
         switch (self._) {
             case 'Litereum.Eval.new':
-                var $3353 = self.term;
-                var $3354 = self.type;
-                var _term$5 = Litereum$show$term$(_world$1, $3353);
-                var _type$6 = Litereum$show$type$(_world$1, $3354);
-                var $3355 = ("{" + (_term$5 + ("} : " + _type$6)));
-                var $3352 = $3355;
+                var $3339 = self.term;
+                var $3340 = self.type;
+                var _term$5 = Litereum$show$term$(_world$1, $3339);
+                var _type$6 = Litereum$show$type$(_world$1, $3340);
+                var $3341 = ("{" + (_term$5 + ("} : " + _type$6)));
+                var $3338 = $3341;
                 break;
         };
-        return $3352;
+        return $3338;
     };
     const Litereum$show$eval = x0 => x1 => Litereum$show$eval$(x0, x1);
 
@@ -11578,27 +11536,27 @@ module.exports = (function() {
         var self = _transaction$2;
         switch (self._) {
             case 'Litereum.Transaction.new_name':
-                var $3357 = self.name;
-                var $3358 = ("name " + $3357);
-                var $3356 = $3358;
+                var $3343 = self.name;
+                var $3344 = ("name " + $3343);
+                var $3342 = $3344;
                 break;
             case 'Litereum.Transaction.new_data':
-                var $3359 = self.data;
-                var $3360 = ("type " + Litereum$show$data$(_world$1, $3359));
-                var $3356 = $3360;
+                var $3345 = self.data;
+                var $3346 = ("type " + Litereum$show$data$(_world$1, $3345));
+                var $3342 = $3346;
                 break;
             case 'Litereum.Transaction.new_bond':
-                var $3361 = self.bond;
-                var $3362 = ("bond " + Litereum$show$bond$(_world$1, $3361));
-                var $3356 = $3362;
+                var $3347 = self.bond;
+                var $3348 = ("bond " + Litereum$show$bond$(_world$1, $3347));
+                var $3342 = $3348;
                 break;
             case 'Litereum.Transaction.new_eval':
-                var $3363 = self.eval;
-                var $3364 = ("eval " + Litereum$show$eval$(_world$1, $3363));
-                var $3356 = $3364;
+                var $3349 = self.eval;
+                var $3350 = ("eval " + Litereum$show$eval$(_world$1, $3349));
+                var $3342 = $3350;
                 break;
         };
-        return $3356;
+        return $3342;
     };
     const Litereum$show$transaction = x0 => x1 => Litereum$show$transaction$(x0, x1);
 
@@ -11606,27 +11564,27 @@ module.exports = (function() {
         var self = _block$2;
         switch (self._) {
             case 'List.cons':
-                var $3366 = self.head;
-                var $3367 = self.tail;
-                var _head$5 = Litereum$show$transaction$(_world$1, $3366);
-                var _tail$6 = Litereum$show$block$(Litereum$reg$(_world$1, $3366), $3367);
-                var $3368 = ("- " + (_head$5 + ("\u{a}" + _tail$6)));
-                var $3365 = $3368;
+                var $3352 = self.head;
+                var $3353 = self.tail;
+                var _head$5 = Litereum$show$transaction$(_world$1, $3352);
+                var _tail$6 = Litereum$show$block$(Litereum$reg$(_world$1, $3352), $3353);
+                var $3354 = ("- " + (_head$5 + ("\u{a}" + _tail$6)));
+                var $3351 = $3354;
                 break;
             case 'List.nil':
-                var $3369 = "";
-                var $3365 = $3369;
+                var $3355 = "";
+                var $3351 = $3355;
                 break;
         };
-        return $3365;
+        return $3351;
     };
     const Litereum$show$block = x0 => x1 => Litereum$show$block$(x0, x1);
     const Bits$e = '';
     const Bits$o = a0 => (a0 + '0');
 
     function U16$new$(_value$1) {
-        var $3370 = word_to_u16(_value$1);
-        return $3370;
+        var $3356 = word_to_u16(_value$1);
+        return $3356;
     };
     const U16$new = x0 => U16$new$(x0);
     const U16$sub = a0 => a1 => ((a0 - a1) & 0xFFFF);
@@ -11638,21 +11596,21 @@ module.exports = (function() {
     function Litereum$serialize$fixlen$(_size$1, _value$2) {
         var self = _size$1;
         if (self === 0n) {
-            var $3372 = Bits$e;
-            var $3371 = $3372;
+            var $3358 = Bits$e;
+            var $3357 = $3358;
         } else {
-            var $3373 = (self - 1n);
+            var $3359 = (self - 1n);
             var self = ((_value$2 % 2n) === 0n);
             if (self) {
-                var $3375 = (Litereum$serialize$fixlen$($3373, (_value$2 / 2n)) + '0');
-                var $3374 = $3375;
+                var $3361 = (Litereum$serialize$fixlen$($3359, (_value$2 / 2n)) + '0');
+                var $3360 = $3361;
             } else {
-                var $3376 = (Litereum$serialize$fixlen$($3373, (_value$2 / 2n)) + '1');
-                var $3374 = $3376;
+                var $3362 = (Litereum$serialize$fixlen$($3359, (_value$2 / 2n)) + '1');
+                var $3360 = $3362;
             };
-            var $3371 = $3374;
+            var $3357 = $3360;
         };
-        return $3371;
+        return $3357;
     };
     const Litereum$serialize$fixlen = x0 => x1 => Litereum$serialize$fixlen$(x0, x1);
     const U16$to_nat = a0 => (BigInt(a0));
@@ -11661,80 +11619,80 @@ module.exports = (function() {
     function Litereum$serialize$name$new$(_name$1) {
         var self = _name$1;
         if (self.length === 0) {
-            var $3378 = (Bits$e + '0');
-            var $3377 = $3378;
+            var $3364 = (Bits$e + '0');
+            var $3363 = $3364;
         } else {
-            var $3379 = self.charCodeAt(0);
-            var $3380 = self.slice(1);
-            var self = U16$btw$(48, $3379, 57);
+            var $3365 = self.charCodeAt(0);
+            var $3366 = self.slice(1);
+            var self = U16$btw$(48, $3365, 57);
             if (self) {
-                var $3382 = (($3379 - 48) & 0xFFFF);
-                var _numb$4 = $3382;
+                var $3368 = (($3365 - 48) & 0xFFFF);
+                var _numb$4 = $3368;
             } else {
-                var self = U16$btw$(65, $3379, 90);
+                var self = U16$btw$(65, $3365, 90);
                 if (self) {
-                    var $3384 = (((($3379 - 65) & 0xFFFF) + 10) & 0xFFFF);
-                    var $3383 = $3384;
+                    var $3370 = (((($3365 - 65) & 0xFFFF) + 10) & 0xFFFF);
+                    var $3369 = $3370;
                 } else {
-                    var self = U16$btw$(97, $3379, 122);
+                    var self = U16$btw$(97, $3365, 122);
                     if (self) {
-                        var $3386 = (((($3379 - 97) & 0xFFFF) + 36) & 0xFFFF);
-                        var $3385 = $3386;
+                        var $3372 = (((($3365 - 97) & 0xFFFF) + 36) & 0xFFFF);
+                        var $3371 = $3372;
                     } else {
-                        var self = U16$btw$(95, $3379, 95);
+                        var self = U16$btw$(95, $3365, 95);
                         if (self) {
-                            var $3388 = 62;
-                            var $3387 = $3388;
+                            var $3374 = 62;
+                            var $3373 = $3374;
                         } else {
-                            var $3389 = 63;
-                            var $3387 = $3389;
+                            var $3375 = 63;
+                            var $3373 = $3375;
                         };
-                        var $3385 = $3387;
+                        var $3371 = $3373;
                     };
-                    var $3383 = $3385;
+                    var $3369 = $3371;
                 };
-                var _numb$4 = $3383;
+                var _numb$4 = $3369;
             };
             var _head$5 = Litereum$serialize$fixlen$(6n, (BigInt(_numb$4)));
-            var _tail$6 = Litereum$serialize$name$new$($3380);
-            var $3381 = ((_tail$6 + _head$5) + '1');
-            var $3377 = $3381;
+            var _tail$6 = Litereum$serialize$name$new$($3366);
+            var $3367 = ((_tail$6 + _head$5) + '1');
+            var $3363 = $3367;
         };
-        return $3377;
+        return $3363;
     };
     const Litereum$serialize$name$new = x0 => Litereum$serialize$name$new$(x0);
 
     function Litereum$serialize$varlen$go$(_value$1) {
         var self = _value$1;
         if (self === 0n) {
-            var $3391 = Bits$e;
-            var $3390 = $3391;
+            var $3377 = Bits$e;
+            var $3376 = $3377;
         } else {
-            var $3392 = (self - 1n);
+            var $3378 = (self - 1n);
             var self = (_value$1 === 1n);
             if (self) {
-                var $3394 = (Bits$e + '0');
-                var $3393 = $3394;
+                var $3380 = (Bits$e + '0');
+                var $3379 = $3380;
             } else {
                 var self = ((_value$1 % 2n) === 0n);
                 if (self) {
-                    var $3396 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '0') + '1');
-                    var $3395 = $3396;
+                    var $3382 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '0') + '1');
+                    var $3381 = $3382;
                 } else {
-                    var $3397 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '1') + '1');
-                    var $3395 = $3397;
+                    var $3383 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '1') + '1');
+                    var $3381 = $3383;
                 };
-                var $3393 = $3395;
+                var $3379 = $3381;
             };
-            var $3390 = $3393;
+            var $3376 = $3379;
         };
-        return $3390;
+        return $3376;
     };
     const Litereum$serialize$varlen$go = x0 => Litereum$serialize$varlen$go$(x0);
 
     function Litereum$serialize$varlen$(_value$1) {
-        var $3398 = Litereum$serialize$varlen$go$((_value$1 + 1n));
-        return $3398;
+        var $3384 = Litereum$serialize$varlen$go$((_value$1 + 1n));
+        return $3384;
     };
     const Litereum$serialize$varlen = x0 => Litereum$serialize$varlen$(x0);
 
@@ -11742,24 +11700,24 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $3400 = self.name_to_index;
-                var self = Map$get$(_name$2, $3400);
+                var $3386 = self.name_to_index;
+                var self = Map$get$(_name$2, $3386);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3402 = self.value;
-                        var _bits$8 = Litereum$serialize$varlen$($3402);
-                        var $3403 = _bits$8;
-                        var $3401 = $3403;
+                        var $3388 = self.value;
+                        var _bits$8 = Litereum$serialize$varlen$($3388);
+                        var $3389 = _bits$8;
+                        var $3387 = $3389;
                         break;
                     case 'Maybe.none':
-                        var $3404 = Bits$e;
-                        var $3401 = $3404;
+                        var $3390 = Bits$e;
+                        var $3387 = $3390;
                         break;
                 };
-                var $3399 = $3401;
+                var $3385 = $3387;
                 break;
         };
-        return $3399;
+        return $3385;
     };
     const Litereum$serialize$name$old = x0 => x1 => Litereum$serialize$name$old$(x0, x1);
 
@@ -11767,17 +11725,17 @@ module.exports = (function() {
         var self = _list$3;
         switch (self._) {
             case 'List.cons':
-                var $3406 = self.head;
-                var $3407 = self.tail;
-                var $3408 = ((Litereum$serialize$list$(_item$2, $3407) + _item$2($3406)) + '1');
-                var $3405 = $3408;
+                var $3392 = self.head;
+                var $3393 = self.tail;
+                var $3394 = ((Litereum$serialize$list$(_item$2, $3393) + _item$2($3392)) + '1');
+                var $3391 = $3394;
                 break;
             case 'List.nil':
-                var $3409 = (Bits$e + '0');
-                var $3405 = $3409;
+                var $3395 = (Bits$e + '0');
+                var $3391 = $3395;
                 break;
         };
-        return $3405;
+        return $3391;
     };
     const Litereum$serialize$list = x0 => x1 => Litereum$serialize$list$(x0, x1);
 
@@ -11785,16 +11743,16 @@ module.exports = (function() {
         var self = _typ$2;
         switch (self._) {
             case 'Litereum.Type.data':
-                var $3411 = self.name;
-                var $3412 = (Litereum$serialize$name$old$(_world$1, $3411) + '1');
-                var $3410 = $3412;
+                var $3397 = self.name;
+                var $3398 = (Litereum$serialize$name$old$(_world$1, $3397) + '1');
+                var $3396 = $3398;
                 break;
             case 'Litereum.Type.word':
-                var $3413 = (Bits$e + '0');
-                var $3410 = $3413;
+                var $3399 = (Bits$e + '0');
+                var $3396 = $3399;
                 break;
         };
-        return $3410;
+        return $3396;
     };
     const Litereum$serialize$type = x0 => x1 => Litereum$serialize$type$(x0, x1);
 
@@ -11802,17 +11760,17 @@ module.exports = (function() {
         var self = _ctor$2;
         switch (self._) {
             case 'Litereum.Constructor.new':
-                var $3415 = self.name;
-                var $3416 = self.field_names;
-                var $3417 = self.field_types;
-                var _name$6 = Litereum$serialize$name$old$(_world$1, $3415);
-                var _nams$7 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3416);
-                var _typs$8 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3417);
-                var $3418 = ((_typs$8 + _nams$7) + _name$6);
-                var $3414 = $3418;
+                var $3401 = self.name;
+                var $3402 = self.field_names;
+                var $3403 = self.field_types;
+                var _name$6 = Litereum$serialize$name$old$(_world$1, $3401);
+                var _nams$7 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3402);
+                var _typs$8 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3403);
+                var $3404 = ((_typs$8 + _nams$7) + _name$6);
+                var $3400 = $3404;
                 break;
         };
-        return $3414;
+        return $3400;
     };
     const Litereum$serialize$constructor = x0 => x1 => Litereum$serialize$constructor$(x0, x1);
 
@@ -11820,15 +11778,15 @@ module.exports = (function() {
         var self = _data$2;
         switch (self._) {
             case 'Litereum.Data.new':
-                var $3420 = self.name;
-                var $3421 = self.constructors;
-                var _name$5 = Litereum$serialize$name$old$(_world$1, $3420);
-                var _ctrs$6 = Litereum$serialize$list$(Litereum$serialize$constructor(_world$1), $3421);
-                var $3422 = (_ctrs$6 + _name$5);
-                var $3419 = $3422;
+                var $3406 = self.name;
+                var $3407 = self.constructors;
+                var _name$5 = Litereum$serialize$name$old$(_world$1, $3406);
+                var _ctrs$6 = Litereum$serialize$list$(Litereum$serialize$constructor(_world$1), $3407);
+                var $3408 = (_ctrs$6 + _name$5);
+                var $3405 = $3408;
                 break;
         };
-        return $3419;
+        return $3405;
     };
     const Litereum$serialize$data = x0 => x1 => Litereum$serialize$data$(x0, x1);
 
@@ -11845,20 +11803,20 @@ module.exports = (function() {
                 var self = _xs$2;
                 switch (self._) {
                     case 'List.cons':
-                        var $3423 = self.head;
-                        var $3424 = self.tail;
-                        var self = _f$3($3423);
+                        var $3409 = self.head;
+                        var $3410 = self.tail;
+                        var self = _f$3($3409);
                         if (self) {
-                            var $3426 = Maybe$some$(_i$4);
-                            var $3425 = $3426;
+                            var $3412 = Maybe$some$(_i$4);
+                            var $3411 = $3412;
                         } else {
-                            var $3427 = List$find_index$go$($3424, _f$3, Nat$succ$(_i$4));
-                            var $3425 = $3427;
+                            var $3413 = List$find_index$go$($3410, _f$3, Nat$succ$(_i$4));
+                            var $3411 = $3413;
                         };
-                        return $3425;
+                        return $3411;
                     case 'List.nil':
-                        var $3428 = Maybe$none;
-                        return $3428;
+                        var $3414 = Maybe$none;
+                        return $3414;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -11868,8 +11826,8 @@ module.exports = (function() {
     const List$find_index$go = x0 => x1 => x2 => List$find_index$go$(x0, x1, x2);
 
     function List$find_index$(_xs$2, _f$3) {
-        var $3429 = List$find_index$go$(_xs$2, _f$3, Nat$zero);
-        return $3429;
+        var $3415 = List$find_index$go$(_xs$2, _f$3, Nat$zero);
+        return $3415;
     };
     const List$find_index = x0 => x1 => List$find_index$(x0, x1);
 
@@ -11877,16 +11835,16 @@ module.exports = (function() {
         var self = List$find_index$(_vars$2, a1 => (_name$3 === a1));
         switch (self._) {
             case 'Maybe.some':
-                var $3431 = self.value;
-                var $3432 = Litereum$serialize$varlen$($3431);
-                var $3430 = $3432;
+                var $3417 = self.value;
+                var $3418 = Litereum$serialize$varlen$($3417);
+                var $3416 = $3418;
                 break;
             case 'Maybe.none':
-                var $3433 = Bits$e;
-                var $3430 = $3433;
+                var $3419 = Bits$e;
+                var $3416 = $3419;
                 break;
         };
-        return $3430;
+        return $3416;
     };
     const Litereum$serialize$name$local = x0 => x1 => x2 => Litereum$serialize$name$local$(x0, x1, x2);
 
@@ -11894,17 +11852,17 @@ module.exports = (function() {
         var self = _as$2;
         switch (self._) {
             case 'List.cons':
-                var $3435 = self.head;
-                var $3436 = self.tail;
-                var $3437 = List$cons$($3435, List$concat$($3436, _bs$3));
-                var $3434 = $3437;
+                var $3421 = self.head;
+                var $3422 = self.tail;
+                var $3423 = List$cons$($3421, List$concat$($3422, _bs$3));
+                var $3420 = $3423;
                 break;
             case 'List.nil':
-                var $3438 = _bs$3;
-                var $3434 = $3438;
+                var $3424 = _bs$3;
+                var $3420 = $3424;
                 break;
         };
-        return $3434;
+        return $3420;
     };
     const List$concat = x0 => x1 => List$concat$(x0, x1);
 
@@ -11912,47 +11870,47 @@ module.exports = (function() {
         var self = _ctors$4;
         switch (self._) {
             case 'List.cons':
-                var $3440 = self.head;
-                var $3441 = self.tail;
+                var $3426 = self.head;
+                var $3427 = self.tail;
                 var self = _cases$5;
                 switch (self._) {
                     case 'List.cons':
-                        var $3443 = self.head;
-                        var $3444 = self.tail;
+                        var $3429 = self.head;
+                        var $3430 = self.tail;
                         var _flds$10 = List$map$(a1 => ((_name$3 + ".") + a1), (() => {
-                            var self = $3440;
+                            var self = $3426;
                             switch (self._) {
                                 case 'Litereum.Constructor.new':
-                                    var $3446 = self.field_names;
-                                    var $3447 = $3446;
-                                    return $3447;
+                                    var $3432 = self.field_names;
+                                    var $3433 = $3432;
+                                    return $3433;
                             };
                         })());
-                        var _head$11 = Litereum$serialize$term$(_world$1, List$concat$(List$reverse$(_flds$10), _vars$2), $3443);
-                        var _tail$12 = Litereum$serialize$cases$(_world$1, _vars$2, _name$3, $3441, $3444);
-                        var $3445 = (_tail$12 + _head$11);
-                        var $3442 = $3445;
+                        var _head$11 = Litereum$serialize$term$(_world$1, List$concat$(List$reverse$(_flds$10), _vars$2), $3429);
+                        var _tail$12 = Litereum$serialize$cases$(_world$1, _vars$2, _name$3, $3427, $3430);
+                        var $3431 = (_tail$12 + _head$11);
+                        var $3428 = $3431;
                         break;
                     case 'List.nil':
-                        var $3448 = Bits$e;
-                        var $3442 = $3448;
+                        var $3434 = Bits$e;
+                        var $3428 = $3434;
                         break;
                 };
-                var $3439 = $3442;
+                var $3425 = $3428;
                 break;
             case 'List.nil':
                 var self = _cases$5;
                 switch (self._) {
                     case 'List.nil':
                     case 'List.cons':
-                        var $3450 = Bits$e;
-                        var $3449 = $3450;
+                        var $3436 = Bits$e;
+                        var $3435 = $3436;
                         break;
                 };
-                var $3439 = $3449;
+                var $3425 = $3435;
                 break;
         };
-        return $3439;
+        return $3425;
     };
     const Litereum$serialize$cases = x0 => x1 => x2 => x3 => x4 => Litereum$serialize$cases$(x0, x1, x2, x3, x4);
     const U64$to_nat = a0 => (a0);
@@ -11961,138 +11919,138 @@ module.exports = (function() {
         var self = _term$3;
         switch (self._) {
             case 'Litereum.Term.var':
-                var $3452 = self.name;
-                var $3453 = (Litereum$serialize$name$local$(_world$1, _vars$2, $3452) + '0');
-                var $3451 = $3453;
+                var $3438 = self.name;
+                var $3439 = (Litereum$serialize$name$local$(_world$1, _vars$2, $3438) + '0');
+                var $3437 = $3439;
                 break;
             case 'Litereum.Term.call':
-                var $3454 = self.bond;
-                var $3455 = self.args;
-                var _bond$6 = Litereum$serialize$name$old$(_world$1, $3454);
-                var _args$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3455);
-                var $3456 = (((((_args$7 + _bond$6) + '0') + '0') + '1') + '1');
-                var $3451 = $3456;
+                var $3440 = self.bond;
+                var $3441 = self.args;
+                var _bond$6 = Litereum$serialize$name$old$(_world$1, $3440);
+                var _args$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3441);
+                var $3442 = (((((_args$7 + _bond$6) + '0') + '0') + '1') + '1');
+                var $3437 = $3442;
                 break;
             case 'Litereum.Term.let':
-                var $3457 = self.name;
-                var $3458 = self.type;
-                var $3459 = self.expr;
-                var $3460 = self.body;
-                var _name$8 = Litereum$serialize$name$old$(_world$1, $3457);
-                var _type$9 = Litereum$serialize$type$(_world$1, $3458);
-                var _expr$10 = Litereum$serialize$term$(_world$1, _vars$2, $3459);
-                var _body$11 = Litereum$serialize$term$(_world$1, List$cons$($3457, _vars$2), $3460);
-                var $3461 = (((((((_body$11 + _expr$10) + _type$9) + _name$8) + '0') + '0') + '0') + '1');
-                var $3451 = $3461;
+                var $3443 = self.name;
+                var $3444 = self.type;
+                var $3445 = self.expr;
+                var $3446 = self.body;
+                var _name$8 = Litereum$serialize$name$old$(_world$1, $3443);
+                var _type$9 = Litereum$serialize$type$(_world$1, $3444);
+                var _expr$10 = Litereum$serialize$term$(_world$1, _vars$2, $3445);
+                var _body$11 = Litereum$serialize$term$(_world$1, List$cons$($3443, _vars$2), $3446);
+                var $3447 = (((((((_body$11 + _expr$10) + _type$9) + _name$8) + '0') + '0') + '0') + '1');
+                var $3437 = $3447;
                 break;
             case 'Litereum.Term.create':
-                var $3462 = self.ctor;
-                var $3463 = self.vals;
-                var _ctor$6 = Litereum$serialize$name$old$(_world$1, $3462);
-                var _vals$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3463);
-                var $3464 = (((((_vals$7 + _ctor$6) + '0') + '1') + '0') + '1');
-                var $3451 = $3464;
+                var $3448 = self.ctor;
+                var $3449 = self.vals;
+                var _ctor$6 = Litereum$serialize$name$old$(_world$1, $3448);
+                var _vals$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3449);
+                var $3450 = (((((_vals$7 + _ctor$6) + '0') + '1') + '0') + '1');
+                var $3437 = $3450;
                 break;
             case 'Litereum.Term.match':
-                var $3465 = self.name;
-                var $3466 = self.data;
-                var $3467 = self.cses;
-                var _name$7 = Litereum$serialize$name$local$(_world$1, _vars$2, $3465);
-                var _data$8 = Litereum$serialize$name$old$(_world$1, $3466);
-                var _cses$9 = Litereum$serialize$cases$(_world$1, _vars$2, $3465, Maybe$default$(Litereum$get_constructors$(_world$1, $3466), List$nil), $3467);
-                var $3468 = ((((((_cses$9 + _data$8) + _name$7) + '0') + '1') + '1') + '1');
-                var $3451 = $3468;
+                var $3451 = self.name;
+                var $3452 = self.data;
+                var $3453 = self.cses;
+                var _name$7 = Litereum$serialize$name$local$(_world$1, _vars$2, $3451);
+                var _data$8 = Litereum$serialize$name$old$(_world$1, $3452);
+                var _cses$9 = Litereum$serialize$cases$(_world$1, _vars$2, $3451, Maybe$default$(Litereum$get_constructors$(_world$1, $3452), List$nil), $3453);
+                var $3454 = ((((((_cses$9 + _data$8) + _name$7) + '0') + '1') + '1') + '1');
+                var $3437 = $3454;
                 break;
             case 'Litereum.Term.word':
-                var $3469 = self.numb;
-                var _numb$5 = Litereum$serialize$fixlen$(64n, ($3469));
-                var $3470 = ((((_numb$5 + '1') + '0') + '0') + '1');
-                var $3451 = $3470;
+                var $3455 = self.numb;
+                var _numb$5 = Litereum$serialize$fixlen$(64n, ($3455));
+                var $3456 = ((((_numb$5 + '1') + '0') + '0') + '1');
+                var $3437 = $3456;
                 break;
             case 'Litereum.Term.compare':
-                var $3471 = self.val0;
-                var $3472 = self.val1;
-                var $3473 = self.iflt;
-                var $3474 = self.ifeq;
-                var $3475 = self.ifgt;
-                var _val0$9 = Litereum$serialize$term$(_world$1, _vars$2, $3471);
-                var _val1$10 = Litereum$serialize$term$(_world$1, _vars$2, $3472);
-                var _iflt$11 = Litereum$serialize$term$(_world$1, _vars$2, $3473);
-                var _ifeq$12 = Litereum$serialize$term$(_world$1, _vars$2, $3474);
-                var _ifgt$13 = Litereum$serialize$term$(_world$1, _vars$2, $3475);
-                var $3476 = ((((((((_ifgt$13 + _ifeq$12) + _iflt$11) + _val1$10) + _val0$9) + '1') + '0') + '1') + '1');
-                var $3451 = $3476;
+                var $3457 = self.val0;
+                var $3458 = self.val1;
+                var $3459 = self.iflt;
+                var $3460 = self.ifeq;
+                var $3461 = self.ifgt;
+                var _val0$9 = Litereum$serialize$term$(_world$1, _vars$2, $3457);
+                var _val1$10 = Litereum$serialize$term$(_world$1, _vars$2, $3458);
+                var _iflt$11 = Litereum$serialize$term$(_world$1, _vars$2, $3459);
+                var _ifeq$12 = Litereum$serialize$term$(_world$1, _vars$2, $3460);
+                var _ifgt$13 = Litereum$serialize$term$(_world$1, _vars$2, $3461);
+                var $3462 = ((((((((_ifgt$13 + _ifeq$12) + _iflt$11) + _val1$10) + _val0$9) + '1') + '0') + '1') + '1');
+                var $3437 = $3462;
                 break;
             case 'Litereum.Term.operate':
-                var $3477 = self.oper;
-                var $3478 = self.val0;
-                var $3479 = self.val1;
+                var $3463 = self.oper;
+                var $3464 = self.val0;
+                var $3465 = self.val1;
                 var _oper$7 = Litereum$serialize$fixlen$(3n, (() => {
-                    var self = $3477;
+                    var self = $3463;
                     switch (self._) {
                         case 'Litereum.Operation.add':
-                            var $3481 = 0n;
-                            return $3481;
+                            var $3467 = 0n;
+                            return $3467;
                         case 'Litereum.Operation.sub':
-                            var $3482 = 1n;
-                            return $3482;
+                            var $3468 = 1n;
+                            return $3468;
                         case 'Litereum.Operation.mul':
-                            var $3483 = 2n;
-                            return $3483;
+                            var $3469 = 2n;
+                            return $3469;
                         case 'Litereum.Operation.div':
-                            var $3484 = 3n;
-                            return $3484;
+                            var $3470 = 3n;
+                            return $3470;
                         case 'Litereum.Operation.mod':
-                            var $3485 = 4n;
-                            return $3485;
+                            var $3471 = 4n;
+                            return $3471;
                         case 'Litereum.Operation.or':
-                            var $3486 = 5n;
-                            return $3486;
+                            var $3472 = 5n;
+                            return $3472;
                         case 'Litereum.Operation.and':
-                            var $3487 = 6n;
-                            return $3487;
+                            var $3473 = 6n;
+                            return $3473;
                         case 'Litereum.Operation.xor':
-                            var $3488 = 7n;
-                            return $3488;
+                            var $3474 = 7n;
+                            return $3474;
                     };
                 })());
-                var _val0$8 = Litereum$serialize$term$(_world$1, _vars$2, $3478);
-                var _val1$9 = Litereum$serialize$term$(_world$1, _vars$2, $3479);
-                var $3480 = ((((((_val1$9 + _val0$8) + _oper$7) + '1') + '1') + '0') + '1');
-                var $3451 = $3480;
+                var _val0$8 = Litereum$serialize$term$(_world$1, _vars$2, $3464);
+                var _val1$9 = Litereum$serialize$term$(_world$1, _vars$2, $3465);
+                var $3466 = ((((((_val1$9 + _val0$8) + _oper$7) + '1') + '1') + '0') + '1');
+                var $3437 = $3466;
                 break;
             case 'Litereum.Term.bind':
-                var $3489 = self.name;
-                var $3490 = self.main;
-                var $3491 = self.body;
-                var self = Litereum$get_bond$(_world$1, $3489);
+                var $3475 = self.name;
+                var $3476 = self.main;
+                var $3477 = self.body;
+                var self = Litereum$get_bond$(_world$1, $3475);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3493 = self.value;
-                        var _bond$8 = $3493;
+                        var $3479 = self.value;
+                        var _bond$8 = $3479;
                         var self = _bond$8;
                         switch (self._) {
                             case 'Litereum.Bond.new':
-                                var $3495 = self.input_names;
-                                var _name$15 = Litereum$serialize$name$old$(_world$1, $3489);
-                                var _vrs2$16 = List$concat$(List$reverse$($3495), _vars$2);
-                                var _main$17 = Litereum$serialize$term$(_world$1, _vrs2$16, $3490);
-                                var _body$18 = Litereum$serialize$term$(_world$1, _vars$2, $3491);
-                                var $3496 = ((((((_body$18 + _main$17) + _name$15) + '1') + '1') + '1') + '1');
-                                var $3494 = $3496;
+                                var $3481 = self.input_names;
+                                var _name$15 = Litereum$serialize$name$old$(_world$1, $3475);
+                                var _vrs2$16 = List$concat$(List$reverse$($3481), _vars$2);
+                                var _main$17 = Litereum$serialize$term$(_world$1, _vrs2$16, $3476);
+                                var _body$18 = Litereum$serialize$term$(_world$1, _vars$2, $3477);
+                                var $3482 = ((((((_body$18 + _main$17) + _name$15) + '1') + '1') + '1') + '1');
+                                var $3480 = $3482;
                                 break;
                         };
-                        var $3492 = $3494;
+                        var $3478 = $3480;
                         break;
                     case 'Maybe.none':
-                        var $3497 = Bits$e;
-                        var $3492 = $3497;
+                        var $3483 = Bits$e;
+                        var $3478 = $3483;
                         break;
                 };
-                var $3451 = $3492;
+                var $3437 = $3478;
                 break;
         };
-        return $3451;
+        return $3437;
     };
     const Litereum$serialize$term = x0 => x1 => x2 => Litereum$serialize$term$(x0, x1, x2);
 
@@ -12100,23 +12058,23 @@ module.exports = (function() {
         var self = _bond$2;
         switch (self._) {
             case 'Litereum.Bond.new':
-                var $3499 = self.name;
-                var $3500 = self.input_names;
-                var $3501 = self.input_types;
-                var $3502 = self.output_type;
-                var $3503 = self.main;
-                var $3504 = self.owners;
-                var _name$9 = Litereum$serialize$name$old$(_world$1, $3499);
-                var _input_names$10 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3500);
-                var _input_types$11 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3501);
-                var _output_type$12 = Litereum$serialize$type$(_world$1, $3502);
-                var _main$13 = Litereum$serialize$term$(_world$1, List$reverse$($3500), $3503);
-                var _owners$14 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3504);
-                var $3505 = (((((_owners$14 + _main$13) + _output_type$12) + _input_types$11) + _input_names$10) + _name$9);
-                var $3498 = $3505;
+                var $3485 = self.name;
+                var $3486 = self.input_names;
+                var $3487 = self.input_types;
+                var $3488 = self.output_type;
+                var $3489 = self.main;
+                var $3490 = self.owners;
+                var _name$9 = Litereum$serialize$name$old$(_world$1, $3485);
+                var _input_names$10 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3486);
+                var _input_types$11 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3487);
+                var _output_type$12 = Litereum$serialize$type$(_world$1, $3488);
+                var _main$13 = Litereum$serialize$term$(_world$1, List$reverse$($3486), $3489);
+                var _owners$14 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3490);
+                var $3491 = (((((_owners$14 + _main$13) + _output_type$12) + _input_types$11) + _input_names$10) + _name$9);
+                var $3484 = $3491;
                 break;
         };
-        return $3498;
+        return $3484;
     };
     const Litereum$serialize$bond = x0 => x1 => Litereum$serialize$bond$(x0, x1);
 
@@ -12124,15 +12082,15 @@ module.exports = (function() {
         var self = _eval$2;
         switch (self._) {
             case 'Litereum.Eval.new':
-                var $3507 = self.term;
-                var $3508 = self.type;
-                var _term$5 = Litereum$serialize$term$(_world$1, List$nil, $3507);
-                var _type$6 = Litereum$serialize$type$(_world$1, $3508);
-                var $3509 = (_type$6 + _term$5);
-                var $3506 = $3509;
+                var $3493 = self.term;
+                var $3494 = self.type;
+                var _term$5 = Litereum$serialize$term$(_world$1, List$nil, $3493);
+                var _type$6 = Litereum$serialize$type$(_world$1, $3494);
+                var $3495 = (_type$6 + _term$5);
+                var $3492 = $3495;
                 break;
         };
-        return $3506;
+        return $3492;
     };
     const Litereum$serialize$eval = x0 => x1 => Litereum$serialize$eval$(x0, x1);
 
@@ -12140,31 +12098,31 @@ module.exports = (function() {
         var self = _transaction$2;
         switch (self._) {
             case 'Litereum.Transaction.new_name':
-                var $3511 = self.name;
-                var _name$4 = Litereum$serialize$name$new$($3511);
-                var $3512 = ((_name$4 + '0') + '0');
-                var $3510 = $3512;
+                var $3497 = self.name;
+                var _name$4 = Litereum$serialize$name$new$($3497);
+                var $3498 = ((_name$4 + '0') + '0');
+                var $3496 = $3498;
                 break;
             case 'Litereum.Transaction.new_data':
-                var $3513 = self.data;
-                var _data$4 = Litereum$serialize$data$(_world$1, $3513);
-                var $3514 = ((_data$4 + '0') + '1');
-                var $3510 = $3514;
+                var $3499 = self.data;
+                var _data$4 = Litereum$serialize$data$(_world$1, $3499);
+                var $3500 = ((_data$4 + '0') + '1');
+                var $3496 = $3500;
                 break;
             case 'Litereum.Transaction.new_bond':
-                var $3515 = self.bond;
-                var _bond$4 = Litereum$serialize$bond$(_world$1, $3515);
-                var $3516 = ((_bond$4 + '1') + '0');
-                var $3510 = $3516;
+                var $3501 = self.bond;
+                var _bond$4 = Litereum$serialize$bond$(_world$1, $3501);
+                var $3502 = ((_bond$4 + '1') + '0');
+                var $3496 = $3502;
                 break;
             case 'Litereum.Transaction.new_eval':
-                var $3517 = self.eval;
-                var _term$4 = Litereum$serialize$eval$(_world$1, $3517);
-                var $3518 = ((_term$4 + '1') + '1');
-                var $3510 = $3518;
+                var $3503 = self.eval;
+                var _term$4 = Litereum$serialize$eval$(_world$1, $3503);
+                var $3504 = ((_term$4 + '1') + '1');
+                var $3496 = $3504;
                 break;
         };
-        return $3510;
+        return $3496;
     };
     const Litereum$serialize$transaction = x0 => x1 => Litereum$serialize$transaction$(x0, x1);
 
@@ -12172,19 +12130,19 @@ module.exports = (function() {
         var self = _block$2;
         switch (self._) {
             case 'List.cons':
-                var $3520 = self.head;
-                var $3521 = self.tail;
-                var _head$5 = Litereum$serialize$transaction$(_world$1, $3520);
-                var _tail$6 = Litereum$serialize$block$(Litereum$reg$(_world$1, $3520), $3521);
-                var $3522 = (_tail$6 + _head$5);
-                var $3519 = $3522;
+                var $3506 = self.head;
+                var $3507 = self.tail;
+                var _head$5 = Litereum$serialize$transaction$(_world$1, $3506);
+                var _tail$6 = Litereum$serialize$block$(Litereum$reg$(_world$1, $3506), $3507);
+                var $3508 = (_tail$6 + _head$5);
+                var $3505 = $3508;
                 break;
             case 'List.nil':
-                var $3523 = Bits$e;
-                var $3519 = $3523;
+                var $3509 = Bits$e;
+                var $3505 = $3509;
                 break;
         };
-        return $3519;
+        return $3505;
     };
     const Litereum$serialize$block = x0 => x1 => Litereum$serialize$block$(x0, x1);
 
@@ -12192,245 +12150,245 @@ module.exports = (function() {
         var self = _x$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3525 = self.slice(0, -1);
-                var self = $3525;
+                var $3511 = self.slice(0, -1);
+                var self = $3511;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3527 = self.slice(0, -1);
-                        var self = $3527;
+                        var $3513 = self.slice(0, -1);
+                        var self = $3513;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3529 = self.slice(0, -1);
-                                var self = $3529;
+                                var $3515 = self.slice(0, -1);
+                                var self = $3515;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3531 = self.slice(0, -1);
-                                        var $3532 = ("0" + Bits$hex$encode$($3531));
-                                        var $3530 = $3532;
+                                        var $3517 = self.slice(0, -1);
+                                        var $3518 = ("0" + Bits$hex$encode$($3517));
+                                        var $3516 = $3518;
                                         break;
                                     case 'i':
-                                        var $3533 = self.slice(0, -1);
-                                        var $3534 = ("8" + Bits$hex$encode$($3533));
-                                        var $3530 = $3534;
+                                        var $3519 = self.slice(0, -1);
+                                        var $3520 = ("8" + Bits$hex$encode$($3519));
+                                        var $3516 = $3520;
                                         break;
                                     case 'e':
-                                        var $3535 = "0";
-                                        var $3530 = $3535;
+                                        var $3521 = "0";
+                                        var $3516 = $3521;
                                         break;
                                 };
-                                var $3528 = $3530;
+                                var $3514 = $3516;
                                 break;
                             case 'i':
-                                var $3536 = self.slice(0, -1);
-                                var self = $3536;
+                                var $3522 = self.slice(0, -1);
+                                var self = $3522;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3538 = self.slice(0, -1);
-                                        var $3539 = ("4" + Bits$hex$encode$($3538));
-                                        var $3537 = $3539;
+                                        var $3524 = self.slice(0, -1);
+                                        var $3525 = ("4" + Bits$hex$encode$($3524));
+                                        var $3523 = $3525;
                                         break;
                                     case 'i':
-                                        var $3540 = self.slice(0, -1);
-                                        var $3541 = ("c" + Bits$hex$encode$($3540));
-                                        var $3537 = $3541;
+                                        var $3526 = self.slice(0, -1);
+                                        var $3527 = ("c" + Bits$hex$encode$($3526));
+                                        var $3523 = $3527;
                                         break;
                                     case 'e':
-                                        var $3542 = "4";
-                                        var $3537 = $3542;
+                                        var $3528 = "4";
+                                        var $3523 = $3528;
                                         break;
                                 };
-                                var $3528 = $3537;
+                                var $3514 = $3523;
                                 break;
                             case 'e':
-                                var $3543 = "0";
-                                var $3528 = $3543;
+                                var $3529 = "0";
+                                var $3514 = $3529;
                                 break;
                         };
-                        var $3526 = $3528;
+                        var $3512 = $3514;
                         break;
                     case 'i':
-                        var $3544 = self.slice(0, -1);
-                        var self = $3544;
+                        var $3530 = self.slice(0, -1);
+                        var self = $3530;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3546 = self.slice(0, -1);
-                                var self = $3546;
+                                var $3532 = self.slice(0, -1);
+                                var self = $3532;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3548 = self.slice(0, -1);
-                                        var $3549 = ("2" + Bits$hex$encode$($3548));
-                                        var $3547 = $3549;
+                                        var $3534 = self.slice(0, -1);
+                                        var $3535 = ("2" + Bits$hex$encode$($3534));
+                                        var $3533 = $3535;
                                         break;
                                     case 'i':
-                                        var $3550 = self.slice(0, -1);
-                                        var $3551 = ("a" + Bits$hex$encode$($3550));
-                                        var $3547 = $3551;
+                                        var $3536 = self.slice(0, -1);
+                                        var $3537 = ("a" + Bits$hex$encode$($3536));
+                                        var $3533 = $3537;
                                         break;
                                     case 'e':
-                                        var $3552 = "2";
-                                        var $3547 = $3552;
+                                        var $3538 = "2";
+                                        var $3533 = $3538;
                                         break;
                                 };
-                                var $3545 = $3547;
+                                var $3531 = $3533;
                                 break;
                             case 'i':
-                                var $3553 = self.slice(0, -1);
-                                var self = $3553;
+                                var $3539 = self.slice(0, -1);
+                                var self = $3539;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3555 = self.slice(0, -1);
-                                        var $3556 = ("6" + Bits$hex$encode$($3555));
-                                        var $3554 = $3556;
+                                        var $3541 = self.slice(0, -1);
+                                        var $3542 = ("6" + Bits$hex$encode$($3541));
+                                        var $3540 = $3542;
                                         break;
                                     case 'i':
-                                        var $3557 = self.slice(0, -1);
-                                        var $3558 = ("e" + Bits$hex$encode$($3557));
-                                        var $3554 = $3558;
+                                        var $3543 = self.slice(0, -1);
+                                        var $3544 = ("e" + Bits$hex$encode$($3543));
+                                        var $3540 = $3544;
                                         break;
                                     case 'e':
-                                        var $3559 = "6";
-                                        var $3554 = $3559;
+                                        var $3545 = "6";
+                                        var $3540 = $3545;
                                         break;
                                 };
-                                var $3545 = $3554;
+                                var $3531 = $3540;
                                 break;
                             case 'e':
-                                var $3560 = "2";
-                                var $3545 = $3560;
+                                var $3546 = "2";
+                                var $3531 = $3546;
                                 break;
                         };
-                        var $3526 = $3545;
+                        var $3512 = $3531;
                         break;
                     case 'e':
-                        var $3561 = "0";
-                        var $3526 = $3561;
+                        var $3547 = "0";
+                        var $3512 = $3547;
                         break;
                 };
-                var $3524 = $3526;
+                var $3510 = $3512;
                 break;
             case 'i':
-                var $3562 = self.slice(0, -1);
-                var self = $3562;
+                var $3548 = self.slice(0, -1);
+                var self = $3548;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3564 = self.slice(0, -1);
-                        var self = $3564;
+                        var $3550 = self.slice(0, -1);
+                        var self = $3550;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3566 = self.slice(0, -1);
-                                var self = $3566;
+                                var $3552 = self.slice(0, -1);
+                                var self = $3552;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3568 = self.slice(0, -1);
-                                        var $3569 = ("1" + Bits$hex$encode$($3568));
-                                        var $3567 = $3569;
+                                        var $3554 = self.slice(0, -1);
+                                        var $3555 = ("1" + Bits$hex$encode$($3554));
+                                        var $3553 = $3555;
                                         break;
                                     case 'i':
-                                        var $3570 = self.slice(0, -1);
-                                        var $3571 = ("9" + Bits$hex$encode$($3570));
-                                        var $3567 = $3571;
+                                        var $3556 = self.slice(0, -1);
+                                        var $3557 = ("9" + Bits$hex$encode$($3556));
+                                        var $3553 = $3557;
                                         break;
                                     case 'e':
-                                        var $3572 = "1";
-                                        var $3567 = $3572;
+                                        var $3558 = "1";
+                                        var $3553 = $3558;
                                         break;
                                 };
-                                var $3565 = $3567;
+                                var $3551 = $3553;
                                 break;
                             case 'i':
-                                var $3573 = self.slice(0, -1);
-                                var self = $3573;
+                                var $3559 = self.slice(0, -1);
+                                var self = $3559;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3575 = self.slice(0, -1);
-                                        var $3576 = ("5" + Bits$hex$encode$($3575));
-                                        var $3574 = $3576;
+                                        var $3561 = self.slice(0, -1);
+                                        var $3562 = ("5" + Bits$hex$encode$($3561));
+                                        var $3560 = $3562;
                                         break;
                                     case 'i':
-                                        var $3577 = self.slice(0, -1);
-                                        var $3578 = ("d" + Bits$hex$encode$($3577));
-                                        var $3574 = $3578;
+                                        var $3563 = self.slice(0, -1);
+                                        var $3564 = ("d" + Bits$hex$encode$($3563));
+                                        var $3560 = $3564;
                                         break;
                                     case 'e':
-                                        var $3579 = "5";
-                                        var $3574 = $3579;
+                                        var $3565 = "5";
+                                        var $3560 = $3565;
                                         break;
                                 };
-                                var $3565 = $3574;
+                                var $3551 = $3560;
                                 break;
                             case 'e':
-                                var $3580 = "1";
-                                var $3565 = $3580;
+                                var $3566 = "1";
+                                var $3551 = $3566;
                                 break;
                         };
-                        var $3563 = $3565;
+                        var $3549 = $3551;
                         break;
                     case 'i':
-                        var $3581 = self.slice(0, -1);
-                        var self = $3581;
+                        var $3567 = self.slice(0, -1);
+                        var self = $3567;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3583 = self.slice(0, -1);
-                                var self = $3583;
+                                var $3569 = self.slice(0, -1);
+                                var self = $3569;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3585 = self.slice(0, -1);
-                                        var $3586 = ("3" + Bits$hex$encode$($3585));
-                                        var $3584 = $3586;
+                                        var $3571 = self.slice(0, -1);
+                                        var $3572 = ("3" + Bits$hex$encode$($3571));
+                                        var $3570 = $3572;
                                         break;
                                     case 'i':
-                                        var $3587 = self.slice(0, -1);
-                                        var $3588 = ("b" + Bits$hex$encode$($3587));
-                                        var $3584 = $3588;
+                                        var $3573 = self.slice(0, -1);
+                                        var $3574 = ("b" + Bits$hex$encode$($3573));
+                                        var $3570 = $3574;
                                         break;
                                     case 'e':
-                                        var $3589 = "3";
-                                        var $3584 = $3589;
+                                        var $3575 = "3";
+                                        var $3570 = $3575;
                                         break;
                                 };
-                                var $3582 = $3584;
+                                var $3568 = $3570;
                                 break;
                             case 'i':
-                                var $3590 = self.slice(0, -1);
-                                var self = $3590;
+                                var $3576 = self.slice(0, -1);
+                                var self = $3576;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3592 = self.slice(0, -1);
-                                        var $3593 = ("7" + Bits$hex$encode$($3592));
-                                        var $3591 = $3593;
+                                        var $3578 = self.slice(0, -1);
+                                        var $3579 = ("7" + Bits$hex$encode$($3578));
+                                        var $3577 = $3579;
                                         break;
                                     case 'i':
-                                        var $3594 = self.slice(0, -1);
-                                        var $3595 = ("f" + Bits$hex$encode$($3594));
-                                        var $3591 = $3595;
+                                        var $3580 = self.slice(0, -1);
+                                        var $3581 = ("f" + Bits$hex$encode$($3580));
+                                        var $3577 = $3581;
                                         break;
                                     case 'e':
-                                        var $3596 = "7";
-                                        var $3591 = $3596;
+                                        var $3582 = "7";
+                                        var $3577 = $3582;
                                         break;
                                 };
-                                var $3582 = $3591;
+                                var $3568 = $3577;
                                 break;
                             case 'e':
-                                var $3597 = "3";
-                                var $3582 = $3597;
+                                var $3583 = "3";
+                                var $3568 = $3583;
                                 break;
                         };
-                        var $3563 = $3582;
+                        var $3549 = $3568;
                         break;
                     case 'e':
-                        var $3598 = "1";
-                        var $3563 = $3598;
+                        var $3584 = "1";
+                        var $3549 = $3584;
                         break;
                 };
-                var $3524 = $3563;
+                var $3510 = $3549;
                 break;
             case 'e':
-                var $3599 = "";
-                var $3524 = $3599;
+                var $3585 = "";
+                var $3510 = $3585;
                 break;
         };
-        return $3524;
+        return $3510;
     };
     const Bits$hex$encode = x0 => Bits$hex$encode$(x0);
 
@@ -12438,62 +12396,62 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'e':
-                var $3601 = Bool$true;
-                var $3600 = $3601;
+                var $3587 = Bool$true;
+                var $3586 = $3587;
                 break;
             case 'o':
             case 'i':
-                var $3602 = Bool$false;
-                var $3600 = $3602;
+                var $3588 = Bool$false;
+                var $3586 = $3588;
                 break;
         };
-        return $3600;
+        return $3586;
     };
     const Bits$is_empty = x0 => Bits$is_empty$(x0);
 
     function Litereum$deserialize$fixlen$(_size$1, _bits$2) {
         var self = _size$1;
         if (self === 0n) {
-            var $3604 = Pair$new$(_bits$2, 0n);
-            var $3603 = $3604;
+            var $3590 = Pair$new$(_bits$2, 0n);
+            var $3589 = $3590;
         } else {
-            var $3605 = (self - 1n);
+            var $3591 = (self - 1n);
             var self = _bits$2;
             switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                 case 'o':
-                    var $3607 = self.slice(0, -1);
-                    var self = Litereum$deserialize$fixlen$($3605, $3607);
+                    var $3593 = self.slice(0, -1);
+                    var self = Litereum$deserialize$fixlen$($3591, $3593);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3609 = self.fst;
-                            var $3610 = self.snd;
-                            var $3611 = Pair$new$($3609, ($3610 * 2n));
-                            var $3608 = $3611;
+                            var $3595 = self.fst;
+                            var $3596 = self.snd;
+                            var $3597 = Pair$new$($3595, ($3596 * 2n));
+                            var $3594 = $3597;
                             break;
                     };
-                    var $3606 = $3608;
+                    var $3592 = $3594;
                     break;
                 case 'i':
-                    var $3612 = self.slice(0, -1);
-                    var self = Litereum$deserialize$fixlen$($3605, $3612);
+                    var $3598 = self.slice(0, -1);
+                    var self = Litereum$deserialize$fixlen$($3591, $3598);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3614 = self.fst;
-                            var $3615 = self.snd;
-                            var $3616 = Pair$new$($3614, (($3615 * 2n) + 1n));
-                            var $3613 = $3616;
+                            var $3600 = self.fst;
+                            var $3601 = self.snd;
+                            var $3602 = Pair$new$($3600, (($3601 * 2n) + 1n));
+                            var $3599 = $3602;
                             break;
                     };
-                    var $3606 = $3613;
+                    var $3592 = $3599;
                     break;
                 case 'e':
-                    var $3617 = Pair$new$(Bits$e, 0n);
-                    var $3606 = $3617;
+                    var $3603 = Pair$new$(Bits$e, 0n);
+                    var $3592 = $3603;
                     break;
             };
-            var $3603 = $3606;
+            var $3589 = $3592;
         };
-        return $3603;
+        return $3589;
     };
     const Litereum$deserialize$fixlen = x0 => x1 => Litereum$deserialize$fixlen$(x0, x1);
     const U16$from_nat = a0 => (Number(a0) & 0xFFFF);
@@ -12502,67 +12460,67 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3619 = self.slice(0, -1);
-                var $3620 = Pair$new$($3619, "");
-                var $3618 = $3620;
+                var $3605 = self.slice(0, -1);
+                var $3606 = Pair$new$($3605, "");
+                var $3604 = $3606;
                 break;
             case 'i':
-                var $3621 = self.slice(0, -1);
-                var self = Litereum$deserialize$fixlen$(6n, $3621);
+                var $3607 = self.slice(0, -1);
+                var self = Litereum$deserialize$fixlen$(6n, $3607);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3623 = self.fst;
-                        var $3624 = self.snd;
-                        var self = Litereum$deserialize$name$new$($3623);
+                        var $3609 = self.fst;
+                        var $3610 = self.snd;
+                        var self = Litereum$deserialize$name$new$($3609);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3626 = self.fst;
-                                var $3627 = self.snd;
-                                var _numb$7 = (Number($3624) & 0xFFFF);
+                                var $3612 = self.fst;
+                                var $3613 = self.snd;
+                                var _numb$7 = (Number($3610) & 0xFFFF);
                                 var self = U16$btw$(0, _numb$7, 9);
                                 if (self) {
-                                    var $3629 = ((_numb$7 + 48) & 0xFFFF);
-                                    var _head$8 = $3629;
+                                    var $3615 = ((_numb$7 + 48) & 0xFFFF);
+                                    var _head$8 = $3615;
                                 } else {
                                     var self = U16$btw$(10, _numb$7, 35);
                                     if (self) {
-                                        var $3631 = ((((_numb$7 - 10) & 0xFFFF) + 65) & 0xFFFF);
-                                        var $3630 = $3631;
+                                        var $3617 = ((((_numb$7 - 10) & 0xFFFF) + 65) & 0xFFFF);
+                                        var $3616 = $3617;
                                     } else {
                                         var self = U16$btw$(36, _numb$7, 61);
                                         if (self) {
-                                            var $3633 = ((((_numb$7 - 36) & 0xFFFF) + 97) & 0xFFFF);
-                                            var $3632 = $3633;
+                                            var $3619 = ((((_numb$7 - 36) & 0xFFFF) + 97) & 0xFFFF);
+                                            var $3618 = $3619;
                                         } else {
                                             var self = U16$btw$(62, _numb$7, 62);
                                             if (self) {
-                                                var $3635 = 95;
-                                                var $3634 = $3635;
+                                                var $3621 = 95;
+                                                var $3620 = $3621;
                                             } else {
-                                                var $3636 = 46;
-                                                var $3634 = $3636;
+                                                var $3622 = 46;
+                                                var $3620 = $3622;
                                             };
-                                            var $3632 = $3634;
+                                            var $3618 = $3620;
                                         };
-                                        var $3630 = $3632;
+                                        var $3616 = $3618;
                                     };
-                                    var _head$8 = $3630;
+                                    var _head$8 = $3616;
                                 };
-                                var $3628 = Pair$new$($3626, String$cons$(_head$8, $3627));
-                                var $3625 = $3628;
+                                var $3614 = Pair$new$($3612, String$cons$(_head$8, $3613));
+                                var $3611 = $3614;
                                 break;
                         };
-                        var $3622 = $3625;
+                        var $3608 = $3611;
                         break;
                 };
-                var $3618 = $3622;
+                var $3604 = $3608;
                 break;
             case 'e':
-                var $3637 = Pair$new$(Bits$e, "");
-                var $3618 = $3637;
+                var $3623 = Pair$new$(Bits$e, "");
+                var $3604 = $3623;
                 break;
         };
-        return $3618;
+        return $3604;
     };
     const Litereum$deserialize$name$new = x0 => Litereum$deserialize$name$new$(x0);
 
@@ -12570,53 +12528,53 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3639 = self.slice(0, -1);
-                var $3640 = Pair$new$($3639, 1n);
-                var $3638 = $3640;
+                var $3625 = self.slice(0, -1);
+                var $3626 = Pair$new$($3625, 1n);
+                var $3624 = $3626;
                 break;
             case 'i':
-                var $3641 = self.slice(0, -1);
-                var self = $3641;
+                var $3627 = self.slice(0, -1);
+                var self = $3627;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3643 = self.slice(0, -1);
-                        var self = Litereum$deserialize$varlen$go$($3643);
+                        var $3629 = self.slice(0, -1);
+                        var self = Litereum$deserialize$varlen$go$($3629);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3645 = self.fst;
-                                var $3646 = self.snd;
-                                var $3647 = Pair$new$($3645, ($3646 * 2n));
-                                var $3644 = $3647;
+                                var $3631 = self.fst;
+                                var $3632 = self.snd;
+                                var $3633 = Pair$new$($3631, ($3632 * 2n));
+                                var $3630 = $3633;
                                 break;
                         };
-                        var $3642 = $3644;
+                        var $3628 = $3630;
                         break;
                     case 'i':
-                        var $3648 = self.slice(0, -1);
-                        var self = Litereum$deserialize$varlen$go$($3648);
+                        var $3634 = self.slice(0, -1);
+                        var self = Litereum$deserialize$varlen$go$($3634);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3650 = self.fst;
-                                var $3651 = self.snd;
-                                var $3652 = Pair$new$($3650, (($3651 * 2n) + 1n));
-                                var $3649 = $3652;
+                                var $3636 = self.fst;
+                                var $3637 = self.snd;
+                                var $3638 = Pair$new$($3636, (($3637 * 2n) + 1n));
+                                var $3635 = $3638;
                                 break;
                         };
-                        var $3642 = $3649;
+                        var $3628 = $3635;
                         break;
                     case 'e':
-                        var $3653 = Pair$new$($3641, 0n);
-                        var $3642 = $3653;
+                        var $3639 = Pair$new$($3627, 0n);
+                        var $3628 = $3639;
                         break;
                 };
-                var $3638 = $3642;
+                var $3624 = $3628;
                 break;
             case 'e':
-                var $3654 = Pair$new$(Bits$e, 0n);
-                var $3638 = $3654;
+                var $3640 = Pair$new$(Bits$e, 0n);
+                var $3624 = $3640;
                 break;
         };
-        return $3638;
+        return $3624;
     };
     const Litereum$deserialize$varlen$go = x0 => Litereum$deserialize$varlen$go$(x0);
 
@@ -12624,13 +12582,13 @@ module.exports = (function() {
         var self = Litereum$deserialize$varlen$go$(_bits$1);
         switch (self._) {
             case 'Pair.new':
-                var $3656 = self.fst;
-                var $3657 = self.snd;
-                var $3658 = Pair$new$($3656, ($3657 - 1n <= 0n ? 0n : $3657 - 1n));
-                var $3655 = $3658;
+                var $3642 = self.fst;
+                var $3643 = self.snd;
+                var $3644 = Pair$new$($3642, ($3643 - 1n <= 0n ? 0n : $3643 - 1n));
+                var $3641 = $3644;
                 break;
         };
-        return $3655;
+        return $3641;
     };
     const Litereum$deserialize$varlen = x0 => Litereum$deserialize$varlen$(x0);
 
@@ -12638,31 +12596,31 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $3660 = self.index_to_name;
+                var $3646 = self.index_to_name;
                 var self = Litereum$deserialize$varlen$(_bits$2);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3662 = self.fst;
-                        var $3663 = self.snd;
-                        var self = Map$get$(Nat$show$($3663), $3660);
+                        var $3648 = self.fst;
+                        var $3649 = self.snd;
+                        var self = Map$get$(Nat$show$($3649), $3646);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3665 = self.value;
-                                var $3666 = Pair$new$($3662, $3665);
-                                var $3664 = $3666;
+                                var $3651 = self.value;
+                                var $3652 = Pair$new$($3648, $3651);
+                                var $3650 = $3652;
                                 break;
                             case 'Maybe.none':
-                                var $3667 = Pair$new$($3662, "");
-                                var $3664 = $3667;
+                                var $3653 = Pair$new$($3648, "");
+                                var $3650 = $3653;
                                 break;
                         };
-                        var $3661 = $3664;
+                        var $3647 = $3650;
                         break;
                 };
-                var $3659 = $3661;
+                var $3645 = $3647;
                 break;
         };
-        return $3659;
+        return $3645;
     };
     const Litereum$deserialize$name$old = x0 => x1 => Litereum$deserialize$name$old$(x0, x1);
 
@@ -12670,37 +12628,37 @@ module.exports = (function() {
         var self = _bits$3;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3669 = self.slice(0, -1);
-                var $3670 = Pair$new$($3669, List$nil);
-                var $3668 = $3670;
+                var $3655 = self.slice(0, -1);
+                var $3656 = Pair$new$($3655, List$nil);
+                var $3654 = $3656;
                 break;
             case 'i':
-                var $3671 = self.slice(0, -1);
-                var self = _item$2($3671);
+                var $3657 = self.slice(0, -1);
+                var self = _item$2($3657);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3673 = self.fst;
-                        var $3674 = self.snd;
-                        var self = Litereum$deserialize$list$(_item$2, $3673);
+                        var $3659 = self.fst;
+                        var $3660 = self.snd;
+                        var self = Litereum$deserialize$list$(_item$2, $3659);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3676 = self.fst;
-                                var $3677 = self.snd;
-                                var $3678 = Pair$new$($3676, List$cons$($3674, $3677));
-                                var $3675 = $3678;
+                                var $3662 = self.fst;
+                                var $3663 = self.snd;
+                                var $3664 = Pair$new$($3662, List$cons$($3660, $3663));
+                                var $3661 = $3664;
                                 break;
                         };
-                        var $3672 = $3675;
+                        var $3658 = $3661;
                         break;
                 };
-                var $3668 = $3672;
+                var $3654 = $3658;
                 break;
             case 'e':
-                var $3679 = Pair$new$(Bits$e, List$nil);
-                var $3668 = $3679;
+                var $3665 = Pair$new$(Bits$e, List$nil);
+                var $3654 = $3665;
                 break;
         };
-        return $3668;
+        return $3654;
     };
     const Litereum$deserialize$list = x0 => x1 => Litereum$deserialize$list$(x0, x1);
 
@@ -12708,29 +12666,29 @@ module.exports = (function() {
         var self = _bits$2;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3681 = self.slice(0, -1);
-                var $3682 = Pair$new$($3681, Litereum$Type$word);
-                var $3680 = $3682;
+                var $3667 = self.slice(0, -1);
+                var $3668 = Pair$new$($3667, Litereum$Type$word);
+                var $3666 = $3668;
                 break;
             case 'i':
-                var $3683 = self.slice(0, -1);
-                var self = Litereum$deserialize$name$old$(_world$1, $3683);
+                var $3669 = self.slice(0, -1);
+                var self = Litereum$deserialize$name$old$(_world$1, $3669);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3685 = self.fst;
-                        var $3686 = self.snd;
-                        var $3687 = Pair$new$($3685, Litereum$Type$data$($3686));
-                        var $3684 = $3687;
+                        var $3671 = self.fst;
+                        var $3672 = self.snd;
+                        var $3673 = Pair$new$($3671, Litereum$Type$data$($3672));
+                        var $3670 = $3673;
                         break;
                 };
-                var $3680 = $3684;
+                var $3666 = $3670;
                 break;
             case 'e':
-                var $3688 = Pair$new$(_bits$2, Litereum$Type$word);
-                var $3680 = $3688;
+                var $3674 = Pair$new$(_bits$2, Litereum$Type$word);
+                var $3666 = $3674;
                 break;
         };
-        return $3680;
+        return $3666;
     };
     const Litereum$deserialize$type = x0 => x1 => Litereum$deserialize$type$(x0, x1);
 
@@ -12738,29 +12696,29 @@ module.exports = (function() {
         var self = Litereum$deserialize$name$old$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3690 = self.fst;
-                var $3691 = self.snd;
-                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3690);
+                var $3676 = self.fst;
+                var $3677 = self.snd;
+                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3676);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3693 = self.fst;
-                        var $3694 = self.snd;
-                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3693);
+                        var $3679 = self.fst;
+                        var $3680 = self.snd;
+                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3679);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3696 = self.fst;
-                                var $3697 = self.snd;
-                                var $3698 = Pair$new$($3696, Litereum$Constructor$new$($3691, $3694, $3697));
-                                var $3695 = $3698;
+                                var $3682 = self.fst;
+                                var $3683 = self.snd;
+                                var $3684 = Pair$new$($3682, Litereum$Constructor$new$($3677, $3680, $3683));
+                                var $3681 = $3684;
                                 break;
                         };
-                        var $3692 = $3695;
+                        var $3678 = $3681;
                         break;
                 };
-                var $3689 = $3692;
+                var $3675 = $3678;
                 break;
         };
-        return $3689;
+        return $3675;
     };
     const Litereum$deserialize$constructor = x0 => x1 => Litereum$deserialize$constructor$(x0, x1);
 
@@ -12768,21 +12726,21 @@ module.exports = (function() {
         var self = Litereum$deserialize$name$old$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3700 = self.fst;
-                var $3701 = self.snd;
-                var self = Litereum$deserialize$list$(Litereum$deserialize$constructor(_world$1), $3700);
+                var $3686 = self.fst;
+                var $3687 = self.snd;
+                var self = Litereum$deserialize$list$(Litereum$deserialize$constructor(_world$1), $3686);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3703 = self.fst;
-                        var $3704 = self.snd;
-                        var $3705 = Pair$new$($3703, Litereum$Data$new$($3701, $3704));
-                        var $3702 = $3705;
+                        var $3689 = self.fst;
+                        var $3690 = self.snd;
+                        var $3691 = Pair$new$($3689, Litereum$Data$new$($3687, $3690));
+                        var $3688 = $3691;
                         break;
                 };
-                var $3699 = $3702;
+                var $3685 = $3688;
                 break;
         };
-        return $3699;
+        return $3685;
     };
     const Litereum$deserialize$data = x0 => x1 => Litereum$deserialize$data$(x0, x1);
 
@@ -12790,13 +12748,13 @@ module.exports = (function() {
         var self = Litereum$deserialize$varlen$(_bits$3);
         switch (self._) {
             case 'Pair.new':
-                var $3707 = self.fst;
-                var $3708 = self.snd;
-                var $3709 = Pair$new$($3707, Maybe$default$(List$get$($3708, _vars$2), ""));
-                var $3706 = $3709;
+                var $3693 = self.fst;
+                var $3694 = self.snd;
+                var $3695 = Pair$new$($3693, Maybe$default$(List$get$($3694, _vars$2), ""));
+                var $3692 = $3695;
                 break;
         };
-        return $3706;
+        return $3692;
     };
     const Litereum$deserialize$name$local = x0 => x1 => x2 => Litereum$deserialize$name$local$(x0, x1, x2);
 
@@ -12804,42 +12762,42 @@ module.exports = (function() {
         var self = _ctors$4;
         switch (self._) {
             case 'List.cons':
-                var $3711 = self.head;
-                var $3712 = self.tail;
+                var $3697 = self.head;
+                var $3698 = self.tail;
                 var _flds$8 = List$map$(a1 => ((_name$3 + ".") + a1), (() => {
-                    var self = $3711;
+                    var self = $3697;
                     switch (self._) {
                         case 'Litereum.Constructor.new':
-                            var $3714 = self.field_names;
-                            var $3715 = $3714;
-                            return $3715;
+                            var $3700 = self.field_names;
+                            var $3701 = $3700;
+                            return $3701;
                     };
                 })());
                 var self = Litereum$deserialize$term$(_world$1, List$concat$(List$reverse$(_flds$8), _vars$2), _bits$5);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3716 = self.fst;
-                        var $3717 = self.snd;
-                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, _name$3, $3712, $3716);
+                        var $3702 = self.fst;
+                        var $3703 = self.snd;
+                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, _name$3, $3698, $3702);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3719 = self.fst;
-                                var $3720 = self.snd;
-                                var $3721 = Pair$new$($3719, List$cons$($3717, $3720));
-                                var $3718 = $3721;
+                                var $3705 = self.fst;
+                                var $3706 = self.snd;
+                                var $3707 = Pair$new$($3705, List$cons$($3703, $3706));
+                                var $3704 = $3707;
                                 break;
                         };
-                        var $3713 = $3718;
+                        var $3699 = $3704;
                         break;
                 };
-                var $3710 = $3713;
+                var $3696 = $3699;
                 break;
             case 'List.nil':
-                var $3722 = Pair$new$(_bits$5, List$nil);
-                var $3710 = $3722;
+                var $3708 = Pair$new$(_bits$5, List$nil);
+                var $3696 = $3708;
                 break;
         };
-        return $3710;
+        return $3696;
     };
     const Litereum$deserialize$cases = x0 => x1 => x2 => x3 => x4 => Litereum$deserialize$cases$(x0, x1, x2, x3, x4);
 
@@ -12847,354 +12805,354 @@ module.exports = (function() {
         var self = _bits$3;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3724 = self.slice(0, -1);
-                var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3724);
+                var $3710 = self.slice(0, -1);
+                var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3710);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3726 = self.fst;
-                        var $3727 = self.snd;
-                        var $3728 = Pair$new$($3726, Litereum$Term$var$($3727));
-                        var $3725 = $3728;
+                        var $3712 = self.fst;
+                        var $3713 = self.snd;
+                        var $3714 = Pair$new$($3712, Litereum$Term$var$($3713));
+                        var $3711 = $3714;
                         break;
                 };
-                var $3723 = $3725;
+                var $3709 = $3711;
                 break;
             case 'i':
-                var $3729 = self.slice(0, -1);
-                var self = Litereum$deserialize$fixlen$(3n, $3729);
+                var $3715 = self.slice(0, -1);
+                var self = Litereum$deserialize$fixlen$(3n, $3715);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3731 = self.fst;
-                        var $3732 = self.snd;
-                        var self = ($3732 === 0n);
+                        var $3717 = self.fst;
+                        var $3718 = self.snd;
+                        var self = ($3718 === 0n);
                         if (self) {
-                            var self = Litereum$deserialize$name$old$(_world$1, $3731);
+                            var self = Litereum$deserialize$name$old$(_world$1, $3717);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3735 = self.fst;
-                                    var $3736 = self.snd;
-                                    var self = Litereum$deserialize$type$(_world$1, $3735);
+                                    var $3721 = self.fst;
+                                    var $3722 = self.snd;
+                                    var self = Litereum$deserialize$type$(_world$1, $3721);
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $3738 = self.fst;
-                                            var $3739 = self.snd;
-                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3738);
+                                            var $3724 = self.fst;
+                                            var $3725 = self.snd;
+                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3724);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3741 = self.fst;
-                                                    var $3742 = self.snd;
-                                                    var self = Litereum$deserialize$term$(_world$1, List$cons$($3736, _vars$2), $3741);
+                                                    var $3727 = self.fst;
+                                                    var $3728 = self.snd;
+                                                    var self = Litereum$deserialize$term$(_world$1, List$cons$($3722, _vars$2), $3727);
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3744 = self.fst;
-                                                            var $3745 = self.snd;
-                                                            var $3746 = Pair$new$($3744, Litereum$Term$let$($3736, $3739, $3742, $3745));
-                                                            var $3743 = $3746;
+                                                            var $3730 = self.fst;
+                                                            var $3731 = self.snd;
+                                                            var $3732 = Pair$new$($3730, Litereum$Term$let$($3722, $3725, $3728, $3731));
+                                                            var $3729 = $3732;
                                                             break;
                                                     };
-                                                    var $3740 = $3743;
+                                                    var $3726 = $3729;
                                                     break;
                                             };
-                                            var $3737 = $3740;
+                                            var $3723 = $3726;
                                             break;
                                     };
-                                    var $3734 = $3737;
+                                    var $3720 = $3723;
                                     break;
                             };
-                            var $3733 = $3734;
+                            var $3719 = $3720;
                         } else {
-                            var self = ($3732 === 1n);
+                            var self = ($3718 === 1n);
                             if (self) {
-                                var self = Litereum$deserialize$name$old$(_world$1, $3731);
+                                var self = Litereum$deserialize$name$old$(_world$1, $3717);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3749 = self.fst;
-                                        var $3750 = self.snd;
-                                        var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3749);
+                                        var $3735 = self.fst;
+                                        var $3736 = self.snd;
+                                        var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3735);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3752 = self.fst;
-                                                var $3753 = self.snd;
-                                                var $3754 = Pair$new$($3752, Litereum$Term$call$($3750, $3753));
-                                                var $3751 = $3754;
+                                                var $3738 = self.fst;
+                                                var $3739 = self.snd;
+                                                var $3740 = Pair$new$($3738, Litereum$Term$call$($3736, $3739));
+                                                var $3737 = $3740;
                                                 break;
                                         };
-                                        var $3748 = $3751;
+                                        var $3734 = $3737;
                                         break;
                                 };
-                                var $3747 = $3748;
+                                var $3733 = $3734;
                             } else {
-                                var self = ($3732 === 2n);
+                                var self = ($3718 === 2n);
                                 if (self) {
-                                    var self = Litereum$deserialize$name$old$(_world$1, $3731);
+                                    var self = Litereum$deserialize$name$old$(_world$1, $3717);
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $3757 = self.fst;
-                                            var $3758 = self.snd;
-                                            var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3757);
+                                            var $3743 = self.fst;
+                                            var $3744 = self.snd;
+                                            var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3743);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3760 = self.fst;
-                                                    var $3761 = self.snd;
-                                                    var $3762 = Pair$new$($3760, Litereum$Term$create$($3758, $3761));
-                                                    var $3759 = $3762;
+                                                    var $3746 = self.fst;
+                                                    var $3747 = self.snd;
+                                                    var $3748 = Pair$new$($3746, Litereum$Term$create$($3744, $3747));
+                                                    var $3745 = $3748;
                                                     break;
                                             };
-                                            var $3756 = $3759;
+                                            var $3742 = $3745;
                                             break;
                                     };
-                                    var $3755 = $3756;
+                                    var $3741 = $3742;
                                 } else {
-                                    var self = ($3732 === 3n);
+                                    var self = ($3718 === 3n);
                                     if (self) {
-                                        var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3731);
+                                        var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3717);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3765 = self.fst;
-                                                var $3766 = self.snd;
-                                                var self = Litereum$deserialize$name$old$(_world$1, $3765);
+                                                var $3751 = self.fst;
+                                                var $3752 = self.snd;
+                                                var self = Litereum$deserialize$name$old$(_world$1, $3751);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3768 = self.fst;
-                                                        var $3769 = self.snd;
-                                                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, $3766, Maybe$default$(Litereum$get_constructors$(_world$1, $3769), List$nil), $3768);
+                                                        var $3754 = self.fst;
+                                                        var $3755 = self.snd;
+                                                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, $3752, Maybe$default$(Litereum$get_constructors$(_world$1, $3755), List$nil), $3754);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $3771 = self.fst;
-                                                                var $3772 = self.snd;
-                                                                var $3773 = Pair$new$($3771, Litereum$Term$match$($3766, $3769, $3772));
-                                                                var $3770 = $3773;
+                                                                var $3757 = self.fst;
+                                                                var $3758 = self.snd;
+                                                                var $3759 = Pair$new$($3757, Litereum$Term$match$($3752, $3755, $3758));
+                                                                var $3756 = $3759;
                                                                 break;
                                                         };
-                                                        var $3767 = $3770;
+                                                        var $3753 = $3756;
                                                         break;
                                                 };
-                                                var $3764 = $3767;
+                                                var $3750 = $3753;
                                                 break;
                                         };
-                                        var $3763 = $3764;
+                                        var $3749 = $3750;
                                     } else {
-                                        var self = ($3732 === 4n);
+                                        var self = ($3718 === 4n);
                                         if (self) {
-                                            var self = Litereum$deserialize$fixlen$(64n, $3731);
+                                            var self = Litereum$deserialize$fixlen$(64n, $3717);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3776 = self.fst;
-                                                    var $3777 = self.snd;
-                                                    var $3778 = Pair$new$($3776, Litereum$Term$word$(($3777 & 0xFFFFFFFFFFFFFFFFn)));
-                                                    var $3775 = $3778;
+                                                    var $3762 = self.fst;
+                                                    var $3763 = self.snd;
+                                                    var $3764 = Pair$new$($3762, Litereum$Term$word$(($3763 & 0xFFFFFFFFFFFFFFFFn)));
+                                                    var $3761 = $3764;
                                                     break;
                                             };
-                                            var $3774 = $3775;
+                                            var $3760 = $3761;
                                         } else {
-                                            var self = ($3732 === 5n);
+                                            var self = ($3718 === 5n);
                                             if (self) {
-                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3731);
+                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3717);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3781 = self.fst;
-                                                        var $3782 = self.snd;
-                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3781);
+                                                        var $3767 = self.fst;
+                                                        var $3768 = self.snd;
+                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3767);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $3784 = self.fst;
-                                                                var $3785 = self.snd;
-                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3784);
+                                                                var $3770 = self.fst;
+                                                                var $3771 = self.snd;
+                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3770);
                                                                 switch (self._) {
                                                                     case 'Pair.new':
-                                                                        var $3787 = self.fst;
-                                                                        var $3788 = self.snd;
-                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3787);
+                                                                        var $3773 = self.fst;
+                                                                        var $3774 = self.snd;
+                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3773);
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $3790 = self.fst;
-                                                                                var $3791 = self.snd;
-                                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3790);
+                                                                                var $3776 = self.fst;
+                                                                                var $3777 = self.snd;
+                                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3776);
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $3793 = self.fst;
-                                                                                        var $3794 = self.snd;
-                                                                                        var $3795 = Pair$new$($3793, Litereum$Term$compare$($3782, $3785, $3788, $3791, $3794));
-                                                                                        var $3792 = $3795;
+                                                                                        var $3779 = self.fst;
+                                                                                        var $3780 = self.snd;
+                                                                                        var $3781 = Pair$new$($3779, Litereum$Term$compare$($3768, $3771, $3774, $3777, $3780));
+                                                                                        var $3778 = $3781;
                                                                                         break;
                                                                                 };
-                                                                                var $3789 = $3792;
+                                                                                var $3775 = $3778;
                                                                                 break;
                                                                         };
-                                                                        var $3786 = $3789;
+                                                                        var $3772 = $3775;
                                                                         break;
                                                                 };
-                                                                var $3783 = $3786;
+                                                                var $3769 = $3772;
                                                                 break;
                                                         };
-                                                        var $3780 = $3783;
+                                                        var $3766 = $3769;
                                                         break;
                                                 };
-                                                var $3779 = $3780;
+                                                var $3765 = $3766;
                                             } else {
-                                                var self = ($3732 === 6n);
+                                                var self = ($3718 === 6n);
                                                 if (self) {
-                                                    var self = Litereum$deserialize$fixlen$(3n, $3731);
+                                                    var self = Litereum$deserialize$fixlen$(3n, $3717);
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3798 = self.fst;
-                                                            var $3799 = self.snd;
-                                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3798);
+                                                            var $3784 = self.fst;
+                                                            var $3785 = self.snd;
+                                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3784);
                                                             switch (self._) {
                                                                 case 'Pair.new':
-                                                                    var $3801 = self.fst;
-                                                                    var $3802 = self.snd;
-                                                                    var self = Litereum$deserialize$term$(_world$1, _vars$2, $3801);
+                                                                    var $3787 = self.fst;
+                                                                    var $3788 = self.snd;
+                                                                    var self = Litereum$deserialize$term$(_world$1, _vars$2, $3787);
                                                                     switch (self._) {
                                                                         case 'Pair.new':
-                                                                            var $3804 = self.fst;
-                                                                            var $3805 = self.snd;
-                                                                            var self = ($3799 === 0n);
+                                                                            var $3790 = self.fst;
+                                                                            var $3791 = self.snd;
+                                                                            var self = ($3785 === 0n);
                                                                             if (self) {
-                                                                                var $3807 = Litereum$Operation$add;
-                                                                                var _oper$13 = $3807;
+                                                                                var $3793 = Litereum$Operation$add;
+                                                                                var _oper$13 = $3793;
                                                                             } else {
-                                                                                var self = ($3799 === 1n);
+                                                                                var self = ($3785 === 1n);
                                                                                 if (self) {
-                                                                                    var $3809 = Litereum$Operation$sub;
-                                                                                    var $3808 = $3809;
+                                                                                    var $3795 = Litereum$Operation$sub;
+                                                                                    var $3794 = $3795;
                                                                                 } else {
-                                                                                    var self = ($3799 === 2n);
+                                                                                    var self = ($3785 === 2n);
                                                                                     if (self) {
-                                                                                        var $3811 = Litereum$Operation$mul;
-                                                                                        var $3810 = $3811;
+                                                                                        var $3797 = Litereum$Operation$mul;
+                                                                                        var $3796 = $3797;
                                                                                     } else {
-                                                                                        var self = ($3799 === 3n);
+                                                                                        var self = ($3785 === 3n);
                                                                                         if (self) {
-                                                                                            var $3813 = Litereum$Operation$div;
-                                                                                            var $3812 = $3813;
+                                                                                            var $3799 = Litereum$Operation$div;
+                                                                                            var $3798 = $3799;
                                                                                         } else {
-                                                                                            var self = ($3799 === 4n);
+                                                                                            var self = ($3785 === 4n);
                                                                                             if (self) {
-                                                                                                var $3815 = Litereum$Operation$mod;
-                                                                                                var $3814 = $3815;
+                                                                                                var $3801 = Litereum$Operation$mod;
+                                                                                                var $3800 = $3801;
                                                                                             } else {
-                                                                                                var self = ($3799 === 5n);
+                                                                                                var self = ($3785 === 5n);
                                                                                                 if (self) {
-                                                                                                    var $3817 = Litereum$Operation$or;
-                                                                                                    var $3816 = $3817;
+                                                                                                    var $3803 = Litereum$Operation$or;
+                                                                                                    var $3802 = $3803;
                                                                                                 } else {
-                                                                                                    var self = ($3799 === 6n);
+                                                                                                    var self = ($3785 === 6n);
                                                                                                     if (self) {
-                                                                                                        var $3819 = Litereum$Operation$and;
-                                                                                                        var $3818 = $3819;
+                                                                                                        var $3805 = Litereum$Operation$and;
+                                                                                                        var $3804 = $3805;
                                                                                                     } else {
-                                                                                                        var self = ($3799 === 7n);
+                                                                                                        var self = ($3785 === 7n);
                                                                                                         if (self) {
-                                                                                                            var $3821 = Litereum$Operation$xor;
-                                                                                                            var $3820 = $3821;
+                                                                                                            var $3807 = Litereum$Operation$xor;
+                                                                                                            var $3806 = $3807;
                                                                                                         } else {
-                                                                                                            var $3822 = Litereum$Operation$add;
-                                                                                                            var $3820 = $3822;
+                                                                                                            var $3808 = Litereum$Operation$add;
+                                                                                                            var $3806 = $3808;
                                                                                                         };
-                                                                                                        var $3818 = $3820;
+                                                                                                        var $3804 = $3806;
                                                                                                     };
-                                                                                                    var $3816 = $3818;
+                                                                                                    var $3802 = $3804;
                                                                                                 };
-                                                                                                var $3814 = $3816;
+                                                                                                var $3800 = $3802;
                                                                                             };
-                                                                                            var $3812 = $3814;
+                                                                                            var $3798 = $3800;
                                                                                         };
-                                                                                        var $3810 = $3812;
+                                                                                        var $3796 = $3798;
                                                                                     };
-                                                                                    var $3808 = $3810;
+                                                                                    var $3794 = $3796;
                                                                                 };
-                                                                                var _oper$13 = $3808;
+                                                                                var _oper$13 = $3794;
                                                                             };
-                                                                            var $3806 = Pair$new$($3804, Litereum$Term$operate$(_oper$13, $3802, $3805));
-                                                                            var $3803 = $3806;
+                                                                            var $3792 = Pair$new$($3790, Litereum$Term$operate$(_oper$13, $3788, $3791));
+                                                                            var $3789 = $3792;
                                                                             break;
                                                                     };
-                                                                    var $3800 = $3803;
+                                                                    var $3786 = $3789;
                                                                     break;
                                                             };
-                                                            var $3797 = $3800;
+                                                            var $3783 = $3786;
                                                             break;
                                                     };
-                                                    var $3796 = $3797;
+                                                    var $3782 = $3783;
                                                 } else {
-                                                    var self = ($3732 === 7n);
+                                                    var self = ($3718 === 7n);
                                                     if (self) {
-                                                        var self = Litereum$deserialize$name$old$(_world$1, $3731);
+                                                        var self = Litereum$deserialize$name$old$(_world$1, $3717);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $3825 = self.fst;
-                                                                var $3826 = self.snd;
-                                                                var self = Litereum$get_bond$(_world$1, $3826);
+                                                                var $3811 = self.fst;
+                                                                var $3812 = self.snd;
+                                                                var self = Litereum$get_bond$(_world$1, $3812);
                                                                 switch (self._) {
                                                                     case 'Maybe.some':
-                                                                        var $3828 = self.value;
-                                                                        var _bond$10 = $3828;
+                                                                        var $3814 = self.value;
+                                                                        var _bond$10 = $3814;
                                                                         var self = _bond$10;
                                                                         switch (self._) {
                                                                             case 'Litereum.Bond.new':
-                                                                                var $3830 = self.input_names;
-                                                                                var _vrs2$17 = List$concat$(List$reverse$($3830), _vars$2);
-                                                                                var self = Litereum$deserialize$term$(_world$1, _vrs2$17, $3825);
+                                                                                var $3816 = self.input_names;
+                                                                                var _vrs2$17 = List$concat$(List$reverse$($3816), _vars$2);
+                                                                                var self = Litereum$deserialize$term$(_world$1, _vrs2$17, $3811);
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $3832 = self.fst;
-                                                                                        var $3833 = self.snd;
-                                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3832);
+                                                                                        var $3818 = self.fst;
+                                                                                        var $3819 = self.snd;
+                                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3818);
                                                                                         switch (self._) {
                                                                                             case 'Pair.new':
-                                                                                                var $3835 = self.fst;
-                                                                                                var $3836 = self.snd;
-                                                                                                var $3837 = Pair$new$($3835, Litereum$Term$bind$($3826, $3833, $3836));
-                                                                                                var $3834 = $3837;
+                                                                                                var $3821 = self.fst;
+                                                                                                var $3822 = self.snd;
+                                                                                                var $3823 = Pair$new$($3821, Litereum$Term$bind$($3812, $3819, $3822));
+                                                                                                var $3820 = $3823;
                                                                                                 break;
                                                                                         };
-                                                                                        var $3831 = $3834;
+                                                                                        var $3817 = $3820;
                                                                                         break;
                                                                                 };
-                                                                                var $3829 = $3831;
+                                                                                var $3815 = $3817;
                                                                                 break;
                                                                         };
-                                                                        var $3827 = $3829;
+                                                                        var $3813 = $3815;
                                                                         break;
                                                                     case 'Maybe.none':
-                                                                        var $3838 = Pair$new$($3825, Litereum$Term$word$(0n));
-                                                                        var $3827 = $3838;
+                                                                        var $3824 = Pair$new$($3811, Litereum$Term$word$(0n));
+                                                                        var $3813 = $3824;
                                                                         break;
                                                                 };
-                                                                var $3824 = $3827;
+                                                                var $3810 = $3813;
                                                                 break;
                                                         };
-                                                        var $3823 = $3824;
+                                                        var $3809 = $3810;
                                                     } else {
-                                                        var $3839 = Pair$new$($3731, Litereum$Term$word$(0n));
-                                                        var $3823 = $3839;
+                                                        var $3825 = Pair$new$($3717, Litereum$Term$word$(0n));
+                                                        var $3809 = $3825;
                                                     };
-                                                    var $3796 = $3823;
+                                                    var $3782 = $3809;
                                                 };
-                                                var $3779 = $3796;
+                                                var $3765 = $3782;
                                             };
-                                            var $3774 = $3779;
+                                            var $3760 = $3765;
                                         };
-                                        var $3763 = $3774;
+                                        var $3749 = $3760;
                                     };
-                                    var $3755 = $3763;
+                                    var $3741 = $3749;
                                 };
-                                var $3747 = $3755;
+                                var $3733 = $3741;
                             };
-                            var $3733 = $3747;
+                            var $3719 = $3733;
                         };
-                        var $3730 = $3733;
+                        var $3716 = $3719;
                         break;
                 };
-                var $3723 = $3730;
+                var $3709 = $3716;
                 break;
             case 'e':
-                var $3840 = Pair$new$(_bits$3, Litereum$Term$word$(0n));
-                var $3723 = $3840;
+                var $3826 = Pair$new$(_bits$3, Litereum$Term$word$(0n));
+                var $3709 = $3826;
                 break;
         };
-        return $3723;
+        return $3709;
     };
     const Litereum$deserialize$term = x0 => x1 => x2 => Litereum$deserialize$term$(x0, x1, x2);
 
@@ -13202,53 +13160,53 @@ module.exports = (function() {
         var self = Litereum$deserialize$name$old$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3842 = self.fst;
-                var $3843 = self.snd;
-                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3842);
+                var $3828 = self.fst;
+                var $3829 = self.snd;
+                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3828);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3845 = self.fst;
-                        var $3846 = self.snd;
-                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3845);
+                        var $3831 = self.fst;
+                        var $3832 = self.snd;
+                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3831);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3848 = self.fst;
-                                var $3849 = self.snd;
-                                var self = Litereum$deserialize$type$(_world$1, $3848);
+                                var $3834 = self.fst;
+                                var $3835 = self.snd;
+                                var self = Litereum$deserialize$type$(_world$1, $3834);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3851 = self.fst;
-                                        var $3852 = self.snd;
-                                        var self = Litereum$deserialize$term$(_world$1, List$reverse$($3846), $3851);
+                                        var $3837 = self.fst;
+                                        var $3838 = self.snd;
+                                        var self = Litereum$deserialize$term$(_world$1, List$reverse$($3832), $3837);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3854 = self.fst;
-                                                var $3855 = self.snd;
-                                                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3854);
+                                                var $3840 = self.fst;
+                                                var $3841 = self.snd;
+                                                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3840);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3857 = self.fst;
-                                                        var $3858 = self.snd;
-                                                        var $3859 = Pair$new$($3857, Litereum$Bond$new$($3843, $3846, $3849, $3852, $3855, $3858));
-                                                        var $3856 = $3859;
+                                                        var $3843 = self.fst;
+                                                        var $3844 = self.snd;
+                                                        var $3845 = Pair$new$($3843, Litereum$Bond$new$($3829, $3832, $3835, $3838, $3841, $3844));
+                                                        var $3842 = $3845;
                                                         break;
                                                 };
-                                                var $3853 = $3856;
+                                                var $3839 = $3842;
                                                 break;
                                         };
-                                        var $3850 = $3853;
+                                        var $3836 = $3839;
                                         break;
                                 };
-                                var $3847 = $3850;
+                                var $3833 = $3836;
                                 break;
                         };
-                        var $3844 = $3847;
+                        var $3830 = $3833;
                         break;
                 };
-                var $3841 = $3844;
+                var $3827 = $3830;
                 break;
         };
-        return $3841;
+        return $3827;
     };
     const Litereum$deserialize$bond = x0 => x1 => Litereum$deserialize$bond$(x0, x1);
 
@@ -13256,21 +13214,21 @@ module.exports = (function() {
         var self = Litereum$deserialize$term$(_world$1, List$nil, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3861 = self.fst;
-                var $3862 = self.snd;
-                var self = Litereum$deserialize$type$(_world$1, $3861);
+                var $3847 = self.fst;
+                var $3848 = self.snd;
+                var self = Litereum$deserialize$type$(_world$1, $3847);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3864 = self.fst;
-                        var $3865 = self.snd;
-                        var $3866 = Pair$new$($3864, Litereum$Eval$new$($3862, $3865));
-                        var $3863 = $3866;
+                        var $3850 = self.fst;
+                        var $3851 = self.snd;
+                        var $3852 = Pair$new$($3850, Litereum$Eval$new$($3848, $3851));
+                        var $3849 = $3852;
                         break;
                 };
-                var $3860 = $3863;
+                var $3846 = $3849;
                 break;
         };
-        return $3860;
+        return $3846;
     };
     const Litereum$deserialize$eval = x0 => x1 => Litereum$deserialize$eval$(x0, x1);
 
@@ -13278,102 +13236,102 @@ module.exports = (function() {
         var self = Litereum$deserialize$fixlen$(2n, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3868 = self.fst;
-                var $3869 = self.snd;
-                var self = ($3869 === 0n);
+                var $3854 = self.fst;
+                var $3855 = self.snd;
+                var self = ($3855 === 0n);
                 if (self) {
-                    var self = Litereum$deserialize$name$new$($3868);
+                    var self = Litereum$deserialize$name$new$($3854);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3872 = self.fst;
-                            var $3873 = self.snd;
-                            var $3874 = Pair$new$($3872, Litereum$Transaction$new_name$($3873));
-                            var $3871 = $3874;
+                            var $3858 = self.fst;
+                            var $3859 = self.snd;
+                            var $3860 = Pair$new$($3858, Litereum$Transaction$new_name$($3859));
+                            var $3857 = $3860;
                             break;
                     };
-                    var $3870 = $3871;
+                    var $3856 = $3857;
                 } else {
-                    var self = ($3869 === 1n);
+                    var self = ($3855 === 1n);
                     if (self) {
-                        var self = Litereum$deserialize$data$(_world$1, $3868);
+                        var self = Litereum$deserialize$data$(_world$1, $3854);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3877 = self.fst;
-                                var $3878 = self.snd;
-                                var $3879 = Pair$new$($3877, Litereum$Transaction$new_data$($3878));
-                                var $3876 = $3879;
+                                var $3863 = self.fst;
+                                var $3864 = self.snd;
+                                var $3865 = Pair$new$($3863, Litereum$Transaction$new_data$($3864));
+                                var $3862 = $3865;
                                 break;
                         };
-                        var $3875 = $3876;
+                        var $3861 = $3862;
                     } else {
-                        var self = ($3869 === 2n);
+                        var self = ($3855 === 2n);
                         if (self) {
-                            var self = Litereum$deserialize$bond$(_world$1, $3868);
+                            var self = Litereum$deserialize$bond$(_world$1, $3854);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3882 = self.fst;
-                                    var $3883 = self.snd;
-                                    var $3884 = Pair$new$($3882, Litereum$Transaction$new_bond$($3883));
-                                    var $3881 = $3884;
+                                    var $3868 = self.fst;
+                                    var $3869 = self.snd;
+                                    var $3870 = Pair$new$($3868, Litereum$Transaction$new_bond$($3869));
+                                    var $3867 = $3870;
                                     break;
                             };
-                            var $3880 = $3881;
+                            var $3866 = $3867;
                         } else {
-                            var self = ($3869 === 3n);
+                            var self = ($3855 === 3n);
                             if (self) {
-                                var self = Litereum$deserialize$eval$(_world$1, $3868);
+                                var self = Litereum$deserialize$eval$(_world$1, $3854);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3887 = self.fst;
-                                        var $3888 = self.snd;
-                                        var $3889 = Pair$new$($3887, Litereum$Transaction$new_eval$($3888));
-                                        var $3886 = $3889;
+                                        var $3873 = self.fst;
+                                        var $3874 = self.snd;
+                                        var $3875 = Pair$new$($3873, Litereum$Transaction$new_eval$($3874));
+                                        var $3872 = $3875;
                                         break;
                                 };
-                                var $3885 = $3886;
+                                var $3871 = $3872;
                             } else {
-                                var $3890 = Pair$new$($3868, Litereum$Transaction$new_name$(""));
-                                var $3885 = $3890;
+                                var $3876 = Pair$new$($3854, Litereum$Transaction$new_name$(""));
+                                var $3871 = $3876;
                             };
-                            var $3880 = $3885;
+                            var $3866 = $3871;
                         };
-                        var $3875 = $3880;
+                        var $3861 = $3866;
                     };
-                    var $3870 = $3875;
+                    var $3856 = $3861;
                 };
-                var $3867 = $3870;
+                var $3853 = $3856;
                 break;
         };
-        return $3867;
+        return $3853;
     };
     const Litereum$deserialize$transaction = x0 => x1 => Litereum$deserialize$transaction$(x0, x1);
 
     function Litereum$deserialize$block$(_world$1, _bits$2) {
         var self = Bits$is_empty$(_bits$2);
         if (self) {
-            var $3892 = Pair$new$(Bits$e, List$nil);
-            var $3891 = $3892;
+            var $3878 = Pair$new$(Bits$e, List$nil);
+            var $3877 = $3878;
         } else {
             var self = Litereum$deserialize$transaction$(_world$1, _bits$2);
             switch (self._) {
                 case 'Pair.new':
-                    var $3894 = self.fst;
-                    var $3895 = self.snd;
-                    var self = Litereum$deserialize$block$(Litereum$reg$(_world$1, $3895), $3894);
+                    var $3880 = self.fst;
+                    var $3881 = self.snd;
+                    var self = Litereum$deserialize$block$(Litereum$reg$(_world$1, $3881), $3880);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3897 = self.fst;
-                            var $3898 = self.snd;
-                            var $3899 = Pair$new$($3897, List$cons$($3895, $3898));
-                            var $3896 = $3899;
+                            var $3883 = self.fst;
+                            var $3884 = self.snd;
+                            var $3885 = Pair$new$($3883, List$cons$($3881, $3884));
+                            var $3882 = $3885;
                             break;
                     };
-                    var $3893 = $3896;
+                    var $3879 = $3882;
                     break;
             };
-            var $3891 = $3893;
+            var $3877 = $3879;
         };
-        return $3891;
+        return $3877;
     };
     const Litereum$deserialize$block = x0 => x1 => Litereum$deserialize$block$(x0, x1);
 
@@ -13390,24 +13348,24 @@ module.exports = (function() {
                 var self = _transactions$2;
                 switch (self._) {
                     case 'List.cons':
-                        var $3900 = self.head;
-                        var $3901 = self.tail;
-                        var self = Litereum$run$(_world$1, $3900, Bool$false);
+                        var $3886 = self.head;
+                        var $3887 = self.tail;
+                        var self = Litereum$run$(_world$1, $3886, Bool$false);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3903 = self.value;
-                                var $3904 = Litereum$run$block$($3903, $3901);
-                                var $3902 = $3904;
+                                var $3889 = self.value;
+                                var $3890 = Litereum$run$block$($3889, $3887);
+                                var $3888 = $3890;
                                 break;
                             case 'Maybe.none':
-                                var $3905 = Maybe$none;
-                                var $3902 = $3905;
+                                var $3891 = Maybe$none;
+                                var $3888 = $3891;
                                 break;
                         };
-                        return $3902;
+                        return $3888;
                     case 'List.nil':
-                        var $3906 = Maybe$some$(_world$1);
-                        return $3906;
+                        var $3892 = Maybe$some$(_world$1);
+                        return $3892;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -13421,88 +13379,95 @@ module.exports = (function() {
         var self = Parser$run$(Litereum$parse$block$(_world$2), _code$1);
         switch (self._) {
             case 'Maybe.some':
-                var $3908 = self.value;
-                var $3909 = IO$monad$((_m$bind$4 => _m$pure$5 => {
-                    var $3910 = _m$bind$4;
-                    return $3910;
+                var $3894 = self.value;
+                var $3895 = IO$monad$((_m$bind$4 => _m$pure$5 => {
+                    var $3896 = _m$bind$4;
+                    return $3896;
                 }))(IO$print$("Block: "))((_$4 => {
-                    var $3911 = IO$monad$((_m$bind$5 => _m$pure$6 => {
-                        var $3912 = _m$bind$5;
-                        return $3912;
-                    }))(IO$print$(Litereum$show$block$(_world$2, $3908)))((_$5 => {
-                        var $3913 = IO$monad$((_m$bind$6 => _m$pure$7 => {
-                            var $3914 = _m$bind$6;
-                            return $3914;
+                    var $3897 = IO$monad$((_m$bind$5 => _m$pure$6 => {
+                        var $3898 = _m$bind$5;
+                        return $3898;
+                    }))(IO$print$(Litereum$show$block$(_world$2, $3894)))((_$5 => {
+                        var $3899 = IO$monad$((_m$bind$6 => _m$pure$7 => {
+                            var $3900 = _m$bind$6;
+                            return $3900;
                         }))(IO$print$("Serialization:"))((_$6 => {
-                            var _bits$7 = Litereum$serialize$block$(Litereum$genesis, $3908);
-                            var $3915 = IO$monad$((_m$bind$8 => _m$pure$9 => {
-                                var $3916 = _m$bind$8;
-                                return $3916;
+                            var _bits$7 = Litereum$serialize$block$(Litereum$genesis, $3894);
+                            var $3901 = IO$monad$((_m$bind$8 => _m$pure$9 => {
+                                var $3902 = _m$bind$8;
+                                return $3902;
                             }))(IO$print$(("- " + Bits$hex$encode$(_bits$7))))((_$8 => {
-                                var $3917 = IO$monad$((_m$bind$9 => _m$pure$10 => {
-                                    var $3918 = _m$bind$9;
-                                    return $3918;
+                                var $3903 = IO$monad$((_m$bind$9 => _m$pure$10 => {
+                                    var $3904 = _m$bind$9;
+                                    return $3904;
                                 }))(IO$print$(""))((_$9 => {
-                                    var $3919 = IO$monad$((_m$bind$10 => _m$pure$11 => {
-                                        var $3920 = _m$bind$10;
-                                        return $3920;
+                                    var $3905 = IO$monad$((_m$bind$10 => _m$pure$11 => {
+                                        var $3906 = _m$bind$10;
+                                        return $3906;
                                     }))(IO$print$("Deserialization:"))((_$10 => {
                                         var self = Litereum$deserialize$block$(Litereum$genesis, _bits$7);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3922 = self.snd;
-                                                var $3923 = IO$monad$((_m$bind$13 => _m$pure$14 => {
-                                                    var $3924 = _m$bind$13;
-                                                    return $3924;
-                                                }))(IO$print$(Litereum$show$block$(Litereum$genesis, $3922)))((_$13 => {
-                                                    var $3925 = ((console.log("Evaluation: "), (_$14 => {
-                                                        var self = Litereum$run$block$(_world$2, $3922);
+                                                var $3908 = self.snd;
+                                                var $3909 = IO$monad$((_m$bind$13 => _m$pure$14 => {
+                                                    var $3910 = _m$bind$13;
+                                                    return $3910;
+                                                }))(IO$print$(Litereum$show$block$(Litereum$genesis, $3908)))((_$13 => {
+                                                    var $3911 = ((console.log("Evaluation: "), (_$14 => {
+                                                        var self = Litereum$run$block$(_world$2, $3908);
                                                         switch (self._) {
                                                             case 'Maybe.none':
-                                                                var $3927 = IO$print$("failed execution");
-                                                                var $3926 = $3927;
+                                                                var $3913 = IO$print$("failed execution");
+                                                                var $3912 = $3913;
                                                                 break;
                                                             case 'Maybe.some':
-                                                                var $3928 = IO$monad$((_m$bind$16 => _m$pure$17 => {
-                                                                    var $3929 = _m$bind$16;
-                                                                    return $3929;
+                                                                var $3914 = IO$monad$((_m$bind$16 => _m$pure$17 => {
+                                                                    var $3915 = _m$bind$16;
+                                                                    return $3915;
                                                                 }))(IO$print$(""))((_$16 => {
-                                                                    var $3930 = IO$print$("Done!");
-                                                                    return $3930;
+                                                                    var $3916 = IO$print$("Done!");
+                                                                    return $3916;
                                                                 }));
-                                                                var $3926 = $3928;
+                                                                var $3912 = $3914;
                                                                 break;
                                                         };
-                                                        return $3926;
+                                                        return $3912;
                                                     })()));
-                                                    return $3925;
+                                                    return $3911;
                                                 }));
-                                                var $3921 = $3923;
+                                                var $3907 = $3909;
                                                 break;
                                         };
-                                        return $3921;
+                                        return $3907;
                                     }));
-                                    return $3919;
+                                    return $3905;
                                 }));
-                                return $3917;
+                                return $3903;
                             }));
-                            return $3915;
+                            return $3901;
                         }));
-                        return $3913;
+                        return $3899;
                     }));
-                    return $3911;
+                    return $3897;
                 }));
-                var $3907 = $3909;
+                var $3893 = $3895;
                 break;
             case 'Maybe.none':
-                var $3931 = IO$print$("Invalid block syntax.");
-                var $3907 = $3931;
+                var $3917 = IO$print$("Invalid block syntax.");
+                var $3893 = $3917;
                 break;
         };
-        return $3907;
+        return $3893;
     };
     const Litereum$api$run_block = x0 => Litereum$api$run_block$(x0);
-    const Litereum = Litereum$api$run_block$("\u{a}    name Bool\u{a}    name true\u{a}    name false\u{a}    name Nat\u{a}    name zero\u{a}    name succ\u{a}    name pred\u{a}    name x\u{a}    name y\u{a}    name not\u{a}    name and\u{a}    name or\u{a}    name double\u{a}    name get_count\u{a}    name inc_count\u{a}\u{a}    eval {\u{a}      #50\u{a}    } : #word\u{a}\u{a}    type Bool {\u{a}      true{}\u{a}      false{}\u{a}    }\u{a}\u{a}    type Nat {\u{a}      zero{}\u{a}      succ{pred: Nat}\u{a}    }\u{a}\u{a}    eval {\u{a}      +(#10, #20)\u{a}    } : #word\u{a}\u{a}    bond and(x: Bool, y: Bool): Bool {\u{a}      case x : Bool {\u{a}        true: y\u{a}        false: false{}\u{a}      }\u{a}    }\u{a}\u{a}    eval {\u{a}      and(true{}, false{})\u{a}    } : Bool\u{a}\u{a}    bond double(x: Nat): Nat {\u{a}      case x : Nat {\u{a}        zero: zero{}\u{a}        succ: succ{succ{double(x.pred)}}\u{a}      }\u{a}    }\u{a}\u{a}    eval {\u{a}      double(succ{succ{succ{zero{}}}})\u{a}    } : Nat\u{a}\u{a}    bond get_count(): #word {\u{a}      #0\u{a}    } @inc_count\u{a}\u{a}    bond inc_count(): #word {\u{a}      bind get_count {\u{a}        +(get_count(), #1)\u{a}      }\u{a}      #0\u{a}    }\u{a}\u{a}    eval { inc_count() } : #word\u{a}    eval { inc_count() } : #word\u{a}    eval { inc_count() } : #word\u{a}    eval { get_count() } : #word\u{a}  ");
+    const Litereum = (() => {
+        var __$1 = Litereum$api$run_block$("eval { +(#21,#21) } : #word");
+        var $3918 = IO$monad$((_m$bind$2 => _m$pure$3 => {
+            var $3919 = _m$pure$3;
+            return $3919;
+        }))(Unit$new);
+        return $3918;
+    })();
     return {
         '$main$': () => run(Litereum),
         'run': run,
@@ -13841,3 +13806,4 @@ module.exports = (function() {
         'Litereum': Litereum,
     };
 })();
+module.exports['$main$']();
