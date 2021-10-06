@@ -15,8 +15,8 @@ computer, and a politically neutral decentralized application platform.
 Introduction
 ------------
 
-Litereum's design and implementation is, essentially, a massively distillation
-of Ethereum, taking away all the complex features that are either historical
+Litereum's design and implementation is, essentially, a massive distillation of
+Ethereum, taking away all the complex features that are either historical
 artifacts or optimizations, and keeping only the bare minimum required to
 establish a decentralized computer and smart-contract platform. For comparison,
 our reference Python full node requires about **3000 lines of code**, while the
