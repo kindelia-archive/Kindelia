@@ -145,6 +145,16 @@ values:
 run val : #word = impure()
 ```
 
+Since Litereum blocks are Turing complete, caution is needed to avoid spam
+attacks, or even accidental loops, that would overload nodes on the network. As
+such, blocks are limited in both space and time by a maximum block size, and a
+measure for the cost of computations. Sadly, doing so is extremely tricky in a
+functional language, because the cost of a β-reduction [may
+vary](https://dl.acm.org/doi/10.5555/645420.652523) depending on how it is
+implemented. That is why Litereum's term language is carefully designed to be
+strongly confluent. That is, evaluating a term has a clear optimal strategy,
+allowing us to design a reasonable cost table for its functional opcodes.
+
 Examples
 ========
 
