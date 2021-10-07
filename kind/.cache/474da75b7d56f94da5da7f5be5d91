@@ -1,1 +1,0 @@
-#A %Litereum.State.Self(P:@(:(Litereum.State A)) *) @(new:@(world:Litereum.World) @(subst:(Map Litereum.Term)) @(gas:Nat) @(term:A) (P (((((Litereum.State.new A) world) subst) gas) term))) (P Litereum.State.Self)

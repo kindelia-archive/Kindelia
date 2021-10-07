@@ -1,1 +1,0 @@
-#world #transaction (((Maybe.default Litereum.World) (((Litereum.run_transaction world) transaction) Bool.true)) world)

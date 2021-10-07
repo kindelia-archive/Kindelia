@@ -1,1 +1,0 @@
-#world #transactions (((transactions #transactions (Maybe Litereum.World)) ((Maybe.some Litereum.World) world)) #transactions.head #transactions.tail ((((((Litereum.run world) transactions.head) Bool.false) #result (Maybe Litereum.World)) (Maybe.none Litereum.World)) #result.value ((Litereum.run.block result.value) transactions.tail)))

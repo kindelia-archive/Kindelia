@@ -1,1 +1,0 @@
-@(fresh:Nat) @(vals:(List Litereum.Term)) @(body:Litereum.Term) (((Triple Nat) (List Litereum.Term)) Litereum.Term)

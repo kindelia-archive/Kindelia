@@ -1,1 +1,0 @@
-#fresh !name = ((String.concat "$") (Nat.show fresh)); !fresh = (Nat.succ fresh); ((((Pair.new Nat) String) fresh) name)

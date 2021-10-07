@@ -1,1 +1,0 @@
-%(A:*) @(parser:(Parser A)) @(code:String) (Maybe A)

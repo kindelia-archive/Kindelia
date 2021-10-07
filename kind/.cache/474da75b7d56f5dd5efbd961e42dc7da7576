@@ -1,1 +1,0 @@
-#world #blocks (((blocks #blocks (Maybe Litereum.World)) ((Maybe.some Litereum.World) world)) #blocks.head #blocks.tail (((((Litereum.run_block world) blocks.head) #result (Maybe Litereum.World)) (Maybe.none Litereum.World)) #result.value ((Litereum.run_blocks result.value) blocks.tail)))
