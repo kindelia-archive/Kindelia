@@ -72,7 +72,6 @@ eval { inc_count() } : #word
 eval { inc_count() } : #word
 eval { get_count() } : #word
 
-
 bond power(x: #word): #word {
   compare x #0 { 
     _<_: #1
@@ -82,5 +81,5 @@ bond power(x: #word): #word {
 }
 
 eval {
-  power(#63)
+  power(#7)
 } : #word

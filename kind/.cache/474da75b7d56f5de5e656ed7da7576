@@ -1,1 +1,1 @@
-#table #fresh #old_name !new_name = ((String.concat "$") (Nat.show fresh)); !table = ((((Map.set String) old_name) new_name) table); !fresh = (Nat.succ fresh); ((((((Triple.new (Map String)) Nat) String) table) fresh) new_name)
+#table #fresh #old_name (((Litereum.fresh fresh) # (((Triple (Map String)) Nat) String)) #fresh #new_name ((((((Triple.new (Map String)) Nat) String) ((((Map.set String) old_name) new_name) table)) fresh) new_name))

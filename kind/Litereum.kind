@@ -279,6 +279,22 @@ Litereum.check(
 // Evaluation
 // ----------
 
+Litereum.reduce.copy_create(
+  fresh: Nat
+  vals: List<Litereum.Term>
+  body: Litereum.Term
+): Triple<Nat, List<Litereum.Term>, Litereum.Term>
+  case vals {
+    nil:
+      {fresh, [], body}
+    cons:
+      let {fresh, var_name} = Litereum.fresh(fresh)
+      let {fresh, new_vals, new_body} = Litereum.reduce.copy_create(fresh, vals.tail, body)
+      let new_vals = Litereum.Term.var(var_name) & new_vals
+      let new_term = Litereum.Term.let(var_name, Litereum.Type.word, vals.head, new_body)
+      {fresh, new_vals, new_term}
+  }
+
 Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   let {world, subst, fresh, gas, term} = state
   //log("-- run " | Litereum.show.term(world,term)) // DEBUG
@@ -286,20 +302,43 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   //log("")
   case term {
     var:
-      let term = subst{term.name} <> term
-      let {world, subst, fresh, gas, term} = Litereum.reduce({world, subst, fresh, gas, term})
-      {world, subst{term.name} <- term, fresh, gas, term}
+      //let term = subst{term.name} <> term
+      //let {world, subst, fresh, gas, term} = Litereum.reduce({world, subst, fresh, gas, term})
+      //{world, subst{term.name} <- term, fresh, gas, term}
+      {world, subst, fresh, gas, subst{term.name} <> term}
     let:
-      Litereum.reduce({world, subst{term.name} <- term.expr, fresh, gas, term.body})
+      let {world, subst, fresh, gas, expr} = Litereum.reduce({world, subst, fresh, gas, term.expr})
+      case expr {
+        // let x = [a, b, ...]; r
+        // -----------------------
+        // let x0 = a; let x1 = b; ... r {x <- [x0, x1, ...]}
+        create:
+          let {fresh, new_vals, new_term} = Litereum.reduce.copy_create(fresh, expr.vals, term.body)
+          let new_expr = Litereum.Term.create(expr.ctor, new_vals)
+          Litereum.reduce({world, subst{term.name} <- new_expr, fresh, gas, new_term})
+        // let x = (let y = a; r); s
+        // -------------------------
+        // let y = a; let x = r; s
+        let:
+          let new_term = Litereum.Term.let(term.name, term.type, term.expr, expr.body)
+          let new_term = Litereum.Term.let(expr.name, expr.type, expr.expr, new_term)
+          Litereum.reduce({world, subst, fresh, gas, new_term})
+        // let x = #n; r
+        // -------------
+        // r {x <- #n}
+        word:
+          Litereum.reduce({world, subst{term.name} <- term.expr, fresh, gas, expr})
+      } default {world, subst, fresh, gas, Litereum.Term.let(term.name, term.type, expr, term.body)}
     call:
+      // fn(a0, a1, a2)
+      // --------------
+      // fn.body {x0 <- a0, x1 <- a1, x2 <- a2}
       use bond = Litereum.get_bond(world, term.bond) abort state
       let {table, fresh, input_names} = Litereum.rename.many({}, fresh, bond.input_names)
       let {fresh, main} = Litereum.sanitize(world, table, fresh, bond.main)
       let subst = Litereum.extend!(subst, input_names, term.args)
       //log("calling " | bond.name | ": " | Litereum.show.term(world,main) | " ... " | String.join(",",bond.input_names) | " ... " | String.join(",",input_names))
       Litereum.reduce({world, subst, fresh, gas, main})
-    create:
-      state
     match:
       let {world, subst, fresh, gas, expr} = Litereum.reduce({world, subst, fresh, gas, subst{term.name}<>Litereum.Term.word(0)})
       case expr {
@@ -312,8 +351,6 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
           let subst = Litereum.extend!(subst, nams, expr.vals)
           Litereum.reduce({world, subst, fresh, gas, body})
       } default state
-    word:
-      state
     compare:
       let {world, subst, fresh, gas, val0} = Litereum.reduce({world, subst, fresh, gas, term.val0})
       let {world, subst, fresh, gas, val1} = Litereum.reduce({world, subst, fresh, gas, term.val1})
@@ -351,7 +388,7 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
       let new_entry = Litereum.Entry.bond(bond@main <- main)
       let new_world = world@entry <- (world@entry{term.name} <- new_entry)
       Litereum.reduce({new_world, subst, fresh, gas, term.body})
-  }
+  } default state
 
 Litereum.normalize(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   let {world, subst, fresh, gas, term} = Litereum.reduce(state)
@@ -359,6 +396,10 @@ Litereum.normalize(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   //log("- var " | String.join(", ", List.map!!((x) x@fst|":"|Litereum.show.term(world,x@snd), Map.to_list!(subst)))) // DEBUG
   //log("")
   case term {
+    let:
+      let {world, subst, fresh, gas, expr} = Litereum.normalize({world, subst, fresh, gas, term.expr})
+      let {world, subst, fresh, gas, body} = Litereum.normalize({world, subst, fresh, gas, term.body})
+      {world, subst, fresh, gas, Litereum.Term.let(term.name, term.type, expr, body)}
     create:
       let {world, subst, fresh, gas, vals} = Litereum.normalize.many({world, subst, fresh, gas, term.vals})
       {world, subst, fresh, gas, Litereum.Term.create(term.ctor, vals)}
@@ -486,11 +527,24 @@ Litereum.sanitize.many(
       {fresh, head & tail}
   }
 
+Litereum.fresh(fresh: Nat): Pair<Nat, String>
+  let name = "$" | Nat.show(fresh)
+  let fresh = Nat.succ(fresh)
+  {fresh, name}
+
+Litereum.fresh.many(count: Nat, fresh: Nat): Pair<Nat, List<String>>
+  case count {
+    zero:
+      {fresh, []}
+    succ:
+      let {fresh, head} = Litereum.fresh(fresh)
+      let {fresh, tail} = Litereum.fresh.many(count.pred, fresh)
+      {fresh, head & tail}
+  }
+
 Litereum.rename(table: Map<String>, fresh: Nat, old_name: String): Triple<Map<String>, Nat, String>
-    let new_name = "$" | Nat.show(fresh)
-    let table = table{old_name} <- new_name
-    let fresh = Nat.succ(fresh)
-    {table, fresh, new_name}
+    let {fresh, new_name} = Litereum.fresh(fresh)
+    {table{old_name} <- new_name, fresh, new_name}
 
 Litereum.rename.many(table: Map<String>, fresh: Nat, names: List<String>): Triple<Map<String>, Nat, List<String>>
   case names {
