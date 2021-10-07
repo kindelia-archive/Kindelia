@@ -17,8 +17,8 @@ bond inc_count(): & #word {
 
 eval {
     run inc_count()
-    let a : #word = get_count()
+    let a : #word = get_count()  // should be 1
     run inc_count()
-    let b : #word = get_count()
-    return a
+    let b : #word = get_count()  // should be 2
+    return a  // returns 2
 } : & #word
