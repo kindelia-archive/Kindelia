@@ -105,18 +105,11 @@ and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
 in order, a node can compute the final state of the blockchain, which is just
 the of set of global names, types and bonds defined on these blocks.
 
-### Block = declarations + scripts
+### Blocks: types, bonds, scripts
 
-Litereum blocks can be read as files in a programming language. For example:
+Litereum blocks can be seen as files in a programming language. For example:
 
 ```c
-name Nat
-name succ
-name zero
-name double
-name pred
-name x
-
 type Nat {
   zero{}
   succ{pred: Nat}
@@ -134,13 +127,12 @@ eval {
 } : Nat
 ```
 
-This is a Litereum block, with 9 transactions. The first 6 transactions declare
-names (more on that later). The next 2 declare a type called "Nat", and a bond
-(function) called "double". The last one evaluates a pure expression that
-computes `2 * 3`. In this case, it does nothing other than logging the result,
-but useful transactions can be performed with effects.
+This is a Litereum block with 3 transactions. The first declares a type called
+"Nat", the second declares bond (function) called "double", and the third
+evaluates the expression `2 * 3`. This pure block does nothing interesting, but
+stateful transactions can be performed with effects.
 
-### Scripts can have effects
+### Effects
 
 Since Litereum's core language is pure, it wouldn't be capable of performing
 effectiful or stateful operations. That's why it also has a built-in Effect
@@ -182,11 +174,11 @@ interpreted as `IO Word64`. The `return` primitive is the monadic pure, and the
 `run` primitive is the monadic binder. As such, it is capable of extracting
 values:
 
-```
+```c
 run val : #word = impure()
 ```
 
-### Currencies are just bonds
+### Currencies
 
 A crypto-currency has 3 components: a token, accounts, and transfers. The token
 itself can be implemented as a bond that alters a map of balances:
@@ -235,7 +227,7 @@ CatCoin(command: CatCoin.Command): #word {
 }
 ```
 
-### Accounts are just bonds too
+### Accounts
 
 Similarly, users can create accounts by uploading bonds that they control. For
 example:
@@ -287,7 +279,7 @@ choose their own authentication methods. While most crypto-currencies would be
 destroyed by sufficiently powerful quantum computers, in Litereum, users can
 simply opt to use quantum-resistant signatures.
 
-### Monetary transactions are signed scripts
+### Transactions
 
 Once we have accounts and a currency, sending a token is simply a matter of
 including a signed `eval` script in a block:

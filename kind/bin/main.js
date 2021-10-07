@@ -12,4 +12,4 @@ if (!file_name) {
 
 var file = fs.readFileSync(file_name, "utf8");
 
-litereum.run(litereum["Litereum.api.run_block"](file));
+litereum.run(litereum["Litereum.api.run"](file));

@@ -1,27 +1,11 @@
-// Names
-// =====
-
-name a
-name b
-name c
-name x
-name y
-name z
-name Nat
-name zero
-name succ
-name pred
-name double
-name get_count
-name inc_count
-
-// Types and Functions
-// ===================
-
 type Nat {
   zero{}
   succ{pred: Nat}
 }
+
+save
+
+// -----------------------------------------------------------------------------
 
 bond double(x: Nat): Nat {
   case x : Nat {
@@ -34,8 +18,9 @@ eval {
   double(succ{succ{succ{zero{}}}})
 } : Nat
 
-// Effects
-// =======
+save
+
+// -----------------------------------------------------------------------------
 
 bond get_count(): #word {
   #0
@@ -54,3 +39,7 @@ eval {
   run inc_count()
   return get_count()
 } : & #word
+
+save
+
+// -----------------------------------------------------------------------------

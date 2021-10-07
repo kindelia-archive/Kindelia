@@ -1,0 +1,1 @@
+#world #name ((world #world Bits) #world.name_count #world.name_to_index #world.index_to_name #world.entry ((((((Map.get Nat) name) world.name_to_index) #name_index Bits) (Bits.o (Litereum.serialize.name.new name))) #name_index.value (Bits.i (Litereum.serialize.varlen name_index.value))))

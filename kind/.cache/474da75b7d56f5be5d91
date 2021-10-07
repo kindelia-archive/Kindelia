@@ -1,1 +1,1 @@
-!test = (Litereum.api.run_block ""); ((((Monad.pure IO) IO.monad) Unit) Unit.new)
+!x = Litereum.api.run; ((((Monad.pure IO) IO.monad) Unit) Unit.new)
