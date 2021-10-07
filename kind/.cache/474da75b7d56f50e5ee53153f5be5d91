@@ -1,1 +1,1 @@
-((((Litereum.World.new +0) ((Map.from_list Nat) (List.nil ((Pair String) Nat)))) ((Map.from_list String) (List.nil ((Pair String) String)))) ((Map.from_list Litereum.Entry) (List.nil ((Pair String) Litereum.Entry))))
+((((Litereum.World.new +1) ((Map.from_list Nat) (((List.cons ((Pair String) Nat)) ((((Pair.new String) Nat) "") +0)) (List.nil ((Pair String) Nat))))) ((Map.from_list String) (((List.cons ((Pair String) String)) ((((Pair.new String) String) "0") "")) (List.nil ((Pair String) String))))) ((Map.from_list Litereum.Entry) (List.nil ((Pair String) Litereum.Entry))))

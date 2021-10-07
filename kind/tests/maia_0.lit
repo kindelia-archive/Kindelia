@@ -1,49 +1,27 @@
-name Bool
-name true
-name false
+// Names
+// =====
+
+name a
+name b
+name c
+name x
+name y
+name z
 name Nat
 name zero
 name succ
 name pred
-name r
-name x
-name y
-name not
-name and
-name or
 name double
 name get_count
 name inc_count
-name power
 
-eval {
-  #50
-} : #word
-
-type Bool {
-  true{}
-  false{}
-}
+// Types and Functions
+// ===================
 
 type Nat {
   zero{}
   succ{pred: Nat}
 }
-
-eval {
-  +(#10, #20)
-} : #word
-
-bond and(x: Bool, y: Bool): Bool {
-  case x : Bool {
-    true: y
-    false: false{}
-  }
-}
-
-eval {
-  and(true{}, false{})
-} : Bool
 
 bond double(x: Nat): Nat {
   case x : Nat {
@@ -56,31 +34,23 @@ eval {
   double(succ{succ{succ{zero{}}}})
 } : Nat
 
+// Effects
+// =======
+
 bond get_count(): #word {
   #0
 } @inc_count
 
-bond inc_count(): #word {
+bond inc_count(): & #word {
   bind get_count {
     +(get_count(), #1)
   }
-  #0
-}
-
-eval { inc_count() } : #word
-eval { inc_count() } : #word
-eval { inc_count() } : #word
-eval { get_count() } : #word
-
-
-bond power(x: #word): #word {
-  compare x #0 { 
-    _<_: #1
-    _=_: #1
-    _>_: let r : #word = power(-(x,#1)); +(r, r)
-  }
+  return #0
 }
 
 eval {
-  power(#63)
-} : #word
+  run inc_count()
+  run inc_count()
+  run inc_count()
+  return get_count()
+} : & #word

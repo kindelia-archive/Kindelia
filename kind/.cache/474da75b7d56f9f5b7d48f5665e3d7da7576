@@ -1,0 +1,1 @@
+#count #fresh (((count #count ((Pair Nat) (List String))) ((((Pair.new Nat) (List String)) fresh) (List.nil String))) #count.pred (((Litereum.fresh fresh) # ((Pair Nat) (List String))) #fresh #head ((((Litereum.fresh.many count.pred) fresh) # ((Pair Nat) (List String))) #fresh #tail ((((Pair.new Nat) (List String)) fresh) (((List.cons String) head) tail)))))

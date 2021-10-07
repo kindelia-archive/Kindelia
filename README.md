@@ -89,8 +89,7 @@ Instead of a stack-machine with several complex opcodes, Litereum's built-in
 scripting language is a minimal calculus with a very minimal set of operations.
 Specifically, it has algebraic datatypes (with pattern-matching), 64-bit
 integers (with 8 binary operations and a comparison primitive), recursive
-functions, and one side-effective primitive for persistent state. And that's
-all.
+functions, and monadic effects. And that's all.
 
 How it works?
 -------------
@@ -106,7 +105,7 @@ and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
 in order, a node can compute the final state of the blockchain, which is just
 the of set of global names, types and bonds defined on these blocks.
 
-### Example: a block
+### Blocks contain declarations and scripts
 
 ```
 name Nat
@@ -140,78 +139,145 @@ expression that computes the double of the natural number 3. In this case, it
 does nothing interesting, but arbitrarily useful transactions can be performed
 with suitable expressions.
 
-### Example: a stateful bond
+### Scripts can have effects
 
-Litereum's core language is mostly pure, except for one operation that allows a
-bond to rebind another bond that it owns. With that operation, a bond can
-maintain a mutable state, allowing it to implement real-world applications. The
-simplest stateful bond is a counter:
+Since Litereum's core language is pure, it wouldn't be capable of performing
+effectiful or stateful operations. That's why it also has a built-in Effect
+type, written as `&`, that gives bonds the power to interact with the blockchain
+state. The simplest example is a counter:
 
 ```
 bond get_count(): #word {
   #0
 } @inc_count
 
-bond inc_count(): #word {
+bond inc_count(): & #word {
   bind get_count {
     +(get_count(), #1)
   }
-  #0
+  return #0
 }
 
-eval { inc_count() } : #word
-eval { inc_count() } : #word
-eval { inc_count() } : #word
-eval { get_count() } : #word
-```
-
-The block above declares two bonds: `get_count`, which, when called, returns a
-counter, and `inc_count`, which, when called, rebinds the `get_count`
-definition, adding `1` to it. The `inc_count` bound can only rebind `get_count`
-because it is listed on `get_count`'s owner list (the `@`'s after its
-declaration). The last `eval` of this block will output `3`, because `get_count`
-was incremented `3` times.
-
-### Example: a monetary transaction
-
-Conventional cryptocurrency transactions do 3 things: verify a signature, pay
-miner fees and send tokens to someone. These can be replicated as follows:
-
-```
 eval {
-  Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
+  run inc_count()
+  run inc_count()
+  run inc_count()
+  return get_count()
+} : & #word
+```
+
+The block above declares two bonds:
+
+1. `get_count`: returns the current count.
+
+2. `inc_count`: rebinds the `get_count` bond, incrementing its value.
+
+Then, the `eval` block increments the counter 3 types, and outputs `3`.
+
+Notice the return type of `inc_count` is marked with an `&`: that's because it
+is an effectiful bond. A functional programmer may be familiar with it, since it
+works exactly like Haskell's IO type. The type of `inc_count`, can be
+interpreted as `IO Word64`. The `return` primitive is the monadic pure, and the
+`run` primitive is the monadic binder. It can extract values:
+
+```
+bond impure() : & #word {
+  ...
+}
+
+eval {
+  run val : #word = impure()
+  ...
 }
 ```
 
-The expression above causes Bob to send 50000 cat tokens to alice, leaving 100
-cat tokens as miner fees. Bob would send this expression to miners, which would
-be incentived include it in a block, in order to collect fees.
+### Currencies are just bonds
 
-### Example: an account
+A crypto-currency has 3 components: accounts, a token, and transfers. Below we
+show how to implement these using bonds.
+
+#### The currency bond
+
+The currency can be implemented with a bond that alters a map of balances:
+
+```c
+// CatCoin transactions
+type CatCoin.Command {
+  
+  // Mines new tokens
+  mint{amount: #word}
+
+  // Sends a token to someone
+  send{amount: #word, to: #word}
+
+  (...)
+}
+
+// The map of CatCoin balances, initially empty
+bond CatCoin.balances() : Map {
+  Map.empty
+} @CatCoin
+
+// The CatCoin bond
+CatCoin(command: CatCoin.Command): #word {
+  case command {
+
+    // Mines new tokens
+    mint:
+      run caller = $get_caller()
+      
+      bind CatCoin.balances {
+        Map.set(CatCoin.balances(), caller, command.amount)
+      }
+
+      return #0
+
+    // Sends a token to someone
+    send:
+
+      ...
+
+  }
+}
+```
+
+#### An account system
 
 Since there isn't a built-in account system, users must upload bonds that they
 control, in order to use these bonds as their accounts. For example:
 
 ```
+// The actions that Bob's account can perform
 type Bob.Command {
+
+  // Sends cat tokens to someone
   send_cat_tokens{
     amount     : #word
     to_address : #word
     miner_fee  : #word
   }
-  (...)
+
+  ...
 }
 
+// The bond representing Bob's account
 bond Bob(command: Bob.Command): #word {
   case command : Bob.Command {
+
+    // Sends cat tokens to someone
     send_cat_tokens:
-      case ECDSA.check(Bob.hash(command), Bob.address) : Bool {
-        true:
-          CatCoin.send(command.amount, command.to_address)
-          CatCoin.send(command.miner_fee, $block_miner)
-        false:
-          #0
-      }
+
+      // Check's Bob's signature
+      if ECDSA.check(Bob.hash(command), Bob.address)
+
+        // Pay miner fees
+        run CatCoin.send(command.miner_fee, $block_miner)
+        
+        // Send the money
+        run CatCoin.send(command.amount, command.to_address)
+
+        return #0
+
     (...)
   }
 }
@@ -226,56 +292,38 @@ accounts can do, and choose their own authentication methods. While most
 crypto-currencies would be destroyed by sufficiently powerful quantum computers,
 in Litereum, users can simply opt to use quantum-resistant signatures.
 
-### Example: a currency
+### Sending tokens
 
-In order to implement stateful applications, bonds are granted the power to
-rebind other static bonds that they own. A currency can, thus, be implemented by
-deploying a map of balances that is mutated by its bond.
+Once we have accounts and a currency, sending a token is simply a matter of
+including a signed `eval` transaction in a block:
 
 ```
-type CatCoin.Command {
-  mint{amount: #word}
-  send{amount: #word, to: #word}
-}
-
-bond CatCoin.balances() : Map {
-  Map.empty
-} @CatCoin
-
-CatCoin(command: CatCoin.Command): #word {
-  case command {
-    mint:
-      bind CatCoin.balances {
-        Map.set(CatCoin.balances(), $caller, command.amount)
-      }
-      #0
-    }
-    send:
-      (...)
-  }
+eval {
+  Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
 }
 ```
 
-The block above defines a bond named `CatCoin.balances`, which is just a map of
-balances (initially empty), and another bond named `CatCoin`, which is a
-function. When `CatCoin` is called with the "mint" command, it redefines the
-`CatCoin.balances` bond with the updated balances.
+Bob would write this transaction, sign it, serialize and send to miners, which
+would be incentived include it in a block, in order to collect fees. Once mined,
+this transaction would call Bob's contract, which would check his signature. If
+correct, it would call the CatCoin contract, sending 50000 cat tokens to Alice,
+and leaving 100 cat tokens as miner fees.
 
 Litereum's Execution Environment
 --------------------------------
 
 Litereum's execution environment is based on a core expression language that is
-pure, low-order and functional. It features algebraic datatypes and 64-bit
-unsigned integers. It doesn't feature high-order functions. That limitation is
-necessary for strong confluence (i.e., to have a cost model that doesn't depend
-on the evaluation strategy). It does, though, feature branching (via
+pure, low-order and functional. It features algebraic datatypes, 64-bit unsigned
+integers and effects. It doesn't feature high-order functions. That limitation
+is necessary for strong confluence (i.e., to have a cost model that doesn't
+depend on the evaluation strategy). It does, though, feature branching (via
 pattern-matching) and recursive functions, which make it expressive and Turing
 complete.
 
-### Expressions
+### Terms
 
-A Litereum expression, or term, is defined by a syntax tree with 8 constructors.
-A term can be either:
+A Litereum expression, or term, is defined by a syntax tree with the following
+constructors:
 
 - A variable, holding its name.
 
@@ -338,7 +386,31 @@ A term can be either:
     - val1: Term
     ```
 
-(...)
+- The monadic binder.
+
+    ```
+    run
+    - name: String
+    - type: Type
+    - expr: Term
+    - body: Term
+    ```
+
+- The bind effect.
+
+    ```
+    bind
+    - bond: String
+    - main: Term
+    - body: Term
+    ```
+
+- The monadic return.
+
+    ```
+    return
+    - expr: Litereum.Term
+    ```
 
 ### Bonds
 
