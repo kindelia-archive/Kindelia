@@ -209,12 +209,12 @@ Litereum.check(
   open context
   open world
   //log("-- chk " | Litereum.show.term(world,term) | " : " | Litereum.show.type(world,type))
-  //log("-- ctx: " | String.join(", ", List.map!!((a) a@fst|":"|Litereum.show.type.short(a@snd), Map.to_list!(variables))))  // DEBUG
+  //log("-- ctx: " | String.join(", ", List.map!!((a) a@fst|":"|Litereum.show.type(world,a@snd), Map.to_list!(context))))  // DEBUG
   //log("")  // DEBUG
   case term {
     var:
       let var_type = context{term.name} abort false
-      ////log("-- var " | term.name | " " | Litereum.show.type.short(var_type) | " " | Litereum.show.type.short(type))  // DEBUG
+      ////log("-- var " | term.name | " " | Litereum.show.type(var_type) | " " | Litereum.show.type(world,type))  // DEBUG
       Litereum.equal(var_type, type)
     let:
       //log("-- let ")  // DEBUG
@@ -244,7 +244,6 @@ Litereum.check(
     match: 
       use data = Litereum.get_data(world, term.data) abort false
       let def0 = Maybe.is_some!(world.name_to_index{term.data})
-      let type = context{term.name} abort false
       let size = Nat.eql(List.length!(term.cses),List.length!(data.constructors))
       let expr = Litereum.check(context, world, Litereum.Term.var(term.name), Litereum.Type.data(term.data))
       let cses = List.zipped_with!!(term.cses, data.constructors)!((case_body, case_ctor)

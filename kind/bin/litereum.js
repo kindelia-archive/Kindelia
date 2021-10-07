@@ -8222,119 +8222,108 @@ module.exports = (function() {
                                             case 'Litereum.Data.new':
                                                 var $2345 = self.constructors;
                                                 var _def0$16 = Maybe$is_some$(Map$get$($2340, $2293));
-                                                var self = Map$get$($2339, _context$1);
-                                                switch (self._) {
-                                                    case 'Maybe.some':
-                                                        var $2347 = self.value;
-                                                        var _size$18 = ((list_length($2341)) === (list_length($2345)));
-                                                        var _expr$19 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2339), Litereum$Type$data$($2340));
-                                                        var _cses$20 = List$zipped_with$($2341, $2345, (_case_body$20 => _case_ctor$21 => {
-                                                            var _nams$22 = List$map$(a1 => (($2339 + ".") + a1), (() => {
-                                                                var self = _case_ctor$21;
-                                                                switch (self._) {
-                                                                    case 'Litereum.Constructor.new':
-                                                                        var $2350 = self.field_names;
-                                                                        var $2351 = $2350;
-                                                                        return $2351;
-                                                                };
-                                                            })());
-                                                            var self = _case_ctor$21;
-                                                            switch (self._) {
-                                                                case 'Litereum.Constructor.new':
-                                                                    var $2352 = self.field_types;
-                                                                    var $2353 = $2352;
-                                                                    var _typs$23 = $2353;
-                                                                    break;
-                                                            };
-                                                            var _ctx2$24 = Litereum$extend$(_context$1, _nams$22, _typs$23);
-                                                            var $2349 = Litereum$check$(_ctx2$24, _world$2, _case_body$20, $2347);
-                                                            return $2349;
-                                                        }));
-                                                        var $2348 = (_def0$16 && (_size$18 && List$and$(_cses$20)));
-                                                        var $2346 = $2348;
-                                                        break;
-                                                    case 'Maybe.none':
-                                                        var $2354 = Bool$false;
-                                                        var $2346 = $2354;
-                                                        break;
-                                                };
+                                                var _size$17 = ((list_length($2341)) === (list_length($2345)));
+                                                var _expr$18 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2339), Litereum$Type$data$($2340));
+                                                var _cses$19 = List$zipped_with$($2341, $2345, (_case_body$19 => _case_ctor$20 => {
+                                                    var _nams$21 = List$map$(a1 => (($2339 + ".") + a1), (() => {
+                                                        var self = _case_ctor$20;
+                                                        switch (self._) {
+                                                            case 'Litereum.Constructor.new':
+                                                                var $2348 = self.field_names;
+                                                                var $2349 = $2348;
+                                                                return $2349;
+                                                        };
+                                                    })());
+                                                    var self = _case_ctor$20;
+                                                    switch (self._) {
+                                                        case 'Litereum.Constructor.new':
+                                                            var $2350 = self.field_types;
+                                                            var $2351 = $2350;
+                                                            var _typs$22 = $2351;
+                                                            break;
+                                                    };
+                                                    var _ctx2$23 = Litereum$extend$(_context$1, _nams$21, _typs$22);
+                                                    var $2347 = Litereum$check$(_ctx2$23, _world$2, _case_body$19, _type$4);
+                                                    return $2347;
+                                                }));
+                                                var $2346 = (_def0$16 && (_size$17 && List$and$(_cses$19)));
                                                 var $2344 = $2346;
                                                 break;
                                         };
                                         var $2342 = $2344;
                                         break;
                                     case 'Maybe.none':
-                                        var $2355 = Bool$false;
-                                        var $2342 = $2355;
+                                        var $2352 = Bool$false;
+                                        var $2342 = $2352;
                                         break;
                                 };
                                 var $2294 = $2342;
                                 break;
                             case 'Litereum.Term.compare':
-                                var $2356 = self.val0;
-                                var $2357 = self.iflt;
-                                var $2358 = self.ifeq;
-                                var $2359 = self.ifgt;
-                                var _val0$14 = Litereum$check$(_context$1, _world$2, $2356, Litereum$Type$word);
-                                var _val1$15 = Litereum$check$(_context$1, _world$2, $2356, Litereum$Type$word);
-                                var _iflt$16 = Litereum$check$(_context$1, _world$2, $2357, _type$4);
-                                var _ifeq$17 = Litereum$check$(_context$1, _world$2, $2358, _type$4);
-                                var _ifgt$18 = Litereum$check$(_context$1, _world$2, $2359, _type$4);
-                                var $2360 = (_val0$14 && (_val1$15 && (_iflt$16 && (_ifeq$17 && _ifgt$18))));
-                                var $2294 = $2360;
+                                var $2353 = self.val0;
+                                var $2354 = self.iflt;
+                                var $2355 = self.ifeq;
+                                var $2356 = self.ifgt;
+                                var _val0$14 = Litereum$check$(_context$1, _world$2, $2353, Litereum$Type$word);
+                                var _val1$15 = Litereum$check$(_context$1, _world$2, $2353, Litereum$Type$word);
+                                var _iflt$16 = Litereum$check$(_context$1, _world$2, $2354, _type$4);
+                                var _ifeq$17 = Litereum$check$(_context$1, _world$2, $2355, _type$4);
+                                var _ifgt$18 = Litereum$check$(_context$1, _world$2, $2356, _type$4);
+                                var $2357 = (_val0$14 && (_val1$15 && (_iflt$16 && (_ifeq$17 && _ifgt$18))));
+                                var $2294 = $2357;
                                 break;
                             case 'Litereum.Term.operate':
-                                var $2361 = self.val0;
-                                var $2362 = self.val1;
-                                var _val0$12 = Litereum$check$(_context$1, _world$2, $2361, Litereum$Type$word);
-                                var _val1$13 = Litereum$check$(_context$1, _world$2, $2362, Litereum$Type$word);
-                                var $2363 = (_val0$12 && _val1$13);
-                                var $2294 = $2363;
+                                var $2358 = self.val0;
+                                var $2359 = self.val1;
+                                var _val0$12 = Litereum$check$(_context$1, _world$2, $2358, Litereum$Type$word);
+                                var _val1$13 = Litereum$check$(_context$1, _world$2, $2359, Litereum$Type$word);
+                                var $2360 = (_val0$12 && _val1$13);
+                                var $2294 = $2360;
                                 break;
                             case 'Litereum.Term.bind':
-                                var $2364 = self.name;
-                                var $2365 = self.main;
-                                var $2366 = self.body;
-                                var self = Litereum$get_bond$(_world$2, $2364);
+                                var $2361 = self.name;
+                                var $2362 = self.main;
+                                var $2363 = self.body;
+                                var self = Litereum$get_bond$(_world$2, $2361);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2368 = self.value;
-                                        var _bond$13 = $2368;
+                                        var $2365 = self.value;
+                                        var _bond$13 = $2365;
                                         var self = _bond$13;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2370 = self.input_names;
-                                                var $2371 = self.input_types;
-                                                var $2372 = self.output_type;
-                                                var _ctx2$20 = Litereum$extend$(_context$1, $2370, $2371);
-                                                var _main$21 = Litereum$check$(_ctx2$20, _world$2, $2365, $2372);
-                                                var _body$22 = Litereum$check$(_context$1, _world$2, $2366, _type$4);
-                                                var $2373 = (_main$21 && _body$22);
-                                                var $2369 = $2373;
+                                                var $2367 = self.input_names;
+                                                var $2368 = self.input_types;
+                                                var $2369 = self.output_type;
+                                                var _ctx2$20 = Litereum$extend$(_context$1, $2367, $2368);
+                                                var _main$21 = Litereum$check$(_ctx2$20, _world$2, $2362, $2369);
+                                                var _body$22 = Litereum$check$(_context$1, _world$2, $2363, _type$4);
+                                                var $2370 = (_main$21 && _body$22);
+                                                var $2366 = $2370;
                                                 break;
                                         };
-                                        var $2367 = $2369;
+                                        var $2364 = $2366;
                                         break;
                                     case 'Maybe.none':
-                                        var $2374 = Bool$false;
-                                        var $2367 = $2374;
+                                        var $2371 = Bool$false;
+                                        var $2364 = $2371;
                                         break;
                                 };
-                                var $2294 = $2367;
+                                var $2294 = $2364;
                                 break;
                             case 'Litereum.Term.word':
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.word':
-                                        var $2376 = Bool$true;
-                                        var $2375 = $2376;
+                                        var $2373 = Bool$true;
+                                        var $2372 = $2373;
                                         break;
                                     case 'Litereum.Type.data':
-                                        var $2377 = Bool$false;
-                                        var $2375 = $2377;
+                                        var $2374 = Bool$false;
+                                        var $2372 = $2374;
                                         break;
                                 };
-                                var $2294 = $2375;
+                                var $2294 = $2372;
                                 break;
                         };
                         var $2292 = $2294;
@@ -8346,295 +8335,284 @@ module.exports = (function() {
                 var self = _world$2;
                 switch (self._) {
                     case 'Litereum.World.new':
-                        var $2379 = self.name_to_index;
+                        var $2376 = self.name_to_index;
                         var self = _term$3;
                         switch (self._) {
                             case 'Litereum.Term.var':
-                                var $2381 = self.name;
-                                var self = Map$get$($2381, _context$1);
+                                var $2378 = self.name;
+                                var self = Map$get$($2378, _context$1);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2383 = self.value;
-                                        var $2384 = Litereum$equal$($2383, _type$4);
-                                        var $2382 = $2384;
+                                        var $2380 = self.value;
+                                        var $2381 = Litereum$equal$($2380, _type$4);
+                                        var $2379 = $2381;
                                         break;
                                     case 'Maybe.none':
-                                        var $2385 = Bool$false;
-                                        var $2382 = $2385;
+                                        var $2382 = Bool$false;
+                                        var $2379 = $2382;
                                         break;
                                 };
-                                var $2380 = $2382;
+                                var $2377 = $2379;
                                 break;
                             case 'Litereum.Term.call':
-                                var $2386 = self.bond;
-                                var $2387 = self.args;
-                                var _def0$16 = Maybe$is_some$(Map$get$($2386, $2379));
-                                var self = Litereum$get_bond$(_world$2, $2386);
+                                var $2383 = self.bond;
+                                var $2384 = self.args;
+                                var _def0$16 = Maybe$is_some$(Map$get$($2383, $2376));
+                                var self = Litereum$get_bond$(_world$2, $2383);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2389 = self.value;
-                                        var _bond$18 = $2389;
+                                        var $2386 = self.value;
+                                        var _bond$18 = $2386;
                                         var self = _bond$18;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2391 = self.input_types;
-                                                var $2392 = self.output_type;
-                                                var _otyp$25 = Litereum$equal$($2392, _type$4);
-                                                var _args$26 = List$zip$($2387, $2391);
+                                                var $2388 = self.input_types;
+                                                var $2389 = self.output_type;
+                                                var _otyp$25 = Litereum$equal$($2389, _type$4);
+                                                var _args$26 = List$zip$($2384, $2388);
                                                 var _args$27 = List$all$((_x$27 => {
-                                                    var $2394 = Litereum$check$(_context$1, _world$2, (() => {
+                                                    var $2391 = Litereum$check$(_context$1, _world$2, (() => {
                                                         var self = _x$27;
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2395 = self.fst;
-                                                                var $2396 = $2395;
-                                                                return $2396;
+                                                                var $2392 = self.fst;
+                                                                var $2393 = $2392;
+                                                                return $2393;
                                                         };
                                                     })(), (() => {
                                                         var self = _x$27;
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2397 = self.snd;
-                                                                var $2398 = $2397;
-                                                                return $2398;
+                                                                var $2394 = self.snd;
+                                                                var $2395 = $2394;
+                                                                return $2395;
                                                         };
                                                     })());
-                                                    return $2394;
+                                                    return $2391;
                                                 }), _args$26);
-                                                var $2393 = (_def0$16 && (_otyp$25 && _args$27));
-                                                var $2390 = $2393;
+                                                var $2390 = (_def0$16 && (_otyp$25 && _args$27));
+                                                var $2387 = $2390;
                                                 break;
                                         };
-                                        var $2388 = $2390;
+                                        var $2385 = $2387;
                                         break;
                                     case 'Maybe.none':
-                                        var $2399 = Bool$false;
-                                        var $2388 = $2399;
+                                        var $2396 = Bool$false;
+                                        var $2385 = $2396;
                                         break;
                                 };
-                                var $2380 = $2388;
+                                var $2377 = $2385;
                                 break;
                             case 'Litereum.Term.let':
-                                var $2400 = self.name;
-                                var $2401 = self.type;
-                                var $2402 = self.expr;
-                                var $2403 = self.body;
-                                var _def0$18 = Maybe$is_some$(Map$get$($2400, $2379));
-                                var _expr$19 = Litereum$check$(_context$1, _world$2, $2402, $2401);
-                                var _ctx2$20 = Map$set$($2400, $2401, _context$1);
-                                var _cont$21 = Litereum$check$(_ctx2$20, _world$2, $2403, _type$4);
-                                var $2404 = (_def0$18 && (_expr$19 && _cont$21));
-                                var $2380 = $2404;
+                                var $2397 = self.name;
+                                var $2398 = self.type;
+                                var $2399 = self.expr;
+                                var $2400 = self.body;
+                                var _def0$18 = Maybe$is_some$(Map$get$($2397, $2376));
+                                var _expr$19 = Litereum$check$(_context$1, _world$2, $2399, $2398);
+                                var _ctx2$20 = Map$set$($2397, $2398, _context$1);
+                                var _cont$21 = Litereum$check$(_ctx2$20, _world$2, $2400, _type$4);
+                                var $2401 = (_def0$18 && (_expr$19 && _cont$21));
+                                var $2377 = $2401;
                                 break;
                             case 'Litereum.Term.create':
-                                var $2405 = self.ctor;
-                                var $2406 = self.vals;
+                                var $2402 = self.ctor;
+                                var $2403 = self.vals;
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.data':
-                                        var $2408 = self.name;
-                                        var self = Litereum$get_data$(_world$2, $2408);
+                                        var $2405 = self.name;
+                                        var self = Litereum$get_data$(_world$2, $2405);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $2410 = self.value;
-                                                var _data$18 = $2410;
+                                                var $2407 = self.value;
+                                                var _data$18 = $2407;
                                                 var self = _data$18;
                                                 switch (self._) {
                                                     case 'Litereum.Data.new':
-                                                        var self = Litereum$get_constructor_value$(_data$18, $2405);
+                                                        var self = Litereum$get_constructor_value$(_data$18, $2402);
                                                         switch (self._) {
                                                             case 'Maybe.some':
-                                                                var $2413 = self.value;
-                                                                var _ctor$22 = $2413;
+                                                                var $2410 = self.value;
+                                                                var _ctor$22 = $2410;
                                                                 var self = _ctor$22;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $2415 = self.field_types;
-                                                                        var _size$26 = ((list_length($2406)) === (list_length($2415)));
-                                                                        var _vals$27 = List$zip$($2406, $2415);
+                                                                        var $2412 = self.field_types;
+                                                                        var _size$26 = ((list_length($2403)) === (list_length($2412)));
+                                                                        var _vals$27 = List$zip$($2403, $2412);
                                                                         var _vals$28 = List$all$((_x$28 => {
-                                                                            var $2417 = Litereum$check$(_context$1, _world$2, (() => {
+                                                                            var $2414 = Litereum$check$(_context$1, _world$2, (() => {
                                                                                 var self = _x$28;
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2418 = self.fst;
-                                                                                        var $2419 = $2418;
-                                                                                        return $2419;
+                                                                                        var $2415 = self.fst;
+                                                                                        var $2416 = $2415;
+                                                                                        return $2416;
                                                                                 };
                                                                             })(), (() => {
                                                                                 var self = _x$28;
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2420 = self.snd;
-                                                                                        var $2421 = $2420;
-                                                                                        return $2421;
+                                                                                        var $2417 = self.snd;
+                                                                                        var $2418 = $2417;
+                                                                                        return $2418;
                                                                                 };
                                                                             })());
-                                                                            return $2417;
+                                                                            return $2414;
                                                                         }), _vals$27);
-                                                                        var $2416 = (_size$26 && _vals$28);
-                                                                        var $2414 = $2416;
+                                                                        var $2413 = (_size$26 && _vals$28);
+                                                                        var $2411 = $2413;
                                                                         break;
                                                                 };
-                                                                var $2412 = $2414;
+                                                                var $2409 = $2411;
                                                                 break;
                                                             case 'Maybe.none':
-                                                                var $2422 = Bool$false;
-                                                                var $2412 = $2422;
+                                                                var $2419 = Bool$false;
+                                                                var $2409 = $2419;
                                                                 break;
                                                         };
-                                                        var $2411 = $2412;
+                                                        var $2408 = $2409;
                                                         break;
                                                 };
-                                                var $2409 = $2411;
+                                                var $2406 = $2408;
                                                 break;
                                             case 'Maybe.none':
-                                                var $2423 = Bool$false;
-                                                var $2409 = $2423;
+                                                var $2420 = Bool$false;
+                                                var $2406 = $2420;
                                                 break;
                                         };
-                                        var $2407 = $2409;
+                                        var $2404 = $2406;
                                         break;
                                     case 'Litereum.Type.word':
-                                        var $2424 = Bool$false;
-                                        var $2407 = $2424;
+                                        var $2421 = Bool$false;
+                                        var $2404 = $2421;
                                         break;
                                 };
-                                var $2380 = $2407;
+                                var $2377 = $2404;
                                 break;
                             case 'Litereum.Term.match':
-                                var $2425 = self.name;
-                                var $2426 = self.data;
-                                var $2427 = self.cses;
-                                var self = Litereum$get_data$(_world$2, $2426);
+                                var $2422 = self.name;
+                                var $2423 = self.data;
+                                var $2424 = self.cses;
+                                var self = Litereum$get_data$(_world$2, $2423);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2429 = self.value;
-                                        var _data$18 = $2429;
+                                        var $2426 = self.value;
+                                        var _data$18 = $2426;
                                         var self = _data$18;
                                         switch (self._) {
                                             case 'Litereum.Data.new':
-                                                var $2431 = self.constructors;
-                                                var _def0$21 = Maybe$is_some$(Map$get$($2426, $2379));
-                                                var self = Map$get$($2425, _context$1);
-                                                switch (self._) {
-                                                    case 'Maybe.some':
-                                                        var $2433 = self.value;
-                                                        var _size$23 = ((list_length($2427)) === (list_length($2431)));
-                                                        var _expr$24 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2425), Litereum$Type$data$($2426));
-                                                        var _cses$25 = List$zipped_with$($2427, $2431, (_case_body$25 => _case_ctor$26 => {
-                                                            var _nams$27 = List$map$(a1 => (($2425 + ".") + a1), (() => {
-                                                                var self = _case_ctor$26;
-                                                                switch (self._) {
-                                                                    case 'Litereum.Constructor.new':
-                                                                        var $2436 = self.field_names;
-                                                                        var $2437 = $2436;
-                                                                        return $2437;
-                                                                };
-                                                            })());
-                                                            var self = _case_ctor$26;
-                                                            switch (self._) {
-                                                                case 'Litereum.Constructor.new':
-                                                                    var $2438 = self.field_types;
-                                                                    var $2439 = $2438;
-                                                                    var _typs$28 = $2439;
-                                                                    break;
-                                                            };
-                                                            var _ctx2$29 = Litereum$extend$(_context$1, _nams$27, _typs$28);
-                                                            var $2435 = Litereum$check$(_ctx2$29, _world$2, _case_body$25, $2433);
-                                                            return $2435;
-                                                        }));
-                                                        var $2434 = (_def0$21 && (_size$23 && List$and$(_cses$25)));
-                                                        var $2432 = $2434;
-                                                        break;
-                                                    case 'Maybe.none':
-                                                        var $2440 = Bool$false;
-                                                        var $2432 = $2440;
-                                                        break;
-                                                };
-                                                var $2430 = $2432;
+                                                var $2428 = self.constructors;
+                                                var _def0$21 = Maybe$is_some$(Map$get$($2423, $2376));
+                                                var _size$22 = ((list_length($2424)) === (list_length($2428)));
+                                                var _expr$23 = Litereum$check$(_context$1, _world$2, Litereum$Term$var$($2422), Litereum$Type$data$($2423));
+                                                var _cses$24 = List$zipped_with$($2424, $2428, (_case_body$24 => _case_ctor$25 => {
+                                                    var _nams$26 = List$map$(a1 => (($2422 + ".") + a1), (() => {
+                                                        var self = _case_ctor$25;
+                                                        switch (self._) {
+                                                            case 'Litereum.Constructor.new':
+                                                                var $2431 = self.field_names;
+                                                                var $2432 = $2431;
+                                                                return $2432;
+                                                        };
+                                                    })());
+                                                    var self = _case_ctor$25;
+                                                    switch (self._) {
+                                                        case 'Litereum.Constructor.new':
+                                                            var $2433 = self.field_types;
+                                                            var $2434 = $2433;
+                                                            var _typs$27 = $2434;
+                                                            break;
+                                                    };
+                                                    var _ctx2$28 = Litereum$extend$(_context$1, _nams$26, _typs$27);
+                                                    var $2430 = Litereum$check$(_ctx2$28, _world$2, _case_body$24, _type$4);
+                                                    return $2430;
+                                                }));
+                                                var $2429 = (_def0$21 && (_size$22 && List$and$(_cses$24)));
+                                                var $2427 = $2429;
                                                 break;
                                         };
-                                        var $2428 = $2430;
+                                        var $2425 = $2427;
                                         break;
                                     case 'Maybe.none':
-                                        var $2441 = Bool$false;
-                                        var $2428 = $2441;
+                                        var $2435 = Bool$false;
+                                        var $2425 = $2435;
                                         break;
                                 };
-                                var $2380 = $2428;
+                                var $2377 = $2425;
                                 break;
                             case 'Litereum.Term.compare':
-                                var $2442 = self.val0;
-                                var $2443 = self.iflt;
-                                var $2444 = self.ifeq;
-                                var $2445 = self.ifgt;
-                                var _val0$19 = Litereum$check$(_context$1, _world$2, $2442, Litereum$Type$word);
-                                var _val1$20 = Litereum$check$(_context$1, _world$2, $2442, Litereum$Type$word);
-                                var _iflt$21 = Litereum$check$(_context$1, _world$2, $2443, _type$4);
-                                var _ifeq$22 = Litereum$check$(_context$1, _world$2, $2444, _type$4);
-                                var _ifgt$23 = Litereum$check$(_context$1, _world$2, $2445, _type$4);
-                                var $2446 = (_val0$19 && (_val1$20 && (_iflt$21 && (_ifeq$22 && _ifgt$23))));
-                                var $2380 = $2446;
+                                var $2436 = self.val0;
+                                var $2437 = self.iflt;
+                                var $2438 = self.ifeq;
+                                var $2439 = self.ifgt;
+                                var _val0$19 = Litereum$check$(_context$1, _world$2, $2436, Litereum$Type$word);
+                                var _val1$20 = Litereum$check$(_context$1, _world$2, $2436, Litereum$Type$word);
+                                var _iflt$21 = Litereum$check$(_context$1, _world$2, $2437, _type$4);
+                                var _ifeq$22 = Litereum$check$(_context$1, _world$2, $2438, _type$4);
+                                var _ifgt$23 = Litereum$check$(_context$1, _world$2, $2439, _type$4);
+                                var $2440 = (_val0$19 && (_val1$20 && (_iflt$21 && (_ifeq$22 && _ifgt$23))));
+                                var $2377 = $2440;
                                 break;
                             case 'Litereum.Term.operate':
-                                var $2447 = self.val0;
-                                var $2448 = self.val1;
-                                var _val0$17 = Litereum$check$(_context$1, _world$2, $2447, Litereum$Type$word);
-                                var _val1$18 = Litereum$check$(_context$1, _world$2, $2448, Litereum$Type$word);
-                                var $2449 = (_val0$17 && _val1$18);
-                                var $2380 = $2449;
+                                var $2441 = self.val0;
+                                var $2442 = self.val1;
+                                var _val0$17 = Litereum$check$(_context$1, _world$2, $2441, Litereum$Type$word);
+                                var _val1$18 = Litereum$check$(_context$1, _world$2, $2442, Litereum$Type$word);
+                                var $2443 = (_val0$17 && _val1$18);
+                                var $2377 = $2443;
                                 break;
                             case 'Litereum.Term.bind':
-                                var $2450 = self.name;
-                                var $2451 = self.main;
-                                var $2452 = self.body;
-                                var self = Litereum$get_bond$(_world$2, $2450);
+                                var $2444 = self.name;
+                                var $2445 = self.main;
+                                var $2446 = self.body;
+                                var self = Litereum$get_bond$(_world$2, $2444);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $2454 = self.value;
-                                        var _bond$18 = $2454;
+                                        var $2448 = self.value;
+                                        var _bond$18 = $2448;
                                         var self = _bond$18;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $2456 = self.input_names;
-                                                var $2457 = self.input_types;
-                                                var $2458 = self.output_type;
-                                                var _ctx2$25 = Litereum$extend$(_context$1, $2456, $2457);
-                                                var _main$26 = Litereum$check$(_ctx2$25, _world$2, $2451, $2458);
-                                                var _body$27 = Litereum$check$(_context$1, _world$2, $2452, _type$4);
-                                                var $2459 = (_main$26 && _body$27);
-                                                var $2455 = $2459;
+                                                var $2450 = self.input_names;
+                                                var $2451 = self.input_types;
+                                                var $2452 = self.output_type;
+                                                var _ctx2$25 = Litereum$extend$(_context$1, $2450, $2451);
+                                                var _main$26 = Litereum$check$(_ctx2$25, _world$2, $2445, $2452);
+                                                var _body$27 = Litereum$check$(_context$1, _world$2, $2446, _type$4);
+                                                var $2453 = (_main$26 && _body$27);
+                                                var $2449 = $2453;
                                                 break;
                                         };
-                                        var $2453 = $2455;
+                                        var $2447 = $2449;
                                         break;
                                     case 'Maybe.none':
-                                        var $2460 = Bool$false;
-                                        var $2453 = $2460;
+                                        var $2454 = Bool$false;
+                                        var $2447 = $2454;
                                         break;
                                 };
-                                var $2380 = $2453;
+                                var $2377 = $2447;
                                 break;
                             case 'Litereum.Term.word':
                                 var self = _type$4;
                                 switch (self._) {
                                     case 'Litereum.Type.word':
-                                        var $2462 = Bool$true;
-                                        var $2461 = $2462;
+                                        var $2456 = Bool$true;
+                                        var $2455 = $2456;
                                         break;
                                     case 'Litereum.Type.data':
-                                        var $2463 = Bool$false;
-                                        var $2461 = $2463;
+                                        var $2457 = Bool$false;
+                                        var $2455 = $2457;
                                         break;
                                 };
-                                var $2380 = $2461;
+                                var $2377 = $2455;
                                 break;
                         };
-                        var $2378 = $2380;
+                        var $2375 = $2377;
                         break;
                 };
-                var $2291 = $2378;
+                var $2291 = $2375;
                 break;
         };
         return $2291;
@@ -8645,44 +8623,44 @@ module.exports = (function() {
         var self = _terms$4;
         switch (self._) {
             case 'List.cons':
-                var $2465 = self.head;
-                var $2466 = self.tail;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2465);
+                var $2459 = self.head;
+                var $2460 = self.tail;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2459);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2468 = self.fst;
-                        var $2469 = self.snd;
-                        var self = Litereum$sanitize$many$(_world$1, _table$2, $2468, $2466);
+                        var $2462 = self.fst;
+                        var $2463 = self.snd;
+                        var self = Litereum$sanitize$many$(_world$1, _table$2, $2462, $2460);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2471 = self.fst;
-                                var $2472 = self.snd;
-                                var $2473 = Pair$new$($2471, List$cons$($2469, $2472));
-                                var $2470 = $2473;
+                                var $2465 = self.fst;
+                                var $2466 = self.snd;
+                                var $2467 = Pair$new$($2465, List$cons$($2463, $2466));
+                                var $2464 = $2467;
                                 break;
                         };
-                        var $2467 = $2470;
+                        var $2461 = $2464;
                         break;
                 };
-                var $2464 = $2467;
+                var $2458 = $2461;
                 break;
             case 'List.nil':
-                var $2474 = Pair$new$(_fresh$3, List$nil);
-                var $2464 = $2474;
+                var $2468 = Pair$new$(_fresh$3, List$nil);
+                var $2458 = $2468;
                 break;
         };
-        return $2464;
+        return $2458;
     };
     const Litereum$sanitize$many = x0 => x1 => x2 => x3 => Litereum$sanitize$many$(x0, x1, x2, x3);
 
     function Triple$new$(_fst$4, _snd$5, _trd$6) {
-        var $2475 = ({
+        var $2469 = ({
             _: 'Triple.new',
             'fst': _fst$4,
             'snd': _snd$5,
             'trd': _trd$6
         });
-        return $2475;
+        return $2469;
     };
     const Triple$new = x0 => x1 => x2 => Triple$new$(x0, x1, x2);
 
@@ -8690,8 +8668,8 @@ module.exports = (function() {
         var _new_name$4 = ("$" + Nat$show$(_fresh$2));
         var _table$5 = Map$set$(_old_name$3, _new_name$4, _table$1);
         var _fresh$6 = Nat$succ$(_fresh$2);
-        var $2476 = Triple$new$(_table$5, _fresh$6, _new_name$4);
-        return $2476;
+        var $2470 = Triple$new$(_table$5, _fresh$6, _new_name$4);
+        return $2470;
     };
     const Litereum$rename = x0 => x1 => x2 => Litereum$rename$(x0, x1, x2);
 
@@ -8699,24 +8677,24 @@ module.exports = (function() {
         var self = Litereum$get_data$(_world$1, _name$2);
         switch (self._) {
             case 'Maybe.some':
-                var $2478 = self.value;
-                var $2479 = Maybe$some$((() => {
-                    var self = $2478;
+                var $2472 = self.value;
+                var $2473 = Maybe$some$((() => {
+                    var self = $2472;
                     switch (self._) {
                         case 'Litereum.Data.new':
-                            var $2480 = self.constructors;
-                            var $2481 = $2480;
-                            return $2481;
+                            var $2474 = self.constructors;
+                            var $2475 = $2474;
+                            return $2475;
                     };
                 })());
-                var $2477 = $2479;
+                var $2471 = $2473;
                 break;
             case 'Maybe.none':
-                var $2482 = Maybe$none;
-                var $2477 = $2482;
+                var $2476 = Maybe$none;
+                var $2471 = $2476;
                 break;
         };
-        return $2477;
+        return $2471;
     };
     const Litereum$get_constructors = x0 => x1 => Litereum$get_constructors$(x0, x1);
     const List$for = a0 => a1 => a2 => (list_for(a0)(a1)(a2));
@@ -8725,73 +8703,73 @@ module.exports = (function() {
         var self = _ctrs$6;
         switch (self._) {
             case 'List.cons':
-                var $2484 = self.head;
-                var $2485 = self.tail;
+                var $2478 = self.head;
+                var $2479 = self.tail;
                 var self = _cses$7;
                 switch (self._) {
                     case 'List.cons':
-                        var $2487 = self.head;
-                        var $2488 = self.tail;
+                        var $2481 = self.head;
+                        var $2482 = self.tail;
                         var _new_table$12 = _table$2;
                         var _new_table$13 = (() => {
-                            var $2491 = _new_table$12;
-                            var self = $2484;
+                            var $2485 = _new_table$12;
+                            var self = $2478;
                             switch (self._) {
                                 case 'Litereum.Constructor.new':
-                                    var $2493 = self.field_names;
-                                    var $2494 = $2493;
-                                    var $2492 = $2494;
+                                    var $2487 = self.field_names;
+                                    var $2488 = $2487;
+                                    var $2486 = $2488;
                                     break;
                             };
-                            let _new_table$14 = $2491;
+                            let _new_table$14 = $2485;
                             let _field$13;
-                            while ($2492._ === 'List.cons') {
-                                _field$13 = $2492.head;
-                                var $2491 = Map$set$((_old_name$4 + ("." + _field$13)), (_new_name$5 + ("." + _field$13)), _new_table$14);
-                                _new_table$14 = $2491;
-                                $2492 = $2492.tail;
+                            while ($2486._ === 'List.cons') {
+                                _field$13 = $2486.head;
+                                var $2485 = Map$set$((_old_name$4 + ("." + _field$13)), (_new_name$5 + ("." + _field$13)), _new_table$14);
+                                _new_table$14 = $2485;
+                                $2486 = $2486.tail;
                             }
                             return _new_table$14;
                         })();
-                        var self = Litereum$sanitize$(_world$1, _new_table$13, _fresh$3, $2487);
+                        var self = Litereum$sanitize$(_world$1, _new_table$13, _fresh$3, $2481);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2495 = self.fst;
-                                var $2496 = self.snd;
-                                var self = Litereum$sanitize$cases$(_world$1, _table$2, $2495, _old_name$4, _new_name$5, $2485, $2488);
+                                var $2489 = self.fst;
+                                var $2490 = self.snd;
+                                var self = Litereum$sanitize$cases$(_world$1, _table$2, $2489, _old_name$4, _new_name$5, $2479, $2482);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2498 = self.fst;
-                                        var $2499 = self.snd;
-                                        var $2500 = Pair$new$($2498, List$cons$($2496, $2499));
-                                        var $2497 = $2500;
+                                        var $2492 = self.fst;
+                                        var $2493 = self.snd;
+                                        var $2494 = Pair$new$($2492, List$cons$($2490, $2493));
+                                        var $2491 = $2494;
                                         break;
                                 };
-                                var $2489 = $2497;
+                                var $2483 = $2491;
                                 break;
                         };
-                        var $2486 = $2489;
+                        var $2480 = $2483;
                         break;
                     case 'List.nil':
-                        var $2501 = Pair$new$(_fresh$3, List$nil);
-                        var $2486 = $2501;
+                        var $2495 = Pair$new$(_fresh$3, List$nil);
+                        var $2480 = $2495;
                         break;
                 };
-                var $2483 = $2486;
+                var $2477 = $2480;
                 break;
             case 'List.nil':
                 var self = _cses$7;
                 switch (self._) {
                     case 'List.nil':
                     case 'List.cons':
-                        var $2503 = Pair$new$(_fresh$3, List$nil);
-                        var $2502 = $2503;
+                        var $2497 = Pair$new$(_fresh$3, List$nil);
+                        var $2496 = $2497;
                         break;
                 };
-                var $2483 = $2502;
+                var $2477 = $2496;
                 break;
         };
-        return $2483;
+        return $2477;
     };
     const Litereum$sanitize$cases = x0 => x1 => x2 => x3 => x4 => x5 => x6 => Litereum$sanitize$cases$(x0, x1, x2, x3, x4, x5, x6);
 
@@ -8799,203 +8777,203 @@ module.exports = (function() {
         var self = _term$4;
         switch (self._) {
             case 'Litereum.Term.var':
-                var $2505 = self.name;
-                var _term$6 = Litereum$Term$var$(Maybe$default$(Map$get$($2505, _table$2), $2505));
-                var $2506 = Pair$new$(_fresh$3, _term$6);
-                var $2504 = $2506;
+                var $2499 = self.name;
+                var _term$6 = Litereum$Term$var$(Maybe$default$(Map$get$($2499, _table$2), $2499));
+                var $2500 = Pair$new$(_fresh$3, _term$6);
+                var $2498 = $2500;
                 break;
             case 'Litereum.Term.call':
-                var $2507 = self.bond;
-                var $2508 = self.args;
-                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2508);
+                var $2501 = self.bond;
+                var $2502 = self.args;
+                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2502);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2510 = self.fst;
-                        var $2511 = self.snd;
-                        var $2512 = Pair$new$($2510, Litereum$Term$call$($2507, $2511));
-                        var $2509 = $2512;
+                        var $2504 = self.fst;
+                        var $2505 = self.snd;
+                        var $2506 = Pair$new$($2504, Litereum$Term$call$($2501, $2505));
+                        var $2503 = $2506;
                         break;
                 };
-                var $2504 = $2509;
+                var $2498 = $2503;
                 break;
             case 'Litereum.Term.let':
-                var $2513 = self.name;
-                var $2514 = self.type;
-                var $2515 = self.expr;
-                var $2516 = self.body;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2515);
+                var $2507 = self.name;
+                var $2508 = self.type;
+                var $2509 = self.expr;
+                var $2510 = self.body;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2509);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2518 = self.fst;
-                        var $2519 = self.snd;
-                        var self = Litereum$rename$(_table$2, $2518, $2513);
+                        var $2512 = self.fst;
+                        var $2513 = self.snd;
+                        var self = Litereum$rename$(_table$2, $2512, $2507);
                         switch (self._) {
                             case 'Triple.new':
-                                var $2521 = self.fst;
-                                var $2522 = self.snd;
-                                var $2523 = self.trd;
-                                var self = Litereum$sanitize$(_world$1, $2521, $2522, $2516);
+                                var $2515 = self.fst;
+                                var $2516 = self.snd;
+                                var $2517 = self.trd;
+                                var self = Litereum$sanitize$(_world$1, $2515, $2516, $2510);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2525 = self.fst;
-                                        var $2526 = self.snd;
-                                        var $2527 = Pair$new$($2525, Litereum$Term$let$($2523, $2514, $2519, $2526));
-                                        var $2524 = $2527;
+                                        var $2519 = self.fst;
+                                        var $2520 = self.snd;
+                                        var $2521 = Pair$new$($2519, Litereum$Term$let$($2517, $2508, $2513, $2520));
+                                        var $2518 = $2521;
                                         break;
                                 };
-                                var $2520 = $2524;
+                                var $2514 = $2518;
                                 break;
                         };
-                        var $2517 = $2520;
+                        var $2511 = $2514;
                         break;
                 };
-                var $2504 = $2517;
+                var $2498 = $2511;
                 break;
             case 'Litereum.Term.create':
-                var $2528 = self.ctor;
-                var $2529 = self.vals;
-                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2529);
+                var $2522 = self.ctor;
+                var $2523 = self.vals;
+                var self = Litereum$sanitize$many$(_world$1, _table$2, _fresh$3, $2523);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2531 = self.fst;
-                        var $2532 = self.snd;
-                        var $2533 = Pair$new$($2531, Litereum$Term$create$($2528, $2532));
-                        var $2530 = $2533;
+                        var $2525 = self.fst;
+                        var $2526 = self.snd;
+                        var $2527 = Pair$new$($2525, Litereum$Term$create$($2522, $2526));
+                        var $2524 = $2527;
                         break;
                 };
-                var $2504 = $2530;
+                var $2498 = $2524;
                 break;
             case 'Litereum.Term.match':
-                var $2534 = self.name;
-                var $2535 = self.data;
-                var $2536 = self.cses;
-                var _ctrs$8 = Maybe$default$(Litereum$get_constructors$(_world$1, $2535), List$nil);
-                var _old_name$9 = $2534;
-                var _new_name$10 = Maybe$default$(Map$get$($2534, _table$2), $2534);
-                var self = Litereum$sanitize$cases$(_world$1, _table$2, _fresh$3, _old_name$9, _new_name$10, _ctrs$8, $2536);
+                var $2528 = self.name;
+                var $2529 = self.data;
+                var $2530 = self.cses;
+                var _ctrs$8 = Maybe$default$(Litereum$get_constructors$(_world$1, $2529), List$nil);
+                var _old_name$9 = $2528;
+                var _new_name$10 = Maybe$default$(Map$get$($2528, _table$2), $2528);
+                var self = Litereum$sanitize$cases$(_world$1, _table$2, _fresh$3, _old_name$9, _new_name$10, _ctrs$8, $2530);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2538 = self.fst;
-                        var $2539 = self.snd;
-                        var $2540 = Pair$new$($2538, Litereum$Term$match$(_new_name$10, $2535, $2539));
-                        var $2537 = $2540;
+                        var $2532 = self.fst;
+                        var $2533 = self.snd;
+                        var $2534 = Pair$new$($2532, Litereum$Term$match$(_new_name$10, $2529, $2533));
+                        var $2531 = $2534;
                         break;
                 };
-                var $2504 = $2537;
+                var $2498 = $2531;
                 break;
             case 'Litereum.Term.word':
-                var $2541 = self.numb;
-                var $2542 = Pair$new$(_fresh$3, Litereum$Term$word$($2541));
-                var $2504 = $2542;
+                var $2535 = self.numb;
+                var $2536 = Pair$new$(_fresh$3, Litereum$Term$word$($2535));
+                var $2498 = $2536;
                 break;
             case 'Litereum.Term.compare':
-                var $2543 = self.val0;
-                var $2544 = self.val1;
-                var $2545 = self.iflt;
-                var $2546 = self.ifeq;
-                var $2547 = self.ifgt;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2543);
+                var $2537 = self.val0;
+                var $2538 = self.val1;
+                var $2539 = self.iflt;
+                var $2540 = self.ifeq;
+                var $2541 = self.ifgt;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2537);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2549 = self.fst;
-                        var $2550 = self.snd;
-                        var self = Litereum$sanitize$(_world$1, _table$2, $2549, $2544);
+                        var $2543 = self.fst;
+                        var $2544 = self.snd;
+                        var self = Litereum$sanitize$(_world$1, _table$2, $2543, $2538);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2552 = self.fst;
-                                var $2553 = self.snd;
-                                var self = Litereum$sanitize$(_world$1, _table$2, $2552, $2545);
+                                var $2546 = self.fst;
+                                var $2547 = self.snd;
+                                var self = Litereum$sanitize$(_world$1, _table$2, $2546, $2539);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2555 = self.fst;
-                                        var $2556 = self.snd;
-                                        var self = Litereum$sanitize$(_world$1, _table$2, $2555, $2546);
+                                        var $2549 = self.fst;
+                                        var $2550 = self.snd;
+                                        var self = Litereum$sanitize$(_world$1, _table$2, $2549, $2540);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $2558 = self.fst;
-                                                var $2559 = self.snd;
-                                                var self = Litereum$sanitize$(_world$1, _table$2, $2558, $2547);
+                                                var $2552 = self.fst;
+                                                var $2553 = self.snd;
+                                                var self = Litereum$sanitize$(_world$1, _table$2, $2552, $2541);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $2561 = self.fst;
-                                                        var $2562 = self.snd;
-                                                        var $2563 = Pair$new$($2561, Litereum$Term$compare$($2550, $2553, $2556, $2559, $2562));
-                                                        var $2560 = $2563;
+                                                        var $2555 = self.fst;
+                                                        var $2556 = self.snd;
+                                                        var $2557 = Pair$new$($2555, Litereum$Term$compare$($2544, $2547, $2550, $2553, $2556));
+                                                        var $2554 = $2557;
                                                         break;
                                                 };
-                                                var $2557 = $2560;
+                                                var $2551 = $2554;
                                                 break;
                                         };
-                                        var $2554 = $2557;
+                                        var $2548 = $2551;
                                         break;
                                 };
-                                var $2551 = $2554;
+                                var $2545 = $2548;
                                 break;
                         };
-                        var $2548 = $2551;
+                        var $2542 = $2545;
                         break;
                 };
-                var $2504 = $2548;
+                var $2498 = $2542;
                 break;
             case 'Litereum.Term.operate':
-                var $2564 = self.oper;
-                var $2565 = self.val0;
-                var $2566 = self.val1;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2565);
+                var $2558 = self.oper;
+                var $2559 = self.val0;
+                var $2560 = self.val1;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2559);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2568 = self.fst;
-                        var $2569 = self.snd;
-                        var self = Litereum$sanitize$(_world$1, _table$2, $2568, $2566);
+                        var $2562 = self.fst;
+                        var $2563 = self.snd;
+                        var self = Litereum$sanitize$(_world$1, _table$2, $2562, $2560);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2571 = self.fst;
-                                var $2572 = self.snd;
-                                var $2573 = Pair$new$($2571, Litereum$Term$operate$($2564, $2569, $2572));
-                                var $2570 = $2573;
+                                var $2565 = self.fst;
+                                var $2566 = self.snd;
+                                var $2567 = Pair$new$($2565, Litereum$Term$operate$($2558, $2563, $2566));
+                                var $2564 = $2567;
                                 break;
                         };
-                        var $2567 = $2570;
+                        var $2561 = $2564;
                         break;
                 };
-                var $2504 = $2567;
+                var $2498 = $2561;
                 break;
             case 'Litereum.Term.bind':
-                var $2574 = self.name;
-                var $2575 = self.main;
-                var $2576 = self.body;
-                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2575);
+                var $2568 = self.name;
+                var $2569 = self.main;
+                var $2570 = self.body;
+                var self = Litereum$sanitize$(_world$1, _table$2, _fresh$3, $2569);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2578 = self.fst;
-                        var $2579 = self.snd;
-                        var self = Litereum$sanitize$(_world$1, _table$2, $2578, $2576);
+                        var $2572 = self.fst;
+                        var $2573 = self.snd;
+                        var self = Litereum$sanitize$(_world$1, _table$2, $2572, $2570);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2581 = self.fst;
-                                var $2582 = self.snd;
-                                var $2583 = Pair$new$($2581, Litereum$Term$bind$($2574, $2579, $2582));
-                                var $2580 = $2583;
+                                var $2575 = self.fst;
+                                var $2576 = self.snd;
+                                var $2577 = Pair$new$($2575, Litereum$Term$bind$($2568, $2573, $2576));
+                                var $2574 = $2577;
                                 break;
                         };
-                        var $2577 = $2580;
+                        var $2571 = $2574;
                         break;
                 };
-                var $2504 = $2577;
+                var $2498 = $2571;
                 break;
         };
-        return $2504;
+        return $2498;
     };
     const Litereum$sanitize = x0 => x1 => x2 => x3 => Litereum$sanitize$(x0, x1, x2, x3);
 
     function Litereum$Runtime$(_A$1) {
-        var $2584 = null;
-        return $2584;
+        var $2578 = null;
+        return $2578;
     };
     const Litereum$Runtime = x0 => Litereum$Runtime$(x0);
 
     function Litereum$Runtime$new$(_world$2, _subst$3, _fresh$4, _gas$5, _term$6) {
-        var $2585 = ({
+        var $2579 = ({
             _: 'Litereum.Runtime.new',
             'world': _world$2,
             'subst': _subst$3,
@@ -9003,13 +8981,13 @@ module.exports = (function() {
             'gas': _gas$5,
             'term': _term$6
         });
-        return $2585;
+        return $2579;
     };
     const Litereum$Runtime$new = x0 => x1 => x2 => x3 => x4 => Litereum$Runtime$new$(x0, x1, x2, x3, x4);
 
     function Triple$(_A$1, _B$2, _C$3) {
-        var $2586 = null;
-        return $2586;
+        var $2580 = null;
+        return $2580;
     };
     const Triple = x0 => x1 => x2 => Triple$(x0, x1, x2);
 
@@ -9017,71 +8995,71 @@ module.exports = (function() {
         var self = _names$3;
         switch (self._) {
             case 'List.cons':
-                var $2588 = self.head;
-                var $2589 = self.tail;
-                var self = Litereum$rename$(_table$1, _fresh$2, $2588);
+                var $2582 = self.head;
+                var $2583 = self.tail;
+                var self = Litereum$rename$(_table$1, _fresh$2, $2582);
                 switch (self._) {
                     case 'Triple.new':
-                        var $2591 = self.fst;
-                        var $2592 = self.snd;
-                        var $2593 = self.trd;
-                        var self = Litereum$rename$many$($2591, $2592, $2589);
+                        var $2585 = self.fst;
+                        var $2586 = self.snd;
+                        var $2587 = self.trd;
+                        var self = Litereum$rename$many$($2585, $2586, $2583);
                         switch (self._) {
                             case 'Triple.new':
-                                var $2595 = self.fst;
-                                var $2596 = self.snd;
-                                var $2597 = self.trd;
-                                var $2598 = Triple$new$($2595, $2596, List$cons$($2593, $2597));
-                                var $2594 = $2598;
+                                var $2589 = self.fst;
+                                var $2590 = self.snd;
+                                var $2591 = self.trd;
+                                var $2592 = Triple$new$($2589, $2590, List$cons$($2587, $2591));
+                                var $2588 = $2592;
                                 break;
                         };
-                        var $2590 = $2594;
+                        var $2584 = $2588;
                         break;
                 };
-                var $2587 = $2590;
+                var $2581 = $2584;
                 break;
             case 'List.nil':
-                var $2599 = Triple$new$(_table$1, _fresh$2, List$nil);
-                var $2587 = $2599;
+                var $2593 = Triple$new$(_table$1, _fresh$2, List$nil);
+                var $2581 = $2593;
                 break;
         };
-        return $2587;
+        return $2581;
     };
     const Litereum$rename$many = x0 => x1 => x2 => Litereum$rename$many$(x0, x1, x2);
     const U64$from_nat = a0 => (a0 & 0xFFFFFFFFFFFFFFFFn);
 
     function Litereum$get_constructor_index$(_data$1, _name$2) {
-        var $2600 = Maybe$mapped$(List$ifind$((_i$3 => _ctr$4 => {
-            var $2601 = ((() => {
+        var $2594 = Maybe$mapped$(List$ifind$((_i$3 => _ctr$4 => {
+            var $2595 = ((() => {
                 var self = _ctr$4;
                 switch (self._) {
                     case 'Litereum.Constructor.new':
-                        var $2602 = self.name;
-                        var $2603 = $2602;
-                        return $2603;
+                        var $2596 = self.name;
+                        var $2597 = $2596;
+                        return $2597;
                 };
             })() === _name$2);
-            return $2601;
+            return $2595;
         }), (() => {
             var self = _data$1;
             switch (self._) {
                 case 'Litereum.Data.new':
-                    var $2604 = self.constructors;
-                    var $2605 = $2604;
-                    return $2605;
+                    var $2598 = self.constructors;
+                    var $2599 = $2598;
+                    return $2599;
             };
         })()), (_x$3 => {
             var self = _x$3;
             switch (self._) {
                 case 'Pair.new':
-                    var $2607 = self.fst;
-                    var $2608 = $2607;
-                    var $2606 = $2608;
+                    var $2601 = self.fst;
+                    var $2602 = $2601;
+                    var $2600 = $2602;
                     break;
             };
-            return $2606;
+            return $2600;
         }));
-        return $2600;
+        return $2594;
     };
     const Litereum$get_constructor_index = x0 => x1 => Litereum$get_constructor_index$(x0, x1);
 
@@ -9098,21 +9076,21 @@ module.exports = (function() {
                 var self = _list$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $2609 = self.head;
-                        var $2610 = self.tail;
+                        var $2603 = self.head;
+                        var $2604 = self.tail;
                         var self = _index$2;
                         if (self === 0n) {
-                            var $2612 = Maybe$some$($2609);
-                            var $2611 = $2612;
+                            var $2606 = Maybe$some$($2603);
+                            var $2605 = $2606;
                         } else {
-                            var $2613 = (self - 1n);
-                            var $2614 = List$get$($2613, $2610);
-                            var $2611 = $2614;
+                            var $2607 = (self - 1n);
+                            var $2608 = List$get$($2607, $2604);
+                            var $2605 = $2608;
                         };
-                        return $2611;
+                        return $2605;
                     case 'List.nil':
-                        var $2615 = Maybe$none;
-                        return $2615;
+                        var $2609 = Maybe$none;
+                        return $2609;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9126,20 +9104,20 @@ module.exports = (function() {
     function U64$cmp$(_a$1, _b$2) {
         var self = (_a$1 < _b$2);
         if (self) {
-            var $2617 = Cmp$ltn;
-            var $2616 = $2617;
+            var $2611 = Cmp$ltn;
+            var $2610 = $2611;
         } else {
             var self = (_a$1 === _b$2);
             if (self) {
-                var $2619 = Cmp$eql;
-                var $2618 = $2619;
+                var $2613 = Cmp$eql;
+                var $2612 = $2613;
             } else {
-                var $2620 = Cmp$gtn;
-                var $2618 = $2620;
+                var $2614 = Cmp$gtn;
+                var $2612 = $2614;
             };
-            var $2616 = $2618;
+            var $2610 = $2612;
         };
-        return $2616;
+        return $2610;
     };
     const U64$cmp = x0 => x1 => U64$cmp$(x0, x1);
     const U64$add = a0 => a1 => ((a0 + a1) & 0xFFFFFFFFFFFFFFFFn);
@@ -9148,117 +9126,117 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2622 = self.pred;
-                var $2623 = (_b$7 => {
+                var $2616 = self.pred;
+                var $2617 = (_b$7 => {
                     var self = _b$7;
                     switch (self._) {
                         case 'Word.o':
-                            var $2625 = self.pred;
-                            var $2626 = (_a$pred$10 => {
+                            var $2619 = self.pred;
+                            var $2620 = (_a$pred$10 => {
                                 var self = _c$4;
                                 if (self) {
-                                    var $2628 = Word$i$(Word$subber$(_a$pred$10, $2625, Bool$true));
-                                    var $2627 = $2628;
+                                    var $2622 = Word$i$(Word$subber$(_a$pred$10, $2619, Bool$true));
+                                    var $2621 = $2622;
                                 } else {
-                                    var $2629 = Word$o$(Word$subber$(_a$pred$10, $2625, Bool$false));
-                                    var $2627 = $2629;
+                                    var $2623 = Word$o$(Word$subber$(_a$pred$10, $2619, Bool$false));
+                                    var $2621 = $2623;
                                 };
-                                return $2627;
+                                return $2621;
                             });
-                            var $2624 = $2626;
+                            var $2618 = $2620;
                             break;
                         case 'Word.i':
-                            var $2630 = self.pred;
-                            var $2631 = (_a$pred$10 => {
+                            var $2624 = self.pred;
+                            var $2625 = (_a$pred$10 => {
                                 var self = _c$4;
                                 if (self) {
-                                    var $2633 = Word$o$(Word$subber$(_a$pred$10, $2630, Bool$true));
-                                    var $2632 = $2633;
+                                    var $2627 = Word$o$(Word$subber$(_a$pred$10, $2624, Bool$true));
+                                    var $2626 = $2627;
                                 } else {
-                                    var $2634 = Word$i$(Word$subber$(_a$pred$10, $2630, Bool$true));
-                                    var $2632 = $2634;
+                                    var $2628 = Word$i$(Word$subber$(_a$pred$10, $2624, Bool$true));
+                                    var $2626 = $2628;
                                 };
-                                return $2632;
+                                return $2626;
                             });
-                            var $2624 = $2631;
+                            var $2618 = $2625;
                             break;
                         case 'Word.e':
-                            var $2635 = (_a$pred$8 => {
-                                var $2636 = Word$e;
-                                return $2636;
+                            var $2629 = (_a$pred$8 => {
+                                var $2630 = Word$e;
+                                return $2630;
                             });
-                            var $2624 = $2635;
+                            var $2618 = $2629;
                             break;
                     };
-                    var $2624 = $2624($2622);
-                    return $2624;
+                    var $2618 = $2618($2616);
+                    return $2618;
                 });
-                var $2621 = $2623;
+                var $2615 = $2617;
                 break;
             case 'Word.i':
-                var $2637 = self.pred;
-                var $2638 = (_b$7 => {
+                var $2631 = self.pred;
+                var $2632 = (_b$7 => {
                     var self = _b$7;
                     switch (self._) {
                         case 'Word.o':
-                            var $2640 = self.pred;
-                            var $2641 = (_a$pred$10 => {
+                            var $2634 = self.pred;
+                            var $2635 = (_a$pred$10 => {
                                 var self = _c$4;
                                 if (self) {
-                                    var $2643 = Word$o$(Word$subber$(_a$pred$10, $2640, Bool$false));
-                                    var $2642 = $2643;
+                                    var $2637 = Word$o$(Word$subber$(_a$pred$10, $2634, Bool$false));
+                                    var $2636 = $2637;
                                 } else {
-                                    var $2644 = Word$i$(Word$subber$(_a$pred$10, $2640, Bool$false));
-                                    var $2642 = $2644;
+                                    var $2638 = Word$i$(Word$subber$(_a$pred$10, $2634, Bool$false));
+                                    var $2636 = $2638;
                                 };
-                                return $2642;
+                                return $2636;
                             });
-                            var $2639 = $2641;
+                            var $2633 = $2635;
                             break;
                         case 'Word.i':
-                            var $2645 = self.pred;
-                            var $2646 = (_a$pred$10 => {
+                            var $2639 = self.pred;
+                            var $2640 = (_a$pred$10 => {
                                 var self = _c$4;
                                 if (self) {
-                                    var $2648 = Word$i$(Word$subber$(_a$pred$10, $2645, Bool$true));
-                                    var $2647 = $2648;
+                                    var $2642 = Word$i$(Word$subber$(_a$pred$10, $2639, Bool$true));
+                                    var $2641 = $2642;
                                 } else {
-                                    var $2649 = Word$o$(Word$subber$(_a$pred$10, $2645, Bool$false));
-                                    var $2647 = $2649;
+                                    var $2643 = Word$o$(Word$subber$(_a$pred$10, $2639, Bool$false));
+                                    var $2641 = $2643;
                                 };
-                                return $2647;
+                                return $2641;
                             });
-                            var $2639 = $2646;
+                            var $2633 = $2640;
                             break;
                         case 'Word.e':
-                            var $2650 = (_a$pred$8 => {
-                                var $2651 = Word$e;
-                                return $2651;
+                            var $2644 = (_a$pred$8 => {
+                                var $2645 = Word$e;
+                                return $2645;
                             });
-                            var $2639 = $2650;
+                            var $2633 = $2644;
                             break;
                     };
-                    var $2639 = $2639($2637);
-                    return $2639;
+                    var $2633 = $2633($2631);
+                    return $2633;
                 });
-                var $2621 = $2638;
+                var $2615 = $2632;
                 break;
             case 'Word.e':
-                var $2652 = (_b$5 => {
-                    var $2653 = Word$e;
-                    return $2653;
+                var $2646 = (_b$5 => {
+                    var $2647 = Word$e;
+                    return $2647;
                 });
-                var $2621 = $2652;
+                var $2615 = $2646;
                 break;
         };
-        var $2621 = $2621(_b$3);
-        return $2621;
+        var $2615 = $2615(_b$3);
+        return $2615;
     };
     const Word$subber = x0 => x1 => x2 => Word$subber$(x0, x1, x2);
 
     function Word$sub$(_a$2, _b$3) {
-        var $2654 = Word$subber$(_a$2, _b$3, Bool$false);
-        return $2654;
+        var $2648 = Word$subber$(_a$2, _b$3, Bool$false);
+        return $2648;
     };
     const Word$sub = x0 => x1 => Word$sub$(x0, x1);
     const U64$sub = a0 => a1 => ((a0 - a1) & 0xFFFFFFFFFFFFFFFFn);
@@ -9277,16 +9255,16 @@ module.exports = (function() {
                 var self = _word$2;
                 switch (self._) {
                     case 'Word.o':
-                        var $2655 = self.pred;
-                        var $2656 = Word$bit_length$go$($2655, Nat$succ$(_c$3), _n$4);
-                        return $2656;
+                        var $2649 = self.pred;
+                        var $2650 = Word$bit_length$go$($2649, Nat$succ$(_c$3), _n$4);
+                        return $2650;
                     case 'Word.i':
-                        var $2657 = self.pred;
-                        var $2658 = Word$bit_length$go$($2657, Nat$succ$(_c$3), Nat$succ$(_c$3));
-                        return $2658;
+                        var $2651 = self.pred;
+                        var $2652 = Word$bit_length$go$($2651, Nat$succ$(_c$3), Nat$succ$(_c$3));
+                        return $2652;
                     case 'Word.e':
-                        var $2659 = _n$4;
-                        return $2659;
+                        var $2653 = _n$4;
+                        return $2653;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9296,8 +9274,8 @@ module.exports = (function() {
     const Word$bit_length$go = x0 => x1 => x2 => Word$bit_length$go$(x0, x1, x2);
 
     function Word$bit_length$(_word$2) {
-        var $2660 = Word$bit_length$go$(_word$2, 0n, 0n);
-        return $2660;
+        var $2654 = Word$bit_length$go$(_word$2, 0n, 0n);
+        return $2654;
     };
     const Word$bit_length = x0 => Word$bit_length$(x0);
     const Nat$ltn = a0 => a1 => (a0 < a1);
@@ -9307,22 +9285,22 @@ module.exports = (function() {
         var self = _cmp$1;
         switch (self._) {
             case 'Cmp.ltn':
-                var $2662 = Bool$false;
-                var $2661 = $2662;
+                var $2656 = Bool$false;
+                var $2655 = $2656;
                 break;
             case 'Cmp.eql':
             case 'Cmp.gtn':
-                var $2663 = Bool$true;
-                var $2661 = $2663;
+                var $2657 = Bool$true;
+                var $2655 = $2657;
                 break;
         };
-        return $2661;
+        return $2655;
     };
     const Cmp$as_gte = x0 => Cmp$as_gte$(x0);
 
     function Word$gte$(_a$2, _b$3) {
-        var $2664 = Cmp$as_gte$(Word$cmp$(_a$2, _b$3));
-        return $2664;
+        var $2658 = Cmp$as_gte$(Word$cmp$(_a$2, _b$3));
+        return $2658;
     };
     const Word$gte = x0 => x1 => Word$gte$(x0, x1);
 
@@ -9330,83 +9308,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2666 = self.pred;
-                var $2667 = (_b$6 => {
+                var $2660 = self.pred;
+                var $2661 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2669 = self.pred;
-                            var $2670 = (_a$pred$9 => {
-                                var $2671 = Word$o$(Word$or$(_a$pred$9, $2669));
-                                return $2671;
+                            var $2663 = self.pred;
+                            var $2664 = (_a$pred$9 => {
+                                var $2665 = Word$o$(Word$or$(_a$pred$9, $2663));
+                                return $2665;
                             });
-                            var $2668 = $2670;
+                            var $2662 = $2664;
                             break;
                         case 'Word.i':
-                            var $2672 = self.pred;
-                            var $2673 = (_a$pred$9 => {
-                                var $2674 = Word$i$(Word$or$(_a$pred$9, $2672));
-                                return $2674;
+                            var $2666 = self.pred;
+                            var $2667 = (_a$pred$9 => {
+                                var $2668 = Word$i$(Word$or$(_a$pred$9, $2666));
+                                return $2668;
                             });
-                            var $2668 = $2673;
+                            var $2662 = $2667;
                             break;
                         case 'Word.e':
-                            var $2675 = (_a$pred$7 => {
-                                var $2676 = Word$e;
-                                return $2676;
+                            var $2669 = (_a$pred$7 => {
+                                var $2670 = Word$e;
+                                return $2670;
                             });
-                            var $2668 = $2675;
+                            var $2662 = $2669;
                             break;
                     };
-                    var $2668 = $2668($2666);
-                    return $2668;
+                    var $2662 = $2662($2660);
+                    return $2662;
                 });
-                var $2665 = $2667;
+                var $2659 = $2661;
                 break;
             case 'Word.i':
-                var $2677 = self.pred;
-                var $2678 = (_b$6 => {
+                var $2671 = self.pred;
+                var $2672 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2680 = self.pred;
-                            var $2681 = (_a$pred$9 => {
-                                var $2682 = Word$i$(Word$or$(_a$pred$9, $2680));
-                                return $2682;
+                            var $2674 = self.pred;
+                            var $2675 = (_a$pred$9 => {
+                                var $2676 = Word$i$(Word$or$(_a$pred$9, $2674));
+                                return $2676;
                             });
-                            var $2679 = $2681;
+                            var $2673 = $2675;
                             break;
                         case 'Word.i':
-                            var $2683 = self.pred;
-                            var $2684 = (_a$pred$9 => {
-                                var $2685 = Word$i$(Word$or$(_a$pred$9, $2683));
-                                return $2685;
+                            var $2677 = self.pred;
+                            var $2678 = (_a$pred$9 => {
+                                var $2679 = Word$i$(Word$or$(_a$pred$9, $2677));
+                                return $2679;
                             });
-                            var $2679 = $2684;
+                            var $2673 = $2678;
                             break;
                         case 'Word.e':
-                            var $2686 = (_a$pred$7 => {
-                                var $2687 = Word$e;
-                                return $2687;
+                            var $2680 = (_a$pred$7 => {
+                                var $2681 = Word$e;
+                                return $2681;
                             });
-                            var $2679 = $2686;
+                            var $2673 = $2680;
                             break;
                     };
-                    var $2679 = $2679($2677);
-                    return $2679;
+                    var $2673 = $2673($2671);
+                    return $2673;
                 });
-                var $2665 = $2678;
+                var $2659 = $2672;
                 break;
             case 'Word.e':
-                var $2688 = (_b$4 => {
-                    var $2689 = Word$e;
-                    return $2689;
+                var $2682 = (_b$4 => {
+                    var $2683 = Word$e;
+                    return $2683;
                 });
-                var $2665 = $2688;
+                var $2659 = $2682;
                 break;
         };
-        var $2665 = $2665(_b$3);
-        return $2665;
+        var $2659 = $2659(_b$3);
+        return $2659;
     };
     const Word$or = x0 => x1 => Word$or$(x0, x1);
 
@@ -9414,21 +9392,21 @@ module.exports = (function() {
         var self = _word$2;
         switch (self._) {
             case 'Word.o':
-                var $2691 = self.pred;
-                var $2692 = Word$o$(Word$shift_right$one$go$($2691));
-                var $2690 = $2692;
+                var $2685 = self.pred;
+                var $2686 = Word$o$(Word$shift_right$one$go$($2685));
+                var $2684 = $2686;
                 break;
             case 'Word.i':
-                var $2693 = self.pred;
-                var $2694 = Word$i$(Word$shift_right$one$go$($2693));
-                var $2690 = $2694;
+                var $2687 = self.pred;
+                var $2688 = Word$i$(Word$shift_right$one$go$($2687));
+                var $2684 = $2688;
                 break;
             case 'Word.e':
-                var $2695 = Word$o$(Word$e);
-                var $2690 = $2695;
+                var $2689 = Word$o$(Word$e);
+                var $2684 = $2689;
                 break;
         };
-        return $2690;
+        return $2684;
     };
     const Word$shift_right$one$go = x0 => Word$shift_right$one$go$(x0);
 
@@ -9436,21 +9414,21 @@ module.exports = (function() {
         var self = _word$2;
         switch (self._) {
             case 'Word.o':
-                var $2697 = self.pred;
-                var $2698 = Word$shift_right$one$go$($2697);
-                var $2696 = $2698;
+                var $2691 = self.pred;
+                var $2692 = Word$shift_right$one$go$($2691);
+                var $2690 = $2692;
                 break;
             case 'Word.i':
-                var $2699 = self.pred;
-                var $2700 = Word$shift_right$one$go$($2699);
-                var $2696 = $2700;
+                var $2693 = self.pred;
+                var $2694 = Word$shift_right$one$go$($2693);
+                var $2690 = $2694;
                 break;
             case 'Word.e':
-                var $2701 = Word$e;
-                var $2696 = $2701;
+                var $2695 = Word$e;
+                var $2690 = $2695;
                 break;
         };
-        return $2696;
+        return $2690;
     };
     const Word$shift_right$one = x0 => Word$shift_right$one$(x0);
 
@@ -9466,12 +9444,12 @@ module.exports = (function() {
             var R = (() => {
                 var self = _n$3;
                 if (self === 0n) {
-                    var $2702 = _value$2;
-                    return $2702;
+                    var $2696 = _value$2;
+                    return $2696;
                 } else {
-                    var $2703 = (self - 1n);
-                    var $2704 = Word$shift_right$(Word$shift_right$one$(_value$2), $2703);
-                    return $2704;
+                    var $2697 = (self - 1n);
+                    var $2698 = Word$shift_right$(Word$shift_right$one$(_value$2), $2697);
+                    return $2698;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9493,34 +9471,34 @@ module.exports = (function() {
                 var self = Word$gte$(_sub_copy$3, _shift_copy$4);
                 if (self) {
                     var _mask$6 = Word$shift_left$(Word$inc$(Word$to_zero$(_sub_copy$3)), _shift$2);
-                    var $2705 = Pair$new$(Bool$true, Word$or$(_value$5, _mask$6));
-                    var self = $2705;
+                    var $2699 = Pair$new$(Bool$true, Word$or$(_value$5, _mask$6));
+                    var self = $2699;
                 } else {
-                    var $2706 = Pair$new$(Bool$false, _value$5);
-                    var self = $2706;
+                    var $2700 = Pair$new$(Bool$false, _value$5);
+                    var self = $2700;
                 };
                 switch (self._) {
                     case 'Pair.new':
-                        var $2707 = self.fst;
-                        var $2708 = self.snd;
+                        var $2701 = self.fst;
+                        var $2702 = self.snd;
                         var self = _shift$2;
                         if (self === 0n) {
-                            var $2710 = $2708;
-                            var $2709 = $2710;
+                            var $2704 = $2702;
+                            var $2703 = $2704;
                         } else {
-                            var $2711 = (self - 1n);
+                            var $2705 = (self - 1n);
                             var _new_shift_copy$9 = Word$shift_right$(_shift_copy$4, 1n);
-                            var self = $2707;
+                            var self = $2701;
                             if (self) {
-                                var $2713 = Word$div$go$($2711, Word$sub$(_sub_copy$3, _shift_copy$4), _new_shift_copy$9, $2708);
-                                var $2712 = $2713;
+                                var $2707 = Word$div$go$($2705, Word$sub$(_sub_copy$3, _shift_copy$4), _new_shift_copy$9, $2702);
+                                var $2706 = $2707;
                             } else {
-                                var $2714 = Word$div$go$($2711, _sub_copy$3, _new_shift_copy$9, $2708);
-                                var $2712 = $2714;
+                                var $2708 = Word$div$go$($2705, _sub_copy$3, _new_shift_copy$9, $2702);
+                                var $2706 = $2708;
                             };
-                            var $2709 = $2712;
+                            var $2703 = $2706;
                         };
-                        return $2709;
+                        return $2703;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9534,23 +9512,23 @@ module.exports = (function() {
         var _b_bits$5 = Word$bit_length$(_b$3);
         var self = (_a_bits$4 < _b_bits$5);
         if (self) {
-            var $2716 = Word$to_zero$(_a$2);
-            var $2715 = $2716;
+            var $2710 = Word$to_zero$(_a$2);
+            var $2709 = $2710;
         } else {
             var _shift$6 = (_a_bits$4 - _b_bits$5 <= 0n ? 0n : _a_bits$4 - _b_bits$5);
             var _shift_copy$7 = Word$shift_left$(_b$3, _shift$6);
-            var $2717 = Word$div$go$(_shift$6, _a$2, _shift_copy$7, Word$to_zero$(_a$2));
-            var $2715 = $2717;
+            var $2711 = Word$div$go$(_shift$6, _a$2, _shift_copy$7, Word$to_zero$(_a$2));
+            var $2709 = $2711;
         };
-        return $2715;
+        return $2709;
     };
     const Word$div = x0 => x1 => Word$div$(x0, x1);
     const U64$div = a0 => a1 => ((a0 / a1) & 0xFFFFFFFFFFFFFFFFn);
 
     function Word$mod$(_a$2, _b$3) {
         var _q$4 = Word$div$(_a$2, _b$3);
-        var $2718 = Word$sub$(_a$2, Word$mul$(_b$3, _q$4));
-        return $2718;
+        var $2712 = Word$sub$(_a$2, Word$mul$(_b$3, _q$4));
+        return $2712;
     };
     const Word$mod = x0 => x1 => Word$mod$(x0, x1);
     const U64$mod = a0 => a1 => (a0 % a1);
@@ -9560,83 +9538,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2720 = self.pred;
-                var $2721 = (_b$6 => {
+                var $2714 = self.pred;
+                var $2715 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2723 = self.pred;
-                            var $2724 = (_a$pred$9 => {
-                                var $2725 = Word$o$(Word$and$(_a$pred$9, $2723));
-                                return $2725;
+                            var $2717 = self.pred;
+                            var $2718 = (_a$pred$9 => {
+                                var $2719 = Word$o$(Word$and$(_a$pred$9, $2717));
+                                return $2719;
                             });
-                            var $2722 = $2724;
+                            var $2716 = $2718;
                             break;
                         case 'Word.i':
-                            var $2726 = self.pred;
-                            var $2727 = (_a$pred$9 => {
-                                var $2728 = Word$o$(Word$and$(_a$pred$9, $2726));
-                                return $2728;
+                            var $2720 = self.pred;
+                            var $2721 = (_a$pred$9 => {
+                                var $2722 = Word$o$(Word$and$(_a$pred$9, $2720));
+                                return $2722;
                             });
-                            var $2722 = $2727;
+                            var $2716 = $2721;
                             break;
                         case 'Word.e':
-                            var $2729 = (_a$pred$7 => {
-                                var $2730 = Word$e;
-                                return $2730;
+                            var $2723 = (_a$pred$7 => {
+                                var $2724 = Word$e;
+                                return $2724;
                             });
-                            var $2722 = $2729;
+                            var $2716 = $2723;
                             break;
                     };
-                    var $2722 = $2722($2720);
-                    return $2722;
+                    var $2716 = $2716($2714);
+                    return $2716;
                 });
-                var $2719 = $2721;
+                var $2713 = $2715;
                 break;
             case 'Word.i':
-                var $2731 = self.pred;
-                var $2732 = (_b$6 => {
+                var $2725 = self.pred;
+                var $2726 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2734 = self.pred;
-                            var $2735 = (_a$pred$9 => {
-                                var $2736 = Word$o$(Word$and$(_a$pred$9, $2734));
-                                return $2736;
+                            var $2728 = self.pred;
+                            var $2729 = (_a$pred$9 => {
+                                var $2730 = Word$o$(Word$and$(_a$pred$9, $2728));
+                                return $2730;
                             });
-                            var $2733 = $2735;
+                            var $2727 = $2729;
                             break;
                         case 'Word.i':
-                            var $2737 = self.pred;
-                            var $2738 = (_a$pred$9 => {
-                                var $2739 = Word$i$(Word$and$(_a$pred$9, $2737));
-                                return $2739;
+                            var $2731 = self.pred;
+                            var $2732 = (_a$pred$9 => {
+                                var $2733 = Word$i$(Word$and$(_a$pred$9, $2731));
+                                return $2733;
                             });
-                            var $2733 = $2738;
+                            var $2727 = $2732;
                             break;
                         case 'Word.e':
-                            var $2740 = (_a$pred$7 => {
-                                var $2741 = Word$e;
-                                return $2741;
+                            var $2734 = (_a$pred$7 => {
+                                var $2735 = Word$e;
+                                return $2735;
                             });
-                            var $2733 = $2740;
+                            var $2727 = $2734;
                             break;
                     };
-                    var $2733 = $2733($2731);
-                    return $2733;
+                    var $2727 = $2727($2725);
+                    return $2727;
                 });
-                var $2719 = $2732;
+                var $2713 = $2726;
                 break;
             case 'Word.e':
-                var $2742 = (_b$4 => {
-                    var $2743 = Word$e;
-                    return $2743;
+                var $2736 = (_b$4 => {
+                    var $2737 = Word$e;
+                    return $2737;
                 });
-                var $2719 = $2742;
+                var $2713 = $2736;
                 break;
         };
-        var $2719 = $2719(_b$3);
-        return $2719;
+        var $2713 = $2713(_b$3);
+        return $2713;
     };
     const Word$and = x0 => x1 => Word$and$(x0, x1);
     const U64$and = a0 => a1 => (a0 & a1);
@@ -9645,83 +9623,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $2745 = self.pred;
-                var $2746 = (_b$6 => {
+                var $2739 = self.pred;
+                var $2740 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2748 = self.pred;
-                            var $2749 = (_a$pred$9 => {
-                                var $2750 = Word$o$(Word$xor$(_a$pred$9, $2748));
-                                return $2750;
+                            var $2742 = self.pred;
+                            var $2743 = (_a$pred$9 => {
+                                var $2744 = Word$o$(Word$xor$(_a$pred$9, $2742));
+                                return $2744;
                             });
-                            var $2747 = $2749;
+                            var $2741 = $2743;
                             break;
                         case 'Word.i':
-                            var $2751 = self.pred;
-                            var $2752 = (_a$pred$9 => {
-                                var $2753 = Word$i$(Word$xor$(_a$pred$9, $2751));
-                                return $2753;
+                            var $2745 = self.pred;
+                            var $2746 = (_a$pred$9 => {
+                                var $2747 = Word$i$(Word$xor$(_a$pred$9, $2745));
+                                return $2747;
                             });
-                            var $2747 = $2752;
+                            var $2741 = $2746;
                             break;
                         case 'Word.e':
-                            var $2754 = (_a$pred$7 => {
-                                var $2755 = Word$e;
-                                return $2755;
+                            var $2748 = (_a$pred$7 => {
+                                var $2749 = Word$e;
+                                return $2749;
                             });
-                            var $2747 = $2754;
+                            var $2741 = $2748;
                             break;
                     };
-                    var $2747 = $2747($2745);
-                    return $2747;
+                    var $2741 = $2741($2739);
+                    return $2741;
                 });
-                var $2744 = $2746;
+                var $2738 = $2740;
                 break;
             case 'Word.i':
-                var $2756 = self.pred;
-                var $2757 = (_b$6 => {
+                var $2750 = self.pred;
+                var $2751 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $2759 = self.pred;
-                            var $2760 = (_a$pred$9 => {
-                                var $2761 = Word$i$(Word$xor$(_a$pred$9, $2759));
-                                return $2761;
+                            var $2753 = self.pred;
+                            var $2754 = (_a$pred$9 => {
+                                var $2755 = Word$i$(Word$xor$(_a$pred$9, $2753));
+                                return $2755;
                             });
-                            var $2758 = $2760;
+                            var $2752 = $2754;
                             break;
                         case 'Word.i':
-                            var $2762 = self.pred;
-                            var $2763 = (_a$pred$9 => {
-                                var $2764 = Word$o$(Word$xor$(_a$pred$9, $2762));
-                                return $2764;
+                            var $2756 = self.pred;
+                            var $2757 = (_a$pred$9 => {
+                                var $2758 = Word$o$(Word$xor$(_a$pred$9, $2756));
+                                return $2758;
                             });
-                            var $2758 = $2763;
+                            var $2752 = $2757;
                             break;
                         case 'Word.e':
-                            var $2765 = (_a$pred$7 => {
-                                var $2766 = Word$e;
-                                return $2766;
+                            var $2759 = (_a$pred$7 => {
+                                var $2760 = Word$e;
+                                return $2760;
                             });
-                            var $2758 = $2765;
+                            var $2752 = $2759;
                             break;
                     };
-                    var $2758 = $2758($2756);
-                    return $2758;
+                    var $2752 = $2752($2750);
+                    return $2752;
                 });
-                var $2744 = $2757;
+                var $2738 = $2751;
                 break;
             case 'Word.e':
-                var $2767 = (_b$4 => {
-                    var $2768 = Word$e;
-                    return $2768;
+                var $2761 = (_b$4 => {
+                    var $2762 = Word$e;
+                    return $2762;
                 });
-                var $2744 = $2767;
+                var $2738 = $2761;
                 break;
         };
-        var $2744 = $2744(_b$3);
-        return $2744;
+        var $2738 = $2738(_b$3);
+        return $2738;
     };
     const Word$xor = x0 => x1 => Word$xor$(x0, x1);
     const U64$xor = a0 => a1 => (a0 ^ a1);
@@ -9730,168 +9708,168 @@ module.exports = (function() {
         var self = _state$1;
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2770 = self.world;
-                var $2771 = self.subst;
-                var $2772 = self.fresh;
-                var $2773 = self.gas;
-                var $2774 = self.term;
-                var self = $2774;
+                var $2764 = self.world;
+                var $2765 = self.subst;
+                var $2766 = self.fresh;
+                var $2767 = self.gas;
+                var $2768 = self.term;
+                var self = $2768;
                 switch (self._) {
                     case 'Litereum.Term.var':
-                        var $2776 = self.name;
-                        var _term$8 = Maybe$default$(Map$get$($2776, $2771), $2774);
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, _term$8));
+                        var $2770 = self.name;
+                        var _term$8 = Maybe$default$(Map$get$($2770, $2765), $2768);
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2764, $2765, $2766, $2767, _term$8));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2778 = self.world;
-                                var $2779 = self.subst;
-                                var $2780 = self.fresh;
-                                var $2781 = self.gas;
-                                var $2782 = self.term;
-                                var $2783 = Litereum$Runtime$new$($2778, Map$set$($2776, $2782, $2779), $2780, $2781, $2782);
-                                var $2777 = $2783;
+                                var $2772 = self.world;
+                                var $2773 = self.subst;
+                                var $2774 = self.fresh;
+                                var $2775 = self.gas;
+                                var $2776 = self.term;
+                                var $2777 = Litereum$Runtime$new$($2772, Map$set$($2770, $2776, $2773), $2774, $2775, $2776);
+                                var $2771 = $2777;
                                 break;
                         };
-                        var $2775 = $2777;
+                        var $2769 = $2771;
                         break;
                     case 'Litereum.Term.call':
-                        var $2784 = self.bond;
-                        var $2785 = self.args;
-                        var self = Litereum$get_bond$($2770, $2784);
+                        var $2778 = self.bond;
+                        var $2779 = self.args;
+                        var self = Litereum$get_bond$($2764, $2778);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $2787 = self.value;
-                                var _bond$10 = $2787;
+                                var $2781 = self.value;
+                                var _bond$10 = $2781;
                                 var self = _bond$10;
                                 switch (self._) {
                                     case 'Litereum.Bond.new':
-                                        var $2789 = self.input_names;
-                                        var $2790 = self.main;
-                                        var self = Litereum$rename$many$(Map$from_list$(List$nil), $2772, $2789);
+                                        var $2783 = self.input_names;
+                                        var $2784 = self.main;
+                                        var self = Litereum$rename$many$(Map$from_list$(List$nil), $2766, $2783);
                                         switch (self._) {
                                             case 'Triple.new':
-                                                var $2792 = self.fst;
-                                                var $2793 = self.snd;
-                                                var $2794 = self.trd;
-                                                var self = Litereum$sanitize$($2770, $2792, $2793, $2790);
+                                                var $2786 = self.fst;
+                                                var $2787 = self.snd;
+                                                var $2788 = self.trd;
+                                                var self = Litereum$sanitize$($2764, $2786, $2787, $2784);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $2796 = self.fst;
-                                                        var $2797 = self.snd;
-                                                        var _subst$22 = Litereum$extend$($2771, $2794, $2785);
-                                                        var $2798 = Litereum$reduce$(Litereum$Runtime$new$($2770, _subst$22, $2796, $2773, $2797));
-                                                        var $2795 = $2798;
+                                                        var $2790 = self.fst;
+                                                        var $2791 = self.snd;
+                                                        var _subst$22 = Litereum$extend$($2765, $2788, $2779);
+                                                        var $2792 = Litereum$reduce$(Litereum$Runtime$new$($2764, _subst$22, $2790, $2767, $2791));
+                                                        var $2789 = $2792;
                                                         break;
                                                 };
-                                                var $2791 = $2795;
+                                                var $2785 = $2789;
                                                 break;
                                         };
-                                        var $2788 = $2791;
+                                        var $2782 = $2785;
                                         break;
                                 };
-                                var $2786 = $2788;
+                                var $2780 = $2782;
                                 break;
                             case 'Maybe.none':
-                                var $2799 = _state$1;
-                                var $2786 = $2799;
+                                var $2793 = _state$1;
+                                var $2780 = $2793;
                                 break;
                         };
-                        var $2775 = $2786;
+                        var $2769 = $2780;
                         break;
                     case 'Litereum.Term.let':
-                        var $2800 = self.name;
-                        var $2801 = self.expr;
-                        var $2802 = self.body;
-                        var $2803 = Litereum$reduce$(Litereum$Runtime$new$($2770, Map$set$($2800, $2801, $2771), $2772, $2773, $2802));
-                        var $2775 = $2803;
+                        var $2794 = self.name;
+                        var $2795 = self.expr;
+                        var $2796 = self.body;
+                        var $2797 = Litereum$reduce$(Litereum$Runtime$new$($2764, Map$set$($2794, $2795, $2765), $2766, $2767, $2796));
+                        var $2769 = $2797;
                         break;
                     case 'Litereum.Term.match':
-                        var $2804 = self.name;
-                        var $2805 = self.data;
-                        var $2806 = self.cses;
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, Maybe$default$(Map$get$($2804, $2771), Litereum$Term$word$(0n))));
+                        var $2798 = self.name;
+                        var $2799 = self.data;
+                        var $2800 = self.cses;
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2764, $2765, $2766, $2767, Maybe$default$(Map$get$($2798, $2765), Litereum$Term$word$(0n))));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2808 = self.world;
-                                var $2809 = self.subst;
-                                var $2810 = self.fresh;
-                                var $2811 = self.gas;
-                                var $2812 = self.term;
-                                var self = $2812;
+                                var $2802 = self.world;
+                                var $2803 = self.subst;
+                                var $2804 = self.fresh;
+                                var $2805 = self.gas;
+                                var $2806 = self.term;
+                                var self = $2806;
                                 switch (self._) {
                                     case 'Litereum.Term.create':
-                                        var $2814 = self.ctor;
-                                        var $2815 = self.vals;
-                                        var self = Litereum$get_data$($2808, $2805);
+                                        var $2808 = self.ctor;
+                                        var $2809 = self.vals;
+                                        var self = Litereum$get_data$($2802, $2799);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $2817 = self.value;
-                                                var _data$18 = $2817;
+                                                var $2811 = self.value;
+                                                var _data$18 = $2811;
                                                 var self = _data$18;
                                                 switch (self._) {
                                                     case 'Litereum.Data.new':
-                                                        var self = Litereum$get_constructor_value$(_data$18, $2814);
+                                                        var self = Litereum$get_constructor_value$(_data$18, $2808);
                                                         switch (self._) {
                                                             case 'Maybe.some':
-                                                                var $2820 = self.value;
-                                                                var _ctor$22 = $2820;
+                                                                var $2814 = self.value;
+                                                                var _ctor$22 = $2814;
                                                                 var self = _ctor$22;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var self = Litereum$get_constructor_index$(_data$18, $2814);
+                                                                        var self = Litereum$get_constructor_index$(_data$18, $2808);
                                                                         switch (self._) {
                                                                             case 'Maybe.some':
-                                                                                var $2823 = self.value;
-                                                                                var self = List$get$($2823, $2806);
+                                                                                var $2817 = self.value;
+                                                                                var self = List$get$($2817, $2800);
                                                                                 switch (self._) {
                                                                                     case 'Maybe.some':
-                                                                                        var $2825 = self.value;
-                                                                                        var _nams$28 = List$map$(a1 => (($2804 + ".") + a1), (() => {
+                                                                                        var $2819 = self.value;
+                                                                                        var _nams$28 = List$map$(a1 => (($2798 + ".") + a1), (() => {
                                                                                             var self = _ctor$22;
                                                                                             switch (self._) {
                                                                                                 case 'Litereum.Constructor.new':
-                                                                                                    var $2827 = self.field_names;
-                                                                                                    var $2828 = $2827;
-                                                                                                    return $2828;
+                                                                                                    var $2821 = self.field_names;
+                                                                                                    var $2822 = $2821;
+                                                                                                    return $2822;
                                                                                             };
                                                                                         })());
-                                                                                        var _subst$29 = Litereum$extend$($2809, _nams$28, $2815);
-                                                                                        var $2826 = Litereum$reduce$(Litereum$Runtime$new$($2808, _subst$29, $2810, $2811, $2825));
-                                                                                        var $2824 = $2826;
+                                                                                        var _subst$29 = Litereum$extend$($2803, _nams$28, $2809);
+                                                                                        var $2820 = Litereum$reduce$(Litereum$Runtime$new$($2802, _subst$29, $2804, $2805, $2819));
+                                                                                        var $2818 = $2820;
                                                                                         break;
                                                                                     case 'Maybe.none':
-                                                                                        var $2829 = _state$1;
-                                                                                        var $2824 = $2829;
+                                                                                        var $2823 = _state$1;
+                                                                                        var $2818 = $2823;
                                                                                         break;
                                                                                 };
-                                                                                var $2822 = $2824;
+                                                                                var $2816 = $2818;
                                                                                 break;
                                                                             case 'Maybe.none':
-                                                                                var $2830 = _state$1;
-                                                                                var $2822 = $2830;
+                                                                                var $2824 = _state$1;
+                                                                                var $2816 = $2824;
                                                                                 break;
                                                                         };
-                                                                        var $2821 = $2822;
+                                                                        var $2815 = $2816;
                                                                         break;
                                                                 };
-                                                                var $2819 = $2821;
+                                                                var $2813 = $2815;
                                                                 break;
                                                             case 'Maybe.none':
-                                                                var $2831 = _state$1;
-                                                                var $2819 = $2831;
+                                                                var $2825 = _state$1;
+                                                                var $2813 = $2825;
                                                                 break;
                                                         };
-                                                        var $2818 = $2819;
+                                                        var $2812 = $2813;
                                                         break;
                                                 };
-                                                var $2816 = $2818;
+                                                var $2810 = $2812;
                                                 break;
                                             case 'Maybe.none':
-                                                var $2832 = _state$1;
-                                                var $2816 = $2832;
+                                                var $2826 = _state$1;
+                                                var $2810 = $2826;
                                                 break;
                                         };
-                                        var $2813 = $2816;
+                                        var $2807 = $2810;
                                         break;
                                     case 'Litereum.Term.var':
                                     case 'Litereum.Term.call':
@@ -9901,61 +9879,61 @@ module.exports = (function() {
                                     case 'Litereum.Term.compare':
                                     case 'Litereum.Term.operate':
                                     case 'Litereum.Term.bind':
-                                        var $2833 = _state$1;
-                                        var $2813 = $2833;
+                                        var $2827 = _state$1;
+                                        var $2807 = $2827;
                                         break;
                                 };
-                                var $2807 = $2813;
+                                var $2801 = $2807;
                                 break;
                         };
-                        var $2775 = $2807;
+                        var $2769 = $2801;
                         break;
                     case 'Litereum.Term.compare':
-                        var $2834 = self.val0;
-                        var $2835 = self.val1;
-                        var $2836 = self.iflt;
-                        var $2837 = self.ifeq;
-                        var $2838 = self.ifgt;
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, $2834));
+                        var $2828 = self.val0;
+                        var $2829 = self.val1;
+                        var $2830 = self.iflt;
+                        var $2831 = self.ifeq;
+                        var $2832 = self.ifgt;
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2764, $2765, $2766, $2767, $2828));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2840 = self.world;
-                                var $2841 = self.subst;
-                                var $2842 = self.fresh;
-                                var $2843 = self.gas;
-                                var $2844 = self.term;
-                                var self = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2835));
+                                var $2834 = self.world;
+                                var $2835 = self.subst;
+                                var $2836 = self.fresh;
+                                var $2837 = self.gas;
+                                var $2838 = self.term;
+                                var self = Litereum$reduce$(Litereum$Runtime$new$($2834, $2835, $2836, $2837, $2829));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2846 = self.world;
-                                        var $2847 = self.subst;
-                                        var $2848 = self.fresh;
-                                        var $2849 = self.gas;
-                                        var $2850 = self.term;
-                                        var self = $2844;
+                                        var $2840 = self.world;
+                                        var $2841 = self.subst;
+                                        var $2842 = self.fresh;
+                                        var $2843 = self.gas;
+                                        var $2844 = self.term;
+                                        var self = $2838;
                                         switch (self._) {
                                             case 'Litereum.Term.word':
-                                                var $2852 = self.numb;
-                                                var self = $2850;
+                                                var $2846 = self.numb;
+                                                var self = $2844;
                                                 switch (self._) {
                                                     case 'Litereum.Term.word':
-                                                        var $2854 = self.numb;
-                                                        var self = U64$cmp$($2852, $2854);
+                                                        var $2848 = self.numb;
+                                                        var self = U64$cmp$($2846, $2848);
                                                         switch (self._) {
                                                             case 'Cmp.ltn':
-                                                                var $2856 = Litereum$reduce$(Litereum$Runtime$new$($2846, $2847, $2848, $2849, $2836));
-                                                                var $2855 = $2856;
+                                                                var $2850 = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2830));
+                                                                var $2849 = $2850;
                                                                 break;
                                                             case 'Cmp.eql':
-                                                                var $2857 = Litereum$reduce$(Litereum$Runtime$new$($2846, $2847, $2848, $2849, $2837));
-                                                                var $2855 = $2857;
+                                                                var $2851 = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2831));
+                                                                var $2849 = $2851;
                                                                 break;
                                                             case 'Cmp.gtn':
-                                                                var $2858 = Litereum$reduce$(Litereum$Runtime$new$($2846, $2847, $2848, $2849, $2838));
-                                                                var $2855 = $2858;
+                                                                var $2852 = Litereum$reduce$(Litereum$Runtime$new$($2840, $2841, $2842, $2843, $2832));
+                                                                var $2849 = $2852;
                                                                 break;
                                                         };
-                                                        var $2853 = $2855;
+                                                        var $2847 = $2849;
                                                         break;
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -9965,14 +9943,71 @@ module.exports = (function() {
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
-                                                        var $2859 = _state$1;
-                                                        var $2853 = $2859;
+                                                        var $2853 = _state$1;
+                                                        var $2847 = $2853;
                                                         break;
                                                 };
-                                                var $2851 = $2853;
+                                                var $2845 = $2847;
                                                 break;
                                             case 'Litereum.Term.var':
-                                                var self = $2850;
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2855 = _state$1;
+                                                        var $2854 = $2855;
+                                                        break;
+                                                };
+                                                var $2845 = $2854;
+                                                break;
+                                            case 'Litereum.Term.call':
+                                            case 'Litereum.Term.create':
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2857 = _state$1;
+                                                        var $2856 = $2857;
+                                                        break;
+                                                };
+                                                var $2845 = $2856;
+                                                break;
+                                            case 'Litereum.Term.let':
+                                                var self = $2844;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2859 = _state$1;
+                                                        var $2858 = $2859;
+                                                        break;
+                                                };
+                                                var $2845 = $2858;
+                                                break;
+                                            case 'Litereum.Term.match':
+                                            case 'Litereum.Term.operate':
+                                            case 'Litereum.Term.bind':
+                                                var self = $2844;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -9987,11 +10022,10 @@ module.exports = (function() {
                                                         var $2860 = $2861;
                                                         break;
                                                 };
-                                                var $2851 = $2860;
+                                                var $2845 = $2860;
                                                 break;
-                                            case 'Litereum.Term.call':
-                                            case 'Litereum.Term.create':
-                                                var self = $2850;
+                                            case 'Litereum.Term.compare':
+                                                var self = $2844;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10006,154 +10040,155 @@ module.exports = (function() {
                                                         var $2862 = $2863;
                                                         break;
                                                 };
-                                                var $2851 = $2862;
-                                                break;
-                                            case 'Litereum.Term.let':
-                                                var self = $2850;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2865 = _state$1;
-                                                        var $2864 = $2865;
-                                                        break;
-                                                };
-                                                var $2851 = $2864;
-                                                break;
-                                            case 'Litereum.Term.match':
-                                            case 'Litereum.Term.operate':
-                                            case 'Litereum.Term.bind':
-                                                var self = $2850;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2867 = _state$1;
-                                                        var $2866 = $2867;
-                                                        break;
-                                                };
-                                                var $2851 = $2866;
-                                                break;
-                                            case 'Litereum.Term.compare':
-                                                var self = $2850;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2869 = _state$1;
-                                                        var $2868 = $2869;
-                                                        break;
-                                                };
-                                                var $2851 = $2868;
+                                                var $2845 = $2862;
                                                 break;
                                         };
-                                        var $2845 = $2851;
+                                        var $2839 = $2845;
                                         break;
                                 };
-                                var $2839 = $2845;
+                                var $2833 = $2839;
                                 break;
                         };
-                        var $2775 = $2839;
+                        var $2769 = $2833;
                         break;
                     case 'Litereum.Term.operate':
-                        var $2870 = self.oper;
-                        var $2871 = self.val0;
-                        var $2872 = self.val1;
-                        var self = Litereum$reduce$(Litereum$Runtime$new$($2770, $2771, $2772, $2773, $2871));
+                        var $2864 = self.oper;
+                        var $2865 = self.val0;
+                        var $2866 = self.val1;
+                        var self = Litereum$reduce$(Litereum$Runtime$new$($2764, $2765, $2766, $2767, $2865));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2874 = self.world;
-                                var $2875 = self.subst;
-                                var $2876 = self.fresh;
-                                var $2877 = self.gas;
-                                var $2878 = self.term;
-                                var self = Litereum$reduce$(Litereum$Runtime$new$($2874, $2875, $2876, $2877, $2872));
+                                var $2868 = self.world;
+                                var $2869 = self.subst;
+                                var $2870 = self.fresh;
+                                var $2871 = self.gas;
+                                var $2872 = self.term;
+                                var self = Litereum$reduce$(Litereum$Runtime$new$($2868, $2869, $2870, $2871, $2866));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2880 = self.world;
-                                        var $2881 = self.subst;
-                                        var $2882 = self.fresh;
-                                        var $2883 = self.gas;
-                                        var $2884 = self.term;
-                                        var self = $2878;
+                                        var $2874 = self.world;
+                                        var $2875 = self.subst;
+                                        var $2876 = self.fresh;
+                                        var $2877 = self.gas;
+                                        var $2878 = self.term;
+                                        var self = $2872;
                                         switch (self._) {
                                             case 'Litereum.Term.word':
-                                                var $2886 = self.numb;
-                                                var self = $2884;
+                                                var $2880 = self.numb;
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.word':
-                                                        var $2888 = self.numb;
-                                                        var self = $2870;
+                                                        var $2882 = self.numb;
+                                                        var self = $2864;
                                                         switch (self._) {
                                                             case 'Litereum.Operation.add':
-                                                                var $2890 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$((($2886 + $2888) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2889 = $2890;
+                                                                var $2884 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 + $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2884;
                                                                 break;
                                                             case 'Litereum.Operation.sub':
-                                                                var $2891 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$((($2886 - $2888) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2889 = $2891;
+                                                                var $2885 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 - $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2885;
                                                                 break;
                                                             case 'Litereum.Operation.mul':
-                                                                var $2892 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$((($2886 * $2888) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2889 = $2892;
+                                                                var $2886 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 * $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2886;
                                                                 break;
                                                             case 'Litereum.Operation.div':
-                                                                var $2893 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$((($2886 / $2888) & 0xFFFFFFFFFFFFFFFFn)));
-                                                                var $2889 = $2893;
+                                                                var $2887 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$((($2880 / $2882) & 0xFFFFFFFFFFFFFFFFn)));
+                                                                var $2883 = $2887;
                                                                 break;
                                                             case 'Litereum.Operation.mod':
-                                                                var $2894 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$(($2886 % $2888)));
-                                                                var $2889 = $2894;
+                                                                var $2888 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 % $2882)));
+                                                                var $2883 = $2888;
                                                                 break;
                                                             case 'Litereum.Operation.or':
-                                                                var $2895 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$(($2886 | $2888)));
-                                                                var $2889 = $2895;
+                                                                var $2889 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 | $2882)));
+                                                                var $2883 = $2889;
                                                                 break;
                                                             case 'Litereum.Operation.and':
-                                                                var $2896 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$(($2886 & $2888)));
-                                                                var $2889 = $2896;
+                                                                var $2890 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 & $2882)));
+                                                                var $2883 = $2890;
                                                                 break;
                                                             case 'Litereum.Operation.xor':
-                                                                var $2897 = Litereum$Runtime$new$($2880, $2881, $2882, $2883, Litereum$Term$word$(($2886 ^ $2888)));
-                                                                var $2889 = $2897;
+                                                                var $2891 = Litereum$Runtime$new$($2874, $2875, $2876, $2877, Litereum$Term$word$(($2880 ^ $2882)));
+                                                                var $2883 = $2891;
                                                                 break;
                                                         };
-                                                        var $2887 = $2889;
+                                                        var $2881 = $2883;
                                                         break;
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
                                                     case 'Litereum.Term.let':
                                                     case 'Litereum.Term.create':
                                                     case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2892 = _state$1;
+                                                        var $2881 = $2892;
+                                                        break;
+                                                };
+                                                var $2879 = $2881;
+                                                break;
+                                            case 'Litereum.Term.var':
+                                                var self = $2878;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2894 = _state$1;
+                                                        var $2893 = $2894;
+                                                        break;
+                                                };
+                                                var $2879 = $2893;
+                                                break;
+                                            case 'Litereum.Term.call':
+                                            case 'Litereum.Term.create':
+                                                var self = $2878;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
+                                                    case 'Litereum.Term.compare':
+                                                    case 'Litereum.Term.operate':
+                                                    case 'Litereum.Term.bind':
+                                                        var $2896 = _state$1;
+                                                        var $2895 = $2896;
+                                                        break;
+                                                };
+                                                var $2879 = $2895;
+                                                break;
+                                            case 'Litereum.Term.let':
+                                                var self = $2878;
+                                                switch (self._) {
+                                                    case 'Litereum.Term.var':
+                                                    case 'Litereum.Term.call':
+                                                    case 'Litereum.Term.let':
+                                                    case 'Litereum.Term.create':
+                                                    case 'Litereum.Term.match':
+                                                    case 'Litereum.Term.word':
                                                     case 'Litereum.Term.compare':
                                                     case 'Litereum.Term.operate':
                                                     case 'Litereum.Term.bind':
                                                         var $2898 = _state$1;
-                                                        var $2887 = $2898;
+                                                        var $2897 = $2898;
                                                         break;
                                                 };
-                                                var $2885 = $2887;
+                                                var $2879 = $2897;
                                                 break;
-                                            case 'Litereum.Term.var':
-                                                var self = $2884;
+                                            case 'Litereum.Term.match':
+                                            case 'Litereum.Term.operate':
+                                            case 'Litereum.Term.bind':
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10168,11 +10203,10 @@ module.exports = (function() {
                                                         var $2899 = $2900;
                                                         break;
                                                 };
-                                                var $2885 = $2899;
+                                                var $2879 = $2899;
                                                 break;
-                                            case 'Litereum.Term.call':
-                                            case 'Litereum.Term.create':
-                                                var self = $2884;
+                                            case 'Litereum.Term.compare':
+                                                var self = $2878;
                                                 switch (self._) {
                                                     case 'Litereum.Term.var':
                                                     case 'Litereum.Term.call':
@@ -10187,162 +10221,106 @@ module.exports = (function() {
                                                         var $2901 = $2902;
                                                         break;
                                                 };
-                                                var $2885 = $2901;
-                                                break;
-                                            case 'Litereum.Term.let':
-                                                var self = $2884;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2904 = _state$1;
-                                                        var $2903 = $2904;
-                                                        break;
-                                                };
-                                                var $2885 = $2903;
-                                                break;
-                                            case 'Litereum.Term.match':
-                                            case 'Litereum.Term.operate':
-                                            case 'Litereum.Term.bind':
-                                                var self = $2884;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2906 = _state$1;
-                                                        var $2905 = $2906;
-                                                        break;
-                                                };
-                                                var $2885 = $2905;
-                                                break;
-                                            case 'Litereum.Term.compare':
-                                                var self = $2884;
-                                                switch (self._) {
-                                                    case 'Litereum.Term.var':
-                                                    case 'Litereum.Term.call':
-                                                    case 'Litereum.Term.let':
-                                                    case 'Litereum.Term.create':
-                                                    case 'Litereum.Term.match':
-                                                    case 'Litereum.Term.word':
-                                                    case 'Litereum.Term.compare':
-                                                    case 'Litereum.Term.operate':
-                                                    case 'Litereum.Term.bind':
-                                                        var $2908 = _state$1;
-                                                        var $2907 = $2908;
-                                                        break;
-                                                };
-                                                var $2885 = $2907;
+                                                var $2879 = $2901;
                                                 break;
                                         };
-                                        var $2879 = $2885;
+                                        var $2873 = $2879;
                                         break;
                                 };
-                                var $2873 = $2879;
+                                var $2867 = $2873;
                                 break;
                         };
-                        var $2775 = $2873;
+                        var $2769 = $2867;
                         break;
                     case 'Litereum.Term.bind':
-                        var $2909 = self.name;
-                        var $2910 = self.main;
-                        var $2911 = self.body;
-                        var self = Litereum$get_bond$($2770, $2909);
+                        var $2903 = self.name;
+                        var $2904 = self.main;
+                        var $2905 = self.body;
+                        var self = Litereum$get_bond$($2764, $2903);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $2913 = self.value;
-                                var _bond$11 = $2913;
+                                var $2907 = self.value;
+                                var _bond$11 = $2907;
                                 var self = _bond$11;
                                 switch (self._) {
                                     case 'Litereum.Bond.new':
-                                        var $2915 = self.input_names;
-                                        var _nams$18 = $2915;
-                                        var _vals$19 = List$map$(Litereum$Term$var, $2915);
+                                        var $2909 = self.input_names;
+                                        var _nams$18 = $2909;
+                                        var _vals$19 = List$map$(Litereum$Term$var, $2909);
                                         var self = _state$1;
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $2917 = self.world;
-                                                var $2918 = self.subst;
-                                                var $2919 = self.fresh;
-                                                var $2920 = self.gas;
-                                                var self = Litereum$normalize$(Litereum$Runtime$new$($2917, Litereum$extend$($2918, _nams$18, _vals$19), $2919, $2920, $2910));
+                                                var $2911 = self.world;
+                                                var $2912 = self.subst;
+                                                var $2913 = self.fresh;
+                                                var $2914 = self.gas;
+                                                var self = Litereum$normalize$(Litereum$Runtime$new$($2911, Litereum$extend$($2912, _nams$18, _vals$19), $2913, $2914, $2904));
                                                 switch (self._) {
                                                     case 'Litereum.Runtime.new':
-                                                        var $2922 = self.world;
-                                                        var $2923 = self.fresh;
-                                                        var $2924 = self.gas;
-                                                        var $2925 = self.term;
+                                                        var $2916 = self.world;
+                                                        var $2917 = self.fresh;
+                                                        var $2918 = self.gas;
+                                                        var $2919 = self.term;
                                                         var _new_entry$30 = Litereum$Entry$bond$((() => {
                                                             var self = _bond$11;
                                                             switch (self._) {
                                                                 case 'Litereum.Bond.new':
-                                                                    var $2927 = self.name;
-                                                                    var $2928 = self.input_names;
-                                                                    var $2929 = self.input_types;
-                                                                    var $2930 = self.output_type;
-                                                                    var $2931 = self.owners;
-                                                                    var $2932 = Litereum$Bond$new$($2927, $2928, $2929, $2930, $2925, $2931);
-                                                                    return $2932;
+                                                                    var $2921 = self.name;
+                                                                    var $2922 = self.input_names;
+                                                                    var $2923 = self.input_types;
+                                                                    var $2924 = self.output_type;
+                                                                    var $2925 = self.owners;
+                                                                    var $2926 = Litereum$Bond$new$($2921, $2922, $2923, $2924, $2919, $2925);
+                                                                    return $2926;
                                                             };
                                                         })());
-                                                        var self = $2922;
+                                                        var self = $2916;
                                                         switch (self._) {
                                                             case 'Litereum.World.new':
-                                                                var $2933 = self.name_count;
-                                                                var $2934 = self.name_to_index;
-                                                                var $2935 = self.index_to_name;
-                                                                var $2936 = Litereum$World$new$($2933, $2934, $2935, Map$set$($2909, _new_entry$30, (() => {
-                                                                    var self = $2922;
+                                                                var $2927 = self.name_count;
+                                                                var $2928 = self.name_to_index;
+                                                                var $2929 = self.index_to_name;
+                                                                var $2930 = Litereum$World$new$($2927, $2928, $2929, Map$set$($2903, _new_entry$30, (() => {
+                                                                    var self = $2916;
                                                                     switch (self._) {
                                                                         case 'Litereum.World.new':
-                                                                            var $2937 = self.entry;
-                                                                            var $2938 = $2937;
-                                                                            return $2938;
+                                                                            var $2931 = self.entry;
+                                                                            var $2932 = $2931;
+                                                                            return $2932;
                                                                     };
                                                                 })()));
-                                                                var _new_world$31 = $2936;
+                                                                var _new_world$31 = $2930;
                                                                 break;
                                                         };
-                                                        var $2926 = Litereum$reduce$(Litereum$Runtime$new$(_new_world$31, $2918, $2923, $2924, $2911));
-                                                        var $2921 = $2926;
+                                                        var $2920 = Litereum$reduce$(Litereum$Runtime$new$(_new_world$31, $2912, $2917, $2918, $2905));
+                                                        var $2915 = $2920;
                                                         break;
                                                 };
-                                                var $2916 = $2921;
+                                                var $2910 = $2915;
                                                 break;
                                         };
-                                        var $2914 = $2916;
+                                        var $2908 = $2910;
                                         break;
                                 };
-                                var $2912 = $2914;
+                                var $2906 = $2908;
                                 break;
                             case 'Maybe.none':
-                                var $2939 = _state$1;
-                                var $2912 = $2939;
+                                var $2933 = _state$1;
+                                var $2906 = $2933;
                                 break;
                         };
-                        var $2775 = $2912;
+                        var $2769 = $2906;
                         break;
                     case 'Litereum.Term.create':
                     case 'Litereum.Term.word':
-                        var $2940 = _state$1;
-                        var $2775 = $2940;
+                        var $2934 = _state$1;
+                        var $2769 = $2934;
                         break;
                 };
-                var $2769 = $2775;
+                var $2763 = $2769;
                 break;
         };
-        return $2769;
+        return $2763;
     };
     const Litereum$reduce = x0 => Litereum$reduce$(x0);
 
@@ -10350,50 +10328,50 @@ module.exports = (function() {
         var self = _state$1;
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2942 = self.world;
-                var $2943 = self.subst;
-                var $2944 = self.fresh;
-                var $2945 = self.gas;
-                var $2946 = self.term;
-                var self = $2946;
+                var $2936 = self.world;
+                var $2937 = self.subst;
+                var $2938 = self.fresh;
+                var $2939 = self.gas;
+                var $2940 = self.term;
+                var self = $2940;
                 switch (self._) {
                     case 'List.cons':
-                        var $2948 = self.head;
-                        var $2949 = self.tail;
-                        var self = Litereum$normalize$(Litereum$Runtime$new$($2942, $2943, $2944, $2945, $2948));
+                        var $2942 = self.head;
+                        var $2943 = self.tail;
+                        var self = Litereum$normalize$(Litereum$Runtime$new$($2936, $2937, $2938, $2939, $2942));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $2951 = self.world;
-                                var $2952 = self.subst;
-                                var $2953 = self.fresh;
-                                var $2954 = self.gas;
-                                var $2955 = self.term;
-                                var self = Litereum$normalize$many$(Litereum$Runtime$new$($2951, $2952, $2953, $2954, $2949));
+                                var $2945 = self.world;
+                                var $2946 = self.subst;
+                                var $2947 = self.fresh;
+                                var $2948 = self.gas;
+                                var $2949 = self.term;
+                                var self = Litereum$normalize$many$(Litereum$Runtime$new$($2945, $2946, $2947, $2948, $2943));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2957 = self.world;
-                                        var $2958 = self.subst;
-                                        var $2959 = self.fresh;
-                                        var $2960 = self.gas;
-                                        var $2961 = self.term;
-                                        var $2962 = Litereum$Runtime$new$($2957, $2958, $2959, $2960, List$cons$($2955, $2961));
-                                        var $2956 = $2962;
+                                        var $2951 = self.world;
+                                        var $2952 = self.subst;
+                                        var $2953 = self.fresh;
+                                        var $2954 = self.gas;
+                                        var $2955 = self.term;
+                                        var $2956 = Litereum$Runtime$new$($2951, $2952, $2953, $2954, List$cons$($2949, $2955));
+                                        var $2950 = $2956;
                                         break;
                                 };
-                                var $2950 = $2956;
+                                var $2944 = $2950;
                                 break;
                         };
-                        var $2947 = $2950;
+                        var $2941 = $2944;
                         break;
                     case 'List.nil':
-                        var $2963 = _state$1;
-                        var $2947 = $2963;
+                        var $2957 = _state$1;
+                        var $2941 = $2957;
                         break;
                 };
-                var $2941 = $2947;
+                var $2935 = $2941;
                 break;
         };
-        return $2941;
+        return $2935;
     };
     const Litereum$normalize$many = x0 => Litereum$normalize$many$(x0);
 
@@ -10401,80 +10379,80 @@ module.exports = (function() {
         var self = _state$3;
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2965 = self.world;
-                var $2966 = self.subst;
-                var $2967 = self.fresh;
-                var $2968 = self.gas;
-                var $2969 = self.term;
+                var $2959 = self.world;
+                var $2960 = self.subst;
+                var $2961 = self.fresh;
+                var $2962 = self.gas;
+                var $2963 = self.term;
                 var self = _ctrs$1;
                 switch (self._) {
                     case 'List.cons':
-                        var $2971 = self.head;
-                        var $2972 = self.tail;
-                        var self = $2969;
+                        var $2965 = self.head;
+                        var $2966 = self.tail;
+                        var self = $2963;
                         switch (self._) {
                             case 'List.cons':
-                                var $2974 = self.head;
-                                var $2975 = self.tail;
+                                var $2968 = self.head;
+                                var $2969 = self.tail;
                                 var _nams$13 = List$map$(a1 => ((_name$2 + ".") + a1), (() => {
-                                    var self = $2971;
+                                    var self = $2965;
                                     switch (self._) {
                                         case 'Litereum.Constructor.new':
-                                            var $2977 = self.field_names;
-                                            var $2978 = $2977;
-                                            return $2978;
+                                            var $2971 = self.field_names;
+                                            var $2972 = $2971;
+                                            return $2972;
                                     };
                                 })());
                                 var _vals$14 = List$map$(Litereum$Term$var, _nams$13);
-                                var _subst$15 = Litereum$extend$($2966, _nams$13, _vals$14);
-                                var self = Litereum$normalize$(Litereum$Runtime$new$($2965, _subst$15, $2967, $2968, $2974));
+                                var _subst$15 = Litereum$extend$($2960, _nams$13, _vals$14);
+                                var self = Litereum$normalize$(Litereum$Runtime$new$($2959, _subst$15, $2961, $2962, $2968));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $2979 = self.world;
-                                        var $2980 = self.subst;
-                                        var $2981 = self.fresh;
-                                        var $2982 = self.gas;
-                                        var $2983 = self.term;
-                                        var self = Litereum$normalize$cases$($2972, _name$2, Litereum$Runtime$new$($2979, $2980, $2981, $2982, $2975));
+                                        var $2973 = self.world;
+                                        var $2974 = self.subst;
+                                        var $2975 = self.fresh;
+                                        var $2976 = self.gas;
+                                        var $2977 = self.term;
+                                        var self = Litereum$normalize$cases$($2966, _name$2, Litereum$Runtime$new$($2973, $2974, $2975, $2976, $2969));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $2985 = self.world;
-                                                var $2986 = self.subst;
-                                                var $2987 = self.fresh;
-                                                var $2988 = self.gas;
-                                                var $2989 = self.term;
-                                                var $2990 = Litereum$Runtime$new$($2985, $2986, $2987, $2988, List$cons$($2983, $2989));
-                                                var $2984 = $2990;
+                                                var $2979 = self.world;
+                                                var $2980 = self.subst;
+                                                var $2981 = self.fresh;
+                                                var $2982 = self.gas;
+                                                var $2983 = self.term;
+                                                var $2984 = Litereum$Runtime$new$($2979, $2980, $2981, $2982, List$cons$($2977, $2983));
+                                                var $2978 = $2984;
                                                 break;
                                         };
-                                        var $2976 = $2984;
+                                        var $2970 = $2978;
                                         break;
                                 };
-                                var $2973 = $2976;
+                                var $2967 = $2970;
                                 break;
                             case 'List.nil':
-                                var $2991 = _state$3;
-                                var $2973 = $2991;
+                                var $2985 = _state$3;
+                                var $2967 = $2985;
                                 break;
                         };
-                        var $2970 = $2973;
+                        var $2964 = $2967;
                         break;
                     case 'List.nil':
-                        var self = $2969;
+                        var self = $2963;
                         switch (self._) {
                             case 'List.nil':
                             case 'List.cons':
-                                var $2993 = _state$3;
-                                var $2992 = $2993;
+                                var $2987 = _state$3;
+                                var $2986 = $2987;
                                 break;
                         };
-                        var $2970 = $2992;
+                        var $2964 = $2986;
                         break;
                 };
-                var $2964 = $2970;
+                var $2958 = $2964;
                 break;
         };
-        return $2964;
+        return $2958;
     };
     const Litereum$normalize$cases = x0 => x1 => x2 => Litereum$normalize$cases$(x0, x1, x2);
 
@@ -10482,187 +10460,187 @@ module.exports = (function() {
         var self = Litereum$reduce$(_state$1);
         switch (self._) {
             case 'Litereum.Runtime.new':
-                var $2995 = self.world;
-                var $2996 = self.subst;
-                var $2997 = self.fresh;
-                var $2998 = self.gas;
-                var $2999 = self.term;
-                var self = $2999;
+                var $2989 = self.world;
+                var $2990 = self.subst;
+                var $2991 = self.fresh;
+                var $2992 = self.gas;
+                var $2993 = self.term;
+                var self = $2993;
                 switch (self._) {
                     case 'Litereum.Term.create':
-                        var $3001 = self.ctor;
-                        var $3002 = self.vals;
-                        var self = Litereum$normalize$many$(Litereum$Runtime$new$($2995, $2996, $2997, $2998, $3002));
+                        var $2995 = self.ctor;
+                        var $2996 = self.vals;
+                        var self = Litereum$normalize$many$(Litereum$Runtime$new$($2989, $2990, $2991, $2992, $2996));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $3004 = self.world;
-                                var $3005 = self.subst;
-                                var $3006 = self.fresh;
-                                var $3007 = self.gas;
-                                var $3008 = self.term;
-                                var $3009 = Litereum$Runtime$new$($3004, $3005, $3006, $3007, Litereum$Term$create$($3001, $3008));
-                                var $3003 = $3009;
+                                var $2998 = self.world;
+                                var $2999 = self.subst;
+                                var $3000 = self.fresh;
+                                var $3001 = self.gas;
+                                var $3002 = self.term;
+                                var $3003 = Litereum$Runtime$new$($2998, $2999, $3000, $3001, Litereum$Term$create$($2995, $3002));
+                                var $2997 = $3003;
                                 break;
                         };
-                        var $3000 = $3003;
+                        var $2994 = $2997;
                         break;
                     case 'Litereum.Term.match':
-                        var $3010 = self.name;
-                        var $3011 = self.data;
-                        var $3012 = self.cses;
-                        var self = Litereum$get_constructors$($2995, $3011);
+                        var $3004 = self.name;
+                        var $3005 = self.data;
+                        var $3006 = self.cses;
+                        var self = Litereum$get_constructors$($2989, $3005);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3014 = self.value;
-                                var _ctrs$11 = $3014;
+                                var $3008 = self.value;
+                                var _ctrs$11 = $3008;
                                 var self = _ctrs$11;
                                 switch (self._) {
                                     case 'List.nil':
-                                        var self = Litereum$normalize$cases$(_ctrs$11, $3010, Litereum$Runtime$new$($2995, $2996, $2997, $2998, $3012));
+                                        var self = Litereum$normalize$cases$(_ctrs$11, $3004, Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3006));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3017 = self.world;
-                                                var $3018 = self.subst;
-                                                var $3019 = self.fresh;
-                                                var $3020 = self.gas;
-                                                var $3021 = self.term;
-                                                var $3022 = Litereum$Runtime$new$($3017, $3018, $3019, $3020, Litereum$Term$match$($3010, $3011, $3021));
-                                                var $3016 = $3022;
+                                                var $3011 = self.world;
+                                                var $3012 = self.subst;
+                                                var $3013 = self.fresh;
+                                                var $3014 = self.gas;
+                                                var $3015 = self.term;
+                                                var $3016 = Litereum$Runtime$new$($3011, $3012, $3013, $3014, Litereum$Term$match$($3004, $3005, $3015));
+                                                var $3010 = $3016;
                                                 break;
                                         };
-                                        var $3015 = $3016;
+                                        var $3009 = $3010;
                                         break;
                                     case 'List.cons':
-                                        var self = Litereum$normalize$cases$(_ctrs$11, $3010, Litereum$Runtime$new$($2995, $2996, $2997, $2998, $3012));
+                                        var self = Litereum$normalize$cases$(_ctrs$11, $3004, Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3006));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3024 = self.world;
-                                                var $3025 = self.subst;
-                                                var $3026 = self.fresh;
-                                                var $3027 = self.gas;
-                                                var $3028 = self.term;
-                                                var $3029 = Litereum$Runtime$new$($3024, $3025, $3026, $3027, Litereum$Term$match$($3010, $3011, $3028));
-                                                var $3023 = $3029;
+                                                var $3018 = self.world;
+                                                var $3019 = self.subst;
+                                                var $3020 = self.fresh;
+                                                var $3021 = self.gas;
+                                                var $3022 = self.term;
+                                                var $3023 = Litereum$Runtime$new$($3018, $3019, $3020, $3021, Litereum$Term$match$($3004, $3005, $3022));
+                                                var $3017 = $3023;
                                                 break;
                                         };
-                                        var $3015 = $3023;
+                                        var $3009 = $3017;
                                         break;
                                 };
-                                var $3013 = $3015;
+                                var $3007 = $3009;
                                 break;
                             case 'Maybe.none':
-                                var $3030 = Litereum$Runtime$new$($2995, $2996, $2997, $2998, $2999);
-                                var $3013 = $3030;
+                                var $3024 = Litereum$Runtime$new$($2989, $2990, $2991, $2992, $2993);
+                                var $3007 = $3024;
                                 break;
                         };
-                        var $3000 = $3013;
+                        var $2994 = $3007;
                         break;
                     case 'Litereum.Term.compare':
-                        var $3031 = self.val0;
-                        var $3032 = self.val1;
-                        var $3033 = self.iflt;
-                        var $3034 = self.ifeq;
-                        var $3035 = self.ifgt;
-                        var self = Litereum$normalize$(Litereum$Runtime$new$($2995, $2996, $2997, $2998, $3031));
+                        var $3025 = self.val0;
+                        var $3026 = self.val1;
+                        var $3027 = self.iflt;
+                        var $3028 = self.ifeq;
+                        var $3029 = self.ifgt;
+                        var self = Litereum$normalize$(Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3025));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $3037 = self.world;
-                                var $3038 = self.subst;
-                                var $3039 = self.fresh;
-                                var $3040 = self.gas;
-                                var $3041 = self.term;
-                                var self = Litereum$normalize$(Litereum$Runtime$new$($3037, $3038, $3039, $3040, $3032));
+                                var $3031 = self.world;
+                                var $3032 = self.subst;
+                                var $3033 = self.fresh;
+                                var $3034 = self.gas;
+                                var $3035 = self.term;
+                                var self = Litereum$normalize$(Litereum$Runtime$new$($3031, $3032, $3033, $3034, $3026));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $3043 = self.world;
-                                        var $3044 = self.subst;
-                                        var $3045 = self.fresh;
-                                        var $3046 = self.gas;
-                                        var $3047 = self.term;
-                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3043, $3044, $3045, $3046, $3033));
+                                        var $3037 = self.world;
+                                        var $3038 = self.subst;
+                                        var $3039 = self.fresh;
+                                        var $3040 = self.gas;
+                                        var $3041 = self.term;
+                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3037, $3038, $3039, $3040, $3027));
                                         switch (self._) {
                                             case 'Litereum.Runtime.new':
-                                                var $3049 = self.world;
-                                                var $3050 = self.subst;
-                                                var $3051 = self.fresh;
-                                                var $3052 = self.gas;
-                                                var $3053 = self.term;
-                                                var self = Litereum$normalize$(Litereum$Runtime$new$($3049, $3050, $3051, $3052, $3034));
+                                                var $3043 = self.world;
+                                                var $3044 = self.subst;
+                                                var $3045 = self.fresh;
+                                                var $3046 = self.gas;
+                                                var $3047 = self.term;
+                                                var self = Litereum$normalize$(Litereum$Runtime$new$($3043, $3044, $3045, $3046, $3028));
                                                 switch (self._) {
                                                     case 'Litereum.Runtime.new':
-                                                        var $3055 = self.world;
-                                                        var $3056 = self.subst;
-                                                        var $3057 = self.fresh;
-                                                        var $3058 = self.gas;
-                                                        var $3059 = self.term;
-                                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3055, $3056, $3057, $3058, $3035));
+                                                        var $3049 = self.world;
+                                                        var $3050 = self.subst;
+                                                        var $3051 = self.fresh;
+                                                        var $3052 = self.gas;
+                                                        var $3053 = self.term;
+                                                        var self = Litereum$normalize$(Litereum$Runtime$new$($3049, $3050, $3051, $3052, $3029));
                                                         switch (self._) {
                                                             case 'Litereum.Runtime.new':
-                                                                var $3061 = self.world;
-                                                                var $3062 = self.subst;
-                                                                var $3063 = self.fresh;
-                                                                var $3064 = self.gas;
-                                                                var $3065 = self.term;
-                                                                var $3066 = Litereum$Runtime$new$($3061, $3062, $3063, $3064, Litereum$Term$compare$($3041, $3047, $3053, $3059, $3065));
-                                                                var $3060 = $3066;
+                                                                var $3055 = self.world;
+                                                                var $3056 = self.subst;
+                                                                var $3057 = self.fresh;
+                                                                var $3058 = self.gas;
+                                                                var $3059 = self.term;
+                                                                var $3060 = Litereum$Runtime$new$($3055, $3056, $3057, $3058, Litereum$Term$compare$($3035, $3041, $3047, $3053, $3059));
+                                                                var $3054 = $3060;
                                                                 break;
                                                         };
-                                                        var $3054 = $3060;
+                                                        var $3048 = $3054;
                                                         break;
                                                 };
-                                                var $3048 = $3054;
+                                                var $3042 = $3048;
                                                 break;
                                         };
-                                        var $3042 = $3048;
+                                        var $3036 = $3042;
                                         break;
                                 };
-                                var $3036 = $3042;
+                                var $3030 = $3036;
                                 break;
                         };
-                        var $3000 = $3036;
+                        var $2994 = $3030;
                         break;
                     case 'Litereum.Term.operate':
-                        var $3067 = self.oper;
-                        var $3068 = self.val0;
-                        var $3069 = self.val1;
-                        var self = Litereum$normalize$(Litereum$Runtime$new$($2995, $2996, $2997, $2998, $3068));
+                        var $3061 = self.oper;
+                        var $3062 = self.val0;
+                        var $3063 = self.val1;
+                        var self = Litereum$normalize$(Litereum$Runtime$new$($2989, $2990, $2991, $2992, $3062));
                         switch (self._) {
                             case 'Litereum.Runtime.new':
-                                var $3071 = self.world;
-                                var $3072 = self.subst;
-                                var $3073 = self.fresh;
-                                var $3074 = self.gas;
-                                var $3075 = self.term;
-                                var self = Litereum$normalize$(Litereum$Runtime$new$($3071, $3072, $3073, $3074, $3069));
+                                var $3065 = self.world;
+                                var $3066 = self.subst;
+                                var $3067 = self.fresh;
+                                var $3068 = self.gas;
+                                var $3069 = self.term;
+                                var self = Litereum$normalize$(Litereum$Runtime$new$($3065, $3066, $3067, $3068, $3063));
                                 switch (self._) {
                                     case 'Litereum.Runtime.new':
-                                        var $3077 = self.world;
-                                        var $3078 = self.subst;
-                                        var $3079 = self.fresh;
-                                        var $3080 = self.gas;
-                                        var $3081 = self.term;
-                                        var $3082 = Litereum$Runtime$new$($3077, $3078, $3079, $3080, Litereum$Term$operate$($3067, $3075, $3081));
-                                        var $3076 = $3082;
+                                        var $3071 = self.world;
+                                        var $3072 = self.subst;
+                                        var $3073 = self.fresh;
+                                        var $3074 = self.gas;
+                                        var $3075 = self.term;
+                                        var $3076 = Litereum$Runtime$new$($3071, $3072, $3073, $3074, Litereum$Term$operate$($3061, $3069, $3075));
+                                        var $3070 = $3076;
                                         break;
                                 };
-                                var $3070 = $3076;
+                                var $3064 = $3070;
                                 break;
                         };
-                        var $3000 = $3070;
+                        var $2994 = $3064;
                         break;
                     case 'Litereum.Term.var':
                     case 'Litereum.Term.call':
                     case 'Litereum.Term.let':
                     case 'Litereum.Term.word':
                     case 'Litereum.Term.bind':
-                        var $3083 = Litereum$Runtime$new$($2995, $2996, $2997, $2998, $2999);
-                        var $3000 = $3083;
+                        var $3077 = Litereum$Runtime$new$($2989, $2990, $2991, $2992, $2993);
+                        var $2994 = $3077;
                         break;
                 };
-                var $2994 = $3000;
+                var $2988 = $2994;
                 break;
         };
-        return $2994;
+        return $2988;
     };
     const Litereum$normalize = x0 => Litereum$normalize$(x0);
 
@@ -10679,13 +10657,13 @@ module.exports = (function() {
                 var self = _xs$1;
                 switch (self._) {
                     case 'List.cons':
-                        var $3084 = self.head;
-                        var $3085 = self.tail;
-                        var $3086 = String$flatten$go$($3085, (_res$2 + $3084));
-                        return $3086;
+                        var $3078 = self.head;
+                        var $3079 = self.tail;
+                        var $3080 = String$flatten$go$($3079, (_res$2 + $3078));
+                        return $3080;
                     case 'List.nil':
-                        var $3087 = _res$2;
-                        return $3087;
+                        var $3081 = _res$2;
+                        return $3081;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -10695,8 +10673,8 @@ module.exports = (function() {
     const String$flatten$go = x0 => x1 => String$flatten$go$(x0, x1);
 
     function String$flatten$(_xs$1) {
-        var $3088 = String$flatten$go$(_xs$1, "");
-        return $3088;
+        var $3082 = String$flatten$go$(_xs$1, "");
+        return $3082;
     };
     const String$flatten = x0 => String$flatten$(x0);
 
@@ -10704,32 +10682,32 @@ module.exports = (function() {
         var self = _list$2;
         switch (self._) {
             case 'List.cons':
-                var $3090 = self.head;
-                var $3091 = self.tail;
-                var $3092 = String$flatten$(List$cons$((() => {
+                var $3084 = self.head;
+                var $3085 = self.tail;
+                var $3086 = String$flatten$(List$cons$((() => {
                     var self = _fst$3;
                     if (self) {
-                        var $3093 = "";
-                        return $3093;
+                        var $3087 = "";
+                        return $3087;
                     } else {
-                        var $3094 = _sep$1;
-                        return $3094;
+                        var $3088 = _sep$1;
+                        return $3088;
                     };
-                })(), List$cons$($3090, List$cons$(String$join$go$(_sep$1, $3091, Bool$false), List$nil))));
-                var $3089 = $3092;
+                })(), List$cons$($3084, List$cons$(String$join$go$(_sep$1, $3085, Bool$false), List$nil))));
+                var $3083 = $3086;
                 break;
             case 'List.nil':
-                var $3095 = "";
-                var $3089 = $3095;
+                var $3089 = "";
+                var $3083 = $3089;
                 break;
         };
-        return $3089;
+        return $3083;
     };
     const String$join$go = x0 => x1 => x2 => String$join$go$(x0, x1, x2);
 
     function String$join$(_sep$1, _list$2) {
-        var $3096 = String$join$go$(_sep$1, _list$2, Bool$true);
-        return $3096;
+        var $3090 = String$join$go$(_sep$1, _list$2, Bool$true);
+        return $3090;
     };
     const String$join = x0 => x1 => String$join$(x0, x1);
 
@@ -10737,16 +10715,16 @@ module.exports = (function() {
         var self = _type$2;
         switch (self._) {
             case 'Litereum.Type.data':
-                var $3098 = self.name;
-                var $3099 = $3098;
-                var $3097 = $3099;
+                var $3092 = self.name;
+                var $3093 = $3092;
+                var $3091 = $3093;
                 break;
             case 'Litereum.Type.word':
-                var $3100 = "#word";
-                var $3097 = $3100;
+                var $3094 = "#word";
+                var $3091 = $3094;
                 break;
         };
-        return $3097;
+        return $3091;
     };
     const Litereum$show$type = x0 => x1 => Litereum$show$type$(x0, x1);
 
@@ -10754,36 +10732,36 @@ module.exports = (function() {
         var self = _word$6;
         switch (self._) {
             case 'Word.o':
-                var $3102 = self.pred;
-                var $3103 = _w0$4(Word$fold$(_nil$3, _w0$4, _w1$5, $3102));
-                var $3101 = $3103;
+                var $3096 = self.pred;
+                var $3097 = _w0$4(Word$fold$(_nil$3, _w0$4, _w1$5, $3096));
+                var $3095 = $3097;
                 break;
             case 'Word.i':
-                var $3104 = self.pred;
-                var $3105 = _w1$5(Word$fold$(_nil$3, _w0$4, _w1$5, $3104));
-                var $3101 = $3105;
+                var $3098 = self.pred;
+                var $3099 = _w1$5(Word$fold$(_nil$3, _w0$4, _w1$5, $3098));
+                var $3095 = $3099;
                 break;
             case 'Word.e':
-                var $3106 = _nil$3;
-                var $3101 = $3106;
+                var $3100 = _nil$3;
+                var $3095 = $3100;
                 break;
         };
-        return $3101;
+        return $3095;
     };
     const Word$fold = x0 => x1 => x2 => x3 => Word$fold$(x0, x1, x2, x3);
 
     function Word$to_nat$(_word$2) {
-        var $3107 = Word$fold$(0n, a1 => (2n * a1), (_x$4 => {
-            var $3108 = Nat$succ$((2n * _x$4));
-            return $3108;
+        var $3101 = Word$fold$(0n, a1 => (2n * a1), (_x$4 => {
+            var $3102 = Nat$succ$((2n * _x$4));
+            return $3102;
         }), _word$2);
-        return $3107;
+        return $3101;
     };
     const Word$to_nat = x0 => Word$to_nat$(x0);
 
     function Word$show$(_size$1, _a$2) {
-        var $3109 = Nat$show$(Word$to_nat$(_a$2));
-        return $3109;
+        var $3103 = Nat$show$(Word$to_nat$(_a$2));
+        return $3103;
     };
     const Word$show = x0 => x1 => Word$show$(x0, x1);
     const U64$show = a0 => (String(a0));
@@ -10792,151 +10770,151 @@ module.exports = (function() {
         var self = _term$2;
         switch (self._) {
             case 'Litereum.Term.var':
-                var $3111 = self.name;
-                var $3112 = $3111;
-                var $3110 = $3112;
+                var $3105 = self.name;
+                var $3106 = $3105;
+                var $3104 = $3106;
                 break;
             case 'Litereum.Term.call':
-                var $3113 = self.bond;
-                var $3114 = self.args;
-                var _bond$5 = $3113;
-                var _args$6 = List$map$(Litereum$show$term(_world$1), $3114);
-                var $3115 = (_bond$5 + ("(" + (String$join$(",", _args$6) + ")")));
-                var $3110 = $3115;
+                var $3107 = self.bond;
+                var $3108 = self.args;
+                var _bond$5 = $3107;
+                var _args$6 = List$map$(Litereum$show$term(_world$1), $3108);
+                var $3109 = (_bond$5 + ("(" + (String$join$(",", _args$6) + ")")));
+                var $3104 = $3109;
                 break;
             case 'Litereum.Term.let':
-                var $3116 = self.name;
-                var $3117 = self.type;
-                var $3118 = self.expr;
-                var $3119 = self.body;
-                var _name$7 = $3116;
-                var _type$8 = Litereum$show$type$(_world$1, $3117);
-                var _expr$9 = Litereum$show$term$(_world$1, $3118);
-                var _body$10 = Litereum$show$term$(_world$1, $3119);
-                var $3120 = ("let " + (_name$7 + (" : " + (_type$8 + (" = " + (_expr$9 + (" " + _body$10)))))));
-                var $3110 = $3120;
+                var $3110 = self.name;
+                var $3111 = self.type;
+                var $3112 = self.expr;
+                var $3113 = self.body;
+                var _name$7 = $3110;
+                var _type$8 = Litereum$show$type$(_world$1, $3111);
+                var _expr$9 = Litereum$show$term$(_world$1, $3112);
+                var _body$10 = Litereum$show$term$(_world$1, $3113);
+                var $3114 = ("let " + (_name$7 + (" : " + (_type$8 + (" = " + (_expr$9 + (" " + _body$10)))))));
+                var $3104 = $3114;
                 break;
             case 'Litereum.Term.create':
-                var $3121 = self.ctor;
-                var $3122 = self.vals;
-                var _vals$5 = List$mapped$($3122, Litereum$show$term(_world$1));
-                var $3123 = ($3121 + ("{" + (String$join$(",", _vals$5) + "}")));
-                var $3110 = $3123;
+                var $3115 = self.ctor;
+                var $3116 = self.vals;
+                var _vals$5 = List$mapped$($3116, Litereum$show$term(_world$1));
+                var $3117 = ($3115 + ("{" + (String$join$(",", _vals$5) + "}")));
+                var $3104 = $3117;
                 break;
             case 'Litereum.Term.match':
-                var $3124 = self.name;
-                var $3125 = self.data;
-                var $3126 = self.cses;
-                var self = Litereum$get_data$(_world$1, $3125);
+                var $3118 = self.name;
+                var $3119 = self.data;
+                var $3120 = self.cses;
+                var self = Litereum$get_data$(_world$1, $3119);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3128 = self.value;
-                        var _data$7 = $3128;
+                        var $3122 = self.value;
+                        var _data$7 = $3122;
                         var self = _data$7;
                         switch (self._) {
                             case 'Litereum.Data.new':
-                                var $3130 = self.constructors;
-                                var _name$10 = $3124;
-                                var _cses$11 = List$zipped_with$($3130, $3126, (_case_ctor$11 => _case_body$12 => {
-                                    var $3132 = ((() => {
+                                var $3124 = self.constructors;
+                                var _name$10 = $3118;
+                                var _cses$11 = List$zipped_with$($3124, $3120, (_case_ctor$11 => _case_body$12 => {
+                                    var $3126 = ((() => {
                                         var self = _case_ctor$11;
                                         switch (self._) {
                                             case 'Litereum.Constructor.new':
-                                                var $3133 = self.name;
-                                                var $3134 = $3133;
-                                                return $3134;
+                                                var $3127 = self.name;
+                                                var $3128 = $3127;
+                                                return $3128;
                                         };
                                     })() + (": " + Litereum$show$term$(_world$1, _case_body$12)));
-                                    return $3132;
+                                    return $3126;
                                 }));
-                                var $3131 = ("case " + (_name$10 + (" : " + ($3125 + (" { " + (String$join$(", ", _cses$11) + " }"))))));
-                                var $3129 = $3131;
+                                var $3125 = ("case " + (_name$10 + (" : " + ($3119 + (" { " + (String$join$(", ", _cses$11) + " }"))))));
+                                var $3123 = $3125;
                                 break;
                         };
-                        var $3127 = $3129;
+                        var $3121 = $3123;
                         break;
                     case 'Maybe.none':
-                        var $3135 = "?";
-                        var $3127 = $3135;
+                        var $3129 = "?";
+                        var $3121 = $3129;
                         break;
                 };
-                var $3110 = $3127;
+                var $3104 = $3121;
                 break;
             case 'Litereum.Term.word':
-                var $3136 = self.numb;
-                var $3137 = ("#" + (String($3136)));
-                var $3110 = $3137;
+                var $3130 = self.numb;
+                var $3131 = ("#" + (String($3130)));
+                var $3104 = $3131;
                 break;
             case 'Litereum.Term.compare':
-                var $3138 = self.val0;
-                var $3139 = self.val1;
-                var $3140 = self.iflt;
-                var $3141 = self.ifeq;
-                var $3142 = self.ifgt;
-                var _val0$8 = Litereum$show$term$(_world$1, $3138);
-                var _val1$9 = Litereum$show$term$(_world$1, $3139);
-                var _iflt$10 = Litereum$show$term$(_world$1, $3140);
-                var _ifeq$11 = Litereum$show$term$(_world$1, $3141);
-                var _ifgt$12 = Litereum$show$term$(_world$1, $3142);
-                var $3143 = ("compare " + (_val0$8 + (" " + (_val1$9 + (" { _<_: " + (_iflt$10 + (" _=_: " + (_ifeq$11 + (" _>_: " + (_ifgt$12 + " }"))))))))));
-                var $3110 = $3143;
+                var $3132 = self.val0;
+                var $3133 = self.val1;
+                var $3134 = self.iflt;
+                var $3135 = self.ifeq;
+                var $3136 = self.ifgt;
+                var _val0$8 = Litereum$show$term$(_world$1, $3132);
+                var _val1$9 = Litereum$show$term$(_world$1, $3133);
+                var _iflt$10 = Litereum$show$term$(_world$1, $3134);
+                var _ifeq$11 = Litereum$show$term$(_world$1, $3135);
+                var _ifgt$12 = Litereum$show$term$(_world$1, $3136);
+                var $3137 = ("compare " + (_val0$8 + (" " + (_val1$9 + (" { _<_: " + (_iflt$10 + (" _=_: " + (_ifeq$11 + (" _>_: " + (_ifgt$12 + " }"))))))))));
+                var $3104 = $3137;
                 break;
             case 'Litereum.Term.operate':
-                var $3144 = self.oper;
-                var $3145 = self.val0;
-                var $3146 = self.val1;
-                var self = $3144;
+                var $3138 = self.oper;
+                var $3139 = self.val0;
+                var $3140 = self.val1;
+                var self = $3138;
                 switch (self._) {
                     case 'Litereum.Operation.add':
-                        var $3148 = "+";
-                        var _oper$6 = $3148;
+                        var $3142 = "+";
+                        var _oper$6 = $3142;
                         break;
                     case 'Litereum.Operation.sub':
-                        var $3149 = "-";
-                        var _oper$6 = $3149;
+                        var $3143 = "-";
+                        var _oper$6 = $3143;
                         break;
                     case 'Litereum.Operation.mul':
-                        var $3150 = "*";
-                        var _oper$6 = $3150;
+                        var $3144 = "*";
+                        var _oper$6 = $3144;
                         break;
                     case 'Litereum.Operation.div':
-                        var $3151 = "/";
-                        var _oper$6 = $3151;
+                        var $3145 = "/";
+                        var _oper$6 = $3145;
                         break;
                     case 'Litereum.Operation.mod':
-                        var $3152 = "%";
-                        var _oper$6 = $3152;
+                        var $3146 = "%";
+                        var _oper$6 = $3146;
                         break;
                     case 'Litereum.Operation.or':
-                        var $3153 = "|";
-                        var _oper$6 = $3153;
+                        var $3147 = "|";
+                        var _oper$6 = $3147;
                         break;
                     case 'Litereum.Operation.and':
-                        var $3154 = "&";
-                        var _oper$6 = $3154;
+                        var $3148 = "&";
+                        var _oper$6 = $3148;
                         break;
                     case 'Litereum.Operation.xor':
-                        var $3155 = "^";
-                        var _oper$6 = $3155;
+                        var $3149 = "^";
+                        var _oper$6 = $3149;
                         break;
                 };
-                var _val0$7 = Litereum$show$term$(_world$1, $3145);
-                var _val1$8 = Litereum$show$term$(_world$1, $3146);
-                var $3147 = (_oper$6 + ("(" + (_val0$7 + ("," + (_val1$8 + ")")))));
-                var $3110 = $3147;
+                var _val0$7 = Litereum$show$term$(_world$1, $3139);
+                var _val1$8 = Litereum$show$term$(_world$1, $3140);
+                var $3141 = (_oper$6 + ("(" + (_val0$7 + ("," + (_val1$8 + ")")))));
+                var $3104 = $3141;
                 break;
             case 'Litereum.Term.bind':
-                var $3156 = self.name;
-                var $3157 = self.main;
-                var $3158 = self.body;
-                var _name$6 = $3156;
-                var _main$7 = Litereum$show$term$(_world$1, $3157);
-                var _body$8 = Litereum$show$term$(_world$1, $3158);
-                var $3159 = ("bind " + (_name$6 + (" { " + (_main$7 + (" } " + _body$8)))));
-                var $3110 = $3159;
+                var $3150 = self.name;
+                var $3151 = self.main;
+                var $3152 = self.body;
+                var _name$6 = $3150;
+                var _main$7 = Litereum$show$term$(_world$1, $3151);
+                var _body$8 = Litereum$show$term$(_world$1, $3152);
+                var $3153 = ("bind " + (_name$6 + (" { " + (_main$7 + (" } " + _body$8)))));
+                var $3104 = $3153;
                 break;
         };
-        return $3110;
+        return $3104;
     };
     const Litereum$show$term = x0 => x1 => Litereum$show$term$(x0, x1);
 
@@ -10944,22 +10922,22 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $3161 = self.name_count;
-                var $3162 = self.name_to_index;
-                var $3163 = self.index_to_name;
-                var $3164 = self.entry;
+                var $3155 = self.name_count;
+                var $3156 = self.name_to_index;
+                var $3157 = self.index_to_name;
+                var $3158 = self.entry;
                 var self = _transaction$2;
                 switch (self._) {
                     case 'Litereum.Transaction.new_name':
-                        var $3166 = self.name;
-                        var _name$9 = $3166;
+                        var $3160 = self.name;
+                        var _name$9 = $3160;
                         var self = Map$get$(_name$9, (() => {
                             var self = _world$1;
                             switch (self._) {
                                 case 'Litereum.World.new':
-                                    var $3168 = self.name_to_index;
-                                    var $3169 = $3168;
-                                    return $3169;
+                                    var $3162 = self.name_to_index;
+                                    var $3163 = $3162;
+                                    return $3163;
                             };
                         })());
                         switch (self._) {
@@ -10967,477 +10945,477 @@ module.exports = (function() {
                                 var self = _world$1;
                                 switch (self._) {
                                     case 'Litereum.World.new':
-                                        var $3171 = self.name_to_index;
-                                        var $3172 = self.index_to_name;
-                                        var $3173 = self.entry;
-                                        var $3174 = Litereum$World$new$(($3161 + 1n), $3171, $3172, $3173);
-                                        var _world$10 = $3174;
+                                        var $3165 = self.name_to_index;
+                                        var $3166 = self.index_to_name;
+                                        var $3167 = self.entry;
+                                        var $3168 = Litereum$World$new$(($3155 + 1n), $3165, $3166, $3167);
+                                        var _world$10 = $3168;
                                         break;
                                 };
                                 var self = _world$10;
                                 switch (self._) {
                                     case 'Litereum.World.new':
-                                        var $3175 = self.name_count;
-                                        var $3176 = self.index_to_name;
-                                        var $3177 = self.entry;
-                                        var $3178 = Litereum$World$new$($3175, Map$set$(_name$9, $3161, $3162), $3176, $3177);
-                                        var _world$11 = $3178;
+                                        var $3169 = self.name_count;
+                                        var $3170 = self.index_to_name;
+                                        var $3171 = self.entry;
+                                        var $3172 = Litereum$World$new$($3169, Map$set$(_name$9, $3155, $3156), $3170, $3171);
+                                        var _world$11 = $3172;
                                         break;
                                 };
                                 var self = _world$11;
                                 switch (self._) {
                                     case 'Litereum.World.new':
-                                        var $3179 = self.name_count;
-                                        var $3180 = self.name_to_index;
-                                        var $3181 = self.entry;
-                                        var $3182 = Litereum$World$new$($3179, $3180, Map$set$(Nat$show$($3161), _name$9, $3163), $3181);
-                                        var _world$12 = $3182;
+                                        var $3173 = self.name_count;
+                                        var $3174 = self.name_to_index;
+                                        var $3175 = self.entry;
+                                        var $3176 = Litereum$World$new$($3173, $3174, Map$set$(Nat$show$($3155), _name$9, $3157), $3175);
+                                        var _world$12 = $3176;
                                         break;
                                 };
-                                var $3170 = Maybe$some$(_world$12);
-                                var $3167 = $3170;
+                                var $3164 = Maybe$some$(_world$12);
+                                var $3161 = $3164;
                                 break;
                             case 'Maybe.some':
-                                var $3183 = Maybe$none;
-                                var $3167 = $3183;
+                                var $3177 = Maybe$none;
+                                var $3161 = $3177;
                                 break;
                         };
-                        var $3165 = $3167;
+                        var $3159 = $3161;
                         break;
                     case 'Litereum.Transaction.new_data':
-                        var $3184 = self.data;
-                        var _data$9 = $3184;
+                        var $3178 = self.data;
+                        var _data$9 = $3178;
                         var self = _data$9;
                         switch (self._) {
                             case 'Litereum.Data.new':
-                                var $3186 = self.name;
-                                var self = Map$get$($3186, $3164);
+                                var $3180 = self.name;
+                                var self = Map$get$($3180, $3158);
                                 switch (self._) {
                                     case 'Maybe.none':
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3189 = Unit$new;
-                                            var _logger$12 = $3189;
+                                            var $3183 = Unit$new;
+                                            var _logger$12 = $3183;
                                         } else {
-                                            var $3190 = ((console.log(("- data " + $3186)), (_$12 => {
-                                                var $3191 = Unit$new;
-                                                return $3191;
+                                            var $3184 = ((console.log(("- data " + $3180)), (_$12 => {
+                                                var $3185 = Unit$new;
+                                                return $3185;
                                             })()));
-                                            var _logger$12 = $3190;
+                                            var _logger$12 = $3184;
                                         };
                                         var self = _world$1;
                                         switch (self._) {
                                             case 'Litereum.World.new':
-                                                var $3192 = self.name_count;
-                                                var $3193 = self.name_to_index;
-                                                var $3194 = self.index_to_name;
-                                                var $3195 = Litereum$World$new$($3192, $3193, $3194, Map$set$($3186, Litereum$Entry$data$(_data$9), $3164));
-                                                var _world$13 = $3195;
+                                                var $3186 = self.name_count;
+                                                var $3187 = self.name_to_index;
+                                                var $3188 = self.index_to_name;
+                                                var $3189 = Litereum$World$new$($3186, $3187, $3188, Map$set$($3180, Litereum$Entry$data$(_data$9), $3158));
+                                                var _world$13 = $3189;
                                                 break;
                                         };
-                                        var $3188 = Maybe$some$(_world$13);
-                                        var $3187 = $3188;
+                                        var $3182 = Maybe$some$(_world$13);
+                                        var $3181 = $3182;
                                         break;
                                     case 'Maybe.some':
-                                        var $3196 = Maybe$none;
-                                        var $3187 = $3196;
+                                        var $3190 = Maybe$none;
+                                        var $3181 = $3190;
                                         break;
                                 };
-                                var $3185 = $3187;
+                                var $3179 = $3181;
                                 break;
                         };
-                        var $3165 = $3185;
+                        var $3159 = $3179;
                         break;
                     case 'Litereum.Transaction.new_bond':
-                        var $3197 = self.bond;
-                        var _bond$9 = $3197;
+                        var $3191 = self.bond;
+                        var _bond$9 = $3191;
                         var self = _bond$9;
                         switch (self._) {
                             case 'Litereum.Bond.new':
-                                var $3199 = self.name;
-                                var $3200 = self.input_names;
-                                var $3201 = self.input_types;
-                                var $3202 = self.output_type;
-                                var $3203 = self.main;
-                                var self = Map$get$($3199, $3164);
+                                var $3193 = self.name;
+                                var $3194 = self.input_names;
+                                var $3195 = self.input_types;
+                                var $3196 = self.output_type;
+                                var $3197 = self.main;
+                                var self = Map$get$($3193, $3158);
                                 switch (self._) {
                                     case 'Maybe.none':
                                         var self = _world$1;
                                         switch (self._) {
                                             case 'Litereum.World.new':
-                                                var $3206 = self.name_count;
-                                                var $3207 = self.name_to_index;
-                                                var $3208 = self.index_to_name;
-                                                var $3209 = Litereum$World$new$($3206, $3207, $3208, Map$set$($3199, Litereum$Entry$bond$(_bond$9), $3164));
-                                                var _world$16 = $3209;
+                                                var $3200 = self.name_count;
+                                                var $3201 = self.name_to_index;
+                                                var $3202 = self.index_to_name;
+                                                var $3203 = Litereum$World$new$($3200, $3201, $3202, Map$set$($3193, Litereum$Entry$bond$(_bond$9), $3158));
+                                                var _world$16 = $3203;
                                                 break;
                                         };
-                                        var _context$17 = Litereum$extend$(Map$from_list$(List$nil), $3200, $3201);
+                                        var _context$17 = Litereum$extend$(Map$from_list$(List$nil), $3194, $3195);
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3210 = Maybe$some$(_world$16);
-                                            var $3205 = $3210;
+                                            var $3204 = Maybe$some$(_world$16);
+                                            var $3199 = $3204;
                                         } else {
-                                            var self = Litereum$check$(_context$17, _world$16, $3203, $3202);
+                                            var self = Litereum$check$(_context$17, _world$16, $3197, $3196);
                                             if (self) {
                                                 var self = _bipass$3;
                                                 if (self) {
-                                                    var $3213 = Unit$new;
-                                                    var _logger$18 = $3213;
+                                                    var $3207 = Unit$new;
+                                                    var _logger$18 = $3207;
                                                 } else {
-                                                    var $3214 = ((console.log(("- bond " + $3199)), (_$18 => {
-                                                        var $3215 = Unit$new;
-                                                        return $3215;
+                                                    var $3208 = ((console.log(("- bond " + $3193)), (_$18 => {
+                                                        var $3209 = Unit$new;
+                                                        return $3209;
                                                     })()));
-                                                    var _logger$18 = $3214;
+                                                    var _logger$18 = $3208;
                                                 };
-                                                var $3212 = Maybe$some$(_world$16);
-                                                var $3211 = $3212;
+                                                var $3206 = Maybe$some$(_world$16);
+                                                var $3205 = $3206;
                                             } else {
                                                 var self = _bipass$3;
                                                 if (self) {
-                                                    var $3217 = Unit$new;
-                                                    var _logger$18 = $3217;
+                                                    var $3211 = Unit$new;
+                                                    var _logger$18 = $3211;
                                                 } else {
-                                                    var $3218 = ((console.log(("- bond error: ill-typed bond " + $3199)), (_$18 => {
-                                                        var $3219 = Unit$new;
-                                                        return $3219;
+                                                    var $3212 = ((console.log(("- bond error: ill-typed bond " + $3193)), (_$18 => {
+                                                        var $3213 = Unit$new;
+                                                        return $3213;
                                                     })()));
-                                                    var _logger$18 = $3218;
+                                                    var _logger$18 = $3212;
                                                 };
-                                                var $3216 = Maybe$none;
-                                                var $3211 = $3216;
+                                                var $3210 = Maybe$none;
+                                                var $3205 = $3210;
                                             };
-                                            var $3205 = $3211;
+                                            var $3199 = $3205;
                                         };
-                                        var $3204 = $3205;
+                                        var $3198 = $3199;
                                         break;
                                     case 'Maybe.some':
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3221 = Unit$new;
-                                            var _logger$17 = $3221;
+                                            var $3215 = Unit$new;
+                                            var _logger$17 = $3215;
                                         } else {
-                                            var $3222 = ((console.log(("- bond error: redefinition of " + $3199)), (_$17 => {
-                                                var $3223 = Unit$new;
-                                                return $3223;
+                                            var $3216 = ((console.log(("- bond error: redefinition of " + $3193)), (_$17 => {
+                                                var $3217 = Unit$new;
+                                                return $3217;
                                             })()));
-                                            var _logger$17 = $3222;
+                                            var _logger$17 = $3216;
                                         };
-                                        var $3220 = Maybe$none;
-                                        var $3204 = $3220;
+                                        var $3214 = Maybe$none;
+                                        var $3198 = $3214;
                                         break;
                                 };
-                                var $3198 = $3204;
+                                var $3192 = $3198;
                                 break;
                         };
-                        var $3165 = $3198;
+                        var $3159 = $3192;
                         break;
                     case 'Litereum.Transaction.new_eval':
-                        var $3224 = self.eval;
-                        var _eval$9 = $3224;
+                        var $3218 = self.eval;
+                        var _eval$9 = $3218;
                         var self = _eval$9;
                         switch (self._) {
                             case 'Litereum.Eval.new':
-                                var $3226 = self.term;
-                                var $3227 = self.type;
+                                var $3220 = self.term;
+                                var $3221 = self.type;
                                 var self = _bipass$3;
                                 if (self) {
-                                    var $3229 = Maybe$some$(_world$1);
-                                    var $3228 = $3229;
+                                    var $3223 = Maybe$some$(_world$1);
+                                    var $3222 = $3223;
                                 } else {
-                                    var self = Litereum$check$(Map$from_list$(List$nil), _world$1, $3226, $3227);
+                                    var self = Litereum$check$(Map$from_list$(List$nil), _world$1, $3220, $3221);
                                     if (self) {
                                         var _fresh$12 = 0n;
-                                        var self = Litereum$sanitize$(_world$1, Map$from_list$(List$nil), _fresh$12, $3226);
+                                        var self = Litereum$sanitize$(_world$1, Map$from_list$(List$nil), _fresh$12, $3220);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3232 = self.fst;
-                                                var $3233 = self.snd;
-                                                var self = Litereum$normalize$(Litereum$Runtime$new$(_world$1, Map$from_list$(List$nil), $3232, 0n, $3233));
+                                                var $3226 = self.fst;
+                                                var $3227 = self.snd;
+                                                var self = Litereum$normalize$(Litereum$Runtime$new$(_world$1, Map$from_list$(List$nil), $3226, 0n, $3227));
                                                 switch (self._) {
                                                     case 'Litereum.Runtime.new':
-                                                        var $3235 = self.world;
-                                                        var $3236 = self.term;
+                                                        var $3229 = self.world;
+                                                        var $3230 = self.term;
                                                         var self = _bipass$3;
                                                         if (self) {
-                                                            var $3238 = Unit$new;
-                                                            var _logger$20 = $3238;
+                                                            var $3232 = Unit$new;
+                                                            var _logger$20 = $3232;
                                                         } else {
-                                                            var $3239 = ((console.log(("- eval " + Litereum$show$term$($3235, $3236))), (_$20 => {
-                                                                var $3240 = Unit$new;
-                                                                return $3240;
+                                                            var $3233 = ((console.log(("- eval " + Litereum$show$term$($3229, $3230))), (_$20 => {
+                                                                var $3234 = Unit$new;
+                                                                return $3234;
                                                             })()));
-                                                            var _logger$20 = $3239;
+                                                            var _logger$20 = $3233;
                                                         };
-                                                        var $3237 = Maybe$some$($3235);
-                                                        var $3234 = $3237;
+                                                        var $3231 = Maybe$some$($3229);
+                                                        var $3228 = $3231;
                                                         break;
                                                 };
-                                                var $3231 = $3234;
+                                                var $3225 = $3228;
                                                 break;
                                         };
-                                        var $3230 = $3231;
+                                        var $3224 = $3225;
                                     } else {
                                         var self = _bipass$3;
                                         if (self) {
-                                            var $3242 = Unit$new;
-                                            var _logger$12 = $3242;
+                                            var $3236 = Unit$new;
+                                            var _logger$12 = $3236;
                                         } else {
-                                            var $3243 = ((console.log("- eval error: ill-typed term"), (_$12 => {
-                                                var $3244 = Unit$new;
-                                                return $3244;
+                                            var $3237 = ((console.log("- eval error: ill-typed term"), (_$12 => {
+                                                var $3238 = Unit$new;
+                                                return $3238;
                                             })()));
-                                            var _logger$12 = $3243;
+                                            var _logger$12 = $3237;
                                         };
-                                        var $3241 = Maybe$none;
-                                        var $3230 = $3241;
+                                        var $3235 = Maybe$none;
+                                        var $3224 = $3235;
                                     };
-                                    var $3228 = $3230;
+                                    var $3222 = $3224;
                                 };
-                                var $3225 = $3228;
+                                var $3219 = $3222;
                                 break;
                         };
-                        var $3165 = $3225;
+                        var $3159 = $3219;
                         break;
                 };
-                var $3160 = $3165;
+                var $3154 = $3159;
                 break;
         };
-        return $3160;
+        return $3154;
     };
     const Litereum$run = x0 => x1 => x2 => Litereum$run$(x0, x1, x2);
 
     function Litereum$reg$(_world$1, _transaction$2) {
-        var $3245 = Maybe$default$(Litereum$run$(_world$1, _transaction$2, Bool$true), _world$1);
-        return $3245;
+        var $3239 = Maybe$default$(Litereum$run$(_world$1, _transaction$2, Bool$true), _world$1);
+        return $3239;
     };
     const Litereum$reg = x0 => x1 => Litereum$reg$(x0, x1);
 
     function Litereum$parse$block$(_world$1) {
-        var $3246 = Parser$choice(List$cons$((_pst$2 => {
+        var $3240 = Parser$choice(List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $3248 = self.err;
+                    var $3242 = self.err;
                     var _reply$8 = Litereum$parse$transaction$(_world$1)(_pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $3250 = self.err;
-                            var self = $3248;
+                            var $3244 = self.err;
+                            var self = $3242;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $3252 = self.value;
-                                    var $3253 = Parser$Reply$error$(Parser$Error$combine$($3252, $3250));
-                                    var $3251 = $3253;
+                                    var $3246 = self.value;
+                                    var $3247 = Parser$Reply$error$(Parser$Error$combine$($3246, $3244));
+                                    var $3245 = $3247;
                                     break;
                                 case 'Maybe.none':
-                                    var $3254 = Parser$Reply$error$($3250);
-                                    var $3251 = $3254;
+                                    var $3248 = Parser$Reply$error$($3244);
+                                    var $3245 = $3248;
                                     break;
                             };
-                            var $3249 = $3251;
+                            var $3243 = $3245;
                             break;
                         case 'Parser.Reply.value':
-                            var $3255 = self.pst;
-                            var $3256 = self.val;
-                            var self = $3255;
+                            var $3249 = self.pst;
+                            var $3250 = self.val;
+                            var self = $3249;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $3258 = self.err;
-                                    var $3259 = self.nam;
-                                    var $3260 = self.ini;
-                                    var $3261 = self.idx;
-                                    var $3262 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3248, $3258), $3259, $3260, $3261, $3262);
+                                    var $3252 = self.err;
+                                    var $3253 = self.nam;
+                                    var $3254 = self.ini;
+                                    var $3255 = self.idx;
+                                    var $3256 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3242, $3252), $3253, $3254, $3255, $3256);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $3264 = self.err;
-                                            var _reply$22 = Litereum$parse$block$(Litereum$reg$(_world$1, $3256))(_reply$pst$16);
+                                            var $3258 = self.err;
+                                            var _reply$22 = Litereum$parse$block$(Litereum$reg$(_world$1, $3250))(_reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $3266 = self.err;
-                                                    var self = $3264;
+                                                    var $3260 = self.err;
+                                                    var self = $3258;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $3268 = self.value;
-                                                            var $3269 = Parser$Reply$error$(Parser$Error$combine$($3268, $3266));
-                                                            var $3267 = $3269;
+                                                            var $3262 = self.value;
+                                                            var $3263 = Parser$Reply$error$(Parser$Error$combine$($3262, $3260));
+                                                            var $3261 = $3263;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $3270 = Parser$Reply$error$($3266);
-                                                            var $3267 = $3270;
+                                                            var $3264 = Parser$Reply$error$($3260);
+                                                            var $3261 = $3264;
                                                             break;
                                                     };
-                                                    var $3265 = $3267;
+                                                    var $3259 = $3261;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $3271 = self.pst;
-                                                    var $3272 = self.val;
-                                                    var self = $3271;
+                                                    var $3265 = self.pst;
+                                                    var $3266 = self.val;
+                                                    var self = $3265;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $3274 = self.err;
-                                                            var $3275 = self.nam;
-                                                            var $3276 = self.ini;
-                                                            var $3277 = self.idx;
-                                                            var $3278 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3264, $3274), $3275, $3276, $3277, $3278);
-                                                            var $3279 = Parser$Reply$value$(_reply$pst$30, List$cons$($3256, $3272));
-                                                            var $3273 = $3279;
+                                                            var $3268 = self.err;
+                                                            var $3269 = self.nam;
+                                                            var $3270 = self.ini;
+                                                            var $3271 = self.idx;
+                                                            var $3272 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3258, $3268), $3269, $3270, $3271, $3272);
+                                                            var $3273 = Parser$Reply$value$(_reply$pst$30, List$cons$($3250, $3266));
+                                                            var $3267 = $3273;
                                                             break;
                                                     };
-                                                    var $3265 = $3273;
+                                                    var $3259 = $3267;
                                                     break;
                                             };
-                                            var $3263 = $3265;
+                                            var $3257 = $3259;
                                             break;
                                     };
-                                    var $3257 = $3263;
+                                    var $3251 = $3257;
                                     break;
                             };
-                            var $3249 = $3257;
+                            var $3243 = $3251;
                             break;
                     };
-                    var $3247 = $3249;
+                    var $3241 = $3243;
                     break;
             };
-            return $3247;
+            return $3241;
         }), List$cons$((_pst$2 => {
             var self = _pst$2;
             switch (self._) {
                 case 'Parser.State.new':
-                    var $3281 = self.err;
+                    var $3275 = self.err;
                     var _reply$8 = Litereum$parse$ignore(_pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
-                            var $3283 = self.err;
-                            var self = $3281;
+                            var $3277 = self.err;
+                            var self = $3275;
                             switch (self._) {
                                 case 'Maybe.some':
-                                    var $3285 = self.value;
-                                    var $3286 = Parser$Reply$error$(Parser$Error$combine$($3285, $3283));
-                                    var $3284 = $3286;
+                                    var $3279 = self.value;
+                                    var $3280 = Parser$Reply$error$(Parser$Error$combine$($3279, $3277));
+                                    var $3278 = $3280;
                                     break;
                                 case 'Maybe.none':
-                                    var $3287 = Parser$Reply$error$($3283);
-                                    var $3284 = $3287;
+                                    var $3281 = Parser$Reply$error$($3277);
+                                    var $3278 = $3281;
                                     break;
                             };
-                            var $3282 = $3284;
+                            var $3276 = $3278;
                             break;
                         case 'Parser.Reply.value':
-                            var $3288 = self.pst;
-                            var self = $3288;
+                            var $3282 = self.pst;
+                            var self = $3282;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $3290 = self.err;
-                                    var $3291 = self.nam;
-                                    var $3292 = self.ini;
-                                    var $3293 = self.idx;
-                                    var $3294 = self.str;
-                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3281, $3290), $3291, $3292, $3293, $3294);
+                                    var $3284 = self.err;
+                                    var $3285 = self.nam;
+                                    var $3286 = self.ini;
+                                    var $3287 = self.idx;
+                                    var $3288 = self.str;
+                                    var _reply$pst$16 = Parser$State$new$(Parser$Error$maybe_combine$($3275, $3284), $3285, $3286, $3287, $3288);
                                     var self = _reply$pst$16;
                                     switch (self._) {
                                         case 'Parser.State.new':
-                                            var $3296 = self.err;
+                                            var $3290 = self.err;
                                             var _reply$22 = Parser$eof$(_reply$pst$16);
                                             var self = _reply$22;
                                             switch (self._) {
                                                 case 'Parser.Reply.error':
-                                                    var $3298 = self.err;
-                                                    var self = $3296;
+                                                    var $3292 = self.err;
+                                                    var self = $3290;
                                                     switch (self._) {
                                                         case 'Maybe.some':
-                                                            var $3300 = self.value;
-                                                            var $3301 = Parser$Reply$error$(Parser$Error$combine$($3300, $3298));
-                                                            var $3299 = $3301;
+                                                            var $3294 = self.value;
+                                                            var $3295 = Parser$Reply$error$(Parser$Error$combine$($3294, $3292));
+                                                            var $3293 = $3295;
                                                             break;
                                                         case 'Maybe.none':
-                                                            var $3302 = Parser$Reply$error$($3298);
-                                                            var $3299 = $3302;
+                                                            var $3296 = Parser$Reply$error$($3292);
+                                                            var $3293 = $3296;
                                                             break;
                                                     };
-                                                    var $3297 = $3299;
+                                                    var $3291 = $3293;
                                                     break;
                                                 case 'Parser.Reply.value':
-                                                    var $3303 = self.pst;
-                                                    var self = $3303;
+                                                    var $3297 = self.pst;
+                                                    var self = $3297;
                                                     switch (self._) {
                                                         case 'Parser.State.new':
-                                                            var $3305 = self.err;
-                                                            var $3306 = self.nam;
-                                                            var $3307 = self.ini;
-                                                            var $3308 = self.idx;
-                                                            var $3309 = self.str;
-                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3296, $3305), $3306, $3307, $3308, $3309);
-                                                            var $3310 = Parser$Reply$value$(_reply$pst$30, List$nil);
-                                                            var $3304 = $3310;
+                                                            var $3299 = self.err;
+                                                            var $3300 = self.nam;
+                                                            var $3301 = self.ini;
+                                                            var $3302 = self.idx;
+                                                            var $3303 = self.str;
+                                                            var _reply$pst$30 = Parser$State$new$(Parser$Error$maybe_combine$($3290, $3299), $3300, $3301, $3302, $3303);
+                                                            var $3304 = Parser$Reply$value$(_reply$pst$30, List$nil);
+                                                            var $3298 = $3304;
                                                             break;
                                                     };
-                                                    var $3297 = $3304;
+                                                    var $3291 = $3298;
                                                     break;
                                             };
-                                            var $3295 = $3297;
+                                            var $3289 = $3291;
                                             break;
                                     };
-                                    var $3289 = $3295;
+                                    var $3283 = $3289;
                                     break;
                             };
-                            var $3282 = $3289;
+                            var $3276 = $3283;
                             break;
                     };
-                    var $3280 = $3282;
+                    var $3274 = $3276;
                     break;
             };
-            return $3280;
+            return $3274;
         }), List$nil)));
-        return $3246;
+        return $3240;
     };
     const Litereum$parse$block = x0 => Litereum$parse$block$(x0);
 
     function IO$(_A$1) {
-        var $3311 = null;
-        return $3311;
+        var $3305 = null;
+        return $3305;
     };
     const IO = x0 => IO$(x0);
 
     function IO$ask$(_query$2, _param$3, _then$4) {
-        var $3312 = ({
+        var $3306 = ({
             _: 'IO.ask',
             'query': _query$2,
             'param': _param$3,
             'then': _then$4
         });
-        return $3312;
+        return $3306;
     };
     const IO$ask = x0 => x1 => x2 => IO$ask$(x0, x1, x2);
 
     function IO$end$(_value$2) {
-        var $3313 = ({
+        var $3307 = ({
             _: 'IO.end',
             'value': _value$2
         });
-        return $3313;
+        return $3307;
     };
     const IO$end = x0 => IO$end$(x0);
 
     function IO$put_string$(_text$1) {
-        var $3314 = IO$ask$("put_string", _text$1, (_skip$2 => {
-            var $3315 = IO$end$(Unit$new);
-            return $3315;
+        var $3308 = IO$ask$("put_string", _text$1, (_skip$2 => {
+            var $3309 = IO$end$(Unit$new);
+            return $3309;
         }));
-        return $3314;
+        return $3308;
     };
     const IO$put_string = x0 => IO$put_string$(x0);
 
     function IO$print$(_text$1) {
-        var $3316 = IO$put_string$((_text$1 + "\u{a}"));
-        return $3316;
+        var $3310 = IO$put_string$((_text$1 + "\u{a}"));
+        return $3310;
     };
     const IO$print = x0 => IO$print$(x0);
 
@@ -11445,28 +11423,28 @@ module.exports = (function() {
         var self = _a$3;
         switch (self._) {
             case 'IO.end':
-                var $3318 = self.value;
-                var $3319 = _f$4($3318);
-                var $3317 = $3319;
+                var $3312 = self.value;
+                var $3313 = _f$4($3312);
+                var $3311 = $3313;
                 break;
             case 'IO.ask':
-                var $3320 = self.query;
-                var $3321 = self.param;
-                var $3322 = self.then;
-                var $3323 = IO$ask$($3320, $3321, (_x$8 => {
-                    var $3324 = IO$bind$($3322(_x$8), _f$4);
-                    return $3324;
+                var $3314 = self.query;
+                var $3315 = self.param;
+                var $3316 = self.then;
+                var $3317 = IO$ask$($3314, $3315, (_x$8 => {
+                    var $3318 = IO$bind$($3316(_x$8), _f$4);
+                    return $3318;
                 }));
-                var $3317 = $3323;
+                var $3311 = $3317;
                 break;
         };
-        return $3317;
+        return $3311;
     };
     const IO$bind = x0 => x1 => IO$bind$(x0, x1);
 
     function IO$monad$(_new$2) {
-        var $3325 = _new$2(IO$bind)(IO$end);
-        return $3325;
+        var $3319 = _new$2(IO$bind)(IO$end);
+        return $3319;
     };
     const IO$monad = x0 => IO$monad$(x0);
 
@@ -11474,20 +11452,20 @@ module.exports = (function() {
         var self = _constructor$2;
         switch (self._) {
             case 'Litereum.Constructor.new':
-                var $3327 = self.name;
-                var $3328 = self.field_names;
-                var $3329 = self.field_types;
-                var _names$6 = $3328;
-                var _types$7 = List$mapped$($3329, Litereum$show$type(_world$1));
+                var $3321 = self.name;
+                var $3322 = self.field_names;
+                var $3323 = self.field_types;
+                var _names$6 = $3322;
+                var _types$7 = List$mapped$($3323, Litereum$show$type(_world$1));
                 var _fields$8 = List$zip_with$((_name$8 => _type$9 => {
-                    var $3331 = (_name$8 + (": " + _type$9));
-                    return $3331;
+                    var $3325 = (_name$8 + (": " + _type$9));
+                    return $3325;
                 }), _names$6, _types$7);
-                var $3330 = ($3327 + ("{" + (String$join$(", ", _fields$8) + "}")));
-                var $3326 = $3330;
+                var $3324 = ($3321 + ("{" + (String$join$(", ", _fields$8) + "}")));
+                var $3320 = $3324;
                 break;
         };
-        return $3326;
+        return $3320;
     };
     const Litereum$show$constructor = x0 => x1 => Litereum$show$constructor$(x0, x1);
 
@@ -11495,13 +11473,13 @@ module.exports = (function() {
         var self = _data$2;
         switch (self._) {
             case 'Litereum.Data.new':
-                var $3333 = self.name;
-                var $3334 = self.constructors;
-                var $3335 = ($3333 + (" { " + (String$join$(", ", List$mapped$($3334, Litereum$show$constructor(_world$1))) + " }")));
-                var $3332 = $3335;
+                var $3327 = self.name;
+                var $3328 = self.constructors;
+                var $3329 = ($3327 + (" { " + (String$join$(", ", List$mapped$($3328, Litereum$show$constructor(_world$1))) + " }")));
+                var $3326 = $3329;
                 break;
         };
-        return $3332;
+        return $3326;
     };
     const Litereum$show$data = x0 => x1 => Litereum$show$data$(x0, x1);
 
@@ -11509,30 +11487,30 @@ module.exports = (function() {
         var self = _bond$2;
         switch (self._) {
             case 'Litereum.Bond.new':
-                var $3337 = self.name;
-                var $3338 = self.input_names;
-                var $3339 = self.input_types;
-                var $3340 = self.output_type;
-                var $3341 = self.main;
-                var $3342 = self.owners;
-                var $3343 = ($3337 + ("(" + (String$join$(",", List$zipped_with$($3338, $3339, (_name$9 => _type$10 => {
-                    var $3344 = (_name$9 + (": " + Litereum$show$type$(_world$1, _type$10)));
-                    return $3344;
-                }))) + ("): " + (Litereum$show$type$(_world$1, $3340) + (" { " + (Litereum$show$term$(_world$1, $3341) + (" }" + (() => {
-                    var self = $3342;
+                var $3331 = self.name;
+                var $3332 = self.input_names;
+                var $3333 = self.input_types;
+                var $3334 = self.output_type;
+                var $3335 = self.main;
+                var $3336 = self.owners;
+                var $3337 = ($3331 + ("(" + (String$join$(",", List$zipped_with$($3332, $3333, (_name$9 => _type$10 => {
+                    var $3338 = (_name$9 + (": " + Litereum$show$type$(_world$1, _type$10)));
+                    return $3338;
+                }))) + ("): " + (Litereum$show$type$(_world$1, $3334) + (" { " + (Litereum$show$term$(_world$1, $3335) + (" }" + (() => {
+                    var self = $3336;
                     switch (self._) {
                         case 'List.nil':
-                            var $3345 = "";
-                            return $3345;
+                            var $3339 = "";
+                            return $3339;
                         case 'List.cons':
-                            var $3346 = (" " + String$join$(" ", List$map$(a1 => ("@" + a1), $3342)));
-                            return $3346;
+                            var $3340 = (" " + String$join$(" ", List$map$(a1 => ("@" + a1), $3336)));
+                            return $3340;
                     };
                 })()))))))));
-                var $3336 = $3343;
+                var $3330 = $3337;
                 break;
         };
-        return $3336;
+        return $3330;
     };
     const Litereum$show$bond = x0 => x1 => Litereum$show$bond$(x0, x1);
 
@@ -11540,15 +11518,15 @@ module.exports = (function() {
         var self = _eval$2;
         switch (self._) {
             case 'Litereum.Eval.new':
-                var $3348 = self.term;
-                var $3349 = self.type;
-                var _term$5 = Litereum$show$term$(_world$1, $3348);
-                var _type$6 = Litereum$show$type$(_world$1, $3349);
-                var $3350 = ("{" + (_term$5 + ("} : " + _type$6)));
-                var $3347 = $3350;
+                var $3342 = self.term;
+                var $3343 = self.type;
+                var _term$5 = Litereum$show$term$(_world$1, $3342);
+                var _type$6 = Litereum$show$type$(_world$1, $3343);
+                var $3344 = ("{" + (_term$5 + ("} : " + _type$6)));
+                var $3341 = $3344;
                 break;
         };
-        return $3347;
+        return $3341;
     };
     const Litereum$show$eval = x0 => x1 => Litereum$show$eval$(x0, x1);
 
@@ -11556,27 +11534,27 @@ module.exports = (function() {
         var self = _transaction$2;
         switch (self._) {
             case 'Litereum.Transaction.new_name':
-                var $3352 = self.name;
-                var $3353 = ("name " + $3352);
-                var $3351 = $3353;
+                var $3346 = self.name;
+                var $3347 = ("name " + $3346);
+                var $3345 = $3347;
                 break;
             case 'Litereum.Transaction.new_data':
-                var $3354 = self.data;
-                var $3355 = ("type " + Litereum$show$data$(_world$1, $3354));
-                var $3351 = $3355;
+                var $3348 = self.data;
+                var $3349 = ("type " + Litereum$show$data$(_world$1, $3348));
+                var $3345 = $3349;
                 break;
             case 'Litereum.Transaction.new_bond':
-                var $3356 = self.bond;
-                var $3357 = ("bond " + Litereum$show$bond$(_world$1, $3356));
-                var $3351 = $3357;
+                var $3350 = self.bond;
+                var $3351 = ("bond " + Litereum$show$bond$(_world$1, $3350));
+                var $3345 = $3351;
                 break;
             case 'Litereum.Transaction.new_eval':
-                var $3358 = self.eval;
-                var $3359 = ("eval " + Litereum$show$eval$(_world$1, $3358));
-                var $3351 = $3359;
+                var $3352 = self.eval;
+                var $3353 = ("eval " + Litereum$show$eval$(_world$1, $3352));
+                var $3345 = $3353;
                 break;
         };
-        return $3351;
+        return $3345;
     };
     const Litereum$show$transaction = x0 => x1 => Litereum$show$transaction$(x0, x1);
 
@@ -11584,27 +11562,27 @@ module.exports = (function() {
         var self = _block$2;
         switch (self._) {
             case 'List.cons':
-                var $3361 = self.head;
-                var $3362 = self.tail;
-                var _head$5 = Litereum$show$transaction$(_world$1, $3361);
-                var _tail$6 = Litereum$show$block$(Litereum$reg$(_world$1, $3361), $3362);
-                var $3363 = ("- " + (_head$5 + ("\u{a}" + _tail$6)));
-                var $3360 = $3363;
+                var $3355 = self.head;
+                var $3356 = self.tail;
+                var _head$5 = Litereum$show$transaction$(_world$1, $3355);
+                var _tail$6 = Litereum$show$block$(Litereum$reg$(_world$1, $3355), $3356);
+                var $3357 = ("- " + (_head$5 + ("\u{a}" + _tail$6)));
+                var $3354 = $3357;
                 break;
             case 'List.nil':
-                var $3364 = "";
-                var $3360 = $3364;
+                var $3358 = "";
+                var $3354 = $3358;
                 break;
         };
-        return $3360;
+        return $3354;
     };
     const Litereum$show$block = x0 => x1 => Litereum$show$block$(x0, x1);
     const Bits$e = '';
     const Bits$o = a0 => (a0 + '0');
 
     function U16$new$(_value$1) {
-        var $3365 = word_to_u16(_value$1);
-        return $3365;
+        var $3359 = word_to_u16(_value$1);
+        return $3359;
     };
     const U16$new = x0 => U16$new$(x0);
     const U16$sub = a0 => a1 => ((a0 - a1) & 0xFFFF);
@@ -11616,21 +11594,21 @@ module.exports = (function() {
     function Litereum$serialize$fixlen$(_size$1, _value$2) {
         var self = _size$1;
         if (self === 0n) {
-            var $3367 = Bits$e;
-            var $3366 = $3367;
+            var $3361 = Bits$e;
+            var $3360 = $3361;
         } else {
-            var $3368 = (self - 1n);
+            var $3362 = (self - 1n);
             var self = ((_value$2 % 2n) === 0n);
             if (self) {
-                var $3370 = (Litereum$serialize$fixlen$($3368, (_value$2 / 2n)) + '0');
-                var $3369 = $3370;
+                var $3364 = (Litereum$serialize$fixlen$($3362, (_value$2 / 2n)) + '0');
+                var $3363 = $3364;
             } else {
-                var $3371 = (Litereum$serialize$fixlen$($3368, (_value$2 / 2n)) + '1');
-                var $3369 = $3371;
+                var $3365 = (Litereum$serialize$fixlen$($3362, (_value$2 / 2n)) + '1');
+                var $3363 = $3365;
             };
-            var $3366 = $3369;
+            var $3360 = $3363;
         };
-        return $3366;
+        return $3360;
     };
     const Litereum$serialize$fixlen = x0 => x1 => Litereum$serialize$fixlen$(x0, x1);
     const U16$to_nat = a0 => (BigInt(a0));
@@ -11639,80 +11617,80 @@ module.exports = (function() {
     function Litereum$serialize$name$new$(_name$1) {
         var self = _name$1;
         if (self.length === 0) {
-            var $3373 = (Bits$e + '0');
-            var $3372 = $3373;
+            var $3367 = (Bits$e + '0');
+            var $3366 = $3367;
         } else {
-            var $3374 = self.charCodeAt(0);
-            var $3375 = self.slice(1);
-            var self = U16$btw$(48, $3374, 57);
+            var $3368 = self.charCodeAt(0);
+            var $3369 = self.slice(1);
+            var self = U16$btw$(48, $3368, 57);
             if (self) {
-                var $3377 = (($3374 - 48) & 0xFFFF);
-                var _numb$4 = $3377;
+                var $3371 = (($3368 - 48) & 0xFFFF);
+                var _numb$4 = $3371;
             } else {
-                var self = U16$btw$(65, $3374, 90);
+                var self = U16$btw$(65, $3368, 90);
                 if (self) {
-                    var $3379 = (((($3374 - 65) & 0xFFFF) + 10) & 0xFFFF);
-                    var $3378 = $3379;
+                    var $3373 = (((($3368 - 65) & 0xFFFF) + 10) & 0xFFFF);
+                    var $3372 = $3373;
                 } else {
-                    var self = U16$btw$(97, $3374, 122);
+                    var self = U16$btw$(97, $3368, 122);
                     if (self) {
-                        var $3381 = (((($3374 - 97) & 0xFFFF) + 36) & 0xFFFF);
-                        var $3380 = $3381;
+                        var $3375 = (((($3368 - 97) & 0xFFFF) + 36) & 0xFFFF);
+                        var $3374 = $3375;
                     } else {
-                        var self = U16$btw$(95, $3374, 95);
+                        var self = U16$btw$(95, $3368, 95);
                         if (self) {
-                            var $3383 = 62;
-                            var $3382 = $3383;
+                            var $3377 = 62;
+                            var $3376 = $3377;
                         } else {
-                            var $3384 = 63;
-                            var $3382 = $3384;
+                            var $3378 = 63;
+                            var $3376 = $3378;
                         };
-                        var $3380 = $3382;
+                        var $3374 = $3376;
                     };
-                    var $3378 = $3380;
+                    var $3372 = $3374;
                 };
-                var _numb$4 = $3378;
+                var _numb$4 = $3372;
             };
             var _head$5 = Litereum$serialize$fixlen$(6n, (BigInt(_numb$4)));
-            var _tail$6 = Litereum$serialize$name$new$($3375);
-            var $3376 = ((_tail$6 + _head$5) + '1');
-            var $3372 = $3376;
+            var _tail$6 = Litereum$serialize$name$new$($3369);
+            var $3370 = ((_tail$6 + _head$5) + '1');
+            var $3366 = $3370;
         };
-        return $3372;
+        return $3366;
     };
     const Litereum$serialize$name$new = x0 => Litereum$serialize$name$new$(x0);
 
     function Litereum$serialize$varlen$go$(_value$1) {
         var self = _value$1;
         if (self === 0n) {
-            var $3386 = Bits$e;
-            var $3385 = $3386;
+            var $3380 = Bits$e;
+            var $3379 = $3380;
         } else {
-            var $3387 = (self - 1n);
+            var $3381 = (self - 1n);
             var self = (_value$1 === 1n);
             if (self) {
-                var $3389 = (Bits$e + '0');
-                var $3388 = $3389;
+                var $3383 = (Bits$e + '0');
+                var $3382 = $3383;
             } else {
                 var self = ((_value$1 % 2n) === 0n);
                 if (self) {
-                    var $3391 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '0') + '1');
-                    var $3390 = $3391;
+                    var $3385 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '0') + '1');
+                    var $3384 = $3385;
                 } else {
-                    var $3392 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '1') + '1');
-                    var $3390 = $3392;
+                    var $3386 = ((Litereum$serialize$varlen$go$((_value$1 / 2n)) + '1') + '1');
+                    var $3384 = $3386;
                 };
-                var $3388 = $3390;
+                var $3382 = $3384;
             };
-            var $3385 = $3388;
+            var $3379 = $3382;
         };
-        return $3385;
+        return $3379;
     };
     const Litereum$serialize$varlen$go = x0 => Litereum$serialize$varlen$go$(x0);
 
     function Litereum$serialize$varlen$(_value$1) {
-        var $3393 = Litereum$serialize$varlen$go$((_value$1 + 1n));
-        return $3393;
+        var $3387 = Litereum$serialize$varlen$go$((_value$1 + 1n));
+        return $3387;
     };
     const Litereum$serialize$varlen = x0 => Litereum$serialize$varlen$(x0);
 
@@ -11720,24 +11698,24 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $3395 = self.name_to_index;
-                var self = Map$get$(_name$2, $3395);
+                var $3389 = self.name_to_index;
+                var self = Map$get$(_name$2, $3389);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3397 = self.value;
-                        var _bits$8 = Litereum$serialize$varlen$($3397);
-                        var $3398 = _bits$8;
-                        var $3396 = $3398;
+                        var $3391 = self.value;
+                        var _bits$8 = Litereum$serialize$varlen$($3391);
+                        var $3392 = _bits$8;
+                        var $3390 = $3392;
                         break;
                     case 'Maybe.none':
-                        var $3399 = Bits$e;
-                        var $3396 = $3399;
+                        var $3393 = Bits$e;
+                        var $3390 = $3393;
                         break;
                 };
-                var $3394 = $3396;
+                var $3388 = $3390;
                 break;
         };
-        return $3394;
+        return $3388;
     };
     const Litereum$serialize$name$old = x0 => x1 => Litereum$serialize$name$old$(x0, x1);
 
@@ -11745,17 +11723,17 @@ module.exports = (function() {
         var self = _list$3;
         switch (self._) {
             case 'List.cons':
-                var $3401 = self.head;
-                var $3402 = self.tail;
-                var $3403 = ((Litereum$serialize$list$(_item$2, $3402) + _item$2($3401)) + '1');
-                var $3400 = $3403;
+                var $3395 = self.head;
+                var $3396 = self.tail;
+                var $3397 = ((Litereum$serialize$list$(_item$2, $3396) + _item$2($3395)) + '1');
+                var $3394 = $3397;
                 break;
             case 'List.nil':
-                var $3404 = (Bits$e + '0');
-                var $3400 = $3404;
+                var $3398 = (Bits$e + '0');
+                var $3394 = $3398;
                 break;
         };
-        return $3400;
+        return $3394;
     };
     const Litereum$serialize$list = x0 => x1 => Litereum$serialize$list$(x0, x1);
 
@@ -11763,16 +11741,16 @@ module.exports = (function() {
         var self = _typ$2;
         switch (self._) {
             case 'Litereum.Type.data':
-                var $3406 = self.name;
-                var $3407 = (Litereum$serialize$name$old$(_world$1, $3406) + '1');
-                var $3405 = $3407;
+                var $3400 = self.name;
+                var $3401 = (Litereum$serialize$name$old$(_world$1, $3400) + '1');
+                var $3399 = $3401;
                 break;
             case 'Litereum.Type.word':
-                var $3408 = (Bits$e + '0');
-                var $3405 = $3408;
+                var $3402 = (Bits$e + '0');
+                var $3399 = $3402;
                 break;
         };
-        return $3405;
+        return $3399;
     };
     const Litereum$serialize$type = x0 => x1 => Litereum$serialize$type$(x0, x1);
 
@@ -11780,17 +11758,17 @@ module.exports = (function() {
         var self = _ctor$2;
         switch (self._) {
             case 'Litereum.Constructor.new':
-                var $3410 = self.name;
-                var $3411 = self.field_names;
-                var $3412 = self.field_types;
-                var _name$6 = Litereum$serialize$name$old$(_world$1, $3410);
-                var _nams$7 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3411);
-                var _typs$8 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3412);
-                var $3413 = ((_typs$8 + _nams$7) + _name$6);
-                var $3409 = $3413;
+                var $3404 = self.name;
+                var $3405 = self.field_names;
+                var $3406 = self.field_types;
+                var _name$6 = Litereum$serialize$name$old$(_world$1, $3404);
+                var _nams$7 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3405);
+                var _typs$8 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3406);
+                var $3407 = ((_typs$8 + _nams$7) + _name$6);
+                var $3403 = $3407;
                 break;
         };
-        return $3409;
+        return $3403;
     };
     const Litereum$serialize$constructor = x0 => x1 => Litereum$serialize$constructor$(x0, x1);
 
@@ -11798,15 +11776,15 @@ module.exports = (function() {
         var self = _data$2;
         switch (self._) {
             case 'Litereum.Data.new':
-                var $3415 = self.name;
-                var $3416 = self.constructors;
-                var _name$5 = Litereum$serialize$name$old$(_world$1, $3415);
-                var _ctrs$6 = Litereum$serialize$list$(Litereum$serialize$constructor(_world$1), $3416);
-                var $3417 = (_ctrs$6 + _name$5);
-                var $3414 = $3417;
+                var $3409 = self.name;
+                var $3410 = self.constructors;
+                var _name$5 = Litereum$serialize$name$old$(_world$1, $3409);
+                var _ctrs$6 = Litereum$serialize$list$(Litereum$serialize$constructor(_world$1), $3410);
+                var $3411 = (_ctrs$6 + _name$5);
+                var $3408 = $3411;
                 break;
         };
-        return $3414;
+        return $3408;
     };
     const Litereum$serialize$data = x0 => x1 => Litereum$serialize$data$(x0, x1);
 
@@ -11823,20 +11801,20 @@ module.exports = (function() {
                 var self = _xs$2;
                 switch (self._) {
                     case 'List.cons':
-                        var $3418 = self.head;
-                        var $3419 = self.tail;
-                        var self = _f$3($3418);
+                        var $3412 = self.head;
+                        var $3413 = self.tail;
+                        var self = _f$3($3412);
                         if (self) {
-                            var $3421 = Maybe$some$(_i$4);
-                            var $3420 = $3421;
+                            var $3415 = Maybe$some$(_i$4);
+                            var $3414 = $3415;
                         } else {
-                            var $3422 = List$find_index$go$($3419, _f$3, Nat$succ$(_i$4));
-                            var $3420 = $3422;
+                            var $3416 = List$find_index$go$($3413, _f$3, Nat$succ$(_i$4));
+                            var $3414 = $3416;
                         };
-                        return $3420;
+                        return $3414;
                     case 'List.nil':
-                        var $3423 = Maybe$none;
-                        return $3423;
+                        var $3417 = Maybe$none;
+                        return $3417;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -11846,8 +11824,8 @@ module.exports = (function() {
     const List$find_index$go = x0 => x1 => x2 => List$find_index$go$(x0, x1, x2);
 
     function List$find_index$(_xs$2, _f$3) {
-        var $3424 = List$find_index$go$(_xs$2, _f$3, Nat$zero);
-        return $3424;
+        var $3418 = List$find_index$go$(_xs$2, _f$3, Nat$zero);
+        return $3418;
     };
     const List$find_index = x0 => x1 => List$find_index$(x0, x1);
 
@@ -11855,16 +11833,16 @@ module.exports = (function() {
         var self = List$find_index$(_vars$2, a1 => (_name$3 === a1));
         switch (self._) {
             case 'Maybe.some':
-                var $3426 = self.value;
-                var $3427 = Litereum$serialize$varlen$($3426);
-                var $3425 = $3427;
+                var $3420 = self.value;
+                var $3421 = Litereum$serialize$varlen$($3420);
+                var $3419 = $3421;
                 break;
             case 'Maybe.none':
-                var $3428 = Bits$e;
-                var $3425 = $3428;
+                var $3422 = Bits$e;
+                var $3419 = $3422;
                 break;
         };
-        return $3425;
+        return $3419;
     };
     const Litereum$serialize$name$local = x0 => x1 => x2 => Litereum$serialize$name$local$(x0, x1, x2);
 
@@ -11872,17 +11850,17 @@ module.exports = (function() {
         var self = _as$2;
         switch (self._) {
             case 'List.cons':
-                var $3430 = self.head;
-                var $3431 = self.tail;
-                var $3432 = List$cons$($3430, List$concat$($3431, _bs$3));
-                var $3429 = $3432;
+                var $3424 = self.head;
+                var $3425 = self.tail;
+                var $3426 = List$cons$($3424, List$concat$($3425, _bs$3));
+                var $3423 = $3426;
                 break;
             case 'List.nil':
-                var $3433 = _bs$3;
-                var $3429 = $3433;
+                var $3427 = _bs$3;
+                var $3423 = $3427;
                 break;
         };
-        return $3429;
+        return $3423;
     };
     const List$concat = x0 => x1 => List$concat$(x0, x1);
 
@@ -11890,47 +11868,47 @@ module.exports = (function() {
         var self = _ctors$4;
         switch (self._) {
             case 'List.cons':
-                var $3435 = self.head;
-                var $3436 = self.tail;
+                var $3429 = self.head;
+                var $3430 = self.tail;
                 var self = _cases$5;
                 switch (self._) {
                     case 'List.cons':
-                        var $3438 = self.head;
-                        var $3439 = self.tail;
+                        var $3432 = self.head;
+                        var $3433 = self.tail;
                         var _flds$10 = List$map$(a1 => ((_name$3 + ".") + a1), (() => {
-                            var self = $3435;
+                            var self = $3429;
                             switch (self._) {
                                 case 'Litereum.Constructor.new':
-                                    var $3441 = self.field_names;
-                                    var $3442 = $3441;
-                                    return $3442;
+                                    var $3435 = self.field_names;
+                                    var $3436 = $3435;
+                                    return $3436;
                             };
                         })());
-                        var _head$11 = Litereum$serialize$term$(_world$1, List$concat$(List$reverse$(_flds$10), _vars$2), $3438);
-                        var _tail$12 = Litereum$serialize$cases$(_world$1, _vars$2, _name$3, $3436, $3439);
-                        var $3440 = (_tail$12 + _head$11);
-                        var $3437 = $3440;
+                        var _head$11 = Litereum$serialize$term$(_world$1, List$concat$(List$reverse$(_flds$10), _vars$2), $3432);
+                        var _tail$12 = Litereum$serialize$cases$(_world$1, _vars$2, _name$3, $3430, $3433);
+                        var $3434 = (_tail$12 + _head$11);
+                        var $3431 = $3434;
                         break;
                     case 'List.nil':
-                        var $3443 = Bits$e;
-                        var $3437 = $3443;
+                        var $3437 = Bits$e;
+                        var $3431 = $3437;
                         break;
                 };
-                var $3434 = $3437;
+                var $3428 = $3431;
                 break;
             case 'List.nil':
                 var self = _cases$5;
                 switch (self._) {
                     case 'List.nil':
                     case 'List.cons':
-                        var $3445 = Bits$e;
-                        var $3444 = $3445;
+                        var $3439 = Bits$e;
+                        var $3438 = $3439;
                         break;
                 };
-                var $3434 = $3444;
+                var $3428 = $3438;
                 break;
         };
-        return $3434;
+        return $3428;
     };
     const Litereum$serialize$cases = x0 => x1 => x2 => x3 => x4 => Litereum$serialize$cases$(x0, x1, x2, x3, x4);
     const U64$to_nat = a0 => (a0);
@@ -11939,138 +11917,138 @@ module.exports = (function() {
         var self = _term$3;
         switch (self._) {
             case 'Litereum.Term.var':
-                var $3447 = self.name;
-                var $3448 = (Litereum$serialize$name$local$(_world$1, _vars$2, $3447) + '0');
-                var $3446 = $3448;
+                var $3441 = self.name;
+                var $3442 = (Litereum$serialize$name$local$(_world$1, _vars$2, $3441) + '0');
+                var $3440 = $3442;
                 break;
             case 'Litereum.Term.call':
-                var $3449 = self.bond;
-                var $3450 = self.args;
-                var _bond$6 = Litereum$serialize$name$old$(_world$1, $3449);
-                var _args$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3450);
-                var $3451 = (((((_args$7 + _bond$6) + '0') + '0') + '1') + '1');
-                var $3446 = $3451;
+                var $3443 = self.bond;
+                var $3444 = self.args;
+                var _bond$6 = Litereum$serialize$name$old$(_world$1, $3443);
+                var _args$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3444);
+                var $3445 = (((((_args$7 + _bond$6) + '0') + '0') + '1') + '1');
+                var $3440 = $3445;
                 break;
             case 'Litereum.Term.let':
-                var $3452 = self.name;
-                var $3453 = self.type;
-                var $3454 = self.expr;
-                var $3455 = self.body;
-                var _name$8 = Litereum$serialize$name$old$(_world$1, $3452);
-                var _type$9 = Litereum$serialize$type$(_world$1, $3453);
-                var _expr$10 = Litereum$serialize$term$(_world$1, _vars$2, $3454);
-                var _body$11 = Litereum$serialize$term$(_world$1, List$cons$($3452, _vars$2), $3455);
-                var $3456 = (((((((_body$11 + _expr$10) + _type$9) + _name$8) + '0') + '0') + '0') + '1');
-                var $3446 = $3456;
+                var $3446 = self.name;
+                var $3447 = self.type;
+                var $3448 = self.expr;
+                var $3449 = self.body;
+                var _name$8 = Litereum$serialize$name$old$(_world$1, $3446);
+                var _type$9 = Litereum$serialize$type$(_world$1, $3447);
+                var _expr$10 = Litereum$serialize$term$(_world$1, _vars$2, $3448);
+                var _body$11 = Litereum$serialize$term$(_world$1, List$cons$($3446, _vars$2), $3449);
+                var $3450 = (((((((_body$11 + _expr$10) + _type$9) + _name$8) + '0') + '0') + '0') + '1');
+                var $3440 = $3450;
                 break;
             case 'Litereum.Term.create':
-                var $3457 = self.ctor;
-                var $3458 = self.vals;
-                var _ctor$6 = Litereum$serialize$name$old$(_world$1, $3457);
-                var _vals$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3458);
-                var $3459 = (((((_vals$7 + _ctor$6) + '0') + '1') + '0') + '1');
-                var $3446 = $3459;
+                var $3451 = self.ctor;
+                var $3452 = self.vals;
+                var _ctor$6 = Litereum$serialize$name$old$(_world$1, $3451);
+                var _vals$7 = Litereum$serialize$list$(Litereum$serialize$term(_world$1)(_vars$2), $3452);
+                var $3453 = (((((_vals$7 + _ctor$6) + '0') + '1') + '0') + '1');
+                var $3440 = $3453;
                 break;
             case 'Litereum.Term.match':
-                var $3460 = self.name;
-                var $3461 = self.data;
-                var $3462 = self.cses;
-                var _name$7 = Litereum$serialize$name$local$(_world$1, _vars$2, $3460);
-                var _data$8 = Litereum$serialize$name$old$(_world$1, $3461);
-                var _cses$9 = Litereum$serialize$cases$(_world$1, _vars$2, $3460, Maybe$default$(Litereum$get_constructors$(_world$1, $3461), List$nil), $3462);
-                var $3463 = ((((((_cses$9 + _data$8) + _name$7) + '0') + '1') + '1') + '1');
-                var $3446 = $3463;
+                var $3454 = self.name;
+                var $3455 = self.data;
+                var $3456 = self.cses;
+                var _name$7 = Litereum$serialize$name$local$(_world$1, _vars$2, $3454);
+                var _data$8 = Litereum$serialize$name$old$(_world$1, $3455);
+                var _cses$9 = Litereum$serialize$cases$(_world$1, _vars$2, $3454, Maybe$default$(Litereum$get_constructors$(_world$1, $3455), List$nil), $3456);
+                var $3457 = ((((((_cses$9 + _data$8) + _name$7) + '0') + '1') + '1') + '1');
+                var $3440 = $3457;
                 break;
             case 'Litereum.Term.word':
-                var $3464 = self.numb;
-                var _numb$5 = Litereum$serialize$fixlen$(64n, ($3464));
-                var $3465 = ((((_numb$5 + '1') + '0') + '0') + '1');
-                var $3446 = $3465;
+                var $3458 = self.numb;
+                var _numb$5 = Litereum$serialize$fixlen$(64n, ($3458));
+                var $3459 = ((((_numb$5 + '1') + '0') + '0') + '1');
+                var $3440 = $3459;
                 break;
             case 'Litereum.Term.compare':
-                var $3466 = self.val0;
-                var $3467 = self.val1;
-                var $3468 = self.iflt;
-                var $3469 = self.ifeq;
-                var $3470 = self.ifgt;
-                var _val0$9 = Litereum$serialize$term$(_world$1, _vars$2, $3466);
-                var _val1$10 = Litereum$serialize$term$(_world$1, _vars$2, $3467);
-                var _iflt$11 = Litereum$serialize$term$(_world$1, _vars$2, $3468);
-                var _ifeq$12 = Litereum$serialize$term$(_world$1, _vars$2, $3469);
-                var _ifgt$13 = Litereum$serialize$term$(_world$1, _vars$2, $3470);
-                var $3471 = ((((((((_ifgt$13 + _ifeq$12) + _iflt$11) + _val1$10) + _val0$9) + '1') + '0') + '1') + '1');
-                var $3446 = $3471;
+                var $3460 = self.val0;
+                var $3461 = self.val1;
+                var $3462 = self.iflt;
+                var $3463 = self.ifeq;
+                var $3464 = self.ifgt;
+                var _val0$9 = Litereum$serialize$term$(_world$1, _vars$2, $3460);
+                var _val1$10 = Litereum$serialize$term$(_world$1, _vars$2, $3461);
+                var _iflt$11 = Litereum$serialize$term$(_world$1, _vars$2, $3462);
+                var _ifeq$12 = Litereum$serialize$term$(_world$1, _vars$2, $3463);
+                var _ifgt$13 = Litereum$serialize$term$(_world$1, _vars$2, $3464);
+                var $3465 = ((((((((_ifgt$13 + _ifeq$12) + _iflt$11) + _val1$10) + _val0$9) + '1') + '0') + '1') + '1');
+                var $3440 = $3465;
                 break;
             case 'Litereum.Term.operate':
-                var $3472 = self.oper;
-                var $3473 = self.val0;
-                var $3474 = self.val1;
+                var $3466 = self.oper;
+                var $3467 = self.val0;
+                var $3468 = self.val1;
                 var _oper$7 = Litereum$serialize$fixlen$(3n, (() => {
-                    var self = $3472;
+                    var self = $3466;
                     switch (self._) {
                         case 'Litereum.Operation.add':
-                            var $3476 = 0n;
-                            return $3476;
+                            var $3470 = 0n;
+                            return $3470;
                         case 'Litereum.Operation.sub':
-                            var $3477 = 1n;
-                            return $3477;
+                            var $3471 = 1n;
+                            return $3471;
                         case 'Litereum.Operation.mul':
-                            var $3478 = 2n;
-                            return $3478;
+                            var $3472 = 2n;
+                            return $3472;
                         case 'Litereum.Operation.div':
-                            var $3479 = 3n;
-                            return $3479;
+                            var $3473 = 3n;
+                            return $3473;
                         case 'Litereum.Operation.mod':
-                            var $3480 = 4n;
-                            return $3480;
+                            var $3474 = 4n;
+                            return $3474;
                         case 'Litereum.Operation.or':
-                            var $3481 = 5n;
-                            return $3481;
+                            var $3475 = 5n;
+                            return $3475;
                         case 'Litereum.Operation.and':
-                            var $3482 = 6n;
-                            return $3482;
+                            var $3476 = 6n;
+                            return $3476;
                         case 'Litereum.Operation.xor':
-                            var $3483 = 7n;
-                            return $3483;
+                            var $3477 = 7n;
+                            return $3477;
                     };
                 })());
-                var _val0$8 = Litereum$serialize$term$(_world$1, _vars$2, $3473);
-                var _val1$9 = Litereum$serialize$term$(_world$1, _vars$2, $3474);
-                var $3475 = ((((((_val1$9 + _val0$8) + _oper$7) + '1') + '1') + '0') + '1');
-                var $3446 = $3475;
+                var _val0$8 = Litereum$serialize$term$(_world$1, _vars$2, $3467);
+                var _val1$9 = Litereum$serialize$term$(_world$1, _vars$2, $3468);
+                var $3469 = ((((((_val1$9 + _val0$8) + _oper$7) + '1') + '1') + '0') + '1');
+                var $3440 = $3469;
                 break;
             case 'Litereum.Term.bind':
-                var $3484 = self.name;
-                var $3485 = self.main;
-                var $3486 = self.body;
-                var self = Litereum$get_bond$(_world$1, $3484);
+                var $3478 = self.name;
+                var $3479 = self.main;
+                var $3480 = self.body;
+                var self = Litereum$get_bond$(_world$1, $3478);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3488 = self.value;
-                        var _bond$8 = $3488;
+                        var $3482 = self.value;
+                        var _bond$8 = $3482;
                         var self = _bond$8;
                         switch (self._) {
                             case 'Litereum.Bond.new':
-                                var $3490 = self.input_names;
-                                var _name$15 = Litereum$serialize$name$old$(_world$1, $3484);
-                                var _vrs2$16 = List$concat$(List$reverse$($3490), _vars$2);
-                                var _main$17 = Litereum$serialize$term$(_world$1, _vrs2$16, $3485);
-                                var _body$18 = Litereum$serialize$term$(_world$1, _vars$2, $3486);
-                                var $3491 = ((((((_body$18 + _main$17) + _name$15) + '1') + '1') + '1') + '1');
-                                var $3489 = $3491;
+                                var $3484 = self.input_names;
+                                var _name$15 = Litereum$serialize$name$old$(_world$1, $3478);
+                                var _vrs2$16 = List$concat$(List$reverse$($3484), _vars$2);
+                                var _main$17 = Litereum$serialize$term$(_world$1, _vrs2$16, $3479);
+                                var _body$18 = Litereum$serialize$term$(_world$1, _vars$2, $3480);
+                                var $3485 = ((((((_body$18 + _main$17) + _name$15) + '1') + '1') + '1') + '1');
+                                var $3483 = $3485;
                                 break;
                         };
-                        var $3487 = $3489;
+                        var $3481 = $3483;
                         break;
                     case 'Maybe.none':
-                        var $3492 = Bits$e;
-                        var $3487 = $3492;
+                        var $3486 = Bits$e;
+                        var $3481 = $3486;
                         break;
                 };
-                var $3446 = $3487;
+                var $3440 = $3481;
                 break;
         };
-        return $3446;
+        return $3440;
     };
     const Litereum$serialize$term = x0 => x1 => x2 => Litereum$serialize$term$(x0, x1, x2);
 
@@ -12078,23 +12056,23 @@ module.exports = (function() {
         var self = _bond$2;
         switch (self._) {
             case 'Litereum.Bond.new':
-                var $3494 = self.name;
-                var $3495 = self.input_names;
-                var $3496 = self.input_types;
-                var $3497 = self.output_type;
-                var $3498 = self.main;
-                var $3499 = self.owners;
-                var _name$9 = Litereum$serialize$name$old$(_world$1, $3494);
-                var _input_names$10 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3495);
-                var _input_types$11 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3496);
-                var _output_type$12 = Litereum$serialize$type$(_world$1, $3497);
-                var _main$13 = Litereum$serialize$term$(_world$1, List$reverse$($3495), $3498);
-                var _owners$14 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3499);
-                var $3500 = (((((_owners$14 + _main$13) + _output_type$12) + _input_types$11) + _input_names$10) + _name$9);
-                var $3493 = $3500;
+                var $3488 = self.name;
+                var $3489 = self.input_names;
+                var $3490 = self.input_types;
+                var $3491 = self.output_type;
+                var $3492 = self.main;
+                var $3493 = self.owners;
+                var _name$9 = Litereum$serialize$name$old$(_world$1, $3488);
+                var _input_names$10 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3489);
+                var _input_types$11 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $3490);
+                var _output_type$12 = Litereum$serialize$type$(_world$1, $3491);
+                var _main$13 = Litereum$serialize$term$(_world$1, List$reverse$($3489), $3492);
+                var _owners$14 = Litereum$serialize$list$(Litereum$serialize$name$old(_world$1), $3493);
+                var $3494 = (((((_owners$14 + _main$13) + _output_type$12) + _input_types$11) + _input_names$10) + _name$9);
+                var $3487 = $3494;
                 break;
         };
-        return $3493;
+        return $3487;
     };
     const Litereum$serialize$bond = x0 => x1 => Litereum$serialize$bond$(x0, x1);
 
@@ -12102,15 +12080,15 @@ module.exports = (function() {
         var self = _eval$2;
         switch (self._) {
             case 'Litereum.Eval.new':
-                var $3502 = self.term;
-                var $3503 = self.type;
-                var _term$5 = Litereum$serialize$term$(_world$1, List$nil, $3502);
-                var _type$6 = Litereum$serialize$type$(_world$1, $3503);
-                var $3504 = (_type$6 + _term$5);
-                var $3501 = $3504;
+                var $3496 = self.term;
+                var $3497 = self.type;
+                var _term$5 = Litereum$serialize$term$(_world$1, List$nil, $3496);
+                var _type$6 = Litereum$serialize$type$(_world$1, $3497);
+                var $3498 = (_type$6 + _term$5);
+                var $3495 = $3498;
                 break;
         };
-        return $3501;
+        return $3495;
     };
     const Litereum$serialize$eval = x0 => x1 => Litereum$serialize$eval$(x0, x1);
 
@@ -12118,31 +12096,31 @@ module.exports = (function() {
         var self = _transaction$2;
         switch (self._) {
             case 'Litereum.Transaction.new_name':
-                var $3506 = self.name;
-                var _name$4 = Litereum$serialize$name$new$($3506);
-                var $3507 = ((_name$4 + '0') + '0');
-                var $3505 = $3507;
+                var $3500 = self.name;
+                var _name$4 = Litereum$serialize$name$new$($3500);
+                var $3501 = ((_name$4 + '0') + '0');
+                var $3499 = $3501;
                 break;
             case 'Litereum.Transaction.new_data':
-                var $3508 = self.data;
-                var _data$4 = Litereum$serialize$data$(_world$1, $3508);
-                var $3509 = ((_data$4 + '0') + '1');
-                var $3505 = $3509;
+                var $3502 = self.data;
+                var _data$4 = Litereum$serialize$data$(_world$1, $3502);
+                var $3503 = ((_data$4 + '0') + '1');
+                var $3499 = $3503;
                 break;
             case 'Litereum.Transaction.new_bond':
-                var $3510 = self.bond;
-                var _bond$4 = Litereum$serialize$bond$(_world$1, $3510);
-                var $3511 = ((_bond$4 + '1') + '0');
-                var $3505 = $3511;
+                var $3504 = self.bond;
+                var _bond$4 = Litereum$serialize$bond$(_world$1, $3504);
+                var $3505 = ((_bond$4 + '1') + '0');
+                var $3499 = $3505;
                 break;
             case 'Litereum.Transaction.new_eval':
-                var $3512 = self.eval;
-                var _term$4 = Litereum$serialize$eval$(_world$1, $3512);
-                var $3513 = ((_term$4 + '1') + '1');
-                var $3505 = $3513;
+                var $3506 = self.eval;
+                var _term$4 = Litereum$serialize$eval$(_world$1, $3506);
+                var $3507 = ((_term$4 + '1') + '1');
+                var $3499 = $3507;
                 break;
         };
-        return $3505;
+        return $3499;
     };
     const Litereum$serialize$transaction = x0 => x1 => Litereum$serialize$transaction$(x0, x1);
 
@@ -12150,19 +12128,19 @@ module.exports = (function() {
         var self = _block$2;
         switch (self._) {
             case 'List.cons':
-                var $3515 = self.head;
-                var $3516 = self.tail;
-                var _head$5 = Litereum$serialize$transaction$(_world$1, $3515);
-                var _tail$6 = Litereum$serialize$block$(Litereum$reg$(_world$1, $3515), $3516);
-                var $3517 = (_tail$6 + _head$5);
-                var $3514 = $3517;
+                var $3509 = self.head;
+                var $3510 = self.tail;
+                var _head$5 = Litereum$serialize$transaction$(_world$1, $3509);
+                var _tail$6 = Litereum$serialize$block$(Litereum$reg$(_world$1, $3509), $3510);
+                var $3511 = (_tail$6 + _head$5);
+                var $3508 = $3511;
                 break;
             case 'List.nil':
-                var $3518 = Bits$e;
-                var $3514 = $3518;
+                var $3512 = Bits$e;
+                var $3508 = $3512;
                 break;
         };
-        return $3514;
+        return $3508;
     };
     const Litereum$serialize$block = x0 => x1 => Litereum$serialize$block$(x0, x1);
 
@@ -12170,245 +12148,245 @@ module.exports = (function() {
         var self = _x$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3520 = self.slice(0, -1);
-                var self = $3520;
+                var $3514 = self.slice(0, -1);
+                var self = $3514;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3522 = self.slice(0, -1);
-                        var self = $3522;
+                        var $3516 = self.slice(0, -1);
+                        var self = $3516;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3524 = self.slice(0, -1);
-                                var self = $3524;
+                                var $3518 = self.slice(0, -1);
+                                var self = $3518;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3526 = self.slice(0, -1);
-                                        var $3527 = ("0" + Bits$hex$encode$($3526));
-                                        var $3525 = $3527;
+                                        var $3520 = self.slice(0, -1);
+                                        var $3521 = ("0" + Bits$hex$encode$($3520));
+                                        var $3519 = $3521;
                                         break;
                                     case 'i':
-                                        var $3528 = self.slice(0, -1);
-                                        var $3529 = ("8" + Bits$hex$encode$($3528));
-                                        var $3525 = $3529;
+                                        var $3522 = self.slice(0, -1);
+                                        var $3523 = ("8" + Bits$hex$encode$($3522));
+                                        var $3519 = $3523;
                                         break;
                                     case 'e':
-                                        var $3530 = "0";
-                                        var $3525 = $3530;
+                                        var $3524 = "0";
+                                        var $3519 = $3524;
                                         break;
                                 };
-                                var $3523 = $3525;
+                                var $3517 = $3519;
                                 break;
                             case 'i':
-                                var $3531 = self.slice(0, -1);
-                                var self = $3531;
+                                var $3525 = self.slice(0, -1);
+                                var self = $3525;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3533 = self.slice(0, -1);
-                                        var $3534 = ("4" + Bits$hex$encode$($3533));
-                                        var $3532 = $3534;
+                                        var $3527 = self.slice(0, -1);
+                                        var $3528 = ("4" + Bits$hex$encode$($3527));
+                                        var $3526 = $3528;
                                         break;
                                     case 'i':
-                                        var $3535 = self.slice(0, -1);
-                                        var $3536 = ("c" + Bits$hex$encode$($3535));
-                                        var $3532 = $3536;
+                                        var $3529 = self.slice(0, -1);
+                                        var $3530 = ("c" + Bits$hex$encode$($3529));
+                                        var $3526 = $3530;
                                         break;
                                     case 'e':
-                                        var $3537 = "4";
-                                        var $3532 = $3537;
+                                        var $3531 = "4";
+                                        var $3526 = $3531;
                                         break;
                                 };
-                                var $3523 = $3532;
+                                var $3517 = $3526;
                                 break;
                             case 'e':
-                                var $3538 = "0";
-                                var $3523 = $3538;
+                                var $3532 = "0";
+                                var $3517 = $3532;
                                 break;
                         };
-                        var $3521 = $3523;
+                        var $3515 = $3517;
                         break;
                     case 'i':
-                        var $3539 = self.slice(0, -1);
-                        var self = $3539;
+                        var $3533 = self.slice(0, -1);
+                        var self = $3533;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3541 = self.slice(0, -1);
-                                var self = $3541;
+                                var $3535 = self.slice(0, -1);
+                                var self = $3535;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3543 = self.slice(0, -1);
-                                        var $3544 = ("2" + Bits$hex$encode$($3543));
-                                        var $3542 = $3544;
+                                        var $3537 = self.slice(0, -1);
+                                        var $3538 = ("2" + Bits$hex$encode$($3537));
+                                        var $3536 = $3538;
                                         break;
                                     case 'i':
-                                        var $3545 = self.slice(0, -1);
-                                        var $3546 = ("a" + Bits$hex$encode$($3545));
-                                        var $3542 = $3546;
+                                        var $3539 = self.slice(0, -1);
+                                        var $3540 = ("a" + Bits$hex$encode$($3539));
+                                        var $3536 = $3540;
                                         break;
                                     case 'e':
-                                        var $3547 = "2";
-                                        var $3542 = $3547;
+                                        var $3541 = "2";
+                                        var $3536 = $3541;
                                         break;
                                 };
-                                var $3540 = $3542;
+                                var $3534 = $3536;
                                 break;
                             case 'i':
-                                var $3548 = self.slice(0, -1);
-                                var self = $3548;
+                                var $3542 = self.slice(0, -1);
+                                var self = $3542;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3550 = self.slice(0, -1);
-                                        var $3551 = ("6" + Bits$hex$encode$($3550));
-                                        var $3549 = $3551;
+                                        var $3544 = self.slice(0, -1);
+                                        var $3545 = ("6" + Bits$hex$encode$($3544));
+                                        var $3543 = $3545;
                                         break;
                                     case 'i':
-                                        var $3552 = self.slice(0, -1);
-                                        var $3553 = ("e" + Bits$hex$encode$($3552));
-                                        var $3549 = $3553;
+                                        var $3546 = self.slice(0, -1);
+                                        var $3547 = ("e" + Bits$hex$encode$($3546));
+                                        var $3543 = $3547;
                                         break;
                                     case 'e':
-                                        var $3554 = "6";
-                                        var $3549 = $3554;
+                                        var $3548 = "6";
+                                        var $3543 = $3548;
                                         break;
                                 };
-                                var $3540 = $3549;
+                                var $3534 = $3543;
                                 break;
                             case 'e':
-                                var $3555 = "2";
-                                var $3540 = $3555;
+                                var $3549 = "2";
+                                var $3534 = $3549;
                                 break;
                         };
-                        var $3521 = $3540;
+                        var $3515 = $3534;
                         break;
                     case 'e':
-                        var $3556 = "0";
-                        var $3521 = $3556;
+                        var $3550 = "0";
+                        var $3515 = $3550;
                         break;
                 };
-                var $3519 = $3521;
+                var $3513 = $3515;
                 break;
             case 'i':
-                var $3557 = self.slice(0, -1);
-                var self = $3557;
+                var $3551 = self.slice(0, -1);
+                var self = $3551;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3559 = self.slice(0, -1);
-                        var self = $3559;
+                        var $3553 = self.slice(0, -1);
+                        var self = $3553;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3561 = self.slice(0, -1);
-                                var self = $3561;
+                                var $3555 = self.slice(0, -1);
+                                var self = $3555;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3563 = self.slice(0, -1);
-                                        var $3564 = ("1" + Bits$hex$encode$($3563));
-                                        var $3562 = $3564;
+                                        var $3557 = self.slice(0, -1);
+                                        var $3558 = ("1" + Bits$hex$encode$($3557));
+                                        var $3556 = $3558;
                                         break;
                                     case 'i':
-                                        var $3565 = self.slice(0, -1);
-                                        var $3566 = ("9" + Bits$hex$encode$($3565));
-                                        var $3562 = $3566;
+                                        var $3559 = self.slice(0, -1);
+                                        var $3560 = ("9" + Bits$hex$encode$($3559));
+                                        var $3556 = $3560;
                                         break;
                                     case 'e':
-                                        var $3567 = "1";
-                                        var $3562 = $3567;
+                                        var $3561 = "1";
+                                        var $3556 = $3561;
                                         break;
                                 };
-                                var $3560 = $3562;
+                                var $3554 = $3556;
                                 break;
                             case 'i':
-                                var $3568 = self.slice(0, -1);
-                                var self = $3568;
+                                var $3562 = self.slice(0, -1);
+                                var self = $3562;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3570 = self.slice(0, -1);
-                                        var $3571 = ("5" + Bits$hex$encode$($3570));
-                                        var $3569 = $3571;
+                                        var $3564 = self.slice(0, -1);
+                                        var $3565 = ("5" + Bits$hex$encode$($3564));
+                                        var $3563 = $3565;
                                         break;
                                     case 'i':
-                                        var $3572 = self.slice(0, -1);
-                                        var $3573 = ("d" + Bits$hex$encode$($3572));
-                                        var $3569 = $3573;
+                                        var $3566 = self.slice(0, -1);
+                                        var $3567 = ("d" + Bits$hex$encode$($3566));
+                                        var $3563 = $3567;
                                         break;
                                     case 'e':
-                                        var $3574 = "5";
-                                        var $3569 = $3574;
+                                        var $3568 = "5";
+                                        var $3563 = $3568;
                                         break;
                                 };
-                                var $3560 = $3569;
+                                var $3554 = $3563;
                                 break;
                             case 'e':
-                                var $3575 = "1";
-                                var $3560 = $3575;
+                                var $3569 = "1";
+                                var $3554 = $3569;
                                 break;
                         };
-                        var $3558 = $3560;
+                        var $3552 = $3554;
                         break;
                     case 'i':
-                        var $3576 = self.slice(0, -1);
-                        var self = $3576;
+                        var $3570 = self.slice(0, -1);
+                        var self = $3570;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3578 = self.slice(0, -1);
-                                var self = $3578;
+                                var $3572 = self.slice(0, -1);
+                                var self = $3572;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3580 = self.slice(0, -1);
-                                        var $3581 = ("3" + Bits$hex$encode$($3580));
-                                        var $3579 = $3581;
+                                        var $3574 = self.slice(0, -1);
+                                        var $3575 = ("3" + Bits$hex$encode$($3574));
+                                        var $3573 = $3575;
                                         break;
                                     case 'i':
-                                        var $3582 = self.slice(0, -1);
-                                        var $3583 = ("b" + Bits$hex$encode$($3582));
-                                        var $3579 = $3583;
+                                        var $3576 = self.slice(0, -1);
+                                        var $3577 = ("b" + Bits$hex$encode$($3576));
+                                        var $3573 = $3577;
                                         break;
                                     case 'e':
-                                        var $3584 = "3";
-                                        var $3579 = $3584;
+                                        var $3578 = "3";
+                                        var $3573 = $3578;
                                         break;
                                 };
-                                var $3577 = $3579;
+                                var $3571 = $3573;
                                 break;
                             case 'i':
-                                var $3585 = self.slice(0, -1);
-                                var self = $3585;
+                                var $3579 = self.slice(0, -1);
+                                var self = $3579;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3587 = self.slice(0, -1);
-                                        var $3588 = ("7" + Bits$hex$encode$($3587));
-                                        var $3586 = $3588;
+                                        var $3581 = self.slice(0, -1);
+                                        var $3582 = ("7" + Bits$hex$encode$($3581));
+                                        var $3580 = $3582;
                                         break;
                                     case 'i':
-                                        var $3589 = self.slice(0, -1);
-                                        var $3590 = ("f" + Bits$hex$encode$($3589));
-                                        var $3586 = $3590;
+                                        var $3583 = self.slice(0, -1);
+                                        var $3584 = ("f" + Bits$hex$encode$($3583));
+                                        var $3580 = $3584;
                                         break;
                                     case 'e':
-                                        var $3591 = "7";
-                                        var $3586 = $3591;
+                                        var $3585 = "7";
+                                        var $3580 = $3585;
                                         break;
                                 };
-                                var $3577 = $3586;
+                                var $3571 = $3580;
                                 break;
                             case 'e':
-                                var $3592 = "3";
-                                var $3577 = $3592;
+                                var $3586 = "3";
+                                var $3571 = $3586;
                                 break;
                         };
-                        var $3558 = $3577;
+                        var $3552 = $3571;
                         break;
                     case 'e':
-                        var $3593 = "1";
-                        var $3558 = $3593;
+                        var $3587 = "1";
+                        var $3552 = $3587;
                         break;
                 };
-                var $3519 = $3558;
+                var $3513 = $3552;
                 break;
             case 'e':
-                var $3594 = "";
-                var $3519 = $3594;
+                var $3588 = "";
+                var $3513 = $3588;
                 break;
         };
-        return $3519;
+        return $3513;
     };
     const Bits$hex$encode = x0 => Bits$hex$encode$(x0);
 
@@ -12416,62 +12394,62 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'e':
-                var $3596 = Bool$true;
-                var $3595 = $3596;
+                var $3590 = Bool$true;
+                var $3589 = $3590;
                 break;
             case 'o':
             case 'i':
-                var $3597 = Bool$false;
-                var $3595 = $3597;
+                var $3591 = Bool$false;
+                var $3589 = $3591;
                 break;
         };
-        return $3595;
+        return $3589;
     };
     const Bits$is_empty = x0 => Bits$is_empty$(x0);
 
     function Litereum$deserialize$fixlen$(_size$1, _bits$2) {
         var self = _size$1;
         if (self === 0n) {
-            var $3599 = Pair$new$(_bits$2, 0n);
-            var $3598 = $3599;
+            var $3593 = Pair$new$(_bits$2, 0n);
+            var $3592 = $3593;
         } else {
-            var $3600 = (self - 1n);
+            var $3594 = (self - 1n);
             var self = _bits$2;
             switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                 case 'o':
-                    var $3602 = self.slice(0, -1);
-                    var self = Litereum$deserialize$fixlen$($3600, $3602);
+                    var $3596 = self.slice(0, -1);
+                    var self = Litereum$deserialize$fixlen$($3594, $3596);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3604 = self.fst;
-                            var $3605 = self.snd;
-                            var $3606 = Pair$new$($3604, ($3605 * 2n));
-                            var $3603 = $3606;
+                            var $3598 = self.fst;
+                            var $3599 = self.snd;
+                            var $3600 = Pair$new$($3598, ($3599 * 2n));
+                            var $3597 = $3600;
                             break;
                     };
-                    var $3601 = $3603;
+                    var $3595 = $3597;
                     break;
                 case 'i':
-                    var $3607 = self.slice(0, -1);
-                    var self = Litereum$deserialize$fixlen$($3600, $3607);
+                    var $3601 = self.slice(0, -1);
+                    var self = Litereum$deserialize$fixlen$($3594, $3601);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3609 = self.fst;
-                            var $3610 = self.snd;
-                            var $3611 = Pair$new$($3609, (($3610 * 2n) + 1n));
-                            var $3608 = $3611;
+                            var $3603 = self.fst;
+                            var $3604 = self.snd;
+                            var $3605 = Pair$new$($3603, (($3604 * 2n) + 1n));
+                            var $3602 = $3605;
                             break;
                     };
-                    var $3601 = $3608;
+                    var $3595 = $3602;
                     break;
                 case 'e':
-                    var $3612 = Pair$new$(Bits$e, 0n);
-                    var $3601 = $3612;
+                    var $3606 = Pair$new$(Bits$e, 0n);
+                    var $3595 = $3606;
                     break;
             };
-            var $3598 = $3601;
+            var $3592 = $3595;
         };
-        return $3598;
+        return $3592;
     };
     const Litereum$deserialize$fixlen = x0 => x1 => Litereum$deserialize$fixlen$(x0, x1);
     const U16$from_nat = a0 => (Number(a0) & 0xFFFF);
@@ -12480,67 +12458,67 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3614 = self.slice(0, -1);
-                var $3615 = Pair$new$($3614, "");
-                var $3613 = $3615;
+                var $3608 = self.slice(0, -1);
+                var $3609 = Pair$new$($3608, "");
+                var $3607 = $3609;
                 break;
             case 'i':
-                var $3616 = self.slice(0, -1);
-                var self = Litereum$deserialize$fixlen$(6n, $3616);
+                var $3610 = self.slice(0, -1);
+                var self = Litereum$deserialize$fixlen$(6n, $3610);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3618 = self.fst;
-                        var $3619 = self.snd;
-                        var self = Litereum$deserialize$name$new$($3618);
+                        var $3612 = self.fst;
+                        var $3613 = self.snd;
+                        var self = Litereum$deserialize$name$new$($3612);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3621 = self.fst;
-                                var $3622 = self.snd;
-                                var _numb$7 = (Number($3619) & 0xFFFF);
+                                var $3615 = self.fst;
+                                var $3616 = self.snd;
+                                var _numb$7 = (Number($3613) & 0xFFFF);
                                 var self = U16$btw$(0, _numb$7, 9);
                                 if (self) {
-                                    var $3624 = ((_numb$7 + 48) & 0xFFFF);
-                                    var _head$8 = $3624;
+                                    var $3618 = ((_numb$7 + 48) & 0xFFFF);
+                                    var _head$8 = $3618;
                                 } else {
                                     var self = U16$btw$(10, _numb$7, 35);
                                     if (self) {
-                                        var $3626 = ((((_numb$7 - 10) & 0xFFFF) + 65) & 0xFFFF);
-                                        var $3625 = $3626;
+                                        var $3620 = ((((_numb$7 - 10) & 0xFFFF) + 65) & 0xFFFF);
+                                        var $3619 = $3620;
                                     } else {
                                         var self = U16$btw$(36, _numb$7, 61);
                                         if (self) {
-                                            var $3628 = ((((_numb$7 - 36) & 0xFFFF) + 97) & 0xFFFF);
-                                            var $3627 = $3628;
+                                            var $3622 = ((((_numb$7 - 36) & 0xFFFF) + 97) & 0xFFFF);
+                                            var $3621 = $3622;
                                         } else {
                                             var self = U16$btw$(62, _numb$7, 62);
                                             if (self) {
-                                                var $3630 = 95;
-                                                var $3629 = $3630;
+                                                var $3624 = 95;
+                                                var $3623 = $3624;
                                             } else {
-                                                var $3631 = 46;
-                                                var $3629 = $3631;
+                                                var $3625 = 46;
+                                                var $3623 = $3625;
                                             };
-                                            var $3627 = $3629;
+                                            var $3621 = $3623;
                                         };
-                                        var $3625 = $3627;
+                                        var $3619 = $3621;
                                     };
-                                    var _head$8 = $3625;
+                                    var _head$8 = $3619;
                                 };
-                                var $3623 = Pair$new$($3621, String$cons$(_head$8, $3622));
-                                var $3620 = $3623;
+                                var $3617 = Pair$new$($3615, String$cons$(_head$8, $3616));
+                                var $3614 = $3617;
                                 break;
                         };
-                        var $3617 = $3620;
+                        var $3611 = $3614;
                         break;
                 };
-                var $3613 = $3617;
+                var $3607 = $3611;
                 break;
             case 'e':
-                var $3632 = Pair$new$(Bits$e, "");
-                var $3613 = $3632;
+                var $3626 = Pair$new$(Bits$e, "");
+                var $3607 = $3626;
                 break;
         };
-        return $3613;
+        return $3607;
     };
     const Litereum$deserialize$name$new = x0 => Litereum$deserialize$name$new$(x0);
 
@@ -12548,53 +12526,53 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3634 = self.slice(0, -1);
-                var $3635 = Pair$new$($3634, 1n);
-                var $3633 = $3635;
+                var $3628 = self.slice(0, -1);
+                var $3629 = Pair$new$($3628, 1n);
+                var $3627 = $3629;
                 break;
             case 'i':
-                var $3636 = self.slice(0, -1);
-                var self = $3636;
+                var $3630 = self.slice(0, -1);
+                var self = $3630;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3638 = self.slice(0, -1);
-                        var self = Litereum$deserialize$varlen$go$($3638);
+                        var $3632 = self.slice(0, -1);
+                        var self = Litereum$deserialize$varlen$go$($3632);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3640 = self.fst;
-                                var $3641 = self.snd;
-                                var $3642 = Pair$new$($3640, ($3641 * 2n));
-                                var $3639 = $3642;
+                                var $3634 = self.fst;
+                                var $3635 = self.snd;
+                                var $3636 = Pair$new$($3634, ($3635 * 2n));
+                                var $3633 = $3636;
                                 break;
                         };
-                        var $3637 = $3639;
+                        var $3631 = $3633;
                         break;
                     case 'i':
-                        var $3643 = self.slice(0, -1);
-                        var self = Litereum$deserialize$varlen$go$($3643);
+                        var $3637 = self.slice(0, -1);
+                        var self = Litereum$deserialize$varlen$go$($3637);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3645 = self.fst;
-                                var $3646 = self.snd;
-                                var $3647 = Pair$new$($3645, (($3646 * 2n) + 1n));
-                                var $3644 = $3647;
+                                var $3639 = self.fst;
+                                var $3640 = self.snd;
+                                var $3641 = Pair$new$($3639, (($3640 * 2n) + 1n));
+                                var $3638 = $3641;
                                 break;
                         };
-                        var $3637 = $3644;
+                        var $3631 = $3638;
                         break;
                     case 'e':
-                        var $3648 = Pair$new$($3636, 0n);
-                        var $3637 = $3648;
+                        var $3642 = Pair$new$($3630, 0n);
+                        var $3631 = $3642;
                         break;
                 };
-                var $3633 = $3637;
+                var $3627 = $3631;
                 break;
             case 'e':
-                var $3649 = Pair$new$(Bits$e, 0n);
-                var $3633 = $3649;
+                var $3643 = Pair$new$(Bits$e, 0n);
+                var $3627 = $3643;
                 break;
         };
-        return $3633;
+        return $3627;
     };
     const Litereum$deserialize$varlen$go = x0 => Litereum$deserialize$varlen$go$(x0);
 
@@ -12602,13 +12580,13 @@ module.exports = (function() {
         var self = Litereum$deserialize$varlen$go$(_bits$1);
         switch (self._) {
             case 'Pair.new':
-                var $3651 = self.fst;
-                var $3652 = self.snd;
-                var $3653 = Pair$new$($3651, ($3652 - 1n <= 0n ? 0n : $3652 - 1n));
-                var $3650 = $3653;
+                var $3645 = self.fst;
+                var $3646 = self.snd;
+                var $3647 = Pair$new$($3645, ($3646 - 1n <= 0n ? 0n : $3646 - 1n));
+                var $3644 = $3647;
                 break;
         };
-        return $3650;
+        return $3644;
     };
     const Litereum$deserialize$varlen = x0 => Litereum$deserialize$varlen$(x0);
 
@@ -12616,31 +12594,31 @@ module.exports = (function() {
         var self = _world$1;
         switch (self._) {
             case 'Litereum.World.new':
-                var $3655 = self.index_to_name;
+                var $3649 = self.index_to_name;
                 var self = Litereum$deserialize$varlen$(_bits$2);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3657 = self.fst;
-                        var $3658 = self.snd;
-                        var self = Map$get$(Nat$show$($3658), $3655);
+                        var $3651 = self.fst;
+                        var $3652 = self.snd;
+                        var self = Map$get$(Nat$show$($3652), $3649);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3660 = self.value;
-                                var $3661 = Pair$new$($3657, $3660);
-                                var $3659 = $3661;
+                                var $3654 = self.value;
+                                var $3655 = Pair$new$($3651, $3654);
+                                var $3653 = $3655;
                                 break;
                             case 'Maybe.none':
-                                var $3662 = Pair$new$($3657, "");
-                                var $3659 = $3662;
+                                var $3656 = Pair$new$($3651, "");
+                                var $3653 = $3656;
                                 break;
                         };
-                        var $3656 = $3659;
+                        var $3650 = $3653;
                         break;
                 };
-                var $3654 = $3656;
+                var $3648 = $3650;
                 break;
         };
-        return $3654;
+        return $3648;
     };
     const Litereum$deserialize$name$old = x0 => x1 => Litereum$deserialize$name$old$(x0, x1);
 
@@ -12648,37 +12626,37 @@ module.exports = (function() {
         var self = _bits$3;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3664 = self.slice(0, -1);
-                var $3665 = Pair$new$($3664, List$nil);
-                var $3663 = $3665;
+                var $3658 = self.slice(0, -1);
+                var $3659 = Pair$new$($3658, List$nil);
+                var $3657 = $3659;
                 break;
             case 'i':
-                var $3666 = self.slice(0, -1);
-                var self = _item$2($3666);
+                var $3660 = self.slice(0, -1);
+                var self = _item$2($3660);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3668 = self.fst;
-                        var $3669 = self.snd;
-                        var self = Litereum$deserialize$list$(_item$2, $3668);
+                        var $3662 = self.fst;
+                        var $3663 = self.snd;
+                        var self = Litereum$deserialize$list$(_item$2, $3662);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3671 = self.fst;
-                                var $3672 = self.snd;
-                                var $3673 = Pair$new$($3671, List$cons$($3669, $3672));
-                                var $3670 = $3673;
+                                var $3665 = self.fst;
+                                var $3666 = self.snd;
+                                var $3667 = Pair$new$($3665, List$cons$($3663, $3666));
+                                var $3664 = $3667;
                                 break;
                         };
-                        var $3667 = $3670;
+                        var $3661 = $3664;
                         break;
                 };
-                var $3663 = $3667;
+                var $3657 = $3661;
                 break;
             case 'e':
-                var $3674 = Pair$new$(Bits$e, List$nil);
-                var $3663 = $3674;
+                var $3668 = Pair$new$(Bits$e, List$nil);
+                var $3657 = $3668;
                 break;
         };
-        return $3663;
+        return $3657;
     };
     const Litereum$deserialize$list = x0 => x1 => Litereum$deserialize$list$(x0, x1);
 
@@ -12686,29 +12664,29 @@ module.exports = (function() {
         var self = _bits$2;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3676 = self.slice(0, -1);
-                var $3677 = Pair$new$($3676, Litereum$Type$word);
-                var $3675 = $3677;
+                var $3670 = self.slice(0, -1);
+                var $3671 = Pair$new$($3670, Litereum$Type$word);
+                var $3669 = $3671;
                 break;
             case 'i':
-                var $3678 = self.slice(0, -1);
-                var self = Litereum$deserialize$name$old$(_world$1, $3678);
+                var $3672 = self.slice(0, -1);
+                var self = Litereum$deserialize$name$old$(_world$1, $3672);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3680 = self.fst;
-                        var $3681 = self.snd;
-                        var $3682 = Pair$new$($3680, Litereum$Type$data$($3681));
-                        var $3679 = $3682;
+                        var $3674 = self.fst;
+                        var $3675 = self.snd;
+                        var $3676 = Pair$new$($3674, Litereum$Type$data$($3675));
+                        var $3673 = $3676;
                         break;
                 };
-                var $3675 = $3679;
+                var $3669 = $3673;
                 break;
             case 'e':
-                var $3683 = Pair$new$(_bits$2, Litereum$Type$word);
-                var $3675 = $3683;
+                var $3677 = Pair$new$(_bits$2, Litereum$Type$word);
+                var $3669 = $3677;
                 break;
         };
-        return $3675;
+        return $3669;
     };
     const Litereum$deserialize$type = x0 => x1 => Litereum$deserialize$type$(x0, x1);
 
@@ -12716,29 +12694,29 @@ module.exports = (function() {
         var self = Litereum$deserialize$name$old$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3685 = self.fst;
-                var $3686 = self.snd;
-                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3685);
+                var $3679 = self.fst;
+                var $3680 = self.snd;
+                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3679);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3688 = self.fst;
-                        var $3689 = self.snd;
-                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3688);
+                        var $3682 = self.fst;
+                        var $3683 = self.snd;
+                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3682);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3691 = self.fst;
-                                var $3692 = self.snd;
-                                var $3693 = Pair$new$($3691, Litereum$Constructor$new$($3686, $3689, $3692));
-                                var $3690 = $3693;
+                                var $3685 = self.fst;
+                                var $3686 = self.snd;
+                                var $3687 = Pair$new$($3685, Litereum$Constructor$new$($3680, $3683, $3686));
+                                var $3684 = $3687;
                                 break;
                         };
-                        var $3687 = $3690;
+                        var $3681 = $3684;
                         break;
                 };
-                var $3684 = $3687;
+                var $3678 = $3681;
                 break;
         };
-        return $3684;
+        return $3678;
     };
     const Litereum$deserialize$constructor = x0 => x1 => Litereum$deserialize$constructor$(x0, x1);
 
@@ -12746,21 +12724,21 @@ module.exports = (function() {
         var self = Litereum$deserialize$name$old$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3695 = self.fst;
-                var $3696 = self.snd;
-                var self = Litereum$deserialize$list$(Litereum$deserialize$constructor(_world$1), $3695);
+                var $3689 = self.fst;
+                var $3690 = self.snd;
+                var self = Litereum$deserialize$list$(Litereum$deserialize$constructor(_world$1), $3689);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3698 = self.fst;
-                        var $3699 = self.snd;
-                        var $3700 = Pair$new$($3698, Litereum$Data$new$($3696, $3699));
-                        var $3697 = $3700;
+                        var $3692 = self.fst;
+                        var $3693 = self.snd;
+                        var $3694 = Pair$new$($3692, Litereum$Data$new$($3690, $3693));
+                        var $3691 = $3694;
                         break;
                 };
-                var $3694 = $3697;
+                var $3688 = $3691;
                 break;
         };
-        return $3694;
+        return $3688;
     };
     const Litereum$deserialize$data = x0 => x1 => Litereum$deserialize$data$(x0, x1);
 
@@ -12768,13 +12746,13 @@ module.exports = (function() {
         var self = Litereum$deserialize$varlen$(_bits$3);
         switch (self._) {
             case 'Pair.new':
-                var $3702 = self.fst;
-                var $3703 = self.snd;
-                var $3704 = Pair$new$($3702, Maybe$default$(List$get$($3703, _vars$2), ""));
-                var $3701 = $3704;
+                var $3696 = self.fst;
+                var $3697 = self.snd;
+                var $3698 = Pair$new$($3696, Maybe$default$(List$get$($3697, _vars$2), ""));
+                var $3695 = $3698;
                 break;
         };
-        return $3701;
+        return $3695;
     };
     const Litereum$deserialize$name$local = x0 => x1 => x2 => Litereum$deserialize$name$local$(x0, x1, x2);
 
@@ -12782,42 +12760,42 @@ module.exports = (function() {
         var self = _ctors$4;
         switch (self._) {
             case 'List.cons':
-                var $3706 = self.head;
-                var $3707 = self.tail;
+                var $3700 = self.head;
+                var $3701 = self.tail;
                 var _flds$8 = List$map$(a1 => ((_name$3 + ".") + a1), (() => {
-                    var self = $3706;
+                    var self = $3700;
                     switch (self._) {
                         case 'Litereum.Constructor.new':
-                            var $3709 = self.field_names;
-                            var $3710 = $3709;
-                            return $3710;
+                            var $3703 = self.field_names;
+                            var $3704 = $3703;
+                            return $3704;
                     };
                 })());
                 var self = Litereum$deserialize$term$(_world$1, List$concat$(List$reverse$(_flds$8), _vars$2), _bits$5);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3711 = self.fst;
-                        var $3712 = self.snd;
-                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, _name$3, $3707, $3711);
+                        var $3705 = self.fst;
+                        var $3706 = self.snd;
+                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, _name$3, $3701, $3705);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3714 = self.fst;
-                                var $3715 = self.snd;
-                                var $3716 = Pair$new$($3714, List$cons$($3712, $3715));
-                                var $3713 = $3716;
+                                var $3708 = self.fst;
+                                var $3709 = self.snd;
+                                var $3710 = Pair$new$($3708, List$cons$($3706, $3709));
+                                var $3707 = $3710;
                                 break;
                         };
-                        var $3708 = $3713;
+                        var $3702 = $3707;
                         break;
                 };
-                var $3705 = $3708;
+                var $3699 = $3702;
                 break;
             case 'List.nil':
-                var $3717 = Pair$new$(_bits$5, List$nil);
-                var $3705 = $3717;
+                var $3711 = Pair$new$(_bits$5, List$nil);
+                var $3699 = $3711;
                 break;
         };
-        return $3705;
+        return $3699;
     };
     const Litereum$deserialize$cases = x0 => x1 => x2 => x3 => x4 => Litereum$deserialize$cases$(x0, x1, x2, x3, x4);
 
@@ -12825,354 +12803,354 @@ module.exports = (function() {
         var self = _bits$3;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3719 = self.slice(0, -1);
-                var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3719);
+                var $3713 = self.slice(0, -1);
+                var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3713);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3721 = self.fst;
-                        var $3722 = self.snd;
-                        var $3723 = Pair$new$($3721, Litereum$Term$var$($3722));
-                        var $3720 = $3723;
+                        var $3715 = self.fst;
+                        var $3716 = self.snd;
+                        var $3717 = Pair$new$($3715, Litereum$Term$var$($3716));
+                        var $3714 = $3717;
                         break;
                 };
-                var $3718 = $3720;
+                var $3712 = $3714;
                 break;
             case 'i':
-                var $3724 = self.slice(0, -1);
-                var self = Litereum$deserialize$fixlen$(3n, $3724);
+                var $3718 = self.slice(0, -1);
+                var self = Litereum$deserialize$fixlen$(3n, $3718);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3726 = self.fst;
-                        var $3727 = self.snd;
-                        var self = ($3727 === 0n);
+                        var $3720 = self.fst;
+                        var $3721 = self.snd;
+                        var self = ($3721 === 0n);
                         if (self) {
-                            var self = Litereum$deserialize$name$old$(_world$1, $3726);
+                            var self = Litereum$deserialize$name$old$(_world$1, $3720);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3730 = self.fst;
-                                    var $3731 = self.snd;
-                                    var self = Litereum$deserialize$type$(_world$1, $3730);
+                                    var $3724 = self.fst;
+                                    var $3725 = self.snd;
+                                    var self = Litereum$deserialize$type$(_world$1, $3724);
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $3733 = self.fst;
-                                            var $3734 = self.snd;
-                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3733);
+                                            var $3727 = self.fst;
+                                            var $3728 = self.snd;
+                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3727);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3736 = self.fst;
-                                                    var $3737 = self.snd;
-                                                    var self = Litereum$deserialize$term$(_world$1, List$cons$($3731, _vars$2), $3736);
+                                                    var $3730 = self.fst;
+                                                    var $3731 = self.snd;
+                                                    var self = Litereum$deserialize$term$(_world$1, List$cons$($3725, _vars$2), $3730);
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3739 = self.fst;
-                                                            var $3740 = self.snd;
-                                                            var $3741 = Pair$new$($3739, Litereum$Term$let$($3731, $3734, $3737, $3740));
-                                                            var $3738 = $3741;
+                                                            var $3733 = self.fst;
+                                                            var $3734 = self.snd;
+                                                            var $3735 = Pair$new$($3733, Litereum$Term$let$($3725, $3728, $3731, $3734));
+                                                            var $3732 = $3735;
                                                             break;
                                                     };
-                                                    var $3735 = $3738;
+                                                    var $3729 = $3732;
                                                     break;
                                             };
-                                            var $3732 = $3735;
+                                            var $3726 = $3729;
                                             break;
                                     };
-                                    var $3729 = $3732;
+                                    var $3723 = $3726;
                                     break;
                             };
-                            var $3728 = $3729;
+                            var $3722 = $3723;
                         } else {
-                            var self = ($3727 === 1n);
+                            var self = ($3721 === 1n);
                             if (self) {
-                                var self = Litereum$deserialize$name$old$(_world$1, $3726);
+                                var self = Litereum$deserialize$name$old$(_world$1, $3720);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3744 = self.fst;
-                                        var $3745 = self.snd;
-                                        var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3744);
+                                        var $3738 = self.fst;
+                                        var $3739 = self.snd;
+                                        var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3738);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3747 = self.fst;
-                                                var $3748 = self.snd;
-                                                var $3749 = Pair$new$($3747, Litereum$Term$call$($3745, $3748));
-                                                var $3746 = $3749;
+                                                var $3741 = self.fst;
+                                                var $3742 = self.snd;
+                                                var $3743 = Pair$new$($3741, Litereum$Term$call$($3739, $3742));
+                                                var $3740 = $3743;
                                                 break;
                                         };
-                                        var $3743 = $3746;
+                                        var $3737 = $3740;
                                         break;
                                 };
-                                var $3742 = $3743;
+                                var $3736 = $3737;
                             } else {
-                                var self = ($3727 === 2n);
+                                var self = ($3721 === 2n);
                                 if (self) {
-                                    var self = Litereum$deserialize$name$old$(_world$1, $3726);
+                                    var self = Litereum$deserialize$name$old$(_world$1, $3720);
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $3752 = self.fst;
-                                            var $3753 = self.snd;
-                                            var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3752);
+                                            var $3746 = self.fst;
+                                            var $3747 = self.snd;
+                                            var self = Litereum$deserialize$list$(Litereum$deserialize$term(_world$1)(_vars$2), $3746);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3755 = self.fst;
-                                                    var $3756 = self.snd;
-                                                    var $3757 = Pair$new$($3755, Litereum$Term$create$($3753, $3756));
-                                                    var $3754 = $3757;
+                                                    var $3749 = self.fst;
+                                                    var $3750 = self.snd;
+                                                    var $3751 = Pair$new$($3749, Litereum$Term$create$($3747, $3750));
+                                                    var $3748 = $3751;
                                                     break;
                                             };
-                                            var $3751 = $3754;
+                                            var $3745 = $3748;
                                             break;
                                     };
-                                    var $3750 = $3751;
+                                    var $3744 = $3745;
                                 } else {
-                                    var self = ($3727 === 3n);
+                                    var self = ($3721 === 3n);
                                     if (self) {
-                                        var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3726);
+                                        var self = Litereum$deserialize$name$local$(_world$1, _vars$2, $3720);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3760 = self.fst;
-                                                var $3761 = self.snd;
-                                                var self = Litereum$deserialize$name$old$(_world$1, $3760);
+                                                var $3754 = self.fst;
+                                                var $3755 = self.snd;
+                                                var self = Litereum$deserialize$name$old$(_world$1, $3754);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3763 = self.fst;
-                                                        var $3764 = self.snd;
-                                                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, $3761, Maybe$default$(Litereum$get_constructors$(_world$1, $3764), List$nil), $3763);
+                                                        var $3757 = self.fst;
+                                                        var $3758 = self.snd;
+                                                        var self = Litereum$deserialize$cases$(_world$1, _vars$2, $3755, Maybe$default$(Litereum$get_constructors$(_world$1, $3758), List$nil), $3757);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $3766 = self.fst;
-                                                                var $3767 = self.snd;
-                                                                var $3768 = Pair$new$($3766, Litereum$Term$match$($3761, $3764, $3767));
-                                                                var $3765 = $3768;
+                                                                var $3760 = self.fst;
+                                                                var $3761 = self.snd;
+                                                                var $3762 = Pair$new$($3760, Litereum$Term$match$($3755, $3758, $3761));
+                                                                var $3759 = $3762;
                                                                 break;
                                                         };
-                                                        var $3762 = $3765;
+                                                        var $3756 = $3759;
                                                         break;
                                                 };
-                                                var $3759 = $3762;
+                                                var $3753 = $3756;
                                                 break;
                                         };
-                                        var $3758 = $3759;
+                                        var $3752 = $3753;
                                     } else {
-                                        var self = ($3727 === 4n);
+                                        var self = ($3721 === 4n);
                                         if (self) {
-                                            var self = Litereum$deserialize$fixlen$(64n, $3726);
+                                            var self = Litereum$deserialize$fixlen$(64n, $3720);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3771 = self.fst;
-                                                    var $3772 = self.snd;
-                                                    var $3773 = Pair$new$($3771, Litereum$Term$word$(($3772 & 0xFFFFFFFFFFFFFFFFn)));
-                                                    var $3770 = $3773;
+                                                    var $3765 = self.fst;
+                                                    var $3766 = self.snd;
+                                                    var $3767 = Pair$new$($3765, Litereum$Term$word$(($3766 & 0xFFFFFFFFFFFFFFFFn)));
+                                                    var $3764 = $3767;
                                                     break;
                                             };
-                                            var $3769 = $3770;
+                                            var $3763 = $3764;
                                         } else {
-                                            var self = ($3727 === 5n);
+                                            var self = ($3721 === 5n);
                                             if (self) {
-                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3726);
+                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3720);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3776 = self.fst;
-                                                        var $3777 = self.snd;
-                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3776);
+                                                        var $3770 = self.fst;
+                                                        var $3771 = self.snd;
+                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3770);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $3779 = self.fst;
-                                                                var $3780 = self.snd;
-                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3779);
+                                                                var $3773 = self.fst;
+                                                                var $3774 = self.snd;
+                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3773);
                                                                 switch (self._) {
                                                                     case 'Pair.new':
-                                                                        var $3782 = self.fst;
-                                                                        var $3783 = self.snd;
-                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3782);
+                                                                        var $3776 = self.fst;
+                                                                        var $3777 = self.snd;
+                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3776);
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $3785 = self.fst;
-                                                                                var $3786 = self.snd;
-                                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3785);
+                                                                                var $3779 = self.fst;
+                                                                                var $3780 = self.snd;
+                                                                                var self = Litereum$deserialize$term$(_world$1, _vars$2, $3779);
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $3788 = self.fst;
-                                                                                        var $3789 = self.snd;
-                                                                                        var $3790 = Pair$new$($3788, Litereum$Term$compare$($3777, $3780, $3783, $3786, $3789));
-                                                                                        var $3787 = $3790;
+                                                                                        var $3782 = self.fst;
+                                                                                        var $3783 = self.snd;
+                                                                                        var $3784 = Pair$new$($3782, Litereum$Term$compare$($3771, $3774, $3777, $3780, $3783));
+                                                                                        var $3781 = $3784;
                                                                                         break;
                                                                                 };
-                                                                                var $3784 = $3787;
+                                                                                var $3778 = $3781;
                                                                                 break;
                                                                         };
-                                                                        var $3781 = $3784;
+                                                                        var $3775 = $3778;
                                                                         break;
                                                                 };
-                                                                var $3778 = $3781;
+                                                                var $3772 = $3775;
                                                                 break;
                                                         };
-                                                        var $3775 = $3778;
+                                                        var $3769 = $3772;
                                                         break;
                                                 };
-                                                var $3774 = $3775;
+                                                var $3768 = $3769;
                                             } else {
-                                                var self = ($3727 === 6n);
+                                                var self = ($3721 === 6n);
                                                 if (self) {
-                                                    var self = Litereum$deserialize$fixlen$(3n, $3726);
+                                                    var self = Litereum$deserialize$fixlen$(3n, $3720);
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3793 = self.fst;
-                                                            var $3794 = self.snd;
-                                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3793);
+                                                            var $3787 = self.fst;
+                                                            var $3788 = self.snd;
+                                                            var self = Litereum$deserialize$term$(_world$1, _vars$2, $3787);
                                                             switch (self._) {
                                                                 case 'Pair.new':
-                                                                    var $3796 = self.fst;
-                                                                    var $3797 = self.snd;
-                                                                    var self = Litereum$deserialize$term$(_world$1, _vars$2, $3796);
+                                                                    var $3790 = self.fst;
+                                                                    var $3791 = self.snd;
+                                                                    var self = Litereum$deserialize$term$(_world$1, _vars$2, $3790);
                                                                     switch (self._) {
                                                                         case 'Pair.new':
-                                                                            var $3799 = self.fst;
-                                                                            var $3800 = self.snd;
-                                                                            var self = ($3794 === 0n);
+                                                                            var $3793 = self.fst;
+                                                                            var $3794 = self.snd;
+                                                                            var self = ($3788 === 0n);
                                                                             if (self) {
-                                                                                var $3802 = Litereum$Operation$add;
-                                                                                var _oper$13 = $3802;
+                                                                                var $3796 = Litereum$Operation$add;
+                                                                                var _oper$13 = $3796;
                                                                             } else {
-                                                                                var self = ($3794 === 1n);
+                                                                                var self = ($3788 === 1n);
                                                                                 if (self) {
-                                                                                    var $3804 = Litereum$Operation$sub;
-                                                                                    var $3803 = $3804;
+                                                                                    var $3798 = Litereum$Operation$sub;
+                                                                                    var $3797 = $3798;
                                                                                 } else {
-                                                                                    var self = ($3794 === 2n);
+                                                                                    var self = ($3788 === 2n);
                                                                                     if (self) {
-                                                                                        var $3806 = Litereum$Operation$mul;
-                                                                                        var $3805 = $3806;
+                                                                                        var $3800 = Litereum$Operation$mul;
+                                                                                        var $3799 = $3800;
                                                                                     } else {
-                                                                                        var self = ($3794 === 3n);
+                                                                                        var self = ($3788 === 3n);
                                                                                         if (self) {
-                                                                                            var $3808 = Litereum$Operation$div;
-                                                                                            var $3807 = $3808;
+                                                                                            var $3802 = Litereum$Operation$div;
+                                                                                            var $3801 = $3802;
                                                                                         } else {
-                                                                                            var self = ($3794 === 4n);
+                                                                                            var self = ($3788 === 4n);
                                                                                             if (self) {
-                                                                                                var $3810 = Litereum$Operation$mod;
-                                                                                                var $3809 = $3810;
+                                                                                                var $3804 = Litereum$Operation$mod;
+                                                                                                var $3803 = $3804;
                                                                                             } else {
-                                                                                                var self = ($3794 === 5n);
+                                                                                                var self = ($3788 === 5n);
                                                                                                 if (self) {
-                                                                                                    var $3812 = Litereum$Operation$or;
-                                                                                                    var $3811 = $3812;
+                                                                                                    var $3806 = Litereum$Operation$or;
+                                                                                                    var $3805 = $3806;
                                                                                                 } else {
-                                                                                                    var self = ($3794 === 6n);
+                                                                                                    var self = ($3788 === 6n);
                                                                                                     if (self) {
-                                                                                                        var $3814 = Litereum$Operation$and;
-                                                                                                        var $3813 = $3814;
+                                                                                                        var $3808 = Litereum$Operation$and;
+                                                                                                        var $3807 = $3808;
                                                                                                     } else {
-                                                                                                        var self = ($3794 === 7n);
+                                                                                                        var self = ($3788 === 7n);
                                                                                                         if (self) {
-                                                                                                            var $3816 = Litereum$Operation$xor;
-                                                                                                            var $3815 = $3816;
+                                                                                                            var $3810 = Litereum$Operation$xor;
+                                                                                                            var $3809 = $3810;
                                                                                                         } else {
-                                                                                                            var $3817 = Litereum$Operation$add;
-                                                                                                            var $3815 = $3817;
+                                                                                                            var $3811 = Litereum$Operation$add;
+                                                                                                            var $3809 = $3811;
                                                                                                         };
-                                                                                                        var $3813 = $3815;
+                                                                                                        var $3807 = $3809;
                                                                                                     };
-                                                                                                    var $3811 = $3813;
+                                                                                                    var $3805 = $3807;
                                                                                                 };
-                                                                                                var $3809 = $3811;
+                                                                                                var $3803 = $3805;
                                                                                             };
-                                                                                            var $3807 = $3809;
+                                                                                            var $3801 = $3803;
                                                                                         };
-                                                                                        var $3805 = $3807;
+                                                                                        var $3799 = $3801;
                                                                                     };
-                                                                                    var $3803 = $3805;
+                                                                                    var $3797 = $3799;
                                                                                 };
-                                                                                var _oper$13 = $3803;
+                                                                                var _oper$13 = $3797;
                                                                             };
-                                                                            var $3801 = Pair$new$($3799, Litereum$Term$operate$(_oper$13, $3797, $3800));
-                                                                            var $3798 = $3801;
+                                                                            var $3795 = Pair$new$($3793, Litereum$Term$operate$(_oper$13, $3791, $3794));
+                                                                            var $3792 = $3795;
                                                                             break;
                                                                     };
-                                                                    var $3795 = $3798;
+                                                                    var $3789 = $3792;
                                                                     break;
                                                             };
-                                                            var $3792 = $3795;
+                                                            var $3786 = $3789;
                                                             break;
                                                     };
-                                                    var $3791 = $3792;
+                                                    var $3785 = $3786;
                                                 } else {
-                                                    var self = ($3727 === 7n);
+                                                    var self = ($3721 === 7n);
                                                     if (self) {
-                                                        var self = Litereum$deserialize$name$old$(_world$1, $3726);
+                                                        var self = Litereum$deserialize$name$old$(_world$1, $3720);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $3820 = self.fst;
-                                                                var $3821 = self.snd;
-                                                                var self = Litereum$get_bond$(_world$1, $3821);
+                                                                var $3814 = self.fst;
+                                                                var $3815 = self.snd;
+                                                                var self = Litereum$get_bond$(_world$1, $3815);
                                                                 switch (self._) {
                                                                     case 'Maybe.some':
-                                                                        var $3823 = self.value;
-                                                                        var _bond$10 = $3823;
+                                                                        var $3817 = self.value;
+                                                                        var _bond$10 = $3817;
                                                                         var self = _bond$10;
                                                                         switch (self._) {
                                                                             case 'Litereum.Bond.new':
-                                                                                var $3825 = self.input_names;
-                                                                                var _vrs2$17 = List$concat$(List$reverse$($3825), _vars$2);
-                                                                                var self = Litereum$deserialize$term$(_world$1, _vrs2$17, $3820);
+                                                                                var $3819 = self.input_names;
+                                                                                var _vrs2$17 = List$concat$(List$reverse$($3819), _vars$2);
+                                                                                var self = Litereum$deserialize$term$(_world$1, _vrs2$17, $3814);
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $3827 = self.fst;
-                                                                                        var $3828 = self.snd;
-                                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3827);
+                                                                                        var $3821 = self.fst;
+                                                                                        var $3822 = self.snd;
+                                                                                        var self = Litereum$deserialize$term$(_world$1, _vars$2, $3821);
                                                                                         switch (self._) {
                                                                                             case 'Pair.new':
-                                                                                                var $3830 = self.fst;
-                                                                                                var $3831 = self.snd;
-                                                                                                var $3832 = Pair$new$($3830, Litereum$Term$bind$($3821, $3828, $3831));
-                                                                                                var $3829 = $3832;
+                                                                                                var $3824 = self.fst;
+                                                                                                var $3825 = self.snd;
+                                                                                                var $3826 = Pair$new$($3824, Litereum$Term$bind$($3815, $3822, $3825));
+                                                                                                var $3823 = $3826;
                                                                                                 break;
                                                                                         };
-                                                                                        var $3826 = $3829;
+                                                                                        var $3820 = $3823;
                                                                                         break;
                                                                                 };
-                                                                                var $3824 = $3826;
+                                                                                var $3818 = $3820;
                                                                                 break;
                                                                         };
-                                                                        var $3822 = $3824;
+                                                                        var $3816 = $3818;
                                                                         break;
                                                                     case 'Maybe.none':
-                                                                        var $3833 = Pair$new$($3820, Litereum$Term$word$(0n));
-                                                                        var $3822 = $3833;
+                                                                        var $3827 = Pair$new$($3814, Litereum$Term$word$(0n));
+                                                                        var $3816 = $3827;
                                                                         break;
                                                                 };
-                                                                var $3819 = $3822;
+                                                                var $3813 = $3816;
                                                                 break;
                                                         };
-                                                        var $3818 = $3819;
+                                                        var $3812 = $3813;
                                                     } else {
-                                                        var $3834 = Pair$new$($3726, Litereum$Term$word$(0n));
-                                                        var $3818 = $3834;
+                                                        var $3828 = Pair$new$($3720, Litereum$Term$word$(0n));
+                                                        var $3812 = $3828;
                                                     };
-                                                    var $3791 = $3818;
+                                                    var $3785 = $3812;
                                                 };
-                                                var $3774 = $3791;
+                                                var $3768 = $3785;
                                             };
-                                            var $3769 = $3774;
+                                            var $3763 = $3768;
                                         };
-                                        var $3758 = $3769;
+                                        var $3752 = $3763;
                                     };
-                                    var $3750 = $3758;
+                                    var $3744 = $3752;
                                 };
-                                var $3742 = $3750;
+                                var $3736 = $3744;
                             };
-                            var $3728 = $3742;
+                            var $3722 = $3736;
                         };
-                        var $3725 = $3728;
+                        var $3719 = $3722;
                         break;
                 };
-                var $3718 = $3725;
+                var $3712 = $3719;
                 break;
             case 'e':
-                var $3835 = Pair$new$(_bits$3, Litereum$Term$word$(0n));
-                var $3718 = $3835;
+                var $3829 = Pair$new$(_bits$3, Litereum$Term$word$(0n));
+                var $3712 = $3829;
                 break;
         };
-        return $3718;
+        return $3712;
     };
     const Litereum$deserialize$term = x0 => x1 => x2 => Litereum$deserialize$term$(x0, x1, x2);
 
@@ -13180,53 +13158,53 @@ module.exports = (function() {
         var self = Litereum$deserialize$name$old$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3837 = self.fst;
-                var $3838 = self.snd;
-                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3837);
+                var $3831 = self.fst;
+                var $3832 = self.snd;
+                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3831);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3840 = self.fst;
-                        var $3841 = self.snd;
-                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3840);
+                        var $3834 = self.fst;
+                        var $3835 = self.snd;
+                        var self = Litereum$deserialize$list$(Litereum$deserialize$type(_world$1), $3834);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3843 = self.fst;
-                                var $3844 = self.snd;
-                                var self = Litereum$deserialize$type$(_world$1, $3843);
+                                var $3837 = self.fst;
+                                var $3838 = self.snd;
+                                var self = Litereum$deserialize$type$(_world$1, $3837);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3846 = self.fst;
-                                        var $3847 = self.snd;
-                                        var self = Litereum$deserialize$term$(_world$1, List$reverse$($3841), $3846);
+                                        var $3840 = self.fst;
+                                        var $3841 = self.snd;
+                                        var self = Litereum$deserialize$term$(_world$1, List$reverse$($3835), $3840);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3849 = self.fst;
-                                                var $3850 = self.snd;
-                                                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3849);
+                                                var $3843 = self.fst;
+                                                var $3844 = self.snd;
+                                                var self = Litereum$deserialize$list$(Litereum$deserialize$name$old(_world$1), $3843);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3852 = self.fst;
-                                                        var $3853 = self.snd;
-                                                        var $3854 = Pair$new$($3852, Litereum$Bond$new$($3838, $3841, $3844, $3847, $3850, $3853));
-                                                        var $3851 = $3854;
+                                                        var $3846 = self.fst;
+                                                        var $3847 = self.snd;
+                                                        var $3848 = Pair$new$($3846, Litereum$Bond$new$($3832, $3835, $3838, $3841, $3844, $3847));
+                                                        var $3845 = $3848;
                                                         break;
                                                 };
-                                                var $3848 = $3851;
+                                                var $3842 = $3845;
                                                 break;
                                         };
-                                        var $3845 = $3848;
+                                        var $3839 = $3842;
                                         break;
                                 };
-                                var $3842 = $3845;
+                                var $3836 = $3839;
                                 break;
                         };
-                        var $3839 = $3842;
+                        var $3833 = $3836;
                         break;
                 };
-                var $3836 = $3839;
+                var $3830 = $3833;
                 break;
         };
-        return $3836;
+        return $3830;
     };
     const Litereum$deserialize$bond = x0 => x1 => Litereum$deserialize$bond$(x0, x1);
 
@@ -13234,21 +13212,21 @@ module.exports = (function() {
         var self = Litereum$deserialize$term$(_world$1, List$nil, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3856 = self.fst;
-                var $3857 = self.snd;
-                var self = Litereum$deserialize$type$(_world$1, $3856);
+                var $3850 = self.fst;
+                var $3851 = self.snd;
+                var self = Litereum$deserialize$type$(_world$1, $3850);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3859 = self.fst;
-                        var $3860 = self.snd;
-                        var $3861 = Pair$new$($3859, Litereum$Eval$new$($3857, $3860));
-                        var $3858 = $3861;
+                        var $3853 = self.fst;
+                        var $3854 = self.snd;
+                        var $3855 = Pair$new$($3853, Litereum$Eval$new$($3851, $3854));
+                        var $3852 = $3855;
                         break;
                 };
-                var $3855 = $3858;
+                var $3849 = $3852;
                 break;
         };
-        return $3855;
+        return $3849;
     };
     const Litereum$deserialize$eval = x0 => x1 => Litereum$deserialize$eval$(x0, x1);
 
@@ -13256,102 +13234,102 @@ module.exports = (function() {
         var self = Litereum$deserialize$fixlen$(2n, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3863 = self.fst;
-                var $3864 = self.snd;
-                var self = ($3864 === 0n);
+                var $3857 = self.fst;
+                var $3858 = self.snd;
+                var self = ($3858 === 0n);
                 if (self) {
-                    var self = Litereum$deserialize$name$new$($3863);
+                    var self = Litereum$deserialize$name$new$($3857);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3867 = self.fst;
-                            var $3868 = self.snd;
-                            var $3869 = Pair$new$($3867, Litereum$Transaction$new_name$($3868));
-                            var $3866 = $3869;
+                            var $3861 = self.fst;
+                            var $3862 = self.snd;
+                            var $3863 = Pair$new$($3861, Litereum$Transaction$new_name$($3862));
+                            var $3860 = $3863;
                             break;
                     };
-                    var $3865 = $3866;
+                    var $3859 = $3860;
                 } else {
-                    var self = ($3864 === 1n);
+                    var self = ($3858 === 1n);
                     if (self) {
-                        var self = Litereum$deserialize$data$(_world$1, $3863);
+                        var self = Litereum$deserialize$data$(_world$1, $3857);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3872 = self.fst;
-                                var $3873 = self.snd;
-                                var $3874 = Pair$new$($3872, Litereum$Transaction$new_data$($3873));
-                                var $3871 = $3874;
+                                var $3866 = self.fst;
+                                var $3867 = self.snd;
+                                var $3868 = Pair$new$($3866, Litereum$Transaction$new_data$($3867));
+                                var $3865 = $3868;
                                 break;
                         };
-                        var $3870 = $3871;
+                        var $3864 = $3865;
                     } else {
-                        var self = ($3864 === 2n);
+                        var self = ($3858 === 2n);
                         if (self) {
-                            var self = Litereum$deserialize$bond$(_world$1, $3863);
+                            var self = Litereum$deserialize$bond$(_world$1, $3857);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3877 = self.fst;
-                                    var $3878 = self.snd;
-                                    var $3879 = Pair$new$($3877, Litereum$Transaction$new_bond$($3878));
-                                    var $3876 = $3879;
+                                    var $3871 = self.fst;
+                                    var $3872 = self.snd;
+                                    var $3873 = Pair$new$($3871, Litereum$Transaction$new_bond$($3872));
+                                    var $3870 = $3873;
                                     break;
                             };
-                            var $3875 = $3876;
+                            var $3869 = $3870;
                         } else {
-                            var self = ($3864 === 3n);
+                            var self = ($3858 === 3n);
                             if (self) {
-                                var self = Litereum$deserialize$eval$(_world$1, $3863);
+                                var self = Litereum$deserialize$eval$(_world$1, $3857);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3882 = self.fst;
-                                        var $3883 = self.snd;
-                                        var $3884 = Pair$new$($3882, Litereum$Transaction$new_eval$($3883));
-                                        var $3881 = $3884;
+                                        var $3876 = self.fst;
+                                        var $3877 = self.snd;
+                                        var $3878 = Pair$new$($3876, Litereum$Transaction$new_eval$($3877));
+                                        var $3875 = $3878;
                                         break;
                                 };
-                                var $3880 = $3881;
+                                var $3874 = $3875;
                             } else {
-                                var $3885 = Pair$new$($3863, Litereum$Transaction$new_name$(""));
-                                var $3880 = $3885;
+                                var $3879 = Pair$new$($3857, Litereum$Transaction$new_name$(""));
+                                var $3874 = $3879;
                             };
-                            var $3875 = $3880;
+                            var $3869 = $3874;
                         };
-                        var $3870 = $3875;
+                        var $3864 = $3869;
                     };
-                    var $3865 = $3870;
+                    var $3859 = $3864;
                 };
-                var $3862 = $3865;
+                var $3856 = $3859;
                 break;
         };
-        return $3862;
+        return $3856;
     };
     const Litereum$deserialize$transaction = x0 => x1 => Litereum$deserialize$transaction$(x0, x1);
 
     function Litereum$deserialize$block$(_world$1, _bits$2) {
         var self = Bits$is_empty$(_bits$2);
         if (self) {
-            var $3887 = Pair$new$(Bits$e, List$nil);
-            var $3886 = $3887;
+            var $3881 = Pair$new$(Bits$e, List$nil);
+            var $3880 = $3881;
         } else {
             var self = Litereum$deserialize$transaction$(_world$1, _bits$2);
             switch (self._) {
                 case 'Pair.new':
-                    var $3889 = self.fst;
-                    var $3890 = self.snd;
-                    var self = Litereum$deserialize$block$(Litereum$reg$(_world$1, $3890), $3889);
+                    var $3883 = self.fst;
+                    var $3884 = self.snd;
+                    var self = Litereum$deserialize$block$(Litereum$reg$(_world$1, $3884), $3883);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3892 = self.fst;
-                            var $3893 = self.snd;
-                            var $3894 = Pair$new$($3892, List$cons$($3890, $3893));
-                            var $3891 = $3894;
+                            var $3886 = self.fst;
+                            var $3887 = self.snd;
+                            var $3888 = Pair$new$($3886, List$cons$($3884, $3887));
+                            var $3885 = $3888;
                             break;
                     };
-                    var $3888 = $3891;
+                    var $3882 = $3885;
                     break;
             };
-            var $3886 = $3888;
+            var $3880 = $3882;
         };
-        return $3886;
+        return $3880;
     };
     const Litereum$deserialize$block = x0 => x1 => Litereum$deserialize$block$(x0, x1);
 
@@ -13368,24 +13346,24 @@ module.exports = (function() {
                 var self = _transactions$2;
                 switch (self._) {
                     case 'List.cons':
-                        var $3895 = self.head;
-                        var $3896 = self.tail;
-                        var self = Litereum$run$(_world$1, $3895, Bool$false);
+                        var $3889 = self.head;
+                        var $3890 = self.tail;
+                        var self = Litereum$run$(_world$1, $3889, Bool$false);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3898 = self.value;
-                                var $3899 = Litereum$run$block$($3898, $3896);
-                                var $3897 = $3899;
+                                var $3892 = self.value;
+                                var $3893 = Litereum$run$block$($3892, $3890);
+                                var $3891 = $3893;
                                 break;
                             case 'Maybe.none':
-                                var $3900 = Maybe$none;
-                                var $3897 = $3900;
+                                var $3894 = Maybe$none;
+                                var $3891 = $3894;
                                 break;
                         };
-                        return $3897;
+                        return $3891;
                     case 'List.nil':
-                        var $3901 = Maybe$some$(_world$1);
-                        return $3901;
+                        var $3895 = Maybe$some$(_world$1);
+                        return $3895;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -13399,94 +13377,94 @@ module.exports = (function() {
         var self = Parser$run$(Litereum$parse$block$(_world$2), _code$1);
         switch (self._) {
             case 'Maybe.some':
-                var $3903 = self.value;
-                var $3904 = IO$monad$((_m$bind$4 => _m$pure$5 => {
-                    var $3905 = _m$bind$4;
-                    return $3905;
+                var $3897 = self.value;
+                var $3898 = IO$monad$((_m$bind$4 => _m$pure$5 => {
+                    var $3899 = _m$bind$4;
+                    return $3899;
                 }))(IO$print$("Block: "))((_$4 => {
-                    var $3906 = IO$monad$((_m$bind$5 => _m$pure$6 => {
-                        var $3907 = _m$bind$5;
-                        return $3907;
-                    }))(IO$print$(Litereum$show$block$(_world$2, $3903)))((_$5 => {
-                        var $3908 = IO$monad$((_m$bind$6 => _m$pure$7 => {
-                            var $3909 = _m$bind$6;
-                            return $3909;
+                    var $3900 = IO$monad$((_m$bind$5 => _m$pure$6 => {
+                        var $3901 = _m$bind$5;
+                        return $3901;
+                    }))(IO$print$(Litereum$show$block$(_world$2, $3897)))((_$5 => {
+                        var $3902 = IO$monad$((_m$bind$6 => _m$pure$7 => {
+                            var $3903 = _m$bind$6;
+                            return $3903;
                         }))(IO$print$("Serialization:"))((_$6 => {
-                            var _bits$7 = Litereum$serialize$block$(Litereum$genesis, $3903);
-                            var $3910 = IO$monad$((_m$bind$8 => _m$pure$9 => {
-                                var $3911 = _m$bind$8;
-                                return $3911;
+                            var _bits$7 = Litereum$serialize$block$(Litereum$genesis, $3897);
+                            var $3904 = IO$monad$((_m$bind$8 => _m$pure$9 => {
+                                var $3905 = _m$bind$8;
+                                return $3905;
                             }))(IO$print$(("- " + Bits$hex$encode$(_bits$7))))((_$8 => {
-                                var $3912 = IO$monad$((_m$bind$9 => _m$pure$10 => {
-                                    var $3913 = _m$bind$9;
-                                    return $3913;
+                                var $3906 = IO$monad$((_m$bind$9 => _m$pure$10 => {
+                                    var $3907 = _m$bind$9;
+                                    return $3907;
                                 }))(IO$print$(""))((_$9 => {
-                                    var $3914 = IO$monad$((_m$bind$10 => _m$pure$11 => {
-                                        var $3915 = _m$bind$10;
-                                        return $3915;
+                                    var $3908 = IO$monad$((_m$bind$10 => _m$pure$11 => {
+                                        var $3909 = _m$bind$10;
+                                        return $3909;
                                     }))(IO$print$("Deserialization:"))((_$10 => {
                                         var self = Litereum$deserialize$block$(Litereum$genesis, _bits$7);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3917 = self.snd;
-                                                var $3918 = IO$monad$((_m$bind$13 => _m$pure$14 => {
-                                                    var $3919 = _m$bind$13;
-                                                    return $3919;
-                                                }))(IO$print$(Litereum$show$block$(Litereum$genesis, $3917)))((_$13 => {
-                                                    var $3920 = ((console.log("Evaluation: "), (_$14 => {
-                                                        var self = Litereum$run$block$(_world$2, $3917);
+                                                var $3911 = self.snd;
+                                                var $3912 = IO$monad$((_m$bind$13 => _m$pure$14 => {
+                                                    var $3913 = _m$bind$13;
+                                                    return $3913;
+                                                }))(IO$print$(Litereum$show$block$(Litereum$genesis, $3911)))((_$13 => {
+                                                    var $3914 = ((console.log("Evaluation: "), (_$14 => {
+                                                        var self = Litereum$run$block$(_world$2, $3911);
                                                         switch (self._) {
                                                             case 'Maybe.none':
-                                                                var $3922 = IO$print$("failed execution");
-                                                                var $3921 = $3922;
+                                                                var $3916 = IO$print$("failed execution");
+                                                                var $3915 = $3916;
                                                                 break;
                                                             case 'Maybe.some':
-                                                                var $3923 = IO$monad$((_m$bind$16 => _m$pure$17 => {
-                                                                    var $3924 = _m$bind$16;
-                                                                    return $3924;
+                                                                var $3917 = IO$monad$((_m$bind$16 => _m$pure$17 => {
+                                                                    var $3918 = _m$bind$16;
+                                                                    return $3918;
                                                                 }))(IO$print$(""))((_$16 => {
-                                                                    var $3925 = IO$print$("Done!");
-                                                                    return $3925;
+                                                                    var $3919 = IO$print$("Done!");
+                                                                    return $3919;
                                                                 }));
-                                                                var $3921 = $3923;
+                                                                var $3915 = $3917;
                                                                 break;
                                                         };
-                                                        return $3921;
+                                                        return $3915;
                                                     })()));
-                                                    return $3920;
+                                                    return $3914;
                                                 }));
-                                                var $3916 = $3918;
+                                                var $3910 = $3912;
                                                 break;
                                         };
-                                        return $3916;
+                                        return $3910;
                                     }));
-                                    return $3914;
+                                    return $3908;
                                 }));
-                                return $3912;
+                                return $3906;
                             }));
-                            return $3910;
+                            return $3904;
                         }));
-                        return $3908;
+                        return $3902;
                     }));
-                    return $3906;
+                    return $3900;
                 }));
-                var $3902 = $3904;
+                var $3896 = $3898;
                 break;
             case 'Maybe.none':
-                var $3926 = IO$print$("Invalid block syntax.");
-                var $3902 = $3926;
+                var $3920 = IO$print$("Invalid block syntax.");
+                var $3896 = $3920;
                 break;
         };
-        return $3902;
+        return $3896;
     };
     const Litereum$api$run_block = x0 => Litereum$api$run_block$(x0);
     const Litereum = (() => {
         var __$1 = Litereum$api$run_block$("eval { +(#21,#21) } : #word");
-        var $3927 = IO$monad$((_m$bind$2 => _m$pure$3 => {
-            var $3928 = _m$pure$3;
-            return $3928;
+        var $3921 = IO$monad$((_m$bind$2 => _m$pure$3 => {
+            var $3922 = _m$pure$3;
+            return $3922;
         }))(Unit$new);
-        return $3927;
+        return $3921;
     })();
     return {
         '$main$': () => run(Litereum),
