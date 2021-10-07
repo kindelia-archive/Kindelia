@@ -1,7 +1,26 @@
+name x
+name y
+name a
+name b
+name c
+name d
+name aux
+name rest
+name bit
+
+name new
+name nil
+name cons
+name head
+name tail
+name pred
+name size
+name words
+
+
 // Unit
 
 name Unit
-name new
 type Unit {
   new{}
 }
@@ -22,7 +41,6 @@ name Bits
 name e
 name o
 name i
-name pred
 type Bits {
   e{}
   o{pred: Bits}
@@ -30,20 +48,16 @@ type Bits {
 }
 
 name Bits.inc
-name x
-
-bond Bits.inc(x: Bits): Bits
+bond Bits.inc(x: Bits): Bits {
   case x : Bits {
     e: i{e{}}
     o: i{x.pred}
-    i: o{x.pred}
+    i: o{Bits.inc(x.pred)}
   }
+}
 
 name Bits.add
-name y
-name rest
-
-bond Bits.add(x: Bits, y: Bits): Bits
+bond Bits.add(x: Bits, y: Bits): Bits {
   case y : Bits {
     e: e{}
     o:
@@ -61,10 +75,32 @@ bond Bits.add(x: Bits, y: Bits): Bits
           o{Bits.inc(rest)}
       }
   }
+}
 
 name Bits.from_word
-bond Bits.from_word(x: #word): Bits
-  e{}
+bond Bits.from_word(x: #word): Bits {
+  compare x #0 {
+    _<_: e{}
+    _=_: e{}
+    _>_:
+      let bit : #word = %(x, #2)
+      let rest : Bits = Bits.from_word(/(x, #2))
+      compare bit #0 {
+        _<_: e{}
+        _=_: o{rest}
+        _>_: i{rest}
+      }
+  }
+}
+
+name Bits.concat
+bond Bits.concat(x: Bits, y: Bits): Bits {
+  case x : Bits {
+    e: y
+    o: o{ Bits.concat(x.pred, y) }
+    i: i{ Bits.concat(x.pred, y) }
+  }
+}
 
 // Nat
 
@@ -75,3 +111,50 @@ type Nat {
   zero{}
   succ{pred: Nat}
 }
+
+name Nat.to_bits
+bond Nat.to_bits(x: Nat): Bits {
+  case x : Nat {
+    zero: e{}
+    succ: Bits.inc(Nat.to_bits(x.pred))
+  }
+}
+
+name Nat.double
+bond Nat.double(x: Nat): Nat {
+  case x : Nat {
+    zero: zero{}
+    succ: succ{succ{Nat.double(x.pred)}}
+  }
+}
+
+// Buffer
+
+name Word.List
+type Word.List {
+  nil{}
+  cons{head: #word, tail: #word}
+}
+
+name Buffer
+type Buffer {
+  new{
+    size: #word
+    words: Word.List
+  }
+}
+
+
+// test
+
+// eval {
+//   Bits.from_word(#12)
+// } : Bits
+
+eval {
+  let a: Nat = succ{succ{succ{zero{}}}}
+  let b: Nat = Nat.double(Nat.double(a))
+  let c: Bits = Nat.to_bits(Nat.double(Nat.double(a)))
+  let d: Bits = Bits.concat(c, c)
+  d
+} : Bits
