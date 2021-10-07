@@ -12,8 +12,30 @@ itself, but currencies can be created as smart-contracts. In essence, Litereum
 is a peer-to-peer read-eval-print loop (REPL), making it a minimal decentralized
 computer, and a politically neutral decentralized application platform.
 
+Table of Contents
+=================
+
+* [Introduction](#introduction)
+* [How it works?](#how-it-works)
+* [Examples](#examples)
+    * [Tokens](#tokens)
+    * [Accounts](#accounts)
+    * [Transactions](#transactions)
+* [How is it so small?](#how-is-it-so-small)
+    * [No native accounts](#no-native-accounts)
+    * [No native tokens](#no-native-tokens)
+    * [A simpler block structure](#a-simpler-block-structure)
+    * [A simpler consensus algorithm](#a-simpler-consensus-algorithm)
+    * [A simpler virtual machine](#a-simpler-virtual-machine)
+* [Specification](#specification)
+    * [Term](#term)
+    * [Bond](#bond)
+    * [Data](#data)
+    * [Name](#name)
+    * [Type](#type)
+
 Introduction
-------------
+============
 
 Litereum's design and implementation is, essentially, a massive distillation of
 Ethereum, taking away all the complex features that are either historical
@@ -22,7 +44,7 @@ establish a decentralized computer and smart-contract platform. For comparison,
 our reference Python full node requires about **3000 lines of code**, while the
 standard Ethereum full node has <TODO>. Thanks to this simplicity:
 
-#### 1. Litereum is secure
+## 1. Litereum is secure
 
 The less code there is, the smaller the surface for attacks and bugs, and the
 cheaper it is to fully audit, making Litereum inherently secure. To further
@@ -31,7 +53,7 @@ low-order, simply-typed calculus that has a measurable cost model (to avoid
 spam) and an on-chain type-checker (to prevent reentrancy attacks), making
 contracts qualified to formal verification.
 
-#### 2. Litereum is apolitical
+## 2. Litereum is apolitical
 
 Ethereum's complexity makes it politically centralized in the hands of the few
 developers that fully understand the protocol. While this is fine for most
@@ -40,59 +62,8 @@ private entities. Litereum's simplicity make it trivial for companies and
 individuals implement their own full nodes, which, in turn, eliminates the class
 of "core developers", making it as politically decentralized as possible.
 
-How is it so small?
--------------------
-
-In order to become so minimal, Litereum made several compromises, trading
-features, throughput and efficiency for sheer simplicity, security and
-stability.  Litereum aims to be boring like Bitcoin, yet expressive like
-Ethereum. Below are some, but not all, of the tradeoff it took:
-
-### 1. No native accounts
-
-Ethereum uses ECDSA for message authentication as a hard-coded algorithm that is
-part of the protocol. ECDSA is not only complex, but can be broken by quantum
-computers. Litereum doesn't have a native account system: users can make
-accounts by deploying a contracts that they control using their favorite
-signature schemes. This makes Litereum simpler and quantum-resistant.
-
-### 2. No native currencies
-
-Ethereum has a built-in currency, Ether, that is used to pay miner fees.
-Litereum has no native currency, but users can make their own tokens via
-smart-contracts, and miner fees can be paid in any of these, with no single one
-being special. Transactions don't have a gas limit, but blocks do. As such,
-users pay whatever they want, and miners select transactions that fit the
-block's gas limit while maximizing their profits. This replicates the fee market
-as seen on Ethereum, with more payment options and less built-in complexity.
-
-### 3. A simpler block structure
-
-Ethereum block structure is complex due to both optimizations and historical
-artifacts, such as logs and patricia-merkle trees. Litereum doesn't have layer 1
-throughput as a goal, and it doesn't feature light clients. This allows it to
-take a minimalist approach, keeping the blockchain structure as simple as
-possible: blocks store the previous block hash, a nonce and a list of
-transactions, and nothing more.
-
-### 4. A simpler consensus algorithm
-
-Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
-will bring several benefits, such as lower energy consumption and faster
-finality times. It also has neat features such as Ethash, for ASIC-resistance,
-and GHOST, for mining efficiency. Litereum drops these features for the sake of
-simplicity, featuring just a simple Proof-of-Work onsensus.
-
-### 5. A simpler execution environment
-
-Instead of a stack-machine with several complex opcodes, Litereum's built-in
-scripting language is a minimal calculus with a very minimal set of operations.
-Specifically, it has algebraic datatypes (with pattern-matching), 64-bit
-integers (with 8 binary operations and a comparison primitive), recursive
-functions, and monadic effects. And that's all.
-
 How it works?
--------------
+=============
 
 Litereum is, essentially, just a bare-bones functional programming language
 running in a peer-to-peer network. Or, in other words, it is a decentralized
@@ -103,11 +74,8 @@ function, or evaluate an expression.
 Litereum nodes keep an ever-growing chain of blocks that are submitted by users,
 and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
 in order, a node can compute the final state of the blockchain, which is just
-the of set of global names, types and bonds defined on these blocks.
-
-### Blocks: types, bonds, scripts
-
-Litereum blocks can be seen as files in a programming language. For example:
+the of set of global names, types and bonds defined on these blocks. For
+example:
 
 ```c
 type Nat {
@@ -129,10 +97,9 @@ eval {
 
 This is a Litereum block with 3 transactions. The first declares a type called
 "Nat", the second declares bond (function) called "double", and the third
-evaluates the expression `2 * 3`. This pure block does nothing interesting, but
-stateful transactions can be performed with effects.
-
-### Effects
+evaluates the expression `double(3)` (with natural numbers). This pure block
+does nothing interesting, but stateful transactions can be performed with
+effects.
 
 Since Litereum's core language is pure, it wouldn't be capable of performing
 effectiful or stateful operations. That's why it also has a built-in Effect
@@ -178,7 +145,10 @@ values:
 run val : #word = impure()
 ```
 
-### Currencies
+Examples
+========
+
+## Tokens
 
 A crypto-currency has 3 components: a token, accounts, and transfers. The token
 itself can be implemented as a bond that alters a map of balances:
@@ -227,7 +197,7 @@ CatCoin(command: CatCoin.Command): #word {
 }
 ```
 
-### Accounts
+## Accounts
 
 Similarly, users can create accounts by uploading bonds that they control. For
 example:
@@ -279,7 +249,7 @@ choose their own authentication methods. While most crypto-currencies would be
 destroyed by sufficiently powerful quantum computers, in Litereum, users can
 simply opt to use quantum-resistant signatures.
 
-### Transactions
+## Transactions
 
 Once we have accounts and a currency, sending a token is simply a matter of
 including a signed `eval` script in a block:
@@ -297,10 +267,62 @@ transaction would call Bob's bond, which would check the signature and call the
 CatCoin bond, which would bond would update the balance map to send 50000 cat
 tokens to Alice, and 100 cat tokens to the block miner.
 
-Litereum's Execution Environment
---------------------------------
+How is it so small?
+===================
 
-Litereum's execution environment is based on a core expression language that is
+In order to become so minimal, Litereum made several compromises, trading
+features, throughput and efficiency for sheer simplicity, security and
+stability.  Litereum aims to be boring like Bitcoin, yet expressive like
+Ethereum. Below are some, but not all, of the tradeoff it took:
+
+## 1. No native accounts
+
+Ethereum uses ECDSA for message authentication as a hard-coded algorithm that is
+part of the protocol. ECDSA is not only complex, but can be broken by quantum
+computers. Litereum doesn't have a native account system: users can make
+accounts by deploying a contracts that they control using their favorite
+signature schemes. This makes Litereum simpler and quantum-resistant.
+
+## 2. No native tokens
+
+Ethereum has a built-in currency, Ether, that is used to pay miner fees.
+Litereum has no native currency, but users can make their own tokens via
+smart-contracts, and miner fees can be paid in any of these, with no single one
+being special. Transactions don't have a gas limit, but blocks do. As such,
+users pay whatever they want, and miners select transactions that fit the
+block's gas limit while maximizing their profits. This replicates the fee market
+as seen on Ethereum, with more payment options and less built-in complexity.
+
+## 3. A simpler block structure
+
+Ethereum block structure is complex due to both optimizations and historical
+artifacts, such as logs and patricia-merkle trees. Litereum doesn't have layer 1
+throughput as a goal, and it doesn't feature light clients. This allows it to
+take a minimalist approach, keeping the blockchain structure as simple as
+possible: blocks store the previous block hash, a nonce and a list of
+transactions, and nothing more.
+
+## 4. A simpler consensus algorithm
+
+Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
+will bring several benefits, such as lower energy consumption and faster
+finality times. It also has neat features such as Ethash, for ASIC-resistance,
+and GHOST, for mining efficiency. Litereum drops these features for the sake of
+simplicity, featuring just a simple Proof-of-Work onsensus.
+
+## 5. A simpler virtual machine
+
+Instead of a stack-machine with several complex opcodes, Litereum's built-in
+scripting language is a minimal calculus with a very minimal set of operations.
+Specifically, it has algebraic datatypes (with pattern-matching), 64-bit
+integers (with 8 binary operations and a comparison primitive), recursive
+functions, and monadic effects. And that's all.
+
+
+Specification
+=============
+
+Litereum's virtual machine is based on a core expression language that is
 pure, low-order and functional. It features algebraic datatypes, 64-bit unsigned
 integers and effects. It doesn't feature high-order functions. That limitation
 is necessary for strong confluence (i.e., to have a cost model that doesn't
@@ -308,7 +330,8 @@ depend on the evaluation strategy). It does, though, feature branching (via
 pattern-matching) and recursive functions, which make it expressive and Turing
 complete.
 
-### Terms
+Term
+----
 
 A Litereum expression, or term, is defined by a syntax tree with the following
 constructors:
@@ -400,20 +423,24 @@ constructors:
     - expr: Litereum.Term
     ```
 
-### Bonds
+Bond
+----
 
 A Litereum bond is a global function that (...)
 
-### Data
+Data
+----
 
 A Litereum data is a global algebraic datatype definition that (...)
 
-### Names
+Name
+----
 
 Other than bonds and datatypes, Litereum's global state also holds a map of
 registered names that is used for (...)
 
-### Type-checking
+Type
+----
 
 Unlike most smart-contract networks, Litereum bonds are type-checked statically.
 This is necessary to let cross-bond communication be sound; otherwise, it would
