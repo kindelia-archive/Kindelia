@@ -369,7 +369,7 @@ Litereum.run(state: Litereum.Runtime.Term): Litereum.Runtime.Term
     run:
       let {world, subst, fresh, gas, expr} = Litereum.run({world, subst, fresh, gas, term.expr})
       case expr {
-        return: Litereum.run({world, subst{term.name} <- expr, fresh, gas, term.body})
+        return: Litereum.run({world, subst{term.name} <- expr.expr, fresh, gas, term.body})
       } default {world, subst, fresh, gas, Litereum.Term.run(term.name, term.type, expr, term.body)}
     bind:
       use bond = Litereum.get_bond(world, term.bond) abort state
@@ -497,7 +497,7 @@ Litereum.sanitize(
       let {fresh, expr} = Litereum.sanitize(world, table, fresh, term.expr)
       let {table, fresh, name} = Litereum.rename(table, fresh, term.name)
       let {fresh, body} = Litereum.sanitize(world, table, fresh, term.body)
-      {fresh, Litereum.Term.run(term.name, term.type, expr, body)}
+      {fresh, Litereum.Term.run(name, term.type, expr, body)}
     bind:
       use bond = Litereum.get_bond(world, term.bond) abort {fresh, term}
       let {fresh, body} = Litereum.sanitize(world, table, fresh, term.body)
