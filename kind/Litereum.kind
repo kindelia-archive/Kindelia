@@ -561,7 +561,9 @@ Litereum.run(
       if bipass then
         some(world)
       else if Litereum.check({}, world, eval.term, eval.type) then
-        let {world, subst, fresh, gas, term} = Litereum.normalize({world, {}, 0, 0, eval.term})
+        let fresh = 0
+        let {fresh, term} = Litereum.sanitize(world, {}, fresh, eval.term)
+        let {world, subst, fresh, gas, term} = Litereum.normalize({world, {}, fresh, 0, term})
         let logger = if bipass then unit else log("- eval " | Litereum.show.term(world,term)) unit
         some(world)
       else
