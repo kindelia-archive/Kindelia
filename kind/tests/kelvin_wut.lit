@@ -1,0 +1,26 @@
+name a
+name b
+name c
+name d
+
+name get_count
+name inc_count
+
+bond get_count(): #word {
+  #0
+} @inc_count
+
+bond inc_count(): #word {
+  bind get_count {
+    +(get_count(), #1)
+  }
+  get_count()
+}
+
+eval {
+    let a : #word = inc_count()
+    let b : #word = inc_count()
+    let c : #word = inc_count()
+    let d : #word = inc_count()
+    +(d /(a d))
+} : #word
