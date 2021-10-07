@@ -105,9 +105,11 @@ and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
 in order, a node can compute the final state of the blockchain, which is just
 the of set of global names, types and bonds defined on these blocks.
 
-### Blocks contain declarations and scripts
+### Block = declarations + scripts
 
-```
+Litereum blocks can be read as files in a programming language. For example:
+
+```c
 name Nat
 name succ
 name zero
@@ -132,12 +134,11 @@ eval {
 } : Nat
 ```
 
-The snippet above is a Litereum block that contains 9 transactions. The first 6
-transactions just declare names (more on that later). The next 2 declare a type
-called "Nat", and a bond (function) called "double". The last one executes an
-expression that computes the double of the natural number 3. In this case, it
-does nothing interesting, but arbitrarily useful transactions can be performed
-with suitable expressions.
+This is a Litereum block, with 9 transactions. The first 6 transactions declare
+names (more on that later). The next 2 declare a type called "Nat", and a bond
+(function) called "double". The last one evaluates a pure expression that
+computes `2 * 3`. In this case, it does nothing other than logging the result,
+but useful transactions can be performed with effects.
 
 ### Scripts can have effects
 
@@ -146,7 +147,7 @@ effectiful or stateful operations. That's why it also has a built-in Effect
 type, written as `&`, that gives bonds the power to interact with the blockchain
 state. The simplest example is a counter:
 
-```
+```c
 bond get_count(): #word {
   #0
 } @inc_count
@@ -178,27 +179,17 @@ Notice the return type of `inc_count` is marked with an `&`: that's because it
 is an effectiful bond. A functional programmer may be familiar with it, since it
 works exactly like Haskell's IO type. The type of `inc_count`, can be
 interpreted as `IO Word64`. The `return` primitive is the monadic pure, and the
-`run` primitive is the monadic binder. It can extract values:
+`run` primitive is the monadic binder. As such, it is capable of extracting
+values:
 
 ```
-bond impure() : & #word {
-  ...
-}
-
-eval {
-  run val : #word = impure()
-  ...
-}
+run val : #word = impure()
 ```
 
 ### Currencies are just bonds
 
-A crypto-currency has 3 components: accounts, a token, and transfers. Below we
-show how to implement these using bonds.
-
-#### The currency bond
-
-The currency can be implemented with a bond that alters a map of balances:
+A crypto-currency has 3 components: a token, accounts, and transfers. The token
+itself can be implemented as a bond that alters a map of balances:
 
 ```c
 // CatCoin transactions
@@ -213,10 +204,13 @@ type CatCoin.Command {
   (...)
 }
 
-// The map of CatCoin balances, initially empty
+// The map of CatCoin balances
 bond CatCoin.balances() : Map {
+  
+  // Initially, it is empty
   Map.empty
-} @CatCoin
+
+} @CatCoin // who can rebind it
 
 // The CatCoin bond
 CatCoin(command: CatCoin.Command): #word {
@@ -241,12 +235,12 @@ CatCoin(command: CatCoin.Command): #word {
 }
 ```
 
-#### An account system
+### Accounts are just bonds too
 
-Since there isn't a built-in account system, users must upload bonds that they
-control, in order to use these bonds as their accounts. For example:
+Similarly, users can create accounts by uploading bonds that they control. For
+example:
 
-```
+```c
 // The actions that Bob's account can perform
 type Bob.Command {
 
@@ -288,26 +282,28 @@ That bond **is** Bob's account. If Bob wished to, he could add more features and
 different signature schemes to his account.
 
 This is very flexible and powerful, because it allows users to limit what their
-accounts can do, and choose their own authentication methods. While most
-crypto-currencies would be destroyed by sufficiently powerful quantum computers,
-in Litereum, users can simply opt to use quantum-resistant signatures.
+accounts can do, to choose what tokens they'll use to pay miner fees, and to
+choose their own authentication methods. While most crypto-currencies would be
+destroyed by sufficiently powerful quantum computers, in Litereum, users can
+simply opt to use quantum-resistant signatures.
 
-### Sending tokens
+### Monetary transactions are signed scripts
 
 Once we have accounts and a currency, sending a token is simply a matter of
-including a signed `eval` transaction in a block:
+including a signed `eval` script in a block:
 
-```
+```c
 eval {
-  Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
-}
+  run Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
+  return #0
+} : & #word
 ```
 
-Bob would write this transaction, sign it, serialize and send to miners, which
-would be incentived include it in a block, in order to collect fees. Once mined,
-this transaction would call Bob's contract, which would check his signature. If
-correct, it would call the CatCoin contract, sending 50000 cat tokens to Alice,
-and leaving 100 cat tokens as miner fees.
+Bob would write this script, sign it, serialize and send to miners. Miners would
+be incentived include it in a block, in order to collect fees. Once mined, this
+transaction would call Bob's bond, which would check the signature and call the
+CatCoin bond, which would bond would update the balance map to send 50000 cat
+tokens to Alice, and 100 cat tokens to the block miner.
 
 Litereum's Execution Environment
 --------------------------------
