@@ -1122,7 +1122,7 @@ Litereum.show.term(
       let bond = term.bond
       let main = Litereum.show.term(world, term.main)
       let body = Litereum.show.term(world, term.body)
-      "store " | bond | " = " | main | "; " | body
+      "set " | bond | " = " | main | "; " | body
     bind:
       let name = term.name
       let type = Litereum.show.type(world, term.type)
@@ -1131,7 +1131,7 @@ Litereum.show.term(
       if String.is_empty(name) then
         "run " | expr | "; " | body
       else
-        "bind " | name | " : " | type | " = " | expr | "; " | body
+        "run " | name | " : " | type | " = " | expr | "; " | body
     return:
       let expr = Litereum.show.term(world, term.expr)
       "return " | expr
@@ -1428,7 +1428,7 @@ Litereum.parse.term.operation: Parser<Maybe<Litereum.Operation>>
 Litereum.parse.term.bind(world: Litereum.World): Parser<Litereum.Term>
   Parser.choice!([
     Parser {
-      Litereum.parse.text("bind")
+      Litereum.parse.text("run")
       get name = Litereum.parse.name
       Litereum.parse.text(":")
       get type = Litereum.parse.type(world)
@@ -1449,7 +1449,7 @@ Litereum.parse.term.bind(world: Litereum.World): Parser<Litereum.Term>
 
 Litereum.parse.term.store(world: Litereum.World): Parser<Litereum.Term>
   Parser {
-    Litereum.parse.text("store")
+    Litereum.parse.text("set")
     get bond = Litereum.parse.name
     Litereum.parse.text("=")
     get main = Litereum.parse.term(world)

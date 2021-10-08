@@ -5349,7 +5349,7 @@ module.exports = (function() {
         switch (self._) {
             case 'Parser.State.new':
                 var $1532 = self.err;
-                var _reply$8 = Litereum$parse$text$("store", _pst$2);
+                var _reply$8 = Litereum$parse$text$("set", _pst$2);
                 var self = _reply$8;
                 switch (self._) {
                     case 'Parser.Reply.error':
@@ -5629,7 +5629,7 @@ module.exports = (function() {
             switch (self._) {
                 case 'Parser.State.new':
                     var $1628 = self.err;
-                    var _reply$8 = Litereum$parse$text$("bind", _pst$2);
+                    var _reply$8 = Litereum$parse$text$("run", _pst$2);
                     var self = _reply$8;
                     switch (self._) {
                         case 'Parser.Reply.error':
@@ -14692,7 +14692,7 @@ module.exports = (function() {
                 var _bond$6 = $4333;
                 var _main$7 = Litereum$show$term$(_world$1, $4334);
                 var _body$8 = Litereum$show$term$(_world$1, $4335);
-                var $4336 = ("store " + (_bond$6 + (" = " + (_main$7 + ("; " + _body$8)))));
+                var $4336 = ("set " + (_bond$6 + (" = " + (_main$7 + ("; " + _body$8)))));
                 var $4287 = $4336;
                 break;
             case 'Litereum.Term.bind':
@@ -14709,7 +14709,7 @@ module.exports = (function() {
                     var $4342 = ("run " + (_expr$9 + ("; " + _body$10)));
                     var $4341 = $4342;
                 } else {
-                    var $4343 = ("bind " + (_name$7 + (" : " + (_type$8 + (" = " + (_expr$9 + ("; " + _body$10)))))));
+                    var $4343 = ("run " + (_name$7 + (" : " + (_type$8 + (" = " + (_expr$9 + ("; " + _body$10)))))));
                     var $4341 = $4343;
                 };
                 var $4287 = $4341;

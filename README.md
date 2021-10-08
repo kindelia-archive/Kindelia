@@ -48,8 +48,9 @@ Table of Contents
       * [Word](#word)
       * [Compare](#compare)
       * [Operate](#operate)
-      * [Run](#run)
+      * [Store](#store)
       * [Bind](#bind)
+      * [Return](#return)
 
 
 Introduction
@@ -92,8 +93,7 @@ function, or evaluate an expression.
 Litereum nodes keep an ever-growing chain of blocks that are submitted by users,
 and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
 in order, a node can compute the final state of the blockchain, which is just
-the of set of global names, types and bonds defined on these blocks. For
-example:
+the set of global names, types and bonds defined on these blocks. For example:
 
 ```c
 type Nat {
@@ -122,8 +122,8 @@ non-numeric value. Similarly, cross-bond communication is guaranteed to be type
 sound.
 
 Since Litereum's core language is pure, it wouldn't be capable of performing
-effectiful or stateful operations. That's why it also has a built-in Effect
-type, written as `&`, that gives bonds the power to interact with the blockchain
+effectful or stateful operations. That's why it also has a built-in Effect type,
+written as `&`, that gives bonds the power to interact with the blockchain
 state. The simplest example is a counter:
 
 ```c
@@ -158,7 +158,7 @@ Word64`. The `return` primitive is the monadic pure, and `run` is a short form
 of the monadic binder:
 
 ```c
-bind x : #word = inc_count()
+run x : #word = inc_count()
 ```
 
 Since Litereum blocks are Turing complete, caution is needed to avoid spam
@@ -203,11 +203,7 @@ CatCoin(command: CatCoin.Command): #word {
     // Mines new tokens
     mint:
       run caller = $get_caller()
-      
-      bind CatCoin.balances {
-        Map.set(CatCoin.balances(), caller, command.amount)
-      }
-
+      set CatCoin.balances = Map.set(CatCoin.balances(), caller, command.amount)
       return #0
 
     // Sends a token to someone
@@ -379,8 +375,8 @@ Term ::=
   match   (name : Name) (data : Name  ) (cses : [Term])
   compare (val0 : Term) (val1 : Term  ) (iflt : Term  ) (ifeq : Term) (ifgt : Term) 
   operate (oper : Oper) (val0 : Term  ) (val0 : Term  )
-  run     (name : Name) (type : Type  ) (expr : Term  ) (body : Term)
-  bind    (bond : Name) (main : Term  ) (body : Term  )
+  store   (bond : Name) (main : Term  ) (body : Term  )
+  bind    (name : Name) (type : Type  ) (expr : Term  ) (body : Term)
   return  (expr : Term)
 ```
 
@@ -396,9 +392,9 @@ Term ::=
 
 - `operate`: a binary operation on words.
 
-- `run`: the monadic bind for the Effect type.
+- `store`: effect that redefines a global definition.
 
-- `bind`: the bind effect, that redefines a global definition.
+- `bind`: the monadic bind for the Effect type.
 
 - `return`: the monadic return that wraps a pure value.
 
@@ -591,7 +587,18 @@ X(n, m) : #word
 ```
 
 
-### Run
+### Store
+
+```
+given bond B(x: A, y: B, ...) : T { ... }
+context, (x: A), (y: B), ... |- m : T
+context                      |- c : &A
+-----------------------------------------
+context |- (set B = m; c) : &A
+```
+
+
+### Bind
 
 ```
 context          |- e : &A
@@ -601,12 +608,9 @@ context |- (run x : A = e; c) : &B
 ```
 
 
-### Bind
+### Return
 
 ```
-given bond B(x: A, y: B, ...) : T { ... }
-context, (x: A), (y: B), ... |- m : T
-context                      |- c : &A
------------------------------------------
-context |- (bind B { m } c) : &A
-```
+context |- t : A
+--------------------------
+context |- (return t) : &A
