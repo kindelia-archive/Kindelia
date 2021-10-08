@@ -164,6 +164,14 @@ a short form of the monadic binder:
 run x : #word = inc()
 ```
 
+With types, bonds and files, users can create all sorts of decentralized
+applications on Litereum. The lack of hard-coded currencies and accounts makes
+Litereum flexible and powerful, as it allows users to limit what their accounts
+can do, to choose what tokens they'll use to pay miner fees, and to choose their
+own authentication methods. While most crypto-currencies would be destroyed by
+sufficiently powerful quantum computers, in Litereum, users can simply opt to
+use quantum-resistant signatures.
+
 Since Litereum blocks are Turing complete, caution is needed to avoid spam such
 as endless loops that would overload nodes on the network. As such, blocks are
 limited in both space and time by a maximum block size, and a maximum
@@ -232,12 +240,6 @@ bond Bob(cmd: Command): #word {
 The bond above can be used by Bob to send cat tokens via ECDSA authentication.
 That bond **is** Bob's account. If Bob wished to, he could add more features and
 different signature schemes to his account.
-
-This is very flexible and powerful, because it allows users to limit what their
-accounts can do, to choose what tokens they'll use to pay miner fees, and to
-choose their own authentication methods. While most crypto-currencies would be
-destroyed by sufficiently powerful quantum computers, in Litereum, users can
-simply opt to use quantum-resistant signatures.
 
 ## Transactions
 
