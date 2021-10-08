@@ -158,7 +158,7 @@ Word64`. The `return` primitive is the monadic pure, and `run` is a short form
 of the monadic binder:
 
 ```c
-run x : #word = inc_count()
+run x : #word = inc()
 ```
 
 Since Litereum blocks are Turing complete, caution is needed to avoid spam
