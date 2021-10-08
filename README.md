@@ -436,9 +436,9 @@ Data ::=
       (name : [Ctor])
 
 Ctor ::=
-  new (name : String)
+  new (name        : String)
       (field_names : [String])
-      (field_types: [Type])
+      (field_types : [Type])
 ```
 
 ### Bond
