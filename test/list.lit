@@ -1,0 +1,88 @@
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+type List {
+  nil{}
+  cons{head: Nat, tail: List}
+}
+
+type Maybe {
+  none{}
+  some{value: Nat}
+}
+
+save
+
+bond Nat.add(a: Nat, b: Nat): Nat {
+  case a : Nat {
+    zero: b
+    succ: succ{Nat.add(a.pred, b)}
+  }
+}
+
+file add@list : List = nil{}
+
+bond add(n: Nat): & #word {
+  get l = list
+  set list = cons{n, l} // TODO allow comma
+  return #0
+}
+
+bond remove(): & #word {
+  get l = list
+  case l : List {
+    nil:
+      set list = nil{}
+      return #0
+    cons:
+      set list = l.tail
+      return #1
+  }
+}
+
+bond sum(list: List): Nat {
+  case list : List {
+    nil: zero{}
+    cons: Nat.add(list.head, sum(list.tail))
+  }
+}
+
+bond first(list: List): Maybe {
+  case list : List {
+    nil:
+      none{}
+    cons:
+      some{list.head}
+  }
+}
+
+bond add_i(value: Nat, i: Nat, list: List): List {
+  case list : List {
+    nil: nil{}
+    cons:
+      case i : Nat {
+        zero: cons{Nat.add(value, list.head), list.tail}
+        succ: cons{list.head, add_i(value, i.pred, list.tail)}
+      }
+  }
+}
+
+
+
+eval {
+  run add(succ{zero{}})
+  run add(succ{succ{zero{}}})
+  run add(succ{succ{succ{zero{}}}})
+  run remove()
+
+  get l = list
+  let a : Nat = sum(l)
+  let b : Maybe = first(l)
+  let c : List = add_i(succ{zero{}}, succ{zero{}}, l)
+  return c
+} : & List
+
+save
+
