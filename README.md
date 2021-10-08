@@ -183,7 +183,7 @@ A crypto-currency has 3 components: a token, accounts, and transfers. The token
 itself can be implemented as a bond that alters a map of balances:
 
 ```c
-file CatCoin @ balances() : Map = Map.empty
+file CatCoin@balances : Map = empty{}
 
 type Command {
   mint{value: #word}
@@ -193,7 +193,7 @@ type Command {
 // The CatCoin bond
 CatCoin(cmd: Command): #word {
   case cmd {
-    send:
+    mint:
       get balances = balances
       set balances = Map.set(balances, user, cmd.value)
       return #0
