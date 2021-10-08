@@ -1,34 +1,26 @@
-name a
-name b
+file inc @ count : #word = #0
 
-name get_count
-name inc_count
-
-bond get_count(): #word {
-  #0
-} @inc_count
-
-bond inc_count(): & #word {
-  bind get_count {
-    +(get_count(), #1)
-  }
-  return get_count()
+bond inc(): & #word {
+  get x = count
+  let res : #word = +(x, #1)
+  set count = res
+  return res
 }
 
 eval {
-    run a : #word = inc_count()  // should be 1
-    run b : #word = inc_count()  // should be 2
-    return a  // returns 2
+    run a : #word = inc()  // should be 1
+    run b : #word = inc()  // should be 2
+    return a  // returns 1
 } : & #word
 
 eval {
-    bind get_count {
-      #0
-    }
-
-    run inc_count()
-    let a : #word = get_count()  // should be 1
-    run inc_count()
-    let b : #word = get_count()  // should be 2
-    return a  // returns 2
+    set count = #0
+    
+    run inc()
+    get a = count // should be 1
+    run inc()
+    get b = count // should be 2
+    return a  // returns 1
 } : & #word
+
+save

@@ -1,53 +1,43 @@
-name x
-name y
-name a
-name b
-name c
-name d
-name aux
-name rest
-name bit
+// == Types ==
 
-name new
-name nil
-name cons
-name head
-name tail
-name pred
-name size
-name words
-
-
-// Unit
-
-name Unit
 type Unit {
   new{}
 }
 
-// Bool
-
-name Bool
-name false
-name true
 type Bool {
   false{}
   true{}
 }
 
-// Bits
-
-name Bits
-name e
-name o
-name i
 type Bits {
   e{}
   o{pred: Bits}
   i{pred: Bits}
 }
 
-name Bits.inc
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+type Word.List {
+  nil{}
+  cons{head: #word, tail: #word}
+}
+
+type Buffer {
+  new{
+    size: #word
+    words: Word.List
+  }
+}
+
+save
+
+// ====
+
+// Bits
+
 bond Bits.inc(x: Bits): Bits {
   case x : Bits {
     e: i{e{}}
@@ -56,7 +46,6 @@ bond Bits.inc(x: Bits): Bits {
   }
 }
 
-name Bits.add
 bond Bits.add(x: Bits, y: Bits): Bits {
   case y : Bits {
     e: e{}
@@ -77,7 +66,6 @@ bond Bits.add(x: Bits, y: Bits): Bits {
   }
 }
 
-name Bits.from_word
 bond Bits.from_word(x: #word): Bits {
   compare x #0 {
     _<_: e{}
@@ -93,7 +81,6 @@ bond Bits.from_word(x: #word): Bits {
   }
 }
 
-name Bits.concat
 bond Bits.concat(x: Bits, y: Bits): Bits {
   case x : Bits {
     e: y
@@ -104,15 +91,6 @@ bond Bits.concat(x: Bits, y: Bits): Bits {
 
 // Nat
 
-name Nat
-name zero
-name succ
-type Nat {
-  zero{}
-  succ{pred: Nat}
-}
-
-name Nat.to_bits
 bond Nat.to_bits(x: Nat): Bits {
   case x : Nat {
     zero: e{}
@@ -120,7 +98,6 @@ bond Nat.to_bits(x: Nat): Bits {
   }
 }
 
-name Nat.double
 bond Nat.double(x: Nat): Nat {
   case x : Nat {
     zero: zero{}
@@ -130,22 +107,9 @@ bond Nat.double(x: Nat): Nat {
 
 // Buffer
 
-name Word.List
-type Word.List {
-  nil{}
-  cons{head: #word, tail: #word}
-}
+save
 
-name Buffer
-type Buffer {
-  new{
-    size: #word
-    words: Word.List
-  }
-}
-
-
-// test
+// == TESTS ==
 
 // eval {
 //   Bits.from_word(#12)
@@ -158,3 +122,5 @@ eval {
   let d: Bits = Bits.concat(c, c)
   d
 } : Bits
+
+save

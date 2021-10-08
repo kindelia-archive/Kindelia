@@ -302,6 +302,7 @@ Litereum.check(
     set: case type {
       effe: 
         use file = Litereum.get_file(world, term.file) abort false
+        // let ownr = Litereum.check_owner(context, term.file)  // TODO check owner
         let expr = Litereum.check(context, world, term.expr, file.type)
         let body = Litereum.check(context, world, term.body, type)
         expr && body
@@ -1334,7 +1335,11 @@ Litereum.parse.term.create(world: Litereum.World): Parser<Litereum.Term>
     get ctor = Litereum.parse.name
     get vals = Parser.wrap!(
       Litereum.parse.text("{")
-      Litereum.parse.term(world)
+      Parser {
+        get val = Litereum.parse.term(world)
+        Parser.maybe!(Litereum.parse.text(","))
+        return val
+      }
       Litereum.parse.text("}"))
     return Litereum.Term.create(ctor, vals)
  }
@@ -1515,8 +1520,9 @@ Litereum.parse.term.call(world: Litereum.World): Parser<Litereum.Term>
     get args = Parser.wrap!(
       Litereum.parse.text("(")
       Parser {
+        get val = Litereum.parse.term(world)
         Parser.maybe!(Litereum.parse.text(","))
-        Litereum.parse.term(world)
+        return val
       }
       Litereum.parse.text(")"))
     return Litereum.Term.call(ctor, args)
@@ -1556,8 +1562,9 @@ Litereum.parse.data(world: Litereum.World): Parser<Litereum.Data>
     get ctors = Parser.wrap!(
       Litereum.parse.text("{")
       Parser {
+        get val = Litereum.parse.constructor(world)
         Parser.maybe!(Litereum.parse.text(","))
-        Litereum.parse.constructor(world)
+        return val
       }
       Litereum.parse.text("}")
     )
