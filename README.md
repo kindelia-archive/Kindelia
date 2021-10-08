@@ -210,9 +210,9 @@ example:
 ```c
 type Command {
   send_cat_tokens{
-    value : #word
     to    : address
-    fee   : address
+    value : #word
+    fee   : #word
   }
   ...
 }
