@@ -442,9 +442,9 @@ Data ::=
       (name : [Ctor])
 
 Ctor ::=
-  new (name        : String)
-      (field_names : [String])
-      (field_types : [Type])
+  new (name : String)
+      (fnam : [String])
+      (ftyp : [Type])
 ```
 
 ### Bond
@@ -453,12 +453,11 @@ A global function.
 
 ```
 Bond ::=
-  new (name        : String)
-      (input_names : [String])
-      (input_types : [Type])
-      (output_type : Type)
-      (main        : Term)
-      (owners      : [String])
+  new (name : String)
+      (inam : [String])
+      (ityp : [Type])
+      (otyp : Type)
+      (main : Term)
 ```
 
 ### File

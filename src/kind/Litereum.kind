@@ -100,8 +100,8 @@ type Litereum.Data {
 type Litereum.Constructor {
   new(
     name: String
-    field_names: List<String>
-    field_types: List<Litereum.Type>
+    fnam: List<String>
+    ftyp: List<Litereum.Type>
   )
 }
 
@@ -109,9 +109,9 @@ type Litereum.Constructor {
 type Litereum.Bond {
   new(
     name: String
-    input_names: List<String>
-    input_types: List<Litereum.Type>
-    output_type: Litereum.Type
+    inam: List<String>
+    ityp: List<Litereum.Type>
+    otyp: Litereum.Type
     main: Litereum.Term
   )
 }
@@ -261,16 +261,16 @@ Litereum.check(
       //log("-- call ")  // DEBUG
       //let ownr = Litereum.World.check.owner(context, term.func)
       use bond = Litereum.get_bond(world, term.bond) abort false
-      let otyp = Litereum.equal(bond.output_type, type)
-      let args = List.zip!!(term.args, bond.input_types)
+      let otyp = Litereum.equal(bond.otyp, type)
+      let args = List.zip!!(term.args, bond.ityp)
       let args = List.all!((x) Litereum.check(context, world, x@fst, x@snd), args)
       otyp && args
     create: case type {
       data:
         use data = Litereum.get_data(world, type.name) abort false
         use ctor = Litereum.get_constructor_value(data,term.ctor) abort false
-        let size = Nat.eql(List.length!(term.vals), List.length!(ctor.field_types))
-        let vals = List.zip!!(term.vals, ctor.field_types)
+        let size = Nat.eql(List.length!(term.vals), List.length!(ctor.ftyp))
+        let vals = List.zip!!(term.vals, ctor.ftyp)
         let vals = List.all!((x) Litereum.check(context, world, x@fst, x@snd), vals)
         size && vals
     } default false
@@ -279,8 +279,8 @@ Litereum.check(
       let size = Nat.eql(List.length!(term.cses),List.length!(data.constructors))
       let expr = Litereum.check(context, world, Litereum.Term.var(term.name), Litereum.Type.data(term.data))
       let cses = List.zipped_with!!(term.cses, data.constructors)!((case_body, case_ctor)
-        let nams = List.map!!(String.concat(term.name|"."), case_ctor@field_names)
-        let typs = case_ctor@field_types
+        let nams = List.map!!(String.concat(term.name|"."), case_ctor@fnam)
+        let typs = case_ctor@ftyp
         let ctx2 = Litereum.extend!(context, nams, typs)
         Litereum.check(ctx2, world, case_body, type))
       size && List.and(cses)
@@ -343,10 +343,10 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
       Litereum.reduce({world, subst{term.name} <- term.expr, fresh, gas, term.body})
     call:
       use bond = Litereum.get_bond(world, term.bond) abort state
-      let {table, fresh, input_names} = Litereum.rename.many({}, fresh, bond.input_names)
+      let {table, fresh, inam} = Litereum.rename.many({}, fresh, bond.inam)
       let {fresh, main} = Litereum.sanitize(world, table, fresh, bond.main)
-      let subst = Litereum.extend!(subst, input_names, term.args)
-      //log("calling " | bond.name | ": " | Litereum.show.term(world,main) | " ... " | String.join(",",bond.input_names) | " ... " | String.join(",",input_names))
+      let subst = Litereum.extend!(subst, inam, term.args)
+      //log("calling " | bond.name | ": " | Litereum.show.term(world,main) | " ... " | String.join(",",bond.inam) | " ... " | String.join(",",inam))
       Litereum.reduce({world, subst, fresh, gas, main})
     match:
       let {world, subst, fresh, gas, expr} = Litereum.reduce({world, subst, fresh, gas, subst{term.name}<>Litereum.Term.word(0)})
@@ -356,7 +356,7 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
           use ctor = Litereum.get_constructor_value(data,expr.ctor) abort state
           let indx = Litereum.get_constructor_index(data,expr.ctor) abort state
           let body = term.cses[indx] abort state
-          let nams = List.map!!(String.concat(term.name|"."), ctor@field_names)
+          let nams = List.map!!(String.concat(term.name|"."), ctor@fnam)
           let subst = Litereum.extend!(subst, nams, expr.vals)
           Litereum.reduce({world, subst, fresh, gas, body})
       } default state
@@ -464,7 +464,7 @@ Litereum.normalize.cases(ctrs: List<Litereum.Constructor>, name: String, state: 
     nil nil:
       state
     cons cons:
-      let nams = List.map!!(String.concat(name|"."), ctrs.head@field_names)
+      let nams = List.map!!(String.concat(name|"."), ctrs.head@fnam)
       let vals = List.map!!(Litereum.Term.var, nams)
       let subst = Litereum.extend!(subst, nams, vals)
       let {world, subst, fresh, gas, head} = Litereum.normalize({world, subst, fresh, gas, cses.head})
@@ -559,7 +559,7 @@ Litereum.sanitize.cases(
       {fresh, []}
     cons cons:
       let new_table = table
-      let new_table = for field in ctrs.head@field_names: new_table{old_name | "." | field} <- new_name | "." | field
+      let new_table = for field in ctrs.head@fnam: new_table{old_name | "." | field} <- new_name | "." | field
       let {fresh, head} = Litereum.sanitize(world, new_table, fresh, cses.head)
       let {fresh, tail} = Litereum.sanitize.cases(world, table, fresh, old_name, new_name, ctrs.tail, cses.tail)
       {fresh, head & tail}
@@ -624,8 +624,8 @@ Litereum.transact(
       case world.entry{bond.name} as got {
         none:
           let world = world@entry <- (world.entry{bond.name} <- Litereum.Entry.bond(bond))
-          let context = Litereum.extend<Litereum.Type>({}, bond.input_names, bond.input_types)
-          if Litereum.check(context, world, bond.main, bond.output_type) then
+          let context = Litereum.extend<Litereum.Type>({}, bond.inam, bond.ityp)
+          if Litereum.check(context, world, bond.main, bond.otyp) then
             some({world, "[bond] " | bond.name})
           else
             none
@@ -930,7 +930,7 @@ Litereum.serialize.cases(
     nil nil:
       Bits.e
     cons cons:
-      let flds = List.map!!(String.concat(name|"."), ctors.head@field_names)
+      let flds = List.map!!(String.concat(name|"."), ctors.head@fnam)
       let head = Litereum.serialize.term(world, List.reverse!(flds) ++ vars, cases.head)
       let tail = Litereum.serialize.cases(world, vars, name, ctors.tail, cases.tail)
       Bits.concat(head, tail)
@@ -947,7 +947,7 @@ Litereum.deserialize.cases(
     nil:
       {bits, []}
     cons:
-      let flds = List.map!!(String.concat(name|"."), ctors.head@field_names)
+      let flds = List.map!!(String.concat(name|"."), ctors.head@fnam)
       let {bits,head} = Litereum.deserialize.term(world, List.reverse!(flds) ++ vars, bits)
       let {bits,tail} = Litereum.deserialize.cases(world, vars, name, ctors.tail, bits)
       {bits, head & tail}
@@ -987,8 +987,8 @@ Litereum.deserialize.data(world: Litereum.World, bits: Bits): Pair<Bits, Litereu
 Litereum.serialize.constructor(world: Litereum.World, ctor: Litereum.Constructor): Bits
   open ctor
   let name = Litereum.serialize.name(ctor.name)
-  let nams = Litereum.serialize.list!(Litereum.serialize.name, ctor.field_names)
-  let typs = Litereum.serialize.list!(Litereum.serialize.type(world), ctor.field_types)
+  let nams = Litereum.serialize.list!(Litereum.serialize.name, ctor.fnam)
+  let typs = Litereum.serialize.list!(Litereum.serialize.type(world), ctor.ftyp)
   Bits.concat(name, Bits.concat(nams, typs))
   
 Litereum.deserialize.constructor(world: Litereum.World, bits: Bits): Pair<Bits,Litereum.Constructor>
@@ -1000,19 +1000,19 @@ Litereum.deserialize.constructor(world: Litereum.World, bits: Bits): Pair<Bits,L
 Litereum.serialize.bond(world: Litereum.World, bond: Litereum.Bond): Bits
   open bond
   let name = Litereum.serialize.name(bond.name)
-  let input_names = Litereum.serialize.list!(Litereum.serialize.name, bond.input_names)
-  let input_types = Litereum.serialize.list!(Litereum.serialize.type(world), bond.input_types)
-  let output_type = Litereum.serialize.type(world, bond.output_type)
-  let main = Litereum.serialize.term(world, List.reverse!(bond.input_names), bond.main)
-  Bits.concat(name, Bits.concat(input_names, Bits.concat(input_types, Bits.concat(output_type, main))))
+  let inam = Litereum.serialize.list!(Litereum.serialize.name, bond.inam)
+  let ityp = Litereum.serialize.list!(Litereum.serialize.type(world), bond.ityp)
+  let otyp = Litereum.serialize.type(world, bond.otyp)
+  let main = Litereum.serialize.term(world, List.reverse!(bond.inam), bond.main)
+  Bits.concat(name, Bits.concat(inam, Bits.concat(ityp, Bits.concat(otyp, main))))
 
 Litereum.deserialize.bond(world: Litereum.World, bits: Bits): Pair<Bits,Litereum.Bond>
   let {bits,name} = Litereum.deserialize.name(bits)
-  let {bits,input_names} = Litereum.deserialize.list!(Litereum.deserialize.name, bits)
-  let {bits,input_types} = Litereum.deserialize.list!(Litereum.deserialize.type(world), bits)
-  let {bits,output_type} = Litereum.deserialize.type(world, bits)
-  let {bits,main} = Litereum.deserialize.term(world,List.reverse!(input_names),bits)
-  {bits, Litereum.Bond.new(name, input_names, input_types, output_type, main)}
+  let {bits,inam} = Litereum.deserialize.list!(Litereum.deserialize.name, bits)
+  let {bits,ityp} = Litereum.deserialize.list!(Litereum.deserialize.type(world), bits)
+  let {bits,otyp} = Litereum.deserialize.type(world, bits)
+  let {bits,main} = Litereum.deserialize.term(world,List.reverse!(inam),bits)
+  {bits, Litereum.Bond.new(name, inam, ityp, otyp, main)}
 
 Litereum.serialize.file(world: Litereum.World, file: Litereum.File): Bits
   open file
@@ -1183,8 +1183,8 @@ Litereum.show.constructor(
   constructor: Litereum.Constructor
 ): String
   open constructor
-  let names = constructor.field_names
-  let types = List.mapped!(constructor.field_types)!(Litereum.show.type(world))
+  let names = constructor.fnam
+  let types = List.mapped!(constructor.ftyp)!(Litereum.show.type(world))
   let fields = List.zip_with!!!((name,type) name | ": " | type, names, types)
   constructor.name | "{" | String.join(", ", fields) | "}"
 
@@ -1196,9 +1196,9 @@ Litereum.show.bond(
   "bond "
   | bond.name
   | "("
-  | String.join(",",List.zipped_with!!(bond.input_names,bond.input_types)!((name,type) name|": "|Litereum.show.type(world,type)))
+  | String.join(",",List.zipped_with!!(bond.inam,bond.ityp)!((name,type) name|": "|Litereum.show.type(world,type)))
   | "): "
-  | Litereum.show.type(world,bond.output_type)
+  | Litereum.show.type(world,bond.otyp)
   | " { "
   | Litereum.show.term(world,bond.main)
   | " }"

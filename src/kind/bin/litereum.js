@@ -2005,12 +2005,12 @@ module.exports = (function() {
     };
     const List$mapped = x0 => x1 => List$mapped$(x0, x1);
 
-    function Litereum$Constructor$new$(_name$1, _field_names$2, _field_types$3) {
+    function Litereum$Constructor$new$(_name$1, _fnam$2, _ftyp$3) {
         var $466 = ({
             _: 'Litereum.Constructor.new',
             'name': _name$1,
-            'field_names': _field_names$2,
-            'field_types': _field_types$3
+            'fnam': _fnam$2,
+            'ftyp': _ftyp$3
         });
         return $466;
     };
@@ -6744,13 +6744,13 @@ module.exports = (function() {
     };
     const Litereum$parse$term = x0 => Litereum$parse$term$(x0);
 
-    function Litereum$Bond$new$(_name$1, _input_names$2, _input_types$3, _output_type$4, _main$5) {
+    function Litereum$Bond$new$(_name$1, _inam$2, _ityp$3, _otyp$4, _main$5) {
         var $2011 = ({
             _: 'Litereum.Bond.new',
             'name': _name$1,
-            'input_names': _input_names$2,
-            'input_types': _input_types$3,
-            'output_type': _output_type$4,
+            'inam': _inam$2,
+            'ityp': _ityp$3,
+            'otyp': _otyp$4,
             'main': _main$5
         });
         return $2011;
@@ -9141,8 +9141,8 @@ module.exports = (function() {
         switch (self._) {
             case 'Litereum.Constructor.new':
                 var $2700 = self.name;
-                var $2701 = self.field_names;
-                var $2702 = self.field_types;
+                var $2701 = self.fnam;
+                var $2702 = self.ftyp;
                 var _name$6 = Litereum$serialize$name$($2700);
                 var _nams$7 = Litereum$serialize$list$(Litereum$serialize$name, $2701);
                 var _typs$8 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $2702);
@@ -9314,7 +9314,7 @@ module.exports = (function() {
                             var self = $2739;
                             switch (self._) {
                                 case 'Litereum.Constructor.new':
-                                    var $2745 = self.field_names;
+                                    var $2745 = self.fnam;
                                     var $2746 = $2745;
                                     return $2746;
                             };
@@ -9542,16 +9542,16 @@ module.exports = (function() {
         switch (self._) {
             case 'Litereum.Bond.new':
                 var $2814 = self.name;
-                var $2815 = self.input_names;
-                var $2816 = self.input_types;
-                var $2817 = self.output_type;
+                var $2815 = self.inam;
+                var $2816 = self.ityp;
+                var $2817 = self.otyp;
                 var $2818 = self.main;
                 var _name$8 = Litereum$serialize$name$($2814);
-                var _input_names$9 = Litereum$serialize$list$(Litereum$serialize$name, $2815);
-                var _input_types$10 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $2816);
-                var _output_type$11 = Litereum$serialize$type$(_world$1, $2817);
+                var _inam$9 = Litereum$serialize$list$(Litereum$serialize$name, $2815);
+                var _ityp$10 = Litereum$serialize$list$(Litereum$serialize$type(_world$1), $2816);
+                var _otyp$11 = Litereum$serialize$type$(_world$1, $2817);
                 var _main$12 = Litereum$serialize$term$(_world$1, List$reverse$($2815), $2818);
-                var $2819 = ((((_main$12 + _output_type$11) + _input_types$10) + _input_names$9) + _name$8);
+                var $2819 = ((((_main$12 + _otyp$11) + _ityp$10) + _inam$9) + _name$8);
                 var $2813 = $2819;
                 break;
         };
@@ -10050,7 +10050,7 @@ module.exports = (function() {
                     var self = $2960;
                     switch (self._) {
                         case 'Litereum.Constructor.new':
-                            var $2963 = self.field_names;
+                            var $2963 = self.fnam;
                             var $2964 = $2963;
                             return $2964;
                     };
@@ -11881,8 +11881,8 @@ module.exports = (function() {
                                         var self = _bond$9;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $3466 = self.input_types;
-                                                var $3467 = self.output_type;
+                                                var $3466 = self.ityp;
+                                                var $3467 = self.otyp;
                                                 var _otyp$15 = Litereum$equal$($3467, _type$4);
                                                 var _args$16 = List$zip$($3462, $3466);
                                                 var _args$17 = List$all$((_x$17 => {
@@ -11952,7 +11952,7 @@ module.exports = (function() {
                                                                 var self = _ctor$14;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $3490 = self.field_types;
+                                                                        var $3490 = self.ftyp;
                                                                         var _size$18 = ((list_length($3481)) === (list_length($3490)));
                                                                         var _vals$19 = List$zip$($3481, $3490);
                                                                         var _vals$20 = List$all$((_x$20 => {
@@ -12026,7 +12026,7 @@ module.exports = (function() {
                                                         var self = _case_ctor$16;
                                                         switch (self._) {
                                                             case 'Litereum.Constructor.new':
-                                                                var $3509 = self.field_names;
+                                                                var $3509 = self.fnam;
                                                                 var $3510 = $3509;
                                                                 return $3510;
                                                         };
@@ -12034,7 +12034,7 @@ module.exports = (function() {
                                                     var self = _case_ctor$16;
                                                     switch (self._) {
                                                         case 'Litereum.Constructor.new':
-                                                            var $3511 = self.field_types;
+                                                            var $3511 = self.ftyp;
                                                             var $3512 = $3511;
                                                             var _typs$18 = $3512;
                                                             break;
@@ -12248,8 +12248,8 @@ module.exports = (function() {
                                         var self = _bond$14;
                                         switch (self._) {
                                             case 'Litereum.Bond.new':
-                                                var $3571 = self.input_types;
-                                                var $3572 = self.output_type;
+                                                var $3571 = self.ityp;
+                                                var $3572 = self.otyp;
                                                 var _otyp$20 = Litereum$equal$($3572, _type$4);
                                                 var _args$21 = List$zip$($3567, $3571);
                                                 var _args$22 = List$all$((_x$22 => {
@@ -12319,7 +12319,7 @@ module.exports = (function() {
                                                                 var self = _ctor$19;
                                                                 switch (self._) {
                                                                     case 'Litereum.Constructor.new':
-                                                                        var $3595 = self.field_types;
+                                                                        var $3595 = self.ftyp;
                                                                         var _size$23 = ((list_length($3586)) === (list_length($3595)));
                                                                         var _vals$24 = List$zip$($3586, $3595);
                                                                         var _vals$25 = List$all$((_x$25 => {
@@ -12393,7 +12393,7 @@ module.exports = (function() {
                                                         var self = _case_ctor$21;
                                                         switch (self._) {
                                                             case 'Litereum.Constructor.new':
-                                                                var $3614 = self.field_names;
+                                                                var $3614 = self.fnam;
                                                                 var $3615 = $3614;
                                                                 return $3615;
                                                         };
@@ -12401,7 +12401,7 @@ module.exports = (function() {
                                                     var self = _case_ctor$21;
                                                     switch (self._) {
                                                         case 'Litereum.Constructor.new':
-                                                            var $3616 = self.field_types;
+                                                            var $3616 = self.ftyp;
                                                             var $3617 = $3616;
                                                             var _typs$23 = $3617;
                                                             break;
@@ -12668,7 +12668,7 @@ module.exports = (function() {
                             var self = $3679;
                             switch (self._) {
                                 case 'Litereum.Constructor.new':
-                                    var $3688 = self.field_names;
+                                    var $3688 = self.fnam;
                                     var $3689 = $3688;
                                     var $3687 = $3689;
                                     break;
@@ -13644,7 +13644,7 @@ module.exports = (function() {
                                 var self = _bond$10;
                                 switch (self._) {
                                     case 'Litereum.Bond.new':
-                                        var $3982 = self.input_names;
+                                        var $3982 = self.inam;
                                         var $3983 = self.main;
                                         var self = Litereum$rename$many$(Map$from_list$(List$nil), $3965, $3982);
                                         switch (self._) {
@@ -13729,7 +13729,7 @@ module.exports = (function() {
                                                                                             var self = _ctor$22;
                                                                                             switch (self._) {
                                                                                                 case 'Litereum.Constructor.new':
-                                                                                                    var $4020 = self.field_names;
+                                                                                                    var $4020 = self.fnam;
                                                                                                     var $4021 = $4020;
                                                                                                     return $4021;
                                                                                             };
@@ -14269,7 +14269,7 @@ module.exports = (function() {
                                     var self = $4133;
                                     switch (self._) {
                                         case 'Litereum.Constructor.new':
-                                            var $4139 = self.field_names;
+                                            var $4139 = self.fnam;
                                             var $4140 = $4139;
                                             return $4140;
                                     };
@@ -15077,9 +15077,9 @@ module.exports = (function() {
                         switch (self._) {
                             case 'Litereum.Bond.new':
                                 var $4444 = self.name;
-                                var $4445 = self.input_names;
-                                var $4446 = self.input_types;
-                                var $4447 = self.output_type;
+                                var $4445 = self.inam;
+                                var $4446 = self.ityp;
+                                var $4447 = self.otyp;
                                 var $4448 = self.main;
                                 var self = Map$get$($4444, $4433);
                                 switch (self._) {

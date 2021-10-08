@@ -1,1 +1,1 @@
-#name #field_names #field_types #P #new (((new name) field_names) field_types)
+#name #fnam #ftyp #P #new (((new name) fnam) ftyp)
