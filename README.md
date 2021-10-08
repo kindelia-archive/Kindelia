@@ -85,7 +85,7 @@ How it works?
 
 Litereum is, essentially, just a bare-bones functional programming language
 running in a peer-to-peer network. Or, in other words, it is a decentralized
-read-print-eval loop (REPL). That REPL is split into blocks, which are split
+read-eval-print loop (REPL). That REPL is split into blocks, which are split
 into transactions, which can either declare a new name, a new type, a new
 function, or evaluate an expression.
 
@@ -116,8 +116,8 @@ eval {
 This is a Litereum block with 3 transactions. The first declares a type called
 "Nat", the second declares bond (function) called "double", and the third
 evaluates the expression `double(3)` (with natural numbers). The result, `6`,
-will be logged for everyone to see. Note that, since Litereum transactions are
-type-checked on-chain, it is impossible for this `eval` block to output a
+will be logged for everyone to see. Note that, since Litereum bonds and evals
+are type-checked on-chain, it is impossible for this block to output a
 non-numeric value. Similarly, cross-bond communication is guaranteed to be type
 sound.
 
