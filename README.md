@@ -507,7 +507,7 @@ Litereum terms are statically checked whenever a bond is deployed.
 ```
 if (name : type) is in context
 ------------------------------
-context |- (name) : type
+context |- name : type
 ```
 
 ### Let
@@ -583,7 +583,7 @@ if X is one of: + - * / % | & ^
 context |- n : #word
 context |- m : #word
 -------------------------------
-X(n, m) : #word
+context |- X(n, m) : #word
 ```
 
 
