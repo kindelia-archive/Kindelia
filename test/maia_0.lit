@@ -22,11 +22,11 @@ save
 
 // -----------------------------------------------------------------------------
 
-@inc
-term count: #word = #0
+file inc@count : #word = #0
 
 bond inc(): & #word {
-  set count = +(count(), #1)
+  get x     = count
+  set count = +(x, #1)
   return #0
 }
 
@@ -34,7 +34,8 @@ eval {
   run inc()
   run inc()
   run inc()
-  return count()
+  get x = count
+  return x
 } : & #word
 
 save

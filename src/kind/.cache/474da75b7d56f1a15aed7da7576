@@ -1,0 +1,1 @@
+%Litereum.File.Self(P:@(:Litereum.File) *) @(new:@(name:String) @(ownr:(List String)) @(type:Litereum.Type) @(expr:Litereum.Term) (P ((((Litereum.File.new name) ownr) type) expr))) (P Litereum.File.Self)

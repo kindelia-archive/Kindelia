@@ -35,6 +35,7 @@ Table of Contents
       * [Type](#type)
       * [Data](#data)
       * [Bond](#bond)
+      * [File](#file)
       * [Eval](#eval)
       * [Transaction](#transaction)
       * [Entry](#entry)
@@ -48,7 +49,8 @@ Table of Contents
       * [Word](#word)
       * [Compare](#compare)
       * [Operate](#operate)
-      * [Store](#store)
+      * [Set](#set)
+      * [Get](#get)
       * [Bind](#bind)
       * [Return](#return)
 
@@ -127,11 +129,11 @@ written as `&`, that gives bonds the power to interact with the blockchain
 state. The simplest example is a counter:
 
 ```c
-@inc
-term count(): #word = #0
+file inc@count : #word = #0
 
 bond inc(): & #word {
-  set count = +(count(), #1)
+  get x     = count
+  set count = +(x, #1)
   return #0
 }
 
@@ -139,17 +141,18 @@ eval {
   run inc()
   run inc()
   run inc()
-  return count()
+  get x = count
+  return x
 } : & #word
 ```
 
-The block above declares two bonds:
+The block above declares:
 
-1. `count`: stores the current count (`term` is a shortcut for a 0-arg bond).
+1. `count`: a file, or mutable term, that stores a number.
 
-2. `inc`: rebinds the `count` bond, incrementing its value.
+2. `inc`: a bond that increments the `count` file when it is called.
 
-Then, the `eval` block increments the counter 3 types, and outputs `3`.
+The `eval` block increments the counter 3 types, and outputs `3`.
 
 Notice the return type of `inc` is marked with an `&`: that's because it is an
 effectiful bond. A functional programmer may be familiar with it, since it works
@@ -181,8 +184,7 @@ itself can be implemented as a bond that alters a map of balances:
 
 ```c
 // The map of CatCoin balances, initially empty
-@CatCoin
-term CatCoin.balances() : Map = Map.empty
+file CatCoin @ balances() : Map = Map.empty
 
 // CatCoin transactions
 type CatCoin.Command {
@@ -203,7 +205,8 @@ CatCoin(command: CatCoin.Command): #word {
     // Mines new tokens
     mint:
       run caller = $get_caller()
-      set CatCoin.balances = Map.set(CatCoin.balances(), caller, command.amount)
+      get old_balances = balances
+      set balances = Map.set(old_balances, caller, command.amount)
       return #0
 
     // Sends a token to someone
@@ -375,7 +378,8 @@ Term ::=
   match   (name : Name) (data : Name  ) (cses : [Term])
   compare (val0 : Term) (val1 : Term  ) (iflt : Term  ) (ifeq : Term) (ifgt : Term) 
   operate (oper : Oper) (val0 : Term  ) (val0 : Term  )
-  store   (bond : Name) (main : Term  ) (body : Term  )
+  set     (file : Name) (expr : Term  ) (body : Term  )
+  get     (name : Name) (file : Name  ) (body : Term  )
   bind    (name : Name) (type : Type  ) (expr : Term  ) (body : Term)
   return  (expr : Term)
 ```
@@ -392,7 +396,9 @@ Term ::=
 
 - `operate`: a binary operation on words.
 
-- `store`: effect that redefines a global definition.
+- `set`: effect that writes a file.
+
+- `get`: effect that reads a file.
 
 - `bind`: the monadic bind for the Effect type.
 
@@ -453,6 +459,18 @@ Bond ::=
       (output_type : Type)
       (main        : Term)
       (owners      : [String])
+```
+
+### File
+
+A global file.
+
+```
+File ::=
+  new (name : String)
+      (ownr : [String])
+      (type : Type)
+      (expr : Term)
 ```
 
 ### Eval
@@ -530,7 +548,6 @@ context |- y : B
 context |- f(x, y, ...) : T
 ```
 
-
 ### Create
 
 ```
@@ -542,7 +559,6 @@ context |- y : B
 context |- k{x, y, ...} : T
 ```
 
-
 ### Match
 
 ```
@@ -553,7 +569,6 @@ context, (x : A), (y : B), ... |- r : R
 context |- (case x : T { k: r, ... }) : R
 ```
 
-  
 ### Word
     
 ```
@@ -561,7 +576,6 @@ context |- (case x : T { k: r, ... }) : R
 ---------------------
 context |- #n : #word
 ```
-
 
 ### Compare
 
@@ -575,7 +589,6 @@ context |- g : A
 context |- (compare n m { _<_: l, _=_: e, _>_: g }) : #word
 ```
 
-
 ### Operate
   
 ```
@@ -586,17 +599,26 @@ context |- m : #word
 context |- X(n, m) : #word
 ```
 
-
-### Store
+### Set
 
 ```
-given bond B(x: A, y: B, ...) : T { ... }
-context, (x: A), (y: B), ... |- m : T
-context                      |- c : &A
+given file a : A
+
+context |- k : A
+context |- r : &B
 -----------------------------------------
-context |- (set B = m; c) : &A
+context |- (set a = k; r) : &B
 ```
 
+### Get
+
+```
+given file a : A
+
+context, (x : A) |- r : &B
+-----------------------------------------
+context |- (get x = a; r) : &B
+```
 
 ### Bind
 
@@ -607,10 +629,10 @@ context, (x : A) |- c : &B
 context |- (run x : A = e; c) : &B
 ```
 
-
 ### Return
 
 ```
 context |- t : A
 --------------------------
 context |- (return t) : &A
+```

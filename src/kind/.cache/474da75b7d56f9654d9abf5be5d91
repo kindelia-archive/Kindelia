@@ -1,1 +1,1 @@
-%Litereum.World.Self(P:@(:Litereum.World) *) @(new:@(name_count:Nat) @(name_to_index:(Map Nat)) @(index_to_name:(Map String)) @(entry:(Map Litereum.Entry)) (P ((((Litereum.World.new name_count) name_to_index) index_to_name) entry))) (P Litereum.World.Self)
+%Litereum.World.Self(P:@(:Litereum.World) *) @(new:@(entry:(Map Litereum.Entry)) (P (Litereum.World.new entry))) (P Litereum.World.Self)

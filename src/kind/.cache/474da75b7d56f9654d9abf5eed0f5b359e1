@@ -1,1 +1,1 @@
-@(name_count:Nat) @(name_to_index:(Map Nat)) @(index_to_name:(Map String)) @(entry:(Map Litereum.Entry)) Litereum.World
+@(entry:(Map Litereum.Entry)) Litereum.World

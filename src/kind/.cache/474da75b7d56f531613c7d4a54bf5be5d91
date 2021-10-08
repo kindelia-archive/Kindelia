@@ -1,0 +1,1 @@
+#world #slot ((slot #slot String) #slot.name #slot.ownr #slot.type #slot.expr ((String.concat "slot ") ((String.concat ((String.join " ") ((((List.map String) String) #x ((String.concat x) "@")) slot.ownr))) ((String.concat slot.name) ((String.concat " : ") ((String.concat ((Litereum.show.type world) slot.type)) ((String.concat " = ") ((Litereum.show.term world) slot.expr))))))))
