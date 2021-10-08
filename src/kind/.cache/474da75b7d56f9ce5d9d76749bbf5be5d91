@@ -1,1 +1,1 @@
-#bond #main #body #P #var #call #let #create #match #word #compare #operate #run #bind #return (((bind bond) main) body)
+#name #type #expr #body #P #var #call #let #create #match #word #compare #operate #store #bind #return ((((bind name) type) expr) body)

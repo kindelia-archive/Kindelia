@@ -51,17 +51,17 @@ type Litereum.Term {
     val0: Litereum.Term
     val1: Litereum.Term
   )
+  // Effect: stores a top-level definition
+  store(
+    bond: String
+    main: Litereum.Term
+    body: Litereum.Term
+  )
   // Effect: chains two effects
-  run(
+  bind(
     name: String
     type: Litereum.Type
     expr: Litereum.Term
-    body: Litereum.Term
-  )
-  // Effect: binds a top-level definition
-  bind(
-    bond: String
-    main: Litereum.Term
     body: Litereum.Term
   )
   // Effect: wraps a pure value
@@ -277,14 +277,14 @@ Litereum.check(
       let val0 = Litereum.check(context, world, term.val0, Litereum.Type.word)
       let val1 = Litereum.check(context, world, term.val1, Litereum.Type.word)
       val0 && val1
-    run: case type {
+    bind: case type {
       effect:
         let expr = Litereum.check(context, world, term.expr, Litereum.Type.effect(term.type))
         let ctx2 = context{term.name} <- term.type
         let body = Litereum.check(ctx2, world, term.body, type)
         expr && body
     } default false
-    bind: case type {
+    store: case type {
       effect: 
         use bond = Litereum.get_bond(world, term.bond) abort false
         let ctx2 = Litereum.extend!(context, bond.input_names, bond.input_types)
@@ -363,12 +363,12 @@ Litereum.reduce(state: Litereum.Runtime.Term): Litereum.Runtime.Term
 Litereum.run(state: Litereum.Runtime.Term): Litereum.Runtime.Term
   let {world, subst, fresh, gas, term} = Litereum.reduce(state)
   case term {
-    run:
+    bind:
       let {world, subst, fresh, gas, expr} = Litereum.run({world, subst, fresh, gas, term.expr})
       case expr {
         return: Litereum.run({world, subst{term.name} <- expr.expr, fresh, gas, term.body})
-      } default {world, subst, fresh, gas, Litereum.Term.run(term.name, term.type, expr, term.body)}
-    bind:
+      } default {world, subst, fresh, gas, Litereum.Term.bind(term.name, term.type, expr, term.body)}
+    store:
       use bond = Litereum.get_bond(world, term.bond) abort state
       let {world, subst, fresh, gas, main} = Litereum.normalize.bound(bond.input_names, {world, subst, fresh, gas, term.main})
       let new_entry = Litereum.Entry.bond(bond@main <- main)
@@ -404,15 +404,15 @@ Litereum.normalize(state: Litereum.Runtime.Term): Litereum.Runtime.Term
       let {world, subst, fresh, gas, val0} = Litereum.normalize({world, subst, fresh, gas, term.val0})
       let {world, subst, fresh, gas, val1} = Litereum.normalize({world, subst, fresh, gas, term.val1})
       {world, subst, fresh, gas, Litereum.Term.operate(term.oper, val0, val1)}
-    run:
-      let {world, subst, fresh, gas, expr} = Litereum.normalize({world, subst, fresh, gas, term.expr})
-      let {world, subst, fresh, gas, body} = Litereum.normalize({world, subst, fresh, gas, term.body})
-      {world, subst, fresh, gas, Litereum.Term.run(term.name, term.type, expr, body)}
-    bind:
+    store:
       use bond = Litereum.get_bond(world, term.bond) abort state
       let {world, subst, fresh, gas, main} = Litereum.normalize.bound(bond.input_names, {world, subst, fresh, gas, term.main})
       let {world, subst, fresh, gas, body} = Litereum.normalize({world, subst, fresh, gas, term.body})
-      {world, subst, fresh, gas, Litereum.Term.bind(term.bond, main, body)}
+      {world, subst, fresh, gas, Litereum.Term.store(term.bond, main, body)}
+    bind:
+      let {world, subst, fresh, gas, expr} = Litereum.normalize({world, subst, fresh, gas, term.expr})
+      let {world, subst, fresh, gas, body} = Litereum.normalize({world, subst, fresh, gas, term.body})
+      {world, subst, fresh, gas, Litereum.Term.bind(term.name, term.type, expr, body)}
     return:
       let {world, subst, fresh, gas, expr} = Litereum.normalize({world, subst, fresh, gas, term.expr})
       {world, subst, fresh, gas, Litereum.Term.return(expr)}
@@ -490,17 +490,17 @@ Litereum.sanitize(
       let {fresh, val0} = Litereum.sanitize(world, table, fresh, term.val0)
       let {fresh, val1} = Litereum.sanitize(world, table, fresh, term.val1)
       {fresh, Litereum.Term.operate(term.oper, val0, val1)}
-    run:
-      let {fresh, expr} = Litereum.sanitize(world, table, fresh, term.expr)
-      let {table, fresh, name} = Litereum.rename(table, fresh, term.name)
-      let {fresh, body} = Litereum.sanitize(world, table, fresh, term.body)
-      {fresh, Litereum.Term.run(name, term.type, expr, body)}
-    bind:
+    store:
       use bond = Litereum.get_bond(world, term.bond) abort {fresh, term}
       let {fresh, body} = Litereum.sanitize(world, table, fresh, term.body)
       let {table, fresh, names} = Litereum.rename.many(table, fresh, bond.input_names)
       let {fresh, main} = Litereum.sanitize(world, table, fresh, term.main)
-      {fresh, Litereum.Term.bind(term.bond, main, body)}
+      {fresh, Litereum.Term.store(term.bond, main, body)}
+    bind:
+      let {fresh, expr} = Litereum.sanitize(world, table, fresh, term.expr)
+      let {table, fresh, name} = Litereum.rename(table, fresh, term.name)
+      let {fresh, body} = Litereum.sanitize(world, table, fresh, term.body)
+      {fresh, Litereum.Term.bind(name, term.type, expr, body)}
     return:
       let {fresh, expr} = Litereum.sanitize(world, table, fresh, term.expr)
       {fresh, Litereum.Term.return(expr)}
@@ -822,19 +822,19 @@ Litereum.serialize.term(world: Litereum.World, vars: List<String>, term: Litereu
       let val0 = Litereum.serialize.term(world,vars,term.val0)
       let val1 = Litereum.serialize.term(world,vars,term.val1)
       Bits.i(Bits.o(Bits.i(Bits.i(Bits.concat(oper, Bits.concat(val0, val1))))))
-    run:
-      let name = Litereum.serialize.name(world,term.name)
-      let type = Litereum.serialize.type(world,term.type) // TODO
-      let expr = Litereum.serialize.term(world,vars,term.expr)
-      let body = Litereum.serialize.term(world,term.name&vars,term.body)
-      Bits.i(Bits.i(Bits.i(Bits.i(Bits.o(Bits.o(Bits.concat(name, Bits.concat(type, Bits.concat(expr, body)))))))))
-    bind:
+    store:
       use bond = Litereum.get_bond(world,term.bond) abort Bits.e
       let name = Litereum.serialize.name(world,term.bond)
       let vrs2 = List.reverse!(bond.input_names) ++ vars
       let main = Litereum.serialize.term(world,vrs2,term.main)
       let body = Litereum.serialize.term(world,vars,term.body)
-      Bits.i(Bits.i(Bits.i(Bits.i(Bits.i(Bits.o(Bits.concat(name, Bits.concat(main, body))))))))
+      Bits.i(Bits.i(Bits.i(Bits.i(Bits.o(Bits.o(Bits.concat(name, Bits.concat(main, body))))))))
+    bind:
+      let name = Litereum.serialize.name(world,term.name)
+      let type = Litereum.serialize.type(world,term.type) // TODO
+      let expr = Litereum.serialize.term(world,vars,term.expr)
+      let body = Litereum.serialize.term(world,term.name&vars,term.body)
+      Bits.i(Bits.i(Bits.i(Bits.i(Bits.i(Bits.o(Bits.concat(name, Bits.concat(type, Bits.concat(expr, body)))))))))
     return:
       let expr = Litereum.serialize.term(world,vars,term.expr)
       Bits.i(Bits.i(Bits.i(Bits.i(Bits.o(Bits.i(expr))))))
@@ -897,17 +897,17 @@ Litereum.deserialize.term(world: Litereum.World, vars: List<String>, bits: Bits)
           switch Nat.eql(ctor) {
             0:
               let {bits,name} = Litereum.deserialize.name(world,bits)
-              let {bits,type} = Litereum.deserialize.type(world,bits)
-              let {bits,expr} = Litereum.deserialize.term(world,vars,bits)
-              let {bits,body} = Litereum.deserialize.term(world,name&vars,bits)
-              {bits, Litereum.Term.run(name,type,expr,body)}
-            1:
-              let {bits,name} = Litereum.deserialize.name(world,bits)
               use bond        = Litereum.get_bond(world,name) abort {bits, Litereum.Term.word(0)}
               let vrs2        = List.reverse!(bond.input_names) ++ vars
               let {bits,main} = Litereum.deserialize.term(world,vrs2,bits)
               let {bits,body} = Litereum.deserialize.term(world,vars,bits)
-              {bits, Litereum.Term.bind(name,main,body)}
+              {bits, Litereum.Term.store(name,main,body)}
+            1:
+              let {bits,name} = Litereum.deserialize.name(world,bits)
+              let {bits,type} = Litereum.deserialize.type(world,bits)
+              let {bits,expr} = Litereum.deserialize.term(world,vars,bits)
+              let {bits,body} = Litereum.deserialize.term(world,name&vars,bits)
+              {bits, Litereum.Term.bind(name,type,expr,body)}
             2:
               let {bits,expr} = Litereum.deserialize.term(world,vars,bits)
               {bits, Litereum.Term.return(expr)}
@@ -1118,7 +1118,12 @@ Litereum.show.term(
       let bond = term.bond
       let args = List.map!!(Litereum.show.term(world), term.args)
       bond | "(" | String.join(",", args) | ")"
-    run:
+    store:
+      let bond = term.bond
+      let main = Litereum.show.term(world, term.main)
+      let body = Litereum.show.term(world, term.body)
+      "store " | bond | " = " | main | "; " | body
+    bind:
       let name = term.name
       let type = Litereum.show.type(world, term.type)
       let expr = Litereum.show.term(world, term.expr)
@@ -1126,12 +1131,7 @@ Litereum.show.term(
       if String.is_empty(name) then
         "run " | expr | "; " | body
       else
-        "run " | name | " : " | type | " = " | expr | "; " | body
-    bind:
-      let bond = term.bond
-      let main = Litereum.show.term(world, term.main)
-      let body = Litereum.show.term(world, term.body)
-      "bind " | bond | " { " | main | " } " | body
+        "bind " | name | " : " | type | " = " | expr | "; " | body
     return:
       let expr = Litereum.show.term(world, term.expr)
       "return " | expr
@@ -1152,7 +1152,7 @@ Litereum.show.data(
   data: Litereum.Data
 ): String
   open data
-  data.name | " { "
+  "data " | data.name | " { "
   | String.join(", ", List.mapped!(data.constructors)!((Litereum.show.constructor(world))))
   | " }"
 
@@ -1171,7 +1171,12 @@ Litereum.show.bond(
   bond: Litereum.Bond
 ): String
   open bond
-  bond.name
+  case bond.owners {
+    nil: ""
+    cons: " " | String.join(" ", List.map!!(String.concat("@"),bond.owners))
+  }
+  | "bond "
+  | bond.name
   | "("
   | String.join(",",List.zipped_with!!(bond.input_names,bond.input_types)!((name,type) name|": "|Litereum.show.type(world,type)))
   | "): "
@@ -1179,10 +1184,6 @@ Litereum.show.bond(
   | " { "
   | Litereum.show.term(world,bond.main)
   | " }"
-  | case bond.owners {
-    nil: ""
-    cons: " " | String.join(" ", List.map!!(String.concat("@"),bond.owners))
-  }
 
 Litereum.show.entry(
   world: Litereum.World
@@ -1200,7 +1201,7 @@ Litereum.show.eval(
   open eval
   let term = Litereum.show.term(world, eval.term)
   let type = Litereum.show.type(world, eval.type)
-  "{" | term | "} : " | type
+  "eval {" | term | "} : " | type
 
 Litereum.show.transaction(
   world: Litereum.World
@@ -1208,9 +1209,9 @@ Litereum.show.transaction(
 ): String
   case transaction {
     new_name: "name " | transaction.name
-    new_data: "type " | Litereum.show.data(world, transaction.data)
-    new_bond: "bond " | Litereum.show.bond(world, transaction.bond)
-    new_eval: "eval " | Litereum.show.eval(world, transaction.eval)
+    new_data: Litereum.show.data(world, transaction.data)
+    new_bond: Litereum.show.bond(world, transaction.bond)
+    new_eval: Litereum.show.eval(world, transaction.eval)
   }
 
 Litereum.show.block(
@@ -1275,8 +1276,8 @@ Litereum.parse.term(world: Litereum.World): Parser<Litereum.Term>
     Litereum.parse.term.word(world)
     Litereum.parse.term.compare(world)
     Litereum.parse.term.operate(world)
+    Litereum.parse.term.store(world)
     Litereum.parse.term.bind(world)
-    Litereum.parse.term.run(world)
     Litereum.parse.term.return(world)
     Litereum.parse.term.call(world)
     Litereum.parse.term.var(world)
@@ -1424,37 +1425,37 @@ Litereum.parse.term.operation: Parser<Maybe<Litereum.Operation>>
     }
   ])
 
-Litereum.parse.term.run(world: Litereum.World): Parser<Litereum.Term>
+Litereum.parse.term.bind(world: Litereum.World): Parser<Litereum.Term>
+  Parser.choice!([
+    Parser {
+      Litereum.parse.text("bind")
+      get name = Litereum.parse.name
+      Litereum.parse.text(":")
+      get type = Litereum.parse.type(world)
+      Litereum.parse.text("=")
+      get expr = Litereum.parse.term(world)
+      Parser.maybe!(Litereum.parse.text(";"))
+      get body = Litereum.parse.term(world)
+      return Litereum.Term.bind(name, type, expr, body)
+    }
+    Parser {
+      Litereum.parse.text("run")
+      get expr = Litereum.parse.term(world)
+      Parser.maybe!(Litereum.parse.text(";"))
+      get body = Litereum.parse.term(world)
+      return Litereum.Term.bind("", Litereum.Type.word, expr, body)
+    }
+  ])
+
+Litereum.parse.term.store(world: Litereum.World): Parser<Litereum.Term>
   Parser {
-    Litereum.parse.text("run")
-    get name_type = Parser.choice!([
-      Parser {
-        get name = Litereum.parse.name
-        Litereum.parse.text(":")
-        get type = Litereum.parse.type(world)
-        Litereum.parse.text("=")
-        return {name, type}
-      }
-      Parser {
-        return {"", Litereum.Type.word}
-      }
-    ])
-    let {name, type} = name_type
-    get expr = Litereum.parse.term(world)
+    Litereum.parse.text("store")
+    get bond = Litereum.parse.name
+    Litereum.parse.text("=")
+    get main = Litereum.parse.term(world)
     Parser.maybe!(Litereum.parse.text(";"))
     get body = Litereum.parse.term(world)
-    return Litereum.Term.run(name, type, expr, body)
- }
-
-Litereum.parse.term.bind(world: Litereum.World): Parser<Litereum.Term>
-  Parser {
-    Litereum.parse.text("bind")
-    get bond = Litereum.parse.name
-    Litereum.parse.text("{")
-    get main = Litereum.parse.term(world)
-    Litereum.parse.text("}")
-    get body = Litereum.parse.term(world)
-    return Litereum.Term.bind(bond, main, body)
+    return Litereum.Term.store(bond, main, body)
   }
 
 Litereum.parse.term.return(world: Litereum.World): Parser<Litereum.Term>
@@ -1506,6 +1507,7 @@ Litereum.parse.type(
 
 Litereum.parse.data(world: Litereum.World): Parser<Litereum.Data>
   Parser {
+    Litereum.parse.text("type")
     get name = Litereum.parse.name
     get ctors = Parser.wrap!(
       Litereum.parse.text("{")
@@ -1531,26 +1533,43 @@ Litereum.parse.constructor(world: Litereum.World): Parser<Litereum.Constructor>
  }
 
 Litereum.parse.bond(world: Litereum.World): Parser<Litereum.Bond>
-  Parser {
-    get name = Litereum.parse.name
-    get args = Parser.wrap!(
-      Litereum.parse.text("(")
-      Litereum.parse.ann(world)
-      Litereum.parse.text(")"))
-    let iarg = List.mapped!(args)!((x) x@fst)
-    let ityp = List.mapped!(args)!((x) x@snd)
-    Litereum.parse.text(":")
-    get otyp = Litereum.parse.type(world)
-    Litereum.parse.text("{")
-    get main = Litereum.parse.term(world)
-    Litereum.parse.text("}")
-    get ownr = Parser.many!(Parser {
-      Litereum.parse.text("@")
+  Parser.choice!([
+    Parser {
+      get ownr = Parser.many!(Parser {
+        Litereum.parse.text("@")
+        get name = Litereum.parse.name
+        return name
+      })
+      Litereum.parse.text("bond")
       get name = Litereum.parse.name
-      return name
-    })
-    return Litereum.Bond.new(name, iarg, ityp, otyp, main, ownr)
- }
+      get args = Parser.wrap!(
+        Litereum.parse.text("(")
+        Litereum.parse.ann(world)
+        Litereum.parse.text(")"))
+      let iarg = List.mapped!(args)!((x) x@fst)
+      let ityp = List.mapped!(args)!((x) x@snd)
+      Litereum.parse.text(":")
+      get otyp = Litereum.parse.type(world)
+      Litereum.parse.text("{")
+      get main = Litereum.parse.term(world)
+      Litereum.parse.text("}")
+      return Litereum.Bond.new(name, iarg, ityp, otyp, main, ownr)
+    }
+    Parser {
+      get ownr = Parser.many!(Parser {
+        Litereum.parse.text("@")
+        get name = Litereum.parse.name
+        return name
+      })
+      Litereum.parse.text("term")
+      get name = Litereum.parse.name
+      Litereum.parse.text(":")
+      get otyp = Litereum.parse.type(world)
+      Litereum.parse.text("=")
+      get main = Litereum.parse.term(world)
+      return Litereum.Bond.new(name, [], [], otyp, main, ownr)
+    }
+  ])
 
 Litereum.parse.ann(world: Litereum.World): Parser<Pair<String,Litereum.Type>>
  Parser {
@@ -1563,6 +1582,7 @@ Litereum.parse.ann(world: Litereum.World): Parser<Pair<String,Litereum.Type>>
 
 Litereum.parse.eval(world: Litereum.World): Parser<Litereum.Eval>
   Parser {
+    Litereum.parse.text("eval")
     Litereum.parse.text("{")
     get term = Litereum.parse.term(world)
     Litereum.parse.text("}")
@@ -1579,17 +1599,14 @@ Litereum.parse.transaction(world: Litereum.World): Parser<Litereum.Transaction>
       return Litereum.Transaction.new_name(name)
     }
     Parser {
-      Litereum.parse.text("type")
       get data = Litereum.parse.data(world)
       return Litereum.Transaction.new_data(data)
     }
     Parser {
-      Litereum.parse.text("bond")
       get bond = Litereum.parse.bond(world)
       return Litereum.Transaction.new_bond(bond)
     }
     Parser {
-      Litereum.parse.text("eval")
       get term = Litereum.parse.eval(world)
       return Litereum.Transaction.new_eval(term)
     }

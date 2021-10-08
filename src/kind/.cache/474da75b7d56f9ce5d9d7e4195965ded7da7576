@@ -1,1 +1,1 @@
-#val0 #val1 #iflt #ifeq #ifgt #P #var #call #let #create #match #word #compare #operate #run #bind #return (((((compare val0) val1) iflt) ifeq) ifgt)
+#val0 #val1 #iflt #ifeq #ifgt #P #var #call #let #create #match #word #compare #operate #store #bind #return (((((compare val0) val1) iflt) ifeq) ifgt)

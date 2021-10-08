@@ -1,1 +1,1 @@
-@(bond:String) @(main:Litereum.Term) @(body:Litereum.Term) Litereum.Term
+@(name:String) @(type:Litereum.Type) @(expr:Litereum.Term) @(body:Litereum.Term) Litereum.Term

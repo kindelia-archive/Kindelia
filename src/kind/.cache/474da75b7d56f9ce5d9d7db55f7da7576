@@ -1,1 +1,1 @@
-#name #P #var #call #let #create #match #word #compare #operate #run #bind #return (var name)
+#name #P #var #call #let #create #match #word #compare #operate #store #bind #return (var name)

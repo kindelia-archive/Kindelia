@@ -127,42 +127,38 @@ type, written as `&`, that gives bonds the power to interact with the blockchain
 state. The simplest example is a counter:
 
 ```c
-bond get_count(): #word {
-  #0
-} @inc_count
+@inc
+term count(): #word = #0
 
-bond inc_count(): & #word {
-  bind get_count {
-    +(get_count(), #1)
-  }
+bond inc(): & #word {
+  store count = +(count(), #1)
   return #0
 }
 
 eval {
-  run inc_count()
-  run inc_count()
-  run inc_count()
-  return get_count()
+  run inc()
+  run inc()
+  run inc()
+  return count()
 } : & #word
 ```
 
 The block above declares two bonds:
 
-1. `get_count`: returns the current count.
+1. `count`: stores the current count (`term` is a shortcut for a 0-arg bond).
 
-2. `inc_count`: rebinds the `get_count` bond, incrementing its value.
+2. `inc`: rebinds the `count` bond, incrementing its value.
 
 Then, the `eval` block increments the counter 3 types, and outputs `3`.
 
-Notice the return type of `inc_count` is marked with an `&`: that's because it
-is an effectiful bond. A functional programmer may be familiar with it, since it
-works exactly like Haskell's IO type. The type of `inc_count`, can be
-interpreted as `IO Word64`. The `return` primitive is the monadic pure, and the
-`run` primitive is the monadic binder. As such, it is capable of extracting
-values:
+Notice the return type of `inc` is marked with an `&`: that's because it is an
+effectiful bond. A functional programmer may be familiar with it, since it works
+exactly like Haskell's IO type. The type of `inc`, can be interpreted as `IO
+Word64`. The `return` primitive is the monadic pure, and `run` is a short form
+of the monadic binder:
 
 ```c
-run val : #word = impure()
+bind x : #word = inc_count()
 ```
 
 Since Litereum blocks are Turing complete, caution is needed to avoid spam
@@ -184,6 +180,10 @@ A crypto-currency has 3 components: a token, accounts, and transfers. The token
 itself can be implemented as a bond that alters a map of balances:
 
 ```c
+// The map of CatCoin balances, initially empty
+@CatCoin
+term CatCoin.balances() : Map = Map.empty
+
 // CatCoin transactions
 type CatCoin.Command {
   
@@ -195,14 +195,6 @@ type CatCoin.Command {
 
   (...)
 }
-
-// The map of CatCoin balances
-bond CatCoin.balances() : Map {
-  
-  // Initially, it is empty
-  Map.empty
-
-} @CatCoin // who can rebind it
 
 // The CatCoin bond
 CatCoin(command: CatCoin.Command): #word {
