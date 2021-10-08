@@ -119,18 +119,18 @@ type Litereum.Eval {
   )
 }
 
+// A global entry
+type Litereum.Entry {
+  data(value: Litereum.Data)
+  bond(value: Litereum.Bond)
+}
+
 // A Litereum transaction
 type Litereum.Transaction {
   new_name(name: String)
   new_data(data: Litereum.Data)
   new_bond(bond: Litereum.Bond)
   new_eval(eval: Litereum.Eval)
-}
-
-// A global entry
-type Litereum.Entry {
-  data(value: Litereum.Data)
-  bond(value: Litereum.Bond)
 }
 
 type Litereum.World {

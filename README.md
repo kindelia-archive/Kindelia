@@ -28,11 +28,29 @@ Table of Contents
     * [A simpler consensus algorithm](#a-simpler-consensus-algorithm)
     * [A simpler virtual machine](#a-simpler-virtual-machine)
 * [Specification](#specification)
-    * [Term](#term)
-    * [Bond](#bond)
-    * [Data](#data)
-    * [Name](#name)
-    * [Type](#type)
+    * [Types](#types)
+      * [Name](#name)
+      * [Term](#term)
+      * [Operation](#operation)
+      * [Type](#type)
+      * [Data](#data)
+      * [Bond](#bond)
+      * [Eval](#eval)
+      * [Transaction](#transaction)
+      * [Entry](#entry)
+      * [World](#world)
+    * [Type-Checking](#type-checking)
+      * [Var](#var)
+      * [Let](#let)
+      * [Call](#call)
+      * [Create](#create)
+      * [Match](#match)
+      * [Word](#word)
+      * [Compare](#compare)
+      * [Operate](#operate)
+      * [Run](#run)
+      * [Bind](#bind)
+
 
 Introduction
 ============
@@ -340,127 +358,261 @@ depend on the evaluation strategy). It does, though, feature branching (via
 pattern-matching) and recursive functions, which make it expressive and Turing
 complete.
 
-Term
-----
+Types
+-----
 
-A Litereum expression, or term, is defined by a syntax tree with the following
-constructors:
+### Name
 
-- A variable, holding its name.
+A name is a string of 6-bit characters on the following alphabet:
 
-    ```
-    var
-    - name: String
-    ```
+```
+A B C D E F G H I J K L M N O P
+Q R S T U V W X Y Z a b c d e f
+g h i j k l m n o p q r s t u v
+w x y z 0 1 2 3 4 5 6 7 8 9 . _ 
+```
 
-- A let-expression, holding the bound name, type, expression and body.
+### Term
 
-    ```
-    let
-    - name: String
-    - type: Type
-    - expr: Term
-    - body: Term
-    ```
+An expression, or term. Defined by the following abstract syntax tree:
 
-- An external call, holding the called bond name and a list of arguments.
+```
+Term ::=
+  var     (name : Name)
+  let     (name : Name) (type : Type  ) (expr : Term  ) (body : Term)
+  call    (bond : Name) (vals : [Term])
+  create  (data : Name) (vals : [Term])
+  match   (name : Name) (data : Name  ) (cses : [Term])
+  compare (val0 : Term) (val1 : Term  ) (iflt : Term  ) (ifeq : Term) (ifgt : Term) 
+  operate (oper : Oper) (val0 : Term  ) (val0 : Term  )
+  run     (name : Name) (type : Type  ) (expr : Term  ) (body : Term)
+  bind    (bond : Name) (main : Term  ) (body : Term  )
+  return  (expr : Term)
+```
 
-    ```
-    call
-    - bond: String
-    - args: List<Term>
-    ```
+- `var`: a bound variable.
 
-- A constructor creation, holding its name and fields.
+- `let`: a local assignment expression.
 
-    ```
-    create
-    - ctor: String
-    - vals: List<Term>
-    ```
+- `call`: a call to an external bond.
 
-- A pattern-match, holding the name of the matched variable, the name of the matched datatype, and a list of values to be returned on each case.
+- `match`: a pattern-match.
 
-    ```
-    match
-    - name: String
-    - data: String
-    - cses: List<Term>
-    ```
+- `compare`: a less-equal-greater comparison of words.
 
-- An less-than, equal-to, greater-than comparison, holding the two values to be compared, and the 3 possible branches to be returned.
+- `operate`: a binary operation on words.
 
-    ```
-    compare
-    - val0: Term
-    - val1: Term
-    - iflt: Term
-    - ifeq: Term
-    - ifgt: Term
-    ```
-- A binary operation on words. It can be one of these: `add`, `sub`, `mul`, `div`, `mod`, `or`, `and`, `xor`.
+- `run`: the monadic bind for the Effect type.
 
-    ```
-    operate
-    - oper: Operation
-    - val0: Term
-    - val1: Term
-    ```
+- `bind`: the bind effect, that redefines a global definition.
 
-- The monadic binder.
+- `return`: the monadic return that wraps a pure value.
 
-    ```
-    run
-    - name: String
-    - type: Type
-    - expr: Term
-    - body: Term
-    ```
+### Operation
 
-- The bind effect.
+A binary operation on words.
 
-    ```
-    bind
-    - bond: String
-    - main: Term
-    - body: Term
-    ```
+```
+Oper ::=
+  add
+  sub
+  mul
+  div
+  mod
+  or
+  and
+  xor
+```
 
-- The monadic return.
+### Type
 
-    ```
-    return
-    - expr: Litereum.Term
-    ```
+A type.
 
-Bond
-----
+```
+Type ::=
+  word
+  data   (name : Name)
+  effect (rety : Type)
+```
 
-A Litereum bond is a global function that (...)
 
-Data
-----
+### Data
 
-A Litereum data is a global algebraic datatype definition that (...)
+A global datatype.
 
-Name
-----
+```
+Data ::=
+  new (name : Name)
+      (name : [Ctor])
 
-Other than bonds and datatypes, Litereum's global state also holds a map of
-registered names that is used for (...)
+Ctor ::=
+  new (name : String)
+      (field_names : [String])
+      (field_types: [Type])
+```
 
-Type
-----
+### Bond
 
-Unlike most smart-contract networks, Litereum bonds are type-checked statically.
-This is necessary to let cross-bond communication be sound; otherwise, it would
-be impossible to prove theorems about the execution of a bond that calls another
-bond (there would be no guarantees about the values returned). This would be
-similar to the reentrancy attacks that exist in Ethereum.
+A global function.
 
-Since type-checkers are slow, including one without caution could easily lead to
-spam vectors. This is why Litereum's core language doesn't feature dependent or
-polymorphic types. By keeping types simple, we're able to design an efficient,
-linear-time type-checker that doesn't need to be measured for gas costs.
+```
+Bond ::=
+  new (name        : String)
+      (input_names : [String])
+      (input_types : [Type])
+      (output_type : Type)
+      (main        : Term)
+      (owners      : [String])
+```
 
-(...)
+### Eval
+
+A global evaluation.
+
+```
+Eval ::=
+  new (term : Term)
+      (type : Type)
+```
+
+### Transaction
+
+A block transaction.
+
+```
+Transaction ::=
+  new_name (name : Name)
+  new_data (data : Data)
+  new_bond (bond : Bond)
+  new_eval (eval : Eval)
+```
+
+### Entry
+
+A global entry.
+
+```
+Entry ::=
+  data (value : Data)
+  bond (value : Bond)
+```
+
+### World
+
+The global state.
+
+```
+World ::=
+  new (names : [Name])
+      (entry : Map<Entry>)
+```
+
+Type-Checking
+-------------
+
+Litereum terms are statically checked whenever a bond is deployed.
+
+### Var
+
+```
+if (name : type) is in context
+------------------------------
+context |- (name) : type
+```
+
+### Let
+
+```
+context             |- expr : A
+context, (name : A) |- body : B
+--------------------------------------
+context |- (let name = expr; body) : B
+```
+
+### Call
+
+```
+given bond B(x: A, y: B, ...) : T { ... }
+context |- x : A
+context |- y : B
+...
+-----------------------------------------
+context |- f(x, y, ...) : T
+```
+
+
+### Create
+
+```
+given data T { k(x: A, y: B, ...), ... }
+context |- x : A
+context |- y : B
+...
+----------------------------------------
+context |- k{x, y, ...} : T
+```
+
+
+### Match
+
+```
+given data T { k(x: A, y: B, ...), ... }
+context                        |- x : T
+context, (x : A), (y : B), ... |- r : R
+-----------------------------------------
+context |- (case x : T { k: r, ... }) : R
+```
+
+  
+### Word
+    
+```
+~
+---------------------
+context |- #n : #word
+```
+
+
+### Compare
+
+```
+context |- n : #word
+context |- m : #word
+context |- l : A
+context |- e : A
+context |- g : A
+-----------------------------------------------------------
+context |- (compare n m { _<_: l, _=_: e, _>_: g }) : #word
+```
+
+
+### Operate
+  
+```
+if X is one of: + - * / % | & ^
+context |- n : #word
+context |- m : #word
+-------------------------------
+X(n, m) : #word
+```
+
+
+### Run
+
+```
+context          |- e : &A
+context, (x : A) |- c : &B
+----------------------------------
+context |- (run x : A = e; c) : &B
+```
+
+
+### Bind
+
+```
+given bond B(x: A, y: B, ...) : T { ... }
+context, (x: A), (y: B), ... |- m : T
+context                      |- c : &A
+-----------------------------------------
+context |- (bind B { m } c) : &A
+```
