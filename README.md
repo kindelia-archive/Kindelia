@@ -225,7 +225,7 @@ type Command {
   ...
 }
 
-bond Bob(cmd: Command): #word {
+bond Bob(cmd: Command): & #word {
   case cmd : Command {
     send_cat_tokens:
       if ECDSA.check(hash(cmd), caller)
