@@ -183,37 +183,21 @@ A crypto-currency has 3 components: a token, accounts, and transfers. The token
 itself can be implemented as a bond that alters a map of balances:
 
 ```c
-// The map of CatCoin balances, initially empty
 file CatCoin @ balances() : Map = Map.empty
 
-// CatCoin transactions
-type CatCoin.Command {
-  
-  // Mines new tokens
-  mint{amount: #word}
-
-  // Sends a token to someone
-  send{amount: #word, to: #word}
-
-  (...)
+type Command {
+  mint{value: #word}
+  ...
 }
 
 // The CatCoin bond
-CatCoin(command: CatCoin.Command): #word {
-  case command {
-
-    // Mines new tokens
-    mint:
-      run caller = $get_caller()
-      get old_balances = balances
-      set balances = Map.set(old_balances, caller, command.amount)
-      return #0
-
-    // Sends a token to someone
+CatCoin(cmd: Command): #word {
+  case cmd {
     send:
-
-      ...
-
+      get balances = balances
+      set balances = Map.set(balances, user, cmd.value)
+      return #0
+    ...
   }
 }
 ```
@@ -224,38 +208,23 @@ Similarly, users can create accounts by uploading bonds that they control. For
 example:
 
 ```c
-// The actions that Bob's account can perform
-type Bob.Command {
-
-  // Sends cat tokens to someone
+type Command {
   send_cat_tokens{
-    amount     : #word
-    to_address : #word
-    miner_fee  : #word
+    value : #word
+    to    : address
+    fee   : address
   }
-
   ...
 }
 
-// The bond representing Bob's account
-bond Bob(command: Bob.Command): #word {
-  case command : Bob.Command {
-
-    // Sends cat tokens to someone
+bond Bob(cmd: Command): #word {
+  case cmd : Command {
     send_cat_tokens:
-
-      // Check's Bob's signature
-      if ECDSA.check(Bob.hash(command), Bob.address)
-
-        // Pay miner fees
-        run CatCoin.send(command.miner_fee, $block_miner)
-        
-        // Send the money
-        run CatCoin.send(command.amount, command.to_address)
-
+      if ECDSA.check(hash(cmd), caller)
+        run CatCoin.send(cmd.fee, block_miner)
+        run CatCoin.send(cmd.amount, cmd.to)
         return #0
-
-    (...)
+    ...
   }
 }
 ```
