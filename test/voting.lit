@@ -1,0 +1,229 @@
+type Bits {
+  e{}
+  o{pred: Bits}
+  i{pred: Bits}
+}
+
+type Bool {
+  true{}
+  false{}
+}
+
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+type Cmp {
+  ltn{}
+  eql{}
+  gtn{}
+}
+
+type List {
+  nil{}
+  cons{head: Nat, tail: List}
+}
+
+type Voter {
+  new{allowed: Bool, voted: Bool}
+}
+
+type Maybe.Voter {
+  none_voter{}
+  some_voter{value: Voter}
+}
+
+type Maybe.Nat {
+  none_nat{}
+  some_nat{value: Nat}
+}
+
+type Votingmap {
+  tip{}
+  tie{val: Maybe.Voter, lft: Votingmap, rgt: Votingmap}
+}
+
+type Result {
+  res{map: Votingmap, candidates: List}
+}
+
+save
+
+bond Nat.cmp(n1: Nat, n2: Nat): Cmp {
+  case n1 : Nat {
+    zero: case n2 : Nat {
+      zero: eql{}
+      succ: ltn{}
+    }
+    succ: case n2 : Nat {
+      zero: gtn{}
+      succ: Nat.cmp(n1.pred, n2.pred)
+    }
+  }
+}
+
+save
+
+bond set_voter(map: Votingmap, key: Bits, value: Voter): Votingmap {
+  case map : Votingmap {
+    tip:
+      case key : Bits {
+        e:
+          tie{some_voter{value}, tip{}, tip{}}
+        o:
+          let ins : Votingmap = set_voter(tip{}, key.pred, value)
+          tie{none_voter{}, ins, tip{}}
+        i:
+          let ins : Votingmap = set_voter(tip{}, key.pred, value)
+          tie{none_voter{}, tip{}, ins}
+      }
+    tie:
+      case key : Bits {
+        e:
+          tie{some_voter{value}, tip{}, tip{}}
+        o:
+          let ins : Votingmap = set_voter(map.lft, key.pred, value)
+          tie{map.val, ins, map.rgt}
+        i:
+          let ins : Votingmap = set_voter(map.rgt, key.pred, value)
+          tie{map.val, map.lft, ins}
+      }
+  }
+}
+
+bond get_voter(map: Votingmap, key: Bits): Maybe.Voter {
+  case map : Votingmap {
+    tip:
+      none_voter{}
+    tie:
+      case key : Bits {
+        e:
+          map.val
+        o:
+          get_voter(map.lft, key.pred)
+        i:
+          get_voter(map.rgt, key.pred)
+      }
+  }
+}
+
+bond allow_vote(map: Votingmap, key: Bits): Votingmap {
+  let voter_get : Maybe.Voter = get_voter(map, key)
+  case voter_get : Maybe.Voter {
+    none_voter: 
+      map
+    some_voter: 
+      case voter_get.value : Voter {
+        new: 
+          case voter_get.value.voted : Bool {
+            true: 
+              map
+            false:
+              set_voter(map, key, new{true{}, false{}})
+          }
+      }
+  }
+}
+
+bond add_vote(i: Nat, list: List): List {
+  case list : List {
+    nil: nil{}
+    cons:
+      case i : Nat {
+        zero: cons{succ{list.head}, list.tail}
+        succ: cons{list.head, add_vote(i.pred, list.tail)}
+      }
+  }
+}
+
+bond vote(map: Votingmap, key: Bits, vote: Nat, candidates: List): Result {
+  let  voter_get : Maybe.Voter = get_voter(map, key)
+  case voter_get : Maybe.Voter {
+    none_voter: res{map, candidates}
+    some_voter:
+      case voter_get.value : Voter {
+        new:
+          case voter_get.value.allowed : Bool {
+            true:
+              let new_cand : List = add_vote(vote, candidates)
+              let new_map  : Votingmap = set_voter(map, key, new{false{}, true{}})
+              res{new_map, new_cand}
+            false: 
+              res{map, candidates}
+          }
+      }
+  }
+}
+
+save
+
+bond get_winner.aux(candidates: List, index: Nat, greater: Nat, winner: Maybe.Nat): Maybe.Nat {
+  case candidates : List {
+    nil:
+      winner
+    cons: 
+      let comp : Cmp = Nat.cmp(candidates.head, greater) 
+      case comp : Cmp {
+        ltn: get_winner.aux(candidates.tail, succ{index}, greater, winner)          
+        eql: get_winner.aux(candidates.tail, succ{index}, greater, none_nat{})          
+        gtn: get_winner.aux(candidates.tail, succ{index}, index, some_nat{index})          
+      }
+  }
+}
+
+bond get_winner(candidates: List): Maybe.Nat {
+  case candidates: List {
+    nil: none_nat{}
+    cons: get_winner.aux(candidates, zero{}, zero{}, none_nat{})
+  }
+}
+
+save
+
+file community : Votingmap = tip{}
+file candidates : List = cons{zero{}, cons{zero{}, cons{zero{}, nil{}}}}
+
+bond add_community_member(key: Bits): & #word {
+  get v = community
+  set community = set_voter(v, key, new{false{}, false{}})
+  return #1
+}
+
+bond allow_member_vote(key: Bits): & #word {
+  get v = community
+  set community = allow_vote(v, key)
+  return #2
+}
+
+bond member_vote(key: Bits, candidate: Nat): & #word {
+  get c = candidates
+  get v = community
+  let result : Result = vote(v, key, candidate, c)
+  case result : Result {
+    res:
+      set candidates = result.candidates
+      set community  = result.map 
+      return #3
+  }
+}
+
+eval {
+  let joao : Bits = i{e{}}
+  let maria : Bits = o{e{}}
+  run add_community_member(joao)
+  run add_community_member(maria)
+
+  run allow_member_vote(joao)
+
+  run member_vote(joao, succ{zero{}})
+  run member_vote(joao, succ{zero{}}) // voting two times, not allowed
+  run member_vote(maria, zero{}) // voting without permission
+  
+  get c = candidates
+  let winner : Maybe.Nat = get_winner(c)
+
+  return winner
+} : & Maybe.Nat
+
+save
