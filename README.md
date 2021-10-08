@@ -115,9 +115,11 @@ eval {
 
 This is a Litereum block with 3 transactions. The first declares a type called
 "Nat", the second declares bond (function) called "double", and the third
-evaluates the expression `double(3)` (with natural numbers). This pure block
-does nothing interesting, but stateful transactions can be performed with
-effects.
+evaluates the expression `double(3)` (with natural numbers). The result, `6`,
+will be logged for everyone to see. Note that, since Litereum transactions are
+type-checked on-chain, it is impossible for this `eval` block to output a
+non-numeric value. Similarly, cross-bond communication is guaranteed to be type
+sound.
 
 Since Litereum's core language is pure, it wouldn't be capable of performing
 effectiful or stateful operations. That's why it also has a built-in Effect
