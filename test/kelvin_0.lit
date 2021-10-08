@@ -22,7 +22,7 @@ type Nat {
 
 type Word.List {
   nil{}
-  cons{head: #word, tail: #word}
+  cons{head: #word, tail: Word.List}
 }
 
 type Buffer {
@@ -89,6 +89,8 @@ bond Bits.concat(x: Bits, y: Bits): Bits {
   }
 }
 
+save
+
 // Nat
 
 bond Nat.to_bits(x: Nat): Bits {
@@ -105,7 +107,58 @@ bond Nat.double(x: Nat): Nat {
   }
 }
 
+save
+
 // Buffer
+
+bond shiftr(x: #word, y: #word): #word {
+  compare y #0 {
+    _<_: #0
+    _=_: x
+    _>_: shiftr(/(x #2), -(y #1))
+  }
+}
+
+bond Buffer.from_bits.aux(
+  x: Bits
+  c: #word
+  segment: #word
+): Buffer {
+  let msb : #word = -(-(#0 #1) /(-(#0 #1) #2))
+  compare c #64 {
+    _<_:
+      case x: Bits {
+        e:
+          compare c #0 {
+            _<_: new{#0, nil{}}
+            _=_: new{#0, nil{}}
+            _>_:
+              let segment : #word = shiftr(segment, -(#64 c))
+              new{c, cons{segment, nil{}}}
+          }
+        o:
+          let c : #word = +(#1, c)
+          let segment: #word = /(segment, #2)
+          Buffer.from_bits.aux(x.pred, c, segment)
+        i:
+          let c : #word = +(#1, c)
+          let segment: #word = +(msb /(segment, #2))
+          Buffer.from_bits.aux(x.pred, c, segment)
+      }
+    _=_:
+      let rest : Buffer = Buffer.from_bits.aux(x, #0, #0)
+      case rest : Buffer {
+        new:
+          let size: #word = +(#64, rest.size)
+          new{size, cons{segment, rest.words}}
+      }
+    _>_: new{#0, nil{}}
+  }
+}
+
+bond Buffer.from_bits(x: Bits): Buffer {
+  Buffer.from_bits.aux(x, #0, #0)
+}
 
 save
 
@@ -118,9 +171,10 @@ save
 eval {
   let a: Nat = succ{succ{succ{zero{}}}}
   let b: Nat = Nat.double(Nat.double(a))
-  let c: Bits = Nat.to_bits(Nat.double(Nat.double(a)))
-  let d: Bits = Bits.concat(c, c)
-  d
-} : Bits
+  let bits: Bits = Nat.to_bits(Nat.double(Nat.double(a)))
+  // let d: Bits = Bits.concat(c, c)
+  let buf: Buffer = Buffer.from_bits(bits)
+  buf
+} : Buffer
 
 save
