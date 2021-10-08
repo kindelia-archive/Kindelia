@@ -117,16 +117,16 @@ eval {
 
 This is a Litereum block with 3 transactions. The first declares a type called
 "Nat", the second declares bond (function) called "double", and the third
-evaluates the expression `double(3)` (with natural numbers). The result, `6`,
-will be logged for everyone to see. Note that, since Litereum bonds and evals
-are type-checked on-chain, it is impossible for this block to output a
-non-numeric value. Similarly, cross-bond communication is guaranteed to be type
-sound.
+evaluates the expression `double(3)`. The result, `6`, will be logged for
+everyone to see. Note that, since Litereum bonds and evals are type-checked
+on-chain, the output will always have the right type. Similarly, cross-bond
+communication is always sound.
 
-Since Litereum's core language is pure, it wouldn't be capable of performing
-effectful or stateful operations. That's why it also has a built-in Effect type,
-written as `&`, that gives bonds the power to interact with the blockchain
-state. The simplest example is a counter:
+Of course, the block above doesn't do anything useful. In order to perform
+effectful and stateful applications, Litereum also features files, which are
+mutable global variables, and a built-in Effect type, written as `&`, that
+allows bonds to write and read from these files. The simplest example is a
+counter:
 
 ```c
 file inc@count : #word = #0
@@ -148,7 +148,7 @@ eval {
 
 The block above declares:
 
-1. `count`: a file, or mutable term, that stores a number.
+1. `count`: a file, owned by the `inc` bond, that stores a number.
 
 2. `inc`: a bond that increments the `count` file when it is called.
 
@@ -156,23 +156,23 @@ The `eval` block increments the counter 3 types, and outputs `3`.
 
 Notice the return type of `inc` is marked with an `&`: that's because it is an
 effectiful bond. A functional programmer may be familiar with it, since it works
-exactly like Haskell's IO type. The type of `inc`, can be interpreted as `IO
-Word64`. The `return` primitive is the monadic pure, and `run` is a short form
-of the monadic binder:
+exactly like Haskell's IO type. That is, `& #word` in Litereum is equivalent to
+`IO Word64` in Haskell. The `return` primitive is the monadic pure, and `run` is
+a short form of the monadic binder:
 
 ```c
 run x : #word = inc()
 ```
 
-Since Litereum blocks are Turing complete, caution is needed to avoid spam
-attacks, or even accidental loops, that would overload nodes on the network. As
-such, blocks are limited in both space and time by a maximum block size, and a
-measure for the cost of computations. Sadly, doing so is extremely tricky in a
-functional language, because the cost of a β-reduction [may
+Since Litereum blocks are Turing complete, caution is needed to avoid spam such
+as endless loops that would overload nodes on the network. As such, blocks are
+limited in both space and time by a maximum block size, and a maximum
+computation budget. Sadly, assigning gas costs to functional languages is
+extremely tricky, because the cost of a β-reduction [may
 vary](https://dl.acm.org/doi/10.5555/645420.652523) depending on how it is
 implemented. That is why Litereum's term language is carefully designed to be
-strongly confluent. That is, evaluating a term has a clear optimal strategy,
-allowing us to design a reasonable cost table for its functional opcodes.
+strongly confluent. Just like a stack machine, evaluating a Litereum term has a
+clear optimal strategy, allowing us to design a reasonable cost table for it.
 
 Examples
 ========
