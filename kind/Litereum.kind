@@ -275,6 +275,7 @@ Litereum.check(
         size && vals
     } default false
     match: 
+      use cont = context{term.name} abort false
       use data = Litereum.get_data(world, term.data) abort false
       let size = Nat.eql(List.length!(term.cses),List.length!(data.constructors))
       let expr = Litereum.check(context, world, Litereum.Term.var(term.name), Litereum.Type.data(term.data))
