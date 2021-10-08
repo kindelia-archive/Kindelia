@@ -541,6 +541,7 @@ context |- (let name = expr; body) : B
 
 ```
 given bond B(x: A, y: B, ...) : T { ... }
+
 context |- x : A
 context |- y : B
 ...
@@ -552,6 +553,7 @@ context |- f(x, y, ...) : T
 
 ```
 given data T { k(x: A, y: B, ...), ... }
+
 context |- x : A
 context |- y : B
 ...
@@ -563,6 +565,7 @@ context |- k{x, y, ...} : T
 
 ```
 given data T { k(x: A, y: B, ...), ... }
+
 context                        |- x : T
 context, (x : A), (y : B), ... |- r : R
 -----------------------------------------
