@@ -63,7 +63,7 @@ Ethereum, taking away all the complex features that are either historical
 artifacts or optimizations, and keeping only the bare minimum required to
 establish a decentralized computer and smart-contract platform. For comparison,
 our reference implementation requires less than **2000 lines of code**, while
-the standard Ethereum full node has <TODO>. Thanks to this simplicity:
+the standard Ethereum full node has [TODO]. Thanks to this simplicity:
 
 ## 1. Litereum is secure
 
