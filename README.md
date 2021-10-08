@@ -131,7 +131,7 @@ state. The simplest example is a counter:
 term count(): #word = #0
 
 bond inc(): & #word {
-  store count = +(count(), #1)
+  set count = +(count(), #1)
   return #0
 }
 
