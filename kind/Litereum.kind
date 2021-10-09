@@ -290,7 +290,7 @@ Litereum.check(
     compare:
       //log("-- compare ")  // DEBUG
       let val0 = Litereum.check(context, world, term.val0, Litereum.Type.word)
-      let val1 = Litereum.check(context, world, term.val0, Litereum.Type.word)
+      let val1 = Litereum.check(context, world, term.val1, Litereum.Type.word)
       let iflt = Litereum.check(context, world, term.iflt, type)
       let ifeq = Litereum.check(context, world, term.ifeq, type)
       let ifgt = Litereum.check(context, world, term.ifgt, type)
