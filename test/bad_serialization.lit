@@ -1,0 +1,20 @@
+// this code gives "bad serialization" as result 
+// but no fail is given after this
+// the "bad serialization" occurs because 'b' in line 14 is not defined
+// should we check this?
+
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+save 
+
+bond foo(n1: Nat, n2: Nat): Nat {
+  case b : Nat {
+    zero: zero{}
+    succ: zero{}
+  }
+}
+
+save
