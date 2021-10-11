@@ -1,0 +1,14 @@
+// the type NonExistent doesn't exist but the code serializes and no fail is given
+type List {
+  nil{}
+  cons{value: NonExistent, cons: List}
+}
+
+save
+
+eval {
+  let a : List = nil{}
+  #32
+} : #word
+
+save
