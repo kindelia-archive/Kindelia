@@ -1,7 +1,7 @@
 // this code gives "bad serialization" as result 
 // but no fail is given after this
 // the "bad serialization" occurs because 'b' in line 14 is not defined
-// should we check this?
+// should we check this? (alredy done)
 
 type Nat {
   zero{}
