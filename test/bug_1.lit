@@ -1,9 +1,9 @@
 eval {
     let x : #word = #42
-    compare x 0 {
-        _<_: #1
-        _=_: #2
-        _>_: #3
+    compare x k {
+      _<_: #1
+      _=_: #2
+      _>_: #3
     }
 }: #word
 
