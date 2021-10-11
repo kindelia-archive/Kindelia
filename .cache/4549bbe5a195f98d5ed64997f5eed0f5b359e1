@@ -1,0 +1,1 @@
+%(A:*) @(world:Kindelia.World) @(subst:(Map Kindelia.Term)) @(fresh:Nat) @(gas:Nat) @(term:A) (Kindelia.Runtime A)

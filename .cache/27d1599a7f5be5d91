@@ -1,0 +1,1 @@
+#A #B #C %Triple.Self(P:@(:(((Triple A) B) C)) *) @(new:@(fst:A) @(snd:B) @(trd:C) (P ((((((Triple.new A) B) C) fst) snd) trd))) (P Triple.Self)

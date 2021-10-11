@@ -1,0 +1,1 @@
+#b #ds #p #res (((ds #ds Nat) res) #ds.head #ds.tail ((((Nat.from_base.go b) ds.tail) ((Nat.mul b) p)) ((Nat.add ((Nat.mul ds.head) p)) res)))

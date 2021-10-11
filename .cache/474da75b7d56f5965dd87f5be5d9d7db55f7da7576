@@ -1,0 +1,1 @@
+#world ((((((Monad.bind Parser) Parser.monad) String) Litereum.Term) Litereum.parse.name) #name ((((Monad.pure Parser) Parser.monad) Litereum.Term) (Litereum.Term.var name)))

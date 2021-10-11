@@ -1,0 +1,1 @@
+%(P:@(:Nat) *) %(m:Nat) @(nil:(P Nat.zero)) @(w0:%(n:Nat) @(:(P n)) (P (Nat.succ n))) @(w1:%(n:Nat) @(:(P n)) (P (Nat.succ n))) @(word:(Word m)) (P m)

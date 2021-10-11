@@ -1,0 +1,1 @@
+#col #str ((String.cons (Nat.to_u16 +27)) ((String.concat "[") ((String.concat col) ((String.concat "m") ((String.concat str) ((String.cons (Nat.to_u16 +27)) "[0m"))))))

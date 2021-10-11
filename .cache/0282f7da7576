@@ -1,0 +1,1 @@
+#K #V %BBT.Self(P:@(:((BBT K) V)) *) @(tip:(P ((BBT.tip K) V))) @(bin:@(size:U32) @(key:K) @(val:V) @(left:((BBT K) V)) @(right:((BBT K) V)) (P (((((((BBT.bin K) V) size) key) val) left) right))) (P BBT.Self)

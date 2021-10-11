@@ -1,0 +1,1 @@
+@(world:Kindelia.World) @(transaction:Kindelia.Transaction) String

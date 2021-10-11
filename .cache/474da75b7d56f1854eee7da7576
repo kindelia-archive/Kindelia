@@ -1,0 +1,1 @@
+%Litereum.Bond.Self(P:@(:Litereum.Bond) *) @(new:@(name:String) @(inam:(List String)) @(ityp:(List Litereum.Type)) @(otyp:Litereum.Type) @(main:Litereum.Term) (P (((((Litereum.Bond.new name) inam) ityp) otyp) main))) (P Litereum.Bond.Self)

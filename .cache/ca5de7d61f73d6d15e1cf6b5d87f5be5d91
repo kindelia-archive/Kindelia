@@ -1,0 +1,1 @@
+#base #nat (((((List.fold Nat) ((Nat.to_base base) nat)) String) String.nil) #n #str ((String.cons ((Nat.show_digit base) n)) str))

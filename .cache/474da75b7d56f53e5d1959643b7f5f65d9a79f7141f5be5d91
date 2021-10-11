@@ -1,0 +1,1 @@
+#value (((value #value Bits) Bits.e) #value.pred (((((Nat.eql value) +1) # Bits) (Bits.o Bits.e)) (((((Nat.eql ((Nat.mod value) +2)) +0) # Bits) (Bits.i (Bits.o (Litereum.serialize.varlen.go ((Nat.div value) +2))))) (Bits.i (Bits.i (Litereum.serialize.varlen.go ((Nat.div value) +2)))))))

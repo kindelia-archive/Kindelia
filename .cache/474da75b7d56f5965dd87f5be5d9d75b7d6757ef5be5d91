@@ -1,0 +1,1 @@
+#world ((((((Monad.bind Parser) Parser.monad) Unit) Litereum.Term) (Litereum.parse.text "return")) # ((((((Monad.bind Parser) Parser.monad) Litereum.Term) Litereum.Term) (Litereum.parse.term world)) #expr ((((Monad.pure Parser) Parser.monad) Litereum.Term) (Litereum.Term.return expr))))

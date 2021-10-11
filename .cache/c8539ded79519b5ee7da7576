@@ -1,0 +1,1 @@
+(((Monad.new Maybe) Maybe.bind) Maybe.some)

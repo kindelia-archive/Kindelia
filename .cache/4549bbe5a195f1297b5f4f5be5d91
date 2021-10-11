@@ -1,0 +1,1 @@
+%Kindelia.Entry.Self(P:@(:Kindelia.Entry) *) @(data:@(value:Kindelia.Data) (P (Kindelia.Entry.data value))) @(bond:@(value:Kindelia.Bond) (P (Kindelia.Entry.bond value))) @(file:@(value:Kindelia.File) (P (Kindelia.Entry.file value))) (P Kindelia.Entry.Self)

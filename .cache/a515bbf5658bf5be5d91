@@ -1,0 +1,1 @@
+#size #a #b !q = (((Word.div size) a) b); (((Word.sub size) a) (((Word.mul size) b) q))

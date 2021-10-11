@@ -1,0 +1,1 @@
+#world #bits (((((Litereum.deserialize.term world) (List.nil String)) bits) # ((Pair Bits) Litereum.Eval)) #bits #term ((((Litereum.deserialize.type world) bits) # ((Pair Bits) Litereum.Eval)) #bits #type ((((Pair.new Bits) Litereum.Eval) bits) ((Litereum.Eval.new term) type))))

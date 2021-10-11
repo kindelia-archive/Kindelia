@@ -1,0 +1,1 @@
+%Litereum.World.Self(P:@(:Litereum.World) *) @(new:@(entry:(Map Litereum.Entry)) (P (Litereum.World.new entry))) (P Litereum.World.Self)

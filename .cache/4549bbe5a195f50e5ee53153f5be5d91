@@ -1,0 +1,1 @@
+(Kindelia.World.new ((Map.from_list Kindelia.Entry) (List.nil ((Pair String) Kindelia.Entry))))

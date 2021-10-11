@@ -1,0 +1,1 @@
+#size #word ((((word #word.size #word (Word word.size)) Word.e) #word.size #word.pred ((Word.o word.size) (((Word.shift_left.one.go word.size) word.pred) Bool.false))) #word.size #word.pred ((Word.o word.size) (((Word.shift_left.one.go word.size) word.pred) Bool.true)))

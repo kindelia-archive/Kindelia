@@ -1,0 +1,1 @@
+@(world:Litereum.World) @(table:(Map String)) @(fresh:Nat) @(term:Litereum.Term) ((Pair Nat) Litereum.Term)

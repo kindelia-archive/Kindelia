@@ -1,0 +1,1 @@
+@(entry:(Map Litereum.Entry)) Litereum.World

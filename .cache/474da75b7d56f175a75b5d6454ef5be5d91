@@ -1,0 +1,1 @@
+%Litereum.Operation.Self(P:@(:Litereum.Operation) *) @(add:(P Litereum.Operation.add)) @(sub:(P Litereum.Operation.sub)) @(mul:(P Litereum.Operation.mul)) @(div:(P Litereum.Operation.div)) @(mod:(P Litereum.Operation.mod)) @(or:(P Litereum.Operation.or)) @(and:(P Litereum.Operation.and)) @(xor:(P Litereum.Operation.xor)) (P Litereum.Operation.Self)

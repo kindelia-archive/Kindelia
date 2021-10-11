@@ -1,0 +1,1 @@
+#world ((((((Monad.bind Parser) Parser.monad) String) Kindelia.Term) Kindelia.parse.name) #name ((((Monad.pure Parser) Parser.monad) Kindelia.Term) (Kindelia.Term.var name)))

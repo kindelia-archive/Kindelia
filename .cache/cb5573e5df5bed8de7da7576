@@ -1,0 +1,1 @@
+#text #pst ((pst #pst (Parser.Reply Unit)) #pst.err #pst.nam #pst.ini #pst.idx #pst.str (((((((Parser.text.go pst.idx) text) text) pst) #reply (Parser.Reply Unit)) #reply.err ((Parser.Reply.error Unit) reply.err)) #reply.pst #reply.val (((Parser.Reply.value Unit) reply.pst) reply.val)))

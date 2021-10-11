@@ -1,22 +1,22 @@
 {
-  "name": "litereum",
+  "name": "kindelia",
   "version": "0.1.9",
   "description": "",
   "bin": {
-    "lit": "bin/main.js"
+    "kin": "bin/main.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm bin/litereum.js; kind Litereum --js | js-beautify >> bin/litereum.js"
+    "build": "rm bin/kindelia.js; kind Kindelia --js | js-beautify >> bin/kindelia.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/litereum/litereum.git"
+    "url": "git+https://github.com/kindelia/kindelia.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/litereum/litereum/issues"
+    "url": "https://github.com/kindelia/kindelia/issues"
   },
-  "homepage": "https://github.com/litereum/litereum#readme"
+  "homepage": "https://github.com/kindelia/kindelia#readme"
 }

@@ -1,0 +1,1 @@
+%Litereum.Entry.Self(P:@(:Litereum.Entry) *) @(data:@(value:Litereum.Data) (P (Litereum.Entry.data value))) @(bond:@(value:Litereum.Bond) (P (Litereum.Entry.bond value))) @(file:@(value:Litereum.File) (P (Litereum.Entry.file value))) (P Litereum.Entry.Self)

@@ -1,0 +1,1 @@
+#A #xs #B #b #f (((xs #xs B) b) #xs.head #xs.tail (((((List.for A) xs.tail) B) ((f xs.head) b)) f))

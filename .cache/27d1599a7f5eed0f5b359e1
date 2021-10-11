@@ -1,0 +1,1 @@
+%(A:*) %(B:*) %(C:*) @(fst:A) @(snd:B) @(trd:C) (((Triple A) B) C)

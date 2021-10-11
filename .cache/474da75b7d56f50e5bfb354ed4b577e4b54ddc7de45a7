@@ -1,0 +1,1 @@
+@(world:Litereum.World) @(name:String) (Maybe (List Litereum.Constructor))

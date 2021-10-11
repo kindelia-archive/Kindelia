@@ -1,0 +1,1 @@
+#K #V #size #key #val #left #right #P #tip #bin (((((bin size) key) val) left) right)
