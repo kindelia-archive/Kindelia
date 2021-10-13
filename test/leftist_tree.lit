@@ -1,0 +1,138 @@
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+type LeftistTree.Nat {
+  empty{}
+  node{value: Nat, left: LeftistTree.Nat, right: LeftistTree.Nat, rank: #word}
+}
+
+type Bool {
+  true{}
+  false{}
+}
+
+type Maybe.Nat {
+  none{}
+  some{value: Nat}
+}
+
+save
+
+bond word_to_nat(n: #word): Nat {
+  compare n #0 {
+    _<_: zero{}
+    _=_: zero{}
+    _>_: succ{word_to_nat(-(n, #1))}
+  }
+}
+
+bond Nat.ltn(a: Nat, b: Nat): Bool {
+  case b : Nat {
+    zero:
+      false{}
+    succ:
+      case a : Nat {
+        zero: true{}
+        succ: Nat.ltn(a.pred, b.pred)
+      }
+  }
+}
+
+save
+
+bond LeftistTree.singleton(value: Nat): LeftistTree.Nat {
+  node{
+    value, 
+    empty{}, 
+    empty{}, 
+    #1
+  }
+}
+
+bond LeftistTree.rank(tree: LeftistTree.Nat) : #word {
+  case tree : LeftistTree.Nat {
+    empty: #0
+    node: tree.rank
+  }
+}
+
+bond LeftistTree.merge(treeA: LeftistTree.Nat, treeB: LeftistTree.Nat) : LeftistTree.Nat {
+  case treeA : LeftistTree.Nat {
+    empty: treeB
+    node: 
+      case treeB  : LeftistTree.Nat{
+        empty: treeA
+        node:
+          let comparison : Bool = Nat.ltn(treeA.value, treeB.value)
+          case comparison : Bool {
+            true:
+              LeftistTree.merge(treeB, treeA)  
+            false:
+              let merged_right : LeftistTree.Nat = LeftistTree.merge(treeA.right, treeB)
+              let rank_left : #word = LeftistTree.rank(treeA.left)
+              let rank_right : #word = LeftistTree.rank(merged_right)
+
+              compare rank_left rank_right {
+                _<_: node{treeA.value, merged_right, treeA.left, +(rank_left, #1)}
+                _=_: node{treeA.value, treeA.left, merged_right, +(rank_right, #1)}
+                _>_: node{treeA.value, treeA.left, merged_right, +(rank_right, #1)}
+              }
+          }
+      }
+  }
+}
+
+bond LeftistTree.insert(value: Nat, tree: LeftistTree.Nat) : LeftistTree.Nat {
+  LeftistTree.merge(LeftistTree.singleton(value), tree)
+}
+
+bond LeftistTree.delete_root(tree: LeftistTree.Nat): LeftistTree.Nat {
+  case tree : LeftistTree.Nat {
+    empty: 
+      empty{}
+    node: 
+      LeftistTree.merge(tree.left, tree.right)
+  }
+}
+
+bond LeftistTree.get_root(tree: LeftistTree.Nat): Maybe.Nat {
+  case tree : LeftistTree.Nat {
+    empty: none{}
+    node: some{tree.value}
+  }
+}
+
+save
+
+file heap : LeftistTree.Nat = empty{}
+
+bond heap.add(n: Nat) : & #word {
+  get h = heap
+  set heap = LeftistTree.insert(n, h)
+  return #1
+}
+
+bond heap.top() : & Maybe.Nat {
+  get h = heap
+  let v : Maybe.Nat = LeftistTree.get_root(h)
+  set heap = LeftistTree.delete_root(h)
+  return v
+}
+
+eval {
+  run heap.add(word_to_nat(#4))
+  run heap.add(word_to_nat(#3))
+  run heap.add(word_to_nat(#10))
+  run heap.add(word_to_nat(#1))
+  run heap.add(word_to_nat(#2))
+  run heap.add(word_to_nat(#7))
+  run t : Maybe.Nat = heap.top()
+  run t : Maybe.Nat = heap.top()
+  run t : Maybe.Nat = heap.top()
+  
+  return t
+} : & Maybe.Nat
+
+save
