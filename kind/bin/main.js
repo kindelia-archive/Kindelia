@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var litereum = require("./litereum.js");
+var litereum = require("./kindelia.js");
 var fs = require("fs");
 
 var file_name = process.argv[2];
@@ -12,4 +12,4 @@ if (!file_name) {
 
 var file = fs.readFileSync(file_name, "utf8");
 
-litereum.run(litereum["Litereum.api.run"](file));
+litereum.run(litereum["Kindelia.api.run"](file));
