@@ -1,0 +1,139 @@
+// a simple binary search tree implementation
+type Nat {
+  zero{}
+  succ{pred: Nat}
+}
+
+type Maybe.Nat {
+  none{}
+  some{value: Nat}
+}
+
+type BST {
+  nil{}
+  tie{key: #word, value: Nat, lft: BST, rgt: BST}
+}
+
+type List.Nat {
+  nul{}
+  cons{head: Nat, tail: List.Nat}
+}
+
+save
+
+bond word_to_nat(n: #word): Nat {
+  compare n #0 {
+    _<_: zero{}
+    _=_: zero{}
+    _>_: succ{word_to_nat(-(n, #1))}
+  }
+}
+
+bond List.Nat.concat(a: List.Nat, b: List.Nat): List.Nat {
+  case a : List.Nat {
+    nul: b
+    cons:
+      case b : List.Nat {
+        nul: a
+        cons: cons{a.head, cons{b.head, List.Nat.concat(a.tail, b.tail)}}
+      }
+  }
+}
+
+bond List.Nat.generate(n: #word): List.Nat {
+  compare n #0 {
+    _<_: nul{}
+    _=_: cons{word_to_nat(n), nul{}}
+    _>_: cons{word_to_nat(n), List.Nat.generate(-(n, #1))}
+  }
+}
+
+save
+
+bond set(key: #word, value: Nat, bst: BST): BST {
+  case bst : BST {
+    nil: tie{key, value, nil{}, nil{}}
+    tie:
+      compare key bst.key {
+        _<_: tie{bst.key, bst.value, set(key, value, bst.lft), bst.rgt}
+        _=_: tie{key, value, bst.lft, bst.rgt}
+        _>_: tie{bst.key, bst.value, bst.lft, set(key, value, bst.rgt)}
+      }
+  }
+}
+
+bond get(key: #word, bst: BST): Maybe.Nat {
+  case bst : BST {
+    nil: none{}
+    tie:
+      compare key bst.key {
+        _<_: get(key, bst.lft)
+        _=_: some{bst.value}
+        _>_: get(key, bst.rgt)
+      }
+  } 
+}
+
+bond greater(bst: BST): BST {
+  case bst : BST {
+    nil: bst
+    tie: 
+      case bst.rgt : BST {
+        nil: bst
+        tie: greater(bst.rgt)
+      }
+  }
+}
+
+bond delete(key: #word, bst: BST): BST {
+  case bst : BST {
+    nil: nil{}
+    tie:
+      compare key bst.key {
+        _<_: 
+          tie{bst.key, bst.value, delete(key, bst.lft), bst.rgt}
+        _=_: 
+          let greater_node_left : BST = greater(bst.lft)
+          case greater_node_left : BST {
+            nil: 
+              bst.rgt
+            tie: 
+              tie{greater_node_left.key, greater_node_left.value, delete(greater_node_left.key, bst.lft), bst.rgt}
+          } 
+        _>_: 
+          tie{bst.key, bst.value, bst.lft, delete(key, bst.rgt)}
+      }
+  } 
+}
+
+bond values(bst: BST): List.Nat {
+  case bst : BST {
+    nil: 
+      nul{}
+    tie:
+      cons{bst.value, List.Nat.concat(values(bst.lft), values(bst.rgt))} 
+  }
+}
+
+save
+
+file test : BST = nil{}
+
+bond test.add(key: #word, value: Nat): & #word {
+  get x = test
+  set test = set(key, value, x)
+  return #1
+}
+
+bond test.delete(key: #word): & #word {
+  get x = test
+  set test = delete(key, x)
+  return #2
+}
+
+eval {
+  let b : List.Nat = List.Nat.generate(#500)
+  return b
+} : & List.Nat
+
+save
