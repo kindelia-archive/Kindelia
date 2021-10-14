@@ -199,7 +199,7 @@ type Command {
 }
 
 // The CatCoin bond
-CatCoin(cmd: Command): #word {
+bond CatCoin(cmd: Command): #word {
   case cmd {
     mint:
       get balances = balances
@@ -256,7 +256,7 @@ eval {
 Bob would write this script, sign it, serialize and send to miners. Miners would
 be incentived include it in a block, in order to collect fees. Once mined, this
 transaction would call Bob's bond, which would check the signature and call the
-CatCoin bond, which would bond would update the balance map to send 50000 cat
+CatCoin bond, which would update the balance map to send 50000 cat
 tokens to Alice, and 100 cat tokens to the block miner.
 
 How is it so small?
@@ -300,7 +300,7 @@ Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
 will bring several benefits, such as lower energy consumption and faster
 finality times. It also has neat features such as Ethash, for ASIC-resistance,
 and GHOST, for mining efficiency. Kindelia drops these features for the sake of
-simplicity, featuring just a simple Proof-of-Work onsensus.
+simplicity, featuring just a simple Proof-of-Work consensus.
 
 ## 5. A simpler virtual machine
 
