@@ -240,6 +240,7 @@ Kindelia.check(
   world: Kindelia.World
   term: Kindelia.Term
   type: Kindelia.Type
+  caller: Maybe<String>
 ): Bool
   open context
   open world
@@ -253,9 +254,9 @@ Kindelia.check(
       Kindelia.equal(var_type, type)
     let:
       //log("-- let ")  // DEBUG
-      let expr = Kindelia.check(context, world, term.expr, term.type)
+      let expr = Kindelia.check(context, world, term.expr, term.type, caller)
       let ctx2 = context{term.name} <- term.type
-      let body = Kindelia.check(ctx2, world, term.body, type)
+      let body = Kindelia.check(ctx2, world, term.body, type, caller)
       expr && body
     call:
       //log("-- call ")  // DEBUG
@@ -263,7 +264,7 @@ Kindelia.check(
       use bond = Kindelia.get_bond(world, term.bond) abort false
       let otyp = Kindelia.equal(bond.otyp, type)
       let args = List.zip!!(term.args, bond.ityp)
-      let args = List.all!((x) Kindelia.check(context, world, x@fst, x@snd), args)
+      let args = List.all!((x) Kindelia.check(context, world, x@fst, x@snd, caller), args)
       otyp && args
     create: case type {
       data:
@@ -271,58 +272,60 @@ Kindelia.check(
         use ctor = Kindelia.get_constructor_value(data,term.ctor) abort false
         let size = Nat.eql(List.length!(term.vals), List.length!(ctor.ftyp))
         let vals = List.zip!!(term.vals, ctor.ftyp)
-        let vals = List.all!((x) Kindelia.check(context, world, x@fst, x@snd), vals)
+        let vals = List.all!((x) Kindelia.check(context, world, x@fst, x@snd, caller), vals)
         size && vals
     } default false
     match: 
       use data = Kindelia.get_data(world, term.data) abort false
       let size = Nat.eql(List.length!(term.cses),List.length!(data.constructors))
-      let expr = Kindelia.check(context, world, Kindelia.Term.var(term.name), Kindelia.Type.data(term.data))
+      let expr = Kindelia.check(context, world, Kindelia.Term.var(term.name), Kindelia.Type.data(term.data), caller)
       let cses = List.zipped_with!!(term.cses, data.constructors)!((case_body, case_ctor)
         let nams = List.map!!(String.concat(term.name|"."), case_ctor@fnam)
         let typs = case_ctor@ftyp
         let ctx2 = Kindelia.extend!(context, nams, typs)
-        Kindelia.check(ctx2, world, case_body, type))
+        Kindelia.check(ctx2, world, case_body, type, caller))
       size && List.and(cses)
     word: case type {
       word: true
     } default false
     compare:
       //log("-- compare ")  // DEBUG
-      let val0 = Kindelia.check(context, world, term.val0, Kindelia.Type.word)
-      let val1 = Kindelia.check(context, world, term.val1, Kindelia.Type.word)
-      let iflt = Kindelia.check(context, world, term.iflt, type)
-      let ifeq = Kindelia.check(context, world, term.ifeq, type)
-      let ifgt = Kindelia.check(context, world, term.ifgt, type)
+      let val0 = Kindelia.check(context, world, term.val0, Kindelia.Type.word, caller)
+      let val1 = Kindelia.check(context, world, term.val1, Kindelia.Type.word, caller)
+      let iflt = Kindelia.check(context, world, term.iflt, type, caller)
+      let ifeq = Kindelia.check(context, world, term.ifeq, type, caller)
+      let ifgt = Kindelia.check(context, world, term.ifgt, type, caller)
       val0 && val1 && iflt && ifeq && ifgt
     operate:
-      let val0 = Kindelia.check(context, world, term.val0, Kindelia.Type.word)
-      let val1 = Kindelia.check(context, world, term.val1, Kindelia.Type.word)
+      let val0 = Kindelia.check(context, world, term.val0, Kindelia.Type.word, caller)
+      let val1 = Kindelia.check(context, world, term.val1, Kindelia.Type.word, caller)
       val0 && val1
     set: case type {
       effe: 
         use file = Kindelia.get_file(world, term.file) abort false
-        // let ownr = Kindelia.check_owner(context, term.file)  // TODO check owner
-        let expr = Kindelia.check(context, world, term.expr, file.type)
-        let body = Kindelia.check(context, world, term.body, type)
-        expr && body
+        let empty = List.is_empty!(file.ownr)
+        let valid = Maybe.if!((x) List.in!(String.eql(x), file.ownr), caller)
+        let ownr = empty || valid
+        let expr = Kindelia.check(context, world, term.expr, file.type, caller)
+        let body = Kindelia.check(context, world, term.body, type, caller)
+        ownr && expr && body
     } default false
     get: case type {
       effe: 
         use file = Kindelia.get_file(world, term.file) abort false
         let ctx2 = Kindelia.extend!(context, [term.name], [file.type])
-        let body = Kindelia.check(ctx2, world, term.body, type)
+        let body = Kindelia.check(ctx2, world, term.body, type, caller)
         body
     } default false
     bind: case type {
       effe:
-        let expr = Kindelia.check(context, world, term.expr, Kindelia.Type.effe(term.type))
+        let expr = Kindelia.check(context, world, term.expr, Kindelia.Type.effe(term.type), caller)
         let ctx2 = context{term.name} <- term.type
-        let body = Kindelia.check(ctx2, world, term.body, type)
+        let body = Kindelia.check(ctx2, world, term.body, type, caller)
         expr && body
     } default false
     return: case type {
-      effe: Kindelia.check(context, world, term.expr, type.rety)
+      effe: Kindelia.check(context, world, term.expr, type.rety, caller)
     } default false
   } default false
 
@@ -626,7 +629,7 @@ Kindelia.transact(
         none:
           let world = world@entry <- (world.entry{bond.name} <- Kindelia.Entry.bond(bond))
           let context = Kindelia.extend<Kindelia.Type>({}, bond.inam, bond.ityp)
-          if Kindelia.check(context, world, bond.main, bond.otyp) then
+          if Kindelia.check(context, world, bond.main, bond.otyp, some(bond.name)) then
             some({world, "[bond] " | bond.name})
           else
             none
@@ -637,7 +640,7 @@ Kindelia.transact(
       case world.entry{file.name} as got {
         none:
           let world = world@entry <- (world.entry{file.name} <- Kindelia.Entry.file(file))
-          if Kindelia.check({}, world, file.expr, file.type) then
+          if Kindelia.check({}, world, file.expr, file.type, none) then
             some({world, "[file] " | file.name})
           else
             none
@@ -645,7 +648,7 @@ Kindelia.transact(
         none
     new_eval:
       use eval = transaction.eval
-      if Kindelia.check({}, world, eval.term, eval.type) then
+      if Kindelia.check({}, world, eval.term, eval.type, none) then
         let fresh = 0
         let {fresh, term} = Kindelia.sanitize(world, {}, fresh, eval.term)
         let {world, subst, fresh, gas, term} = case eval.type {
@@ -1604,11 +1607,23 @@ Kindelia.parse.bond(world: Kindelia.World): Parser<Kindelia.Bond>
 Kindelia.parse.file(world: Kindelia.World): Parser<Kindelia.File>
   Parser {
     Kindelia.parse.text("file")
-    get ownr = Parser.many!(Parser {
-      get name = Kindelia.parse.name
-      Kindelia.parse.text("@")
-      return name
-    })
+    get ownr = Parser.maybe!(
+      Parser {
+        get ownr = Parser.many!(Parser {
+          get name = Kindelia.parse.name
+          Parser.maybe!(Kindelia.parse.text(","))
+          return name
+        })
+        case ownr {
+          nil:  Parser { return [] }
+          cons: Parser { 
+            Kindelia.parse.text("@") 
+            return ownr 
+          }
+        }
+      }
+    )
+    let ownr = ownr <> []
     get name = Kindelia.parse.name
     Kindelia.parse.text(":")
     get type = Kindelia.parse.type(world)

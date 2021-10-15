@@ -106,7 +106,7 @@ bond LeftistTree.get_root(tree: LeftistTree.Nat): Maybe.Nat {
 
 save
 
-file heap : LeftistTree.Nat = empty{}
+file heap.top, heap.add @ heap : LeftistTree.Nat = empty{}
 
 bond heap.add(n: Nat) : & #word {
   get h = heap

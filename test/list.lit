@@ -22,7 +22,7 @@ bond Nat.add(a: Nat, b: Nat): Nat {
   }
 }
 
-file add@list : List = nil{}
+file remove, add @ list : List = nil{}
 
 bond add(n: Nat): & #word {
   get l = list
