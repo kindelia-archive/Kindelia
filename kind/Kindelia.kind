@@ -100,8 +100,7 @@ type Kindelia.Data {
 type Kindelia.Constructor {
   new(
     name: String
-    fnam: List<String>
-    ftyp: List<Kindelia.Type>
+    fprm: List<Pair<String, Kindelia.Type>>
   )
 }
 
@@ -109,8 +108,7 @@ type Kindelia.Constructor {
 type Kindelia.Bond {
   new(
     name: String
-    inam: List<String>
-    ityp: List<Kindelia.Type>
+    iprm: List<Pair<String, Kindelia.Type>>
     otyp: Kindelia.Type
     main: Kindelia.Term
   )
@@ -261,17 +259,20 @@ Kindelia.check(
     call:
       //log("-- call ")  // DEBUG
       //let ownr = Kindelia.World.check.owner(context, term.func)
+      
       use bond = Kindelia.get_bond(world, term.bond) abort false
       let otyp = Kindelia.equal(bond.otyp, type)
-      let args = List.zip!!(term.args, bond.ityp)
+      let ityp = List.mapped!(bond.iprm)!(Pair.snd!!)
+      let args = List.zip!!(term.args, ityp)
       let args = List.all!((x) Kindelia.check(context, world, x@fst, x@snd, caller), args)
       otyp && args
     create: case type {
       data:
         use data = Kindelia.get_data(world, type.name) abort false
         use ctor = Kindelia.get_constructor_value(data,term.ctor) abort false
-        let size = Nat.eql(List.length!(term.vals), List.length!(ctor.ftyp))
-        let vals = List.zip!!(term.vals, ctor.ftyp)
+        let size = Nat.eql(List.length!(term.vals), List.length!(ctor.fprm))
+        let ftyp = List.mapped!(ctor.fprm)!(Pair.snd!!)
+        let vals = List.zip!!(term.vals, ftyp)
         let vals = List.all!((x) Kindelia.check(context, world, x@fst, x@snd, caller), vals)
         size && vals
     } default false
@@ -280,8 +281,8 @@ Kindelia.check(
       let size = Nat.eql(List.length!(term.cses),List.length!(data.constructors))
       let expr = Kindelia.check(context, world, Kindelia.Term.var(term.name), Kindelia.Type.data(term.data), caller)
       let cses = List.zipped_with!!(term.cses, data.constructors)!((case_body, case_ctor)
-        let nams = List.map!!(String.concat(term.name|"."), case_ctor@fnam)
-        let typs = case_ctor@ftyp
+        let nams = List.map!!((fprm) term.name|"."|fprm@fst, case_ctor@fprm)
+        let typs = List.mapped!(case_ctor@fprm)!(Pair.snd!!)
         let ctx2 = Kindelia.extend!(context, nams, typs)
         Kindelia.check(ctx2, world, case_body, type, caller))
       size && List.and(cses)
@@ -347,7 +348,8 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
       Kindelia.reduce({world, subst{term.name} <- term.expr, fresh, gas, term.body})
     call:
       use bond = Kindelia.get_bond(world, term.bond) abort state
-      let {table, fresh, inam} = Kindelia.rename.many({}, fresh, bond.inam)
+      let inam = List.mapped!(bond.iprm)!(Pair.fst!!)
+      let {table, fresh, inam} = Kindelia.rename.many({}, fresh, inam)
       let {fresh, main} = Kindelia.sanitize(world, table, fresh, bond.main)
       let subst = Kindelia.extend!(subst, inam, term.args)
       //log("calling " | bond.name | ": " | Kindelia.show.term(world,main) | " ... " | String.join(",",bond.inam) | " ... " | String.join(",",inam))
@@ -360,7 +362,7 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
           use ctor = Kindelia.get_constructor_value(data,expr.ctor) abort state
           let indx = Kindelia.get_constructor_index(data,expr.ctor) abort state
           let body = term.cses[indx] abort state
-          let nams = List.map!!(String.concat(term.name|"."), ctor@fnam)
+          let nams = List.map!!((fprm) term.name|"."|fprm@fst, ctor@fprm)
           let subst = Kindelia.extend!(subst, nams, expr.vals)
           Kindelia.reduce({world, subst, fresh, gas, body})
       } default state
@@ -468,7 +470,7 @@ Kindelia.normalize.cases(ctrs: List<Kindelia.Constructor>, name: String, state: 
     nil nil:
       state
     cons cons:
-      let nams = List.map!!(String.concat(name|"."), ctrs.head@fnam)
+      let nams = List.map!!((fprm) name|"."|fprm@fst, ctrs.head@fprm)
       let vals = List.map!!(Kindelia.Term.var, nams)
       let subst = Kindelia.extend!(subst, nams, vals)
       let {world, subst, fresh, gas, head} = Kindelia.normalize({world, subst, fresh, gas, cses.head})
@@ -563,7 +565,7 @@ Kindelia.sanitize.cases(
       {fresh, []}
     cons cons:
       let new_table = table
-      let new_table = for field in ctrs.head@fnam: new_table{old_name | "." | field} <- new_name | "." | field
+      let new_table = for field in ctrs.head@fprm: new_table{old_name | "." | field@fst} <- new_name | "." | field@fst
       let {fresh, head} = Kindelia.sanitize(world, new_table, fresh, cses.head)
       let {fresh, tail} = Kindelia.sanitize.cases(world, table, fresh, old_name, new_name, ctrs.tail, cses.tail)
       {fresh, head & tail}
@@ -628,7 +630,8 @@ Kindelia.transact(
       case world.entry{bond.name} as got {
         none:
           let world = world@entry <- (world.entry{bond.name} <- Kindelia.Entry.bond(bond))
-          let context = Kindelia.extend<Kindelia.Type>({}, bond.inam, bond.ityp)
+          let {inam, ityp} = List.unzip!!(bond.iprm)
+          let context = Kindelia.extend<Kindelia.Type>({}, inam, ityp)
           if Kindelia.check(context, world, bond.main, bond.otyp, some(bond.name)) then
             some({world, "[bond] " | bond.name})
           else
@@ -716,6 +719,17 @@ Kindelia.deserialize.fixlen(size: Nat, bits: Bits): Pair<Bits,Nat>
         {bits, Nat.add(Nat.mul(x,2),1)}
     }
   }
+
+Kindelia.serialize.pair<A: Type, B: Type>(first: A -> Bits, second: B -> Bits, pair: Pair<A, B>): Bits
+  open pair
+  let fst = first(pair.fst)
+  let snd = second(pair.snd)
+  Bits.concat(fst, snd)
+
+Kindelia.deserialize.pair<A: Type, B: Type>(first: Bits -> Pair<Bits, A>, second: Bits -> Pair<Bits, B>, bits: Bits): Pair<Bits, Pair<A,B>>
+  let {bits, fst} = first(bits)
+  let {bits, snd} = second(bits)
+  {bits, {fst, snd}}
 
 Kindelia.serialize.list<A: Type>(item: A -> Bits, list: List<A>): Bits
   case list {
@@ -934,7 +948,7 @@ Kindelia.serialize.cases(
     nil nil:
       Bits.e
     cons cons:
-      let flds = List.map!!(String.concat(name|"."), ctors.head@fnam)
+      let flds = List.map!!((fprm) name|"."|fprm@fst, ctors.head@fprm)
       let head = Kindelia.serialize.term(world, List.reverse!(flds) ++ vars, cases.head)
       let tail = Kindelia.serialize.cases(world, vars, name, ctors.tail, cases.tail)
       Bits.concat(head, tail)
@@ -951,7 +965,7 @@ Kindelia.deserialize.cases(
     nil:
       {bits, []}
     cons:
-      let flds = List.map!!(String.concat(name|"."), ctors.head@fnam)
+      let flds = List.map!!((fprm) name|"."|fprm@fst, ctors.head@fprm)
       let {bits,head} = Kindelia.deserialize.term(world, List.reverse!(flds) ++ vars, bits)
       let {bits,tail} = Kindelia.deserialize.cases(world, vars, name, ctors.tail, bits)
       {bits, head & tail}
@@ -991,32 +1005,42 @@ Kindelia.deserialize.data(world: Kindelia.World, bits: Bits): Pair<Bits, Kindeli
 Kindelia.serialize.constructor(world: Kindelia.World, ctor: Kindelia.Constructor): Bits
   open ctor
   let name = Kindelia.serialize.name(ctor.name)
-  let nams = Kindelia.serialize.list!(Kindelia.serialize.name, ctor.fnam)
-  let typs = Kindelia.serialize.list!(Kindelia.serialize.type(world), ctor.ftyp)
-  Bits.concat(name, Bits.concat(nams, typs))
+  let fprm = Kindelia.serialize.list!(
+    Kindelia.serialize.pair!!(Kindelia.serialize.name, Kindelia.serialize.type(world)),
+    ctor.fprm
+  )
+  Bits.concat(name, fprm)
   
 Kindelia.deserialize.constructor(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Constructor>
   let {bits,name} = Kindelia.deserialize.name(bits)
-  let {bits,nams} = Kindelia.deserialize.list!(Kindelia.deserialize.name, bits)
-  let {bits,typs} = Kindelia.deserialize.list!(Kindelia.deserialize.type(world), bits)
-  {bits, Kindelia.Constructor.new(name, nams, typs)}
+  let {bits,fprm} = Kindelia.deserialize.list!(
+    Kindelia.deserialize.pair!!(Kindelia.deserialize.name, Kindelia.deserialize.type(world)),
+    bits
+  )
+  {bits, Kindelia.Constructor.new(name, fprm)}
 
 Kindelia.serialize.bond(world: Kindelia.World, bond: Kindelia.Bond): Bits
   open bond
   let name = Kindelia.serialize.name(bond.name)
-  let inam = Kindelia.serialize.list!(Kindelia.serialize.name, bond.inam)
-  let ityp = Kindelia.serialize.list!(Kindelia.serialize.type(world), bond.ityp)
+  let iprm = Kindelia.serialize.list!(
+    Kindelia.serialize.pair!!(Kindelia.serialize.name, Kindelia.serialize.type(world)),
+    bond.iprm
+  )
   let otyp = Kindelia.serialize.type(world, bond.otyp)
-  let main = Kindelia.serialize.term(world, List.reverse!(bond.inam), bond.main)
-  Bits.concat(name, Bits.concat(inam, Bits.concat(ityp, Bits.concat(otyp, main))))
+  let inam = List.reverse!(List.mapped!(bond.iprm)!(Pair.fst!!))
+  let main = Kindelia.serialize.term(world, inam, bond.main)
+  Bits.concat(name, Bits.concat(iprm, Bits.concat(otyp, main)))
 
 Kindelia.deserialize.bond(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Bond>
   let {bits,name} = Kindelia.deserialize.name(bits)
-  let {bits,inam} = Kindelia.deserialize.list!(Kindelia.deserialize.name, bits)
-  let {bits,ityp} = Kindelia.deserialize.list!(Kindelia.deserialize.type(world), bits)
+  let {bits,iprm} = Kindelia.deserialize.list!(
+    Kindelia.deserialize.pair!!(Kindelia.deserialize.name, Kindelia.deserialize.type(world)),
+    bits
+  )
   let {bits,otyp} = Kindelia.deserialize.type(world, bits)
-  let {bits,main} = Kindelia.deserialize.term(world,List.reverse!(inam),bits)
-  {bits, Kindelia.Bond.new(name, inam, ityp, otyp, main)}
+  let inam = List.reverse!(List.mapped!(iprm)!(Pair.fst!!))
+  let {bits,main} = Kindelia.deserialize.term(world, inam, bits)
+  {bits, Kindelia.Bond.new(name, iprm, otyp, main)}
 
 Kindelia.serialize.file(world: Kindelia.World, file: Kindelia.File): Bits
   open file
@@ -1187,9 +1211,10 @@ Kindelia.show.constructor(
   constructor: Kindelia.Constructor
 ): String
   open constructor
-  let names = constructor.fnam
-  let types = List.mapped!(constructor.ftyp)!(Kindelia.show.type(world))
-  let fields = List.zip_with!!!((name,type) name | ": " | type, names, types)
+  let fields = List.mapped!(constructor.fprm)!(
+    (fprm) 
+      fprm@fst | ": " | Kindelia.show.type(world, fprm@snd)
+  )
   constructor.name | "{" | String.join(", ", fields) | "}"
 
 Kindelia.show.bond(
@@ -1200,7 +1225,7 @@ Kindelia.show.bond(
   "bond "
   | bond.name
   | "("
-  | String.join(",",List.zipped_with!!(bond.inam,bond.ityp)!((name,type) name|": "|Kindelia.show.type(world,type)))
+  | String.join(",", List.mapped!(bond.iprm)!((x) x@fst | ": " | Kindelia.show.type(world, x@snd)))
   | "): "
   | Kindelia.show.type(world,bond.otyp)
   | " { "
@@ -1577,31 +1602,27 @@ Kindelia.parse.data(world: Kindelia.World): Parser<Kindelia.Data>
 Kindelia.parse.constructor(world: Kindelia.World): Parser<Kindelia.Constructor>
  Parser {
    get name = Kindelia.parse.name
-   get fields = Parser.wrap!(
+   get fprm = Parser.wrap!(
       Kindelia.parse.text("{")
       Kindelia.parse.ann(world)
       Kindelia.parse.text("}"))
-   let nams = List.mapped!(fields)!((x) x@fst)
-   let typs = List.mapped!(fields)!((x) x@snd)
-   return Kindelia.Constructor.new(name, nams, typs)
+   return Kindelia.Constructor.new(name, fprm)
  }
 
 Kindelia.parse.bond(world: Kindelia.World): Parser<Kindelia.Bond>
   Parser {
     Kindelia.parse.text("bond")
     get name = Kindelia.parse.name
-    get args = Parser.wrap!(
+    get iprm = Parser.wrap!(
       Kindelia.parse.text("(")
       Kindelia.parse.ann(world)
       Kindelia.parse.text(")"))
-    let iarg = List.mapped!(args)!((x) x@fst)
-    let ityp = List.mapped!(args)!((x) x@snd)
     Kindelia.parse.text(":")
     get otyp = Kindelia.parse.type(world)
     Kindelia.parse.text("{")
     get main = Kindelia.parse.term(world)
     Kindelia.parse.text("}")
-    return Kindelia.Bond.new(name, iarg, ityp, otyp, main)
+    return Kindelia.Bond.new(name, iprm, otyp, main)
   }
 
 Kindelia.parse.file(world: Kindelia.World): Parser<Kindelia.File>
