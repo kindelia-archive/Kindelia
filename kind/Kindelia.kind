@@ -147,11 +147,8 @@ type Kindelia.Transaction {
   new_eval(eval: Kindelia.Eval)
 }
 
-type Kindelia.World {
-  new(
-    entry: Map<Kindelia.Entry>
-  )
-}
+Kindelia.World: Type
+  Map<Kindelia.Entry>
 
 type Kindelia.Runtime <A: Type> {
   new(
@@ -173,30 +170,27 @@ Kindelia.Runtime.Terms: Type
 // -----
 
 Kindelia.genesis: Kindelia.World
-  Kindelia.World.new({})
+  {}
 
 Kindelia.get_data(world: Kindelia.World, name: String): Maybe<Kindelia.Data>
-  open world
   Maybe {
-    get entry = world.entry{name}
+    get entry = world{name}
     case entry {
       data: some(entry.value)
     } default none
   }
 
 Kindelia.get_bond(world: Kindelia.World, name: String): Maybe<Kindelia.Bond>
-  open world
   Maybe {
-    get entry = world.entry{name}
+    get entry = world{name}
     case entry {
       bond: some(entry.value)
     } default none
   }
 
 Kindelia.get_file(world: Kindelia.World, name: String): Maybe<Kindelia.File>
-  open world
   Maybe {
-    get entry = world.entry{name}
+    get entry = world{name}
     case entry {
       file: some(entry.value)
     } default none
@@ -241,7 +235,6 @@ Kindelia.check(
   caller: Maybe<String>
 ): Bool
   open context
-  open world
   //log("-- chk " | Kindelia.show.term(world,term) | " : " | Kindelia.show.type(world,type))
   //log("-- ctx: " | String.join(", ", List.map!!((a) a@fst|":"|Kindelia.show.type(world,a@snd), Map.to_list!(context))))  // DEBUG
   //log("")  // DEBUG
@@ -401,7 +394,7 @@ Kindelia.run(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
       use file = Kindelia.get_file(world, term.file) abort state
       let {world, subst, fresh, gas, expr} = Kindelia.normalize({world, subst, fresh, gas, term.expr})
       let new_entry = Kindelia.Entry.file(file@expr <- expr)
-      let new_world = world@entry <- (world@entry{term.file} <- new_entry)
+      let new_world = world{term.file} <- new_entry
       //log("-- rebind " | term.name)
       //log("--- from: " | Kindelia.show.term(world, bond.main))
       //log("--- to..: " | Kindelia.show.term(world, main))
@@ -616,20 +609,19 @@ Kindelia.transact(
   world: Kindelia.World
   transaction: Kindelia.Transaction
 ): Maybe<Pair<Kindelia.World,String>>
-  open world
   case transaction {
     new_data:
       use data = transaction.data
-      case world.entry{data.name} as got_type {
+      case world{data.name} as got_type {
         none:
-          let world = world@entry <- (world.entry{data.name} <- Kindelia.Entry.data(data))
+          let world = world{data.name} <- Kindelia.Entry.data(data)
           some({world, "[data] " | data.name})
       } default none
     new_bond:
       use bond = transaction.bond
-      case world.entry{bond.name} as got {
+      case world{bond.name} as got {
         none:
-          let world = world@entry <- (world.entry{bond.name} <- Kindelia.Entry.bond(bond))
+          let world = world{bond.name} <- Kindelia.Entry.bond(bond)
           let {inam, ityp} = List.unzip!!(bond.iprm)
           let context = Kindelia.extend<Kindelia.Type>({}, inam, ityp)
           if Kindelia.check(context, world, bond.main, bond.otyp, some(bond.name)) then
@@ -640,9 +632,9 @@ Kindelia.transact(
         none
     new_file:
       use file = transaction.file
-      case world.entry{file.name} as got {
+      case world{file.name} as got {
         none:
-          let world = world@entry <- (world.entry{file.name} <- Kindelia.Entry.file(file))
+          let world = world{file.name} <- Kindelia.Entry.file(file)
           if Kindelia.check({}, world, file.expr, file.type, none) then
             some({world, "[file] " | file.name})
           else
