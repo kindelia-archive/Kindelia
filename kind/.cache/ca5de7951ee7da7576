@@ -1,1 +1,0 @@
-#n #m (((Pair.snd Nat) Nat) ((Nat.div_mod n) m))

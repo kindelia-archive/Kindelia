@@ -1,1 +1,0 @@
-#A #B #as #bs (((as #as (List ((Pair A) B))) (List.nil ((Pair A) B))) #as.head #as.tail (((bs #bs (List ((Pair A) B))) (List.nil ((Pair A) B))) #bs.head #bs.tail (((List.cons ((Pair A) B)) ((((Pair.new A) B) as.head) bs.head)) ((((List.zip A) B) as.tail) bs.tail))))

@@ -1,1 +1,0 @@
-#a #b (((a #a (Maybe Parser.Error)) (((b #b (Maybe Parser.Error)) (Maybe.none Parser.Error)) #b.value b)) #a.value (((b #b (Maybe Parser.Error)) a) #b.value ((Maybe.some Parser.Error) ((Parser.Error.combine a.value) b.value))))

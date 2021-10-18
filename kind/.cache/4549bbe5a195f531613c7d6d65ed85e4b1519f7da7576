@@ -1,1 +1,0 @@
-#world #transaction (((((transaction #transaction String) #transaction.data ((Kindelia.show.data world) transaction.data)) #transaction.bond ((Kindelia.show.bond world) transaction.bond)) #transaction.file ((Kindelia.show.file world) transaction.file)) #transaction.eval ((Kindelia.show.eval world) transaction.eval))

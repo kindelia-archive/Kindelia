@@ -1,1 +1,0 @@
-%(A:*) @(cond:@(:A) Bool) @(list:(List A)) Bool

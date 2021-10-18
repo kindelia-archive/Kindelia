@@ -1,1 +1,0 @@
-#A #B #first #second #pair ((pair #pair Bits) #pair.fst #pair.snd !fst = (first pair.fst); !snd = (second pair.snd); ((Bits.concat fst) snd))

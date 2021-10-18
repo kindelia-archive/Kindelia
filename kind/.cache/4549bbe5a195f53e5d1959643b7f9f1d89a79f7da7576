@@ -1,1 +1,0 @@
-#size #value (((size #size Bits) Bits.e) #size.pred (((((Nat.eql ((Nat.mod value) +2)) +0) # Bits) (Bits.o ((Kindelia.serialize.fixlen size.pred) ((Nat.div value) +2)))) (Bits.i ((Kindelia.serialize.fixlen size.pred) ((Nat.div value) +2)))))

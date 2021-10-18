@@ -1,1 +1,0 @@
-@(context:(Map Kindelia.Type)) @(world:Kindelia.World) @(term:Kindelia.Term) @(type:Kindelia.Type) @(caller:(Maybe String)) Bool

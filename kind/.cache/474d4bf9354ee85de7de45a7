@@ -1,1 +1,0 @@
-%(A:*) @(as:(List A)) @(bs:(List A)) (List A)

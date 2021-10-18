@@ -1,1 +1,0 @@
-#world #block (((block #block String) "") #block.head #block.tail !head = ((Kindelia.show.transaction world) block.head); !tail = ((Kindelia.show.block world) block.tail); ((String.concat "- ") ((String.concat head) ((String.concat "\u{a}") tail))))

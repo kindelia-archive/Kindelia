@@ -1,1 +1,0 @@
-#size #word #c #n ((((word #word.size #word Nat) n) #word.size #word.pred ((((Word.bit_length.go word.size) word.pred) (Nat.succ c)) n)) #word.size #word.pred ((((Word.bit_length.go word.size) word.pred) (Nat.succ c)) (Nat.succ c)))

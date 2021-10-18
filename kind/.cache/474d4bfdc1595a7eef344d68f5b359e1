@@ -1,1 +1,0 @@
-%(A:*) %(B:*) @(as:(List A)) @(bs:(List B)) %(C:*) @(f:@(:A) @(:B) C) (List C)

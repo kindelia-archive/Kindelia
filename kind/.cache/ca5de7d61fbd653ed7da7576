@@ -1,1 +1,0 @@
-#base #nat (((Nat.to_base.go base) nat) (List.nil Nat))

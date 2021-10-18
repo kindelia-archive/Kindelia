@@ -1,1 +1,0 @@
-@(err:(Maybe Parser.Error)) @(nam:String) @(ini:Nat) @(idx:Nat) @(str:String) Parser.State
