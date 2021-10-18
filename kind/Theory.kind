@@ -77,6 +77,9 @@ Map.KeyValue<T: Type>: KeyValue<String, T, Map<T>>
     ?map.get_empty
   )
 
+Kindelia.Data.KeyValue: KeyValue<String, Kindelia.Constructor, Kindelia.Data>
+  ?keyvalue
+
 Kindelia.Entry.IsSomeFile(e: Maybe<Kindelia.Entry>): Type
   case e {
     some:
@@ -123,7 +126,6 @@ Theory.WellTyped(
         )
       >
 
-    // TODO
     call:
       case Map.get<Kindelia.Entry>(term.bond, world) as b {
         some:
@@ -131,14 +133,50 @@ Theory.WellTyped(
             bond:
               case b.value as b {
                 new:
-                  ?bond
+                  // TODO how express that the bond is well-typed?
+                  And<
+                    Theory.WellTyped.param_list(
+                      world
+                      context
+                      b.iprm
+                      term.args
+                    )
+                    Equal<Kindelia.Type>(
+                      type
+                      b.otyp
+                    )
+                  >
               }
-              // TODO
-//              Theory.WellTyped.call(
-//                world
-//                context
-//              )
           } default Empty
+      } default Empty
+
+    create:
+      case type {
+        data:
+          case Map.get<Kindelia.Entry>(type.name, world) as t {
+            some:
+              case t.value as t {
+                data:
+                  case Kindelia.get_constructor_value(t.value, term.ctor) as ctor {
+                    some:
+                      case ctor.value as ctor {
+                        new:
+                          Theory.WellTyped.param_list(
+                            world
+                            context
+                            ctor.fprm
+                            term.vals
+                          )
+                      }
+                  } default Empty
+              } default Empty
+          } default Empty
+      } default Empty
+
+    match:
+      case Kindelia.get_data(world, term.data) as data {
+        some:
+          ?match
       } default Empty
 
     // ~
@@ -226,6 +264,7 @@ Theory.WellTyped(
               }
           } default Empty
       } default Empty
+
     bind:
       case term.type {
         effect:
@@ -249,6 +288,7 @@ Theory.WellTyped(
             Kindelia.Type.IsEffect(type)
           >
       } default Empty
+
     return:
       case type {
         effect:
@@ -259,4 +299,33 @@ Theory.WellTyped(
             type.value
           )
       } default Empty
+  } default Empty
+
+Theory.WellTyped.param_list(
+  world: Map<Kindelia.Entry>
+  context: Map<Kindelia.Type>
+  binders: List<Pair<String, Kindelia.Type>>
+  args: List<Kindelia.Term>
+): Type
+  case binders args {
+    cons cons:
+      case binders.head {
+        new:
+          And<
+           Theory.WellTyped(
+             world
+             context
+             args.head
+             binders.head.snd
+           )
+           Theory.WellTyped.param_list(
+             world
+             context
+             binders.tail
+             args.tail
+           )
+          >
+      }
+    nil nil:
+      Unit
   } default Empty
