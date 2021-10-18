@@ -1,0 +1,262 @@
+type Quintet<
+  A: Type
+  B: Type
+  C: Type
+  D: Type
+  E: Type
+> {
+  new(
+    fst: A
+    snd: B
+    trd: C
+    frt: D
+    fft: E
+  )
+}
+
+// TODO
+String.eql.equal(
+  r: String
+  s: String
+  Hyp: Equal<Bool>(String.eql(r, s), true)
+): Equal<String>(r, s)
+  ?string.eql.equal
+
+Theory.Type.equal(
+  a: Kindelia.Type
+  b: Kindelia.Type
+  Hyp: Equal<Bool>(Kindelia.equal(a, b), true)
+): Equal<Kindelia.Type>(a, b)
+  case a b with Hyp {
+    word word:
+      refl
+    data data:
+      let lemma = String.eql.equal!!(Hyp)
+      let qed = apply(Kindelia.Type.data, lemma)
+      qed
+    effe effe:
+      let ind = Theory.Type.equal!!(Hyp)
+      let qed = apply(Kindelia.Type.effe, ind)
+      qed
+  }! default
+    let contra = Bool.false_neq_true(Hyp)
+    Empty.absurd!(contra)
+
+type KeyValue <K: Type, V: Type, M: Type> {
+  new(
+    empty: M
+    get: K -> M -> Maybe(V)
+    set: K -> V -> M -> M
+    del: K -> M -> M
+    set_value: (k: K, v: V, m: M) -> Equal<Maybe<V>>(get(k, set(k, v, m)), Maybe.some<V>(v))
+    set_preserve: (k0: K, k1: K, v: V, m: M, Hyp: Not(Equal<K>(k0, k1))) -> Equal<Maybe(V)>(get(k0, set(k1, v, m)), get(k0, m))
+    del_value: (k: K, m: M) -> Equal<Maybe<V>>(get(k, del(k, m)), Maybe.none<V>)
+    get_empty: (k: K) -> Equal<Maybe(V)>(get(k, empty), Maybe.none<V>)
+  )
+}
+
+KeyValue.in<K: Type, V: Type, M: Type>(Ax: KeyValue<K, V, M>, k: K, m: M): Type
+  open Ax
+  case Ax.get(k, m) {
+    some:
+      Unit
+    none:
+      Empty
+  }
+
+// TODO
+Map.KeyValue<T: Type>: KeyValue<String, T, Map<T>>
+  KeyValue.new<String, T, Map<T>>(
+    Map.new<T>
+    Map.get<T>
+    Map.set<T>
+    Map.delete<T>
+    ?map.set_value
+    ?map.set_preserve
+    ?map.del_value
+    ?map.get_empty
+  )
+
+Kindelia.Entry.IsSomeFile(e: Maybe<Kindelia.Entry>): Type
+  case e {
+    some:
+      case e.value {
+        file:
+          Unit
+      } default Empty
+  } default Empty
+
+Kindelia.Type.IsEffect(t: Kindelia.Type): Type
+  case t {
+    effect:
+      Unit
+  } default Empty
+
+Theory.WellTyped(
+  world: Map<Kindelia.Entry>
+  context: Map<Kindelia.Type>
+  term: Kindelia.Term
+  type: Kindelia.Type
+): Type
+  case term {
+    // if (name : type) is in context
+    // ------------------------------
+    // context |- name : type
+    var:
+      Equal<Maybe<Kindelia.Type>>(
+        Map.get<Kindelia.Type>(term.name, context)
+        Maybe.some<Kindelia.Type>(type)
+      )
+
+    // context             |- expr : A
+    // context, (name : A) |- body : B
+    // --------------------------------------
+    // context |- (let name = expr; body) : B
+    let:
+      And<
+        Theory.WellTyped(world, context, term.expr, term.type)
+        Theory.WellTyped(
+          world
+          Map.set<Kindelia.Type>(term.name, term.type, context)
+          term.body
+          type
+        )
+      >
+
+    // TODO
+    call:
+      case Map.get<Kindelia.Entry>(term.bond, world) as b {
+        some:
+          case b.value as b {
+            bond:
+              case b.value as b {
+                new:
+                  ?bond
+              }
+              // TODO
+//              Theory.WellTyped.call(
+//                world
+//                context
+//              )
+          } default Empty
+      } default Empty
+
+    // ~
+    // ---------------------
+    // context |- #n : #word
+    word:
+      Equal<Kindelia.Type>(type, Kindelia.Type.word)
+
+    // context |- n : #word
+    // context |- m : #word
+    // context |- l : A
+    // context |- e : A
+    // context |- g : A
+    // -----------------------------------------------------------
+    // context |- (compare n m { _<_: l, _=_: e, _>_: g }) : #word
+    compare:
+      Quintet<
+        Theory.WellTyped(world, context, term.val0, Kindelia.Type.word)
+        Theory.WellTyped(world, context, term.val1, Kindelia.Type.word)
+        Theory.WellTyped(world, context, term.iflt, type)
+        Theory.WellTyped(world, context, term.ifeq, type)
+        Theory.WellTyped(world, context, term.ifgt, type)
+      >
+
+    // if X is one of: + - * / % | & ^
+    // context |- n : #word
+    // context |- m : #word
+    // -------------------------------
+    // context |- X(n, m) : #word
+    operate:
+      Triple<
+        Equal<Kindelia.Type>(type, Kindelia.Type.word)
+        Theory.WellTyped(world, context, term.val0, Kindelia.Type.word)
+        Theory.WellTyped(world, context, term.val1, Kindelia.Type.word)
+      >
+
+    // given file a : A
+    //
+    // context |- k : A
+    // context |- r : &B
+    // ------------------------------
+    // context |- (set a = k; r) : &B
+    set:
+      case Map.get<Kindelia.Entry>(term.file, world) as f {
+        some:
+          case f.value as f {
+            file:
+              case f.value as f {
+                new:
+                  Triple<
+                    Theory.WellTyped(world, context, term.expr, f.type)
+                    Kindelia.Type.IsEffect(type)
+                    Theory.WellTyped(world, context, term.body, type)
+                  >
+              }
+          } default Empty
+      } default Empty
+
+    // given file a : A
+    //
+    // context, (x : A) |- r : &B
+    // ------------------------------
+    // context |- (get x = a; r) : &B
+    get:
+      case Map.get<Kindelia.Entry>(term.file, world) as f {
+        some:
+          case f.value as f {
+            file:
+              case f.value as f {
+                new:
+                  // TODO include ownership too?
+                  And<
+                    Kindelia.Type.IsEffect(type)
+                    Theory.WellTyped(
+                      world
+                      Map.set<Kindelia.Type>(
+                        term.name
+                        f.type
+                        context
+                      )
+                      term.body
+                      type
+                    )
+                  >
+              }
+          } default Empty
+      } default Empty
+    bind:
+      case term.type {
+        effect:
+          Triple<
+            Theory.WellTyped(
+              world
+              context
+              term.expr
+              term.type
+            )
+            Theory.WellTyped(
+              world
+              Map.set<Kindelia.Type>(
+                term.name
+                term.type.value
+                context
+              )
+              term.body
+              type
+            )
+            Kindelia.Type.IsEffect(type)
+          >
+      } default Empty
+    return:
+      case type {
+        effect:
+          Theory.WellTyped(
+            world
+            context
+            term.expr
+            type.value
+          )
+      } default Empty
+  } default Empty
