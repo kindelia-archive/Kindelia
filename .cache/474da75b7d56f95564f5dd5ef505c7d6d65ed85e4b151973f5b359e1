@@ -1,1 +1,0 @@
-@(world:Litereum.World) @(block_number:Nat) @(code:String) @(transactions:(List Litereum.Transaction)) (IO Unit)

@@ -1,1 +1,0 @@
-%Litereum.Slot.Self(P:@(:Litereum.Slot) *) @(new:@(name:String) @(ownr:(List String)) @(type:Litereum.Type) @(expr:Litereum.Term) (P ((((Litereum.Slot.new name) ownr) type) expr))) (P Litereum.Slot.Self)

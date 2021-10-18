@@ -1,1 +1,0 @@
-#world #file ((file #file String) #file.name #file.ownr #file.type #file.expr ((String.concat "file ") ((String.concat ((String.join " ") ((((List.map String) String) #x ((String.concat x) "@")) file.ownr))) ((String.concat file.name) ((String.concat " : ") ((String.concat ((Litereum.show.type world) file.type)) ((String.concat " = ") ((Litereum.show.term world) file.expr))))))))

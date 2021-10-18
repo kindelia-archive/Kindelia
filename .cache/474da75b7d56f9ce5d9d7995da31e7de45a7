@@ -1,1 +1,0 @@
-@(name:String) @(data:String) @(cses:(List Litereum.Term)) Litereum.Term

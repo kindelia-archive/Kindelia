@@ -1,1 +1,0 @@
-#A #index #list (((list #list (Maybe A)) (Maybe.none A)) #list.head #list.tail (((index #index (Maybe A)) ((Maybe.some A) list.head)) #index.pred (((List.get A) index.pred) list.tail)))

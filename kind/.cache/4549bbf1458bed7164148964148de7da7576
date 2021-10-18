@@ -1,1 +1,0 @@
-#code #init #idx0 #idx1 (((((((((Kind.Code.highlight.go ((String.concat code) " \u{a}")) init) idx0) idx1) +0) +1) (Maybe.none Nat)) (String.reverse "   1 | ")) (List.nil String))

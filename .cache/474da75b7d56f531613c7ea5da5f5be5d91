@@ -1,1 +1,0 @@
-#world #data ((data #data String) #data.name #data.constructors ((String.concat "data ") ((String.concat data.name) ((String.concat " { ") ((String.concat ((String.join ", ") ((((List.mapped Litereum.Constructor) data.constructors) String) (Litereum.show.constructor world)))) " }")))))

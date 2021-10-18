@@ -1,1 +1,0 @@
-#world #eval ((eval #eval Bits) #eval.term #eval.type !term = (((Litereum.serialize.term world) (List.nil String)) eval.term); !type = ((Litereum.serialize.type world) eval.type); ((Bits.concat term) type))

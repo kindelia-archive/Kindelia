@@ -1,1 +1,0 @@
-#A #as #bs (((as #as (List A)) bs) #as.head #as.tail (((List.cons A) as.head) (((List.concat A) as.tail) bs)))

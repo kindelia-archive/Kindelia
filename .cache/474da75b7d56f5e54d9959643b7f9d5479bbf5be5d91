@@ -1,1 +1,0 @@
-#names #state ((state # Litereum.Runtime.Term) #world #subst #fresh #gas #term !subst = ((((Litereum.extend Litereum.Term) subst) names) ((((List.map String) Litereum.Term) Litereum.Term.var) names)); (Litereum.normalize ((((((Litereum.Runtime.new Litereum.Term) world) subst) fresh) gas) term)))

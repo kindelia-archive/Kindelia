@@ -1,1 +1,0 @@
-#world #ctor ((ctor #ctor Bits) #ctor.name #ctor.fnam #ctor.ftyp !name = (Kindelia.serialize.name ctor.name); !nams = (((Kindelia.serialize.list String) Kindelia.serialize.name) ctor.fnam); !typs = (((Kindelia.serialize.list Kindelia.Type) (Kindelia.serialize.type world)) ctor.ftyp); ((Bits.concat name) ((Bits.concat nams) typs)))

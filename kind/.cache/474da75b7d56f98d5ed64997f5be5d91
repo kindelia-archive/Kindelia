@@ -1,1 +1,0 @@
-#A %Litereum.Runtime.Self(P:@(:(Litereum.Runtime A)) *) @(new:@(world:Litereum.World) @(subst:(Map Litereum.Term)) @(fresh:Nat) @(gas:Nat) @(term:A) (P ((((((Litereum.Runtime.new A) world) subst) fresh) gas) term))) (P Litereum.Runtime.Self)

@@ -1,1 +1,0 @@
-@(code:String) @(ixi:Nat) @(ix0:Nat) @(ix1:Nat) @(col:Nat) @(row:Nat) @(lft:(Maybe Nat)) @(lin:String) @(res:(List String)) String

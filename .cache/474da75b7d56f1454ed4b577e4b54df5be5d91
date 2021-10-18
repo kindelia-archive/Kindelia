@@ -1,1 +1,0 @@
-%Litereum.Constructor.Self(P:@(:Litereum.Constructor) *) @(new:@(name:String) @(fnam:(List String)) @(ftyp:(List Litereum.Type)) (P (((Litereum.Constructor.new name) fnam) ftyp))) (P Litereum.Constructor.Self)

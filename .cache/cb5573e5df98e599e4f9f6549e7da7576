@@ -1,1 +1,0 @@
-#T #nam #ini #idx #msg ((Parser.Reply.error T) ((((Parser.Error.new nam) ini) idx) msg))

@@ -1,1 +1,0 @@
-#world #block (((block #block Bits) Bits.e) #block.head #block.tail !head = ((Litereum.serialize.transaction world) block.head); !tail = ((Litereum.serialize.block world) block.tail); ((Bits.concat head) tail))

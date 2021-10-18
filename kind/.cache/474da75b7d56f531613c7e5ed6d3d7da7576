@@ -1,1 +1,0 @@
-#world #entry ((String.concat ((((entry #entry String) #entry.value ((Litereum.show.data world) entry.value)) #entry.value ((Litereum.show.bond world) entry.value)) #entry.value ((Litereum.show.file world) entry.value))) "\u{a}")

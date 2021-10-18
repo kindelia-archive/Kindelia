@@ -1,1 +1,0 @@
-#A #xs ((((BBT.from_list String) A) String.cmp) xs)

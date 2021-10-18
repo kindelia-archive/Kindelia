@@ -1,1 +1,0 @@
-#n #m #d (((((Nat.sub_rem n) m) #p ((Pair Nat) Nat)) #p.value (((Nat.div_mod.go p.value) m) (Nat.succ d))) #p.value ((((Pair.new Nat) Nat) d) n))

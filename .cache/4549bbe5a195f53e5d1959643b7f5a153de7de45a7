@@ -1,1 +1,0 @@
-%(A:*) @(item:@(:A) Bits) @(list:(List A)) Bits

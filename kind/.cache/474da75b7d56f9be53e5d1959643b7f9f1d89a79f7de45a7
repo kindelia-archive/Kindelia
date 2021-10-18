@@ -1,1 +1,0 @@
-@(size:Nat) @(bits:Bits) ((Pair Bits) Nat)

@@ -1,1 +1,0 @@
-#size #word ((((((Word.fold #x Nat) size) +0) #_ (Nat.mul +2)) #_ #x (Nat.succ ((Nat.mul +2) x))) word)

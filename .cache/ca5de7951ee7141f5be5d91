@@ -1,1 +1,0 @@
-#n #m #r (((m #m Nat) (((Nat.mod.go n) r) m)) #m.pred (((n #n Nat) r) #n.pred (((Nat.mod.go n.pred) m.pred) (Nat.succ r))))

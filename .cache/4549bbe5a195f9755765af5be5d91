@@ -1,1 +1,0 @@
-#a #b ((((a #a Bool) ((((b #b Bool) Bool.true) #b.name Bool.false) #b.rety Bool.false)) #a.name ((((b #b Bool) Bool.false) #b.name ((String.eql a.name) b.name)) #b.rety Bool.false)) #a.rety ((((b #b Bool) Bool.false) #b.name Bool.false) #b.rety ((Kindelia.equal a.rety) b.rety)))

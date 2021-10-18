@@ -1,1 +1,0 @@
-@(world:Litereum.World) @(table:(Map String)) @(fresh:Nat) @(old_name:String) @(new_name:String) @(ctrs:(List Litereum.Constructor)) @(cses:(List Litereum.Term)) ((Pair Nat) (List Litereum.Term))

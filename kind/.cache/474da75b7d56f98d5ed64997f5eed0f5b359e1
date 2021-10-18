@@ -1,1 +1,0 @@
-%(A:*) @(world:Litereum.World) @(subst:(Map Litereum.Term)) @(fresh:Nat) @(gas:Nat) @(term:A) (Litereum.Runtime A)

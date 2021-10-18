@@ -1,1 +1,0 @@
-%(K:*) %(V:*) @(cmp:@(:K) @(:K) Cmp) @(xs:(List ((Pair K) V))) ((BBT K) V)

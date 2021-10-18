@@ -1,1 +1,0 @@
-#A #map #keys #vals (((keys #keys (Map A)) (((vals #vals (Map A)) map) #vals.head #vals.tail map)) #keys.head #keys.tail (((vals #vals (Map A)) map) #vals.head #vals.tail ((((Litereum.extend A) ((((Map.set A) keys.head) vals.head) map)) keys.tail) vals.tail)))

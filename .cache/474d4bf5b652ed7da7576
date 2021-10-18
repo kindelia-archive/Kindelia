@@ -1,1 +1,0 @@
-#A #n #xs (((xs #xs (List A)) (List.nil A)) #xs.head #xs.tail (((n #n (List A)) (List.nil A)) #n.pred (((List.cons A) xs.head) (((List.take A) n.pred) xs.tail))))

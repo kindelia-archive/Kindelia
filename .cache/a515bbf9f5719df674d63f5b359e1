@@ -1,1 +1,0 @@
-@(size:Nat) @(bits:Bits) (Word size)

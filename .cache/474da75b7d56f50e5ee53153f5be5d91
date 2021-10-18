@@ -1,1 +1,0 @@
-(Litereum.World.new ((Map.from_list Litereum.Entry) (List.nil ((Pair String) Litereum.Entry))))

@@ -1,1 +1,0 @@
-@(name:String) @(fnam:(List String)) @(ftyp:(List Litereum.Type)) Litereum.Constructor

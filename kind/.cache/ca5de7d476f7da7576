@@ -1,1 +1,0 @@
-#n #m (((m #m Nat) n) #m.pred (((n #n Nat) +0) #n.pred ((Nat.sub n.pred) m.pred)))

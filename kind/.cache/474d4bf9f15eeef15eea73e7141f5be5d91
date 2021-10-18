@@ -1,1 +1,0 @@
-#A #xs #f #i (((xs #xs (Maybe Nat)) (Maybe.none Nat)) #xs.head #xs.tail ((((f xs.head) #self (Maybe Nat)) ((Maybe.some Nat) i)) ((((List.find_index.go A) xs.tail) f) (Nat.succ i))))

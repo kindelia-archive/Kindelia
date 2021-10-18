@@ -1,1 +1,0 @@
-#K #V #cmp #xs (((((BBT.from_list.go K) V) cmp) ((BBT.tip K) V)) xs)

@@ -1,1 +1,0 @@
-#world ((((((Monad.bind Parser) Parser.monad) Unit) Kindelia.Term) (Kindelia.parse.text "#")) # ((((((Monad.bind Parser) Parser.monad) Nat) Kindelia.Term) Parser.nat) #num (((((Nat.gte num) ((Nat.pow +2) +64)) # (Parser Kindelia.Term)) ((Parser.fail Kindelia.Term) "Number out of bound")) ((((Monad.pure Parser) Parser.monad) Kindelia.Term) (Kindelia.Term.word (Nat.to_u64 num))))))

@@ -1,1 +1,0 @@
-#bits (((Kindelia.deserialize.varlen.go bits) # ((Pair Bits) Nat)) #bits #value ((((Pair.new Bits) Nat) bits) ((Nat.sub value) +1)))

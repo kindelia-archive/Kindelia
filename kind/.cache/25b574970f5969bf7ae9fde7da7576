@@ -1,1 +1,0 @@
-#size #chr #str (String.reverse (((String.pad_right size) chr) (String.reverse str)))

@@ -1,1 +1,0 @@
-#xs #n (((xs #xs Nat) n) #xs.head #xs.tail ((String.length.go xs.tail) (Nat.succ n)))

@@ -1,1 +1,0 @@
-#A #item #list (((list #list Bits) (Bits.o Bits.e)) #list.head #list.tail (Bits.i ((Bits.concat (item list.head)) (((Kindelia.serialize.list A) item) list.tail))))

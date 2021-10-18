@@ -1,1 +1,0 @@
-#a #b (((((U16.ltn a) b) # Cmp) Cmp.ltn) (((((U16.eql a) b) # Cmp) Cmp.eql) Cmp.gtn))

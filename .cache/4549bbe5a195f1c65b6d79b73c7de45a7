@@ -1,1 +1,0 @@
-@(name:String) @(constructors:(List Kindelia.Constructor)) Kindelia.Data

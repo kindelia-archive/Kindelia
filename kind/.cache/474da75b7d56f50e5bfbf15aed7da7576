@@ -1,1 +1,0 @@
-#world #name ((world #world (Maybe Litereum.File)) #world.entry ((((((Monad.bind Maybe) Maybe.monad) Litereum.Entry) Litereum.File) (((Map.get Litereum.Entry) name) world.entry)) #entry ((((entry #entry (Maybe Litereum.File)) #entry.value (Maybe.none Litereum.File)) #entry.value (Maybe.none Litereum.File)) #entry.value ((Maybe.some Litereum.File) entry.value))))

@@ -1,1 +1,0 @@
-%(A:*) @(xs:(List A)) @(f:@(:Nat) @(:A) Bool) @(i:Nat) (Maybe ((Pair Nat) A))

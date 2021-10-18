@@ -1,1 +1,0 @@
-#world #eval ((eval #eval String) #eval.term #eval.type !term = ((Litereum.show.term world) eval.term); !type = ((Litereum.show.type world) eval.type); ((String.concat "eval {") ((String.concat term) ((String.concat "} : ") type))))
