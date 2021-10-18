@@ -1,0 +1,1 @@
+#A #cond #list (((list #list Bool) Bool.true) #list.head #list.tail ((((cond list.head) #self Bool) (((List.all A) cond) list.tail)) Bool.false))

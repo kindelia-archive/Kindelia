@@ -1,0 +1,1 @@
+#A #f #xs ((((List.ifind.go A) xs) f) Nat.zero)

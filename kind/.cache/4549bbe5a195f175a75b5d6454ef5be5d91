@@ -1,0 +1,1 @@
+%Kindelia.Operation.Self(P:@(:Kindelia.Operation) *) @(add:(P Kindelia.Operation.add)) @(sub:(P Kindelia.Operation.sub)) @(mul:(P Kindelia.Operation.mul)) @(div:(P Kindelia.Operation.div)) @(mod:(P Kindelia.Operation.mod)) @(or:(P Kindelia.Operation.or)) @(and:(P Kindelia.Operation.and)) @(xor:(P Kindelia.Operation.xor)) (P Kindelia.Operation.Self)

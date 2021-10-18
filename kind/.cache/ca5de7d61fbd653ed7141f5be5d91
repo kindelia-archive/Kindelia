@@ -1,0 +1,1 @@
+#base #nat #res ((((Nat.div_mod nat) base) #div_mod (List Nat)) #div_mod.fst #div_mod.snd (((div_mod.fst #div_mod.fst (List Nat)) (((List.cons Nat) div_mod.snd) res)) #div_mod.fst.pred (((Nat.to_base.go base) div_mod.fst) (((List.cons Nat) div_mod.snd) res))))

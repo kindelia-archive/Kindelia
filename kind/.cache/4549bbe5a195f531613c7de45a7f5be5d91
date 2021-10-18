@@ -1,0 +1,1 @@
+#world #type ((((type #type String) "#word") #type.name type.name) #type.rety ((String.concat "& ") ((Kindelia.show.type world) type.rety)))

@@ -1,0 +1,1 @@
+#A #a #b %Equal.Self(P:@(b:A) @(:(((Equal A) a) b)) *) @(refl:((P a) ((Equal.refl A) a))) ((P b) Equal.Self)

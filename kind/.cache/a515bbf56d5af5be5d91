@@ -1,0 +1,1 @@
+#size #a #b (((((Word.mul.go size) size) a) b) ((Word.to_zero size) a))

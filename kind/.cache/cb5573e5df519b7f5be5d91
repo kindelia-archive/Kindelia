@@ -1,0 +1,1 @@
+#pst ((pst #pst (Parser.Reply Char)) #pst.err #pst.nam #pst.ini #pst.idx #pst.str (((pst.str #pst.str (Parser.Reply Char)) (((((Parser.Reply.fail Char) pst.nam) pst.ini) pst.idx) "Unexpected end of file.")) #pst.str.head #pst.str.tail !pst = (((((Parser.State.new pst.err) pst.nam) pst.ini) (Nat.succ pst.idx)) pst.str.tail); (((Parser.Reply.value Char) pst) pst.str.head)))

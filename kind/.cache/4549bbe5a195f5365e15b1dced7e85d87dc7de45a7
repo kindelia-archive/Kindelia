@@ -1,0 +1,1 @@
+@(world:Kindelia.World) @(table:(Map String)) @(fresh:Nat) @(old_name:String) @(new_name:String) @(ctrs:(List Kindelia.Constructor)) @(cses:(List Kindelia.Term)) ((Pair Nat) (List Kindelia.Term))

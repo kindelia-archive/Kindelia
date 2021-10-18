@@ -1,0 +1,1 @@
+#size #value #n (((n #n (Word size)) value) #n.pred (((Word.shift_right size) ((Word.shift_right.one size) value)) n.pred))

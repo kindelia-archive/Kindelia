@@ -1,0 +1,1 @@
+#K #V #map (((map #map ((BBT K) V)) map) #map.size #map.key #map.val #map.left #map.right (((map.left #map.left ((BBT K) V)) map.right) #map.left.size #map.left.key #map.left.val #map.left.left #map.left.right !new_left = (((BBT.delete_min K) V) map.left); ((((((BBT.balance K) V) map.key) map.val) new_left) map.right)))

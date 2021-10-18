@@ -1,0 +1,1 @@
+#world #block (((block #block Bits) Bits.e) #block.head #block.tail !head = ((Kindelia.serialize.transaction world) block.head); !tail = ((Kindelia.serialize.block world) block.tail); ((Bits.concat head) tail))

@@ -1,0 +1,1 @@
+@(name:String) @(iprm:(List ((Pair String) Kindelia.Type))) @(otyp:Kindelia.Type) @(main:Kindelia.Term) Kindelia.Bond

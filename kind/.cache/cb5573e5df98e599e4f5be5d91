@@ -1,0 +1,1 @@
+#V %Parser.Reply.Self(P:@(:(Parser.Reply V)) *) @(error:@(err:Parser.Error) (P ((Parser.Reply.error V) err))) @(value:@(pst:Parser.State) @(val:V) (P (((Parser.Reply.value V) pst) val))) (P Parser.Reply.Self)
