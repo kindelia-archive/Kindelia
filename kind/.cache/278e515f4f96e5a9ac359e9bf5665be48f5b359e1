@@ -1,0 +1,1 @@
+@(world:Kindelia.World) @(context:(Map Kindelia.Type)) @(name:String) @(cses:(List Kindelia.Term)) @(ctrs:(List Kindelia.Constructor)) @(type:Kindelia.Type) *

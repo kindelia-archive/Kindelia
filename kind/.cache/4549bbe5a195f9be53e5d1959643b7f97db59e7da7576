@@ -1,0 +1,1 @@
+#world #bits (((((Kindelia.deserialize.term world) (List.nil String)) bits) # ((Pair Bits) Kindelia.Eval)) #bits #term ((((Kindelia.deserialize.type world) bits) # ((Pair Bits) Kindelia.Eval)) #bits #type ((((Pair.new Bits) Kindelia.Eval) bits) ((Kindelia.Eval.new term) type))))

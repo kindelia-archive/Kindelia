@@ -1,0 +1,1 @@
+#n #d #r (((((Nat.lte n) r) #self ((Pair Nat) Nat)) (((Nat.div_mod.go n) (Nat.succ d)) ((Nat.sub r) n))) ((((Pair.new Nat) Nat) d) r))

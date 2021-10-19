@@ -1,0 +1,1 @@
+#world #vars #name ((((((List.find_index String) vars) (String.eql name)) #got Bits) Bits.e) #got.value (Kindelia.serialize.varlen got.value))
