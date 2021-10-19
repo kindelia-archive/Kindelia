@@ -176,7 +176,17 @@ Theory.WellTyped(
     match:
       case Kindelia.get_data(world, term.data) as data {
         some:
-          ?match
+          case data.value {
+            new:
+              Theory.WellTyped.match(
+                world
+                context
+                term.name
+                term.cses
+                data.value.constructors
+                type
+              )
+          }
       } default Empty
 
     // ~
@@ -328,4 +338,43 @@ Theory.WellTyped.param_list(
       }
     nil nil:
       Unit
+  } default Empty
+
+Theory.WellTyped.match(
+  world: Kindelia.World
+  context: Map<Kindelia.Type>
+  name: String
+  cses: List<Kindelia.Term>
+  ctrs: List<Kindelia.Constructor>
+  type: Kindelia.Type
+): Type
+  case ctrs cses {
+    nil nil:
+      Unit
+    cons cons:
+      case ctrs.head as ctrs{
+        new:
+          let nams = List.map!!((fprm) name|"."|fprm@fst, ctrs.fprm)
+          let typs = List.mapped!(ctrs.fprm)!(Pair.snd!!)
+          And<
+            Theory.WellTyped(
+              world
+              Kindelia.extend<Kindelia.Type>(
+                context
+                nams
+                typs
+              )
+              cses.head
+              type
+            )
+            Theory.WellTyped.match(
+              world
+              context
+              name
+              cses.tail
+              ctrs.tail
+              type
+            )
+          >
+      }
   } default Empty
