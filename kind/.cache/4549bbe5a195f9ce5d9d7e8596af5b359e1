@@ -1,1 +1,0 @@
-@(bond:String) @(args:(List Kindelia.Term)) Kindelia.Term

@@ -1,1 +1,0 @@
-#A #B #C #D #E %Quintet.Self(P:@(:(((((Quintet A) B) C) D) E)) *) @(new:@(fst:A) @(snd:B) @(trd:C) @(frt:D) @(fft:E) (P ((((((((((Quintet.new A) B) C) D) E) fst) snd) trd) frt) fft))) (P Quintet.Self)

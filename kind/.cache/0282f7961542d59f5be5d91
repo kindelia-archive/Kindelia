@@ -1,1 +1,0 @@
-#K #V #cmp #key #map (((map #map (Maybe V)) (Maybe.none V)) #map.size #map.key #map.val #map.left #map.right ((((((cmp key) map.key) #self (Maybe V)) (((((BBT.lookup K) V) cmp) key) map.left)) ((Maybe.some V) map.val)) (((((BBT.lookup K) V) cmp) key) map.right)))

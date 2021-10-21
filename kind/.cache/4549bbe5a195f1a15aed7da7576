@@ -1,1 +1,0 @@
-%Kindelia.File.Self(P:@(:Kindelia.File) *) @(new:@(name:String) @(ownr:(List String)) @(type:Kindelia.Type) @(expr:Kindelia.Term) (P ((((Kindelia.File.new name) ownr) type) expr))) (P Kindelia.File.Self)

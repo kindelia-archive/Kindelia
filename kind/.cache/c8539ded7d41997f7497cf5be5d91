@@ -1,1 +1,0 @@
-#A #x #y #eq ((((((Equal.apply (Maybe A)) A) ((Maybe.some A) x)) ((Maybe.some A) y)) #m (((Maybe.default A) m) x)) eq)

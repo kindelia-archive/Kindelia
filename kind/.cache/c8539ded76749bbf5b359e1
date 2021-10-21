@@ -1,1 +1,0 @@
-%(A:*) %(B:*) @(m:(Maybe A)) @(f:@(:A) (Maybe B)) (Maybe B)

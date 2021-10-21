@@ -1,1 +1,0 @@
-@(ctor:String) @(vals:(List Kindelia.Term)) Kindelia.Term

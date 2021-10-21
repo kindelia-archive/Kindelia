@@ -1,1 +1,0 @@
-#K #V #map (((map #map (Maybe ((Pair K) V))) (Maybe.none ((Pair K) V))) #map.size #map.key #map.val #map.left #map.right (((map.left #map.left (Maybe ((Pair K) V))) ((Maybe.some ((Pair K) V)) ((((Pair.new K) V) map.key) map.val))) #map.left.size #map.left.key #map.left.val #map.left.left #map.left.right (((BBT.min K) V) map.left)))

@@ -1,1 +1,0 @@
-#K #V #key #val (((((((BBT.bin K) V) (Nat.to_u32 +1)) key) val) ((BBT.tip K) V)) ((BBT.tip K) V))

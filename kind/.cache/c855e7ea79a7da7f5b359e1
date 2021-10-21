@@ -1,1 +1,0 @@
-%(A:*) @(key:String) @(map:(Map A)) (Map A)

@@ -1,1 +1,0 @@
-#size #bits (((size #size (Word size)) Word.e) #size.pred ((((bits #bits (Word (Nat.succ size.pred))) ((Word.o size.pred) ((Word.from_bits size.pred) Bits.e))) #bits.pred ((Word.o size.pred) ((Word.from_bits size.pred) bits.pred))) #bits.pred ((Word.i size.pred) ((Word.from_bits size.pred) bits.pred))))

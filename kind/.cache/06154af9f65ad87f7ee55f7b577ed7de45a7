@@ -1,1 +1,0 @@
-(Not (((Equal Bool) Bool.false) Bool.true))
