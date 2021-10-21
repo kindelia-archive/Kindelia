@@ -1,0 +1,1 @@
+#A #B #C #D %Quartet.Self(P:@(:((((Quartet A) B) C) D)) *) @(new:@(fst:A) @(snd:B) @(trd:C) @(frt:D) (P ((((((((Quartet.new A) B) C) D) fst) snd) trd) frt))) (P Quartet.Self)

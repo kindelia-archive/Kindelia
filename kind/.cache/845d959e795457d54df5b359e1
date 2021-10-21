@@ -1,0 +1,1 @@
+%(A:*) %(a:A) %(b:A) @(e:(((Equal A) a) b)) (((Equal A) b) a)

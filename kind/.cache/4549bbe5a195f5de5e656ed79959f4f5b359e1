@@ -1,1 +1,0 @@
-@(table:(Map String)) @(fresh:Nat) @(names:(List String)) (((Triple (Map String)) Nat) (List String))

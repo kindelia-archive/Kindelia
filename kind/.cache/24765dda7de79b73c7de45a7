@@ -1,0 +1,1 @@
+%(A:*) %(B:*) %(C:*) %(D:*) @(fst:A) @(snd:B) @(trd:C) @(frt:D) ((((Quartet A) B) C) D)

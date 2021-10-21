@@ -1,1 +1,0 @@
-#A #xs (((xs #xs Nat) +0) #xs.head #xs.tail (Nat.succ ((List.length A) xs.tail)))

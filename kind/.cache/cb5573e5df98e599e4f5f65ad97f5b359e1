@@ -1,1 +1,0 @@
-%(V:*) @(pst:Parser.State) @(val:V) (Parser.Reply V)

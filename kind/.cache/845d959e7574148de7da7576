@@ -1,0 +1,1 @@
+#A #x #a #b #r #s ((((((Equal.chain A) a) x) b) ((((Equal.mirror A) x) a) r)) s)

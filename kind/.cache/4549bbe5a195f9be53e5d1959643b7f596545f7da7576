@@ -1,1 +1,0 @@
-#A #B #first #second #bits (((first bits) # ((Pair Bits) ((Pair A) B))) #bits #fst (((second bits) # ((Pair Bits) ((Pair A) B))) #bits #snd ((((Pair.new Bits) ((Pair A) B)) bits) ((((Pair.new A) B) fst) snd))))

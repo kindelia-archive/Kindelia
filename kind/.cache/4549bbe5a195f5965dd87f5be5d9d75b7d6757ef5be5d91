@@ -1,1 +1,0 @@
-#world ((((((Monad.bind Parser) Parser.monad) Unit) Kindelia.Term) (Kindelia.parse.text "return")) # ((((((Monad.bind Parser) Parser.monad) Kindelia.Term) Kindelia.Term) (Kindelia.parse.term world)) #expr ((((Monad.pure Parser) Parser.monad) Kindelia.Term) (Kindelia.Term.return expr))))

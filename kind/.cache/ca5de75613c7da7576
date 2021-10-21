@@ -1,1 +1,0 @@
-#x #y (((Nat.pow.aux x) y) +1)

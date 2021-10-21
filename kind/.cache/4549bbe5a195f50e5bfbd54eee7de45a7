@@ -1,1 +1,0 @@
-@(world:Kindelia.World) @(name:String) (Maybe Kindelia.Bond)

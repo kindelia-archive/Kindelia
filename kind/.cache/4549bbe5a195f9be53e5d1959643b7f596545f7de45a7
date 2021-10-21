@@ -1,1 +1,0 @@
-%(A:*) %(B:*) @(first:@(:Bits) ((Pair Bits) A)) @(second:@(:Bits) ((Pair Bits) B)) @(bits:Bits) ((Pair Bits) ((Pair A) B))

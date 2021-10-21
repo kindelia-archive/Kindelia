@@ -1,0 +1,1 @@
+%(A:*) @(x:A) @(y:A) @(eq:(((Equal (Maybe A)) ((Maybe.some A) x)) ((Maybe.some A) y))) (((Equal A) x) y)

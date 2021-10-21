@@ -1,1 +1,0 @@
-@(n:Nat) @(d:Nat) @(r:Nat) ((Pair Nat) Nat)

@@ -1,1 +1,0 @@
-#P #m #nil #w0 #w1 #word ((((word #word.size #word (P word.size)) nil) #word.size #word.pred ((w0 word.size) ((((((Word.fold P) word.size) nil) w0) w1) word.pred))) #word.size #word.pred ((w1 word.size) ((((((Word.fold P) word.size) nil) w0) w1) word.pred)))

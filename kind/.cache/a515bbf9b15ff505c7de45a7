@@ -1,1 +1,0 @@
-%(size:Nat) @(shift:Nat) @(sub_copy:(Word size)) @(shift_copy:(Word size)) @(value:(Word size)) (Word size)

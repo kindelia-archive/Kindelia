@@ -1,1 +1,0 @@
-%(A:*) @(n:Nat) @(xs:(List A)) (List A)

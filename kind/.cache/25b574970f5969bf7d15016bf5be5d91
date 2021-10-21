@@ -1,1 +1,0 @@
-#size #chr #str (((size #size String) str) #size.pred (((str #str String) ((String.cons chr) (((String.pad_right size.pred) chr) ""))) #str.head #str.tail ((String.cons str.head) (((String.pad_right size.pred) chr) str.tail))))
