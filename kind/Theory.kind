@@ -309,7 +309,7 @@ Theory.WellTyped(
             type.value
           )
       } default Empty
-  } default Empty
+  }
 
 Theory.WellTyped.param_list(
   world: Map<Kindelia.Entry>
@@ -378,3 +378,54 @@ Theory.WellTyped.match(
           >
       }
   } default Empty
+
+
+Theory.WellTyped.deterministic(
+  world: Map<Kindelia.Entry>
+  context: Map<Kindelia.Type>
+  term: Kindelia.Term
+  type0: Kindelia.Type
+  type1: Kindelia.Type
+  Hyp0: Theory.WellTyped(world, context, term, type0)
+  Hyp1: Theory.WellTyped(world, context, term, type1)
+): Equal<Kindelia.Type>(type0, type1)
+  case term with Hyp0 Hyp1 {
+    var:
+      let lemma = Equal.right<Maybe<Kindelia.Type>>(
+        Map.get<Kindelia.Type>(term.name, context)
+        Maybe.some<Kindelia.Type>(type0), Maybe.some<Kindelia.Type>(type1)
+        Hyp0, Hyp1
+      )
+      let qed = Maybe.some_inj!!!(lemma)
+      qed
+    let:
+      case Hyp0 Hyp1 {
+        new new:
+          let qed = Theory.WellTyped.deterministic(
+            world, Map.set(Kindelia.Type,term.name,term.type,context)
+            term.body, type0, type1
+            Hyp0.snd, Hyp1.snd
+          )
+          qed
+      }
+    call:
+      ?call
+    create:
+      ?create
+    match:
+      ?match
+    word:
+      ?word
+    compare:
+      ?compare
+    operate:
+      ?operate
+    set:
+      ?set
+    get:
+      ?get
+    bind:
+      ?bind
+    return:
+      ?return
+  }!
