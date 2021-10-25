@@ -132,7 +132,7 @@ bond test.delete(key: #word): & #word {
 }
 
 eval {
-  let b : List.Nat = List.Nat.generate(#500)
+  let b : List.Nat = List.Nat.generate(#10)
   return b
 } : & List.Nat
 

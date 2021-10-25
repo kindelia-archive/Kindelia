@@ -3,7 +3,7 @@
 ### Install:
 
 ```
-npm i -g litereum
+npm i -g kindelia
 ```
 
 ### Usage:
@@ -11,5 +11,7 @@ npm i -g litereum
 To execute a block:
 
 ```
-lit file_name.lit
+kindelia file_name.kindelia
 ```
+
+There are some example `.kindelia` blocks on `kindelia/test`.

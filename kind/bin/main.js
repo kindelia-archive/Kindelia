@@ -1,15 +1,15 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --stack-size=2048
 
-var litereum = require("./kindelia.js");
+var kindelia = require("./kindelia.js");
 var fs = require("fs");
 
 var file_name = process.argv[2];
 
 if (!file_name) {
-  console.log("usage: lit file_name.lit")
+  console.log("usage: kindelia file_name.kindelia")
   process.exit();
 }
 
 var file = fs.readFileSync(file_name, "utf8");
 
-litereum.run(litereum["Kindelia.api.run"](file));
+kindelia.run(kindelia["Kindelia.api.run"](file));
