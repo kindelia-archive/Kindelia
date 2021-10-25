@@ -1,0 +1,1 @@
+%Kindelia.Constructor.Self(P:@(:Kindelia.Constructor) *) @(new:@(name:String) @(fprm:(List ((Pair String) Kindelia.Type))) (P ((Kindelia.Constructor.new name) fprm))) (P Kindelia.Constructor.Self)

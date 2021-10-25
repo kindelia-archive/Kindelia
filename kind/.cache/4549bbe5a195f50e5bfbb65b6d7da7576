@@ -1,0 +1,1 @@
+#world #name ((((((Monad.bind Maybe) Maybe.monad) Kindelia.Entry) Kindelia.Data) (((Map.get Kindelia.Entry) name) world)) #entry ((((entry #entry (Maybe Kindelia.Data)) #entry.value ((Maybe.some Kindelia.Data) entry.value)) #entry.value (Maybe.none Kindelia.Data)) #entry.value (Maybe.none Kindelia.Data)))

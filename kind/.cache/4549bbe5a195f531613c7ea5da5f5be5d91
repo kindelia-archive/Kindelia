@@ -1,0 +1,1 @@
+#world #data ((data #data String) #data.name #data.constructors ((String.concat "data ") ((String.concat data.name) ((String.concat " { ") ((String.concat ((String.join ", ") ((((List.mapped Kindelia.Constructor) data.constructors) String) (Kindelia.show.constructor world)))) " }")))))

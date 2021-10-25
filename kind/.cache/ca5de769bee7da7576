@@ -1,0 +1,1 @@
+#n #m (((n #n Nat) m) #n.pred (Nat.succ ((Nat.add n.pred) m)))

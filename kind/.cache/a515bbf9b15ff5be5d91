@@ -1,0 +1,1 @@
+#size #a #b $zero = ((Word.to_zero size) a); !a_bits = ((Word.bit_length size) a); !b_bits = ((Word.bit_length size) b); (((((Nat.ltn a_bits) b_bits) # (Word size)) zero) !shift = ((Nat.sub a_bits) b_bits); !shift_copy = (((Word.shift_left size) b) shift); (((((Word.div.go size) shift) a) shift_copy) zero))

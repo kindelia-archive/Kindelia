@@ -1,0 +1,1 @@
+#A #B #f #as (((as #as (List B)) (List.nil B)) #as.head #as.tail (((List.cons B) (f as.head)) ((((List.map A) B) f) as.tail)))

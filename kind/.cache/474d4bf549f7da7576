@@ -1,0 +1,1 @@
+#A #cond #list ((((((List.find A) cond) list) #self Bool) Bool.false) #self.value Bool.true)

@@ -1,0 +1,1 @@
+%(A:*) @(cond:@(:A) Bool) @(xs:(List A)) (Maybe A)

@@ -1,0 +1,1 @@
+#A #B #C #f #as #bs (((as #as (List C)) (List.nil C)) #as.head #as.tail (((bs #bs (List C)) (List.nil C)) #bs.head #bs.tail (((List.cons C) ((f as.head) bs.head)) ((((((List.zip_with A) B) C) f) as.tail) bs.tail))))

@@ -1,0 +1,1 @@
+%Parser.State.Self(P:@(:Parser.State) *) @(new:@(err:(Maybe Parser.Error)) @(nam:String) @(ini:Nat) @(idx:Nat) @(str:String) (P (((((Parser.State.new err) nam) ini) idx) str))) (P Parser.State.Self)

@@ -1,0 +1,1 @@
+#pst ((pst #pst (Parser.Reply Unit)) #pst.err #pst.nam #pst.ini #pst.idx #pst.str (((pst.str #pst.str (Parser.Reply Unit)) (((Parser.Reply.value Unit) pst) Unit.new)) #pst.str.head #pst.str.tail (((((Parser.Reply.fail Unit) pst.nam) pst.ini) pst.idx) "Expected end-of-file.")))

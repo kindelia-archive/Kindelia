@@ -1,0 +1,1 @@
+#A #key #func #map ((((((Map.get A) key) map) #got (Map A)) map) #got.value ((((Map.set A) key) (func got.value)) map))

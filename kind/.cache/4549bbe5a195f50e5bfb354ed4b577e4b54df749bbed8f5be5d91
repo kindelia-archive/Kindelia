@@ -1,0 +1,1 @@
+#data #name ((((Maybe.mapped ((Pair Nat) Kindelia.Constructor)) (((List.ifind Kindelia.Constructor) #i #ctr ((String.eql ((ctr # String) #name #fprm name)) name)) ((data # (List Kindelia.Constructor)) #name #constructors constructors))) Nat) #x ((x # Nat) #fst #snd fst))

@@ -1,0 +1,1 @@
+#A #cond #xs (((xs #xs (Maybe A)) (Maybe.none A)) #xs.head #xs.tail ((((cond xs.head) #self (Maybe A)) ((Maybe.some A) xs.head)) (((List.find A) cond) xs.tail)))

@@ -1,0 +1,1 @@
+#world #ctor ((ctor #ctor Bits) #ctor.name #ctor.fprm !name = (Kindelia.serialize.name ctor.name); !fprm = (((Kindelia.serialize.list ((Pair String) Kindelia.Type)) ((((Kindelia.serialize.pair String) Kindelia.Type) Kindelia.serialize.name) (Kindelia.serialize.type world))) ctor.fprm); ((Bits.concat name) fprm))
