@@ -1,4 +1,4 @@
-#!/usr/bin/env node --stack-size=2048
+#!/usr/bin/env -S node --stack-size=2048
 
 var kindelia = require("./kindelia.js");
 var fs = require("fs");
