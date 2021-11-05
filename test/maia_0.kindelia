@@ -9,13 +9,13 @@ save
 
 bond double(x: Nat): Nat {
   case x : Nat {
-    zero: zero{}
-    succ: succ{succ{double(x.pred)}}
+    zero: Nat@zero{}
+    succ: Nat@succ{pred: Nat@succ{pred: double(x.pred)}}
   }
 }
 
 eval {
-  double(succ{succ{succ{zero{}}}})
+  double(Nat@succ{pred: Nat@succ{pred: Nat@succ{pred: Nat@zero{}}}})
 } : Nat
 
 save

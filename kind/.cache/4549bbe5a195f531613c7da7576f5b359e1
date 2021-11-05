@@ -1,1 +1,1 @@
-@(world:Kindelia.World) @(term:Kindelia.Term) String
+@(world:Kindelia.World) @(type:Kindelia.Type) @(term:Kindelia.Term) String

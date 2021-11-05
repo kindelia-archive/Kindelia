@@ -1,1 +1,1 @@
-#name #iprm #otyp #main #P #new ((((new name) iprm) otyp) main)
+#name #args #otyp #main #P #new ((((new name) args) otyp) main)
