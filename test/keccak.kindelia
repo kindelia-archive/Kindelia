@@ -1,0 +1,276 @@
+// TODO optimize these
+
+// add: "+", sub: "-", mul: "*", div: "/", mod: "%", or: "|", and: "&", xor: "^" 
+bond add_words(fst: #word, snd: #word): #word {
+  *(fst, snd)
+}
+
+type Array {
+  new{
+    length: #word
+    buffer: buffer
+  }
+}
+
+type Buffer {
+  tip{
+    value: #word
+  }
+  tie{
+    left: buffer
+    right: buffer
+  }
+}
+
+type buffer7 {
+  new{
+    left: buffer6
+    right: buffer6
+  }
+}
+
+type buffer6 {
+  new{
+    left: buffer5
+    right: buffer5
+  }
+}
+
+type buffer5 {
+  new{
+    left: buffer4
+    right: buffer4
+  }
+}
+
+type buffer4 {
+  new{
+    left: buffer3
+    right: buffer3
+  }
+}
+
+type buffer3 {
+  new{
+    left: buffer2
+    right: buffer2
+  }
+}
+
+type buffer2 {
+  new{
+    left: buffer1
+    right: buffer1
+  }
+}
+
+type buffer1 {
+  new{
+    left: buffer0
+    right: buffer0
+  }
+}
+
+type buffer0 {
+  new{
+    left: #word
+    right: #word
+  }
+}
+
+save
+
+bond get_buffer0(buf: buffer0, idx: #word): #word {
+  case buf : buffer0 {
+    new:
+      compare &(idx, #1) #0 {
+        _<_: #0 // never happens
+        _=_: buf.left
+        _>_: buf.right
+      }
+  }
+}
+
+bond get_buffer1(buf: buffer1, idx: #word): #word {
+  case buf : buffer1 {
+    new:
+      compare &(idx, #2) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer0(buf.left, idx)
+        _>_: get_buffer0(buf.right, idx)
+      }
+  }
+}
+
+bond get_buffer2(buf: buffer2, idx: #word): #word {
+  case buf : buffer2 {
+    new:
+      compare &(idx, #4) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer1(buf.left, idx)
+        _>_: get_buffer1(buf.right, idx)
+      }
+  }
+}
+
+bond get_buffer3(buf: buffer3, idx: #word): #word {
+  case buf : buffer3 {
+    new:
+      compare &(idx, #8) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer2(buf.left, idx)
+        _>_: get_buffer2(buf.right, idx)
+      }
+  }
+}
+
+bond get_buffer4(buf: buffer4, idx: #word): #word {
+  case buf : buffer4 {
+    new:
+      compare &(idx, #16) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer3(buf.left, idx)
+        _>_: get_buffer3(buf.right, idx)
+      }
+  }
+}
+
+bond get_buffer5(buf: buffer5, idx: #word): #word {
+  case buf : buffer5 {
+    new:
+      compare &(idx, #32) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer4(buf.left, idx)
+        _>_: get_buffer4(buf.right, idx)
+      }
+  }
+}
+
+bond get_buffer6(buf: buffer6, idx: #word): #word {
+  case buf : buffer6 {
+    new:
+      compare &(idx, #64) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer5(buf.left, idx)
+        _>_: get_buffer5(buf.right, idx)
+      }
+  }
+}
+
+bond get_buffer7(buf: buffer7, idx: #word): #word {
+  case buf : buffer7 {
+    new:
+      compare &(idx, #128) #0 {
+        _<_: #0 // never happens
+        _=_: get_buffer6(buf.left, idx)
+        _>_: get_buffer6(buf.right, idx)
+      }
+  }
+}
+
+bond set_buffer0(buf: buffer0, idx: #word, val: #word): buffer0 {
+  case buf : buffer0 {
+    new:
+      compare &(idx, #1) #0 {
+        _<_: buf // never happens
+        _=_: new{val, buf.right}
+        _>_: new{buf.left, val}
+      }
+  }
+}
+
+bond set_buffer1(buf: buffer1, idx: #word, val: #word): buffer1 {
+  case buf : buffer1 {
+    new:
+      compare &(idx, #2) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer0(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer0(buf.right, idx, val)}
+      }
+  }
+}
+
+bond set_buffer2(buf: buffer2, idx: #word, val: #word): buffer2 {
+  case buf : buffer2 {
+    new:
+      compare &(idx, #4) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer1(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer1(buf.right, idx, val)}
+      }
+  }
+}
+
+bond set_buffer3(buf: buffer3, idx: #word, val: #word): buffer3 {
+  case buf : buffer3 {
+    new:
+      compare &(idx, #8) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer2(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer2(buf.right, idx, val)}
+      }
+  }
+}
+
+bond set_buffer4(buf: buffer4, idx: #word, val: #word): buffer4 {
+  case buf : buffer4 {
+    new:
+      compare &(idx, #16) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer3(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer3(buf.right, idx, val)}
+      }
+  }
+}
+
+bond set_buffer5(buf: buffer5, idx: #word, val: #word): buffer5 {
+  case buf : buffer5 {
+    new:
+      compare &(idx, #32) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer4(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer4(buf.right, idx, val)}
+      }
+  }
+}
+
+bond set_buffer6(buf: buffer6, idx: #word, val: #word): buffer6 {
+  case buf : buffer6 {
+    new:
+      compare &(idx, #64) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer5(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer5(buf.right, idx, val)}
+      }
+  }
+}
+
+bond set_buffer7(buf: buffer7, idx: #word, val: #word): buffer7 {
+  case buf : buffer7 {
+    new:
+      compare &(idx, #128) #0 {
+        _<_: buf // never happens
+        _=_: new{set_buffer6(buf.left, idx, val), buf.right}
+        _>_: new{buf.left, set_buffer6(buf.right, idx, val)}
+      }
+  }
+}
+
+save
+
+bond keccak.f.go(i: #word, buf: buffer6) : buffer6 {
+  compare i #24 {
+    _<_:
+      keccak.f.go( +(i, #1) )
+    _=_:
+      buf
+    _>_:
+      buf // never happens
+  }
+}
+
+//eval {
+//  add_words(two, two)
+//} : #word
+
+save
