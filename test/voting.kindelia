@@ -81,7 +81,7 @@ bond set_voter(map: Votingmap, key: Bits, value: Voter): Votingmap {
     tie:
       case key : Bits {
         e:
-          tie{some_voter{value}, tip{}, tip{}}
+          tie{some_voter{value}, map.lft, map.rgt}
         o:
           let ins : Votingmap = set_voter(map.lft, key.pred, value)
           tie{map.val, ins, map.rgt}

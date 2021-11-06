@@ -1,0 +1,137 @@
+type Bits {
+  e{}
+  o{pred: Bits}
+  i{pred: Bits}
+}
+
+type Maybe.Word {
+  none_value{}
+  some_value{value: #word}
+}
+
+type Balances {
+  tip{}
+  tie{val: Maybe.Word, lft: Balances, rgt: Balances}
+}
+
+type Bool {
+  true{}
+  false{}
+}
+
+save
+
+bond set_value(map: Balances, key: Bits, value: #word): Balances {
+  case map : Balances {
+    tip:
+      case key : Bits {
+        e:
+          tie{some_value{value}, tip{}, tip{}}
+        o:
+          let ins : Balances = set_value(tip{}, key.pred, value)
+          tie{none_value{}, ins, tip{}}
+        i:
+          let ins : Balances = set_value(tip{}, key.pred, value)
+          tie{none_value{}, tip{}, ins}
+      }
+    tie:
+      case key : Bits {
+        e:
+          tie{some_value{value}, map.lft, map.rgt}
+        o:
+          let ins : Balances = set_value(map.lft, key.pred, value)
+          tie{map.val, ins, map.rgt}
+        i:
+          let ins : Balances = set_value(map.rgt, key.pred, value)
+          tie{map.val, map.lft, ins}
+      }
+  }
+}
+
+bond get_value(map: Balances, key: Bits): Maybe.Word {
+  case map : Balances {
+    tip:
+      none_value{}
+    tie:
+      case key : Bits {
+        e:
+          map.val
+        o:
+          get_value(map.lft, key.pred)
+        i:
+          get_value(map.rgt, key.pred)
+      }
+  }
+}
+
+save
+
+file balances : Balances = tip{}
+
+bond add_member(key: Bits): & #word {
+  get c = balances
+  set balances = set_value(c, key, #0)
+  return #1
+}
+
+bond deposit(key: Bits, val: #word): & Bool {
+  get c = balances
+  let actual_val : Maybe.Word = get_value(c, key)
+  case actual_val : Maybe.Word {
+    none_value:
+      return false{}
+    some_value:
+      let total : #word = +(actual_val.value, val)
+      set balances = set_value(c, key, total)
+      return true{}
+  }
+}
+
+bond transfer(from: Bits, to: Bits, val: #word): & Bool {
+  get c = balances
+  let from_balance : Maybe.Word = get_value(c, from)
+  let to_balance   : Maybe.Word = get_value(c, to)
+  
+  case from_balance : Maybe.Word {
+    none_value:
+      return false{}
+    some_value:
+      case to_balance : Maybe.Word {
+        none_value:
+          return false{}
+        some_value:
+          compare from_balance.value val {
+            _<_: return false{}
+            _=_: 
+              set balances = set_value(c, from, #0)
+              get c = balances
+              set balances = set_value(c, to, +(to_balance.value, val))
+              return true{}
+            _>_:
+              set balances = set_value(c, from, -(from_balance.value, val))
+              get c = balances
+              set balances = set_value(c, to, +(to_balance.value, val))
+              return true{}
+          }
+      }
+  }
+
+}
+
+eval {
+  let joao : Bits = i{e{}}
+  let maria : Bits = o{e{}}
+  let pedro : Bits = i{i{e{}}}
+  run add_member(joao)
+  run add_member(maria)
+  run add_member(pedro)
+
+
+  run a : Bool = deposit(joao, #30)
+  run b : Bool = transfer(joao, maria, #15)
+  run b : Bool = transfer(joao, pedro, #15)
+  get x = balances
+  return x
+} : & Balances
+
+save
