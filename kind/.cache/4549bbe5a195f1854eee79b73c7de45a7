@@ -1,1 +1,1 @@
-@(name:String) @(args:(List ((Pair String) Kindelia.Type))) @(otyp:Kindelia.Type) @(main:Kindelia.Term) Kindelia.Bond
+@(name:String) @(ownr:(List String)) @(args:(List ((Pair String) Kindelia.Type))) @(otyp:Kindelia.Type) @(main:Kindelia.Term) Kindelia.Bond

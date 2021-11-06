@@ -1,1 +1,1 @@
-%(A:*) @(map:(Map A)) @(keys:(List String)) @(vals:(List A)) (Map A)
+%(A:*) @(map:(Map A)) @(kvs:(List ((Pair String) A))) (Map A)

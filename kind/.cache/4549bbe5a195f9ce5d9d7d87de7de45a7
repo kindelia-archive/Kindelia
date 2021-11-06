@@ -1,1 +1,1 @@
-@(file:String) @(expr:Kindelia.Term) @(body:Kindelia.Term) Kindelia.Term
+@(bond:String) @(expr:Kindelia.Term) @(cont:Kindelia.Term) Kindelia.Term

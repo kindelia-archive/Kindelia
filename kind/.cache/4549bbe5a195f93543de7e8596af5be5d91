@@ -1,0 +1,1 @@
+#bond_arity ((Nat.add +1) ((Nat.mul Kindelia.cost.subs) bond_arity))

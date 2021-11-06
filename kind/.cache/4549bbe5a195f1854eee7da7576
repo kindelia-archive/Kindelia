@@ -1,1 +1,1 @@
-%Kindelia.Bond.Self(P:@(:Kindelia.Bond) *) @(new:@(name:String) @(args:(List ((Pair String) Kindelia.Type))) @(otyp:Kindelia.Type) @(main:Kindelia.Term) (P ((((Kindelia.Bond.new name) args) otyp) main))) (P Kindelia.Bond.Self)
+%Kindelia.Bond.Self(P:@(:Kindelia.Bond) *) @(new:@(name:String) @(ownr:(List String)) @(args:(List ((Pair String) Kindelia.Type))) @(otyp:Kindelia.Type) @(main:Kindelia.Term) (P (((((Kindelia.Bond.new name) ownr) args) otyp) main))) (P Kindelia.Bond.Self)

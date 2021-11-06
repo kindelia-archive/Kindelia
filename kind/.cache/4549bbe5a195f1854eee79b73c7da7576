@@ -1,1 +1,1 @@
-#name #args #otyp #main #P #new ((((new name) args) otyp) main)
+#name #ownr #args #otyp #main #P #new (((((new name) ownr) args) otyp) main)

@@ -1,0 +1,1 @@
+%(S:*) @(state:S) @(from:Nat) @(til:Nat) @(func:@(:Nat) @(:S) S) S

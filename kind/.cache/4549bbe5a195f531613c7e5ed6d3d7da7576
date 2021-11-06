@@ -1,1 +1,1 @@
-#world #entry ((String.concat ((((entry #entry String) #entry.value ((Kindelia.show.data world) entry.value)) #entry.value ((Kindelia.show.bond world) entry.value)) #entry.value ((Kindelia.show.file world) entry.value))) "\u{a}")
+#world #entry ((String.concat (((entry #entry String) #entry.value ((Kindelia.show.data world) entry.value)) #entry.value ((Kindelia.show.bond world) entry.value))) "\u{a}")

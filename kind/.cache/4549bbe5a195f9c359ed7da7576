@@ -1,1 +1,1 @@
-%Kindelia.Type.Self(P:@(:Kindelia.Type) *) @(word:(P Kindelia.Type.word)) @(data:@(name:String) (P (Kindelia.Type.data name))) @(effe:@(rety:Kindelia.Type) (P (Kindelia.Type.effe rety))) (P Kindelia.Type.Self)
+%Kindelia.Type.Self(P:@(:Kindelia.Type) *) @(word:(P Kindelia.Type.word)) @(data:@(name:String) (P (Kindelia.Type.data name))) (P Kindelia.Type.Self)

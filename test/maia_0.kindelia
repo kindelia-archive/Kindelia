@@ -3,6 +3,10 @@ type Nat {
   succ{pred: Nat}
 }
 
+type Pair.Nat {
+  new{fst: Nat, snd: Nat}
+}
+
 save
 
 // -----------------------------------------------------------------------------
@@ -10,34 +14,30 @@ save
 bond double(x: Nat): Nat {
   case x : Nat {
     zero: Nat@zero{}
-    succ: Nat@succ{pred: Nat@succ{pred: double(x.pred)}}
+    succ: Nat@succ{Nat@succ{double(x.pred)}}
   }
 }
 
 eval {
-  double(Nat@succ{pred: Nat@succ{pred: Nat@succ{pred: Nat@zero{}}}})
+  double(double(Nat@succ{Nat@succ{Nat@succ{Nat@zero{}}}}))
 } : Nat
 
 save
 
 // -----------------------------------------------------------------------------
 
-file inc@count : #word = #0
+bond count(): #word {
+  #0
+}
 
-bond inc(): & #word {
-  get x     = count
-  set count = +(x, #1)
-  return #0
+bond inc(): #word {
+  bind count { #1 }
+  #0
 }
 
 eval {
-  run inc()
-  run inc()
-  run inc()
-  get x = count
-  return x
-} : & #word
-
-save
-
-// -----------------------------------------------------------------------------
+  bind count { +(count(), #1) }
+  bind count { +(count(), #1) }
+  bind count { +(count(), #1) }
+  count()
+} : #word

@@ -1,0 +1,1 @@
+#ctor_arity ((Nat.add +1) ((Nat.mul ((Nat.add Kindelia.cost.subs) Kindelia.cost.alloc)) ctor_arity))
