@@ -1,0 +1,1 @@
+#world #name (((((Kindelia.get_data world) name) #got (Maybe (List Kindelia.Constructor))) (Maybe.none (List Kindelia.Constructor))) #got.value ((Maybe.some (List Kindelia.Constructor)) ((got.value # (List Kindelia.Constructor)) #name #ctrs ctrs)))

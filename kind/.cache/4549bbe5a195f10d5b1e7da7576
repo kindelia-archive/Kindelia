@@ -1,0 +1,1 @@
+%Kindelia.Auth.Self(P:@(:Kindelia.Auth) *) @(new:@(bond:String) @(args:(List Kindelia.Term)) (P ((Kindelia.Auth.new bond) args))) (P Kindelia.Auth.Self)

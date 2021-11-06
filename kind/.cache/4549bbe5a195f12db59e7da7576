@@ -1,1 +1,1 @@
-%Kindelia.Eval.Self(P:@(:Kindelia.Eval) *) @(new:@(term:Kindelia.Term) @(type:Kindelia.Type) (P ((Kindelia.Eval.new term) type))) (P Kindelia.Eval.Self)
+%Kindelia.Eval.Self(P:@(:Kindelia.Eval) *) @(new:@(auth:(Maybe Kindelia.Auth)) @(term:Kindelia.Term) @(type:Kindelia.Type) (P (((Kindelia.Eval.new auth) term) type))) (P Kindelia.Eval.Self)

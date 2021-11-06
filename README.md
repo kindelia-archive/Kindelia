@@ -16,311 +16,436 @@ Table of Contents
 =================
 
 * [Introduction](#introduction)
+* [Why Kindelia?](#why-kindelia)
 * [How it works?](#how-it-works)
-* [Examples](#examples)
-    * [Tokens](#tokens)
-    * [Accounts](#accounts)
-    * [Transactions](#transactions)
-* [How is it so small?](#how-is-it-so-small)
-    * [No native accounts](#no-native-accounts)
-    * [No native tokens](#no-native-tokens)
-    * [A simpler block structure](#a-simpler-block-structure)
-    * [A simpler consensus algorithm](#a-simpler-consensus-algorithm)
-    * [A simpler virtual machine](#a-simpler-virtual-machine)
+* [The beta reduction problem](#the-beta-reduction-problem)
 * [Specification](#specification)
-    * [Types](#types)
-      * [Name](#name)
-      * [Term](#term)
-      * [Operation](#operation)
-      * [Type](#type)
-      * [Data](#data)
-      * [Bond](#bond)
-      * [File](#file)
-      * [Eval](#eval)
-      * [Transaction](#transaction)
-      * [Entry](#entry)
-      * [World](#world)
-    * [Type-Checking](#type-checking)
-      * [Var](#var)
-      * [Let](#let)
-      * [Call](#call)
-      * [Create](#create)
-      * [Match](#match)
-      * [Word](#word)
-      * [Compare](#compare)
-      * [Operate](#operate)
-      * [Set](#set)
-      * [Get](#get)
-      * [Bind](#bind)
-      * [Return](#return)
 
 
 Introduction
 ============
 
-Kindelia's design and implementation is, essentially, a massive distillation of
-Ethereum, taking away all the complex features that are either historical
-artifacts or optimizations, and keeping only the bare minimum required to
-establish a decentralized computer and smart-contract platform. For comparison,
-our reference implementation requires less than **2000 lines of code**, while
-the standard Ethereum full node has [TODO]. Thanks to this simplicity:
+First of all, welcome, and don't worry: you will understand this paper. We
+strongly believe in accessible communication, and will put work into making this
+document readable and jargon-free, while still letting it be a proper
+specification of the network. This is specially important for Kindelia, due to
+its most foundamental philosophy: anyone should be able to understand the
+protocol. This allows Kindelia to abolish the last piece of trust that most
+decentralized projects still face: the trust on its developers.
 
-## 1. Kindelia is secure
+Kindelia is, essentially, a massive simplification of Ethereum. It takes its
+most important aspects and removes all the redundancy. What is left is,
+essentially, a virtual computer running in a peer-to-peer network. Kindelia has
+no native accounts, currencies. It is just data and computation. In a way,
+Kindelia can be seen as a decentralized Turing machine, although we'd rather
+call it a decentralized Lambda Calculus interpreter... but this isn't right
+either, due to the inherent difficulty in measuring the cost of a beta
+reduction. Wait, we're getting too technical, aren't we? Don't worry; keep
+reading and we'll make it clear.
 
-The less code there is, the smaller the surface for attacks and bugs, and the
-cheaper it is to fully audit, making Kindelia inherently secure. To further
-reinforce this security, its internal scripting language is based on a
-low-order, simply-typed calculus that has a measurable cost model (to avoid
-spam) and an on-chain type-checker (to prevent reentrancy attacks), making
-contracts qualified to formal verification.
+Why Kindelia?
+=============
 
-## 2. Kindelia is apolitical
+There are two main benefits of using Kindelia, compared to Ethereum, or similar
+networks: security and transparency. Kindelia has both, for two reasons:
 
-Ethereum's complexity makes it politically centralized in the hands of the few
-developers that fully understand the protocol. While this is fine for most
-users, some will avoid investing in networks that are strongly influenced by
-private entities. Kindelia's simplicity make it trivial for companies and
-individuals implement their own full nodes, which, in turn, eliminates the class
-of "core developers", making it as politically decentralized as possible.
+1. The network is extraordinarily simpler.
+
+2. It was built on the grounds of type theory.
+
+Ethereum has a never-ending list of built-in features that make it complex.
+Kindelia removes most of that, keeping only the necessary. For example, Kindelia
+doesn't have a built-in account system, and not even a native currency: these
+are deployed as libraries instead. Kindelia's block struture is much cleaner:
+features such as merkle-patricia trees, logs, bloom filters absent. Its
+scripting language has way less native opcodes.
+
+But what is wrong with complexity? For most common users, honestly, nothing.
+But if you're a big company or government interested in crypto, or just someone
+who would never risk your money in a network that could be hiding some
+catastrophic bug or malicious exploit, then you should be able to audit the
+network and assert it is clean independently, without trusting anyone you don't
+know. Doing so in Ethereum is almost impossible. Kindelia makes it trivial.
+
+Moreover, Kindelia's scripting language is designed with a type theoretical
+philosophy. That makes it inherently more secure, for multiple reasons. For
+example, cross-contract communication is well-typed, eliminating a wide class of
+bugs; notably, reentrancy attacks are impossible by construction. Moreover, it
+is suitable for formal verification, allowing developers to easily prove
+theorems about its contracts. Building a network with these properties is
+challenging and, while there were attempts, no other network managed to
+accomplish this goal properly. We'll elaborate on this point later.
 
 How it works?
 =============
 
 Kindelia is, essentially, just a bare-bones functional programming language
 running in a peer-to-peer network. Or, in other words, it is a decentralized
-read-eval-print loop (REPL). That REPL is split into blocks, which are split
-into transactions, which can either declare a new name, a new type, a new
-function, or evaluate an expression.
+read-eval-print loop (REPL). That REPL has a state, which can be altered by
+user-submitted transactions. A transaction can either declare a new name, a new
+type, a new function, or evaluate an expression.
 
-Kindelia nodes keep an ever-growing chain of blocks that are submitted by users,
-and sequenced via Nakamoto Consensus (proof-of-work). By evaluating each block
-in order, a node can compute the final state of the blockchain, which is just
-the set of global names, types and bonds defined on these blocks. For example:
+Kindelia doesn't have a built-in consensus algorithm. Instead, it is just a pure
+function that interprets a sequence of user-submitted messages as transactions,
+in order to compute a final state. In other words, Kindelia is just a pure
+`List<Buffer> -> Kindelia.State` function. As such, in order to operate, it
+depends on an external network capable of receiving and sequencing transactions.
+Its main network uses Ubilog, a data-only peer-to-peer sequencer, but any
+sequencer could be used. For example, Kindelia-Ethereum and Kindelia-Bitcoin all
+exist as separate networks.
+
+A Kindelia transaction can do 4 things:
+
+1. Declare a new name:
+
+```
+name nat
+name succ
+name zero
+name double
+```
+
+2. Declare a new type:
+
 
 ```c
 type Nat {
   zero{}
   succ{pred: Nat}
 }
+```
 
+3. Declare a new bond:
+
+```c
 bond double(x: Nat) : Nat {
   case x : Nat {
     zero: zero{}
     succ: succ{succ{double(x.pred)}}
   }
 }
+```
 
+4. Evaluate a script:
+
+```c
 eval {
   double(succ{succ{succ{zero}}})
 } : Nat
 ```
 
-This is a Kindelia block with 3 transactions. The first declares a type called
-"Nat", the second declares bond (function) called "double", and the third
-evaluates the expression `double(3)`. The result, `6`, will be logged for
-everyone to see. Note that, since Kindelia bonds and evals are type-checked
-on-chain, the output will always have the right type. Similarly, cross-bond
-communication is always sound.
+The transactions above declare a few names, the type of positive integers
+(`Nat`), a bond (global function or value) that doubles an integer (`double`),
+and then evaluate the expression `double(3)`, which results in `6`. The `name`
+declarations aren't required, but they allow future usages of that name to
+occupy less space in a block.
 
-Of course, the block above doesn't do anything useful. In order to perform
-effectful and stateful applications, Kindelia also features files, which are
-mutable global variables, and a built-in Effect type, written as `&`, that
-allows bonds to write and read from these files. The simplest example is a
-counter:
+Of course, these transactions don't do anything useful: they're just pure
+calculations. In order to implement real-world applications, Kindelia needs some
+notion of state. For that, it features one, and only one, side-effective
+primitive, `bind`, which allows a bond to redefine another bond.
 
-```c
-file inc@count : #word = #0
+```
+bond val(): #word {
+  #0
+}
 
-bond inc(): & #word {
-  get x     = count
-  set count = +(x, #1)
-  return #0
+bond inc(): #word {
+  bind val { #add(val(), #1) }
+  val()
 }
 
 eval {
-  run inc()
-  run inc()
-  run inc()
-  get x = count
-  return x
-} : & #word
+  inc()
+  inc()
+  inc()
+  val()
+} : #word
 ```
 
-The block above declares:
+The transactions above declare a global value, a function that increments
+that value, and a script that increments it 3 times and output its value. Any
+transaction that calls `val()` afterwards will get `3`. This statefullness
+allows users to create arbitrary smart-contracts as bonds. For example, a
+currency could be created by keeping a set of balances as a state.
 
-1. `count`: a file, owned by the `inc` bond, that stores a number.
-
-2. `inc`: a bond that increments the `count` file when it is called.
-
-The `eval` block increments the counter 3 types, and outputs `3`.
-
-Notice the return type of `inc` is marked with an `&`: that's because it is an
-effectiful bond. A functional programmer may be familiar with it, since it works
-exactly like Haskell's IO type. That is, `& #word` in Kindelia is equivalent to
-`IO Word64` in Haskell. The `return` primitive is the monadic pure, and `run` is
-a short form of the monadic binder:
-
-```c
-run x : #word = inc()
 ```
+bond balances : Map {
+  Map@empty{}
+}
 
-With types, bonds and files, users can create all sorts of decentralized
-applications on Kindelia. The lack of hard-coded currencies and accounts makes
-Kindelia flexible and powerful, as it allows users to limit what their accounts
-can do, to choose what tokens they'll use to pay miner fees, and to choose their
-own authentication methods. While most crypto-currencies would be destroyed by
-sufficiently powerful quantum computers, in Kindelia, users can simply opt to
-use quantum-resistant signatures.
-
-Since Kindelia blocks are Turing complete, caution is needed to avoid spam such
-as endless loops that would overload nodes on the network. As such, blocks are
-limited in both space and time by a maximum block size, and a maximum
-computation budget. Sadly, assigning gas costs to functional languages is
-extremely tricky, because the cost of a β-reduction [may
-vary](https://dl.acm.org/doi/10.5555/645420.652523) depending on how it is
-implemented. That is why Kindelia's term language is carefully designed to be
-strongly confluent. Just like a stack machine, evaluating a Kindelia term has a
-clear optimal strategy, allowing us to design a reasonable cost table for it.
-
-Examples
-========
-
-## Tokens
-
-A crypto-currency has 3 components: a token, accounts, and transfers. The token
-itself can be implemented as a bond that alters a map of balances:
-
-```c
-file CatCoin@balances : Map = empty{}
-
-type Command {
-  mint{value: #word}
+type Action {
+  send{to: User, value: #word}
   ...
 }
 
-// The CatCoin bond
-bond CatCoin(cmd: Command): #word {
+bond CatCoin(action: Action): #word {
   case cmd {
-    mint:
-      get balances = balances
-      set balances = Map.set(balances, user, cmd.value)
-      return #0
+    send:
+      // checks and updates balances
     ...
   }
 }
 ```
 
-## Accounts
+What about accounts? 
 
-Similarly, users can create accounts by uploading bonds that they control. For
-example:
+Ethereum has a built-in account system that allows external users to interact
+with contracts via ECDSA authentication. In Kindelia, there is no such system.
+Instead, an account is just a bond that receives the user's signature, in any
+arbitrary authentication method, and checks if it is correct. That bond can then
+be used in an `eval` block to let that block run in behalf of an user.
 
-```c
-type Command {
-  send_cat_tokens{
-    to    : address
-    value : #word
-    fee   : #word
-  }
-  ...
+For example, ECDSA and Lamport signatures could be installed as bonds:
+
+```
+bond ECDSA.check(signature: Buffer, message: Buffer) : #word {
+  ... ECDSA logic here ...
 }
 
-bond Bob(cmd: Command): & #word {
-  case cmd : Command {
-    send_cat_tokens:
-      if ECDSA.check(hash(cmd), caller)
-        run CatCoin.send(cmd.fee, block_miner)
-        run CatCoin.send(cmd.amount, cmd.to)
-        return #0
-    ...
-  }
+bond Lamport.check(signature: Buffer, message: Buffer) : #word {
+  ... Lamport logic here ...
 }
 ```
 
-The bond above can be used by Bob to send cat tokens via ECDSA authentication.
-That bond **is** Bob's account. If Bob wished to, he could add more features and
-different signature schemes to his account.
+And then, user accounts could be created as bonds that check a signature:
 
-## Transactions
+```
+bond MrDog(signature: Buffer) : #word {
+  ECDSA.check(signature, $get_code($self))
+}
 
-Once we have accounts and a currency, sending a token is simply a matter of
-including a signed `eval` script in a block:
+bond PatoHasker(signature: Buffer) : #word {
+  Lamport.check(signature, $get_code($self))
+}
+```
 
-```c
+Finally, an user could interact with contracts by using eval-with:
+
+```
 eval {
-  run Bob(send_cat_tokens{@Alice, 50000, 100, "<Bob's sig>"})
-  return #0
-} : & #word
+  CatCoin.send({
+    to: @MrDog
+    amount: #42
+  })
+} : #word
+with PatoHasker(0x11112222333344445555....)
 ```
 
-Bob would write this script, sign it, serialize and send to miners. Miners would
-be incentived include it in a block, in order to collect fees. Once mined, this
-transaction would call Bob's bond, which would check the signature and call the
-CatCoin bond, which would update the balance map to send 50000 cat
-tokens to Alice, and 100 cat tokens to the block miner.
+Kindelia would call `PatoHasker()` with its signature and the bytecode of the
+eval block. If it returns true, the eval block is executed in PatoHasker's
+behalf. If it returns false (which would happen if, for example, someone
+modified the `to` or `amount` within the block), then the block wouldn't be
+executed.
 
-How is it so small?
-===================
+This is handy for two reasons. First, it allows for anonymous transactions. Not
+everything requires authentication, so, being able to call methods without
+signatures saves a lot of block spaces. Second, it allows users to chose their
+own authentication schemes. It is notable that ECDSA signatures are vulnerable
+to quantum attacks. Since every Ethereum account uses ECDSA, the entire network
+will collapse irreversibly if a large enough quantum computer is built. In
+Kindelia, users can simply opt to use quantum-resistant signature schemes.
 
-In order to become so minimal, Kindelia made several compromises, trading
-features, throughput and efficiency for sheer simplicity, security and
-stability.  Kindelia aims to be boring like Bitcoin, yet expressive like
-Ethereum. Below are some, but not all, of the tradeoff it took:
+The beta reduction problem
+==========================
 
-## 1. No native accounts
+The ideas above describe an interesting programming language, but that alone
+isn't sufficient to create an operational decentralized computer. We also need a
+way to measure the usage of resources. Otherwise, an attacker could easily
+submit an `eval` transaction with a very expensive computation that would crash
+the entire network.
 
-Ethereum uses ECDSA for message authentication as a hard-coded algorithm that is
-part of the protocol. ECDSA is not only complex, but can be broken by quantum
-computers. Kindelia doesn't have a native account system: users can make
-accounts by deploying a contracts that they control using their favorite
-signature schemes. This makes Kindelia simpler and quantum-resistant.
+In Ethereum, this problem is solved by assigning a `gas` cost to each primitive
+operation. Transactions that consume too much gas are stopped. In Kindelia, we
+also use gas costs, but, since our language follows a different paradigm -
+functional instead of a stack machine - a big challenge emerges: how do we
+measure the cost of beta reduction?
 
-## 2. No native tokens
+## What is a beta reduction?
 
-Ethereum has a built-in currency, Ether, that is used to pay miner fees.
-Kindelia has no native currency, but users can make their own tokens via
-smart-contracts, and miner fees can be paid in any of these, with no single one
-being special. Transactions don't have a gas limit, but blocks do. As such,
-users pay whatever they want, and miners select transactions that fit the
-block's gas limit while maximizing their profits. This replicates the fee market
-as seen on Ethereum, with more payment options and less built-in complexity.
+Beta reduction is just a jargon for function application. It is a big deal,
+because it is the fundamental primitive behind functional languages. For
+example, consider the Python program below:
 
-## 3. A simpler block structure
+```
+def f(x):
+  return [x, x]
 
-Ethereum block structure is complex due to both optimizations and historical
-artifacts, such as logs and patricia-merkle trees. Kindelia doesn't have layer 1
-throughput as a goal, and it doesn't feature light clients. This allows it to
-take a minimalist approach, keeping the blockchain structure as simple as
-possible: blocks store the previous block hash, a nonce and a list of
-transactions, and nothing more.
+print(f(42))
+```
 
-## 4. A simpler consensus algorithm
+To evaluate it, the `f` function must be applied to the number `42`. In order to
+do that, the interpreter replaces every occurrence of the variable `x` in the
+body of `f` by the argument `42`, resulting in `[42,42]`. That operation is the
+beta reduction.
 
-Ethereum aims to migrate to a complex Proof-of-Stake consensus algorithm. This
-will bring several benefits, such as lower energy consumption and faster
-finality times. It also has neat features such as Ethash, for ASIC-resistance,
-and GHOST, for mining efficiency. Kindelia drops these features for the sake of
-simplicity, featuring just a simple Proof-of-Work consensus.
 
-## 5. A simpler virtual machine
+## Counting beta reductions
 
-Instead of a stack-machine with several complex opcodes, Kindelia's built-in
-scripting language is a minimal calculus with a very minimal set of operations.
-Specifically, it has algebraic datatypes (with pattern-matching), 64-bit
-integers (with 8 binary operations and a comparison primitive), recursive
-functions, and monadic effects. And that's all.
+As such, to feature functions in our language, we just need to assign a cost to
+beta reduction, right? Yes, but there is a problem: we can't count how many beta
+reductions an evaluation needs! To understand why, consider the following Python
+functions:
 
+
+```python
+def inc(x):
+    return x + 1
+
+def dup(x):
+    return [x, x]
+
+def app(f):
+    return f(inc)
+```
+
+Let's try to count the beta reductions required to run the following expression:
+`two(inc(0))`. If we reduce arguments before applying a function, we get:
+
+```python
+two(inc(0)) # count = 0
+two(1)      # count = 1
+[1, 1]      # count = 2
+```
+
+So, we need 2 beta reductions, right? But what if we decided to apply `two`
+before `inc`, instead of the other way around? Then we'd get: 
+
+```python
+two(inc(0))      # count = 0
+[inc(0), inc(0)] # count = 1           
+[1, inc(0)]      # count = 2
+[1, 1]           # count = 3
+```
+
+Now we needed 3 beta reductions! The count depends on the order of evaluation.
+If we evaluate arguments before applying functions, we get a count. If we apply
+functions before evaluating arguments, we get a different count. So, which one
+is right?
+
+Initially, one might be tempted to just impose that arguments must be evaluated
+before functions are applied, and that the count should be computed by running
+programs in that order. After all, that is how most languages work, and seems to
+be more efficient from this example. But consider the following expression:
+
+```c
+app(lambda y: dup(y(0)))
+```
+
+If we use that imposed order, we get:
+
+```python
+app(lambda y: dup(y(0)))      # count = 0
+app(lambda y: [y(0), y(0)])   # count = 1
+(lambda y: [y(0), y(0)])(inc) # count = 2
+[inc(0), inc(0)]              # count = 3
+[inc(0), 1]                   # count = 4
+[1, 1]                        # count = 5
+```
+
+But if we use a mixed strategy, we get:
+
+```python
+app(lambda y: dup(y(0)))   # count = 0
+(lambda y: dup(y(0)))(inc) # count = 1
+dup(inc(0))                # count = 2
+dup(1)                     # count = 3
+[1, 1]                     # count = 4
+```
+
+In this case, the imposed strategy is less efficient than an alternative. Now,
+an attentive reader might have noticed that we reduced inside lambdas, which
+isn't how most languages do it. So, what about an strategy where arguments are
+reduced first, but no reduction takes place inside lambdas? Is it optimal?
+Sadly, no. Here is a counter-example:
+
+```
+two(lambda x: inc(0))
+```
+
+If we evaluate that expression the exact way Python does it, we get:
+
+```python
+two(lambda x: inc(0))                          # count = 0
+[(lambda x: inc(0))(0), (lambda x: inc(0))(0)] # count = 1
+[inc(0), (lambda x: inc(0))(0)]                # count = 2
+[inc(0), inc(0)]                               # count = 3
+[1, inc(0)]                                    # count = 4
+[1, 1]                                         # count = 5
+```
+
+If we use a mixed strategy, we could get:
+
+```python
+two(lambda x: inc(0))                # count = 0
+two(lambda x: 1)                     # count = 1
+[(lambda x: 1)(0), (lambda x: 1)(0)] # count = 2
+[(lambda x: 1)(0), 1]                # count = 3
+[1, 1]                               # count = 4
+```
+
+Which, again, uses less beta reductions. The issue here is that, for any
+reduction strategy you choose, there will be some other reduction strategy
+that is better in some cases. There is no optimal choice.
+
+## Why not just impose an evaluation order?
+
+But why is that an issue? As long as nodes agree to use the same strategy, they
+should get the same count, even if isn't the best one, right? Sure, but this
+count would, then, be meaningless. To understand why, imagine what would happen
+if the network imposed the Python reduction order.
+
+Initially, all would be fine. Eventually, a miner would realize he/she is able
+to flood the network with programs that perform better in an alternate strategy,
+and update his/her node to use it. So, for example, if the network charges 1000
+beta reductions for certain evaluation, but that miner is able to evaluate it
+using only 50, then he/she is having a massive computational advantage over
+everyone else. That is bad.
+
+So, why can't everyone else just update their nodes to use the alternate
+strategy, too? They could, but, in that case, the entire network would be
+operating under a new strategy, which would be better in some cases, but much
+worse in others. The attacker could perform the same attack again, targeting
+programs that perform poorly in that strategy. Eventually, the present cost
+model would have no relationship with the actual computational cost of the
+transactions, and that is terrible.
+
+In short, it is not possible to measure the cost of evaluating a functional
+program in a decentralized network, and any attempt to do so will, over time, be
+no more accurate than just throwing dices. The only way to avoid this dance is
+to ship every one with an optimal evaluation strategy to begin with, but, other
+than subset restricteds of the lambda calculus, such a thing doesn't exist.
+
+## Kindelia's solution
+
+So, how does Kindelia solve this problem?
+
+It doesn't. And it is important to stress that. Any decentralized computer that
+claims to feature functions must either provide a solution to the optimal
+evaluation of functional programs, or deal with all sorts of overpriced, or
+underpriced, opcode spam attacks.
+
+As such, Kindelia aims to be functional as possible, while still being robust
+against spam. As such, it consists of a mostly pure, expression-based language
+featuring datatypes, pattern-matching and recursion, but gives up on high-order
+functions.
+
+Note that we could, in theory, actually feature high order functions, as long as
+these couldn't be duplicated in certain ways. For example, if functions could
+only be used linearly, or, even better, if they could be copied, but under the
+constraint of elementary affine logic, then it would be possible to provide
+optimal evaluators for Kindelia.
+
+For the sake of simplicity, though, we just exclude high-order functions
+entirely. What is left is still a very solid functional language that is simple,
+secure, efficient, designed to be the core of a worldwide computer.
 
 Specification
 =============
 
 Kindelia's virtual machine is based on a core expression language that is
 pure, low-order and functional. It features algebraic datatypes, 64-bit unsigned
-integers and effects. It doesn't feature high-order functions. That limitation
-is necessary for strong confluence (i.e., to have a cost model that doesn't
-depend on the evaluation strategy). It does, though, feature branching (via
-pattern-matching) and recursive functions, which make it expressive and Turing
-complete.
+integers and a single effect. It doesn't feature high-order functions.
 
 Types
 -----
@@ -349,10 +474,7 @@ Term ::=
   match   (name : Name) (data : Name  ) (cses : [Term])
   compare (val0 : Term) (val1 : Term  ) (iflt : Term  ) (ifeq : Term) (ifgt : Term) 
   operate (oper : Oper) (val0 : Term  ) (val0 : Term  )
-  set     (file : Name) (expr : Term  ) (body : Term  )
-  get     (name : Name) (file : Name  ) (body : Term  )
-  bind    (name : Name) (type : Type  ) (expr : Term  ) (body : Term)
-  return  (expr : Term)
+  bind    (file : Name) (expr : Term  ) (cont : Term  )
 ```
 
 - `var`: a bound variable.
@@ -367,13 +489,7 @@ Term ::=
 
 - `operate`: a binary operation on words.
 
-- `set`: effect that writes a file.
-
-- `get`: effect that reads a file.
-
-- `bind`: the monadic bind for the Effect type.
-
-- `return`: the monadic return that wraps a pure value.
+- `bind`: overwrites a global value.
 
 ### Operation
 
@@ -399,7 +515,6 @@ A type.
 Type ::=
   word
   data   (name : Name)
-  effect (rety : Type)
 ```
 
 
@@ -425,22 +540,10 @@ A global function.
 ```
 Bond ::=
   new (name : String)
-      (inam : [String])
-      (ityp : [Type])
+      (ownr : [String])
+      (args : [(String,Type)])
       (otyp : Type)
       (main : Term)
-```
-
-### File
-
-A global file.
-
-```
-File ::=
-  new (name : String)
-      (ownr : [String])
-      (type : Type)
-      (expr : Term)
 ```
 
 ### Eval
@@ -460,7 +563,7 @@ A block transaction.
 ```
 Transaction ::=
   new_name (name : Name)
-  new_data (data : Data)
+  new_type (type : Type)
   new_bond (bond : Bond)
   new_eval (eval : Eval)
 ```
@@ -471,7 +574,7 @@ A global entry.
 
 ```
 Entry ::=
-  data (value : Data)
+  type (value : Type)
   bond (value : Bond)
 ```
 
@@ -572,40 +675,13 @@ context |- m : #word
 context |- X(n, m) : #word
 ```
 
-### Set
-
-```
-given file a : A
-
-context |- k : A
-context |- r : &B
-------------------------------
-context |- (set a = k; r) : &B
-```
-
-### Get
-
-```
-given file a : A
-
-context, (x : A) |- r : &B
-------------------------------
-context |- (get x = a; r) : &B
-```
-
 ### Bind
 
 ```
-context          |- e : &A
-context, (x : A) |- c : &B
-----------------------------------
-context |- (run x : A = e; c) : &B
-```
+given bond a : A
 
-### Return
-
-```
-context |- t : A
---------------------------
-context |- (return t) : &A
+context |- k : A
+context |- r : B
+------------------------------
+context |- (set a = k; r) : B
 ```

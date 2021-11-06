@@ -1,0 +1,1 @@
+#A #item #bits ((((bits #bits ((Pair Bits) (Maybe A))) ((((Pair.new Bits) (Maybe A)) Bits.e) (Maybe.none A))) #bits.pred ((((Pair.new Bits) (Maybe A)) bits.pred) (Maybe.none A))) #bits.pred (((item bits.pred) # ((Pair Bits) (Maybe A))) #bits #value ((((Pair.new Bits) (Maybe A)) bits) ((Maybe.some A) value))))

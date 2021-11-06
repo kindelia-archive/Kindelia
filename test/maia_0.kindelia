@@ -26,18 +26,35 @@ save
 
 // -----------------------------------------------------------------------------
 
-bond count(): #word {
+bond val(): #word {
   #0
 }
 
 bond inc(): #word {
-  bind count { #1 }
+  bind val { #add(val(), #1) }
   #0
 }
 
 eval {
-  bind count { +(count(), #1) }
-  bind count { +(count(), #1) }
-  bind count { +(count(), #1) }
-  count()
+  let a : #word = inc()
+  let b : #word = inc()
+  let c : #word = inc()
+  val()
 } : #word
+
+save
+
+// -----------------------------------------------------------------------------
+
+bond PatoHasker(x: Nat): #word {
+  case x : Nat {
+    zero: #0
+    succ: #1
+  }
+}
+
+eval PatoHasker(Nat@succ{Nat@zero{}}) {
+  val()
+} : #word
+  
+save

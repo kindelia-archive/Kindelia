@@ -1,1 +1,1 @@
-#world #eval ((eval #eval Bits) #eval.term #eval.type !term = (((Kindelia.serialize.term world) (List.nil String)) eval.term); !type = ((Kindelia.serialize.type world) eval.type); ((Bits.concat term) type))
+#world #eval ((eval #eval Bits) #eval.auth #eval.term #eval.type !auth = (((Kindelia.serialize.maybe Kindelia.Auth) (Kindelia.serialize.auth world)) eval.auth); !term = (((Kindelia.serialize.term world) (List.nil String)) eval.term); !type = ((Kindelia.serialize.type world) eval.type); ((Bits.concat term) ((Bits.concat type) auth)))

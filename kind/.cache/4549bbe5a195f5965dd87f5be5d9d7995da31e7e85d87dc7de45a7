@@ -1,1 +1,1 @@
-@(world:Kindelia.World) @(constructors:(List Kindelia.Constructor)) (Parser (List Kindelia.Term))
+@(world:Kindelia.World) @(ctrs:(List Kindelia.Constructor)) (Parser (List Kindelia.Term))

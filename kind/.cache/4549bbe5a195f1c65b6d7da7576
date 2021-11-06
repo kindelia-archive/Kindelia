@@ -1,1 +1,1 @@
-%Kindelia.Data.Self(P:@(:Kindelia.Data) *) @(new:@(name:String) @(constructors:(List Kindelia.Constructor)) (P ((Kindelia.Data.new name) constructors))) (P Kindelia.Data.Self)
+%Kindelia.Data.Self(P:@(:Kindelia.Data) *) @(new:@(name:String) @(ctrs:(List Kindelia.Constructor)) (P ((Kindelia.Data.new name) ctrs))) (P Kindelia.Data.Self)

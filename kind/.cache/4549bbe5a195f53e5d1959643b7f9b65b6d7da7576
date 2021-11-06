@@ -1,1 +1,1 @@
-#world #data ((data #data Bits) #data.name #data.constructors !name = (Kindelia.serialize.name data.name); !ctrs = (((Kindelia.serialize.list Kindelia.Constructor) (Kindelia.serialize.constructor world)) data.constructors); ((Bits.concat name) ctrs))
+#world #data ((data #data Bits) #data.name #data.ctrs !name = (Kindelia.serialize.name data.name); !ctrs = (((Kindelia.serialize.list Kindelia.Constructor) (Kindelia.serialize.constructor world)) data.ctrs); ((Bits.concat name) ctrs))

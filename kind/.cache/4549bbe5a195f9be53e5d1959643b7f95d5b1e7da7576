@@ -1,0 +1,1 @@
+#world #bits (((Kindelia.deserialize.name bits) # ((Pair Bits) Kindelia.Auth)) #bits #bond (((((Kindelia.deserialize.list Kindelia.Term) ((Kindelia.deserialize.term world) (List.nil String))) bits) # ((Pair Bits) Kindelia.Auth)) #bits #args ((((Pair.new Bits) Kindelia.Auth) bits) ((Kindelia.Auth.new bond) args))))
