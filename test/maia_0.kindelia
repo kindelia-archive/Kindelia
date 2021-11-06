@@ -12,15 +12,8 @@ save
 // -----------------------------------------------------------------------------
 
 bond double(x: Nat): Nat {
-  case x : Nat {
-    zero: Nat@zero{}
-    succ: Nat@succ{Nat@succ{double(x.pred)}}
-  }
+  Nat@zero{}
 }
-
-eval {
-  double(double(Nat@succ{Nat@succ{Nat@succ{Nat@zero{}}}}))
-} : Nat
 
 save
 

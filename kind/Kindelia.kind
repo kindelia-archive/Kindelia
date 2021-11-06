@@ -962,7 +962,7 @@ Kindelia.serialize.bond(world: Kindelia.World, bond: Kindelia.Bond): Bits
   let otyp = Kindelia.serialize.type(world, bond.otyp)
   let inam = List.reverse!(List.mapped!(bond.args)!(Pair.fst!!))
   let main = Kindelia.serialize.term(world, inam, bond.main)
-  Bits.concat(name, Bits.concat(args, Bits.concat(otyp, main)))
+  Bits.concat(name, Bits.concat(ownr, Bits.concat(args, Bits.concat(otyp, main))))
 
 Kindelia.deserialize.bond(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Bond>
   let {bits,name} = Kindelia.deserialize.name(bits)
@@ -1011,7 +1011,7 @@ Kindelia.serialize.eval(world: Kindelia.World, eval: Kindelia.Eval): Bits
   let auth = Kindelia.serialize.maybe!(Kindelia.serialize.auth(world), eval.auth)
   let term = Kindelia.serialize.term(world, [], eval.term)
   let type = Kindelia.serialize.type(world, eval.type)
-  Bits.concat(term, Bits.concat(type, auth))
+  Bits.concat(auth, Bits.concat(term, type))
 
 Kindelia.deserialize.eval(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Eval>
   let {bits,auth} = Kindelia.deserialize.maybe!(Kindelia.deserialize.auth(world), bits)
@@ -1023,7 +1023,7 @@ Kindelia.serialize.auth(world: Kindelia.World, auth: Kindelia.Auth): Bits
   open auth
   let bond = Kindelia.serialize.name(auth.bond)
   let args = Kindelia.serialize.list!(Kindelia.serialize.term(world, []), auth.args)
-  Bits.i(Bits.concat(bond, args))
+  Bits.concat(bond, args)
   
 Kindelia.deserialize.auth(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Auth>
   let {bits,bond} = Kindelia.deserialize.name(bits)

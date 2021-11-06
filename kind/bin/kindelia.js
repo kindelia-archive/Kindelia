@@ -9354,7 +9354,7 @@ module.exports = (function() {
                 var _otyp$11 = Kindelia$serialize$type$(_world$1, $2701);
                 var _inam$12 = List$reverse$(List$mapped$($2700, Pair$fst));
                 var _main$13 = Kindelia$serialize$term$(_world$1, _inam$12, $2702);
-                var $2703 = (((_main$13 + _otyp$11) + _args$10) + _name$8);
+                var $2703 = ((((_main$13 + _otyp$11) + _args$10) + _ownr$9) + _name$8);
                 var $2697 = $2703;
                 break;
         };
@@ -9387,7 +9387,7 @@ module.exports = (function() {
                 var $2710 = self.args;
                 var _bond$5 = Kindelia$serialize$name$($2709);
                 var _args$6 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(List$nil), $2710);
-                var $2711 = ((_args$6 + _bond$5) + '1');
+                var $2711 = (_args$6 + _bond$5);
                 var $2708 = $2711;
                 break;
         };
@@ -9405,7 +9405,7 @@ module.exports = (function() {
                 var _auth$6 = Kindelia$serialize$maybe$(Kindelia$serialize$auth(_world$1), $2713);
                 var _term$7 = Kindelia$serialize$term$(_world$1, List$nil, $2714);
                 var _type$8 = Kindelia$serialize$type$(_world$1, $2715);
-                var $2716 = ((_auth$6 + _type$8) + _term$7);
+                var $2716 = ((_type$8 + _term$7) + _auth$6);
                 var $2712 = $2716;
                 break;
         };
