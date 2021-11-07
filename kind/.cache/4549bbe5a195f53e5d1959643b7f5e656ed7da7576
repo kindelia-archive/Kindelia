@@ -1,1 +1,1 @@
-#world #name ((((((Map.get Nat) name) ((((world # Kindelia.Names) #names #entry names) # (Map Nat)) #count #name_to_index #index_to_name name_to_index)) #found Bits) (Bits.o (Kindelia.serialize.letters name))) #found.value (Bits.i (Kindelia.serialize.varlen found.value)))
+#world #name ((((((Map.get Nat) name) ((((world # Kindelia.Names) #names #entry names) # (Map Nat)) #size #numb #name numb)) #found Bits) (Bits.o (Kindelia.serialize.letters name))) #found.value (Bits.i (Kindelia.serialize.varlen found.value)))

@@ -1,1 +1,1 @@
-#A %Kindelia.Runtime.Self(P:@(:(Kindelia.Runtime A)) *) @(new:@(world:Kindelia.World) @(subst:(Map Kindelia.Term)) @(fresh:Nat) @(gas:Nat) @(term:A) (P ((((((Kindelia.Runtime.new A) world) subst) fresh) gas) term))) (P Kindelia.Runtime.Self)
+#A %Kindelia.Runtime.Self(P:@(:(Kindelia.Runtime A)) *) @(new:@(world:Kindelia.World) @(subst:(Map Kindelia.Term)) @(fresh:Nat) @(costs:Nat) @(value:A) (P ((((((Kindelia.Runtime.new A) world) subst) fresh) costs) value))) (P Kindelia.Runtime.Self)

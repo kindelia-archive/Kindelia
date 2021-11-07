@@ -1,1 +1,1 @@
-@(count:Nat) @(name_to_index:(Map Nat)) @(index_to_name:(Map String)) Kindelia.Names
+@(size:Nat) @(numb:(Map Nat)) @(name:(Map String)) Kindelia.Names

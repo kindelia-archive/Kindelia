@@ -1,1 +1,1 @@
-#code (((Kindelia.api.run.go Kindelia.genesis) +0) code)
+#code (((Kindelia.api.run.go ((Kindelia.World.new (((Kindelia.Names.new +0) ((Map.from_list Nat) (List.nil ((Pair String) Nat)))) ((Map.from_list String) (List.nil ((Pair String) String))))) ((Map.from_list Kindelia.Entry) (List.nil ((Pair String) Kindelia.Entry))))) +0) code)

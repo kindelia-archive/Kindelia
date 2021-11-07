@@ -1,1 +1,1 @@
-@(state:Kindelia.Runtime.Term) Kindelia.Runtime.Term
+@(state:(Kindelia.Runtime Kindelia.Term)) (Kindelia.Runtime Kindelia.Term)

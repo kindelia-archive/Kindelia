@@ -726,8 +726,8 @@ It doesn't. And it is important to stress that. Kindelia aims to be as
 functional as possible, while still being robust against spam. As such, it
 completely gives up on high-order functions. Note that Kindelia still feature
 datatypes, pattern-matching, global functions and recursion. Overall, this
-design makes it as efficient as a stack machine, while still retaining most of
-the benefits of a functional language. 
+design makes it as efficient and predictable as a stack machine, while still
+retaining most of the benefits of a functional language. 
 
 Note that we could actually feature high order functions, with some caution. For
 example, if functions could only be used linearly, or, even better, if they

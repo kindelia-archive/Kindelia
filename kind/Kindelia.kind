@@ -4,7 +4,6 @@
 // TODO:
 // - lazy sanitize
 // - owner
-// - name optimization
 
 // Types
 // -----
@@ -15,17 +14,17 @@ type Kindelia.Term {
   var(
     name: String
   )
-  // Call external function
-  call(
-    bond: String
-    args: List<Kindelia.Term>
-  )
   // Assigns a variable
   let(
     name: String
     type: Kindelia.Type
     expr: Kindelia.Term
     body: Kindelia.Term
+  )
+  // Call external function
+  call(
+    bond: String
+    args: List<Kindelia.Term>
   )
   // Creates a value
   create(
@@ -75,6 +74,10 @@ type Kindelia.Type {
   data(name: String)
 }
 
+// A list of arguments
+Kindelia.Args: Type
+  List<Pair<String, Kindelia.Type>>
+
 // A global algebraic datatype (ADT) declaration
 type Kindelia.Data {
   new(
@@ -87,7 +90,7 @@ type Kindelia.Data {
 type Kindelia.Constructor {
   new(
     name: String
-    args: List<Pair<String, Kindelia.Type>>
+    args: Kindelia.Args
   )
 }
 
@@ -96,7 +99,7 @@ type Kindelia.Bond {
   new(
     name: String
     ownr: List<String>
-    args: List<Pair<String, Kindelia.Type>>
+    args: Kindelia.Args
     otyp: Kindelia.Type
     main: Kindelia.Term
   )
@@ -135,9 +138,9 @@ type Kindelia.Transaction {
 
 type Kindelia.Names {
   new(
-    count: Nat
-    name_to_index: Map<Nat>
-    index_to_name: Map<String>
+    size: Nat
+    numb: Map<Nat>
+    name: Map<String>
   )
 }
 
@@ -153,22 +156,13 @@ type Kindelia.Runtime <A: Type> {
     world: Kindelia.World
     subst: Map<Kindelia.Term>
     fresh: Nat
-    gas: Nat
-    term: A
+    costs: Nat
+    value: A
   )
 }
 
-Kindelia.Runtime.Term: Type
-  Kindelia.Runtime<Kindelia.Term>
-
-Kindelia.Runtime.Terms: Type
-  Kindelia.Runtime<List<Kindelia.Term>>
-
 // Utils
 // -----
-
-Kindelia.genesis: Kindelia.World
-  Kindelia.World.new(Kindelia.Names.new(0,{},{}), {})
 
 Kindelia.get_data(world: Kindelia.World, name: String): Maybe<Kindelia.Data>
   Maybe {
@@ -198,6 +192,32 @@ Kindelia.extend<A: Type>(map: Map<A>, kvs: List<Pair<String,A>>): Map<A>
     cons: Kindelia.extend<A>(map{kvs.head@fst} <- kvs.head@snd, kvs.tail)
   }
 
+Kindelia.call_list(vals: List<Kindelia.Term>, args: List<Pair<String,Kindelia.Type>>): List<Pair<Kindelia.Term,Kindelia.Type>>
+  case vals args {
+    cons cons: List.cons!({vals.head, args.head@snd}, Kindelia.call_list(vals.tail, args.tail))
+  } default []
+
+Kindelia.case_list(name: String, ctrs: List<Kindelia.Constructor>, cses: List<Kindelia.Term>): List<Pair<Kindelia.Args,Kindelia.Term>>
+  case ctrs cses {
+    cons cons:
+      let args = [for arg in ctrs.head@args: {name | "." | arg@fst, arg@snd}]
+      let body = cses.head
+      let rest = Kindelia.case_list(name, ctrs.tail, cses.tail)
+      {args, body} & rest
+  } default []
+
+//Kindelia.names(args: List<Pair<String,Kindelia.Type>>): List<A>
+  //case args {
+    //nil: []
+    //cons: List.cons!(args.head@fst, args.tail)
+  //}
+
+//Kindelia.types(args: List<Pair<String,Kindelia.Type>>): List<A>
+  //case args {
+    //nil: []
+    //cons: List.cons!(args.head@snd, args.tail)
+  //}
+
 // Type-Checking
 // -------------
 
@@ -218,9 +238,10 @@ Kindelia.check(
   //log("-- ctx: " | String.join(", ", List.map!!((a) a@fst|":"|Kindelia.show.type(world,a@snd), Map.to_list!(context))))  // DEBUG
   //log("")  // DEBUG
   case term {
-    var:
-      let vtyp = context{term.name} abort false
-      Kindelia.equal(vtyp, type)
+    var: case context{term.name} as got {
+      none: false
+      some: Kindelia.equal(got.value, type)
+    }
     let:
       let expr = Kindelia.check(context, world, term.expr, term.type)
       let body = Kindelia.check(context{term.name} <- term.type, world, term.body, type)
@@ -230,28 +251,42 @@ Kindelia.check(
       use bond = Kindelia.get_bond(world, term.bond) abort false
       let size = Nat.eql(List.length!(term.args), List.length!(bond.args))
       let otyp = Kindelia.equal(bond.otyp, type)
-      let args = List.zip!!(term.args, [for x in bond.args: x@snd])
-      let args = List.all!((x) Kindelia.check(context, world, x@fst, x@snd), args)
+
+      let args = true
+      let args = for arg in Kindelia.call_list(term.args, bond.args):
+        args && Kindelia.check(context, world, arg@fst, arg@snd)
       size && otyp && args
+
+      //let args = List.zip!!(term.args, [for x in bond.args: x@snd])
+      //let args = List.all!((x) Kindelia.check(context, world, x@fst, x@snd), args)
+      //size && otyp && args
     create: case type {
       data:
         use data = Kindelia.get_data(world, type.name) abort false
         //use ctor = Kindelia.get_constructor_value(data,term.ctor) abort false
         use ctor = data.ctrs[term.ctor] abort false
         let size = Nat.eql(List.length!(term.vals), List.length!(ctor.args))
-        let vals = List.zip!!(term.vals, [for x in ctor.args: x@snd])
-        let vals = List.all!((x) Kindelia.check(context, world, x@fst, x@snd), vals)
+        
+        let vals = true
+        let vals = for arg in Kindelia.call_list(term.vals, ctor.args):
+          vals && Kindelia.check(context, world, arg@fst, arg@snd)
+
+        //let vals = List.zip!!(term.vals, [for x in ctor.args: x@snd])
+        //let vals = List.all!((x) Kindelia.check(context, world, x@fst, x@snd), vals)
         size && vals
     } default false
     match: 
       use data = Kindelia.get_data(world, term.data) abort false
-      let size = Nat.eql(List.length!(term.cses),List.length!(data.ctrs))
+      let size = Nat.eql(List.length!(term.cses), List.length!(data.ctrs))
       let expr = Kindelia.check(context, world, Kindelia.Term.var(term.name), Kindelia.Type.data(term.data))
-      let cses = List.zipped_with!!(term.cses, data.ctrs)!((case_body, case_ctor)
-        let args = [for arg in case_ctor@args: {term.name | "." | arg@fst, arg@snd}]
-        let ctx2 = Kindelia.extend!(context, args)
-        Kindelia.check(ctx2, world, case_body, type))
-      size && List.and(cses)
+      let cses = true
+      let cses = for cse in Kindelia.case_list(term.name, data.ctrs, term.cses):
+        cses && Kindelia.check(Kindelia.extend!(context, cse@fst), world, cse@snd, type)
+      //let cses = List.zipped_with!!(term.cses, data.ctrs)!((case_body, case_ctor)
+        //let args = [for arg in case_ctor@args: {term.name | "." | arg@fst, arg@snd}]
+        //let ctx2 = Kindelia.extend!(context, args)
+        //Kindelia.check(ctx2, world, case_body, type))
+      size && cses
     word: case type {
       word: true
     } default false
@@ -278,7 +313,7 @@ Kindelia.check(
 // Evaluation
 // ----------
 
-// opcode  | gas cost
+// opcode  | cost
 // ------- | -------------------------------
 // var     | 1
 // subs    | 1
@@ -319,32 +354,34 @@ Kindelia.cost.bind: Nat
   1
 
 // Reduces a pure term to weak normal form
-Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
-  let {world, subst, fresh, gas, term} = state
+Kindelia.reduce(state: Kindelia.Runtime<Kindelia.Term>): Kindelia.Runtime<Kindelia.Term>
+  let {world, subst, fresh, costs, term} = state
   //log("-- run " | Kindelia.show.term(world,Kindelia.Type.word,term)) // DEBUG
   //log("-- var " | String.join(", ", List.map!!((x) x@fst|":"|Kindelia.show.term(world,Kindelia.Type.word,x@snd), Map.to_list!(subst)))) // DEBUG
   //log("")
   case term {
     var:
-      let term = subst{term.name} <> term
-      let {world, subst, fresh, gas, term} = Kindelia.reduce({world, subst, fresh, gas, term})
-      {world, subst{term.name} <- term, fresh, gas, term}
+      let {world, subst, fresh, costs, term} = Kindelia.reduce({world, subst, fresh, costs, subst{term.name} <> term})
+      {world, subst{term.name} <- term, fresh, costs, term}
     let:
-      let {world, subst ,fresh, gas, expr} = Kindelia.normalize({world, subst, fresh, gas, term.expr})
+      let {world, subst ,fresh, costs, expr} = Kindelia.reduce({world, subst, fresh, costs, term.expr})
       let subst = subst{term.name} <- expr
-      let gas   = Kindelia.cost.let + gas
-      Kindelia.reduce({world, subst, fresh, gas, term.body})
+      let costs = Kindelia.cost.let + costs
+      Kindelia.reduce({world, subst, fresh, costs, term.body})
     call:
       use bond = Kindelia.get_bond(world, term.bond) abort state
-      let inam = List.mapped!(bond.args)!(Pair.fst!!)
-      let {table, fresh, inam} = Kindelia.rename.many({}, fresh, inam)
-      let {fresh, main} = Kindelia.sanitize(world, table, fresh, bond.main)
-      let {world, subst, fresh, gas, args} = Kindelia.normalize.many({world, subst, fresh, gas, term.args})
-      let subst = Kindelia.extend!(subst, List.zip!!(inam, args))
-      let gas = Kindelia.cost.create(List.length!(term.args)) + gas
-      Kindelia.reduce({world, subst, fresh, gas, main})
+      let nam0 = [for x in bond.args: x@fst]
+      let {fresh, nam1} = Kindelia.fresh.many(fresh, List.length!(nam0))
+      let {fresh, main} = Kindelia.sanitize(world, fresh, Kindelia.extend!({},List.zip!!(nam0,nam1)), bond.main)
+      let {world, subst, fresh, costs, args} = Kindelia.reduce.many({world, subst, fresh, costs, term.args})
+      let subst = Kindelia.extend!(subst, List.zip!!(nam1, args))
+      let costs = Kindelia.cost.create(List.length!(term.args)) + costs
+      Kindelia.reduce({world, subst, fresh, costs, main})
+    create:
+      let {world, subst, fresh, costs, vals} = Kindelia.reduce.many({world, subst, fresh, costs, term.vals})
+      {world, subst, fresh, costs, Kindelia.Term.create(term.ctor, vals)}
     match:
-      let {world, subst, fresh, gas, expr} = Kindelia.reduce({world, subst, fresh, gas, subst{term.name}<>Kindelia.Term.word(0)})
+      let {world, subst, fresh, costs, expr} = Kindelia.reduce({world, subst, fresh, costs, subst{term.name}<>Kindelia.Term.word(0)})
       case expr {
         create:
           use data  = Kindelia.get_data(world,term.data) abort state
@@ -352,12 +389,14 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
           let body  = term.cses[expr.ctor] abort state
           let nams  = List.map!!((args) term.name|"."|args@fst, ctor@args)
           let subst = Kindelia.extend!(subst, List.zip!!(nams, expr.vals))
-          let gas   = Kindelia.cost.match(List.length!(expr.vals)) + gas
-          Kindelia.reduce({world, subst, fresh, gas, body})
+          let costs = Kindelia.cost.match(List.length!(expr.vals)) + costs
+          Kindelia.reduce({world, subst, fresh, costs, body})
       } default state
+    word:
+      {world, subst, fresh, costs, term}
     compare:
-      let {world, subst, fresh, gas, val0} = Kindelia.reduce({world, subst, fresh, gas, term.val0})
-      let {world, subst, fresh, gas, val1} = Kindelia.reduce({world, subst, fresh, gas, term.val1})
+      let {world, subst, fresh, costs, val0} = Kindelia.reduce({world, subst, fresh, costs, term.val0})
+      let {world, subst, fresh, costs, val1} = Kindelia.reduce({world, subst, fresh, costs, term.val1})
       let term = case val0 val1 {
         word word: case U64.cmp(val0.numb, val1.numb) {
           ltn: term.iflt
@@ -365,11 +404,11 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
           gtn: term.ifgt
         }
       } default term
-      let gas = Kindelia.cost.compare + gas
-      {world, subst, fresh, gas, term}
+      let costs = Kindelia.cost.compare + costs
+      {world, subst, fresh, costs, term}
     operate:
-      let {world, subst, fresh, gas, val0} = Kindelia.reduce({world, subst, fresh, gas, term.val0})
-      let {world, subst, fresh, gas, val1} = Kindelia.reduce({world, subst, fresh, gas, term.val1})
+      let {world, subst, fresh, costs, val0} = Kindelia.reduce({world, subst, fresh, costs, term.val0})
+      let {world, subst, fresh, costs, val1} = Kindelia.reduce({world, subst, fresh, costs, term.val1})
       let term = case val0 val1 {
         word word: case term.oper {
           add: Kindelia.Term.word(U64.add(val0.numb,val1.numb))
@@ -382,134 +421,82 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
           xor: Kindelia.Term.word(U64.xor(val0.numb,val1.numb))
         }
       } default term
-      let gas = Kindelia.cost.operate + gas
-      {world, subst, fresh, gas, term}
+      let costs = Kindelia.cost.operate + costs
+      {world, subst, fresh, costs, term}
     bind:
       use bond = Kindelia.get_bond(world, term.bond) abort state
-      let {world, subst, fresh, gas, expr} = Kindelia.normalize({world, subst, fresh, gas, term.expr})
+      let {world, subst, fresh, costs, expr} = Kindelia.reduce({world, subst, fresh, costs, term.expr})
       let entry = Kindelia.Entry.bond(bond@main <- expr)
       let world = world@entry{term.bond} <- entry
-      let gas = Kindelia.cost.bind + gas
-      Kindelia.reduce({world, subst, fresh, gas, term.cont})
-  } default state
+      let costs = Kindelia.cost.bind + costs
+      Kindelia.reduce({world, subst, fresh, costs, term.cont})
+  }
 
-// Reduces a term to normal form
-Kindelia.normalize(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
-  let {world, subst, fresh, gas, term} = Kindelia.reduce(state)
-  //log("- nrm " | Kindelia.show.term(world,term)) // DEBUG
-  //log("- var " | String.join(", ", List.map!!((x) x@fst|":"|Kindelia.show.term(world,x@snd), Map.to_list!(subst)))) // DEBUG
-  //log("")
-  case term {
-    create:
-      let {world, subst, fresh, gas, vals} = Kindelia.normalize.many({world, subst, fresh, gas, term.vals})
-      {world, subst, fresh, gas, Kindelia.Term.create(term.ctor, vals)}
-    match:
-      use ctrs = Kindelia.get_ctrs(world, term.data) abort {world, subst, fresh, gas, term}
-      let {world, subst, fresh, gas, cses} = Kindelia.normalize.cases(ctrs, term.name, {world, subst, fresh, gas, term.cses})
-      {world, subst, fresh, gas, Kindelia.Term.match(term.name, term.data, cses)}
-    compare:
-      let {world, subst, fresh, gas, val0} = Kindelia.normalize({world, subst, fresh, gas, term.val0})
-      let {world, subst, fresh, gas, val1} = Kindelia.normalize({world, subst, fresh, gas, term.val1})
-      let {world, subst, fresh, gas, iflt} = Kindelia.normalize({world, subst, fresh, gas, term.iflt})
-      let {world, subst, fresh, gas, ifeq} = Kindelia.normalize({world, subst, fresh, gas, term.ifeq})
-      let {world, subst, fresh, gas, ifgt} = Kindelia.normalize({world, subst, fresh, gas, term.ifgt})
-      {world, subst, fresh, gas, Kindelia.Term.compare(val0, val1, iflt, ifeq, ifgt)}
-    operate:
-      let {world, subst, fresh, gas, val0} = Kindelia.normalize({world, subst, fresh, gas, term.val0})
-      let {world, subst, fresh, gas, val1} = Kindelia.normalize({world, subst, fresh, gas, term.val1})
-      {world, subst, fresh, gas, Kindelia.Term.operate(term.oper, val0, val1)}
-    bind:
-      use bond = Kindelia.get_bond(world, term.bond) abort state
-      let {world, subst, fresh, gas, expr} = Kindelia.normalize({world, subst, fresh, gas, term.expr})
-      let {world, subst, fresh, gas, cont} = Kindelia.normalize({world, subst, fresh, gas, term.cont})
-      {world, subst, fresh, gas, Kindelia.Term.bind(term.bond, expr, cont)}
-  } default {world, subst, fresh, gas, term}
-
-Kindelia.normalize.bound(names: List<String>, state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
-  let {world, subst, fresh, gas, term} = state
-  let subst = Kindelia.extend!(subst, List.zip!!(names, List.map!!(Kindelia.Term.var,names)))
-  Kindelia.normalize({world, subst, fresh, gas, term})
-
-Kindelia.normalize.cases(ctrs: List<Kindelia.Constructor>, name: String, state: Kindelia.Runtime.Terms): Kindelia.Runtime.Terms
-  let {world, subst, fresh, gas, cses} = state
-  case ctrs cses {
-    nil nil:
-      state
-    cons cons:
-      let nams = List.map!!((args) name|"."|args@fst, ctrs.head@args)
-      let vals = List.map!!(Kindelia.Term.var, nams)
-      let subst = Kindelia.extend!(subst, List.zip!!(nams, vals))
-      let {world, subst, fresh, gas, head} = Kindelia.normalize({world, subst, fresh, gas, cses.head})
-      let {world, subst, fresh, gas, tail} = Kindelia.normalize.cases(ctrs.tail, name, {world, subst, fresh, gas, cses.tail})
-      {world, subst, fresh, gas, head & tail}
-  } default state
-
-Kindelia.normalize.many(state: Kindelia.Runtime.Terms): Kindelia.Runtime.Terms
-  let {world, subst, fresh, gas, vals} = state
+Kindelia.reduce.many(state: Kindelia.Runtime<List<Kindelia.Term>>): Kindelia.Runtime<List<Kindelia.Term>>
+  let {world, subst, fresh, costs, vals} = state
   case vals {
     nil:
       state
     cons:
-      let {world, subst, fresh, gas, head} = Kindelia.normalize({world, subst, fresh, gas, vals.head})
-      let {world, subst, fresh, gas, tail} = Kindelia.normalize.many({world, subst, fresh, gas, vals.tail})
-      {world, subst, fresh, gas, head & tail}
+      let {world, subst, fresh, costs, head} = Kindelia.reduce({world, subst, fresh, costs, vals.head})
+      let {world, subst, fresh, costs, tail} = Kindelia.reduce.many({world, subst, fresh, costs, vals.tail})
+      {world, subst, fresh, costs, head & tail}
   }
 
 // Renames variables to unique names
 Kindelia.sanitize(
   world: Kindelia.World
-  table: Map<String>
   fresh: Nat
+  table: Map<String>
   term: Kindelia.Term
 ): Pair<Nat, Kindelia.Term>
   case term {
     var:
       let term = Kindelia.Term.var(table{term.name} <> term.name)
-      //log("rename " | term.name | " to " | (table{term.name} <> term.name))
       {fresh, term}
-    call:
-      let {fresh, args} = Kindelia.sanitize.many(world, table, fresh, term.args)
-      {fresh, Kindelia.Term.call(term.bond, args)}
     let:
-      let {fresh, expr} = Kindelia.sanitize(world, table, fresh, term.expr)
-      let {table, fresh, name} = Kindelia.rename(table, fresh, term.name)
-      let {fresh, body} = Kindelia.sanitize(world, table, fresh, term.body)
+      let {fresh, name} = Kindelia.fresh(fresh)
+      let {fresh, expr} = Kindelia.sanitize(world, fresh, table, term.expr)
+      let {fresh, body} = Kindelia.sanitize(world, fresh, table{term.name} <- name, term.body)
       {fresh, Kindelia.Term.let(name, term.type, expr, body)}
+    call:
+      let {fresh, args} = Kindelia.sanitize.many(world, fresh, table, term.args)
+      {fresh, Kindelia.Term.call(term.bond, args)}
     create:
-      let {fresh, vals} = Kindelia.sanitize.many(world, table, fresh, term.vals)
+      let {fresh, vals} = Kindelia.sanitize.many(world, fresh, table, term.vals)
       {fresh, Kindelia.Term.create(term.ctor, vals)}
     match:
       let ctrs = Kindelia.get_ctrs(world, term.data) <> []
-      let old_name = term.name
-      let new_name = table{term.name} <> term.name
-      let {fresh, cses} = Kindelia.sanitize.cases(world, table, fresh, old_name, new_name, ctrs, term.cses)
-      {fresh, Kindelia.Term.match(new_name, term.data, cses)}
+      let nam0 = term.name
+      let nam1 = table{term.name} <> term.name
+      let {fresh, cses} = Kindelia.sanitize.cases(world, fresh, table, nam0, nam1, ctrs, term.cses)
+      {fresh, Kindelia.Term.match(nam1, term.data, cses)}
     word:
       {fresh, Kindelia.Term.word(term.numb)}
     compare:
-      let {fresh, val0} = Kindelia.sanitize(world, table, fresh, term.val0)
-      let {fresh, val1} = Kindelia.sanitize(world, table, fresh, term.val1)
-      let {fresh, iflt} = Kindelia.sanitize(world, table, fresh, term.iflt)
-      let {fresh, ifeq} = Kindelia.sanitize(world, table, fresh, term.ifeq)
-      let {fresh, ifgt} = Kindelia.sanitize(world, table, fresh, term.ifgt)
+      let {fresh, val0} = Kindelia.sanitize(world, fresh, table, term.val0)
+      let {fresh, val1} = Kindelia.sanitize(world, fresh, table, term.val1)
+      let {fresh, iflt} = Kindelia.sanitize(world, fresh, table, term.iflt)
+      let {fresh, ifeq} = Kindelia.sanitize(world, fresh, table, term.ifeq)
+      let {fresh, ifgt} = Kindelia.sanitize(world, fresh, table, term.ifgt)
       {fresh, Kindelia.Term.compare(val0, val1, iflt, ifeq, ifgt)}
     operate:
-      let {fresh, val0} = Kindelia.sanitize(world, table, fresh, term.val0)
-      let {fresh, val1} = Kindelia.sanitize(world, table, fresh, term.val1)
+      let {fresh, val0} = Kindelia.sanitize(world, fresh, table, term.val0)
+      let {fresh, val1} = Kindelia.sanitize(world, fresh, table, term.val1)
       {fresh, Kindelia.Term.operate(term.oper, val0, val1)}
     bind:
       use bond = Kindelia.get_bond(world, term.bond) abort {fresh, term}
-      let {fresh, expr} = Kindelia.sanitize(world, table, fresh, term.expr)
-      let {fresh, cont} = Kindelia.sanitize(world, table, fresh, term.cont)
+      let {fresh, expr} = Kindelia.sanitize(world, fresh, table, term.expr)
+      let {fresh, cont} = Kindelia.sanitize(world, fresh, table, term.cont)
       {fresh, Kindelia.Term.bind(term.bond, expr, cont)}
   }
 
 Kindelia.sanitize.cases(
   world: Kindelia.World
-  table: Map<String>
   fresh: Nat
-  old_name: String
-  new_name: String
+  table: Map<String>
+  nam0: String
+  nam1: String
   ctrs: List<Kindelia.Constructor>
   cses: List<Kindelia.Term>
 ): Pair<Nat, List<Kindelia.Term>>
@@ -517,43 +504,40 @@ Kindelia.sanitize.cases(
     nil nil:
       {fresh, []}
     cons cons:
-      let new_table = table
-      let new_table = for field in ctrs.head@args: new_table{old_name | "." | field@fst} <- new_name | "." | field@fst
-      let {fresh, head} = Kindelia.sanitize(world, new_table, fresh, cses.head)
-      let {fresh, tail} = Kindelia.sanitize.cases(world, table, fresh, old_name, new_name, ctrs.tail, cses.tail)
+      let table2 = table
+      let table2 = for field in ctrs.head@args:
+        table2{nam0 | "." | field@fst} <- nam1 | "." | field@fst
+      let {fresh, head} = Kindelia.sanitize(world, fresh, table2, cses.head)
+      let {fresh, tail} = Kindelia.sanitize.cases(world, fresh, table, nam0, nam1, ctrs.tail, cses.tail)
       {fresh, head & tail}
   } default {fresh, []}
 
 Kindelia.sanitize.many(
   world: Kindelia.World
-  table: Map<String>
   fresh: Nat
+  table: Map<String>
   terms: List<Kindelia.Term>
 ): Pair<Nat, List<Kindelia.Term>>
   case terms {
     nil:
       {fresh, []}
     cons:
-      let {fresh, head} = Kindelia.sanitize(world, table, fresh, terms.head)
-      let {fresh, tail} = Kindelia.sanitize.many(world, table, fresh, terms.tail)
+      let {fresh, head} = Kindelia.sanitize(world, fresh, table, terms.head)
+      let {fresh, tail} = Kindelia.sanitize.many(world, fresh, table, terms.tail)
       {fresh, head & tail}
   }
 
-// Generates a new name to replace old_name
-Kindelia.rename(table: Map<String>, fresh: Nat, old_name: String): Triple<Map<String>, Nat, String>
-    let new_name = "$" | Nat.show(fresh)
-    let table = table{old_name} <- new_name
-    let fresh = Nat.succ(fresh)
-    {table, fresh, new_name}
+Kindelia.fresh(fresh: Nat): Pair<Nat, String>
+  {Nat.succ(fresh), "$" | Nat.show(fresh)}
 
-Kindelia.rename.many(table: Map<String>, fresh: Nat, names: List<String>): Triple<Map<String>, Nat, List<String>>
-  case names {
-    nil:
-      {table, fresh, []}
-    cons:
-      let {table, fresh, head} = Kindelia.rename(table, fresh, names.head)
-      let {table, fresh, tail} = Kindelia.rename.many(table, fresh, names.tail)
-      {table, fresh, head & tail}
+Kindelia.fresh.many(fresh: Nat, count: Nat): Pair<Nat, List<String>>
+  case count {
+    zero:
+      {fresh, []}
+    succ:
+      let {fresh, head} = Kindelia.fresh(fresh)
+      let {fresh, tail} = Kindelia.fresh.many(fresh, count.pred)
+      {Nat.succ(fresh), head & tail}
   }
 
 // Transaction
@@ -576,8 +560,7 @@ Kindelia.transact(
       case world@entry{bond.name} as got {
         none:
           let world = world@entry{bond.name} <- Kindelia.Entry.bond(bond)
-          let {inam, ityp} = List.unzip!!(bond.args)
-          let context = Kindelia.extend<Kindelia.Type>({}, List.zip!!(inam, ityp))
+          let context = Kindelia.extend<Kindelia.Type>({}, bond.args)
           if Kindelia.check(context, world, bond.main, bond.otyp) then
             some({world, "[bond] " | bond.name})
           else
@@ -592,8 +575,8 @@ Kindelia.transact(
         some:
           let call = Kindelia.Term.call(eval.auth.value@bond, eval.auth.value@args)
           if Kindelia.check({}, world, call, Kindelia.Type.word) then
-            // TODO: add this to the total gas cost
-            let {world, subst, fresh, gas, norm} = Kindelia.normalize({world, {}, 0, 0, call})
+            // TODO: add this to the total costs cost
+            let {world, subst, fresh, costs, norm} = Kindelia.reduce({world, {}, 0, 0, call})
             case norm {
               word: U64.eql(norm.numb, 1#64)
             } default false
@@ -602,21 +585,21 @@ Kindelia.transact(
       }
       // Executes block
       if auth && Kindelia.check({}, world, eval.term, eval.type) then
-        let {fresh, term} = Kindelia.sanitize(world, {}, 0, eval.term)
-        let {world, subst, fresh, gas, term} = Kindelia.normalize({world, {}, fresh, 0, term})
-        some({world, "[eval] " | "<$" | Nat.show(gas) | "> " | Kindelia.show.term(world, eval.type, term)})
+        let {fresh, term} = Kindelia.sanitize(world, 0, {}, eval.term)
+        let {world, subst, fresh, costs, term} = Kindelia.reduce({world, {}, fresh, 0, term})
+        some({world, "[eval] " | "<$" | Nat.show(costs) | "> " | Kindelia.show.term(world, eval.type, term)})
       else
         none
     new_name:
       let name = transaction.name
-      case world@names@name_to_index{name} as got {
+      case world@names@numb{name} as got {
         some:
           none
         none:
-          let indx = Nat.show(world@names@count)
-          let world@names@name_to_index{name} <- world@names@count
-          let world@names@index_to_name{indx} <- name
-          let world@names@count <- world@names@count + 1
+          let indx = Nat.show(world@names@size)
+          let world@names@numb{name} <- world@names@size
+          let world@names@name{indx} <- name
+          let world@names@size <- world@names@size + 1
           some({world, "[name] " | name})
       }
   }
@@ -749,7 +732,7 @@ Kindelia.deserialize.letters(bits: Bits): Pair<Bits,String>
       let {bits, tail} = Kindelia.deserialize.letters(bits)
       let numb = Nat.to_u16(numb)
       let head =
-        if U16.btw( 0, numb,  9) then
+        if U16.btw(0, numb, 9) then
           U16.add(numb, '0')
         else if U16.btw(10, numb, 35) then
           U16.add(U16.sub(numb,10#16), 'A')
@@ -763,7 +746,7 @@ Kindelia.deserialize.letters(bits: Bits): Pair<Bits,String>
   }
 
 Kindelia.serialize.name(world: Kindelia.World, name: String): Bits
-  case world@names@name_to_index{name} as found {
+  case world@names@numb{name} as found {
     none: Bits.o(Kindelia.serialize.letters(name))
     some: Bits.i(Kindelia.serialize.varlen(found.value))
   }
@@ -774,7 +757,7 @@ Kindelia.deserialize.name(world: Kindelia.World, bits: Bits): Pair<Bits,String>
       Kindelia.deserialize.letters(bits.pred)
     i:
       let {bits,index} = Kindelia.deserialize.varlen(bits.pred)
-      {bits, world@names@index_to_name{Nat.show(index)} <> ""}
+      {bits, world@names@name{Nat.show(index)} <> ""}
     e:
       {Bits.e, ""}
   }
@@ -1596,7 +1579,7 @@ Kindelia.parse.block(world: Kindelia.World): Parser<List<Kindelia.Transaction>>
 // ---
 
 Kindelia.api.run(code: String): IO<Unit>
-  Kindelia.api.run.go(Kindelia.genesis, 0, code)
+  Kindelia.api.run.go(Kindelia.World.new(Kindelia.Names.new(0,{},{}), {}), 0, code)
 
 Kindelia.api.run.go(
   world: Kindelia.World

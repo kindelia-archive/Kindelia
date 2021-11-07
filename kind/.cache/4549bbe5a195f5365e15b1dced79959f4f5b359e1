@@ -1,1 +1,1 @@
-@(world:Kindelia.World) @(table:(Map String)) @(fresh:Nat) @(terms:(List Kindelia.Term)) ((Pair Nat) (List Kindelia.Term))
+@(world:Kindelia.World) @(fresh:Nat) @(table:(Map String)) @(terms:(List Kindelia.Term)) ((Pair Nat) (List Kindelia.Term))

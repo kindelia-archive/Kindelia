@@ -1,1 +1,1 @@
-@(name:String) @(args:(List ((Pair String) Kindelia.Type))) Kindelia.Constructor
+@(name:String) @(args:Kindelia.Args) Kindelia.Constructor
