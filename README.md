@@ -7,18 +7,19 @@ transactions to be settled without third parties. Notably, Ethereum's built-in
 virtual machine made it a general-purpose computer, even though most of the
 protocol's complexity was not required to achieve Turing completeness. Kindelia
 is a massive simplification of this concept, trading features for raw
-simplicity. Since it does not have a native token, it is not a cryptocurrency
-itself, but currencies can be created as smart-contracts. In essence, Kindelia
-is a peer-to-peer read-eval-print loop (REPL), making it a minimal decentralized
-computer, and a politically neutral decentralized application platform.
+simplicity, in order to build a minimal decenralized computer. Since it does not
+have a native token, it is not a cryptocurrency itself, but currencies can be
+deployed as bonds. In essence, Kindelia is just a peer-to-peer interpreter for a
+functional programming language, making it a minimal, token-less decentralized
+application platform.
 
 Table of Contents
 =================
 
 * [Introduction](#introduction)
 * [Why Kindelia?](#why-kindelia)
-  * [Simplicity, for less developer centralization](#simplicity-for-less-developer-centralization)
-  * [Built on the foundation of type theory](#built-on-the-foundation-of-type-theory)
+  * [Simplicity, for political decentralization](#simplicity-for-political-decentralization)
+  * [Type theory, for absolute security](#type-theory-for-absolute-security)
 * [How it works?](#how-it-works)
   * [Transactions](#transactions)
   * [Statefulness](#statefulness)
@@ -32,6 +33,8 @@ Table of Contents
     * [Counting beta reductions](#counting-beta-reductions)
     * [Why not just impose an evaluation order?](#why-not-just-impose-an-evaluation-order)
     * [Kindelia's solution](#kindelias-solution)
+  * [Type-checking costs](#type-checking-costs)
+  * [Consensus](#consensus)
 * [Specification](#specification)
   * [Types](#types)
     * [Name](#name)
@@ -64,12 +67,10 @@ computer running in a peer-to-peer network. Kindelia has no native accounts nor
 currencies: just pure data and computation. In a way, it can be seen as a
 decentralized Turing machine, although we'd rather call it a decentralized
 lambda calculus machine. But this isn't correct either, due to the inherent
-difficulty in measuring the cost of a beta reduction.
-
-Before we start, a disclaimer: we love Ethereum! Kindelia isn't a competitor to
-it. Instead, it is an alternative that does some things better, and other things
-worse. In special, it sacrifices cutting-edge features in order to maximize
-security, simplicity and decentralization.
+difficulty in measuring the cost of a beta reduction. Compared to Ethereum,
+Kindelia is an alternative that maximizes security, simplicity and
+decentralization, but sacrifices throughput, scalability and cutting-edge
+features.
 
 Why Kindelia?
 =============
@@ -80,49 +81,25 @@ There are two main benefits for using Kindelia:
 
 2. It was built on the foundation of type theory.
 
-Simplicity, for less developer centralization 
----------------------------------------------
+### Simplicity, for political decentralization
 
-Ethereum is complex. Kindelia removes the bloat, keeping only the necessary to
-build a decentralized computer. There are no native accounts, currencies. Blocks
-are cleaner (no merkle-patricia trees, logs, bloom filters). The scripting
-language is much simpler.
+Ethereum is complex. Kindelia removes the bloat, keeping only the parts
+necessary to build a decentralized computer. As the result, **the entire project
+is implemented in less than 2000 lines of code, compared to hundreds of
+thousands for Ethereum**. While complexity isn't necessarily bad, there is value
+in making the protocol so simple: if anyone can easily write a node, then the
+class of core developers ceases to be special, eliminating the associated
+political power that comes with it.
 
-But what is wrong with complexity? For most common users, nothing. But
-complexity has a dangerous side-effect: the centralization of power in the hands
-of protocol developers. That is, while Ethereum nodes are decentralized, the
-development is not. This is its current node distribution:
+### Type theory, for absolute security
 
-```
-- geth         : 52.4%
-- openethereum : 36.9%
-- erigon       :  5.6%
-- nethermind   :  2.6%
-- besu         :  1.9%
-- others       :  0.4%
-```
-
-Half of the network nodes operate under the same client! This is not ideal,
-because 1. a bug in that client will affect the network, 2. it gives unfair
-political power to client developers. Kindelia aims to fix this by keeping the
-protocol so simple that anyone can implement it. That is, if everyone is a core
-developer, then being one ceases to be special. Moreover, multiple clients make
-the network resilient to bugs in specific software. Finally, there is value in
-users being able to fully understand the network in a reasonable amount of time,
-specially if these users are big players that must absolutely trust the network
-is secure before storing real money on it.
-
-Built on the foundation of type theory
---------------------------------------
-
-Kindelia's scripting language is designed with a type theoretical philosophy.
-That makes it inherently secure, for multiple reasons. For example,
-cross-contract communication is well-typed, eliminating, by construction, a wide
-class of bugs, including reentrancy attacks. It is also suitable for formal
-verification, allowing developers to easily prove theorems about its contracts.
-Building a network with these properties is challenging and, while there were
-attempts, no other network managed to accomplish this goal properly. We'll
-elaborate on this point later.
+Kindelia's internal language is founded on type theory. That makes it inherently
+secure, for many reasons. For example, cross-contract communication is
+well-typed, eliminating, by construction, a wide class of bugs, including
+reentrancy attacks. It is also suitable for formal verification, allowing
+developers to easily prove theorems about its contracts. Building a network
+with these properties is challenging and, while there were attempts, no other
+network managed to accomplish this goal properly. We'll elaborate on this later.
 
 How it works?
 =============
@@ -132,13 +109,6 @@ in a peer-to-peer network. Or, in other words, it is a decentralized
 read-eval-print loop, or REPL. That REPL has a global state, which can be
 altered by user-submitted transactions. A transaction can either declare a new
 name, a new type, a new function, or evaluate an expression.
-
-Kindelia doesn't have a built-in consensus algorithm: it is just a pure function
-that receives a sequence of transactions and computes a final state. As such, it
-relies on external networks to act as the sequencer. Kindelia's mainnet relies
-on Ubilog, a data-only peer-to-peer sequencer, but any sequencer could be used.
-For example, Kindelia-Ethereum and Kindelia-Bitcoin both exist, as separate
-logical networks.
 
 Transactions
 ------------
@@ -180,11 +150,10 @@ eval {
 } : Nat
 ```
 
-The transactions above declare the `Nat` name, the type of positive integers
-(`Nat`), a bond (global function or value) that doubles an integer (`double`),
-and then evaluate the expression `double(3)`, which results in `6`. Declaring
-names is optiona, but doing so compresses every reference to that name in
-upcoming blocks, saving space.
+The transactions above declare type of positive integers, a bond (global
+function or value) that doubles an integer, and then evaluate the expression
+`double(3)`, which results in `6`. Declaring names is optional, but doing so
+will improve the space efficiency of transactions that refer to that name.
 
 Statefulness
 ------------
@@ -222,21 +191,22 @@ The transactions above:
 
 Any transaction that calls `val()` afterwards will get `3`.
 
-Notice how, unlike Ethereum's contracts, Kindelia bond's don't have a notion of
-built-in state. Instead, the state of the entire network is just a big map of
-entries (types and bonds), and stateful applications just alter that global map.
-Of course, in order for that to work, bonds must restrict who can overwrite
-them. The `@inc` annotation after the `val()` bond means that `inc` owns it and,
-thus, rebind it. A bond can have multiple owners. A bond with no owner can't be
-overwritten and, just, is an immutable constant.
+Notice how, unlike Ethereum's contracts, Kindelia's bonds don't have an internal
+state. Instead, the state of the entire network is just a big map of entries
+(types and bonds), and stateful applications just alter that global map. Of
+course, in order for that to make sense, bonds must restrict who can overwrite
+them.  The `@inc` annotation after the `val()` bond means that `inc` owns it
+and, thus, can rebind it. A bond can have multiple owners. A bond with no owner
+can't be overwritten and, thus, is an immutable constant.
 
 Currencies
 ----------
 
-With stateful transactions, a currency could be easily created by deploying a
-suitable bond that keeps a set of balances as a state. Here is an example:
+Kindelia has no native currency or token, but, with stateful transactions, these
+could be easily created by deploying suitable bonds that keep a set of balances
+as their states. Here is a rough example:
 
-```
+```c
 bond CatCoin.balances : Map {
   Map@empty{}
 } @CatCoin
@@ -331,17 +301,16 @@ eval Bob(signature) {
 It is a transaction signed by Bob that simultaneously sends 1000 cat coin tokens
 to Alice, and 42 cat coin tokens to the block miner. As soon as Bob broadcasts
 that piece of data to the network, miners will be motivated to include it in a
-block in order to collect the $42 fee. This is not only simpler, but it has the
-added flexibility that users can pay miners in any token they like.
+block in order to collect the $42 fee. This has the added flexibility that users
+can pay miners in any token they like.
 
-Note there is no "gasPrice", that automatically convers consumed gas to tokens
-to be paid to the miner. Instead, users just pay a fixed amount that must be
-enuogh to cover the total cost of the transaction. For example, if a transaction
-takes 500 gas, and a blocks have a limit of 1000 gas, then that transaction
-should pay twice as much as a transaction that takes 250 gas; otherwise, miners
-will just fill that space with two 250-gas transactions instead. Clients will
-adjust that automatically, and a fee market will emerge naturally, with minimal
-protocol complexity.
+Note there is no "gasPrice" that automatically converts gas to miner fees.
+Instead, users just pay a fixed amount that must be enough to cover the cost of
+the transaction. For example, if a transaction takes 500 gas, and a blocks have
+a limit of 1000 gas, then that transaction should pay twice as much as a
+transaction that takes 250 gas; otherwise, miners will just fill that space with
+two 250-gas transactions instead. Clients will adjust fees automatically for
+users, and a fee market will emerge naturally, with minimal protocol complexity.
 
 Of course, that only works for `eval` transactions. What about `name`, `type`
 and `bond` transactions? To motivate miners to include these, an user must make
@@ -416,10 +385,6 @@ bond AnotherApp(...) : ... {
   ... dot(...) ...
 }
 ```
-
-Kindelia would deploy `dot` separately, as a pure function. Then, the next
-developer that deploys a game can, and will, use the same `dot` function in
-his/her own code, saving even more block space.
 
 In a way, every time an user deploys an app, he/she contributes to the pool of
 functions available for future users. This contracts with Ethereum, where
@@ -516,17 +481,15 @@ SMOD STOP CALLER
 
 If looking at that code and identifying where the "sum" function even begins,
 imagine proving a mathematical theorem about its execution. It would be almost
-impossible.
+impossible. A saner approach would be to implement a program in a higher level
+language, prove theorems under that language, and, finally, compile it to the
+EVM. This raises two problems:
 
-A saner approach would be to implement programs in a higher level language,
-compile it to the EVM, and prove theorems about that language. This raises two
-problems:
+1. Proving that the compiler is correct, which is very hard
 
-1. Proving that the compiler itself is correct (very hard)
+2. Calling external contracts still invalidates proofs
 
-2. Valling external contracts invalidates proofs
-
-For example, consider the following program:
+For example, consider the following contract:
 
 ```
 public function pay_bob() {
@@ -539,19 +502,21 @@ public function pay_bob() {
 }
 ```
 
-By just looking the program above, is easy to prove that Bob will always be
-paid, and that the `launch_nukes()` line is absolutely unreachable. After all,
-no matter the value of `x`, `or(not(x),x)` will always be true (try it!).
+From the code above, is easy to prove that Bob will always be paid, and that
+nukes will never launched. After all, no matter the value of `x`, the expression
+`or(not(x),x)` will always evaluate to `true` (try it!).
 
-Now, proving this for Solidity doesn't mean it will hold for the resulting EVM
-assembly. After all, the Solidity could have bugs. But even if Solidity is
-completely safe, the nukes could still be launched if `some_contract()`
-returned, say, `7`. Yes, that's not a bool, but the EVM doesn't type-check
-values returned by contracts, so they could be anything. In fact, as far as the
-EVM knows, bools are just 256-bit integers.
+The problem is, even if you prove that mathematically, that still wouldn't mean
+that nukes would never be launched, for two reasons. First, Solidity could have
+bugs; i.e., even if the proof holds under Solidity's semantics, it could not
+hold for the compiled bytecode it produces. But even if Solidity was fine, nukes
+could still be launched if the external `some_contract()` call returned, say,
+`7`. Yes, that's not a bool, but the EVM doesn't check that. As far as it is
+concerned, bools are just 256-bit integers, so that situation could happen,
+beating the proof's original assumptions and leading to "impossible" states.
 
 Kindelia programs aren't compiled to any kind of assembly. Instead, they're
-represented as-is on-chain. For example, the following Kindelia program:
+represented as expressions on-chain. For example, the following program:
 
 ```
 bond pay_bob(x: #word) : #word {
@@ -565,20 +530,21 @@ bond pay_bob(x: #word) : #word {
 }
 ```
 
-Is stored as an AST, or expression, that represents the program above, exactly
-as written. There is no compiled assembly. Because of that, if you write a proof
-that `pay_bob()` never reaches the `launch_nukes()` line, then that proof
-will be valid for the program that runs on-chain; after all, it is the same
-program, not some assembly output!
+Is stored, in memory, as an expression that represents the syntax tree above,
+exactly as written. Because of that, if you write a valid proof for the program
+above, then that proof would also be valid for the program that runs on-chain,
+because they're the same program! There is no compiled assembly involved.
 
-Of course, `pay_bob()` could still reach the `launch_nukes()` line if
-`some_contract()` returned something other than a `Bool`. That is why Kindelia
-has an on-chain type-checker that verifies every `bond` and `eval` that is
-deployed. This ensures that cross-contract communication is sound.
+Of course, the external bond, `some_contract()`, could still return a
+non-boolean value. That is why Kindelia has an on-chain type-checker that
+verifies every `bond` and `eval` that is deployed. This ensures that
+`some_contract()` always returns a bool, and, in general, that cross-contract
+communication is sound.
 
-Now, one might ask: wouldn't this be prohibitely expensive, in terms of
-computation costs? The answer is no, as long as a lot of caution is taken when
-designing the language. To understand why, let's talk about beta reduction.
+Now, one might ask: wouldn't a functional interpreter, plus an on-chain
+type-checker, be prohibitely expensive to run in a peer-to-peer computer? The
+answer is: no! As long as caution is taken when designing the language. To
+understand why, let's talk about beta reduction.
 
 The beta reduction problem
 --------------------------
@@ -601,7 +567,7 @@ Beta reduction is just a jargon for function application. It is a big deal,
 because it is the fundamental primitive behind functional languages. For
 example, consider the Python program below:
 
-```
+```python
 def f(x):
   return [x, x]
 
@@ -616,9 +582,9 @@ beta reduction.
 
 ### Counting beta reductions
 
-As such, to feature functions in our language, we just need to assign a cost to
-beta reduction, right? Yes, but there is a problem: we can't count how many beta
-reductions an evaluation needs! To understand why, consider the following Python
+To include functions in Kindelia, we need to assign a cost to beta reduction.
+That sounds like an easy task, but there is a problem: how do we count how many
+beta reductions an expression takes? For example, consider the following Python
 functions:
 
 
@@ -658,11 +624,11 @@ functions before evaluating arguments, we get a different count. So, which one
 is right?
 
 Initially, one might be tempted to just impose that arguments must be evaluated
-before functions are applied, and that the count should be computed by running
-programs in that order. After all, that is how most languages work, and seems to
-be more efficient from this example. But consider the following expression:
+before functions are applied, and that the count should be based on that
+evaluation order. After all, that is how most languages work, and seems to be
+more efficient. But consider the following expression:
 
-```c
+```python
 app(lambda y: dup(y(0)))
 ```
 
@@ -687,13 +653,13 @@ dup(1)                     # count = 3
 [1, 1]                     # count = 4
 ```
 
-In this case, the imposed strategy is less efficient than an alternative. Now,
-an attentive reader might have noticed that we reduced inside lambdas, which
-isn't how most languages do it. So, what about an strategy where arguments are
-reduced first, but no reduction takes place inside lambdas? Is it optimal?
+In this case, the strategy we imposed is less efficient than this alternative.
+Now, one might complain that we reduced inside lambdas. That's not how most
+languages work. Usually, eager languages do reduce arguments first, but don't
+reduce inside lambdas. So, what about that evaluation order? Is it optimal?
 Sadly, no. Here is a counter-example:
 
-```
+```python
 two(lambda x: inc(0))
 ```
 
@@ -718,79 +684,85 @@ two(lambda x: 1)                     # count = 1
 [1, 1]                               # count = 4
 ```
 
-Which, again, uses less beta reductions. The issue here is that, for any
-reduction strategy you choose, there will be some other reduction strategy
-that is better in some cases. There is no optimal choice.
+Which, again, uses less beta reductions. The underlying issue is that, for any
+reduction strategy you choose, there will be some other reduction strategy that
+is better in some cases. There is no optimal choice!
 
 ### Why not just impose an evaluation order?
 
 But why is that an issue? As long as nodes agree to use the same strategy, they
-should get the same count, even if isn't the best one, right? Sure, but this
-count would, then, be meaningless. To understand why, imagine what would happen
-if the network imposed the Python reduction order.
+should get the same count, even if isn't the best one, right? Sure, but miners
+would not agree with a single strategy. To understand why, imagine what would
+happen if the network imposed the Python reduction order.
 
-Initially, all would be fine. Eventually, a miner would realize he/she is able
-to flood the network with programs that perform better in an alternate strategy,
-and update his/her node to use it. So, for example, if the network charges 1000
-beta reductions for certain evaluation, but that miner is able to evaluate it
-using only 50, then he/she is having a massive computational advantage over
-everyone else. That is bad.
+Initially, all would be fine. Miners would evaluate arguments first, and
+everyone would agree about the costs. Problem is, eventually, a miner would
+realize he/she is able to validate blocks faster by using a different strategy,
+so he/she will update his/her node to use it. If the network charges 1000 beta
+reductions for certain evaluation, but that miner is able to evaluate it using
+only 50, then he/she is having a massive computational advantage over everyone
+else. That is good for the miner, but bad for the network.
 
 So, why can't everyone else just update their nodes to use the alternate
 strategy, too? They could, but, in that case, the entire network would be
-operating under a new strategy, which would be better in some cases, but much
-worse in others. The attacker could perform the same attack again, targeting
-programs that perform poorly in that strategy. Eventually, the present cost
-model would have no relationship with the actual computational cost of the
-transactions, and that is terrible.
+operating under a new strategy, which would be better in some cases, but worse
+in others. Eventually, the cost model would have no relationship with the actual
+computational cost of the transactions, and that is terrible.
 
 In short, it is not possible to measure the cost of evaluating a functional
 program in a decentralized network, and any attempt to do so will, over time, be
 no more accurate than just throwing dices. The only way to avoid this dance is
 to ship every one with an optimal evaluation strategy to begin with, but, other
-than subset restricteds of the lambda calculus, such a thing doesn't exist.
+than subset restricteds of the lambda calculus, such a thing doesn't exist! Any
+decentralized computer that claims to feature lambdas must either provide a
+solution to the optimal evaluation of functional programs, or deal with all
+sorts of overpriced, or underpriced, opcode spam attacks.
 
 ### Kindelia's solution
 
 So, how does Kindelia solve this problem?
 
-It doesn't. And it is important to stress that. Any decentralized computer that
-claims to feature functions must either provide a solution to the optimal
-evaluation of functional programs, or deal with all sorts of overpriced, or
-underpriced, opcode spam attacks.
+It doesn't. And it is important to stress that. Kindelia aims to be as
+functional as possible, while still being robust against spam. As such, it
+completely gives up on high-order functions. Note that Kindelia still feature
+datatypes, pattern-matching, global functions and recursion. Overall, this
+design makes it as efficient as a stack machine, while still retaining most of
+the benefits of a functional language. 
 
-As such, Kindelia aims to be as functional as possible, while still being robust
-against spam. As such, it consists of a mostly pure, expression-based language
-featuring datatypes, pattern-matching and recursion, but gives up on high-order
-functions.
+Note that we could actually feature high order functions, with some caution. For
+example, if functions could only be used linearly, or, even better, if they
+could be duplicated, but under the constraints of elementary affine logic, then
+it would still be possible to provide optimal evaluators for Kindelia. For the
+sake of simplicity, though, we just exclude high-order functions entirely, as
+these checks would greatly complicate the full node implementation.
 
-Note that we could, in theory, actually feature high order functions, as long as
-these couldn't be duplicated in certain ways. For example, if functions could
-only be used linearly, or, even better, if they could be copied, but under the
-constraint of elementary affine logic, then it would be possible to provide
-optimal evaluators for Kindelia.
-
-For the sake of simplicity, though, we just exclude high-order functions
-entirely. What is left is still a very solid functional language that is simple,
-secure, efficient, designed to be the core of a worldwide computer.
-
-Type-checking
--------------
+Type-checking costs
+-------------------
 
 Finally, on-chain type-checking also demands some special attention. Kindelia
-performs a type-check of every bond and eval transaction. As such, we
-specifically aim that the complexity of type-checking is linear in terms of the
-transaction size.
+type-checks every new bond or eval transaction. As such, we specifically aim
+that the complexity of type-checking remains linear in terms of the transaction
+size.  Because of that, dependent types are obviously not viable, since these
+rely heavily on high order functions. What about polymorphic types, though?
+These could indeed be implemented without making the network vulnerable to spam,
+but we also avoid them, for the sake of simplicity.
 
-Because of that, dependent types are obviously not viable, since these rely
-heavily on high order functions. Now, what about polymorphic types? Well, these
-could indeed be implemented without making the network vulnerable to spam, but
-we also avoid these, for the sake of simplicity.
+Kindelia only has only two kinds: words (64-bit unsigned integers) and
+user-defined datatypes. Since it is a simply-typed language, type-checking can
+be done by a single pass through the term's syntax tree, and type equality can
+be done by a single id comparison. That makes its type-checker as efficient as
+one could possibly be. Measuring the cost of type-checking isn't necessary,
+because it is bounded by the inherent block size limit.
 
-As such, Kindelia only has two kinds of types: words (64-bit unsigned integers)
-and user-defined datatypes. Since it is a simply-typed language, type-checking
-can be done by a single pass through the term's syntax tree, and type equality
-can be done by a single id comparison.
+Consensus
+---------
+
+Kindelia doesn't have a built-in consensus algorithm: it is just a pure function
+that receives a sequence of transactions and computes a final state. As such, it
+relies on external networks to act as the sequencer. Kindelia's mainnet relies
+on Ubilog, a data-only peer-to-peer sequencer, but any sequencer could be used.
+For example, Kindelia-Ethereum and Kindelia-Bitcoin both exist, as separate
+logical networks.
 
 Specification
 =============
