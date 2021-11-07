@@ -1,0 +1,1 @@
+%Kindelia.Names.Self(P:@(:Kindelia.Names) *) @(new:@(count:Nat) @(name_to_index:(Map Nat)) @(index_to_name:(Map String)) (P (((Kindelia.Names.new count) name_to_index) index_to_name))) (P Kindelia.Names.Self)

@@ -1,1 +1,1 @@
-#world #auth ((auth #auth Bits) #auth.bond #auth.args !bond = (Kindelia.serialize.name auth.bond); !args = (((Kindelia.serialize.list Kindelia.Term) ((Kindelia.serialize.term world) (List.nil String))) auth.args); (Bits.i ((Bits.concat bond) args)))
+#world #auth ((auth #auth Bits) #auth.bond #auth.args !bond = ((Kindelia.serialize.name world) auth.bond); !args = (((Kindelia.serialize.list Kindelia.Term) ((Kindelia.serialize.term world) (List.nil String))) auth.args); ((Bits.concat bond) args))

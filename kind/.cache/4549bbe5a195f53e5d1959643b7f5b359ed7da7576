@@ -1,1 +1,1 @@
-#world #typ (((typ #typ Bits) (Bits.o Bits.e)) #typ.name (Bits.i (Kindelia.serialize.name typ.name)))
+#world #typ (((typ #typ Bits) (Bits.o Bits.e)) #typ.name (Bits.i ((Kindelia.serialize.name world) typ.name)))

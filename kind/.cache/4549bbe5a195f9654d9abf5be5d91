@@ -1,1 +1,1 @@
-%Kindelia.World.Self(P:@(:Kindelia.World) *) @(new:@(names:(List String)) @(entry:(Map Kindelia.Entry)) (P ((Kindelia.World.new names) entry))) (P Kindelia.World.Self)
+%Kindelia.World.Self(P:@(:Kindelia.World) *) @(new:@(names:Kindelia.Names) @(entry:(Map Kindelia.Entry)) (P ((Kindelia.World.new names) entry))) (P Kindelia.World.Self)

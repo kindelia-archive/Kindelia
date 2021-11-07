@@ -1,6 +1,11 @@
 // Kindelia: a minimal decentralized computer
 // ==========================================
 
+// TODO:
+// - lazy sanitize
+// - owner
+// - name optimization
+
 // Types
 // -----
 
@@ -128,9 +133,17 @@ type Kindelia.Transaction {
   new_name(name: String)
 }
 
+type Kindelia.Names {
+  new(
+    count: Nat
+    name_to_index: Map<Nat>
+    index_to_name: Map<String>
+  )
+}
+
 type Kindelia.World {
   new(
-    names: List<String>
+    names: Kindelia.Names
     entry: Map<Kindelia.Entry>
   )
 }
@@ -155,7 +168,7 @@ Kindelia.Runtime.Terms: Type
 // -----
 
 Kindelia.genesis: Kindelia.World
-  Kindelia.World.new([], {})
+  Kindelia.World.new(Kindelia.Names.new(0,{},{}), {})
 
 Kindelia.get_data(world: Kindelia.World, name: String): Maybe<Kindelia.Data>
   Maybe {
@@ -178,12 +191,6 @@ Kindelia.get_ctrs(world: Kindelia.World, name: String): Maybe<List<Kindelia.Cons
     none: none
     some: some(got.value@ctrs)
   }
-
-Kindelia.get_constructor_index(data: Kindelia.Data, name: String): Maybe<Nat>
-  Maybe.mapped!(List.ifind!((i,ctr) String.eql(ctr@name,name), data@ctrs))!((x) x@fst)
-
-Kindelia.get_constructor_value(data: Kindelia.Data, name: String): Maybe<Kindelia.Constructor>
-  Maybe.mapped!(List.ifind!((i,ctr) String.eql(ctr@name,name), data@ctrs))!((x) x@snd)
 
 Kindelia.extend<A: Type>(map: Map<A>, kvs: List<Pair<String,A>>): Map<A>
   case kvs {
@@ -220,7 +227,6 @@ Kindelia.check(
       expr && body
     call:
       //log("-- call ")  // DEBUG
-      //let ownr = Kindelia.World.check.owner(context, term.func)
       use bond = Kindelia.get_bond(world, term.bond) abort false
       let size = Nat.eql(List.length!(term.args), List.length!(bond.args))
       let otyp = Kindelia.equal(bond.otyp, type)
@@ -323,17 +329,6 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
       let term = subst{term.name} <> term
       let {world, subst, fresh, gas, term} = Kindelia.reduce({world, subst, fresh, gas, term})
       {world, subst{term.name} <- term, fresh, gas, term}
-      //case term {
-        //create:
-          //let size  = List.length!(term.vals)
-          //let ivals = List.imapped!(term.vals)!((i,x) {"$" | Nat.show(fresh + i), x})
-          //let subst = Kindelia.extend!(subst, ivals)
-          //let term  = Kindelia.Term.create(term.ctor, [for x in ivals: Kindelia.Term.var(x@fst)])
-          //let subst = subst{term.name} <- term
-          //let fresh = fresh + size
-          //let gas   = Kindelia.cost.copy(size) + gas
-          //{world, subst, fresh, gas, term}
-      //} default 
     let:
       let {world, subst ,fresh, gas, expr} = Kindelia.normalize({world, subst, fresh, gas, term.expr})
       let subst = subst{term.name} <- expr
@@ -392,7 +387,6 @@ Kindelia.reduce(state: Kindelia.Runtime.Term): Kindelia.Runtime.Term
     bind:
       use bond = Kindelia.get_bond(world, term.bond) abort state
       let {world, subst, fresh, gas, expr} = Kindelia.normalize({world, subst, fresh, gas, term.expr})
-      // TODO: check if owner is allowed
       let entry = Kindelia.Entry.bond(bond@main <- expr)
       let world = world@entry{term.bond} <- entry
       let gas = Kindelia.cost.bind + gas
@@ -615,8 +609,16 @@ Kindelia.transact(
         none
     new_name:
       let name = transaction.name
-      let world = world@names <- world@names ++ [name]
-      some({world, "[name] " | name})
+      case world@names@name_to_index{name} as got {
+        some:
+          none
+        none:
+          let indx = Nat.show(world@names@count)
+          let world@names@name_to_index{name} <- world@names@count
+          let world@names@index_to_name{indx} <- name
+          let world@names@count <- world@names@count + 1
+          some({world, "[name] " | name})
+      }
   }
 
 // Serialization
@@ -717,7 +719,7 @@ Kindelia.deserialize.list<A: Type>(item: Bits -> Pair<Bits,A>, bits: Bits): Pair
       {bits, head & tail}
   }
 
-Kindelia.serialize.name(name: String): Bits
+Kindelia.serialize.letters(name: String): Bits
   case name {
     nil:
       Bits.o(Bits.e)
@@ -734,17 +736,17 @@ Kindelia.serialize.name(name: String): Bits
         else
           63#16
       let head = Kindelia.serialize.fixlen(6, U16.to_nat(numb))
-      let tail = Kindelia.serialize.name(name.tail)
+      let tail = Kindelia.serialize.letters(name.tail)
       Bits.i(Bits.concat(head, tail))
   }
 
-Kindelia.deserialize.name(bits: Bits): Pair<Bits,String>
+Kindelia.deserialize.letters(bits: Bits): Pair<Bits,String>
   case bits {
     e: {Bits.e, ""}
     o: {bits.pred, ""}
     i:
       let {bits, numb} = Kindelia.deserialize.fixlen(6, bits.pred)
-      let {bits, tail} = Kindelia.deserialize.name(bits)
+      let {bits, tail} = Kindelia.deserialize.letters(bits)
       let numb = Nat.to_u16(numb)
       let head =
         if U16.btw( 0, numb,  9) then
@@ -758,6 +760,23 @@ Kindelia.deserialize.name(bits: Bits): Pair<Bits,String>
         else
           '.'
       {bits, String.cons(head,tail)}
+  }
+
+Kindelia.serialize.name(world: Kindelia.World, name: String): Bits
+  case world@names@name_to_index{name} as found {
+    none: Bits.o(Kindelia.serialize.letters(name))
+    some: Bits.i(Kindelia.serialize.varlen(found.value))
+  }
+
+Kindelia.deserialize.name(world: Kindelia.World, bits: Bits): Pair<Bits,String>
+  case bits {
+    o:
+      Kindelia.deserialize.letters(bits.pred)
+    i:
+      let {bits,index} = Kindelia.deserialize.varlen(bits.pred)
+      {bits, world@names@index_to_name{Nat.show(index)} <> ""}
+    e:
+      {Bits.e, ""}
   }
 
 Kindelia.serialize.name.local(world: Kindelia.World, vars: List<String>, name: String): Bits
@@ -775,23 +794,23 @@ Kindelia.serialize.term(world: Kindelia.World, vars: List<String>, term: Kindeli
     var:
       Bits.o(Kindelia.serialize.name.local(world, vars, term.name))
     let:
-      let name = Kindelia.serialize.name(term.name)
+      let name = Kindelia.serialize.name(world, term.name)
       let type = Kindelia.serialize.type(world,term.type) // TODO
       let expr = Kindelia.serialize.term(world,vars,term.expr)
       let body = Kindelia.serialize.term(world,term.name&vars,term.body)
       Bits.i(Bits.o(Bits.o(Bits.o(Bits.concat(name, Bits.concat(type, Bits.concat(expr, body)))))))
     call:
-      let bond = Kindelia.serialize.name(term.bond)
+      let bond = Kindelia.serialize.name(world, term.bond)
       let args = Kindelia.serialize.list!(Kindelia.serialize.term(world,vars), term.args)
       Bits.i(Bits.i(Bits.o(Bits.o(Bits.concat(bond, args)))))
     create:
-      //let ctor = Kindelia.serialize.name(term.ctor)
+      //let ctor = Kindelia.serialize.name(world, term.ctor)
       let ctor = Kindelia.serialize.varlen(term.ctor)
       let vals = Kindelia.serialize.list!(Kindelia.serialize.term(world,vars), term.vals)
       Bits.i(Bits.o(Bits.i(Bits.o(Bits.concat(ctor, vals)))))
     match:
       let name = Kindelia.serialize.name.local(world,vars,term.name)
-      let data = Kindelia.serialize.name(term.data)
+      let data = Kindelia.serialize.name(world, term.data)
       let cses = Kindelia.serialize.cases(world,vars,term.name,Kindelia.get_ctrs(world,term.data)<>[],term.cses)
       Bits.i(Bits.i(Bits.i(Bits.o(Bits.concat(name, Bits.concat(data, cses))))))
     word:
@@ -810,7 +829,7 @@ Kindelia.serialize.term(world: Kindelia.World, vars: List<String>, term: Kindeli
       let val1 = Kindelia.serialize.term(world,vars,term.val1)
       Bits.i(Bits.o(Bits.i(Bits.i(Bits.concat(oper, Bits.concat(val0, val1))))))
     bind:
-      let bond = Kindelia.serialize.name(term.bond)
+      let bond = Kindelia.serialize.name(world, term.bond)
       let expr = Kindelia.serialize.term(world,vars,term.expr)
       let cont = Kindelia.serialize.term(world,vars,term.cont)
       Bits.i(Bits.i(Bits.i(Bits.i(Bits.concat(bond, Bits.concat(expr, cont))))))
@@ -825,13 +844,13 @@ Kindelia.deserialize.term(world: Kindelia.World, vars: List<String>, bits: Bits)
       let {bits,ctor} = Kindelia.deserialize.fixlen(3, bits.pred)
       switch Nat.eql(ctor) {
         0:
-          let {bits,name} = Kindelia.deserialize.name(bits)
+          let {bits,name} = Kindelia.deserialize.name(world, bits)
           let {bits,type} = Kindelia.deserialize.type(world,bits)
           let {bits,expr} = Kindelia.deserialize.term(world,vars,bits)
           let {bits,body} = Kindelia.deserialize.term(world,name&vars,bits)
           {bits, Kindelia.Term.let(name,type,expr,body)}
         1:
-          let {bits,bond} = Kindelia.deserialize.name(bits)
+          let {bits,bond} = Kindelia.deserialize.name(world, bits)
           let {bits,args} = Kindelia.deserialize.list!(Kindelia.deserialize.term(world,vars), bits)
           {bits, Kindelia.Term.call(bond,args)}
         2:
@@ -840,7 +859,7 @@ Kindelia.deserialize.term(world: Kindelia.World, vars: List<String>, bits: Bits)
           {bits, Kindelia.Term.create(ctor, vals)}
         3:
           let {bits,name} = Kindelia.deserialize.name.local(world,vars,bits)
-          let {bits,data} = Kindelia.deserialize.name(bits)
+          let {bits,data} = Kindelia.deserialize.name(world, bits)
           let {bits,cses} = Kindelia.deserialize.cases(world,vars,name,Kindelia.get_ctrs(world,data)<>[],bits)
           {bits, Kindelia.Term.match(name,data,cses)}
         4:
@@ -869,7 +888,7 @@ Kindelia.deserialize.term(world: Kindelia.World, vars: List<String>, bits: Bits)
           } default Kindelia.Operation.add
           {bits, Kindelia.Term.operate(oper, val0, val1)}
         7:
-          let {bits,bond} = Kindelia.deserialize.name(bits)
+          let {bits,bond} = Kindelia.deserialize.name(world, bits)
           let {bits,expr} = Kindelia.deserialize.term(world,vars,bits)
           let {bits,cont} = Kindelia.deserialize.term(world,vars,bits)
           {bits, Kindelia.Term.bind(bond,expr,cont)}
@@ -913,7 +932,7 @@ Kindelia.deserialize.cases(
 Kindelia.serialize.type(world: Kindelia.World, typ: Kindelia.Type): Bits
   case typ {
     word: Bits.o(Bits.e)
-    data: Bits.i(Kindelia.serialize.name(typ.name))
+    data: Bits.i(Kindelia.serialize.name(world, typ.name))
   }
 
 Kindelia.deserialize.type(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Type>
@@ -922,52 +941,52 @@ Kindelia.deserialize.type(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia
     0:
       {bits, Kindelia.Type.word}
     1:
-      let {bits,name} = Kindelia.deserialize.name(bits)
+      let {bits,name} = Kindelia.deserialize.name(world, bits)
       {bits, Kindelia.Type.data(name)}
   } default {bits, Kindelia.Type.word}
 
 Kindelia.serialize.data(world: Kindelia.World, data: Kindelia.Data): Bits
   open data
-  let name = Kindelia.serialize.name(data.name)
+  let name = Kindelia.serialize.name(world, data.name)
   let ctrs = Kindelia.serialize.list!(Kindelia.serialize.constructor(world), data.ctrs)
   Bits.concat(name, ctrs)
 
 Kindelia.deserialize.data(world: Kindelia.World, bits: Bits): Pair<Bits, Kindelia.Data>
-  let {bits,name} = Kindelia.deserialize.name(bits)
+  let {bits,name} = Kindelia.deserialize.name(world, bits)
   let {bits,ctrs} = Kindelia.deserialize.list!(Kindelia.deserialize.constructor(world), bits)
   {bits, Kindelia.Data.new(name,ctrs)}
 
 Kindelia.serialize.constructor(world: Kindelia.World, ctor: Kindelia.Constructor): Bits
   open ctor
-  let name = Kindelia.serialize.name(ctor.name)
+  let name = Kindelia.serialize.name(world, ctor.name)
   let args = Kindelia.serialize.list!(
-    Kindelia.serialize.pair!!(Kindelia.serialize.name, Kindelia.serialize.type(world)),
+    Kindelia.serialize.pair!!(Kindelia.serialize.name(world), Kindelia.serialize.type(world)),
     ctor.args
   )
   Bits.concat(name, args)
   
 Kindelia.deserialize.constructor(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Constructor>
-  let {bits,name} = Kindelia.deserialize.name(bits)
+  let {bits,name} = Kindelia.deserialize.name(world, bits)
   let {bits,args} = Kindelia.deserialize.list!(
-    Kindelia.deserialize.pair!!(Kindelia.deserialize.name, Kindelia.deserialize.type(world)),
+    Kindelia.deserialize.pair!!(Kindelia.deserialize.name(world), Kindelia.deserialize.type(world)),
     bits
   )
   {bits, Kindelia.Constructor.new(name, args)}
 
 Kindelia.serialize.bond(world: Kindelia.World, bond: Kindelia.Bond): Bits
   open bond
-  let name = Kindelia.serialize.name(bond.name)
-  let ownr = Kindelia.serialize.list!(Kindelia.serialize.name, bond.ownr)
-  let args = Kindelia.serialize.list!(Kindelia.serialize.pair!!(Kindelia.serialize.name, Kindelia.serialize.type(world)), bond.args)
+  let name = Kindelia.serialize.name(world, bond.name)
+  let ownr = Kindelia.serialize.list!(Kindelia.serialize.name(world), bond.ownr)
+  let args = Kindelia.serialize.list!(Kindelia.serialize.pair!!(Kindelia.serialize.name(world), Kindelia.serialize.type(world)), bond.args)
   let otyp = Kindelia.serialize.type(world, bond.otyp)
   let inam = List.reverse!(List.mapped!(bond.args)!(Pair.fst!!))
   let main = Kindelia.serialize.term(world, inam, bond.main)
   Bits.concat(name, Bits.concat(ownr, Bits.concat(args, Bits.concat(otyp, main))))
 
 Kindelia.deserialize.bond(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Bond>
-  let {bits,name} = Kindelia.deserialize.name(bits)
-  let {bits,ownr} = Kindelia.deserialize.list!(Kindelia.deserialize.name, bits)
-  let {bits,args} = Kindelia.deserialize.list!(Kindelia.deserialize.pair!!(Kindelia.deserialize.name, Kindelia.deserialize.type(world)), bits)
+  let {bits,name} = Kindelia.deserialize.name(world, bits)
+  let {bits,ownr} = Kindelia.deserialize.list!(Kindelia.deserialize.name(world), bits)
+  let {bits,args} = Kindelia.deserialize.list!(Kindelia.deserialize.pair!!(Kindelia.deserialize.name(world), Kindelia.deserialize.type(world)), bits)
   let {bits,otyp} = Kindelia.deserialize.type(world, bits)
   let inam = List.reverse!(List.mapped!(args)!(Pair.fst!!))
   let {bits,main} = Kindelia.deserialize.term(world, inam, bits)
@@ -985,7 +1004,7 @@ Kindelia.serialize.transaction(world: Kindelia.World, transaction: Kindelia.Tran
       let term = Kindelia.serialize.eval(world, transaction.eval)
       Bits.o(Bits.i(term))
     new_name:
-      let name = Kindelia.serialize.name(transaction.name)
+      let name = Kindelia.serialize.name(world, transaction.name)
       Bits.i(Bits.i(name))
   }
 
@@ -1002,7 +1021,7 @@ Kindelia.deserialize.transaction(world: Kindelia.World, bits: Bits): Pair<Bits,K
       let {bits,eval} = Kindelia.deserialize.eval(world, bits)
       {bits, Kindelia.Transaction.new_eval(eval)}
     3:
-      let {bits,name} = Kindelia.deserialize.name(bits)
+      let {bits,name} = Kindelia.deserialize.name(world, bits)
       {bits, Kindelia.Transaction.new_name(name)}
   } default {bits, Kindelia.Transaction.new_data(Kindelia.Data.new("",[]))}
 
@@ -1021,12 +1040,12 @@ Kindelia.deserialize.eval(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia
 
 Kindelia.serialize.auth(world: Kindelia.World, auth: Kindelia.Auth): Bits
   open auth
-  let bond = Kindelia.serialize.name(auth.bond)
+  let bond = Kindelia.serialize.name(world, auth.bond)
   let args = Kindelia.serialize.list!(Kindelia.serialize.term(world, []), auth.args)
   Bits.concat(bond, args)
   
 Kindelia.deserialize.auth(world: Kindelia.World, bits: Bits): Pair<Bits,Kindelia.Auth>
-  let {bits,bond} = Kindelia.deserialize.name(bits)
+  let {bits,bond} = Kindelia.deserialize.name(world, bits)
   let {bits,args} = Kindelia.deserialize.list!(Kindelia.deserialize.term(world, []), bits)
   {bits, Kindelia.Auth.new(bond, args)}
 
@@ -1047,7 +1066,6 @@ Kindelia.deserialize.block(world: Kindelia.World, bits: Bits): Pair<Bits, List<K
     let {bits,head} = Kindelia.deserialize.transaction(world, bits)
     let {bits,tail} = Kindelia.deserialize.block(world, bits)
     {bits, head & tail}
-
 
 // Stringification
 // ---------------

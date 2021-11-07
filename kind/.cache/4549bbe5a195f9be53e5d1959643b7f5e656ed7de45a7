@@ -1,1 +1,1 @@
-@(bits:Bits) ((Pair Bits) String)
+@(world:Kindelia.World) @(bits:Bits) ((Pair Bits) String)

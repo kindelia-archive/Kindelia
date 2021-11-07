@@ -8919,7 +8919,7 @@ module.exports = (function() {
     const U16$to_nat = a0 => (BigInt(a0));
     const Bits$concat = a0 => a1 => (a1 + a0);
 
-    function Kindelia$serialize$name$(_name$1) {
+    function Kindelia$serialize$letters$(_name$1) {
         var self = _name$1;
         if (self.length === 0) {
             var $2578 = (Bits$e + '0');
@@ -8957,29 +8957,95 @@ module.exports = (function() {
                 var _numb$4 = $2583;
             };
             var _head$5 = Kindelia$serialize$fixlen$(6n, (BigInt(_numb$4)));
-            var _tail$6 = Kindelia$serialize$name$($2580);
+            var _tail$6 = Kindelia$serialize$letters$($2580);
             var $2581 = ((_tail$6 + _head$5) + '1');
             var $2577 = $2581;
         };
         return $2577;
     };
-    const Kindelia$serialize$name = x0 => Kindelia$serialize$name$(x0);
+    const Kindelia$serialize$letters = x0 => Kindelia$serialize$letters$(x0);
+
+    function Kindelia$serialize$varlen$go$(_value$1) {
+        var self = _value$1;
+        if (self === 0n) {
+            var $2591 = Bits$e;
+            var $2590 = $2591;
+        } else {
+            var $2592 = (self - 1n);
+            var self = (_value$1 === 1n);
+            if (self) {
+                var $2594 = (Bits$e + '0');
+                var $2593 = $2594;
+            } else {
+                var self = ((_value$1 % 2n) === 0n);
+                if (self) {
+                    var $2596 = ((Kindelia$serialize$varlen$go$((_value$1 / 2n)) + '0') + '1');
+                    var $2595 = $2596;
+                } else {
+                    var $2597 = ((Kindelia$serialize$varlen$go$((_value$1 / 2n)) + '1') + '1');
+                    var $2595 = $2597;
+                };
+                var $2593 = $2595;
+            };
+            var $2590 = $2593;
+        };
+        return $2590;
+    };
+    const Kindelia$serialize$varlen$go = x0 => Kindelia$serialize$varlen$go$(x0);
+
+    function Kindelia$serialize$varlen$(_value$1) {
+        var $2598 = Kindelia$serialize$varlen$go$((_value$1 + 1n));
+        return $2598;
+    };
+    const Kindelia$serialize$varlen = x0 => Kindelia$serialize$varlen$(x0);
+
+    function Kindelia$serialize$name$(_world$1, _name$2) {
+        var self = Map$get$(_name$2, (() => {
+            var self = _world$1;
+            switch (self._) {
+                case 'Kindelia.World.new':
+                    var $2600 = self.names;
+                    var $2601 = $2600;
+                    var self = $2601;
+                    break;
+            };
+            switch (self._) {
+                case 'Kindelia.Names.new':
+                    var $2602 = self.name_to_index;
+                    var $2603 = $2602;
+                    return $2603;
+            };
+        })());
+        switch (self._) {
+            case 'Maybe.some':
+                var $2604 = self.value;
+                var $2605 = (Kindelia$serialize$varlen$($2604) + '1');
+                var $2599 = $2605;
+                break;
+            case 'Maybe.none':
+                var $2606 = (Kindelia$serialize$letters$(_name$2) + '0');
+                var $2599 = $2606;
+                break;
+        };
+        return $2599;
+    };
+    const Kindelia$serialize$name = x0 => x1 => Kindelia$serialize$name$(x0, x1);
 
     function Kindelia$serialize$list$(_item$2, _list$3) {
         var self = _list$3;
         switch (self._) {
             case 'List.cons':
-                var $2591 = self.head;
-                var $2592 = self.tail;
-                var $2593 = ((Kindelia$serialize$list$(_item$2, $2592) + _item$2($2591)) + '1');
-                var $2590 = $2593;
+                var $2608 = self.head;
+                var $2609 = self.tail;
+                var $2610 = ((Kindelia$serialize$list$(_item$2, $2609) + _item$2($2608)) + '1');
+                var $2607 = $2610;
                 break;
             case 'List.nil':
-                var $2594 = (Bits$e + '0');
-                var $2590 = $2594;
+                var $2611 = (Bits$e + '0');
+                var $2607 = $2611;
                 break;
         };
-        return $2590;
+        return $2607;
     };
     const Kindelia$serialize$list = x0 => x1 => Kindelia$serialize$list$(x0, x1);
 
@@ -8987,15 +9053,15 @@ module.exports = (function() {
         var self = _pair$5;
         switch (self._) {
             case 'Pair.new':
-                var $2596 = self.fst;
-                var $2597 = self.snd;
-                var _fst$8 = _first$3($2596);
-                var _snd$9 = _second$4($2597);
-                var $2598 = (_snd$9 + _fst$8);
-                var $2595 = $2598;
+                var $2613 = self.fst;
+                var $2614 = self.snd;
+                var _fst$8 = _first$3($2613);
+                var _snd$9 = _second$4($2614);
+                var $2615 = (_snd$9 + _fst$8);
+                var $2612 = $2615;
                 break;
         };
-        return $2595;
+        return $2612;
     };
     const Kindelia$serialize$pair = x0 => x1 => x2 => Kindelia$serialize$pair$(x0, x1, x2);
 
@@ -9003,16 +9069,16 @@ module.exports = (function() {
         var self = _typ$2;
         switch (self._) {
             case 'Kindelia.Type.data':
-                var $2600 = self.name;
-                var $2601 = (Kindelia$serialize$name$($2600) + '1');
-                var $2599 = $2601;
+                var $2617 = self.name;
+                var $2618 = (Kindelia$serialize$name$(_world$1, $2617) + '1');
+                var $2616 = $2618;
                 break;
             case 'Kindelia.Type.word':
-                var $2602 = (Bits$e + '0');
-                var $2599 = $2602;
+                var $2619 = (Bits$e + '0');
+                var $2616 = $2619;
                 break;
         };
-        return $2599;
+        return $2616;
     };
     const Kindelia$serialize$type = x0 => x1 => Kindelia$serialize$type$(x0, x1);
 
@@ -9020,15 +9086,15 @@ module.exports = (function() {
         var self = _ctor$2;
         switch (self._) {
             case 'Kindelia.Constructor.new':
-                var $2604 = self.name;
-                var $2605 = self.args;
-                var _name$5 = Kindelia$serialize$name$($2604);
-                var _args$6 = Kindelia$serialize$list$(Kindelia$serialize$pair(Kindelia$serialize$name)(Kindelia$serialize$type(_world$1)), $2605);
-                var $2606 = (_args$6 + _name$5);
-                var $2603 = $2606;
+                var $2621 = self.name;
+                var $2622 = self.args;
+                var _name$5 = Kindelia$serialize$name$(_world$1, $2621);
+                var _args$6 = Kindelia$serialize$list$(Kindelia$serialize$pair(Kindelia$serialize$name(_world$1))(Kindelia$serialize$type(_world$1)), $2622);
+                var $2623 = (_args$6 + _name$5);
+                var $2620 = $2623;
                 break;
         };
-        return $2603;
+        return $2620;
     };
     const Kindelia$serialize$constructor = x0 => x1 => Kindelia$serialize$constructor$(x0, x1);
 
@@ -9036,66 +9102,32 @@ module.exports = (function() {
         var self = _data$2;
         switch (self._) {
             case 'Kindelia.Data.new':
-                var $2608 = self.name;
-                var $2609 = self.ctrs;
-                var _name$5 = Kindelia$serialize$name$($2608);
-                var _ctrs$6 = Kindelia$serialize$list$(Kindelia$serialize$constructor(_world$1), $2609);
-                var $2610 = (_ctrs$6 + _name$5);
-                var $2607 = $2610;
+                var $2625 = self.name;
+                var $2626 = self.ctrs;
+                var _name$5 = Kindelia$serialize$name$(_world$1, $2625);
+                var _ctrs$6 = Kindelia$serialize$list$(Kindelia$serialize$constructor(_world$1), $2626);
+                var $2627 = (_ctrs$6 + _name$5);
+                var $2624 = $2627;
                 break;
         };
-        return $2607;
+        return $2624;
     };
     const Kindelia$serialize$data = x0 => x1 => Kindelia$serialize$data$(x0, x1);
-
-    function Kindelia$serialize$varlen$go$(_value$1) {
-        var self = _value$1;
-        if (self === 0n) {
-            var $2612 = Bits$e;
-            var $2611 = $2612;
-        } else {
-            var $2613 = (self - 1n);
-            var self = (_value$1 === 1n);
-            if (self) {
-                var $2615 = (Bits$e + '0');
-                var $2614 = $2615;
-            } else {
-                var self = ((_value$1 % 2n) === 0n);
-                if (self) {
-                    var $2617 = ((Kindelia$serialize$varlen$go$((_value$1 / 2n)) + '0') + '1');
-                    var $2616 = $2617;
-                } else {
-                    var $2618 = ((Kindelia$serialize$varlen$go$((_value$1 / 2n)) + '1') + '1');
-                    var $2616 = $2618;
-                };
-                var $2614 = $2616;
-            };
-            var $2611 = $2614;
-        };
-        return $2611;
-    };
-    const Kindelia$serialize$varlen$go = x0 => Kindelia$serialize$varlen$go$(x0);
-
-    function Kindelia$serialize$varlen$(_value$1) {
-        var $2619 = Kindelia$serialize$varlen$go$((_value$1 + 1n));
-        return $2619;
-    };
-    const Kindelia$serialize$varlen = x0 => Kindelia$serialize$varlen$(x0);
 
     function Kindelia$serialize$name$local$(_world$1, _vars$2, _name$3) {
         var self = List$find_index$(_vars$2, a1 => (_name$3 === a1));
         switch (self._) {
             case 'Maybe.some':
-                var $2621 = self.value;
-                var $2622 = Kindelia$serialize$varlen$($2621);
-                var $2620 = $2622;
+                var $2629 = self.value;
+                var $2630 = Kindelia$serialize$varlen$($2629);
+                var $2628 = $2630;
                 break;
             case 'Maybe.none':
-                var $2623 = Bits$e;
-                var $2620 = $2623;
+                var $2631 = Bits$e;
+                var $2628 = $2631;
                 break;
         };
-        return $2620;
+        return $2628;
     };
     const Kindelia$serialize$name$local = x0 => x1 => x2 => Kindelia$serialize$name$local$(x0, x1, x2);
 
@@ -9103,17 +9135,17 @@ module.exports = (function() {
         var self = _as$4;
         switch (self._) {
             case 'List.cons':
-                var $2625 = self.head;
-                var $2626 = self.tail;
-                var $2627 = List$cons$(_f$3($2625), List$map$(_f$3, $2626));
-                var $2624 = $2627;
+                var $2633 = self.head;
+                var $2634 = self.tail;
+                var $2635 = List$cons$(_f$3($2633), List$map$(_f$3, $2634));
+                var $2632 = $2635;
                 break;
             case 'List.nil':
-                var $2628 = List$nil;
-                var $2624 = $2628;
+                var $2636 = List$nil;
+                var $2632 = $2636;
                 break;
         };
-        return $2624;
+        return $2632;
     };
     const List$map = x0 => x1 => List$map$(x0, x1);
 
@@ -9121,17 +9153,17 @@ module.exports = (function() {
         var self = _as$2;
         switch (self._) {
             case 'List.cons':
-                var $2630 = self.head;
-                var $2631 = self.tail;
-                var $2632 = List$cons$($2630, List$concat$($2631, _bs$3));
-                var $2629 = $2632;
+                var $2638 = self.head;
+                var $2639 = self.tail;
+                var $2640 = List$cons$($2638, List$concat$($2639, _bs$3));
+                var $2637 = $2640;
                 break;
             case 'List.nil':
-                var $2633 = _bs$3;
-                var $2629 = $2633;
+                var $2641 = _bs$3;
+                var $2637 = $2641;
                 break;
         };
-        return $2629;
+        return $2637;
     };
     const List$concat = x0 => x1 => List$concat$(x0, x1);
 
@@ -9139,58 +9171,58 @@ module.exports = (function() {
         var self = _ctors$4;
         switch (self._) {
             case 'List.cons':
-                var $2635 = self.head;
-                var $2636 = self.tail;
+                var $2643 = self.head;
+                var $2644 = self.tail;
                 var self = _cases$5;
                 switch (self._) {
                     case 'List.cons':
-                        var $2638 = self.head;
-                        var $2639 = self.tail;
+                        var $2646 = self.head;
+                        var $2647 = self.tail;
                         var _flds$10 = List$map$((_args$10 => {
-                            var $2641 = (_name$3 + ("." + (() => {
+                            var $2649 = (_name$3 + ("." + (() => {
                                 var self = _args$10;
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2642 = self.fst;
-                                        var $2643 = $2642;
-                                        return $2643;
+                                        var $2650 = self.fst;
+                                        var $2651 = $2650;
+                                        return $2651;
                                 };
                             })()));
-                            return $2641;
+                            return $2649;
                         }), (() => {
-                            var self = $2635;
+                            var self = $2643;
                             switch (self._) {
                                 case 'Kindelia.Constructor.new':
-                                    var $2644 = self.args;
-                                    var $2645 = $2644;
-                                    return $2645;
+                                    var $2652 = self.args;
+                                    var $2653 = $2652;
+                                    return $2653;
                             };
                         })());
-                        var _head$11 = Kindelia$serialize$term$(_world$1, List$concat$(List$reverse$(_flds$10), _vars$2), $2638);
-                        var _tail$12 = Kindelia$serialize$cases$(_world$1, _vars$2, _name$3, $2636, $2639);
-                        var $2640 = (_tail$12 + _head$11);
-                        var $2637 = $2640;
+                        var _head$11 = Kindelia$serialize$term$(_world$1, List$concat$(List$reverse$(_flds$10), _vars$2), $2646);
+                        var _tail$12 = Kindelia$serialize$cases$(_world$1, _vars$2, _name$3, $2644, $2647);
+                        var $2648 = (_tail$12 + _head$11);
+                        var $2645 = $2648;
                         break;
                     case 'List.nil':
-                        var $2646 = Bits$e;
-                        var $2637 = $2646;
+                        var $2654 = Bits$e;
+                        var $2645 = $2654;
                         break;
                 };
-                var $2634 = $2637;
+                var $2642 = $2645;
                 break;
             case 'List.nil':
                 var self = _cases$5;
                 switch (self._) {
                     case 'List.nil':
                     case 'List.cons':
-                        var $2648 = Bits$e;
-                        var $2647 = $2648;
+                        var $2656 = Bits$e;
+                        var $2655 = $2656;
                         break;
                 };
-                var $2634 = $2647;
+                var $2642 = $2655;
                 break;
         };
-        return $2634;
+        return $2642;
     };
     const Kindelia$serialize$cases = x0 => x1 => x2 => x3 => x4 => Kindelia$serialize$cases$(x0, x1, x2, x3, x4);
 
@@ -9198,24 +9230,24 @@ module.exports = (function() {
         var self = Kindelia$get_data$(_world$1, _name$2);
         switch (self._) {
             case 'Maybe.some':
-                var $2650 = self.value;
-                var $2651 = Maybe$some$((() => {
-                    var self = $2650;
+                var $2658 = self.value;
+                var $2659 = Maybe$some$((() => {
+                    var self = $2658;
                     switch (self._) {
                         case 'Kindelia.Data.new':
-                            var $2652 = self.ctrs;
-                            var $2653 = $2652;
-                            return $2653;
+                            var $2660 = self.ctrs;
+                            var $2661 = $2660;
+                            return $2661;
                     };
                 })());
-                var $2649 = $2651;
+                var $2657 = $2659;
                 break;
             case 'Maybe.none':
-                var $2654 = Maybe$none;
-                var $2649 = $2654;
+                var $2662 = Maybe$none;
+                var $2657 = $2662;
                 break;
         };
-        return $2649;
+        return $2657;
     };
     const Kindelia$get_ctrs = x0 => x1 => Kindelia$get_ctrs$(x0, x1);
     const U64$to_nat = a0 => (a0);
@@ -9224,118 +9256,118 @@ module.exports = (function() {
         var self = _term$3;
         switch (self._) {
             case 'Kindelia.Term.var':
-                var $2656 = self.name;
-                var $2657 = (Kindelia$serialize$name$local$(_world$1, _vars$2, $2656) + '0');
-                var $2655 = $2657;
+                var $2664 = self.name;
+                var $2665 = (Kindelia$serialize$name$local$(_world$1, _vars$2, $2664) + '0');
+                var $2663 = $2665;
                 break;
             case 'Kindelia.Term.call':
-                var $2658 = self.bond;
-                var $2659 = self.args;
-                var _bond$6 = Kindelia$serialize$name$($2658);
-                var _args$7 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(_vars$2), $2659);
-                var $2660 = (((((_args$7 + _bond$6) + '0') + '0') + '1') + '1');
-                var $2655 = $2660;
+                var $2666 = self.bond;
+                var $2667 = self.args;
+                var _bond$6 = Kindelia$serialize$name$(_world$1, $2666);
+                var _args$7 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(_vars$2), $2667);
+                var $2668 = (((((_args$7 + _bond$6) + '0') + '0') + '1') + '1');
+                var $2663 = $2668;
                 break;
             case 'Kindelia.Term.let':
-                var $2661 = self.name;
-                var $2662 = self.type;
-                var $2663 = self.expr;
-                var $2664 = self.body;
-                var _name$8 = Kindelia$serialize$name$($2661);
-                var _type$9 = Kindelia$serialize$type$(_world$1, $2662);
-                var _expr$10 = Kindelia$serialize$term$(_world$1, _vars$2, $2663);
-                var _body$11 = Kindelia$serialize$term$(_world$1, List$cons$($2661, _vars$2), $2664);
-                var $2665 = (((((((_body$11 + _expr$10) + _type$9) + _name$8) + '0') + '0') + '0') + '1');
-                var $2655 = $2665;
+                var $2669 = self.name;
+                var $2670 = self.type;
+                var $2671 = self.expr;
+                var $2672 = self.body;
+                var _name$8 = Kindelia$serialize$name$(_world$1, $2669);
+                var _type$9 = Kindelia$serialize$type$(_world$1, $2670);
+                var _expr$10 = Kindelia$serialize$term$(_world$1, _vars$2, $2671);
+                var _body$11 = Kindelia$serialize$term$(_world$1, List$cons$($2669, _vars$2), $2672);
+                var $2673 = (((((((_body$11 + _expr$10) + _type$9) + _name$8) + '0') + '0') + '0') + '1');
+                var $2663 = $2673;
                 break;
             case 'Kindelia.Term.create':
-                var $2666 = self.ctor;
-                var $2667 = self.vals;
-                var _ctor$6 = Kindelia$serialize$varlen$($2666);
-                var _vals$7 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(_vars$2), $2667);
-                var $2668 = (((((_vals$7 + _ctor$6) + '0') + '1') + '0') + '1');
-                var $2655 = $2668;
+                var $2674 = self.ctor;
+                var $2675 = self.vals;
+                var _ctor$6 = Kindelia$serialize$varlen$($2674);
+                var _vals$7 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(_vars$2), $2675);
+                var $2676 = (((((_vals$7 + _ctor$6) + '0') + '1') + '0') + '1');
+                var $2663 = $2676;
                 break;
             case 'Kindelia.Term.match':
-                var $2669 = self.name;
-                var $2670 = self.data;
-                var $2671 = self.cses;
-                var _name$7 = Kindelia$serialize$name$local$(_world$1, _vars$2, $2669);
-                var _data$8 = Kindelia$serialize$name$($2670);
-                var _cses$9 = Kindelia$serialize$cases$(_world$1, _vars$2, $2669, Maybe$default$(Kindelia$get_ctrs$(_world$1, $2670), List$nil), $2671);
-                var $2672 = ((((((_cses$9 + _data$8) + _name$7) + '0') + '1') + '1') + '1');
-                var $2655 = $2672;
+                var $2677 = self.name;
+                var $2678 = self.data;
+                var $2679 = self.cses;
+                var _name$7 = Kindelia$serialize$name$local$(_world$1, _vars$2, $2677);
+                var _data$8 = Kindelia$serialize$name$(_world$1, $2678);
+                var _cses$9 = Kindelia$serialize$cases$(_world$1, _vars$2, $2677, Maybe$default$(Kindelia$get_ctrs$(_world$1, $2678), List$nil), $2679);
+                var $2680 = ((((((_cses$9 + _data$8) + _name$7) + '0') + '1') + '1') + '1');
+                var $2663 = $2680;
                 break;
             case 'Kindelia.Term.word':
-                var $2673 = self.numb;
-                var _numb$5 = Kindelia$serialize$fixlen$(64n, ($2673));
-                var $2674 = ((((_numb$5 + '1') + '0') + '0') + '1');
-                var $2655 = $2674;
+                var $2681 = self.numb;
+                var _numb$5 = Kindelia$serialize$fixlen$(64n, ($2681));
+                var $2682 = ((((_numb$5 + '1') + '0') + '0') + '1');
+                var $2663 = $2682;
                 break;
             case 'Kindelia.Term.compare':
-                var $2675 = self.val0;
-                var $2676 = self.val1;
-                var $2677 = self.iflt;
-                var $2678 = self.ifeq;
-                var $2679 = self.ifgt;
-                var _val0$9 = Kindelia$serialize$term$(_world$1, _vars$2, $2675);
-                var _val1$10 = Kindelia$serialize$term$(_world$1, _vars$2, $2676);
-                var _iflt$11 = Kindelia$serialize$term$(_world$1, _vars$2, $2677);
-                var _ifeq$12 = Kindelia$serialize$term$(_world$1, _vars$2, $2678);
-                var _ifgt$13 = Kindelia$serialize$term$(_world$1, _vars$2, $2679);
-                var $2680 = ((((((((_ifgt$13 + _ifeq$12) + _iflt$11) + _val1$10) + _val0$9) + '1') + '0') + '1') + '1');
-                var $2655 = $2680;
+                var $2683 = self.val0;
+                var $2684 = self.val1;
+                var $2685 = self.iflt;
+                var $2686 = self.ifeq;
+                var $2687 = self.ifgt;
+                var _val0$9 = Kindelia$serialize$term$(_world$1, _vars$2, $2683);
+                var _val1$10 = Kindelia$serialize$term$(_world$1, _vars$2, $2684);
+                var _iflt$11 = Kindelia$serialize$term$(_world$1, _vars$2, $2685);
+                var _ifeq$12 = Kindelia$serialize$term$(_world$1, _vars$2, $2686);
+                var _ifgt$13 = Kindelia$serialize$term$(_world$1, _vars$2, $2687);
+                var $2688 = ((((((((_ifgt$13 + _ifeq$12) + _iflt$11) + _val1$10) + _val0$9) + '1') + '0') + '1') + '1');
+                var $2663 = $2688;
                 break;
             case 'Kindelia.Term.operate':
-                var $2681 = self.oper;
-                var $2682 = self.val0;
-                var $2683 = self.val1;
+                var $2689 = self.oper;
+                var $2690 = self.val0;
+                var $2691 = self.val1;
                 var _oper$7 = Kindelia$serialize$fixlen$(3n, (() => {
-                    var self = $2681;
+                    var self = $2689;
                     switch (self._) {
                         case 'Kindelia.Operation.add':
-                            var $2685 = 0n;
-                            return $2685;
+                            var $2693 = 0n;
+                            return $2693;
                         case 'Kindelia.Operation.sub':
-                            var $2686 = 1n;
-                            return $2686;
+                            var $2694 = 1n;
+                            return $2694;
                         case 'Kindelia.Operation.mul':
-                            var $2687 = 2n;
-                            return $2687;
+                            var $2695 = 2n;
+                            return $2695;
                         case 'Kindelia.Operation.div':
-                            var $2688 = 3n;
-                            return $2688;
+                            var $2696 = 3n;
+                            return $2696;
                         case 'Kindelia.Operation.mod':
-                            var $2689 = 4n;
-                            return $2689;
+                            var $2697 = 4n;
+                            return $2697;
                         case 'Kindelia.Operation.or':
-                            var $2690 = 5n;
-                            return $2690;
+                            var $2698 = 5n;
+                            return $2698;
                         case 'Kindelia.Operation.and':
-                            var $2691 = 6n;
-                            return $2691;
+                            var $2699 = 6n;
+                            return $2699;
                         case 'Kindelia.Operation.xor':
-                            var $2692 = 7n;
-                            return $2692;
+                            var $2700 = 7n;
+                            return $2700;
                     };
                 })());
-                var _val0$8 = Kindelia$serialize$term$(_world$1, _vars$2, $2682);
-                var _val1$9 = Kindelia$serialize$term$(_world$1, _vars$2, $2683);
-                var $2684 = ((((((_val1$9 + _val0$8) + _oper$7) + '1') + '1') + '0') + '1');
-                var $2655 = $2684;
+                var _val0$8 = Kindelia$serialize$term$(_world$1, _vars$2, $2690);
+                var _val1$9 = Kindelia$serialize$term$(_world$1, _vars$2, $2691);
+                var $2692 = ((((((_val1$9 + _val0$8) + _oper$7) + '1') + '1') + '0') + '1');
+                var $2663 = $2692;
                 break;
             case 'Kindelia.Term.bind':
-                var $2693 = self.bond;
-                var $2694 = self.expr;
-                var $2695 = self.cont;
-                var _bond$7 = Kindelia$serialize$name$($2693);
-                var _expr$8 = Kindelia$serialize$term$(_world$1, _vars$2, $2694);
-                var _cont$9 = Kindelia$serialize$term$(_world$1, _vars$2, $2695);
-                var $2696 = ((((((_cont$9 + _expr$8) + _bond$7) + '1') + '1') + '1') + '1');
-                var $2655 = $2696;
+                var $2701 = self.bond;
+                var $2702 = self.expr;
+                var $2703 = self.cont;
+                var _bond$7 = Kindelia$serialize$name$(_world$1, $2701);
+                var _expr$8 = Kindelia$serialize$term$(_world$1, _vars$2, $2702);
+                var _cont$9 = Kindelia$serialize$term$(_world$1, _vars$2, $2703);
+                var $2704 = ((((((_cont$9 + _expr$8) + _bond$7) + '1') + '1') + '1') + '1');
+                var $2663 = $2704;
                 break;
         };
-        return $2655;
+        return $2663;
     };
     const Kindelia$serialize$term = x0 => x1 => x2 => Kindelia$serialize$term$(x0, x1, x2);
 
@@ -9343,22 +9375,22 @@ module.exports = (function() {
         var self = _bond$2;
         switch (self._) {
             case 'Kindelia.Bond.new':
-                var $2698 = self.name;
-                var $2699 = self.ownr;
-                var $2700 = self.args;
-                var $2701 = self.otyp;
-                var $2702 = self.main;
-                var _name$8 = Kindelia$serialize$name$($2698);
-                var _ownr$9 = Kindelia$serialize$list$(Kindelia$serialize$name, $2699);
-                var _args$10 = Kindelia$serialize$list$(Kindelia$serialize$pair(Kindelia$serialize$name)(Kindelia$serialize$type(_world$1)), $2700);
-                var _otyp$11 = Kindelia$serialize$type$(_world$1, $2701);
-                var _inam$12 = List$reverse$(List$mapped$($2700, Pair$fst));
-                var _main$13 = Kindelia$serialize$term$(_world$1, _inam$12, $2702);
-                var $2703 = ((((_main$13 + _otyp$11) + _args$10) + _ownr$9) + _name$8);
-                var $2697 = $2703;
+                var $2706 = self.name;
+                var $2707 = self.ownr;
+                var $2708 = self.args;
+                var $2709 = self.otyp;
+                var $2710 = self.main;
+                var _name$8 = Kindelia$serialize$name$(_world$1, $2706);
+                var _ownr$9 = Kindelia$serialize$list$(Kindelia$serialize$name(_world$1), $2707);
+                var _args$10 = Kindelia$serialize$list$(Kindelia$serialize$pair(Kindelia$serialize$name(_world$1))(Kindelia$serialize$type(_world$1)), $2708);
+                var _otyp$11 = Kindelia$serialize$type$(_world$1, $2709);
+                var _inam$12 = List$reverse$(List$mapped$($2708, Pair$fst));
+                var _main$13 = Kindelia$serialize$term$(_world$1, _inam$12, $2710);
+                var $2711 = ((((_main$13 + _otyp$11) + _args$10) + _ownr$9) + _name$8);
+                var $2705 = $2711;
                 break;
         };
-        return $2697;
+        return $2705;
     };
     const Kindelia$serialize$bond = x0 => x1 => Kindelia$serialize$bond$(x0, x1);
 
@@ -9366,16 +9398,16 @@ module.exports = (function() {
         var self = _maybe$3;
         switch (self._) {
             case 'Maybe.some':
-                var $2705 = self.value;
-                var $2706 = (_item$2($2705) + '1');
-                var $2704 = $2706;
+                var $2713 = self.value;
+                var $2714 = (_item$2($2713) + '1');
+                var $2712 = $2714;
                 break;
             case 'Maybe.none':
-                var $2707 = (Bits$e + '0');
-                var $2704 = $2707;
+                var $2715 = (Bits$e + '0');
+                var $2712 = $2715;
                 break;
         };
-        return $2704;
+        return $2712;
     };
     const Kindelia$serialize$maybe = x0 => x1 => Kindelia$serialize$maybe$(x0, x1);
 
@@ -9383,15 +9415,15 @@ module.exports = (function() {
         var self = _auth$2;
         switch (self._) {
             case 'Kindelia.Auth.new':
-                var $2709 = self.bond;
-                var $2710 = self.args;
-                var _bond$5 = Kindelia$serialize$name$($2709);
-                var _args$6 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(List$nil), $2710);
-                var $2711 = (_args$6 + _bond$5);
-                var $2708 = $2711;
+                var $2717 = self.bond;
+                var $2718 = self.args;
+                var _bond$5 = Kindelia$serialize$name$(_world$1, $2717);
+                var _args$6 = Kindelia$serialize$list$(Kindelia$serialize$term(_world$1)(List$nil), $2718);
+                var $2719 = (_args$6 + _bond$5);
+                var $2716 = $2719;
                 break;
         };
-        return $2708;
+        return $2716;
     };
     const Kindelia$serialize$auth = x0 => x1 => Kindelia$serialize$auth$(x0, x1);
 
@@ -9399,17 +9431,17 @@ module.exports = (function() {
         var self = _eval$2;
         switch (self._) {
             case 'Kindelia.Eval.new':
-                var $2713 = self.auth;
-                var $2714 = self.term;
-                var $2715 = self.type;
-                var _auth$6 = Kindelia$serialize$maybe$(Kindelia$serialize$auth(_world$1), $2713);
-                var _term$7 = Kindelia$serialize$term$(_world$1, List$nil, $2714);
-                var _type$8 = Kindelia$serialize$type$(_world$1, $2715);
-                var $2716 = ((_type$8 + _term$7) + _auth$6);
-                var $2712 = $2716;
+                var $2721 = self.auth;
+                var $2722 = self.term;
+                var $2723 = self.type;
+                var _auth$6 = Kindelia$serialize$maybe$(Kindelia$serialize$auth(_world$1), $2721);
+                var _term$7 = Kindelia$serialize$term$(_world$1, List$nil, $2722);
+                var _type$8 = Kindelia$serialize$type$(_world$1, $2723);
+                var $2724 = ((_type$8 + _term$7) + _auth$6);
+                var $2720 = $2724;
                 break;
         };
-        return $2712;
+        return $2720;
     };
     const Kindelia$serialize$eval = x0 => x1 => Kindelia$serialize$eval$(x0, x1);
 
@@ -9417,31 +9449,31 @@ module.exports = (function() {
         var self = _transaction$2;
         switch (self._) {
             case 'Kindelia.Transaction.new_data':
-                var $2718 = self.data;
-                var _data$4 = Kindelia$serialize$data$(_world$1, $2718);
-                var $2719 = ((_data$4 + '0') + '0');
-                var $2717 = $2719;
+                var $2726 = self.data;
+                var _data$4 = Kindelia$serialize$data$(_world$1, $2726);
+                var $2727 = ((_data$4 + '0') + '0');
+                var $2725 = $2727;
                 break;
             case 'Kindelia.Transaction.new_bond':
-                var $2720 = self.bond;
-                var _bond$4 = Kindelia$serialize$bond$(_world$1, $2720);
-                var $2721 = ((_bond$4 + '0') + '1');
-                var $2717 = $2721;
+                var $2728 = self.bond;
+                var _bond$4 = Kindelia$serialize$bond$(_world$1, $2728);
+                var $2729 = ((_bond$4 + '0') + '1');
+                var $2725 = $2729;
                 break;
             case 'Kindelia.Transaction.new_eval':
-                var $2722 = self.eval;
-                var _term$4 = Kindelia$serialize$eval$(_world$1, $2722);
-                var $2723 = ((_term$4 + '1') + '0');
-                var $2717 = $2723;
+                var $2730 = self.eval;
+                var _term$4 = Kindelia$serialize$eval$(_world$1, $2730);
+                var $2731 = ((_term$4 + '1') + '0');
+                var $2725 = $2731;
                 break;
             case 'Kindelia.Transaction.new_name':
-                var $2724 = self.name;
-                var _name$4 = Kindelia$serialize$name$($2724);
-                var $2725 = ((_name$4 + '1') + '1');
-                var $2717 = $2725;
+                var $2732 = self.name;
+                var _name$4 = Kindelia$serialize$name$(_world$1, $2732);
+                var $2733 = ((_name$4 + '1') + '1');
+                var $2725 = $2733;
                 break;
         };
-        return $2717;
+        return $2725;
     };
     const Kindelia$serialize$transaction = x0 => x1 => Kindelia$serialize$transaction$(x0, x1);
 
@@ -9449,19 +9481,19 @@ module.exports = (function() {
         var self = _block$2;
         switch (self._) {
             case 'List.cons':
-                var $2727 = self.head;
-                var $2728 = self.tail;
-                var _head$5 = Kindelia$serialize$transaction$(_world$1, $2727);
-                var _tail$6 = Kindelia$serialize$block$(_world$1, $2728);
-                var $2729 = (_tail$6 + _head$5);
-                var $2726 = $2729;
+                var $2735 = self.head;
+                var $2736 = self.tail;
+                var _head$5 = Kindelia$serialize$transaction$(_world$1, $2735);
+                var _tail$6 = Kindelia$serialize$block$(_world$1, $2736);
+                var $2737 = (_tail$6 + _head$5);
+                var $2734 = $2737;
                 break;
             case 'List.nil':
-                var $2730 = Bits$e;
-                var $2726 = $2730;
+                var $2738 = Bits$e;
+                var $2734 = $2738;
                 break;
         };
-        return $2726;
+        return $2734;
     };
     const Kindelia$serialize$block = x0 => x1 => Kindelia$serialize$block$(x0, x1);
 
@@ -9469,326 +9501,185 @@ module.exports = (function() {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'e':
-                var $2732 = Bool$true;
-                var $2731 = $2732;
+                var $2740 = Bool$true;
+                var $2739 = $2740;
                 break;
             case 'o':
             case 'i':
-                var $2733 = Bool$false;
-                var $2731 = $2733;
+                var $2741 = Bool$false;
+                var $2739 = $2741;
                 break;
         };
-        return $2731;
+        return $2739;
     };
     const Bits$is_empty = x0 => Bits$is_empty$(x0);
 
     function Kindelia$deserialize$fixlen$(_size$1, _bits$2) {
         var self = _size$1;
         if (self === 0n) {
-            var $2735 = Pair$new$(_bits$2, 0n);
-            var $2734 = $2735;
+            var $2743 = Pair$new$(_bits$2, 0n);
+            var $2742 = $2743;
         } else {
-            var $2736 = (self - 1n);
+            var $2744 = (self - 1n);
             var self = _bits$2;
             switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                 case 'o':
-                    var $2738 = self.slice(0, -1);
-                    var self = Kindelia$deserialize$fixlen$($2736, $2738);
+                    var $2746 = self.slice(0, -1);
+                    var self = Kindelia$deserialize$fixlen$($2744, $2746);
                     switch (self._) {
                         case 'Pair.new':
-                            var $2740 = self.fst;
-                            var $2741 = self.snd;
-                            var $2742 = Pair$new$($2740, ($2741 * 2n));
-                            var $2739 = $2742;
+                            var $2748 = self.fst;
+                            var $2749 = self.snd;
+                            var $2750 = Pair$new$($2748, ($2749 * 2n));
+                            var $2747 = $2750;
                             break;
                     };
-                    var $2737 = $2739;
+                    var $2745 = $2747;
                     break;
                 case 'i':
-                    var $2743 = self.slice(0, -1);
-                    var self = Kindelia$deserialize$fixlen$($2736, $2743);
+                    var $2751 = self.slice(0, -1);
+                    var self = Kindelia$deserialize$fixlen$($2744, $2751);
                     switch (self._) {
                         case 'Pair.new':
-                            var $2745 = self.fst;
-                            var $2746 = self.snd;
-                            var $2747 = Pair$new$($2745, (($2746 * 2n) + 1n));
-                            var $2744 = $2747;
+                            var $2753 = self.fst;
+                            var $2754 = self.snd;
+                            var $2755 = Pair$new$($2753, (($2754 * 2n) + 1n));
+                            var $2752 = $2755;
                             break;
                     };
-                    var $2737 = $2744;
+                    var $2745 = $2752;
                     break;
                 case 'e':
-                    var $2748 = Pair$new$(Bits$e, 0n);
-                    var $2737 = $2748;
+                    var $2756 = Pair$new$(Bits$e, 0n);
+                    var $2745 = $2756;
                     break;
             };
-            var $2734 = $2737;
+            var $2742 = $2745;
         };
-        return $2734;
+        return $2742;
     };
     const Kindelia$deserialize$fixlen = x0 => x1 => Kindelia$deserialize$fixlen$(x0, x1);
     const U16$from_nat = a0 => (Number(a0) & 0xFFFF);
 
-    function Kindelia$deserialize$name$(_bits$1) {
+    function Kindelia$deserialize$letters$(_bits$1) {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $2750 = self.slice(0, -1);
-                var $2751 = Pair$new$($2750, "");
-                var $2749 = $2751;
+                var $2758 = self.slice(0, -1);
+                var $2759 = Pair$new$($2758, "");
+                var $2757 = $2759;
                 break;
             case 'i':
-                var $2752 = self.slice(0, -1);
-                var self = Kindelia$deserialize$fixlen$(6n, $2752);
+                var $2760 = self.slice(0, -1);
+                var self = Kindelia$deserialize$fixlen$(6n, $2760);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2754 = self.fst;
-                        var $2755 = self.snd;
-                        var self = Kindelia$deserialize$name$($2754);
+                        var $2762 = self.fst;
+                        var $2763 = self.snd;
+                        var self = Kindelia$deserialize$letters$($2762);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2757 = self.fst;
-                                var $2758 = self.snd;
-                                var _numb$7 = (Number($2755) & 0xFFFF);
+                                var $2765 = self.fst;
+                                var $2766 = self.snd;
+                                var _numb$7 = (Number($2763) & 0xFFFF);
                                 var self = U16$btw$(0, _numb$7, 9);
                                 if (self) {
-                                    var $2760 = ((_numb$7 + 48) & 0xFFFF);
-                                    var _head$8 = $2760;
+                                    var $2768 = ((_numb$7 + 48) & 0xFFFF);
+                                    var _head$8 = $2768;
                                 } else {
                                     var self = U16$btw$(10, _numb$7, 35);
                                     if (self) {
-                                        var $2762 = ((((_numb$7 - 10) & 0xFFFF) + 65) & 0xFFFF);
-                                        var $2761 = $2762;
+                                        var $2770 = ((((_numb$7 - 10) & 0xFFFF) + 65) & 0xFFFF);
+                                        var $2769 = $2770;
                                     } else {
                                         var self = U16$btw$(36, _numb$7, 61);
                                         if (self) {
-                                            var $2764 = ((((_numb$7 - 36) & 0xFFFF) + 97) & 0xFFFF);
-                                            var $2763 = $2764;
+                                            var $2772 = ((((_numb$7 - 36) & 0xFFFF) + 97) & 0xFFFF);
+                                            var $2771 = $2772;
                                         } else {
                                             var self = U16$btw$(62, _numb$7, 62);
                                             if (self) {
-                                                var $2766 = 95;
-                                                var $2765 = $2766;
+                                                var $2774 = 95;
+                                                var $2773 = $2774;
                                             } else {
-                                                var $2767 = 46;
-                                                var $2765 = $2767;
+                                                var $2775 = 46;
+                                                var $2773 = $2775;
                                             };
-                                            var $2763 = $2765;
+                                            var $2771 = $2773;
                                         };
-                                        var $2761 = $2763;
+                                        var $2769 = $2771;
                                     };
-                                    var _head$8 = $2761;
+                                    var _head$8 = $2769;
                                 };
-                                var $2759 = Pair$new$($2757, String$cons$(_head$8, $2758));
-                                var $2756 = $2759;
+                                var $2767 = Pair$new$($2765, String$cons$(_head$8, $2766));
+                                var $2764 = $2767;
                                 break;
                         };
-                        var $2753 = $2756;
+                        var $2761 = $2764;
                         break;
                 };
-                var $2749 = $2753;
+                var $2757 = $2761;
                 break;
             case 'e':
-                var $2768 = Pair$new$(Bits$e, "");
-                var $2749 = $2768;
+                var $2776 = Pair$new$(Bits$e, "");
+                var $2757 = $2776;
                 break;
         };
-        return $2749;
+        return $2757;
     };
-    const Kindelia$deserialize$name = x0 => Kindelia$deserialize$name$(x0);
-
-    function Kindelia$deserialize$list$(_item$2, _bits$3) {
-        var self = _bits$3;
-        switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
-            case 'o':
-                var $2770 = self.slice(0, -1);
-                var $2771 = Pair$new$($2770, List$nil);
-                var $2769 = $2771;
-                break;
-            case 'i':
-                var $2772 = self.slice(0, -1);
-                var self = _item$2($2772);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $2774 = self.fst;
-                        var $2775 = self.snd;
-                        var self = Kindelia$deserialize$list$(_item$2, $2774);
-                        switch (self._) {
-                            case 'Pair.new':
-                                var $2777 = self.fst;
-                                var $2778 = self.snd;
-                                var $2779 = Pair$new$($2777, List$cons$($2775, $2778));
-                                var $2776 = $2779;
-                                break;
-                        };
-                        var $2773 = $2776;
-                        break;
-                };
-                var $2769 = $2773;
-                break;
-            case 'e':
-                var $2780 = Pair$new$(Bits$e, List$nil);
-                var $2769 = $2780;
-                break;
-        };
-        return $2769;
-    };
-    const Kindelia$deserialize$list = x0 => x1 => Kindelia$deserialize$list$(x0, x1);
-
-    function Kindelia$deserialize$pair$(_first$3, _second$4, _bits$5) {
-        var self = _first$3(_bits$5);
-        switch (self._) {
-            case 'Pair.new':
-                var $2782 = self.fst;
-                var $2783 = self.snd;
-                var self = _second$4($2782);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $2785 = self.fst;
-                        var $2786 = self.snd;
-                        var $2787 = Pair$new$($2785, Pair$new$($2783, $2786));
-                        var $2784 = $2787;
-                        break;
-                };
-                var $2781 = $2784;
-                break;
-        };
-        return $2781;
-    };
-    const Kindelia$deserialize$pair = x0 => x1 => x2 => Kindelia$deserialize$pair$(x0, x1, x2);
-
-    function Kindelia$deserialize$type$(_world$1, _bits$2) {
-        var self = Kindelia$deserialize$fixlen$(1n, _bits$2);
-        switch (self._) {
-            case 'Pair.new':
-                var $2789 = self.fst;
-                var $2790 = self.snd;
-                var self = ($2790 === 0n);
-                if (self) {
-                    var $2792 = Pair$new$($2789, Kindelia$Type$word);
-                    var $2791 = $2792;
-                } else {
-                    var self = ($2790 === 1n);
-                    if (self) {
-                        var self = Kindelia$deserialize$name$($2789);
-                        switch (self._) {
-                            case 'Pair.new':
-                                var $2795 = self.fst;
-                                var $2796 = self.snd;
-                                var $2797 = Pair$new$($2795, Kindelia$Type$data$($2796));
-                                var $2794 = $2797;
-                                break;
-                        };
-                        var $2793 = $2794;
-                    } else {
-                        var $2798 = Pair$new$($2789, Kindelia$Type$word);
-                        var $2793 = $2798;
-                    };
-                    var $2791 = $2793;
-                };
-                var $2788 = $2791;
-                break;
-        };
-        return $2788;
-    };
-    const Kindelia$deserialize$type = x0 => x1 => Kindelia$deserialize$type$(x0, x1);
-
-    function Kindelia$deserialize$constructor$(_world$1, _bits$2) {
-        var self = Kindelia$deserialize$name$(_bits$2);
-        switch (self._) {
-            case 'Pair.new':
-                var $2800 = self.fst;
-                var $2801 = self.snd;
-                var self = Kindelia$deserialize$list$(Kindelia$deserialize$pair(Kindelia$deserialize$name)(Kindelia$deserialize$type(_world$1)), $2800);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $2803 = self.fst;
-                        var $2804 = self.snd;
-                        var $2805 = Pair$new$($2803, Kindelia$Constructor$new$($2801, $2804));
-                        var $2802 = $2805;
-                        break;
-                };
-                var $2799 = $2802;
-                break;
-        };
-        return $2799;
-    };
-    const Kindelia$deserialize$constructor = x0 => x1 => Kindelia$deserialize$constructor$(x0, x1);
-
-    function Kindelia$deserialize$data$(_world$1, _bits$2) {
-        var self = Kindelia$deserialize$name$(_bits$2);
-        switch (self._) {
-            case 'Pair.new':
-                var $2807 = self.fst;
-                var $2808 = self.snd;
-                var self = Kindelia$deserialize$list$(Kindelia$deserialize$constructor(_world$1), $2807);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $2810 = self.fst;
-                        var $2811 = self.snd;
-                        var $2812 = Pair$new$($2810, Kindelia$Data$new$($2808, $2811));
-                        var $2809 = $2812;
-                        break;
-                };
-                var $2806 = $2809;
-                break;
-        };
-        return $2806;
-    };
-    const Kindelia$deserialize$data = x0 => x1 => Kindelia$deserialize$data$(x0, x1);
-    const U64$from_nat = a0 => (a0 & 0xFFFFFFFFFFFFFFFFn);
+    const Kindelia$deserialize$letters = x0 => Kindelia$deserialize$letters$(x0);
 
     function Kindelia$deserialize$varlen$go$(_bits$1) {
         var self = _bits$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $2814 = self.slice(0, -1);
-                var $2815 = Pair$new$($2814, 1n);
-                var $2813 = $2815;
+                var $2778 = self.slice(0, -1);
+                var $2779 = Pair$new$($2778, 1n);
+                var $2777 = $2779;
                 break;
             case 'i':
-                var $2816 = self.slice(0, -1);
-                var self = $2816;
+                var $2780 = self.slice(0, -1);
+                var self = $2780;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $2818 = self.slice(0, -1);
-                        var self = Kindelia$deserialize$varlen$go$($2818);
+                        var $2782 = self.slice(0, -1);
+                        var self = Kindelia$deserialize$varlen$go$($2782);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2820 = self.fst;
-                                var $2821 = self.snd;
-                                var $2822 = Pair$new$($2820, ($2821 * 2n));
-                                var $2819 = $2822;
+                                var $2784 = self.fst;
+                                var $2785 = self.snd;
+                                var $2786 = Pair$new$($2784, ($2785 * 2n));
+                                var $2783 = $2786;
                                 break;
                         };
-                        var $2817 = $2819;
+                        var $2781 = $2783;
                         break;
                     case 'i':
-                        var $2823 = self.slice(0, -1);
-                        var self = Kindelia$deserialize$varlen$go$($2823);
+                        var $2787 = self.slice(0, -1);
+                        var self = Kindelia$deserialize$varlen$go$($2787);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2825 = self.fst;
-                                var $2826 = self.snd;
-                                var $2827 = Pair$new$($2825, (($2826 * 2n) + 1n));
-                                var $2824 = $2827;
+                                var $2789 = self.fst;
+                                var $2790 = self.snd;
+                                var $2791 = Pair$new$($2789, (($2790 * 2n) + 1n));
+                                var $2788 = $2791;
                                 break;
                         };
-                        var $2817 = $2824;
+                        var $2781 = $2788;
                         break;
                     case 'e':
-                        var $2828 = Pair$new$($2816, 0n);
-                        var $2817 = $2828;
+                        var $2792 = Pair$new$($2780, 0n);
+                        var $2781 = $2792;
                         break;
                 };
-                var $2813 = $2817;
+                var $2777 = $2781;
                 break;
             case 'e':
-                var $2829 = Pair$new$(Bits$e, 0n);
-                var $2813 = $2829;
+                var $2793 = Pair$new$(Bits$e, 0n);
+                var $2777 = $2793;
                 break;
         };
-        return $2813;
+        return $2777;
     };
     const Kindelia$deserialize$varlen$go = x0 => Kindelia$deserialize$varlen$go$(x0);
 
@@ -9796,15 +9687,201 @@ module.exports = (function() {
         var self = Kindelia$deserialize$varlen$go$(_bits$1);
         switch (self._) {
             case 'Pair.new':
+                var $2795 = self.fst;
+                var $2796 = self.snd;
+                var $2797 = Pair$new$($2795, ($2796 - 1n <= 0n ? 0n : $2796 - 1n));
+                var $2794 = $2797;
+                break;
+        };
+        return $2794;
+    };
+    const Kindelia$deserialize$varlen = x0 => Kindelia$deserialize$varlen$(x0);
+
+    function Kindelia$deserialize$name$(_world$1, _bits$2) {
+        var self = _bits$2;
+        switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
+            case 'o':
+                var $2799 = self.slice(0, -1);
+                var $2800 = Kindelia$deserialize$letters$($2799);
+                var $2798 = $2800;
+                break;
+            case 'i':
+                var $2801 = self.slice(0, -1);
+                var self = Kindelia$deserialize$varlen$($2801);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $2803 = self.fst;
+                        var $2804 = self.snd;
+                        var $2805 = Pair$new$($2803, Maybe$default$(Map$get$(Nat$show$($2804), (() => {
+                            var self = _world$1;
+                            switch (self._) {
+                                case 'Kindelia.World.new':
+                                    var $2806 = self.names;
+                                    var $2807 = $2806;
+                                    var self = $2807;
+                                    break;
+                            };
+                            switch (self._) {
+                                case 'Kindelia.Names.new':
+                                    var $2808 = self.index_to_name;
+                                    var $2809 = $2808;
+                                    return $2809;
+                            };
+                        })()), ""));
+                        var $2802 = $2805;
+                        break;
+                };
+                var $2798 = $2802;
+                break;
+            case 'e':
+                var $2810 = Pair$new$(Bits$e, "");
+                var $2798 = $2810;
+                break;
+        };
+        return $2798;
+    };
+    const Kindelia$deserialize$name = x0 => x1 => Kindelia$deserialize$name$(x0, x1);
+
+    function Kindelia$deserialize$list$(_item$2, _bits$3) {
+        var self = _bits$3;
+        switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
+            case 'o':
+                var $2812 = self.slice(0, -1);
+                var $2813 = Pair$new$($2812, List$nil);
+                var $2811 = $2813;
+                break;
+            case 'i':
+                var $2814 = self.slice(0, -1);
+                var self = _item$2($2814);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $2816 = self.fst;
+                        var $2817 = self.snd;
+                        var self = Kindelia$deserialize$list$(_item$2, $2816);
+                        switch (self._) {
+                            case 'Pair.new':
+                                var $2819 = self.fst;
+                                var $2820 = self.snd;
+                                var $2821 = Pair$new$($2819, List$cons$($2817, $2820));
+                                var $2818 = $2821;
+                                break;
+                        };
+                        var $2815 = $2818;
+                        break;
+                };
+                var $2811 = $2815;
+                break;
+            case 'e':
+                var $2822 = Pair$new$(Bits$e, List$nil);
+                var $2811 = $2822;
+                break;
+        };
+        return $2811;
+    };
+    const Kindelia$deserialize$list = x0 => x1 => Kindelia$deserialize$list$(x0, x1);
+
+    function Kindelia$deserialize$pair$(_first$3, _second$4, _bits$5) {
+        var self = _first$3(_bits$5);
+        switch (self._) {
+            case 'Pair.new':
+                var $2824 = self.fst;
+                var $2825 = self.snd;
+                var self = _second$4($2824);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $2827 = self.fst;
+                        var $2828 = self.snd;
+                        var $2829 = Pair$new$($2827, Pair$new$($2825, $2828));
+                        var $2826 = $2829;
+                        break;
+                };
+                var $2823 = $2826;
+                break;
+        };
+        return $2823;
+    };
+    const Kindelia$deserialize$pair = x0 => x1 => x2 => Kindelia$deserialize$pair$(x0, x1, x2);
+
+    function Kindelia$deserialize$type$(_world$1, _bits$2) {
+        var self = Kindelia$deserialize$fixlen$(1n, _bits$2);
+        switch (self._) {
+            case 'Pair.new':
                 var $2831 = self.fst;
                 var $2832 = self.snd;
-                var $2833 = Pair$new$($2831, ($2832 - 1n <= 0n ? 0n : $2832 - 1n));
+                var self = ($2832 === 0n);
+                if (self) {
+                    var $2834 = Pair$new$($2831, Kindelia$Type$word);
+                    var $2833 = $2834;
+                } else {
+                    var self = ($2832 === 1n);
+                    if (self) {
+                        var self = Kindelia$deserialize$name$(_world$1, $2831);
+                        switch (self._) {
+                            case 'Pair.new':
+                                var $2837 = self.fst;
+                                var $2838 = self.snd;
+                                var $2839 = Pair$new$($2837, Kindelia$Type$data$($2838));
+                                var $2836 = $2839;
+                                break;
+                        };
+                        var $2835 = $2836;
+                    } else {
+                        var $2840 = Pair$new$($2831, Kindelia$Type$word);
+                        var $2835 = $2840;
+                    };
+                    var $2833 = $2835;
+                };
                 var $2830 = $2833;
                 break;
         };
         return $2830;
     };
-    const Kindelia$deserialize$varlen = x0 => Kindelia$deserialize$varlen$(x0);
+    const Kindelia$deserialize$type = x0 => x1 => Kindelia$deserialize$type$(x0, x1);
+
+    function Kindelia$deserialize$constructor$(_world$1, _bits$2) {
+        var self = Kindelia$deserialize$name$(_world$1, _bits$2);
+        switch (self._) {
+            case 'Pair.new':
+                var $2842 = self.fst;
+                var $2843 = self.snd;
+                var self = Kindelia$deserialize$list$(Kindelia$deserialize$pair(Kindelia$deserialize$name(_world$1))(Kindelia$deserialize$type(_world$1)), $2842);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $2845 = self.fst;
+                        var $2846 = self.snd;
+                        var $2847 = Pair$new$($2845, Kindelia$Constructor$new$($2843, $2846));
+                        var $2844 = $2847;
+                        break;
+                };
+                var $2841 = $2844;
+                break;
+        };
+        return $2841;
+    };
+    const Kindelia$deserialize$constructor = x0 => x1 => Kindelia$deserialize$constructor$(x0, x1);
+
+    function Kindelia$deserialize$data$(_world$1, _bits$2) {
+        var self = Kindelia$deserialize$name$(_world$1, _bits$2);
+        switch (self._) {
+            case 'Pair.new':
+                var $2849 = self.fst;
+                var $2850 = self.snd;
+                var self = Kindelia$deserialize$list$(Kindelia$deserialize$constructor(_world$1), $2849);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $2852 = self.fst;
+                        var $2853 = self.snd;
+                        var $2854 = Pair$new$($2852, Kindelia$Data$new$($2850, $2853));
+                        var $2851 = $2854;
+                        break;
+                };
+                var $2848 = $2851;
+                break;
+        };
+        return $2848;
+    };
+    const Kindelia$deserialize$data = x0 => x1 => Kindelia$deserialize$data$(x0, x1);
+    const U64$from_nat = a0 => (a0 & 0xFFFFFFFFFFFFFFFFn);
 
     function List$get$(_index$2, _list$3) {
         var List$get$ = (_index$2, _list$3) => ({
@@ -9819,21 +9896,21 @@ module.exports = (function() {
                 var self = _list$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $2834 = self.head;
-                        var $2835 = self.tail;
+                        var $2855 = self.head;
+                        var $2856 = self.tail;
                         var self = _index$2;
                         if (self === 0n) {
-                            var $2837 = Maybe$some$($2834);
-                            var $2836 = $2837;
+                            var $2858 = Maybe$some$($2855);
+                            var $2857 = $2858;
                         } else {
-                            var $2838 = (self - 1n);
-                            var $2839 = List$get$($2838, $2835);
-                            var $2836 = $2839;
+                            var $2859 = (self - 1n);
+                            var $2860 = List$get$($2859, $2856);
+                            var $2857 = $2860;
                         };
-                        return $2836;
+                        return $2857;
                     case 'List.nil':
-                        var $2840 = Maybe$none;
-                        return $2840;
+                        var $2861 = Maybe$none;
+                        return $2861;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -9846,13 +9923,13 @@ module.exports = (function() {
         var self = Kindelia$deserialize$varlen$(_bits$3);
         switch (self._) {
             case 'Pair.new':
-                var $2842 = self.fst;
-                var $2843 = self.snd;
-                var $2844 = Pair$new$($2842, Maybe$default$(List$get$($2843, _vars$2), ""));
-                var $2841 = $2844;
+                var $2863 = self.fst;
+                var $2864 = self.snd;
+                var $2865 = Pair$new$($2863, Maybe$default$(List$get$($2864, _vars$2), ""));
+                var $2862 = $2865;
                 break;
         };
-        return $2841;
+        return $2862;
     };
     const Kindelia$deserialize$name$local = x0 => x1 => x2 => Kindelia$deserialize$name$local$(x0, x1, x2);
 
@@ -9860,53 +9937,53 @@ module.exports = (function() {
         var self = _ctors$4;
         switch (self._) {
             case 'List.cons':
-                var $2846 = self.head;
-                var $2847 = self.tail;
+                var $2867 = self.head;
+                var $2868 = self.tail;
                 var _flds$8 = List$map$((_args$8 => {
-                    var $2849 = (_name$3 + ("." + (() => {
+                    var $2870 = (_name$3 + ("." + (() => {
                         var self = _args$8;
                         switch (self._) {
                             case 'Pair.new':
-                                var $2850 = self.fst;
-                                var $2851 = $2850;
-                                return $2851;
+                                var $2871 = self.fst;
+                                var $2872 = $2871;
+                                return $2872;
                         };
                     })()));
-                    return $2849;
+                    return $2870;
                 }), (() => {
-                    var self = $2846;
+                    var self = $2867;
                     switch (self._) {
                         case 'Kindelia.Constructor.new':
-                            var $2852 = self.args;
-                            var $2853 = $2852;
-                            return $2853;
+                            var $2873 = self.args;
+                            var $2874 = $2873;
+                            return $2874;
                     };
                 })());
                 var self = Kindelia$deserialize$term$(_world$1, List$concat$(List$reverse$(_flds$8), _vars$2), _bits$5);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2854 = self.fst;
-                        var $2855 = self.snd;
-                        var self = Kindelia$deserialize$cases$(_world$1, _vars$2, _name$3, $2847, $2854);
+                        var $2875 = self.fst;
+                        var $2876 = self.snd;
+                        var self = Kindelia$deserialize$cases$(_world$1, _vars$2, _name$3, $2868, $2875);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2857 = self.fst;
-                                var $2858 = self.snd;
-                                var $2859 = Pair$new$($2857, List$cons$($2855, $2858));
-                                var $2856 = $2859;
+                                var $2878 = self.fst;
+                                var $2879 = self.snd;
+                                var $2880 = Pair$new$($2878, List$cons$($2876, $2879));
+                                var $2877 = $2880;
                                 break;
                         };
-                        var $2848 = $2856;
+                        var $2869 = $2877;
                         break;
                 };
-                var $2845 = $2848;
+                var $2866 = $2869;
                 break;
             case 'List.nil':
-                var $2860 = Pair$new$(_bits$5, List$nil);
-                var $2845 = $2860;
+                var $2881 = Pair$new$(_bits$5, List$nil);
+                var $2866 = $2881;
                 break;
         };
-        return $2845;
+        return $2866;
     };
     const Kindelia$deserialize$cases = x0 => x1 => x2 => x3 => x4 => Kindelia$deserialize$cases$(x0, x1, x2, x3, x4);
 
@@ -9914,381 +9991,381 @@ module.exports = (function() {
         var self = _bits$3;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $2862 = self.slice(0, -1);
-                var self = Kindelia$deserialize$name$local$(_world$1, _vars$2, $2862);
+                var $2883 = self.slice(0, -1);
+                var self = Kindelia$deserialize$name$local$(_world$1, _vars$2, $2883);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2864 = self.fst;
-                        var $2865 = self.snd;
-                        var $2866 = Pair$new$($2864, Kindelia$Term$var$($2865));
-                        var $2863 = $2866;
+                        var $2885 = self.fst;
+                        var $2886 = self.snd;
+                        var $2887 = Pair$new$($2885, Kindelia$Term$var$($2886));
+                        var $2884 = $2887;
                         break;
                 };
-                var $2861 = $2863;
+                var $2882 = $2884;
                 break;
             case 'i':
-                var $2867 = self.slice(0, -1);
-                var self = Kindelia$deserialize$fixlen$(3n, $2867);
+                var $2888 = self.slice(0, -1);
+                var self = Kindelia$deserialize$fixlen$(3n, $2888);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2869 = self.fst;
-                        var $2870 = self.snd;
-                        var self = ($2870 === 0n);
+                        var $2890 = self.fst;
+                        var $2891 = self.snd;
+                        var self = ($2891 === 0n);
                         if (self) {
-                            var self = Kindelia$deserialize$name$($2869);
+                            var self = Kindelia$deserialize$name$(_world$1, $2890);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $2873 = self.fst;
-                                    var $2874 = self.snd;
-                                    var self = Kindelia$deserialize$type$(_world$1, $2873);
+                                    var $2894 = self.fst;
+                                    var $2895 = self.snd;
+                                    var self = Kindelia$deserialize$type$(_world$1, $2894);
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $2876 = self.fst;
-                                            var $2877 = self.snd;
-                                            var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2876);
+                                            var $2897 = self.fst;
+                                            var $2898 = self.snd;
+                                            var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2897);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $2879 = self.fst;
-                                                    var $2880 = self.snd;
-                                                    var self = Kindelia$deserialize$term$(_world$1, List$cons$($2874, _vars$2), $2879);
+                                                    var $2900 = self.fst;
+                                                    var $2901 = self.snd;
+                                                    var self = Kindelia$deserialize$term$(_world$1, List$cons$($2895, _vars$2), $2900);
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $2882 = self.fst;
-                                                            var $2883 = self.snd;
-                                                            var $2884 = Pair$new$($2882, Kindelia$Term$let$($2874, $2877, $2880, $2883));
-                                                            var $2881 = $2884;
+                                                            var $2903 = self.fst;
+                                                            var $2904 = self.snd;
+                                                            var $2905 = Pair$new$($2903, Kindelia$Term$let$($2895, $2898, $2901, $2904));
+                                                            var $2902 = $2905;
                                                             break;
                                                     };
-                                                    var $2878 = $2881;
+                                                    var $2899 = $2902;
                                                     break;
                                             };
-                                            var $2875 = $2878;
+                                            var $2896 = $2899;
                                             break;
                                     };
-                                    var $2872 = $2875;
+                                    var $2893 = $2896;
                                     break;
                             };
-                            var $2871 = $2872;
+                            var $2892 = $2893;
                         } else {
-                            var self = ($2870 === 1n);
+                            var self = ($2891 === 1n);
                             if (self) {
-                                var self = Kindelia$deserialize$name$($2869);
+                                var self = Kindelia$deserialize$name$(_world$1, $2890);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2887 = self.fst;
-                                        var $2888 = self.snd;
-                                        var self = Kindelia$deserialize$list$(Kindelia$deserialize$term(_world$1)(_vars$2), $2887);
+                                        var $2908 = self.fst;
+                                        var $2909 = self.snd;
+                                        var self = Kindelia$deserialize$list$(Kindelia$deserialize$term(_world$1)(_vars$2), $2908);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $2890 = self.fst;
-                                                var $2891 = self.snd;
-                                                var $2892 = Pair$new$($2890, Kindelia$Term$call$($2888, $2891));
-                                                var $2889 = $2892;
+                                                var $2911 = self.fst;
+                                                var $2912 = self.snd;
+                                                var $2913 = Pair$new$($2911, Kindelia$Term$call$($2909, $2912));
+                                                var $2910 = $2913;
                                                 break;
                                         };
-                                        var $2886 = $2889;
+                                        var $2907 = $2910;
                                         break;
                                 };
-                                var $2885 = $2886;
+                                var $2906 = $2907;
                             } else {
-                                var self = ($2870 === 2n);
+                                var self = ($2891 === 2n);
                                 if (self) {
-                                    var self = Kindelia$deserialize$varlen$($2869);
+                                    var self = Kindelia$deserialize$varlen$($2890);
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $2895 = self.fst;
-                                            var $2896 = self.snd;
-                                            var self = Kindelia$deserialize$list$(Kindelia$deserialize$term(_world$1)(_vars$2), $2895);
+                                            var $2916 = self.fst;
+                                            var $2917 = self.snd;
+                                            var self = Kindelia$deserialize$list$(Kindelia$deserialize$term(_world$1)(_vars$2), $2916);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $2898 = self.fst;
-                                                    var $2899 = self.snd;
-                                                    var $2900 = Pair$new$($2898, Kindelia$Term$create$($2896, $2899));
-                                                    var $2897 = $2900;
+                                                    var $2919 = self.fst;
+                                                    var $2920 = self.snd;
+                                                    var $2921 = Pair$new$($2919, Kindelia$Term$create$($2917, $2920));
+                                                    var $2918 = $2921;
                                                     break;
                                             };
-                                            var $2894 = $2897;
+                                            var $2915 = $2918;
                                             break;
                                     };
-                                    var $2893 = $2894;
+                                    var $2914 = $2915;
                                 } else {
-                                    var self = ($2870 === 3n);
+                                    var self = ($2891 === 3n);
                                     if (self) {
-                                        var self = Kindelia$deserialize$name$local$(_world$1, _vars$2, $2869);
+                                        var self = Kindelia$deserialize$name$local$(_world$1, _vars$2, $2890);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $2903 = self.fst;
-                                                var $2904 = self.snd;
-                                                var self = Kindelia$deserialize$name$($2903);
+                                                var $2924 = self.fst;
+                                                var $2925 = self.snd;
+                                                var self = Kindelia$deserialize$name$(_world$1, $2924);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $2906 = self.fst;
-                                                        var $2907 = self.snd;
-                                                        var self = Kindelia$deserialize$cases$(_world$1, _vars$2, $2904, Maybe$default$(Kindelia$get_ctrs$(_world$1, $2907), List$nil), $2906);
+                                                        var $2927 = self.fst;
+                                                        var $2928 = self.snd;
+                                                        var self = Kindelia$deserialize$cases$(_world$1, _vars$2, $2925, Maybe$default$(Kindelia$get_ctrs$(_world$1, $2928), List$nil), $2927);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2909 = self.fst;
-                                                                var $2910 = self.snd;
-                                                                var $2911 = Pair$new$($2909, Kindelia$Term$match$($2904, $2907, $2910));
-                                                                var $2908 = $2911;
+                                                                var $2930 = self.fst;
+                                                                var $2931 = self.snd;
+                                                                var $2932 = Pair$new$($2930, Kindelia$Term$match$($2925, $2928, $2931));
+                                                                var $2929 = $2932;
                                                                 break;
                                                         };
-                                                        var $2905 = $2908;
+                                                        var $2926 = $2929;
                                                         break;
                                                 };
-                                                var $2902 = $2905;
+                                                var $2923 = $2926;
                                                 break;
                                         };
-                                        var $2901 = $2902;
+                                        var $2922 = $2923;
                                     } else {
-                                        var self = ($2870 === 4n);
+                                        var self = ($2891 === 4n);
                                         if (self) {
-                                            var self = Kindelia$deserialize$fixlen$(64n, $2869);
+                                            var self = Kindelia$deserialize$fixlen$(64n, $2890);
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $2914 = self.fst;
-                                                    var $2915 = self.snd;
-                                                    var $2916 = Pair$new$($2914, Kindelia$Term$word$(($2915 & 0xFFFFFFFFFFFFFFFFn)));
-                                                    var $2913 = $2916;
+                                                    var $2935 = self.fst;
+                                                    var $2936 = self.snd;
+                                                    var $2937 = Pair$new$($2935, Kindelia$Term$word$(($2936 & 0xFFFFFFFFFFFFFFFFn)));
+                                                    var $2934 = $2937;
                                                     break;
                                             };
-                                            var $2912 = $2913;
+                                            var $2933 = $2934;
                                         } else {
-                                            var self = ($2870 === 5n);
+                                            var self = ($2891 === 5n);
                                             if (self) {
-                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2869);
+                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2890);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $2919 = self.fst;
-                                                        var $2920 = self.snd;
-                                                        var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2919);
+                                                        var $2940 = self.fst;
+                                                        var $2941 = self.snd;
+                                                        var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2940);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2922 = self.fst;
-                                                                var $2923 = self.snd;
-                                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2922);
+                                                                var $2943 = self.fst;
+                                                                var $2944 = self.snd;
+                                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2943);
                                                                 switch (self._) {
                                                                     case 'Pair.new':
-                                                                        var $2925 = self.fst;
-                                                                        var $2926 = self.snd;
-                                                                        var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2925);
+                                                                        var $2946 = self.fst;
+                                                                        var $2947 = self.snd;
+                                                                        var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2946);
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $2928 = self.fst;
-                                                                                var $2929 = self.snd;
-                                                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2928);
+                                                                                var $2949 = self.fst;
+                                                                                var $2950 = self.snd;
+                                                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2949);
                                                                                 switch (self._) {
                                                                                     case 'Pair.new':
-                                                                                        var $2931 = self.fst;
-                                                                                        var $2932 = self.snd;
-                                                                                        var $2933 = Pair$new$($2931, Kindelia$Term$compare$($2920, $2923, $2926, $2929, $2932));
-                                                                                        var $2930 = $2933;
+                                                                                        var $2952 = self.fst;
+                                                                                        var $2953 = self.snd;
+                                                                                        var $2954 = Pair$new$($2952, Kindelia$Term$compare$($2941, $2944, $2947, $2950, $2953));
+                                                                                        var $2951 = $2954;
                                                                                         break;
                                                                                 };
-                                                                                var $2927 = $2930;
+                                                                                var $2948 = $2951;
                                                                                 break;
                                                                         };
-                                                                        var $2924 = $2927;
+                                                                        var $2945 = $2948;
                                                                         break;
                                                                 };
-                                                                var $2921 = $2924;
+                                                                var $2942 = $2945;
                                                                 break;
                                                         };
-                                                        var $2918 = $2921;
+                                                        var $2939 = $2942;
                                                         break;
                                                 };
-                                                var $2917 = $2918;
+                                                var $2938 = $2939;
                                             } else {
-                                                var self = ($2870 === 6n);
+                                                var self = ($2891 === 6n);
                                                 if (self) {
-                                                    var self = Kindelia$deserialize$fixlen$(3n, $2869);
+                                                    var self = Kindelia$deserialize$fixlen$(3n, $2890);
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $2936 = self.fst;
-                                                            var $2937 = self.snd;
-                                                            var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2936);
+                                                            var $2957 = self.fst;
+                                                            var $2958 = self.snd;
+                                                            var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2957);
                                                             switch (self._) {
                                                                 case 'Pair.new':
-                                                                    var $2939 = self.fst;
-                                                                    var $2940 = self.snd;
-                                                                    var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2939);
+                                                                    var $2960 = self.fst;
+                                                                    var $2961 = self.snd;
+                                                                    var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2960);
                                                                     switch (self._) {
                                                                         case 'Pair.new':
-                                                                            var $2942 = self.fst;
-                                                                            var $2943 = self.snd;
-                                                                            var self = ($2937 === 0n);
+                                                                            var $2963 = self.fst;
+                                                                            var $2964 = self.snd;
+                                                                            var self = ($2958 === 0n);
                                                                             if (self) {
-                                                                                var $2945 = Kindelia$Operation$add;
-                                                                                var _oper$13 = $2945;
+                                                                                var $2966 = Kindelia$Operation$add;
+                                                                                var _oper$13 = $2966;
                                                                             } else {
-                                                                                var self = ($2937 === 1n);
+                                                                                var self = ($2958 === 1n);
                                                                                 if (self) {
-                                                                                    var $2947 = Kindelia$Operation$sub;
-                                                                                    var $2946 = $2947;
+                                                                                    var $2968 = Kindelia$Operation$sub;
+                                                                                    var $2967 = $2968;
                                                                                 } else {
-                                                                                    var self = ($2937 === 2n);
+                                                                                    var self = ($2958 === 2n);
                                                                                     if (self) {
-                                                                                        var $2949 = Kindelia$Operation$mul;
-                                                                                        var $2948 = $2949;
+                                                                                        var $2970 = Kindelia$Operation$mul;
+                                                                                        var $2969 = $2970;
                                                                                     } else {
-                                                                                        var self = ($2937 === 3n);
+                                                                                        var self = ($2958 === 3n);
                                                                                         if (self) {
-                                                                                            var $2951 = Kindelia$Operation$div;
-                                                                                            var $2950 = $2951;
+                                                                                            var $2972 = Kindelia$Operation$div;
+                                                                                            var $2971 = $2972;
                                                                                         } else {
-                                                                                            var self = ($2937 === 4n);
+                                                                                            var self = ($2958 === 4n);
                                                                                             if (self) {
-                                                                                                var $2953 = Kindelia$Operation$mod;
-                                                                                                var $2952 = $2953;
+                                                                                                var $2974 = Kindelia$Operation$mod;
+                                                                                                var $2973 = $2974;
                                                                                             } else {
-                                                                                                var self = ($2937 === 5n);
+                                                                                                var self = ($2958 === 5n);
                                                                                                 if (self) {
-                                                                                                    var $2955 = Kindelia$Operation$or;
-                                                                                                    var $2954 = $2955;
+                                                                                                    var $2976 = Kindelia$Operation$or;
+                                                                                                    var $2975 = $2976;
                                                                                                 } else {
-                                                                                                    var self = ($2937 === 6n);
+                                                                                                    var self = ($2958 === 6n);
                                                                                                     if (self) {
-                                                                                                        var $2957 = Kindelia$Operation$and;
-                                                                                                        var $2956 = $2957;
+                                                                                                        var $2978 = Kindelia$Operation$and;
+                                                                                                        var $2977 = $2978;
                                                                                                     } else {
-                                                                                                        var self = ($2937 === 7n);
+                                                                                                        var self = ($2958 === 7n);
                                                                                                         if (self) {
-                                                                                                            var $2959 = Kindelia$Operation$xor;
-                                                                                                            var $2958 = $2959;
+                                                                                                            var $2980 = Kindelia$Operation$xor;
+                                                                                                            var $2979 = $2980;
                                                                                                         } else {
-                                                                                                            var $2960 = Kindelia$Operation$add;
-                                                                                                            var $2958 = $2960;
+                                                                                                            var $2981 = Kindelia$Operation$add;
+                                                                                                            var $2979 = $2981;
                                                                                                         };
-                                                                                                        var $2956 = $2958;
+                                                                                                        var $2977 = $2979;
                                                                                                     };
-                                                                                                    var $2954 = $2956;
+                                                                                                    var $2975 = $2977;
                                                                                                 };
-                                                                                                var $2952 = $2954;
+                                                                                                var $2973 = $2975;
                                                                                             };
-                                                                                            var $2950 = $2952;
+                                                                                            var $2971 = $2973;
                                                                                         };
-                                                                                        var $2948 = $2950;
+                                                                                        var $2969 = $2971;
                                                                                     };
-                                                                                    var $2946 = $2948;
+                                                                                    var $2967 = $2969;
                                                                                 };
-                                                                                var _oper$13 = $2946;
+                                                                                var _oper$13 = $2967;
                                                                             };
-                                                                            var $2944 = Pair$new$($2942, Kindelia$Term$operate$(_oper$13, $2940, $2943));
-                                                                            var $2941 = $2944;
+                                                                            var $2965 = Pair$new$($2963, Kindelia$Term$operate$(_oper$13, $2961, $2964));
+                                                                            var $2962 = $2965;
                                                                             break;
                                                                     };
-                                                                    var $2938 = $2941;
+                                                                    var $2959 = $2962;
                                                                     break;
                                                             };
-                                                            var $2935 = $2938;
+                                                            var $2956 = $2959;
                                                             break;
                                                     };
-                                                    var $2934 = $2935;
+                                                    var $2955 = $2956;
                                                 } else {
-                                                    var self = ($2870 === 7n);
+                                                    var self = ($2891 === 7n);
                                                     if (self) {
-                                                        var self = Kindelia$deserialize$name$($2869);
+                                                        var self = Kindelia$deserialize$name$(_world$1, $2890);
                                                         switch (self._) {
                                                             case 'Pair.new':
-                                                                var $2963 = self.fst;
-                                                                var $2964 = self.snd;
-                                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2963);
+                                                                var $2984 = self.fst;
+                                                                var $2985 = self.snd;
+                                                                var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2984);
                                                                 switch (self._) {
                                                                     case 'Pair.new':
-                                                                        var $2966 = self.fst;
-                                                                        var $2967 = self.snd;
-                                                                        var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2966);
+                                                                        var $2987 = self.fst;
+                                                                        var $2988 = self.snd;
+                                                                        var self = Kindelia$deserialize$term$(_world$1, _vars$2, $2987);
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $2969 = self.fst;
-                                                                                var $2970 = self.snd;
-                                                                                var $2971 = Pair$new$($2969, Kindelia$Term$bind$($2964, $2967, $2970));
-                                                                                var $2968 = $2971;
+                                                                                var $2990 = self.fst;
+                                                                                var $2991 = self.snd;
+                                                                                var $2992 = Pair$new$($2990, Kindelia$Term$bind$($2985, $2988, $2991));
+                                                                                var $2989 = $2992;
                                                                                 break;
                                                                         };
-                                                                        var $2965 = $2968;
+                                                                        var $2986 = $2989;
                                                                         break;
                                                                 };
-                                                                var $2962 = $2965;
+                                                                var $2983 = $2986;
                                                                 break;
                                                         };
-                                                        var $2961 = $2962;
+                                                        var $2982 = $2983;
                                                     } else {
-                                                        var $2972 = Pair$new$($2869, Kindelia$Term$word$(0n));
-                                                        var $2961 = $2972;
+                                                        var $2993 = Pair$new$($2890, Kindelia$Term$word$(0n));
+                                                        var $2982 = $2993;
                                                     };
-                                                    var $2934 = $2961;
+                                                    var $2955 = $2982;
                                                 };
-                                                var $2917 = $2934;
+                                                var $2938 = $2955;
                                             };
-                                            var $2912 = $2917;
+                                            var $2933 = $2938;
                                         };
-                                        var $2901 = $2912;
+                                        var $2922 = $2933;
                                     };
-                                    var $2893 = $2901;
+                                    var $2914 = $2922;
                                 };
-                                var $2885 = $2893;
+                                var $2906 = $2914;
                             };
-                            var $2871 = $2885;
+                            var $2892 = $2906;
                         };
-                        var $2868 = $2871;
+                        var $2889 = $2892;
                         break;
                 };
-                var $2861 = $2868;
+                var $2882 = $2889;
                 break;
             case 'e':
-                var $2973 = Pair$new$(_bits$3, Kindelia$Term$word$(0n));
-                var $2861 = $2973;
+                var $2994 = Pair$new$(_bits$3, Kindelia$Term$word$(0n));
+                var $2882 = $2994;
                 break;
         };
-        return $2861;
+        return $2882;
     };
     const Kindelia$deserialize$term = x0 => x1 => x2 => Kindelia$deserialize$term$(x0, x1, x2);
 
     function Kindelia$deserialize$bond$(_world$1, _bits$2) {
-        var self = Kindelia$deserialize$name$(_bits$2);
+        var self = Kindelia$deserialize$name$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $2975 = self.fst;
-                var $2976 = self.snd;
-                var self = Kindelia$deserialize$list$(Kindelia$deserialize$name, $2975);
+                var $2996 = self.fst;
+                var $2997 = self.snd;
+                var self = Kindelia$deserialize$list$(Kindelia$deserialize$name(_world$1), $2996);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2978 = self.fst;
-                        var $2979 = self.snd;
-                        var self = Kindelia$deserialize$list$(Kindelia$deserialize$pair(Kindelia$deserialize$name)(Kindelia$deserialize$type(_world$1)), $2978);
+                        var $2999 = self.fst;
+                        var $3000 = self.snd;
+                        var self = Kindelia$deserialize$list$(Kindelia$deserialize$pair(Kindelia$deserialize$name(_world$1))(Kindelia$deserialize$type(_world$1)), $2999);
                         switch (self._) {
                             case 'Pair.new':
-                                var $2981 = self.fst;
-                                var $2982 = self.snd;
-                                var self = Kindelia$deserialize$type$(_world$1, $2981);
+                                var $3002 = self.fst;
+                                var $3003 = self.snd;
+                                var self = Kindelia$deserialize$type$(_world$1, $3002);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $2984 = self.fst;
-                                        var $2985 = self.snd;
-                                        var _inam$11 = List$reverse$(List$mapped$($2982, Pair$fst));
-                                        var self = Kindelia$deserialize$term$(_world$1, _inam$11, $2984);
+                                        var $3005 = self.fst;
+                                        var $3006 = self.snd;
+                                        var _inam$11 = List$reverse$(List$mapped$($3003, Pair$fst));
+                                        var self = Kindelia$deserialize$term$(_world$1, _inam$11, $3005);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $2987 = self.fst;
-                                                var $2988 = self.snd;
-                                                var $2989 = Pair$new$($2987, Kindelia$Bond$new$($2976, $2979, $2982, $2985, $2988));
-                                                var $2986 = $2989;
+                                                var $3008 = self.fst;
+                                                var $3009 = self.snd;
+                                                var $3010 = Pair$new$($3008, Kindelia$Bond$new$($2997, $3000, $3003, $3006, $3009));
+                                                var $3007 = $3010;
                                                 break;
                                         };
-                                        var $2983 = $2986;
+                                        var $3004 = $3007;
                                         break;
                                 };
-                                var $2980 = $2983;
+                                var $3001 = $3004;
                                 break;
                         };
-                        var $2977 = $2980;
+                        var $2998 = $3001;
                         break;
                 };
-                var $2974 = $2977;
+                var $2995 = $2998;
                 break;
         };
-        return $2974;
+        return $2995;
     };
     const Kindelia$deserialize$bond = x0 => x1 => Kindelia$deserialize$bond$(x0, x1);
 
@@ -10296,51 +10373,51 @@ module.exports = (function() {
         var self = _bits$3;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $2991 = self.slice(0, -1);
-                var $2992 = Pair$new$($2991, Maybe$none);
-                var $2990 = $2992;
+                var $3012 = self.slice(0, -1);
+                var $3013 = Pair$new$($3012, Maybe$none);
+                var $3011 = $3013;
                 break;
             case 'i':
-                var $2993 = self.slice(0, -1);
-                var self = _item$2($2993);
+                var $3014 = self.slice(0, -1);
+                var self = _item$2($3014);
                 switch (self._) {
                     case 'Pair.new':
-                        var $2995 = self.fst;
-                        var $2996 = self.snd;
-                        var $2997 = Pair$new$($2995, Maybe$some$($2996));
-                        var $2994 = $2997;
+                        var $3016 = self.fst;
+                        var $3017 = self.snd;
+                        var $3018 = Pair$new$($3016, Maybe$some$($3017));
+                        var $3015 = $3018;
                         break;
                 };
-                var $2990 = $2994;
+                var $3011 = $3015;
                 break;
             case 'e':
-                var $2998 = Pair$new$(Bits$e, Maybe$none);
-                var $2990 = $2998;
+                var $3019 = Pair$new$(Bits$e, Maybe$none);
+                var $3011 = $3019;
                 break;
         };
-        return $2990;
+        return $3011;
     };
     const Kindelia$deserialize$maybe = x0 => x1 => Kindelia$deserialize$maybe$(x0, x1);
 
     function Kindelia$deserialize$auth$(_world$1, _bits$2) {
-        var self = Kindelia$deserialize$name$(_bits$2);
+        var self = Kindelia$deserialize$name$(_world$1, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3000 = self.fst;
-                var $3001 = self.snd;
-                var self = Kindelia$deserialize$list$(Kindelia$deserialize$term(_world$1)(List$nil), $3000);
+                var $3021 = self.fst;
+                var $3022 = self.snd;
+                var self = Kindelia$deserialize$list$(Kindelia$deserialize$term(_world$1)(List$nil), $3021);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3003 = self.fst;
-                        var $3004 = self.snd;
-                        var $3005 = Pair$new$($3003, Kindelia$Auth$new$($3001, $3004));
-                        var $3002 = $3005;
+                        var $3024 = self.fst;
+                        var $3025 = self.snd;
+                        var $3026 = Pair$new$($3024, Kindelia$Auth$new$($3022, $3025));
+                        var $3023 = $3026;
                         break;
                 };
-                var $2999 = $3002;
+                var $3020 = $3023;
                 break;
         };
-        return $2999;
+        return $3020;
     };
     const Kindelia$deserialize$auth = x0 => x1 => Kindelia$deserialize$auth$(x0, x1);
 
@@ -10348,29 +10425,29 @@ module.exports = (function() {
         var self = Kindelia$deserialize$maybe$(Kindelia$deserialize$auth(_world$1), _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3007 = self.fst;
-                var $3008 = self.snd;
-                var self = Kindelia$deserialize$term$(_world$1, List$nil, $3007);
+                var $3028 = self.fst;
+                var $3029 = self.snd;
+                var self = Kindelia$deserialize$term$(_world$1, List$nil, $3028);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3010 = self.fst;
-                        var $3011 = self.snd;
-                        var self = Kindelia$deserialize$type$(_world$1, $3010);
+                        var $3031 = self.fst;
+                        var $3032 = self.snd;
+                        var self = Kindelia$deserialize$type$(_world$1, $3031);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3013 = self.fst;
-                                var $3014 = self.snd;
-                                var $3015 = Pair$new$($3013, Kindelia$Eval$new$($3008, $3011, $3014));
-                                var $3012 = $3015;
+                                var $3034 = self.fst;
+                                var $3035 = self.snd;
+                                var $3036 = Pair$new$($3034, Kindelia$Eval$new$($3029, $3032, $3035));
+                                var $3033 = $3036;
                                 break;
                         };
-                        var $3009 = $3012;
+                        var $3030 = $3033;
                         break;
                 };
-                var $3006 = $3009;
+                var $3027 = $3030;
                 break;
         };
-        return $3006;
+        return $3027;
     };
     const Kindelia$deserialize$eval = x0 => x1 => Kindelia$deserialize$eval$(x0, x1);
 
@@ -10378,102 +10455,102 @@ module.exports = (function() {
         var self = Kindelia$deserialize$fixlen$(2n, _bits$2);
         switch (self._) {
             case 'Pair.new':
-                var $3017 = self.fst;
-                var $3018 = self.snd;
-                var self = ($3018 === 0n);
+                var $3038 = self.fst;
+                var $3039 = self.snd;
+                var self = ($3039 === 0n);
                 if (self) {
-                    var self = Kindelia$deserialize$data$(_world$1, $3017);
+                    var self = Kindelia$deserialize$data$(_world$1, $3038);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3021 = self.fst;
-                            var $3022 = self.snd;
-                            var $3023 = Pair$new$($3021, Kindelia$Transaction$new_data$($3022));
-                            var $3020 = $3023;
+                            var $3042 = self.fst;
+                            var $3043 = self.snd;
+                            var $3044 = Pair$new$($3042, Kindelia$Transaction$new_data$($3043));
+                            var $3041 = $3044;
                             break;
                     };
-                    var $3019 = $3020;
+                    var $3040 = $3041;
                 } else {
-                    var self = ($3018 === 1n);
+                    var self = ($3039 === 1n);
                     if (self) {
-                        var self = Kindelia$deserialize$bond$(_world$1, $3017);
+                        var self = Kindelia$deserialize$bond$(_world$1, $3038);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3026 = self.fst;
-                                var $3027 = self.snd;
-                                var $3028 = Pair$new$($3026, Kindelia$Transaction$new_bond$($3027));
-                                var $3025 = $3028;
+                                var $3047 = self.fst;
+                                var $3048 = self.snd;
+                                var $3049 = Pair$new$($3047, Kindelia$Transaction$new_bond$($3048));
+                                var $3046 = $3049;
                                 break;
                         };
-                        var $3024 = $3025;
+                        var $3045 = $3046;
                     } else {
-                        var self = ($3018 === 2n);
+                        var self = ($3039 === 2n);
                         if (self) {
-                            var self = Kindelia$deserialize$eval$(_world$1, $3017);
+                            var self = Kindelia$deserialize$eval$(_world$1, $3038);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3031 = self.fst;
-                                    var $3032 = self.snd;
-                                    var $3033 = Pair$new$($3031, Kindelia$Transaction$new_eval$($3032));
-                                    var $3030 = $3033;
+                                    var $3052 = self.fst;
+                                    var $3053 = self.snd;
+                                    var $3054 = Pair$new$($3052, Kindelia$Transaction$new_eval$($3053));
+                                    var $3051 = $3054;
                                     break;
                             };
-                            var $3029 = $3030;
+                            var $3050 = $3051;
                         } else {
-                            var self = ($3018 === 3n);
+                            var self = ($3039 === 3n);
                             if (self) {
-                                var self = Kindelia$deserialize$name$($3017);
+                                var self = Kindelia$deserialize$name$(_world$1, $3038);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3036 = self.fst;
-                                        var $3037 = self.snd;
-                                        var $3038 = Pair$new$($3036, Kindelia$Transaction$new_name$($3037));
-                                        var $3035 = $3038;
+                                        var $3057 = self.fst;
+                                        var $3058 = self.snd;
+                                        var $3059 = Pair$new$($3057, Kindelia$Transaction$new_name$($3058));
+                                        var $3056 = $3059;
                                         break;
                                 };
-                                var $3034 = $3035;
+                                var $3055 = $3056;
                             } else {
-                                var $3039 = Pair$new$($3017, Kindelia$Transaction$new_data$(Kindelia$Data$new$("", List$nil)));
-                                var $3034 = $3039;
+                                var $3060 = Pair$new$($3038, Kindelia$Transaction$new_data$(Kindelia$Data$new$("", List$nil)));
+                                var $3055 = $3060;
                             };
-                            var $3029 = $3034;
+                            var $3050 = $3055;
                         };
-                        var $3024 = $3029;
+                        var $3045 = $3050;
                     };
-                    var $3019 = $3024;
+                    var $3040 = $3045;
                 };
-                var $3016 = $3019;
+                var $3037 = $3040;
                 break;
         };
-        return $3016;
+        return $3037;
     };
     const Kindelia$deserialize$transaction = x0 => x1 => Kindelia$deserialize$transaction$(x0, x1);
 
     function Kindelia$deserialize$block$(_world$1, _bits$2) {
         var self = Bits$is_empty$(_bits$2);
         if (self) {
-            var $3041 = Pair$new$(Bits$e, List$nil);
-            var $3040 = $3041;
+            var $3062 = Pair$new$(Bits$e, List$nil);
+            var $3061 = $3062;
         } else {
             var self = Kindelia$deserialize$transaction$(_world$1, _bits$2);
             switch (self._) {
                 case 'Pair.new':
-                    var $3043 = self.fst;
-                    var $3044 = self.snd;
-                    var self = Kindelia$deserialize$block$(_world$1, $3043);
+                    var $3064 = self.fst;
+                    var $3065 = self.snd;
+                    var self = Kindelia$deserialize$block$(_world$1, $3064);
                     switch (self._) {
                         case 'Pair.new':
-                            var $3046 = self.fst;
-                            var $3047 = self.snd;
-                            var $3048 = Pair$new$($3046, List$cons$($3044, $3047));
-                            var $3045 = $3048;
+                            var $3067 = self.fst;
+                            var $3068 = self.snd;
+                            var $3069 = Pair$new$($3067, List$cons$($3065, $3068));
+                            var $3066 = $3069;
                             break;
                     };
-                    var $3042 = $3045;
+                    var $3063 = $3066;
                     break;
             };
-            var $3040 = $3042;
+            var $3061 = $3063;
         };
-        return $3040;
+        return $3061;
     };
     const Kindelia$deserialize$block = x0 => x1 => Kindelia$deserialize$block$(x0, x1);
 
@@ -10481,255 +10558,255 @@ module.exports = (function() {
         var self = _x$1;
         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
             case 'o':
-                var $3050 = self.slice(0, -1);
-                var self = $3050;
+                var $3071 = self.slice(0, -1);
+                var self = $3071;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3052 = self.slice(0, -1);
-                        var self = $3052;
+                        var $3073 = self.slice(0, -1);
+                        var self = $3073;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3054 = self.slice(0, -1);
-                                var self = $3054;
+                                var $3075 = self.slice(0, -1);
+                                var self = $3075;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3056 = self.slice(0, -1);
-                                        var $3057 = ("0" + Bits$hex$encode$($3056));
-                                        var $3055 = $3057;
+                                        var $3077 = self.slice(0, -1);
+                                        var $3078 = ("0" + Bits$hex$encode$($3077));
+                                        var $3076 = $3078;
                                         break;
                                     case 'i':
-                                        var $3058 = self.slice(0, -1);
-                                        var $3059 = ("8" + Bits$hex$encode$($3058));
-                                        var $3055 = $3059;
+                                        var $3079 = self.slice(0, -1);
+                                        var $3080 = ("8" + Bits$hex$encode$($3079));
+                                        var $3076 = $3080;
                                         break;
                                     case 'e':
-                                        var $3060 = "0";
-                                        var $3055 = $3060;
+                                        var $3081 = "0";
+                                        var $3076 = $3081;
                                         break;
                                 };
-                                var $3053 = $3055;
+                                var $3074 = $3076;
                                 break;
                             case 'i':
-                                var $3061 = self.slice(0, -1);
-                                var self = $3061;
+                                var $3082 = self.slice(0, -1);
+                                var self = $3082;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3063 = self.slice(0, -1);
-                                        var $3064 = ("4" + Bits$hex$encode$($3063));
-                                        var $3062 = $3064;
+                                        var $3084 = self.slice(0, -1);
+                                        var $3085 = ("4" + Bits$hex$encode$($3084));
+                                        var $3083 = $3085;
                                         break;
                                     case 'i':
-                                        var $3065 = self.slice(0, -1);
-                                        var $3066 = ("c" + Bits$hex$encode$($3065));
-                                        var $3062 = $3066;
+                                        var $3086 = self.slice(0, -1);
+                                        var $3087 = ("c" + Bits$hex$encode$($3086));
+                                        var $3083 = $3087;
                                         break;
                                     case 'e':
-                                        var $3067 = "4";
-                                        var $3062 = $3067;
+                                        var $3088 = "4";
+                                        var $3083 = $3088;
                                         break;
                                 };
-                                var $3053 = $3062;
+                                var $3074 = $3083;
                                 break;
                             case 'e':
-                                var $3068 = "0";
-                                var $3053 = $3068;
+                                var $3089 = "0";
+                                var $3074 = $3089;
                                 break;
                         };
-                        var $3051 = $3053;
+                        var $3072 = $3074;
                         break;
                     case 'i':
-                        var $3069 = self.slice(0, -1);
-                        var self = $3069;
+                        var $3090 = self.slice(0, -1);
+                        var self = $3090;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3071 = self.slice(0, -1);
-                                var self = $3071;
+                                var $3092 = self.slice(0, -1);
+                                var self = $3092;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3073 = self.slice(0, -1);
-                                        var $3074 = ("2" + Bits$hex$encode$($3073));
-                                        var $3072 = $3074;
+                                        var $3094 = self.slice(0, -1);
+                                        var $3095 = ("2" + Bits$hex$encode$($3094));
+                                        var $3093 = $3095;
                                         break;
                                     case 'i':
-                                        var $3075 = self.slice(0, -1);
-                                        var $3076 = ("a" + Bits$hex$encode$($3075));
-                                        var $3072 = $3076;
+                                        var $3096 = self.slice(0, -1);
+                                        var $3097 = ("a" + Bits$hex$encode$($3096));
+                                        var $3093 = $3097;
                                         break;
                                     case 'e':
-                                        var $3077 = "2";
-                                        var $3072 = $3077;
+                                        var $3098 = "2";
+                                        var $3093 = $3098;
                                         break;
                                 };
-                                var $3070 = $3072;
+                                var $3091 = $3093;
                                 break;
                             case 'i':
-                                var $3078 = self.slice(0, -1);
-                                var self = $3078;
+                                var $3099 = self.slice(0, -1);
+                                var self = $3099;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3080 = self.slice(0, -1);
-                                        var $3081 = ("6" + Bits$hex$encode$($3080));
-                                        var $3079 = $3081;
+                                        var $3101 = self.slice(0, -1);
+                                        var $3102 = ("6" + Bits$hex$encode$($3101));
+                                        var $3100 = $3102;
                                         break;
                                     case 'i':
-                                        var $3082 = self.slice(0, -1);
-                                        var $3083 = ("e" + Bits$hex$encode$($3082));
-                                        var $3079 = $3083;
+                                        var $3103 = self.slice(0, -1);
+                                        var $3104 = ("e" + Bits$hex$encode$($3103));
+                                        var $3100 = $3104;
                                         break;
                                     case 'e':
-                                        var $3084 = "6";
-                                        var $3079 = $3084;
+                                        var $3105 = "6";
+                                        var $3100 = $3105;
                                         break;
                                 };
-                                var $3070 = $3079;
+                                var $3091 = $3100;
                                 break;
                             case 'e':
-                                var $3085 = "2";
-                                var $3070 = $3085;
+                                var $3106 = "2";
+                                var $3091 = $3106;
                                 break;
                         };
-                        var $3051 = $3070;
+                        var $3072 = $3091;
                         break;
                     case 'e':
-                        var $3086 = "0";
-                        var $3051 = $3086;
+                        var $3107 = "0";
+                        var $3072 = $3107;
                         break;
                 };
-                var $3049 = $3051;
+                var $3070 = $3072;
                 break;
             case 'i':
-                var $3087 = self.slice(0, -1);
-                var self = $3087;
+                var $3108 = self.slice(0, -1);
+                var self = $3108;
                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                     case 'o':
-                        var $3089 = self.slice(0, -1);
-                        var self = $3089;
+                        var $3110 = self.slice(0, -1);
+                        var self = $3110;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3091 = self.slice(0, -1);
-                                var self = $3091;
+                                var $3112 = self.slice(0, -1);
+                                var self = $3112;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3093 = self.slice(0, -1);
-                                        var $3094 = ("1" + Bits$hex$encode$($3093));
-                                        var $3092 = $3094;
+                                        var $3114 = self.slice(0, -1);
+                                        var $3115 = ("1" + Bits$hex$encode$($3114));
+                                        var $3113 = $3115;
                                         break;
                                     case 'i':
-                                        var $3095 = self.slice(0, -1);
-                                        var $3096 = ("9" + Bits$hex$encode$($3095));
-                                        var $3092 = $3096;
+                                        var $3116 = self.slice(0, -1);
+                                        var $3117 = ("9" + Bits$hex$encode$($3116));
+                                        var $3113 = $3117;
                                         break;
                                     case 'e':
-                                        var $3097 = "1";
-                                        var $3092 = $3097;
+                                        var $3118 = "1";
+                                        var $3113 = $3118;
                                         break;
                                 };
-                                var $3090 = $3092;
+                                var $3111 = $3113;
                                 break;
                             case 'i':
-                                var $3098 = self.slice(0, -1);
-                                var self = $3098;
+                                var $3119 = self.slice(0, -1);
+                                var self = $3119;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3100 = self.slice(0, -1);
-                                        var $3101 = ("5" + Bits$hex$encode$($3100));
-                                        var $3099 = $3101;
+                                        var $3121 = self.slice(0, -1);
+                                        var $3122 = ("5" + Bits$hex$encode$($3121));
+                                        var $3120 = $3122;
                                         break;
                                     case 'i':
-                                        var $3102 = self.slice(0, -1);
-                                        var $3103 = ("d" + Bits$hex$encode$($3102));
-                                        var $3099 = $3103;
+                                        var $3123 = self.slice(0, -1);
+                                        var $3124 = ("d" + Bits$hex$encode$($3123));
+                                        var $3120 = $3124;
                                         break;
                                     case 'e':
-                                        var $3104 = "5";
-                                        var $3099 = $3104;
+                                        var $3125 = "5";
+                                        var $3120 = $3125;
                                         break;
                                 };
-                                var $3090 = $3099;
+                                var $3111 = $3120;
                                 break;
                             case 'e':
-                                var $3105 = "1";
-                                var $3090 = $3105;
+                                var $3126 = "1";
+                                var $3111 = $3126;
                                 break;
                         };
-                        var $3088 = $3090;
+                        var $3109 = $3111;
                         break;
                     case 'i':
-                        var $3106 = self.slice(0, -1);
-                        var self = $3106;
+                        var $3127 = self.slice(0, -1);
+                        var self = $3127;
                         switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                             case 'o':
-                                var $3108 = self.slice(0, -1);
-                                var self = $3108;
+                                var $3129 = self.slice(0, -1);
+                                var self = $3129;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3110 = self.slice(0, -1);
-                                        var $3111 = ("3" + Bits$hex$encode$($3110));
-                                        var $3109 = $3111;
+                                        var $3131 = self.slice(0, -1);
+                                        var $3132 = ("3" + Bits$hex$encode$($3131));
+                                        var $3130 = $3132;
                                         break;
                                     case 'i':
-                                        var $3112 = self.slice(0, -1);
-                                        var $3113 = ("b" + Bits$hex$encode$($3112));
-                                        var $3109 = $3113;
+                                        var $3133 = self.slice(0, -1);
+                                        var $3134 = ("b" + Bits$hex$encode$($3133));
+                                        var $3130 = $3134;
                                         break;
                                     case 'e':
-                                        var $3114 = "3";
-                                        var $3109 = $3114;
+                                        var $3135 = "3";
+                                        var $3130 = $3135;
                                         break;
                                 };
-                                var $3107 = $3109;
+                                var $3128 = $3130;
                                 break;
                             case 'i':
-                                var $3115 = self.slice(0, -1);
-                                var self = $3115;
+                                var $3136 = self.slice(0, -1);
+                                var self = $3136;
                                 switch (self.length === 0 ? 'e' : self[self.length - 1] === '0' ? 'o' : 'i') {
                                     case 'o':
-                                        var $3117 = self.slice(0, -1);
-                                        var $3118 = ("7" + Bits$hex$encode$($3117));
-                                        var $3116 = $3118;
+                                        var $3138 = self.slice(0, -1);
+                                        var $3139 = ("7" + Bits$hex$encode$($3138));
+                                        var $3137 = $3139;
                                         break;
                                     case 'i':
-                                        var $3119 = self.slice(0, -1);
-                                        var $3120 = ("f" + Bits$hex$encode$($3119));
-                                        var $3116 = $3120;
+                                        var $3140 = self.slice(0, -1);
+                                        var $3141 = ("f" + Bits$hex$encode$($3140));
+                                        var $3137 = $3141;
                                         break;
                                     case 'e':
-                                        var $3121 = "7";
-                                        var $3116 = $3121;
+                                        var $3142 = "7";
+                                        var $3137 = $3142;
                                         break;
                                 };
-                                var $3107 = $3116;
+                                var $3128 = $3137;
                                 break;
                             case 'e':
-                                var $3122 = "3";
-                                var $3107 = $3122;
+                                var $3143 = "3";
+                                var $3128 = $3143;
                                 break;
                         };
-                        var $3088 = $3107;
+                        var $3109 = $3128;
                         break;
                     case 'e':
-                        var $3123 = "1";
-                        var $3088 = $3123;
+                        var $3144 = "1";
+                        var $3109 = $3144;
                         break;
                 };
-                var $3049 = $3088;
+                var $3070 = $3109;
                 break;
             case 'e':
-                var $3124 = "";
-                var $3049 = $3124;
+                var $3145 = "";
+                var $3070 = $3145;
                 break;
         };
-        return $3049;
+        return $3070;
     };
     const Bits$hex$encode = x0 => Bits$hex$encode$(x0);
     const Bits$eql = a0 => a1 => (a1 === a0);
 
     function Kindelia$Entry$data$(_value$1) {
-        var $3125 = ({
+        var $3146 = ({
             _: 'Kindelia.Entry.data',
             'value': _value$1
         });
-        return $3125;
+        return $3146;
     };
     const Kindelia$Entry$data = x0 => Kindelia$Entry$data$(x0);
 
@@ -10737,34 +10814,34 @@ module.exports = (function() {
         var self = _xs$3;
         switch (self._) {
             case 'List.cons':
-                var $3127 = self.head;
-                var $3128 = self.tail;
-                var _rec$6 = List$unzip$($3128);
-                var self = $3127;
+                var $3148 = self.head;
+                var $3149 = self.tail;
+                var _rec$6 = List$unzip$($3149);
+                var self = $3148;
                 switch (self._) {
                     case 'Pair.new':
-                        var $3130 = self.fst;
-                        var $3131 = self.snd;
+                        var $3151 = self.fst;
+                        var $3152 = self.snd;
                         var self = _rec$6;
                         switch (self._) {
                             case 'Pair.new':
-                                var $3133 = self.fst;
-                                var $3134 = self.snd;
-                                var $3135 = Pair$new$(List$cons$($3130, $3133), List$cons$($3131, $3134));
-                                var $3132 = $3135;
+                                var $3154 = self.fst;
+                                var $3155 = self.snd;
+                                var $3156 = Pair$new$(List$cons$($3151, $3154), List$cons$($3152, $3155));
+                                var $3153 = $3156;
                                 break;
                         };
-                        var $3129 = $3132;
+                        var $3150 = $3153;
                         break;
                 };
-                var $3126 = $3129;
+                var $3147 = $3150;
                 break;
             case 'List.nil':
-                var $3136 = Pair$new$(List$nil, List$nil);
-                var $3126 = $3136;
+                var $3157 = Pair$new$(List$nil, List$nil);
+                var $3147 = $3157;
                 break;
         };
-        return $3126;
+        return $3147;
     };
     const List$unzip = x0 => List$unzip$(x0);
 
@@ -10781,29 +10858,29 @@ module.exports = (function() {
                 var self = _kvs$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $3137 = self.head;
-                        var $3138 = self.tail;
-                        var $3139 = Kindelia$extend$(Map$set$((() => {
-                            var self = $3137;
+                        var $3158 = self.head;
+                        var $3159 = self.tail;
+                        var $3160 = Kindelia$extend$(Map$set$((() => {
+                            var self = $3158;
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3140 = self.fst;
-                                    var $3141 = $3140;
-                                    return $3141;
+                                    var $3161 = self.fst;
+                                    var $3162 = $3161;
+                                    return $3162;
                             };
                         })(), (() => {
-                            var self = $3137;
+                            var self = $3158;
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $3142 = self.snd;
-                                    var $3143 = $3142;
-                                    return $3143;
+                                    var $3163 = self.snd;
+                                    var $3164 = $3163;
+                                    return $3164;
                             };
-                        })(), _map$2), $3138);
-                        return $3139;
+                        })(), _map$2), $3159);
+                        return $3160;
                     case 'List.nil':
-                        var $3144 = _map$2;
-                        return $3144;
+                        var $3165 = _map$2;
+                        return $3165;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -10825,16 +10902,16 @@ module.exports = (function() {
                 var self = _xs$5;
                 switch (self._) {
                     case 'List.cons':
-                        var $3145 = self.head;
-                        var $3146 = self.tail;
-                        var _key$8 = Pair$fst$($3145);
-                        var _val$9 = Pair$snd$($3145);
+                        var $3166 = self.head;
+                        var $3167 = self.tail;
+                        var _key$8 = Pair$fst$($3166);
+                        var _val$9 = Pair$snd$($3166);
                         var _new_acc$10 = BBT$insert$(_cmp$3, _key$8, _val$9, _acc$4);
-                        var $3147 = BBT$from_list$go$(_cmp$3, _new_acc$10, $3146);
-                        return $3147;
+                        var $3168 = BBT$from_list$go$(_cmp$3, _new_acc$10, $3167);
+                        return $3168;
                     case 'List.nil':
-                        var $3148 = _acc$4;
-                        return $3148;
+                        var $3169 = _acc$4;
+                        return $3169;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -10844,14 +10921,14 @@ module.exports = (function() {
     const BBT$from_list$go = x0 => x1 => x2 => BBT$from_list$go$(x0, x1, x2);
 
     function BBT$from_list$(_cmp$3, _xs$4) {
-        var $3149 = BBT$from_list$go$(_cmp$3, BBT$tip, _xs$4);
-        return $3149;
+        var $3170 = BBT$from_list$go$(_cmp$3, BBT$tip, _xs$4);
+        return $3170;
     };
     const BBT$from_list = x0 => x1 => BBT$from_list$(x0, x1);
 
     function Map$from_list$(_xs$2) {
-        var $3150 = BBT$from_list$(String$cmp, _xs$2);
-        return $3150;
+        var $3171 = BBT$from_list$(String$cmp, _xs$2);
+        return $3171;
     };
     const Map$from_list = x0 => Map$from_list$(x0);
 
@@ -10859,29 +10936,29 @@ module.exports = (function() {
         var self = _as$3;
         switch (self._) {
             case 'List.cons':
-                var $3152 = self.head;
-                var $3153 = self.tail;
+                var $3173 = self.head;
+                var $3174 = self.tail;
                 var self = _bs$4;
                 switch (self._) {
                     case 'List.cons':
-                        var $3155 = self.head;
-                        var $3156 = self.tail;
-                        var $3157 = List$cons$(Pair$new$($3152, $3155), List$zip$($3153, $3156));
-                        var $3154 = $3157;
+                        var $3176 = self.head;
+                        var $3177 = self.tail;
+                        var $3178 = List$cons$(Pair$new$($3173, $3176), List$zip$($3174, $3177));
+                        var $3175 = $3178;
                         break;
                     case 'List.nil':
-                        var $3158 = List$nil;
-                        var $3154 = $3158;
+                        var $3179 = List$nil;
+                        var $3175 = $3179;
                         break;
                 };
-                var $3151 = $3154;
+                var $3172 = $3175;
                 break;
             case 'List.nil':
-                var $3159 = List$nil;
-                var $3151 = $3159;
+                var $3180 = List$nil;
+                var $3172 = $3180;
                 break;
         };
-        return $3151;
+        return $3172;
     };
     const List$zip = x0 => x1 => List$zip$(x0, x1);
 
@@ -10889,68 +10966,68 @@ module.exports = (function() {
         var self = _a$1;
         switch (self._) {
             case 'Kindelia.Type.data':
-                var $3161 = self.name;
+                var $3182 = self.name;
                 var self = _b$2;
                 switch (self._) {
                     case 'Kindelia.Type.data':
-                        var $3163 = self.name;
-                        var $3164 = ($3161 === $3163);
-                        var $3162 = $3164;
+                        var $3184 = self.name;
+                        var $3185 = ($3182 === $3184);
+                        var $3183 = $3185;
                         break;
                     case 'Kindelia.Type.word':
-                        var $3165 = Bool$false;
-                        var $3162 = $3165;
+                        var $3186 = Bool$false;
+                        var $3183 = $3186;
                         break;
                 };
-                var $3160 = $3162;
+                var $3181 = $3183;
                 break;
             case 'Kindelia.Type.word':
                 var self = _b$2;
                 switch (self._) {
                     case 'Kindelia.Type.word':
-                        var $3167 = Bool$true;
-                        var $3166 = $3167;
+                        var $3188 = Bool$true;
+                        var $3187 = $3188;
                         break;
                     case 'Kindelia.Type.data':
-                        var $3168 = Bool$false;
-                        var $3166 = $3168;
+                        var $3189 = Bool$false;
+                        var $3187 = $3189;
                         break;
                 };
-                var $3160 = $3166;
+                var $3181 = $3187;
                 break;
         };
-        return $3160;
+        return $3181;
     };
     const Kindelia$equal = x0 => x1 => Kindelia$equal$(x0, x1);
 
     function Kindelia$get_bond$(_world$1, _name$2) {
-        var $3169 = Maybe$monad$((_m$bind$3 => _m$pure$4 => {
-            var $3170 = _m$bind$3;
-            return $3170;
+        var $3190 = Maybe$monad$((_m$bind$3 => _m$pure$4 => {
+            var $3191 = _m$bind$3;
+            return $3191;
         }))(Map$get$(_name$2, (() => {
             var self = _world$1;
             switch (self._) {
                 case 'Kindelia.World.new':
-                    var $3171 = self.entry;
-                    var $3172 = $3171;
-                    return $3172;
+                    var $3192 = self.entry;
+                    var $3193 = $3192;
+                    return $3193;
             };
         })()))((_entry$3 => {
             var self = _entry$3;
             switch (self._) {
                 case 'Kindelia.Entry.bond':
-                    var $3174 = self.value;
-                    var $3175 = Maybe$some$($3174);
-                    var $3173 = $3175;
+                    var $3195 = self.value;
+                    var $3196 = Maybe$some$($3195);
+                    var $3194 = $3196;
                     break;
                 case 'Kindelia.Entry.data':
-                    var $3176 = Maybe$none;
-                    var $3173 = $3176;
+                    var $3197 = Maybe$none;
+                    var $3194 = $3197;
                     break;
             };
-            return $3173;
+            return $3194;
         }));
-        return $3169;
+        return $3190;
     };
     const Kindelia$get_bond = x0 => x1 => Kindelia$get_bond$(x0, x1);
     const List$length = a0 => (list_length(a0));
@@ -10968,20 +11045,20 @@ module.exports = (function() {
                 var self = _list$3;
                 switch (self._) {
                     case 'List.cons':
-                        var $3177 = self.head;
-                        var $3178 = self.tail;
-                        var self = _cond$2($3177);
+                        var $3198 = self.head;
+                        var $3199 = self.tail;
+                        var self = _cond$2($3198);
                         if (self) {
-                            var $3180 = List$all$(_cond$2, $3178);
-                            var $3179 = $3180;
+                            var $3201 = List$all$(_cond$2, $3199);
+                            var $3200 = $3201;
                         } else {
-                            var $3181 = Bool$false;
-                            var $3179 = $3181;
+                            var $3202 = Bool$false;
+                            var $3200 = $3202;
                         };
-                        return $3179;
+                        return $3200;
                     case 'List.nil':
-                        var $3182 = Bool$true;
-                        return $3182;
+                        var $3203 = Bool$true;
+                        return $3203;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -10994,44 +11071,44 @@ module.exports = (function() {
         var self = _as$5;
         switch (self._) {
             case 'List.cons':
-                var $3184 = self.head;
-                var $3185 = self.tail;
+                var $3205 = self.head;
+                var $3206 = self.tail;
                 var self = _bs$6;
                 switch (self._) {
                     case 'List.cons':
-                        var $3187 = self.head;
-                        var $3188 = self.tail;
-                        var $3189 = List$cons$(_f$4($3184)($3187), List$zip_with$(_f$4, $3185, $3188));
-                        var $3186 = $3189;
+                        var $3208 = self.head;
+                        var $3209 = self.tail;
+                        var $3210 = List$cons$(_f$4($3205)($3208), List$zip_with$(_f$4, $3206, $3209));
+                        var $3207 = $3210;
                         break;
                     case 'List.nil':
-                        var $3190 = List$nil;
-                        var $3186 = $3190;
+                        var $3211 = List$nil;
+                        var $3207 = $3211;
                         break;
                 };
-                var $3183 = $3186;
+                var $3204 = $3207;
                 break;
             case 'List.nil':
-                var $3191 = List$nil;
-                var $3183 = $3191;
+                var $3212 = List$nil;
+                var $3204 = $3212;
                 break;
         };
-        return $3183;
+        return $3204;
     };
     const List$zip_with = x0 => x1 => x2 => List$zip_with$(x0, x1, x2);
 
     function List$zipped_with$(_as$3, _bs$4, _f$6) {
-        var $3192 = List$zip_with$(_f$6, _as$3, _bs$4);
-        return $3192;
+        var $3213 = List$zip_with$(_f$6, _as$3, _bs$4);
+        return $3213;
     };
     const List$zipped_with = x0 => x1 => x2 => List$zipped_with$(x0, x1, x2);
 
     function List$and$(_list$1) {
-        var $3193 = List$all$((_x$2 => {
-            var $3194 = _x$2;
-            return $3194;
+        var $3214 = List$all$((_x$2 => {
+            var $3215 = _x$2;
+            return $3215;
         }), _list$1);
-        return $3193;
+        return $3214;
     };
     const List$and = x0 => List$and$(x0);
 
@@ -11039,15 +11116,15 @@ module.exports = (function() {
         var self = _list$2;
         switch (self._) {
             case 'List.nil':
-                var $3196 = Bool$true;
-                var $3195 = $3196;
+                var $3217 = Bool$true;
+                var $3216 = $3217;
                 break;
             case 'List.cons':
-                var $3197 = Bool$false;
-                var $3195 = $3197;
+                var $3218 = Bool$false;
+                var $3216 = $3218;
                 break;
         };
-        return $3195;
+        return $3216;
     };
     const List$is_empty = x0 => List$is_empty$(x0);
 
@@ -11058,625 +11135,625 @@ module.exports = (function() {
                 var self = _term$3;
                 switch (self._) {
                     case 'Kindelia.Term.var':
-                        var $3200 = self.name;
-                        var self = Map$get$($3200, _context$1);
+                        var $3221 = self.name;
+                        var self = Map$get$($3221, _context$1);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3202 = self.value;
-                                var $3203 = Kindelia$equal$($3202, _type$4);
-                                var $3201 = $3203;
+                                var $3223 = self.value;
+                                var $3224 = Kindelia$equal$($3223, _type$4);
+                                var $3222 = $3224;
                                 break;
                             case 'Maybe.none':
-                                var $3204 = Bool$false;
-                                var $3201 = $3204;
+                                var $3225 = Bool$false;
+                                var $3222 = $3225;
                                 break;
                         };
-                        var $3199 = $3201;
+                        var $3220 = $3222;
                         break;
                     case 'Kindelia.Term.call':
-                        var $3205 = self.bond;
-                        var $3206 = self.args;
-                        var self = Kindelia$get_bond$(_world$2, $3205);
+                        var $3226 = self.bond;
+                        var $3227 = self.args;
+                        var self = Kindelia$get_bond$(_world$2, $3226);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3208 = self.value;
-                                var _bond$8 = $3208;
+                                var $3229 = self.value;
+                                var _bond$8 = $3229;
                                 var self = _bond$8;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var $3210 = self.args;
-                                        var $3211 = self.otyp;
-                                        var _size$14 = ((list_length($3206)) === (list_length($3210)));
-                                        var _otyp$15 = Kindelia$equal$($3211, _type$4);
-                                        var _args$16 = List$zip$($3206, List$map$((_x$16 => {
+                                        var $3231 = self.args;
+                                        var $3232 = self.otyp;
+                                        var _size$14 = ((list_length($3227)) === (list_length($3231)));
+                                        var _otyp$15 = Kindelia$equal$($3232, _type$4);
+                                        var _args$16 = List$zip$($3227, List$map$((_x$16 => {
                                             var self = _x$16;
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3214 = self.snd;
-                                                    var $3215 = $3214;
-                                                    var $3213 = $3215;
+                                                    var $3235 = self.snd;
+                                                    var $3236 = $3235;
+                                                    var $3234 = $3236;
                                                     break;
                                             };
-                                            return $3213;
-                                        }), $3210));
+                                            return $3234;
+                                        }), $3231));
                                         var _args$17 = List$all$((_x$17 => {
-                                            var $3216 = Kindelia$check$(_context$1, _world$2, (() => {
+                                            var $3237 = Kindelia$check$(_context$1, _world$2, (() => {
                                                 var self = _x$17;
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3217 = self.fst;
-                                                        var $3218 = $3217;
-                                                        return $3218;
+                                                        var $3238 = self.fst;
+                                                        var $3239 = $3238;
+                                                        return $3239;
                                                 };
                                             })(), (() => {
                                                 var self = _x$17;
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3219 = self.snd;
-                                                        var $3220 = $3219;
-                                                        return $3220;
+                                                        var $3240 = self.snd;
+                                                        var $3241 = $3240;
+                                                        return $3241;
                                                 };
                                             })());
-                                            return $3216;
+                                            return $3237;
                                         }), _args$16);
-                                        var $3212 = (_size$14 && (_otyp$15 && _args$17));
-                                        var $3209 = $3212;
+                                        var $3233 = (_size$14 && (_otyp$15 && _args$17));
+                                        var $3230 = $3233;
                                         break;
                                 };
-                                var $3207 = $3209;
+                                var $3228 = $3230;
                                 break;
                             case 'Maybe.none':
-                                var $3221 = Bool$false;
-                                var $3207 = $3221;
+                                var $3242 = Bool$false;
+                                var $3228 = $3242;
                                 break;
                         };
-                        var $3199 = $3207;
+                        var $3220 = $3228;
                         break;
                     case 'Kindelia.Term.let':
-                        var $3222 = self.name;
-                        var $3223 = self.type;
-                        var $3224 = self.expr;
-                        var $3225 = self.body;
-                        var _expr$9 = Kindelia$check$(_context$1, _world$2, $3224, $3223);
-                        var _body$10 = Kindelia$check$(Map$set$($3222, $3223, _context$1), _world$2, $3225, _type$4);
-                        var $3226 = (_expr$9 && _body$10);
-                        var $3199 = $3226;
+                        var $3243 = self.name;
+                        var $3244 = self.type;
+                        var $3245 = self.expr;
+                        var $3246 = self.body;
+                        var _expr$9 = Kindelia$check$(_context$1, _world$2, $3245, $3244);
+                        var _body$10 = Kindelia$check$(Map$set$($3243, $3244, _context$1), _world$2, $3246, _type$4);
+                        var $3247 = (_expr$9 && _body$10);
+                        var $3220 = $3247;
                         break;
                     case 'Kindelia.Term.create':
-                        var $3227 = self.ctor;
-                        var $3228 = self.vals;
+                        var $3248 = self.ctor;
+                        var $3249 = self.vals;
                         var self = _type$4;
                         switch (self._) {
                             case 'Kindelia.Type.data':
-                                var $3230 = self.name;
-                                var self = Kindelia$get_data$(_world$2, $3230);
+                                var $3251 = self.name;
+                                var self = Kindelia$get_data$(_world$2, $3251);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $3232 = self.value;
-                                        var _data$9 = $3232;
+                                        var $3253 = self.value;
+                                        var _data$9 = $3253;
                                         var self = _data$9;
                                         switch (self._) {
                                             case 'Kindelia.Data.new':
-                                                var $3234 = self.ctrs;
-                                                var self = List$get$($3227, $3234);
+                                                var $3255 = self.ctrs;
+                                                var self = List$get$($3248, $3255);
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $3236 = self.value;
-                                                        var _ctor$13 = $3236;
+                                                        var $3257 = self.value;
+                                                        var _ctor$13 = $3257;
                                                         var self = _ctor$13;
                                                         switch (self._) {
                                                             case 'Kindelia.Constructor.new':
-                                                                var $3238 = self.args;
-                                                                var _size$16 = ((list_length($3228)) === (list_length($3238)));
-                                                                var _vals$17 = List$zip$($3228, List$map$((_x$17 => {
+                                                                var $3259 = self.args;
+                                                                var _size$16 = ((list_length($3249)) === (list_length($3259)));
+                                                                var _vals$17 = List$zip$($3249, List$map$((_x$17 => {
                                                                     var self = _x$17;
                                                                     switch (self._) {
                                                                         case 'Pair.new':
-                                                                            var $3241 = self.snd;
-                                                                            var $3242 = $3241;
-                                                                            var $3240 = $3242;
+                                                                            var $3262 = self.snd;
+                                                                            var $3263 = $3262;
+                                                                            var $3261 = $3263;
                                                                             break;
                                                                     };
-                                                                    return $3240;
-                                                                }), $3238));
+                                                                    return $3261;
+                                                                }), $3259));
                                                                 var _vals$18 = List$all$((_x$18 => {
-                                                                    var $3243 = Kindelia$check$(_context$1, _world$2, (() => {
+                                                                    var $3264 = Kindelia$check$(_context$1, _world$2, (() => {
                                                                         var self = _x$18;
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $3244 = self.fst;
-                                                                                var $3245 = $3244;
-                                                                                return $3245;
+                                                                                var $3265 = self.fst;
+                                                                                var $3266 = $3265;
+                                                                                return $3266;
                                                                         };
                                                                     })(), (() => {
                                                                         var self = _x$18;
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $3246 = self.snd;
-                                                                                var $3247 = $3246;
-                                                                                return $3247;
+                                                                                var $3267 = self.snd;
+                                                                                var $3268 = $3267;
+                                                                                return $3268;
                                                                         };
                                                                     })());
-                                                                    return $3243;
+                                                                    return $3264;
                                                                 }), _vals$17);
-                                                                var $3239 = (_size$16 && _vals$18);
-                                                                var $3237 = $3239;
+                                                                var $3260 = (_size$16 && _vals$18);
+                                                                var $3258 = $3260;
                                                                 break;
                                                         };
-                                                        var $3235 = $3237;
+                                                        var $3256 = $3258;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $3248 = Bool$false;
-                                                        var $3235 = $3248;
+                                                        var $3269 = Bool$false;
+                                                        var $3256 = $3269;
                                                         break;
                                                 };
-                                                var $3233 = $3235;
+                                                var $3254 = $3256;
                                                 break;
                                         };
-                                        var $3231 = $3233;
+                                        var $3252 = $3254;
                                         break;
                                     case 'Maybe.none':
-                                        var $3249 = Bool$false;
-                                        var $3231 = $3249;
+                                        var $3270 = Bool$false;
+                                        var $3252 = $3270;
                                         break;
                                 };
-                                var $3229 = $3231;
+                                var $3250 = $3252;
                                 break;
                             case 'Kindelia.Type.word':
-                                var $3250 = Bool$false;
-                                var $3229 = $3250;
+                                var $3271 = Bool$false;
+                                var $3250 = $3271;
                                 break;
                         };
-                        var $3199 = $3229;
+                        var $3220 = $3250;
                         break;
                     case 'Kindelia.Term.match':
-                        var $3251 = self.name;
-                        var $3252 = self.data;
-                        var $3253 = self.cses;
-                        var self = Kindelia$get_data$(_world$2, $3252);
+                        var $3272 = self.name;
+                        var $3273 = self.data;
+                        var $3274 = self.cses;
+                        var self = Kindelia$get_data$(_world$2, $3273);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3255 = self.value;
-                                var _data$9 = $3255;
+                                var $3276 = self.value;
+                                var _data$9 = $3276;
                                 var self = _data$9;
                                 switch (self._) {
                                     case 'Kindelia.Data.new':
-                                        var $3257 = self.ctrs;
-                                        var _size$12 = ((list_length($3253)) === (list_length($3257)));
-                                        var _expr$13 = Kindelia$check$(_context$1, _world$2, Kindelia$Term$var$($3251), Kindelia$Type$data$($3252));
-                                        var _cses$14 = List$zipped_with$($3253, $3257, (_case_body$14 => _case_ctor$15 => {
+                                        var $3278 = self.ctrs;
+                                        var _size$12 = ((list_length($3274)) === (list_length($3278)));
+                                        var _expr$13 = Kindelia$check$(_context$1, _world$2, Kindelia$Term$var$($3272), Kindelia$Type$data$($3273));
+                                        var _cses$14 = List$zipped_with$($3274, $3278, (_case_body$14 => _case_ctor$15 => {
                                             var _args$16 = List$map$((_arg$16 => {
-                                                var $3260 = Pair$new$(($3251 + ("." + (() => {
+                                                var $3281 = Pair$new$(($3272 + ("." + (() => {
                                                     var self = _arg$16;
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3261 = self.fst;
-                                                            var $3262 = $3261;
-                                                            return $3262;
+                                                            var $3282 = self.fst;
+                                                            var $3283 = $3282;
+                                                            return $3283;
                                                     };
                                                 })())), (() => {
                                                     var self = _arg$16;
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3263 = self.snd;
-                                                            var $3264 = $3263;
-                                                            return $3264;
+                                                            var $3284 = self.snd;
+                                                            var $3285 = $3284;
+                                                            return $3285;
                                                     };
                                                 })());
-                                                return $3260;
+                                                return $3281;
                                             }), (() => {
                                                 var self = _case_ctor$15;
                                                 switch (self._) {
                                                     case 'Kindelia.Constructor.new':
-                                                        var $3265 = self.args;
-                                                        var $3266 = $3265;
-                                                        return $3266;
+                                                        var $3286 = self.args;
+                                                        var $3287 = $3286;
+                                                        return $3287;
                                                 };
                                             })());
                                             var _ctx2$17 = Kindelia$extend$(_context$1, _args$16);
-                                            var $3259 = Kindelia$check$(_ctx2$17, _world$2, _case_body$14, _type$4);
-                                            return $3259;
+                                            var $3280 = Kindelia$check$(_ctx2$17, _world$2, _case_body$14, _type$4);
+                                            return $3280;
                                         }));
-                                        var $3258 = (_size$12 && List$and$(_cses$14));
-                                        var $3256 = $3258;
+                                        var $3279 = (_size$12 && List$and$(_cses$14));
+                                        var $3277 = $3279;
                                         break;
                                 };
-                                var $3254 = $3256;
+                                var $3275 = $3277;
                                 break;
                             case 'Maybe.none':
-                                var $3267 = Bool$false;
-                                var $3254 = $3267;
+                                var $3288 = Bool$false;
+                                var $3275 = $3288;
                                 break;
                         };
-                        var $3199 = $3254;
+                        var $3220 = $3275;
                         break;
                     case 'Kindelia.Term.compare':
-                        var $3268 = self.val0;
-                        var $3269 = self.val1;
-                        var $3270 = self.iflt;
-                        var $3271 = self.ifeq;
-                        var $3272 = self.ifgt;
-                        var _val0$10 = Kindelia$check$(_context$1, _world$2, $3268, Kindelia$Type$word);
-                        var _val1$11 = Kindelia$check$(_context$1, _world$2, $3269, Kindelia$Type$word);
-                        var _iflt$12 = Kindelia$check$(_context$1, _world$2, $3270, _type$4);
-                        var _ifeq$13 = Kindelia$check$(_context$1, _world$2, $3271, _type$4);
-                        var _ifgt$14 = Kindelia$check$(_context$1, _world$2, $3272, _type$4);
-                        var $3273 = (_val0$10 && (_val1$11 && (_iflt$12 && (_ifeq$13 && _ifgt$14))));
-                        var $3199 = $3273;
+                        var $3289 = self.val0;
+                        var $3290 = self.val1;
+                        var $3291 = self.iflt;
+                        var $3292 = self.ifeq;
+                        var $3293 = self.ifgt;
+                        var _val0$10 = Kindelia$check$(_context$1, _world$2, $3289, Kindelia$Type$word);
+                        var _val1$11 = Kindelia$check$(_context$1, _world$2, $3290, Kindelia$Type$word);
+                        var _iflt$12 = Kindelia$check$(_context$1, _world$2, $3291, _type$4);
+                        var _ifeq$13 = Kindelia$check$(_context$1, _world$2, $3292, _type$4);
+                        var _ifgt$14 = Kindelia$check$(_context$1, _world$2, $3293, _type$4);
+                        var $3294 = (_val0$10 && (_val1$11 && (_iflt$12 && (_ifeq$13 && _ifgt$14))));
+                        var $3220 = $3294;
                         break;
                     case 'Kindelia.Term.operate':
-                        var $3274 = self.val0;
-                        var $3275 = self.val1;
-                        var _val0$8 = Kindelia$check$(_context$1, _world$2, $3274, Kindelia$Type$word);
-                        var _val1$9 = Kindelia$check$(_context$1, _world$2, $3275, Kindelia$Type$word);
-                        var $3276 = (_val0$8 && _val1$9);
-                        var $3199 = $3276;
+                        var $3295 = self.val0;
+                        var $3296 = self.val1;
+                        var _val0$8 = Kindelia$check$(_context$1, _world$2, $3295, Kindelia$Type$word);
+                        var _val1$9 = Kindelia$check$(_context$1, _world$2, $3296, Kindelia$Type$word);
+                        var $3297 = (_val0$8 && _val1$9);
+                        var $3220 = $3297;
                         break;
                     case 'Kindelia.Term.bind':
-                        var $3277 = self.bond;
-                        var $3278 = self.expr;
-                        var $3279 = self.cont;
-                        var self = Kindelia$get_bond$(_world$2, $3277);
+                        var $3298 = self.bond;
+                        var $3299 = self.expr;
+                        var $3300 = self.cont;
+                        var self = Kindelia$get_bond$(_world$2, $3298);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3281 = self.value;
-                                var _bond$9 = $3281;
+                                var $3302 = self.value;
+                                var _bond$9 = $3302;
                                 var self = _bond$9;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var $3283 = self.args;
-                                        var $3284 = self.otyp;
-                                        var _notf$15 = List$is_empty$($3283);
-                                        var _expr$16 = Kindelia$check$(_context$1, _world$2, $3278, $3284);
-                                        var _cont$17 = Kindelia$check$(_context$1, _world$2, $3279, _type$4);
-                                        var $3285 = (_notf$15 && (_expr$16 && _cont$17));
-                                        var $3282 = $3285;
+                                        var $3304 = self.args;
+                                        var $3305 = self.otyp;
+                                        var _notf$15 = List$is_empty$($3304);
+                                        var _expr$16 = Kindelia$check$(_context$1, _world$2, $3299, $3305);
+                                        var _cont$17 = Kindelia$check$(_context$1, _world$2, $3300, _type$4);
+                                        var $3306 = (_notf$15 && (_expr$16 && _cont$17));
+                                        var $3303 = $3306;
                                         break;
                                 };
-                                var $3280 = $3282;
+                                var $3301 = $3303;
                                 break;
                             case 'Maybe.none':
-                                var $3286 = Bool$false;
-                                var $3280 = $3286;
+                                var $3307 = Bool$false;
+                                var $3301 = $3307;
                                 break;
                         };
-                        var $3199 = $3280;
+                        var $3220 = $3301;
                         break;
                     case 'Kindelia.Term.word':
                         var self = _type$4;
                         switch (self._) {
                             case 'Kindelia.Type.word':
-                                var $3288 = Bool$true;
-                                var $3287 = $3288;
+                                var $3309 = Bool$true;
+                                var $3308 = $3309;
                                 break;
                             case 'Kindelia.Type.data':
-                                var $3289 = Bool$false;
-                                var $3287 = $3289;
+                                var $3310 = Bool$false;
+                                var $3308 = $3310;
                                 break;
                         };
-                        var $3199 = $3287;
+                        var $3220 = $3308;
                         break;
                 };
-                var $3198 = $3199;
+                var $3219 = $3220;
                 break;
             case 'BBT.bin':
                 var self = _term$3;
                 switch (self._) {
                     case 'Kindelia.Term.var':
-                        var $3291 = self.name;
-                        var self = Map$get$($3291, _context$1);
+                        var $3312 = self.name;
+                        var self = Map$get$($3312, _context$1);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3293 = self.value;
-                                var $3294 = Kindelia$equal$($3293, _type$4);
-                                var $3292 = $3294;
+                                var $3314 = self.value;
+                                var $3315 = Kindelia$equal$($3314, _type$4);
+                                var $3313 = $3315;
                                 break;
                             case 'Maybe.none':
-                                var $3295 = Bool$false;
-                                var $3292 = $3295;
+                                var $3316 = Bool$false;
+                                var $3313 = $3316;
                                 break;
                         };
-                        var $3290 = $3292;
+                        var $3311 = $3313;
                         break;
                     case 'Kindelia.Term.call':
-                        var $3296 = self.bond;
-                        var $3297 = self.args;
-                        var self = Kindelia$get_bond$(_world$2, $3296);
+                        var $3317 = self.bond;
+                        var $3318 = self.args;
+                        var self = Kindelia$get_bond$(_world$2, $3317);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3299 = self.value;
-                                var _bond$13 = $3299;
+                                var $3320 = self.value;
+                                var _bond$13 = $3320;
                                 var self = _bond$13;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var $3301 = self.args;
-                                        var $3302 = self.otyp;
-                                        var _size$19 = ((list_length($3297)) === (list_length($3301)));
-                                        var _otyp$20 = Kindelia$equal$($3302, _type$4);
-                                        var _args$21 = List$zip$($3297, List$map$((_x$21 => {
+                                        var $3322 = self.args;
+                                        var $3323 = self.otyp;
+                                        var _size$19 = ((list_length($3318)) === (list_length($3322)));
+                                        var _otyp$20 = Kindelia$equal$($3323, _type$4);
+                                        var _args$21 = List$zip$($3318, List$map$((_x$21 => {
                                             var self = _x$21;
                                             switch (self._) {
                                                 case 'Pair.new':
-                                                    var $3305 = self.snd;
-                                                    var $3306 = $3305;
-                                                    var $3304 = $3306;
+                                                    var $3326 = self.snd;
+                                                    var $3327 = $3326;
+                                                    var $3325 = $3327;
                                                     break;
                                             };
-                                            return $3304;
-                                        }), $3301));
+                                            return $3325;
+                                        }), $3322));
                                         var _args$22 = List$all$((_x$22 => {
-                                            var $3307 = Kindelia$check$(_context$1, _world$2, (() => {
+                                            var $3328 = Kindelia$check$(_context$1, _world$2, (() => {
                                                 var self = _x$22;
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3308 = self.fst;
-                                                        var $3309 = $3308;
-                                                        return $3309;
+                                                        var $3329 = self.fst;
+                                                        var $3330 = $3329;
+                                                        return $3330;
                                                 };
                                             })(), (() => {
                                                 var self = _x$22;
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3310 = self.snd;
-                                                        var $3311 = $3310;
-                                                        return $3311;
+                                                        var $3331 = self.snd;
+                                                        var $3332 = $3331;
+                                                        return $3332;
                                                 };
                                             })());
-                                            return $3307;
+                                            return $3328;
                                         }), _args$21);
-                                        var $3303 = (_size$19 && (_otyp$20 && _args$22));
-                                        var $3300 = $3303;
+                                        var $3324 = (_size$19 && (_otyp$20 && _args$22));
+                                        var $3321 = $3324;
                                         break;
                                 };
-                                var $3298 = $3300;
+                                var $3319 = $3321;
                                 break;
                             case 'Maybe.none':
-                                var $3312 = Bool$false;
-                                var $3298 = $3312;
+                                var $3333 = Bool$false;
+                                var $3319 = $3333;
                                 break;
                         };
-                        var $3290 = $3298;
+                        var $3311 = $3319;
                         break;
                     case 'Kindelia.Term.let':
-                        var $3313 = self.name;
-                        var $3314 = self.type;
-                        var $3315 = self.expr;
-                        var $3316 = self.body;
-                        var _expr$14 = Kindelia$check$(_context$1, _world$2, $3315, $3314);
-                        var _body$15 = Kindelia$check$(Map$set$($3313, $3314, _context$1), _world$2, $3316, _type$4);
-                        var $3317 = (_expr$14 && _body$15);
-                        var $3290 = $3317;
+                        var $3334 = self.name;
+                        var $3335 = self.type;
+                        var $3336 = self.expr;
+                        var $3337 = self.body;
+                        var _expr$14 = Kindelia$check$(_context$1, _world$2, $3336, $3335);
+                        var _body$15 = Kindelia$check$(Map$set$($3334, $3335, _context$1), _world$2, $3337, _type$4);
+                        var $3338 = (_expr$14 && _body$15);
+                        var $3311 = $3338;
                         break;
                     case 'Kindelia.Term.create':
-                        var $3318 = self.ctor;
-                        var $3319 = self.vals;
+                        var $3339 = self.ctor;
+                        var $3340 = self.vals;
                         var self = _type$4;
                         switch (self._) {
                             case 'Kindelia.Type.data':
-                                var $3321 = self.name;
-                                var self = Kindelia$get_data$(_world$2, $3321);
+                                var $3342 = self.name;
+                                var self = Kindelia$get_data$(_world$2, $3342);
                                 switch (self._) {
                                     case 'Maybe.some':
-                                        var $3323 = self.value;
-                                        var _data$14 = $3323;
+                                        var $3344 = self.value;
+                                        var _data$14 = $3344;
                                         var self = _data$14;
                                         switch (self._) {
                                             case 'Kindelia.Data.new':
-                                                var $3325 = self.ctrs;
-                                                var self = List$get$($3318, $3325);
+                                                var $3346 = self.ctrs;
+                                                var self = List$get$($3339, $3346);
                                                 switch (self._) {
                                                     case 'Maybe.some':
-                                                        var $3327 = self.value;
-                                                        var _ctor$18 = $3327;
+                                                        var $3348 = self.value;
+                                                        var _ctor$18 = $3348;
                                                         var self = _ctor$18;
                                                         switch (self._) {
                                                             case 'Kindelia.Constructor.new':
-                                                                var $3329 = self.args;
-                                                                var _size$21 = ((list_length($3319)) === (list_length($3329)));
-                                                                var _vals$22 = List$zip$($3319, List$map$((_x$22 => {
+                                                                var $3350 = self.args;
+                                                                var _size$21 = ((list_length($3340)) === (list_length($3350)));
+                                                                var _vals$22 = List$zip$($3340, List$map$((_x$22 => {
                                                                     var self = _x$22;
                                                                     switch (self._) {
                                                                         case 'Pair.new':
-                                                                            var $3332 = self.snd;
-                                                                            var $3333 = $3332;
-                                                                            var $3331 = $3333;
+                                                                            var $3353 = self.snd;
+                                                                            var $3354 = $3353;
+                                                                            var $3352 = $3354;
                                                                             break;
                                                                     };
-                                                                    return $3331;
-                                                                }), $3329));
+                                                                    return $3352;
+                                                                }), $3350));
                                                                 var _vals$23 = List$all$((_x$23 => {
-                                                                    var $3334 = Kindelia$check$(_context$1, _world$2, (() => {
+                                                                    var $3355 = Kindelia$check$(_context$1, _world$2, (() => {
                                                                         var self = _x$23;
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $3335 = self.fst;
-                                                                                var $3336 = $3335;
-                                                                                return $3336;
+                                                                                var $3356 = self.fst;
+                                                                                var $3357 = $3356;
+                                                                                return $3357;
                                                                         };
                                                                     })(), (() => {
                                                                         var self = _x$23;
                                                                         switch (self._) {
                                                                             case 'Pair.new':
-                                                                                var $3337 = self.snd;
-                                                                                var $3338 = $3337;
-                                                                                return $3338;
+                                                                                var $3358 = self.snd;
+                                                                                var $3359 = $3358;
+                                                                                return $3359;
                                                                         };
                                                                     })());
-                                                                    return $3334;
+                                                                    return $3355;
                                                                 }), _vals$22);
-                                                                var $3330 = (_size$21 && _vals$23);
-                                                                var $3328 = $3330;
+                                                                var $3351 = (_size$21 && _vals$23);
+                                                                var $3349 = $3351;
                                                                 break;
                                                         };
-                                                        var $3326 = $3328;
+                                                        var $3347 = $3349;
                                                         break;
                                                     case 'Maybe.none':
-                                                        var $3339 = Bool$false;
-                                                        var $3326 = $3339;
+                                                        var $3360 = Bool$false;
+                                                        var $3347 = $3360;
                                                         break;
                                                 };
-                                                var $3324 = $3326;
+                                                var $3345 = $3347;
                                                 break;
                                         };
-                                        var $3322 = $3324;
+                                        var $3343 = $3345;
                                         break;
                                     case 'Maybe.none':
-                                        var $3340 = Bool$false;
-                                        var $3322 = $3340;
+                                        var $3361 = Bool$false;
+                                        var $3343 = $3361;
                                         break;
                                 };
-                                var $3320 = $3322;
+                                var $3341 = $3343;
                                 break;
                             case 'Kindelia.Type.word':
-                                var $3341 = Bool$false;
-                                var $3320 = $3341;
+                                var $3362 = Bool$false;
+                                var $3341 = $3362;
                                 break;
                         };
-                        var $3290 = $3320;
+                        var $3311 = $3341;
                         break;
                     case 'Kindelia.Term.match':
-                        var $3342 = self.name;
-                        var $3343 = self.data;
-                        var $3344 = self.cses;
-                        var self = Kindelia$get_data$(_world$2, $3343);
+                        var $3363 = self.name;
+                        var $3364 = self.data;
+                        var $3365 = self.cses;
+                        var self = Kindelia$get_data$(_world$2, $3364);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3346 = self.value;
-                                var _data$14 = $3346;
+                                var $3367 = self.value;
+                                var _data$14 = $3367;
                                 var self = _data$14;
                                 switch (self._) {
                                     case 'Kindelia.Data.new':
-                                        var $3348 = self.ctrs;
-                                        var _size$17 = ((list_length($3344)) === (list_length($3348)));
-                                        var _expr$18 = Kindelia$check$(_context$1, _world$2, Kindelia$Term$var$($3342), Kindelia$Type$data$($3343));
-                                        var _cses$19 = List$zipped_with$($3344, $3348, (_case_body$19 => _case_ctor$20 => {
+                                        var $3369 = self.ctrs;
+                                        var _size$17 = ((list_length($3365)) === (list_length($3369)));
+                                        var _expr$18 = Kindelia$check$(_context$1, _world$2, Kindelia$Term$var$($3363), Kindelia$Type$data$($3364));
+                                        var _cses$19 = List$zipped_with$($3365, $3369, (_case_body$19 => _case_ctor$20 => {
                                             var _args$21 = List$map$((_arg$21 => {
-                                                var $3351 = Pair$new$(($3342 + ("." + (() => {
+                                                var $3372 = Pair$new$(($3363 + ("." + (() => {
                                                     var self = _arg$21;
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3352 = self.fst;
-                                                            var $3353 = $3352;
-                                                            return $3353;
+                                                            var $3373 = self.fst;
+                                                            var $3374 = $3373;
+                                                            return $3374;
                                                     };
                                                 })())), (() => {
                                                     var self = _arg$21;
                                                     switch (self._) {
                                                         case 'Pair.new':
-                                                            var $3354 = self.snd;
-                                                            var $3355 = $3354;
-                                                            return $3355;
+                                                            var $3375 = self.snd;
+                                                            var $3376 = $3375;
+                                                            return $3376;
                                                     };
                                                 })());
-                                                return $3351;
+                                                return $3372;
                                             }), (() => {
                                                 var self = _case_ctor$20;
                                                 switch (self._) {
                                                     case 'Kindelia.Constructor.new':
-                                                        var $3356 = self.args;
-                                                        var $3357 = $3356;
-                                                        return $3357;
+                                                        var $3377 = self.args;
+                                                        var $3378 = $3377;
+                                                        return $3378;
                                                 };
                                             })());
                                             var _ctx2$22 = Kindelia$extend$(_context$1, _args$21);
-                                            var $3350 = Kindelia$check$(_ctx2$22, _world$2, _case_body$19, _type$4);
-                                            return $3350;
+                                            var $3371 = Kindelia$check$(_ctx2$22, _world$2, _case_body$19, _type$4);
+                                            return $3371;
                                         }));
-                                        var $3349 = (_size$17 && List$and$(_cses$19));
-                                        var $3347 = $3349;
+                                        var $3370 = (_size$17 && List$and$(_cses$19));
+                                        var $3368 = $3370;
                                         break;
                                 };
-                                var $3345 = $3347;
+                                var $3366 = $3368;
                                 break;
                             case 'Maybe.none':
-                                var $3358 = Bool$false;
-                                var $3345 = $3358;
+                                var $3379 = Bool$false;
+                                var $3366 = $3379;
                                 break;
                         };
-                        var $3290 = $3345;
+                        var $3311 = $3366;
                         break;
                     case 'Kindelia.Term.compare':
-                        var $3359 = self.val0;
-                        var $3360 = self.val1;
-                        var $3361 = self.iflt;
-                        var $3362 = self.ifeq;
-                        var $3363 = self.ifgt;
-                        var _val0$15 = Kindelia$check$(_context$1, _world$2, $3359, Kindelia$Type$word);
-                        var _val1$16 = Kindelia$check$(_context$1, _world$2, $3360, Kindelia$Type$word);
-                        var _iflt$17 = Kindelia$check$(_context$1, _world$2, $3361, _type$4);
-                        var _ifeq$18 = Kindelia$check$(_context$1, _world$2, $3362, _type$4);
-                        var _ifgt$19 = Kindelia$check$(_context$1, _world$2, $3363, _type$4);
-                        var $3364 = (_val0$15 && (_val1$16 && (_iflt$17 && (_ifeq$18 && _ifgt$19))));
-                        var $3290 = $3364;
+                        var $3380 = self.val0;
+                        var $3381 = self.val1;
+                        var $3382 = self.iflt;
+                        var $3383 = self.ifeq;
+                        var $3384 = self.ifgt;
+                        var _val0$15 = Kindelia$check$(_context$1, _world$2, $3380, Kindelia$Type$word);
+                        var _val1$16 = Kindelia$check$(_context$1, _world$2, $3381, Kindelia$Type$word);
+                        var _iflt$17 = Kindelia$check$(_context$1, _world$2, $3382, _type$4);
+                        var _ifeq$18 = Kindelia$check$(_context$1, _world$2, $3383, _type$4);
+                        var _ifgt$19 = Kindelia$check$(_context$1, _world$2, $3384, _type$4);
+                        var $3385 = (_val0$15 && (_val1$16 && (_iflt$17 && (_ifeq$18 && _ifgt$19))));
+                        var $3311 = $3385;
                         break;
                     case 'Kindelia.Term.operate':
-                        var $3365 = self.val0;
-                        var $3366 = self.val1;
-                        var _val0$13 = Kindelia$check$(_context$1, _world$2, $3365, Kindelia$Type$word);
-                        var _val1$14 = Kindelia$check$(_context$1, _world$2, $3366, Kindelia$Type$word);
-                        var $3367 = (_val0$13 && _val1$14);
-                        var $3290 = $3367;
+                        var $3386 = self.val0;
+                        var $3387 = self.val1;
+                        var _val0$13 = Kindelia$check$(_context$1, _world$2, $3386, Kindelia$Type$word);
+                        var _val1$14 = Kindelia$check$(_context$1, _world$2, $3387, Kindelia$Type$word);
+                        var $3388 = (_val0$13 && _val1$14);
+                        var $3311 = $3388;
                         break;
                     case 'Kindelia.Term.bind':
-                        var $3368 = self.bond;
-                        var $3369 = self.expr;
-                        var $3370 = self.cont;
-                        var self = Kindelia$get_bond$(_world$2, $3368);
+                        var $3389 = self.bond;
+                        var $3390 = self.expr;
+                        var $3391 = self.cont;
+                        var self = Kindelia$get_bond$(_world$2, $3389);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3372 = self.value;
-                                var _bond$14 = $3372;
+                                var $3393 = self.value;
+                                var _bond$14 = $3393;
                                 var self = _bond$14;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var $3374 = self.args;
-                                        var $3375 = self.otyp;
-                                        var _notf$20 = List$is_empty$($3374);
-                                        var _expr$21 = Kindelia$check$(_context$1, _world$2, $3369, $3375);
-                                        var _cont$22 = Kindelia$check$(_context$1, _world$2, $3370, _type$4);
-                                        var $3376 = (_notf$20 && (_expr$21 && _cont$22));
-                                        var $3373 = $3376;
+                                        var $3395 = self.args;
+                                        var $3396 = self.otyp;
+                                        var _notf$20 = List$is_empty$($3395);
+                                        var _expr$21 = Kindelia$check$(_context$1, _world$2, $3390, $3396);
+                                        var _cont$22 = Kindelia$check$(_context$1, _world$2, $3391, _type$4);
+                                        var $3397 = (_notf$20 && (_expr$21 && _cont$22));
+                                        var $3394 = $3397;
                                         break;
                                 };
-                                var $3371 = $3373;
+                                var $3392 = $3394;
                                 break;
                             case 'Maybe.none':
-                                var $3377 = Bool$false;
-                                var $3371 = $3377;
+                                var $3398 = Bool$false;
+                                var $3392 = $3398;
                                 break;
                         };
-                        var $3290 = $3371;
+                        var $3311 = $3392;
                         break;
                     case 'Kindelia.Term.word':
                         var self = _type$4;
                         switch (self._) {
                             case 'Kindelia.Type.word':
-                                var $3379 = Bool$true;
-                                var $3378 = $3379;
+                                var $3400 = Bool$true;
+                                var $3399 = $3400;
                                 break;
                             case 'Kindelia.Type.data':
-                                var $3380 = Bool$false;
-                                var $3378 = $3380;
+                                var $3401 = Bool$false;
+                                var $3399 = $3401;
                                 break;
                         };
-                        var $3290 = $3378;
+                        var $3311 = $3399;
                         break;
                 };
-                var $3198 = $3290;
+                var $3219 = $3311;
                 break;
         };
-        return $3198;
+        return $3219;
     };
     const Kindelia$check = x0 => x1 => x2 => x3 => Kindelia$check$(x0, x1, x2, x3);
 
     function Kindelia$Runtime$(_A$1) {
-        var $3381 = null;
-        return $3381;
+        var $3402 = null;
+        return $3402;
     };
     const Kindelia$Runtime = x0 => Kindelia$Runtime$(x0);
 
     function Kindelia$Runtime$new$(_world$2, _subst$3, _fresh$4, _gas$5, _term$6) {
-        var $3382 = ({
+        var $3403 = ({
             _: 'Kindelia.Runtime.new',
             'world': _world$2,
             'subst': _subst$3,
@@ -11684,24 +11761,24 @@ module.exports = (function() {
             'gas': _gas$5,
             'term': _term$6
         });
-        return $3382;
+        return $3403;
     };
     const Kindelia$Runtime$new = x0 => x1 => x2 => x3 => x4 => Kindelia$Runtime$new$(x0, x1, x2, x3, x4);
 
     function Triple$(_A$1, _B$2, _C$3) {
-        var $3383 = null;
-        return $3383;
+        var $3404 = null;
+        return $3404;
     };
     const Triple = x0 => x1 => x2 => Triple$(x0, x1, x2);
 
     function Triple$new$(_fst$4, _snd$5, _trd$6) {
-        var $3384 = ({
+        var $3405 = ({
             _: 'Triple.new',
             'fst': _fst$4,
             'snd': _snd$5,
             'trd': _trd$6
         });
-        return $3384;
+        return $3405;
     };
     const Triple$new = x0 => x1 => x2 => Triple$new$(x0, x1, x2);
 
@@ -11709,8 +11786,8 @@ module.exports = (function() {
         var _new_name$4 = ("$" + Nat$show$(_fresh$2));
         var _table$5 = Map$set$(_old_name$3, _new_name$4, _table$1);
         var _fresh$6 = Nat$succ$(_fresh$2);
-        var $3385 = Triple$new$(_table$5, _fresh$6, _new_name$4);
-        return $3385;
+        var $3406 = Triple$new$(_table$5, _fresh$6, _new_name$4);
+        return $3406;
     };
     const Kindelia$rename = x0 => x1 => x2 => Kindelia$rename$(x0, x1, x2);
 
@@ -11718,35 +11795,35 @@ module.exports = (function() {
         var self = _names$3;
         switch (self._) {
             case 'List.cons':
-                var $3387 = self.head;
-                var $3388 = self.tail;
-                var self = Kindelia$rename$(_table$1, _fresh$2, $3387);
+                var $3408 = self.head;
+                var $3409 = self.tail;
+                var self = Kindelia$rename$(_table$1, _fresh$2, $3408);
                 switch (self._) {
                     case 'Triple.new':
-                        var $3390 = self.fst;
-                        var $3391 = self.snd;
-                        var $3392 = self.trd;
-                        var self = Kindelia$rename$many$($3390, $3391, $3388);
+                        var $3411 = self.fst;
+                        var $3412 = self.snd;
+                        var $3413 = self.trd;
+                        var self = Kindelia$rename$many$($3411, $3412, $3409);
                         switch (self._) {
                             case 'Triple.new':
-                                var $3394 = self.fst;
-                                var $3395 = self.snd;
-                                var $3396 = self.trd;
-                                var $3397 = Triple$new$($3394, $3395, List$cons$($3392, $3396));
-                                var $3393 = $3397;
+                                var $3415 = self.fst;
+                                var $3416 = self.snd;
+                                var $3417 = self.trd;
+                                var $3418 = Triple$new$($3415, $3416, List$cons$($3413, $3417));
+                                var $3414 = $3418;
                                 break;
                         };
-                        var $3389 = $3393;
+                        var $3410 = $3414;
                         break;
                 };
-                var $3386 = $3389;
+                var $3407 = $3410;
                 break;
             case 'List.nil':
-                var $3398 = Triple$new$(_table$1, _fresh$2, List$nil);
-                var $3386 = $3398;
+                var $3419 = Triple$new$(_table$1, _fresh$2, List$nil);
+                var $3407 = $3419;
                 break;
         };
-        return $3386;
+        return $3407;
     };
     const Kindelia$rename$many = x0 => x1 => x2 => Kindelia$rename$many$(x0, x1, x2);
 
@@ -11754,33 +11831,33 @@ module.exports = (function() {
         var self = _terms$4;
         switch (self._) {
             case 'List.cons':
-                var $3400 = self.head;
-                var $3401 = self.tail;
-                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3400);
+                var $3421 = self.head;
+                var $3422 = self.tail;
+                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3421);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3403 = self.fst;
-                        var $3404 = self.snd;
-                        var self = Kindelia$sanitize$many$(_world$1, _table$2, $3403, $3401);
+                        var $3424 = self.fst;
+                        var $3425 = self.snd;
+                        var self = Kindelia$sanitize$many$(_world$1, _table$2, $3424, $3422);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3406 = self.fst;
-                                var $3407 = self.snd;
-                                var $3408 = Pair$new$($3406, List$cons$($3404, $3407));
-                                var $3405 = $3408;
+                                var $3427 = self.fst;
+                                var $3428 = self.snd;
+                                var $3429 = Pair$new$($3427, List$cons$($3425, $3428));
+                                var $3426 = $3429;
                                 break;
                         };
-                        var $3402 = $3405;
+                        var $3423 = $3426;
                         break;
                 };
-                var $3399 = $3402;
+                var $3420 = $3423;
                 break;
             case 'List.nil':
-                var $3409 = Pair$new$(_fresh$3, List$nil);
-                var $3399 = $3409;
+                var $3430 = Pair$new$(_fresh$3, List$nil);
+                var $3420 = $3430;
                 break;
         };
-        return $3399;
+        return $3420;
     };
     const Kindelia$sanitize$many = x0 => x1 => x2 => x3 => Kindelia$sanitize$many$(x0, x1, x2, x3);
     const List$for = a0 => a1 => a2 => (list_for(a0)(a1)(a2));
@@ -11789,89 +11866,89 @@ module.exports = (function() {
         var self = _ctrs$6;
         switch (self._) {
             case 'List.cons':
-                var $3411 = self.head;
-                var $3412 = self.tail;
+                var $3432 = self.head;
+                var $3433 = self.tail;
                 var self = _cses$7;
                 switch (self._) {
                     case 'List.cons':
-                        var $3414 = self.head;
-                        var $3415 = self.tail;
+                        var $3435 = self.head;
+                        var $3436 = self.tail;
                         var _new_table$12 = _table$2;
                         var _new_table$13 = (() => {
-                            var $3418 = _new_table$12;
-                            var self = $3411;
+                            var $3439 = _new_table$12;
+                            var self = $3432;
                             switch (self._) {
                                 case 'Kindelia.Constructor.new':
-                                    var $3420 = self.args;
-                                    var $3421 = $3420;
-                                    var $3419 = $3421;
+                                    var $3441 = self.args;
+                                    var $3442 = $3441;
+                                    var $3440 = $3442;
                                     break;
                             };
-                            let _new_table$14 = $3418;
+                            let _new_table$14 = $3439;
                             let _field$13;
-                            while ($3419._ === 'List.cons') {
-                                _field$13 = $3419.head;
-                                var $3418 = Map$set$((_old_name$4 + ("." + (() => {
+                            while ($3440._ === 'List.cons') {
+                                _field$13 = $3440.head;
+                                var $3439 = Map$set$((_old_name$4 + ("." + (() => {
                                     var self = _field$13;
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $3422 = self.fst;
-                                            var $3423 = $3422;
-                                            return $3423;
+                                            var $3443 = self.fst;
+                                            var $3444 = $3443;
+                                            return $3444;
                                     };
                                 })())), (_new_name$5 + ("." + (() => {
                                     var self = _field$13;
                                     switch (self._) {
                                         case 'Pair.new':
-                                            var $3424 = self.fst;
-                                            var $3425 = $3424;
-                                            return $3425;
+                                            var $3445 = self.fst;
+                                            var $3446 = $3445;
+                                            return $3446;
                                     };
                                 })())), _new_table$14);
-                                _new_table$14 = $3418;
-                                $3419 = $3419.tail;
+                                _new_table$14 = $3439;
+                                $3440 = $3440.tail;
                             }
                             return _new_table$14;
                         })();
-                        var self = Kindelia$sanitize$(_world$1, _new_table$13, _fresh$3, $3414);
+                        var self = Kindelia$sanitize$(_world$1, _new_table$13, _fresh$3, $3435);
                         switch (self._) {
                             case 'Pair.new':
-                                var $3426 = self.fst;
-                                var $3427 = self.snd;
-                                var self = Kindelia$sanitize$cases$(_world$1, _table$2, $3426, _old_name$4, _new_name$5, $3412, $3415);
+                                var $3447 = self.fst;
+                                var $3448 = self.snd;
+                                var self = Kindelia$sanitize$cases$(_world$1, _table$2, $3447, _old_name$4, _new_name$5, $3433, $3436);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3429 = self.fst;
-                                        var $3430 = self.snd;
-                                        var $3431 = Pair$new$($3429, List$cons$($3427, $3430));
-                                        var $3428 = $3431;
+                                        var $3450 = self.fst;
+                                        var $3451 = self.snd;
+                                        var $3452 = Pair$new$($3450, List$cons$($3448, $3451));
+                                        var $3449 = $3452;
                                         break;
                                 };
-                                var $3416 = $3428;
+                                var $3437 = $3449;
                                 break;
                         };
-                        var $3413 = $3416;
+                        var $3434 = $3437;
                         break;
                     case 'List.nil':
-                        var $3432 = Pair$new$(_fresh$3, List$nil);
-                        var $3413 = $3432;
+                        var $3453 = Pair$new$(_fresh$3, List$nil);
+                        var $3434 = $3453;
                         break;
                 };
-                var $3410 = $3413;
+                var $3431 = $3434;
                 break;
             case 'List.nil':
                 var self = _cses$7;
                 switch (self._) {
                     case 'List.nil':
                     case 'List.cons':
-                        var $3434 = Pair$new$(_fresh$3, List$nil);
-                        var $3433 = $3434;
+                        var $3455 = Pair$new$(_fresh$3, List$nil);
+                        var $3454 = $3455;
                         break;
                 };
-                var $3410 = $3433;
+                var $3431 = $3454;
                 break;
         };
-        return $3410;
+        return $3431;
     };
     const Kindelia$sanitize$cases = x0 => x1 => x2 => x3 => x4 => x5 => x6 => Kindelia$sanitize$cases$(x0, x1, x2, x3, x4, x5, x6);
 
@@ -11879,210 +11956,210 @@ module.exports = (function() {
         var self = _term$4;
         switch (self._) {
             case 'Kindelia.Term.var':
-                var $3436 = self.name;
-                var _term$6 = Kindelia$Term$var$(Maybe$default$(Map$get$($3436, _table$2), $3436));
-                var $3437 = Pair$new$(_fresh$3, _term$6);
-                var $3435 = $3437;
+                var $3457 = self.name;
+                var _term$6 = Kindelia$Term$var$(Maybe$default$(Map$get$($3457, _table$2), $3457));
+                var $3458 = Pair$new$(_fresh$3, _term$6);
+                var $3456 = $3458;
                 break;
             case 'Kindelia.Term.call':
-                var $3438 = self.bond;
-                var $3439 = self.args;
-                var self = Kindelia$sanitize$many$(_world$1, _table$2, _fresh$3, $3439);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $3441 = self.fst;
-                        var $3442 = self.snd;
-                        var $3443 = Pair$new$($3441, Kindelia$Term$call$($3438, $3442));
-                        var $3440 = $3443;
-                        break;
-                };
-                var $3435 = $3440;
-                break;
-            case 'Kindelia.Term.let':
-                var $3444 = self.name;
-                var $3445 = self.type;
-                var $3446 = self.expr;
-                var $3447 = self.body;
-                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3446);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $3449 = self.fst;
-                        var $3450 = self.snd;
-                        var self = Kindelia$rename$(_table$2, $3449, $3444);
-                        switch (self._) {
-                            case 'Triple.new':
-                                var $3452 = self.fst;
-                                var $3453 = self.snd;
-                                var $3454 = self.trd;
-                                var self = Kindelia$sanitize$(_world$1, $3452, $3453, $3447);
-                                switch (self._) {
-                                    case 'Pair.new':
-                                        var $3456 = self.fst;
-                                        var $3457 = self.snd;
-                                        var $3458 = Pair$new$($3456, Kindelia$Term$let$($3454, $3445, $3450, $3457));
-                                        var $3455 = $3458;
-                                        break;
-                                };
-                                var $3451 = $3455;
-                                break;
-                        };
-                        var $3448 = $3451;
-                        break;
-                };
-                var $3435 = $3448;
-                break;
-            case 'Kindelia.Term.create':
-                var $3459 = self.ctor;
-                var $3460 = self.vals;
+                var $3459 = self.bond;
+                var $3460 = self.args;
                 var self = Kindelia$sanitize$many$(_world$1, _table$2, _fresh$3, $3460);
                 switch (self._) {
                     case 'Pair.new':
                         var $3462 = self.fst;
                         var $3463 = self.snd;
-                        var $3464 = Pair$new$($3462, Kindelia$Term$create$($3459, $3463));
+                        var $3464 = Pair$new$($3462, Kindelia$Term$call$($3459, $3463));
                         var $3461 = $3464;
                         break;
                 };
-                var $3435 = $3461;
+                var $3456 = $3461;
                 break;
-            case 'Kindelia.Term.match':
+            case 'Kindelia.Term.let':
                 var $3465 = self.name;
-                var $3466 = self.data;
-                var $3467 = self.cses;
-                var _ctrs$8 = Maybe$default$(Kindelia$get_ctrs$(_world$1, $3466), List$nil);
-                var _old_name$9 = $3465;
-                var _new_name$10 = Maybe$default$(Map$get$($3465, _table$2), $3465);
-                var self = Kindelia$sanitize$cases$(_world$1, _table$2, _fresh$3, _old_name$9, _new_name$10, _ctrs$8, $3467);
+                var $3466 = self.type;
+                var $3467 = self.expr;
+                var $3468 = self.body;
+                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3467);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3469 = self.fst;
-                        var $3470 = self.snd;
-                        var $3471 = Pair$new$($3469, Kindelia$Term$match$(_new_name$10, $3466, $3470));
-                        var $3468 = $3471;
-                        break;
-                };
-                var $3435 = $3468;
-                break;
-            case 'Kindelia.Term.word':
-                var $3472 = self.numb;
-                var $3473 = Pair$new$(_fresh$3, Kindelia$Term$word$($3472));
-                var $3435 = $3473;
-                break;
-            case 'Kindelia.Term.compare':
-                var $3474 = self.val0;
-                var $3475 = self.val1;
-                var $3476 = self.iflt;
-                var $3477 = self.ifeq;
-                var $3478 = self.ifgt;
-                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3474);
-                switch (self._) {
-                    case 'Pair.new':
-                        var $3480 = self.fst;
-                        var $3481 = self.snd;
-                        var self = Kindelia$sanitize$(_world$1, _table$2, $3480, $3475);
+                        var $3470 = self.fst;
+                        var $3471 = self.snd;
+                        var self = Kindelia$rename$(_table$2, $3470, $3465);
                         switch (self._) {
-                            case 'Pair.new':
-                                var $3483 = self.fst;
-                                var $3484 = self.snd;
-                                var self = Kindelia$sanitize$(_world$1, _table$2, $3483, $3476);
+                            case 'Triple.new':
+                                var $3473 = self.fst;
+                                var $3474 = self.snd;
+                                var $3475 = self.trd;
+                                var self = Kindelia$sanitize$(_world$1, $3473, $3474, $3468);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3486 = self.fst;
-                                        var $3487 = self.snd;
-                                        var self = Kindelia$sanitize$(_world$1, _table$2, $3486, $3477);
-                                        switch (self._) {
-                                            case 'Pair.new':
-                                                var $3489 = self.fst;
-                                                var $3490 = self.snd;
-                                                var self = Kindelia$sanitize$(_world$1, _table$2, $3489, $3478);
-                                                switch (self._) {
-                                                    case 'Pair.new':
-                                                        var $3492 = self.fst;
-                                                        var $3493 = self.snd;
-                                                        var $3494 = Pair$new$($3492, Kindelia$Term$compare$($3481, $3484, $3487, $3490, $3493));
-                                                        var $3491 = $3494;
-                                                        break;
-                                                };
-                                                var $3488 = $3491;
-                                                break;
-                                        };
-                                        var $3485 = $3488;
+                                        var $3477 = self.fst;
+                                        var $3478 = self.snd;
+                                        var $3479 = Pair$new$($3477, Kindelia$Term$let$($3475, $3466, $3471, $3478));
+                                        var $3476 = $3479;
                                         break;
                                 };
-                                var $3482 = $3485;
+                                var $3472 = $3476;
                                 break;
                         };
-                        var $3479 = $3482;
+                        var $3469 = $3472;
                         break;
                 };
-                var $3435 = $3479;
+                var $3456 = $3469;
                 break;
-            case 'Kindelia.Term.operate':
-                var $3495 = self.oper;
-                var $3496 = self.val0;
-                var $3497 = self.val1;
-                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3496);
+            case 'Kindelia.Term.create':
+                var $3480 = self.ctor;
+                var $3481 = self.vals;
+                var self = Kindelia$sanitize$many$(_world$1, _table$2, _fresh$3, $3481);
                 switch (self._) {
                     case 'Pair.new':
-                        var $3499 = self.fst;
-                        var $3500 = self.snd;
-                        var self = Kindelia$sanitize$(_world$1, _table$2, $3499, $3497);
-                        switch (self._) {
-                            case 'Pair.new':
-                                var $3502 = self.fst;
-                                var $3503 = self.snd;
-                                var $3504 = Pair$new$($3502, Kindelia$Term$operate$($3495, $3500, $3503));
-                                var $3501 = $3504;
-                                break;
-                        };
-                        var $3498 = $3501;
+                        var $3483 = self.fst;
+                        var $3484 = self.snd;
+                        var $3485 = Pair$new$($3483, Kindelia$Term$create$($3480, $3484));
+                        var $3482 = $3485;
                         break;
                 };
-                var $3435 = $3498;
+                var $3456 = $3482;
+                break;
+            case 'Kindelia.Term.match':
+                var $3486 = self.name;
+                var $3487 = self.data;
+                var $3488 = self.cses;
+                var _ctrs$8 = Maybe$default$(Kindelia$get_ctrs$(_world$1, $3487), List$nil);
+                var _old_name$9 = $3486;
+                var _new_name$10 = Maybe$default$(Map$get$($3486, _table$2), $3486);
+                var self = Kindelia$sanitize$cases$(_world$1, _table$2, _fresh$3, _old_name$9, _new_name$10, _ctrs$8, $3488);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $3490 = self.fst;
+                        var $3491 = self.snd;
+                        var $3492 = Pair$new$($3490, Kindelia$Term$match$(_new_name$10, $3487, $3491));
+                        var $3489 = $3492;
+                        break;
+                };
+                var $3456 = $3489;
+                break;
+            case 'Kindelia.Term.word':
+                var $3493 = self.numb;
+                var $3494 = Pair$new$(_fresh$3, Kindelia$Term$word$($3493));
+                var $3456 = $3494;
+                break;
+            case 'Kindelia.Term.compare':
+                var $3495 = self.val0;
+                var $3496 = self.val1;
+                var $3497 = self.iflt;
+                var $3498 = self.ifeq;
+                var $3499 = self.ifgt;
+                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3495);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $3501 = self.fst;
+                        var $3502 = self.snd;
+                        var self = Kindelia$sanitize$(_world$1, _table$2, $3501, $3496);
+                        switch (self._) {
+                            case 'Pair.new':
+                                var $3504 = self.fst;
+                                var $3505 = self.snd;
+                                var self = Kindelia$sanitize$(_world$1, _table$2, $3504, $3497);
+                                switch (self._) {
+                                    case 'Pair.new':
+                                        var $3507 = self.fst;
+                                        var $3508 = self.snd;
+                                        var self = Kindelia$sanitize$(_world$1, _table$2, $3507, $3498);
+                                        switch (self._) {
+                                            case 'Pair.new':
+                                                var $3510 = self.fst;
+                                                var $3511 = self.snd;
+                                                var self = Kindelia$sanitize$(_world$1, _table$2, $3510, $3499);
+                                                switch (self._) {
+                                                    case 'Pair.new':
+                                                        var $3513 = self.fst;
+                                                        var $3514 = self.snd;
+                                                        var $3515 = Pair$new$($3513, Kindelia$Term$compare$($3502, $3505, $3508, $3511, $3514));
+                                                        var $3512 = $3515;
+                                                        break;
+                                                };
+                                                var $3509 = $3512;
+                                                break;
+                                        };
+                                        var $3506 = $3509;
+                                        break;
+                                };
+                                var $3503 = $3506;
+                                break;
+                        };
+                        var $3500 = $3503;
+                        break;
+                };
+                var $3456 = $3500;
+                break;
+            case 'Kindelia.Term.operate':
+                var $3516 = self.oper;
+                var $3517 = self.val0;
+                var $3518 = self.val1;
+                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3517);
+                switch (self._) {
+                    case 'Pair.new':
+                        var $3520 = self.fst;
+                        var $3521 = self.snd;
+                        var self = Kindelia$sanitize$(_world$1, _table$2, $3520, $3518);
+                        switch (self._) {
+                            case 'Pair.new':
+                                var $3523 = self.fst;
+                                var $3524 = self.snd;
+                                var $3525 = Pair$new$($3523, Kindelia$Term$operate$($3516, $3521, $3524));
+                                var $3522 = $3525;
+                                break;
+                        };
+                        var $3519 = $3522;
+                        break;
+                };
+                var $3456 = $3519;
                 break;
             case 'Kindelia.Term.bind':
-                var $3505 = self.bond;
-                var $3506 = self.expr;
-                var $3507 = self.cont;
-                var self = Kindelia$get_bond$(_world$1, $3505);
+                var $3526 = self.bond;
+                var $3527 = self.expr;
+                var $3528 = self.cont;
+                var self = Kindelia$get_bond$(_world$1, $3526);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3509 = self.value;
-                        var _bond$9 = $3509;
+                        var $3530 = self.value;
+                        var _bond$9 = $3530;
                         var self = _bond$9;
                         switch (self._) {
                             case 'Kindelia.Bond.new':
-                                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3506);
+                                var self = Kindelia$sanitize$(_world$1, _table$2, _fresh$3, $3527);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $3512 = self.fst;
-                                        var $3513 = self.snd;
-                                        var self = Kindelia$sanitize$(_world$1, _table$2, $3512, $3507);
+                                        var $3533 = self.fst;
+                                        var $3534 = self.snd;
+                                        var self = Kindelia$sanitize$(_world$1, _table$2, $3533, $3528);
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3515 = self.fst;
-                                                var $3516 = self.snd;
-                                                var $3517 = Pair$new$($3515, Kindelia$Term$bind$($3505, $3513, $3516));
-                                                var $3514 = $3517;
+                                                var $3536 = self.fst;
+                                                var $3537 = self.snd;
+                                                var $3538 = Pair$new$($3536, Kindelia$Term$bind$($3526, $3534, $3537));
+                                                var $3535 = $3538;
                                                 break;
                                         };
-                                        var $3511 = $3514;
+                                        var $3532 = $3535;
                                         break;
                                 };
-                                var $3510 = $3511;
+                                var $3531 = $3532;
                                 break;
                         };
-                        var $3508 = $3510;
+                        var $3529 = $3531;
                         break;
                     case 'Maybe.none':
-                        var $3518 = Pair$new$(_fresh$3, _term$4);
-                        var $3508 = $3518;
+                        var $3539 = Pair$new$(_fresh$3, _term$4);
+                        var $3529 = $3539;
                         break;
                 };
-                var $3435 = $3508;
+                var $3456 = $3529;
                 break;
         };
-        return $3435;
+        return $3456;
     };
     const Kindelia$sanitize = x0 => x1 => x2 => x3 => Kindelia$sanitize$(x0, x1, x2, x3);
 
@@ -12090,65 +12167,65 @@ module.exports = (function() {
         var self = _state$1;
         switch (self._) {
             case 'Kindelia.Runtime.new':
-                var $3520 = self.world;
-                var $3521 = self.subst;
-                var $3522 = self.fresh;
-                var $3523 = self.gas;
-                var $3524 = self.term;
-                var self = $3524;
+                var $3541 = self.world;
+                var $3542 = self.subst;
+                var $3543 = self.fresh;
+                var $3544 = self.gas;
+                var $3545 = self.term;
+                var self = $3545;
                 switch (self._) {
                     case 'List.cons':
-                        var $3526 = self.head;
-                        var $3527 = self.tail;
-                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3520, $3521, $3522, $3523, $3526));
+                        var $3547 = self.head;
+                        var $3548 = self.tail;
+                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3541, $3542, $3543, $3544, $3547));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3529 = self.world;
-                                var $3530 = self.subst;
-                                var $3531 = self.fresh;
-                                var $3532 = self.gas;
-                                var $3533 = self.term;
-                                var self = Kindelia$normalize$many$(Kindelia$Runtime$new$($3529, $3530, $3531, $3532, $3527));
+                                var $3550 = self.world;
+                                var $3551 = self.subst;
+                                var $3552 = self.fresh;
+                                var $3553 = self.gas;
+                                var $3554 = self.term;
+                                var self = Kindelia$normalize$many$(Kindelia$Runtime$new$($3550, $3551, $3552, $3553, $3548));
                                 switch (self._) {
                                     case 'Kindelia.Runtime.new':
-                                        var $3535 = self.world;
-                                        var $3536 = self.subst;
-                                        var $3537 = self.fresh;
-                                        var $3538 = self.gas;
-                                        var $3539 = self.term;
-                                        var $3540 = Kindelia$Runtime$new$($3535, $3536, $3537, $3538, List$cons$($3533, $3539));
-                                        var $3534 = $3540;
+                                        var $3556 = self.world;
+                                        var $3557 = self.subst;
+                                        var $3558 = self.fresh;
+                                        var $3559 = self.gas;
+                                        var $3560 = self.term;
+                                        var $3561 = Kindelia$Runtime$new$($3556, $3557, $3558, $3559, List$cons$($3554, $3560));
+                                        var $3555 = $3561;
                                         break;
                                 };
-                                var $3528 = $3534;
+                                var $3549 = $3555;
                                 break;
                         };
-                        var $3525 = $3528;
+                        var $3546 = $3549;
                         break;
                     case 'List.nil':
-                        var $3541 = _state$1;
-                        var $3525 = $3541;
+                        var $3562 = _state$1;
+                        var $3546 = $3562;
                         break;
                 };
-                var $3519 = $3525;
+                var $3540 = $3546;
                 break;
         };
-        return $3519;
+        return $3540;
     };
     const Kindelia$normalize$many = x0 => Kindelia$normalize$many$(x0);
     const Kindelia$cost$alloc = 1n;
 
     function Kindelia$cost$create$(_ctor_arity$1) {
-        var $3542 = (1n + (Kindelia$cost$alloc * _ctor_arity$1));
-        return $3542;
+        var $3563 = (1n + (Kindelia$cost$alloc * _ctor_arity$1));
+        return $3563;
     };
     const Kindelia$cost$create = x0 => Kindelia$cost$create$(x0);
     const Kindelia$cost$subs = 1n;
     const Kindelia$cost$let = Kindelia$cost$subs;
 
     function Kindelia$cost$match$(_ctor_arity$1) {
-        var $3543 = (1n + (Kindelia$cost$subs * _ctor_arity$1));
-        return $3543;
+        var $3564 = (1n + (Kindelia$cost$subs * _ctor_arity$1));
+        return $3564;
     };
     const Kindelia$cost$match = x0 => Kindelia$cost$match$(x0);
     const U64$ltn = a0 => a1 => (a0 < a1);
@@ -12157,20 +12234,20 @@ module.exports = (function() {
     function U64$cmp$(_a$1, _b$2) {
         var self = (_a$1 < _b$2);
         if (self) {
-            var $3545 = Cmp$ltn;
-            var $3544 = $3545;
+            var $3566 = Cmp$ltn;
+            var $3565 = $3566;
         } else {
             var self = (_a$1 === _b$2);
             if (self) {
-                var $3547 = Cmp$eql;
-                var $3546 = $3547;
+                var $3568 = Cmp$eql;
+                var $3567 = $3568;
             } else {
-                var $3548 = Cmp$gtn;
-                var $3546 = $3548;
+                var $3569 = Cmp$gtn;
+                var $3567 = $3569;
             };
-            var $3544 = $3546;
+            var $3565 = $3567;
         };
-        return $3544;
+        return $3565;
     };
     const U64$cmp = x0 => x1 => U64$cmp$(x0, x1);
     const Kindelia$cost$compare = 1n;
@@ -12191,16 +12268,16 @@ module.exports = (function() {
                 var self = _word$2;
                 switch (self._) {
                     case 'Word.o':
-                        var $3549 = self.pred;
-                        var $3550 = Word$bit_length$go$($3549, Nat$succ$(_c$3), _n$4);
-                        return $3550;
+                        var $3570 = self.pred;
+                        var $3571 = Word$bit_length$go$($3570, Nat$succ$(_c$3), _n$4);
+                        return $3571;
                     case 'Word.i':
-                        var $3551 = self.pred;
-                        var $3552 = Word$bit_length$go$($3551, Nat$succ$(_c$3), Nat$succ$(_c$3));
-                        return $3552;
+                        var $3572 = self.pred;
+                        var $3573 = Word$bit_length$go$($3572, Nat$succ$(_c$3), Nat$succ$(_c$3));
+                        return $3573;
                     case 'Word.e':
-                        var $3553 = _n$4;
-                        return $3553;
+                        var $3574 = _n$4;
+                        return $3574;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -12210,8 +12287,8 @@ module.exports = (function() {
     const Word$bit_length$go = x0 => x1 => x2 => Word$bit_length$go$(x0, x1, x2);
 
     function Word$bit_length$(_word$2) {
-        var $3554 = Word$bit_length$go$(_word$2, 0n, 0n);
-        return $3554;
+        var $3575 = Word$bit_length$go$(_word$2, 0n, 0n);
+        return $3575;
     };
     const Word$bit_length = x0 => Word$bit_length$(x0);
 
@@ -12219,22 +12296,22 @@ module.exports = (function() {
         var self = _cmp$1;
         switch (self._) {
             case 'Cmp.ltn':
-                var $3556 = Bool$false;
-                var $3555 = $3556;
+                var $3577 = Bool$false;
+                var $3576 = $3577;
                 break;
             case 'Cmp.eql':
             case 'Cmp.gtn':
-                var $3557 = Bool$true;
-                var $3555 = $3557;
+                var $3578 = Bool$true;
+                var $3576 = $3578;
                 break;
         };
-        return $3555;
+        return $3576;
     };
     const Cmp$as_gte = x0 => Cmp$as_gte$(x0);
 
     function Word$gte$(_a$2, _b$3) {
-        var $3558 = Cmp$as_gte$(Word$cmp$(_a$2, _b$3));
-        return $3558;
+        var $3579 = Cmp$as_gte$(Word$cmp$(_a$2, _b$3));
+        return $3579;
     };
     const Word$gte = x0 => x1 => Word$gte$(x0, x1);
 
@@ -12242,83 +12319,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $3560 = self.pred;
-                var $3561 = (_b$6 => {
+                var $3581 = self.pred;
+                var $3582 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $3563 = self.pred;
-                            var $3564 = (_a$pred$9 => {
-                                var $3565 = Word$o$(Word$or$(_a$pred$9, $3563));
-                                return $3565;
+                            var $3584 = self.pred;
+                            var $3585 = (_a$pred$9 => {
+                                var $3586 = Word$o$(Word$or$(_a$pred$9, $3584));
+                                return $3586;
                             });
-                            var $3562 = $3564;
+                            var $3583 = $3585;
                             break;
                         case 'Word.i':
-                            var $3566 = self.pred;
-                            var $3567 = (_a$pred$9 => {
-                                var $3568 = Word$i$(Word$or$(_a$pred$9, $3566));
-                                return $3568;
+                            var $3587 = self.pred;
+                            var $3588 = (_a$pred$9 => {
+                                var $3589 = Word$i$(Word$or$(_a$pred$9, $3587));
+                                return $3589;
                             });
-                            var $3562 = $3567;
+                            var $3583 = $3588;
                             break;
                         case 'Word.e':
-                            var $3569 = (_a$pred$7 => {
-                                var $3570 = Word$e;
-                                return $3570;
+                            var $3590 = (_a$pred$7 => {
+                                var $3591 = Word$e;
+                                return $3591;
                             });
-                            var $3562 = $3569;
+                            var $3583 = $3590;
                             break;
                     };
-                    var $3562 = $3562($3560);
-                    return $3562;
-                });
-                var $3559 = $3561;
-                break;
-            case 'Word.i':
-                var $3571 = self.pred;
-                var $3572 = (_b$6 => {
-                    var self = _b$6;
-                    switch (self._) {
-                        case 'Word.o':
-                            var $3574 = self.pred;
-                            var $3575 = (_a$pred$9 => {
-                                var $3576 = Word$i$(Word$or$(_a$pred$9, $3574));
-                                return $3576;
-                            });
-                            var $3573 = $3575;
-                            break;
-                        case 'Word.i':
-                            var $3577 = self.pred;
-                            var $3578 = (_a$pred$9 => {
-                                var $3579 = Word$i$(Word$or$(_a$pred$9, $3577));
-                                return $3579;
-                            });
-                            var $3573 = $3578;
-                            break;
-                        case 'Word.e':
-                            var $3580 = (_a$pred$7 => {
-                                var $3581 = Word$e;
-                                return $3581;
-                            });
-                            var $3573 = $3580;
-                            break;
-                    };
-                    var $3573 = $3573($3571);
-                    return $3573;
-                });
-                var $3559 = $3572;
-                break;
-            case 'Word.e':
-                var $3582 = (_b$4 => {
-                    var $3583 = Word$e;
+                    var $3583 = $3583($3581);
                     return $3583;
                 });
-                var $3559 = $3582;
+                var $3580 = $3582;
+                break;
+            case 'Word.i':
+                var $3592 = self.pred;
+                var $3593 = (_b$6 => {
+                    var self = _b$6;
+                    switch (self._) {
+                        case 'Word.o':
+                            var $3595 = self.pred;
+                            var $3596 = (_a$pred$9 => {
+                                var $3597 = Word$i$(Word$or$(_a$pred$9, $3595));
+                                return $3597;
+                            });
+                            var $3594 = $3596;
+                            break;
+                        case 'Word.i':
+                            var $3598 = self.pred;
+                            var $3599 = (_a$pred$9 => {
+                                var $3600 = Word$i$(Word$or$(_a$pred$9, $3598));
+                                return $3600;
+                            });
+                            var $3594 = $3599;
+                            break;
+                        case 'Word.e':
+                            var $3601 = (_a$pred$7 => {
+                                var $3602 = Word$e;
+                                return $3602;
+                            });
+                            var $3594 = $3601;
+                            break;
+                    };
+                    var $3594 = $3594($3592);
+                    return $3594;
+                });
+                var $3580 = $3593;
+                break;
+            case 'Word.e':
+                var $3603 = (_b$4 => {
+                    var $3604 = Word$e;
+                    return $3604;
+                });
+                var $3580 = $3603;
                 break;
         };
-        var $3559 = $3559(_b$3);
-        return $3559;
+        var $3580 = $3580(_b$3);
+        return $3580;
     };
     const Word$or = x0 => x1 => Word$or$(x0, x1);
 
@@ -12326,21 +12403,21 @@ module.exports = (function() {
         var self = _word$2;
         switch (self._) {
             case 'Word.o':
-                var $3585 = self.pred;
-                var $3586 = Word$o$(Word$shift_right$one$go$($3585));
-                var $3584 = $3586;
+                var $3606 = self.pred;
+                var $3607 = Word$o$(Word$shift_right$one$go$($3606));
+                var $3605 = $3607;
                 break;
             case 'Word.i':
-                var $3587 = self.pred;
-                var $3588 = Word$i$(Word$shift_right$one$go$($3587));
-                var $3584 = $3588;
+                var $3608 = self.pred;
+                var $3609 = Word$i$(Word$shift_right$one$go$($3608));
+                var $3605 = $3609;
                 break;
             case 'Word.e':
-                var $3589 = Word$o$(Word$e);
-                var $3584 = $3589;
+                var $3610 = Word$o$(Word$e);
+                var $3605 = $3610;
                 break;
         };
-        return $3584;
+        return $3605;
     };
     const Word$shift_right$one$go = x0 => Word$shift_right$one$go$(x0);
 
@@ -12348,21 +12425,21 @@ module.exports = (function() {
         var self = _word$2;
         switch (self._) {
             case 'Word.o':
-                var $3591 = self.pred;
-                var $3592 = Word$shift_right$one$go$($3591);
-                var $3590 = $3592;
+                var $3612 = self.pred;
+                var $3613 = Word$shift_right$one$go$($3612);
+                var $3611 = $3613;
                 break;
             case 'Word.i':
-                var $3593 = self.pred;
-                var $3594 = Word$shift_right$one$go$($3593);
-                var $3590 = $3594;
+                var $3614 = self.pred;
+                var $3615 = Word$shift_right$one$go$($3614);
+                var $3611 = $3615;
                 break;
             case 'Word.e':
-                var $3595 = Word$e;
-                var $3590 = $3595;
+                var $3616 = Word$e;
+                var $3611 = $3616;
                 break;
         };
-        return $3590;
+        return $3611;
     };
     const Word$shift_right$one = x0 => Word$shift_right$one$(x0);
 
@@ -12378,12 +12455,12 @@ module.exports = (function() {
             var R = (() => {
                 var self = _n$3;
                 if (self === 0n) {
-                    var $3596 = _value$2;
-                    return $3596;
+                    var $3617 = _value$2;
+                    return $3617;
                 } else {
-                    var $3597 = (self - 1n);
-                    var $3598 = Word$shift_right$(Word$shift_right$one$(_value$2), $3597);
-                    return $3598;
+                    var $3618 = (self - 1n);
+                    var $3619 = Word$shift_right$(Word$shift_right$one$(_value$2), $3618);
+                    return $3619;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -12405,34 +12482,34 @@ module.exports = (function() {
                 var self = Word$gte$(_sub_copy$3, _shift_copy$4);
                 if (self) {
                     var _mask$6 = Word$shift_left$(Word$inc$(Word$to_zero$(_sub_copy$3)), _shift$2);
-                    var $3599 = Pair$new$(Bool$true, Word$or$(_value$5, _mask$6));
-                    var self = $3599;
+                    var $3620 = Pair$new$(Bool$true, Word$or$(_value$5, _mask$6));
+                    var self = $3620;
                 } else {
-                    var $3600 = Pair$new$(Bool$false, _value$5);
-                    var self = $3600;
+                    var $3621 = Pair$new$(Bool$false, _value$5);
+                    var self = $3621;
                 };
                 switch (self._) {
                     case 'Pair.new':
-                        var $3601 = self.fst;
-                        var $3602 = self.snd;
+                        var $3622 = self.fst;
+                        var $3623 = self.snd;
                         var self = _shift$2;
                         if (self === 0n) {
-                            var $3604 = $3602;
-                            var $3603 = $3604;
+                            var $3625 = $3623;
+                            var $3624 = $3625;
                         } else {
-                            var $3605 = (self - 1n);
+                            var $3626 = (self - 1n);
                             var _new_shift_copy$9 = Word$shift_right$(_shift_copy$4, 1n);
-                            var self = $3601;
+                            var self = $3622;
                             if (self) {
-                                var $3607 = Word$div$go$($3605, Word$sub$(_sub_copy$3, _shift_copy$4), _new_shift_copy$9, $3602);
-                                var $3606 = $3607;
+                                var $3628 = Word$div$go$($3626, Word$sub$(_sub_copy$3, _shift_copy$4), _new_shift_copy$9, $3623);
+                                var $3627 = $3628;
                             } else {
-                                var $3608 = Word$div$go$($3605, _sub_copy$3, _new_shift_copy$9, $3602);
-                                var $3606 = $3608;
+                                var $3629 = Word$div$go$($3626, _sub_copy$3, _new_shift_copy$9, $3623);
+                                var $3627 = $3629;
                             };
-                            var $3603 = $3606;
+                            var $3624 = $3627;
                         };
-                        return $3603;
+                        return $3624;
                 };
             })();
             if (R.ctr === 'TCO') arg = R.arg;
@@ -12446,23 +12523,23 @@ module.exports = (function() {
         var _b_bits$5 = Word$bit_length$(_b$3);
         var self = (_a_bits$4 < _b_bits$5);
         if (self) {
-            var $3610 = Word$to_zero$(_a$2);
-            var $3609 = $3610;
+            var $3631 = Word$to_zero$(_a$2);
+            var $3630 = $3631;
         } else {
             var _shift$6 = (_a_bits$4 - _b_bits$5 <= 0n ? 0n : _a_bits$4 - _b_bits$5);
             var _shift_copy$7 = Word$shift_left$(_b$3, _shift$6);
-            var $3611 = Word$div$go$(_shift$6, _a$2, _shift_copy$7, Word$to_zero$(_a$2));
-            var $3609 = $3611;
+            var $3632 = Word$div$go$(_shift$6, _a$2, _shift_copy$7, Word$to_zero$(_a$2));
+            var $3630 = $3632;
         };
-        return $3609;
+        return $3630;
     };
     const Word$div = x0 => x1 => Word$div$(x0, x1);
     const U64$div = a0 => a1 => ((a0 / a1) & 0xFFFFFFFFFFFFFFFFn);
 
     function Word$mod$(_a$2, _b$3) {
         var _q$4 = Word$div$(_a$2, _b$3);
-        var $3612 = Word$sub$(_a$2, Word$mul$(_b$3, _q$4));
-        return $3612;
+        var $3633 = Word$sub$(_a$2, Word$mul$(_b$3, _q$4));
+        return $3633;
     };
     const Word$mod = x0 => x1 => Word$mod$(x0, x1);
     const U64$mod = a0 => a1 => (a0 % a1);
@@ -12472,83 +12549,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $3614 = self.pred;
-                var $3615 = (_b$6 => {
+                var $3635 = self.pred;
+                var $3636 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $3617 = self.pred;
-                            var $3618 = (_a$pred$9 => {
-                                var $3619 = Word$o$(Word$and$(_a$pred$9, $3617));
-                                return $3619;
+                            var $3638 = self.pred;
+                            var $3639 = (_a$pred$9 => {
+                                var $3640 = Word$o$(Word$and$(_a$pred$9, $3638));
+                                return $3640;
                             });
-                            var $3616 = $3618;
+                            var $3637 = $3639;
                             break;
                         case 'Word.i':
-                            var $3620 = self.pred;
-                            var $3621 = (_a$pred$9 => {
-                                var $3622 = Word$o$(Word$and$(_a$pred$9, $3620));
-                                return $3622;
+                            var $3641 = self.pred;
+                            var $3642 = (_a$pred$9 => {
+                                var $3643 = Word$o$(Word$and$(_a$pred$9, $3641));
+                                return $3643;
                             });
-                            var $3616 = $3621;
+                            var $3637 = $3642;
                             break;
                         case 'Word.e':
-                            var $3623 = (_a$pred$7 => {
-                                var $3624 = Word$e;
-                                return $3624;
+                            var $3644 = (_a$pred$7 => {
+                                var $3645 = Word$e;
+                                return $3645;
                             });
-                            var $3616 = $3623;
+                            var $3637 = $3644;
                             break;
                     };
-                    var $3616 = $3616($3614);
-                    return $3616;
-                });
-                var $3613 = $3615;
-                break;
-            case 'Word.i':
-                var $3625 = self.pred;
-                var $3626 = (_b$6 => {
-                    var self = _b$6;
-                    switch (self._) {
-                        case 'Word.o':
-                            var $3628 = self.pred;
-                            var $3629 = (_a$pred$9 => {
-                                var $3630 = Word$o$(Word$and$(_a$pred$9, $3628));
-                                return $3630;
-                            });
-                            var $3627 = $3629;
-                            break;
-                        case 'Word.i':
-                            var $3631 = self.pred;
-                            var $3632 = (_a$pred$9 => {
-                                var $3633 = Word$i$(Word$and$(_a$pred$9, $3631));
-                                return $3633;
-                            });
-                            var $3627 = $3632;
-                            break;
-                        case 'Word.e':
-                            var $3634 = (_a$pred$7 => {
-                                var $3635 = Word$e;
-                                return $3635;
-                            });
-                            var $3627 = $3634;
-                            break;
-                    };
-                    var $3627 = $3627($3625);
-                    return $3627;
-                });
-                var $3613 = $3626;
-                break;
-            case 'Word.e':
-                var $3636 = (_b$4 => {
-                    var $3637 = Word$e;
+                    var $3637 = $3637($3635);
                     return $3637;
                 });
-                var $3613 = $3636;
+                var $3634 = $3636;
+                break;
+            case 'Word.i':
+                var $3646 = self.pred;
+                var $3647 = (_b$6 => {
+                    var self = _b$6;
+                    switch (self._) {
+                        case 'Word.o':
+                            var $3649 = self.pred;
+                            var $3650 = (_a$pred$9 => {
+                                var $3651 = Word$o$(Word$and$(_a$pred$9, $3649));
+                                return $3651;
+                            });
+                            var $3648 = $3650;
+                            break;
+                        case 'Word.i':
+                            var $3652 = self.pred;
+                            var $3653 = (_a$pred$9 => {
+                                var $3654 = Word$i$(Word$and$(_a$pred$9, $3652));
+                                return $3654;
+                            });
+                            var $3648 = $3653;
+                            break;
+                        case 'Word.e':
+                            var $3655 = (_a$pred$7 => {
+                                var $3656 = Word$e;
+                                return $3656;
+                            });
+                            var $3648 = $3655;
+                            break;
+                    };
+                    var $3648 = $3648($3646);
+                    return $3648;
+                });
+                var $3634 = $3647;
+                break;
+            case 'Word.e':
+                var $3657 = (_b$4 => {
+                    var $3658 = Word$e;
+                    return $3658;
+                });
+                var $3634 = $3657;
                 break;
         };
-        var $3613 = $3613(_b$3);
-        return $3613;
+        var $3634 = $3634(_b$3);
+        return $3634;
     };
     const Word$and = x0 => x1 => Word$and$(x0, x1);
     const U64$and = a0 => a1 => (a0 & a1);
@@ -12557,83 +12634,83 @@ module.exports = (function() {
         var self = _a$2;
         switch (self._) {
             case 'Word.o':
-                var $3639 = self.pred;
-                var $3640 = (_b$6 => {
+                var $3660 = self.pred;
+                var $3661 = (_b$6 => {
                     var self = _b$6;
                     switch (self._) {
                         case 'Word.o':
-                            var $3642 = self.pred;
-                            var $3643 = (_a$pred$9 => {
-                                var $3644 = Word$o$(Word$xor$(_a$pred$9, $3642));
-                                return $3644;
+                            var $3663 = self.pred;
+                            var $3664 = (_a$pred$9 => {
+                                var $3665 = Word$o$(Word$xor$(_a$pred$9, $3663));
+                                return $3665;
                             });
-                            var $3641 = $3643;
+                            var $3662 = $3664;
                             break;
                         case 'Word.i':
-                            var $3645 = self.pred;
-                            var $3646 = (_a$pred$9 => {
-                                var $3647 = Word$i$(Word$xor$(_a$pred$9, $3645));
-                                return $3647;
+                            var $3666 = self.pred;
+                            var $3667 = (_a$pred$9 => {
+                                var $3668 = Word$i$(Word$xor$(_a$pred$9, $3666));
+                                return $3668;
                             });
-                            var $3641 = $3646;
+                            var $3662 = $3667;
                             break;
                         case 'Word.e':
-                            var $3648 = (_a$pred$7 => {
-                                var $3649 = Word$e;
-                                return $3649;
+                            var $3669 = (_a$pred$7 => {
+                                var $3670 = Word$e;
+                                return $3670;
                             });
-                            var $3641 = $3648;
+                            var $3662 = $3669;
                             break;
                     };
-                    var $3641 = $3641($3639);
-                    return $3641;
-                });
-                var $3638 = $3640;
-                break;
-            case 'Word.i':
-                var $3650 = self.pred;
-                var $3651 = (_b$6 => {
-                    var self = _b$6;
-                    switch (self._) {
-                        case 'Word.o':
-                            var $3653 = self.pred;
-                            var $3654 = (_a$pred$9 => {
-                                var $3655 = Word$i$(Word$xor$(_a$pred$9, $3653));
-                                return $3655;
-                            });
-                            var $3652 = $3654;
-                            break;
-                        case 'Word.i':
-                            var $3656 = self.pred;
-                            var $3657 = (_a$pred$9 => {
-                                var $3658 = Word$o$(Word$xor$(_a$pred$9, $3656));
-                                return $3658;
-                            });
-                            var $3652 = $3657;
-                            break;
-                        case 'Word.e':
-                            var $3659 = (_a$pred$7 => {
-                                var $3660 = Word$e;
-                                return $3660;
-                            });
-                            var $3652 = $3659;
-                            break;
-                    };
-                    var $3652 = $3652($3650);
-                    return $3652;
-                });
-                var $3638 = $3651;
-                break;
-            case 'Word.e':
-                var $3661 = (_b$4 => {
-                    var $3662 = Word$e;
+                    var $3662 = $3662($3660);
                     return $3662;
                 });
-                var $3638 = $3661;
+                var $3659 = $3661;
+                break;
+            case 'Word.i':
+                var $3671 = self.pred;
+                var $3672 = (_b$6 => {
+                    var self = _b$6;
+                    switch (self._) {
+                        case 'Word.o':
+                            var $3674 = self.pred;
+                            var $3675 = (_a$pred$9 => {
+                                var $3676 = Word$i$(Word$xor$(_a$pred$9, $3674));
+                                return $3676;
+                            });
+                            var $3673 = $3675;
+                            break;
+                        case 'Word.i':
+                            var $3677 = self.pred;
+                            var $3678 = (_a$pred$9 => {
+                                var $3679 = Word$o$(Word$xor$(_a$pred$9, $3677));
+                                return $3679;
+                            });
+                            var $3673 = $3678;
+                            break;
+                        case 'Word.e':
+                            var $3680 = (_a$pred$7 => {
+                                var $3681 = Word$e;
+                                return $3681;
+                            });
+                            var $3673 = $3680;
+                            break;
+                    };
+                    var $3673 = $3673($3671);
+                    return $3673;
+                });
+                var $3659 = $3672;
+                break;
+            case 'Word.e':
+                var $3682 = (_b$4 => {
+                    var $3683 = Word$e;
+                    return $3683;
+                });
+                var $3659 = $3682;
                 break;
         };
-        var $3638 = $3638(_b$3);
-        return $3638;
+        var $3659 = $3659(_b$3);
+        return $3659;
     };
     const Word$xor = x0 => x1 => Word$xor$(x0, x1);
     const U64$xor = a0 => a1 => (a0 ^ a1);
@@ -12644,196 +12721,196 @@ module.exports = (function() {
         var self = _state$1;
         switch (self._) {
             case 'Kindelia.Runtime.new':
-                var $3664 = self.world;
-                var $3665 = self.subst;
-                var $3666 = self.fresh;
-                var $3667 = self.gas;
-                var $3668 = self.term;
-                var self = $3668;
+                var $3685 = self.world;
+                var $3686 = self.subst;
+                var $3687 = self.fresh;
+                var $3688 = self.gas;
+                var $3689 = self.term;
+                var self = $3689;
                 switch (self._) {
                     case 'Kindelia.Term.var':
-                        var $3670 = self.name;
-                        var _term$8 = Maybe$default$(Map$get$($3670, $3665), $3668);
-                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3664, $3665, $3666, $3667, _term$8));
+                        var $3691 = self.name;
+                        var _term$8 = Maybe$default$(Map$get$($3691, $3686), $3689);
+                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3685, $3686, $3687, $3688, _term$8));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3672 = self.world;
-                                var $3673 = self.subst;
-                                var $3674 = self.fresh;
-                                var $3675 = self.gas;
-                                var $3676 = self.term;
-                                var $3677 = Kindelia$Runtime$new$($3672, Map$set$($3670, $3676, $3673), $3674, $3675, $3676);
-                                var $3671 = $3677;
+                                var $3693 = self.world;
+                                var $3694 = self.subst;
+                                var $3695 = self.fresh;
+                                var $3696 = self.gas;
+                                var $3697 = self.term;
+                                var $3698 = Kindelia$Runtime$new$($3693, Map$set$($3691, $3697, $3694), $3695, $3696, $3697);
+                                var $3692 = $3698;
                                 break;
                         };
-                        var $3669 = $3671;
+                        var $3690 = $3692;
                         break;
                     case 'Kindelia.Term.call':
-                        var $3678 = self.bond;
-                        var $3679 = self.args;
-                        var self = Kindelia$get_bond$($3664, $3678);
+                        var $3699 = self.bond;
+                        var $3700 = self.args;
+                        var self = Kindelia$get_bond$($3685, $3699);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3681 = self.value;
-                                var _bond$10 = $3681;
+                                var $3702 = self.value;
+                                var _bond$10 = $3702;
                                 var self = _bond$10;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var $3683 = self.args;
-                                        var $3684 = self.main;
-                                        var _inam$16 = List$mapped$($3683, Pair$fst);
-                                        var self = Kindelia$rename$many$(Map$from_list$(List$nil), $3666, _inam$16);
+                                        var $3704 = self.args;
+                                        var $3705 = self.main;
+                                        var _inam$16 = List$mapped$($3704, Pair$fst);
+                                        var self = Kindelia$rename$many$(Map$from_list$(List$nil), $3687, _inam$16);
                                         switch (self._) {
                                             case 'Triple.new':
-                                                var $3686 = self.fst;
-                                                var $3687 = self.snd;
-                                                var $3688 = self.trd;
-                                                var self = Kindelia$sanitize$($3664, $3686, $3687, $3684);
+                                                var $3707 = self.fst;
+                                                var $3708 = self.snd;
+                                                var $3709 = self.trd;
+                                                var self = Kindelia$sanitize$($3685, $3707, $3708, $3705);
                                                 switch (self._) {
                                                     case 'Pair.new':
-                                                        var $3690 = self.fst;
-                                                        var $3691 = self.snd;
-                                                        var self = Kindelia$normalize$many$(Kindelia$Runtime$new$($3664, $3665, $3690, $3667, $3679));
+                                                        var $3711 = self.fst;
+                                                        var $3712 = self.snd;
+                                                        var self = Kindelia$normalize$many$(Kindelia$Runtime$new$($3685, $3686, $3711, $3688, $3700));
                                                         switch (self._) {
                                                             case 'Kindelia.Runtime.new':
-                                                                var $3693 = self.world;
-                                                                var $3694 = self.subst;
-                                                                var $3695 = self.fresh;
-                                                                var $3696 = self.gas;
-                                                                var $3697 = self.term;
-                                                                var _subst$27 = Kindelia$extend$($3694, List$zip$($3688, $3697));
-                                                                var _gas$28 = (Kindelia$cost$create$((list_length($3679))) + $3696);
-                                                                var $3698 = Kindelia$reduce$(Kindelia$Runtime$new$($3693, _subst$27, $3695, _gas$28, $3691));
-                                                                var $3692 = $3698;
+                                                                var $3714 = self.world;
+                                                                var $3715 = self.subst;
+                                                                var $3716 = self.fresh;
+                                                                var $3717 = self.gas;
+                                                                var $3718 = self.term;
+                                                                var _subst$27 = Kindelia$extend$($3715, List$zip$($3709, $3718));
+                                                                var _gas$28 = (Kindelia$cost$create$((list_length($3700))) + $3717);
+                                                                var $3719 = Kindelia$reduce$(Kindelia$Runtime$new$($3714, _subst$27, $3716, _gas$28, $3712));
+                                                                var $3713 = $3719;
                                                                 break;
                                                         };
-                                                        var $3689 = $3692;
+                                                        var $3710 = $3713;
                                                         break;
                                                 };
-                                                var $3685 = $3689;
+                                                var $3706 = $3710;
                                                 break;
                                         };
-                                        var $3682 = $3685;
+                                        var $3703 = $3706;
                                         break;
                                 };
-                                var $3680 = $3682;
+                                var $3701 = $3703;
                                 break;
                             case 'Maybe.none':
-                                var $3699 = _state$1;
-                                var $3680 = $3699;
+                                var $3720 = _state$1;
+                                var $3701 = $3720;
                                 break;
                         };
-                        var $3669 = $3680;
+                        var $3690 = $3701;
                         break;
                     case 'Kindelia.Term.let':
-                        var $3700 = self.name;
-                        var $3701 = self.expr;
-                        var $3702 = self.body;
-                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3664, $3665, $3666, $3667, $3701));
+                        var $3721 = self.name;
+                        var $3722 = self.expr;
+                        var $3723 = self.body;
+                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3685, $3686, $3687, $3688, $3722));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3704 = self.world;
-                                var $3705 = self.subst;
-                                var $3706 = self.fresh;
-                                var $3707 = self.gas;
-                                var $3708 = self.term;
-                                var _subst$16 = Map$set$($3700, $3708, $3705);
-                                var _gas$17 = (Kindelia$cost$let + $3707);
-                                var $3709 = Kindelia$reduce$(Kindelia$Runtime$new$($3704, _subst$16, $3706, _gas$17, $3702));
-                                var $3703 = $3709;
+                                var $3725 = self.world;
+                                var $3726 = self.subst;
+                                var $3727 = self.fresh;
+                                var $3728 = self.gas;
+                                var $3729 = self.term;
+                                var _subst$16 = Map$set$($3721, $3729, $3726);
+                                var _gas$17 = (Kindelia$cost$let + $3728);
+                                var $3730 = Kindelia$reduce$(Kindelia$Runtime$new$($3725, _subst$16, $3727, _gas$17, $3723));
+                                var $3724 = $3730;
                                 break;
                         };
-                        var $3669 = $3703;
+                        var $3690 = $3724;
                         break;
                     case 'Kindelia.Term.match':
-                        var $3710 = self.name;
-                        var $3711 = self.data;
-                        var $3712 = self.cses;
-                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3664, $3665, $3666, $3667, Maybe$default$(Map$get$($3710, $3665), Kindelia$Term$word$(0n))));
+                        var $3731 = self.name;
+                        var $3732 = self.data;
+                        var $3733 = self.cses;
+                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3685, $3686, $3687, $3688, Maybe$default$(Map$get$($3731, $3686), Kindelia$Term$word$(0n))));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3714 = self.world;
-                                var $3715 = self.subst;
-                                var $3716 = self.fresh;
-                                var $3717 = self.gas;
-                                var $3718 = self.term;
-                                var self = $3718;
+                                var $3735 = self.world;
+                                var $3736 = self.subst;
+                                var $3737 = self.fresh;
+                                var $3738 = self.gas;
+                                var $3739 = self.term;
+                                var self = $3739;
                                 switch (self._) {
                                     case 'Kindelia.Term.create':
-                                        var $3720 = self.ctor;
-                                        var $3721 = self.vals;
-                                        var self = Kindelia$get_data$($3714, $3711);
+                                        var $3741 = self.ctor;
+                                        var $3742 = self.vals;
+                                        var self = Kindelia$get_data$($3735, $3732);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $3723 = self.value;
-                                                var _data$18 = $3723;
+                                                var $3744 = self.value;
+                                                var _data$18 = $3744;
                                                 var self = _data$18;
                                                 switch (self._) {
                                                     case 'Kindelia.Data.new':
-                                                        var $3725 = self.ctrs;
-                                                        var self = List$get$($3720, $3725);
+                                                        var $3746 = self.ctrs;
+                                                        var self = List$get$($3741, $3746);
                                                         switch (self._) {
                                                             case 'Maybe.some':
-                                                                var $3727 = self.value;
-                                                                var _ctor$22 = $3727;
+                                                                var $3748 = self.value;
+                                                                var _ctor$22 = $3748;
                                                                 var self = _ctor$22;
                                                                 switch (self._) {
                                                                     case 'Kindelia.Constructor.new':
-                                                                        var self = List$get$($3720, $3712);
+                                                                        var self = List$get$($3741, $3733);
                                                                         switch (self._) {
                                                                             case 'Maybe.some':
-                                                                                var $3730 = self.value;
+                                                                                var $3751 = self.value;
                                                                                 var _nams$26 = List$map$((_args$26 => {
-                                                                                    var $3732 = ($3710 + ("." + (() => {
+                                                                                    var $3753 = ($3731 + ("." + (() => {
                                                                                         var self = _args$26;
                                                                                         switch (self._) {
                                                                                             case 'Pair.new':
-                                                                                                var $3733 = self.fst;
-                                                                                                var $3734 = $3733;
-                                                                                                return $3734;
+                                                                                                var $3754 = self.fst;
+                                                                                                var $3755 = $3754;
+                                                                                                return $3755;
                                                                                         };
                                                                                     })()));
-                                                                                    return $3732;
+                                                                                    return $3753;
                                                                                 }), (() => {
                                                                                     var self = _ctor$22;
                                                                                     switch (self._) {
                                                                                         case 'Kindelia.Constructor.new':
-                                                                                            var $3735 = self.args;
-                                                                                            var $3736 = $3735;
-                                                                                            return $3736;
+                                                                                            var $3756 = self.args;
+                                                                                            var $3757 = $3756;
+                                                                                            return $3757;
                                                                                     };
                                                                                 })());
-                                                                                var _subst$27 = Kindelia$extend$($3715, List$zip$(_nams$26, $3721));
-                                                                                var _gas$28 = (Kindelia$cost$match$((list_length($3721))) + $3717);
-                                                                                var $3731 = Kindelia$reduce$(Kindelia$Runtime$new$($3714, _subst$27, $3716, _gas$28, $3730));
-                                                                                var $3729 = $3731;
+                                                                                var _subst$27 = Kindelia$extend$($3736, List$zip$(_nams$26, $3742));
+                                                                                var _gas$28 = (Kindelia$cost$match$((list_length($3742))) + $3738);
+                                                                                var $3752 = Kindelia$reduce$(Kindelia$Runtime$new$($3735, _subst$27, $3737, _gas$28, $3751));
+                                                                                var $3750 = $3752;
                                                                                 break;
                                                                             case 'Maybe.none':
-                                                                                var $3737 = _state$1;
-                                                                                var $3729 = $3737;
+                                                                                var $3758 = _state$1;
+                                                                                var $3750 = $3758;
                                                                                 break;
                                                                         };
-                                                                        var $3728 = $3729;
+                                                                        var $3749 = $3750;
                                                                         break;
                                                                 };
-                                                                var $3726 = $3728;
+                                                                var $3747 = $3749;
                                                                 break;
                                                             case 'Maybe.none':
-                                                                var $3738 = _state$1;
-                                                                var $3726 = $3738;
+                                                                var $3759 = _state$1;
+                                                                var $3747 = $3759;
                                                                 break;
                                                         };
-                                                        var $3724 = $3726;
+                                                        var $3745 = $3747;
                                                         break;
                                                 };
-                                                var $3722 = $3724;
+                                                var $3743 = $3745;
                                                 break;
                                             case 'Maybe.none':
-                                                var $3739 = _state$1;
-                                                var $3722 = $3739;
+                                                var $3760 = _state$1;
+                                                var $3743 = $3760;
                                                 break;
                                         };
-                                        var $3719 = $3722;
+                                        var $3740 = $3743;
                                         break;
                                     case 'Kindelia.Term.var':
                                     case 'Kindelia.Term.call':
@@ -12843,61 +12920,61 @@ module.exports = (function() {
                                     case 'Kindelia.Term.compare':
                                     case 'Kindelia.Term.operate':
                                     case 'Kindelia.Term.bind':
-                                        var $3740 = _state$1;
-                                        var $3719 = $3740;
+                                        var $3761 = _state$1;
+                                        var $3740 = $3761;
                                         break;
                                 };
-                                var $3713 = $3719;
+                                var $3734 = $3740;
                                 break;
                         };
-                        var $3669 = $3713;
+                        var $3690 = $3734;
                         break;
                     case 'Kindelia.Term.compare':
-                        var $3741 = self.val0;
-                        var $3742 = self.val1;
-                        var $3743 = self.iflt;
-                        var $3744 = self.ifeq;
-                        var $3745 = self.ifgt;
-                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3664, $3665, $3666, $3667, $3741));
+                        var $3762 = self.val0;
+                        var $3763 = self.val1;
+                        var $3764 = self.iflt;
+                        var $3765 = self.ifeq;
+                        var $3766 = self.ifgt;
+                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3685, $3686, $3687, $3688, $3762));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3747 = self.world;
-                                var $3748 = self.subst;
-                                var $3749 = self.fresh;
-                                var $3750 = self.gas;
-                                var $3751 = self.term;
-                                var self = Kindelia$reduce$(Kindelia$Runtime$new$($3747, $3748, $3749, $3750, $3742));
+                                var $3768 = self.world;
+                                var $3769 = self.subst;
+                                var $3770 = self.fresh;
+                                var $3771 = self.gas;
+                                var $3772 = self.term;
+                                var self = Kindelia$reduce$(Kindelia$Runtime$new$($3768, $3769, $3770, $3771, $3763));
                                 switch (self._) {
                                     case 'Kindelia.Runtime.new':
-                                        var $3753 = self.world;
-                                        var $3754 = self.subst;
-                                        var $3755 = self.fresh;
-                                        var $3756 = self.gas;
-                                        var $3757 = self.term;
-                                        var self = $3751;
+                                        var $3774 = self.world;
+                                        var $3775 = self.subst;
+                                        var $3776 = self.fresh;
+                                        var $3777 = self.gas;
+                                        var $3778 = self.term;
+                                        var self = $3772;
                                         switch (self._) {
                                             case 'Kindelia.Term.word':
-                                                var $3759 = self.numb;
-                                                var self = $3757;
+                                                var $3780 = self.numb;
+                                                var self = $3778;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.word':
-                                                        var $3761 = self.numb;
-                                                        var self = U64$cmp$($3759, $3761);
+                                                        var $3782 = self.numb;
+                                                        var self = U64$cmp$($3780, $3782);
                                                         switch (self._) {
                                                             case 'Cmp.ltn':
-                                                                var $3763 = $3743;
-                                                                var $3762 = $3763;
+                                                                var $3784 = $3764;
+                                                                var $3783 = $3784;
                                                                 break;
                                                             case 'Cmp.eql':
-                                                                var $3764 = $3744;
-                                                                var $3762 = $3764;
+                                                                var $3785 = $3765;
+                                                                var $3783 = $3785;
                                                                 break;
                                                             case 'Cmp.gtn':
-                                                                var $3765 = $3745;
-                                                                var $3762 = $3765;
+                                                                var $3786 = $3766;
+                                                                var $3783 = $3786;
                                                                 break;
                                                         };
-                                                        var $3760 = $3762;
+                                                        var $3781 = $3783;
                                                         break;
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -12907,14 +12984,14 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3766 = $3668;
-                                                        var $3760 = $3766;
+                                                        var $3787 = $3689;
+                                                        var $3781 = $3787;
                                                         break;
                                                 };
-                                                var _term$22 = $3760;
+                                                var _term$22 = $3781;
                                                 break;
                                             case 'Kindelia.Term.var':
-                                                var self = $3757;
+                                                var self = $3778;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -12925,15 +13002,15 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3768 = $3668;
-                                                        var $3767 = $3768;
+                                                        var $3789 = $3689;
+                                                        var $3788 = $3789;
                                                         break;
                                                 };
-                                                var _term$22 = $3767;
+                                                var _term$22 = $3788;
                                                 break;
                                             case 'Kindelia.Term.call':
                                             case 'Kindelia.Term.create':
-                                                var self = $3757;
+                                                var self = $3778;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -12944,14 +13021,14 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3770 = $3668;
-                                                        var $3769 = $3770;
+                                                        var $3791 = $3689;
+                                                        var $3790 = $3791;
                                                         break;
                                                 };
-                                                var _term$22 = $3769;
+                                                var _term$22 = $3790;
                                                 break;
                                             case 'Kindelia.Term.let':
-                                                var self = $3757;
+                                                var self = $3778;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -12962,16 +13039,16 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3772 = $3668;
-                                                        var $3771 = $3772;
+                                                        var $3793 = $3689;
+                                                        var $3792 = $3793;
                                                         break;
                                                 };
-                                                var _term$22 = $3771;
+                                                var _term$22 = $3792;
                                                 break;
                                             case 'Kindelia.Term.match':
                                             case 'Kindelia.Term.operate':
                                             case 'Kindelia.Term.bind':
-                                                var self = $3757;
+                                                var self = $3778;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -12982,14 +13059,14 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3774 = $3668;
-                                                        var $3773 = $3774;
+                                                        var $3795 = $3689;
+                                                        var $3794 = $3795;
                                                         break;
                                                 };
-                                                var _term$22 = $3773;
+                                                var _term$22 = $3794;
                                                 break;
                                             case 'Kindelia.Term.compare':
-                                                var self = $3757;
+                                                var self = $3778;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13000,87 +13077,87 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3776 = $3668;
-                                                        var $3775 = $3776;
+                                                        var $3797 = $3689;
+                                                        var $3796 = $3797;
                                                         break;
                                                 };
-                                                var _term$22 = $3775;
+                                                var _term$22 = $3796;
                                                 break;
                                         };
-                                        var _gas$23 = (Kindelia$cost$compare + $3756);
-                                        var $3758 = Kindelia$Runtime$new$($3753, $3754, $3755, _gas$23, _term$22);
-                                        var $3752 = $3758;
+                                        var _gas$23 = (Kindelia$cost$compare + $3777);
+                                        var $3779 = Kindelia$Runtime$new$($3774, $3775, $3776, _gas$23, _term$22);
+                                        var $3773 = $3779;
                                         break;
                                 };
-                                var $3746 = $3752;
+                                var $3767 = $3773;
                                 break;
                         };
-                        var $3669 = $3746;
+                        var $3690 = $3767;
                         break;
                     case 'Kindelia.Term.operate':
-                        var $3777 = self.oper;
-                        var $3778 = self.val0;
-                        var $3779 = self.val1;
-                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3664, $3665, $3666, $3667, $3778));
+                        var $3798 = self.oper;
+                        var $3799 = self.val0;
+                        var $3800 = self.val1;
+                        var self = Kindelia$reduce$(Kindelia$Runtime$new$($3685, $3686, $3687, $3688, $3799));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3781 = self.world;
-                                var $3782 = self.subst;
-                                var $3783 = self.fresh;
-                                var $3784 = self.gas;
-                                var $3785 = self.term;
-                                var self = Kindelia$reduce$(Kindelia$Runtime$new$($3781, $3782, $3783, $3784, $3779));
+                                var $3802 = self.world;
+                                var $3803 = self.subst;
+                                var $3804 = self.fresh;
+                                var $3805 = self.gas;
+                                var $3806 = self.term;
+                                var self = Kindelia$reduce$(Kindelia$Runtime$new$($3802, $3803, $3804, $3805, $3800));
                                 switch (self._) {
                                     case 'Kindelia.Runtime.new':
-                                        var $3787 = self.world;
-                                        var $3788 = self.subst;
-                                        var $3789 = self.fresh;
-                                        var $3790 = self.gas;
-                                        var $3791 = self.term;
-                                        var self = $3785;
+                                        var $3808 = self.world;
+                                        var $3809 = self.subst;
+                                        var $3810 = self.fresh;
+                                        var $3811 = self.gas;
+                                        var $3812 = self.term;
+                                        var self = $3806;
                                         switch (self._) {
                                             case 'Kindelia.Term.word':
-                                                var $3793 = self.numb;
-                                                var self = $3791;
+                                                var $3814 = self.numb;
+                                                var self = $3812;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.word':
-                                                        var $3795 = self.numb;
-                                                        var self = $3777;
+                                                        var $3816 = self.numb;
+                                                        var self = $3798;
                                                         switch (self._) {
                                                             case 'Kindelia.Operation.add':
-                                                                var $3797 = Kindelia$Term$word$((($3793 + $3795) & 0xFFFFFFFFFFFFFFFFn));
-                                                                var $3796 = $3797;
+                                                                var $3818 = Kindelia$Term$word$((($3814 + $3816) & 0xFFFFFFFFFFFFFFFFn));
+                                                                var $3817 = $3818;
                                                                 break;
                                                             case 'Kindelia.Operation.sub':
-                                                                var $3798 = Kindelia$Term$word$((($3793 - $3795) & 0xFFFFFFFFFFFFFFFFn));
-                                                                var $3796 = $3798;
+                                                                var $3819 = Kindelia$Term$word$((($3814 - $3816) & 0xFFFFFFFFFFFFFFFFn));
+                                                                var $3817 = $3819;
                                                                 break;
                                                             case 'Kindelia.Operation.mul':
-                                                                var $3799 = Kindelia$Term$word$((($3793 * $3795) & 0xFFFFFFFFFFFFFFFFn));
-                                                                var $3796 = $3799;
+                                                                var $3820 = Kindelia$Term$word$((($3814 * $3816) & 0xFFFFFFFFFFFFFFFFn));
+                                                                var $3817 = $3820;
                                                                 break;
                                                             case 'Kindelia.Operation.div':
-                                                                var $3800 = Kindelia$Term$word$((($3793 / $3795) & 0xFFFFFFFFFFFFFFFFn));
-                                                                var $3796 = $3800;
+                                                                var $3821 = Kindelia$Term$word$((($3814 / $3816) & 0xFFFFFFFFFFFFFFFFn));
+                                                                var $3817 = $3821;
                                                                 break;
                                                             case 'Kindelia.Operation.mod':
-                                                                var $3801 = Kindelia$Term$word$(($3793 % $3795));
-                                                                var $3796 = $3801;
+                                                                var $3822 = Kindelia$Term$word$(($3814 % $3816));
+                                                                var $3817 = $3822;
                                                                 break;
                                                             case 'Kindelia.Operation.or':
-                                                                var $3802 = Kindelia$Term$word$(($3793 | $3795));
-                                                                var $3796 = $3802;
+                                                                var $3823 = Kindelia$Term$word$(($3814 | $3816));
+                                                                var $3817 = $3823;
                                                                 break;
                                                             case 'Kindelia.Operation.and':
-                                                                var $3803 = Kindelia$Term$word$(($3793 & $3795));
-                                                                var $3796 = $3803;
+                                                                var $3824 = Kindelia$Term$word$(($3814 & $3816));
+                                                                var $3817 = $3824;
                                                                 break;
                                                             case 'Kindelia.Operation.xor':
-                                                                var $3804 = Kindelia$Term$word$(($3793 ^ $3795));
-                                                                var $3796 = $3804;
+                                                                var $3825 = Kindelia$Term$word$(($3814 ^ $3816));
+                                                                var $3817 = $3825;
                                                                 break;
                                                         };
-                                                        var $3794 = $3796;
+                                                        var $3815 = $3817;
                                                         break;
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13090,14 +13167,14 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3805 = $3668;
-                                                        var $3794 = $3805;
+                                                        var $3826 = $3689;
+                                                        var $3815 = $3826;
                                                         break;
                                                 };
-                                                var _term$20 = $3794;
+                                                var _term$20 = $3815;
                                                 break;
                                             case 'Kindelia.Term.var':
-                                                var self = $3791;
+                                                var self = $3812;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13108,15 +13185,15 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3807 = $3668;
-                                                        var $3806 = $3807;
+                                                        var $3828 = $3689;
+                                                        var $3827 = $3828;
                                                         break;
                                                 };
-                                                var _term$20 = $3806;
+                                                var _term$20 = $3827;
                                                 break;
                                             case 'Kindelia.Term.call':
                                             case 'Kindelia.Term.create':
-                                                var self = $3791;
+                                                var self = $3812;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13127,14 +13204,14 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3809 = $3668;
-                                                        var $3808 = $3809;
+                                                        var $3830 = $3689;
+                                                        var $3829 = $3830;
                                                         break;
                                                 };
-                                                var _term$20 = $3808;
+                                                var _term$20 = $3829;
                                                 break;
                                             case 'Kindelia.Term.let':
-                                                var self = $3791;
+                                                var self = $3812;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13145,16 +13222,16 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3811 = $3668;
-                                                        var $3810 = $3811;
+                                                        var $3832 = $3689;
+                                                        var $3831 = $3832;
                                                         break;
                                                 };
-                                                var _term$20 = $3810;
+                                                var _term$20 = $3831;
                                                 break;
                                             case 'Kindelia.Term.match':
                                             case 'Kindelia.Term.operate':
                                             case 'Kindelia.Term.bind':
-                                                var self = $3791;
+                                                var self = $3812;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13165,14 +13242,14 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3813 = $3668;
-                                                        var $3812 = $3813;
+                                                        var $3834 = $3689;
+                                                        var $3833 = $3834;
                                                         break;
                                                 };
-                                                var _term$20 = $3812;
+                                                var _term$20 = $3833;
                                                 break;
                                             case 'Kindelia.Term.compare':
-                                                var self = $3791;
+                                                var self = $3812;
                                                 switch (self._) {
                                                     case 'Kindelia.Term.var':
                                                     case 'Kindelia.Term.call':
@@ -13183,91 +13260,91 @@ module.exports = (function() {
                                                     case 'Kindelia.Term.compare':
                                                     case 'Kindelia.Term.operate':
                                                     case 'Kindelia.Term.bind':
-                                                        var $3815 = $3668;
-                                                        var $3814 = $3815;
+                                                        var $3836 = $3689;
+                                                        var $3835 = $3836;
                                                         break;
                                                 };
-                                                var _term$20 = $3814;
+                                                var _term$20 = $3835;
                                                 break;
                                         };
-                                        var _gas$21 = (Kindelia$cost$operate + $3790);
-                                        var $3792 = Kindelia$Runtime$new$($3787, $3788, $3789, _gas$21, _term$20);
-                                        var $3786 = $3792;
+                                        var _gas$21 = (Kindelia$cost$operate + $3811);
+                                        var $3813 = Kindelia$Runtime$new$($3808, $3809, $3810, _gas$21, _term$20);
+                                        var $3807 = $3813;
                                         break;
                                 };
-                                var $3780 = $3786;
+                                var $3801 = $3807;
                                 break;
                         };
-                        var $3669 = $3780;
+                        var $3690 = $3801;
                         break;
                     case 'Kindelia.Term.bind':
-                        var $3816 = self.bond;
-                        var $3817 = self.expr;
-                        var $3818 = self.cont;
-                        var self = Kindelia$get_bond$($3664, $3816);
+                        var $3837 = self.bond;
+                        var $3838 = self.expr;
+                        var $3839 = self.cont;
+                        var self = Kindelia$get_bond$($3685, $3837);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3820 = self.value;
-                                var _bond$11 = $3820;
+                                var $3841 = self.value;
+                                var _bond$11 = $3841;
                                 var self = _bond$11;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3664, $3665, $3666, $3667, $3817));
+                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3685, $3686, $3687, $3688, $3838));
                                         switch (self._) {
                                             case 'Kindelia.Runtime.new':
-                                                var $3823 = self.world;
-                                                var $3824 = self.subst;
-                                                var $3825 = self.fresh;
-                                                var $3826 = self.gas;
-                                                var $3827 = self.term;
+                                                var $3844 = self.world;
+                                                var $3845 = self.subst;
+                                                var $3846 = self.fresh;
+                                                var $3847 = self.gas;
+                                                var $3848 = self.term;
                                                 var _entry$22 = Kindelia$Entry$bond$((() => {
                                                     var self = _bond$11;
                                                     switch (self._) {
                                                         case 'Kindelia.Bond.new':
-                                                            var $3829 = self.name;
-                                                            var $3830 = self.ownr;
-                                                            var $3831 = self.args;
-                                                            var $3832 = self.otyp;
-                                                            var $3833 = Kindelia$Bond$new$($3829, $3830, $3831, $3832, $3827);
-                                                            return $3833;
+                                                            var $3850 = self.name;
+                                                            var $3851 = self.ownr;
+                                                            var $3852 = self.args;
+                                                            var $3853 = self.otyp;
+                                                            var $3854 = Kindelia$Bond$new$($3850, $3851, $3852, $3853, $3848);
+                                                            return $3854;
                                                     };
                                                 })());
-                                                var self = $3823;
+                                                var self = $3844;
                                                 switch (self._) {
                                                     case 'Kindelia.World.new':
-                                                        var $3834 = self.names;
-                                                        var $3835 = self.entry;
-                                                        var $3836 = Kindelia$World$new$($3834, Map$set$($3816, _entry$22, $3835));
-                                                        var _world$23 = $3836;
+                                                        var $3855 = self.names;
+                                                        var $3856 = self.entry;
+                                                        var $3857 = Kindelia$World$new$($3855, Map$set$($3837, _entry$22, $3856));
+                                                        var _world$23 = $3857;
                                                         break;
                                                 };
-                                                var _gas$24 = (Kindelia$cost$bind + $3826);
-                                                var $3828 = Kindelia$reduce$(Kindelia$Runtime$new$(_world$23, $3824, $3825, _gas$24, $3818));
-                                                var $3822 = $3828;
+                                                var _gas$24 = (Kindelia$cost$bind + $3847);
+                                                var $3849 = Kindelia$reduce$(Kindelia$Runtime$new$(_world$23, $3845, $3846, _gas$24, $3839));
+                                                var $3843 = $3849;
                                                 break;
                                         };
-                                        var $3821 = $3822;
+                                        var $3842 = $3843;
                                         break;
                                 };
-                                var $3819 = $3821;
+                                var $3840 = $3842;
                                 break;
                             case 'Maybe.none':
-                                var $3837 = _state$1;
-                                var $3819 = $3837;
+                                var $3858 = _state$1;
+                                var $3840 = $3858;
                                 break;
                         };
-                        var $3669 = $3819;
+                        var $3690 = $3840;
                         break;
                     case 'Kindelia.Term.create':
                     case 'Kindelia.Term.word':
-                        var $3838 = _state$1;
-                        var $3669 = $3838;
+                        var $3859 = _state$1;
+                        var $3690 = $3859;
                         break;
                 };
-                var $3663 = $3669;
+                var $3684 = $3690;
                 break;
         };
-        return $3663;
+        return $3684;
     };
     const Kindelia$reduce = x0 => Kindelia$reduce$(x0);
 
@@ -13275,91 +13352,91 @@ module.exports = (function() {
         var self = _state$3;
         switch (self._) {
             case 'Kindelia.Runtime.new':
-                var $3840 = self.world;
-                var $3841 = self.subst;
-                var $3842 = self.fresh;
-                var $3843 = self.gas;
-                var $3844 = self.term;
+                var $3861 = self.world;
+                var $3862 = self.subst;
+                var $3863 = self.fresh;
+                var $3864 = self.gas;
+                var $3865 = self.term;
                 var self = _ctrs$1;
                 switch (self._) {
                     case 'List.cons':
-                        var $3846 = self.head;
-                        var $3847 = self.tail;
-                        var self = $3844;
+                        var $3867 = self.head;
+                        var $3868 = self.tail;
+                        var self = $3865;
                         switch (self._) {
                             case 'List.cons':
-                                var $3849 = self.head;
-                                var $3850 = self.tail;
+                                var $3870 = self.head;
+                                var $3871 = self.tail;
                                 var _nams$13 = List$map$((_args$13 => {
-                                    var $3852 = (_name$2 + ("." + (() => {
+                                    var $3873 = (_name$2 + ("." + (() => {
                                         var self = _args$13;
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3853 = self.fst;
-                                                var $3854 = $3853;
-                                                return $3854;
+                                                var $3874 = self.fst;
+                                                var $3875 = $3874;
+                                                return $3875;
                                         };
                                     })()));
-                                    return $3852;
+                                    return $3873;
                                 }), (() => {
-                                    var self = $3846;
+                                    var self = $3867;
                                     switch (self._) {
                                         case 'Kindelia.Constructor.new':
-                                            var $3855 = self.args;
-                                            var $3856 = $3855;
-                                            return $3856;
+                                            var $3876 = self.args;
+                                            var $3877 = $3876;
+                                            return $3877;
                                     };
                                 })());
                                 var _vals$14 = List$map$(Kindelia$Term$var, _nams$13);
-                                var _subst$15 = Kindelia$extend$($3841, List$zip$(_nams$13, _vals$14));
-                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3840, _subst$15, $3842, $3843, $3849));
+                                var _subst$15 = Kindelia$extend$($3862, List$zip$(_nams$13, _vals$14));
+                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3861, _subst$15, $3863, $3864, $3870));
                                 switch (self._) {
                                     case 'Kindelia.Runtime.new':
-                                        var $3857 = self.world;
-                                        var $3858 = self.subst;
-                                        var $3859 = self.fresh;
-                                        var $3860 = self.gas;
-                                        var $3861 = self.term;
-                                        var self = Kindelia$normalize$cases$($3847, _name$2, Kindelia$Runtime$new$($3857, $3858, $3859, $3860, $3850));
+                                        var $3878 = self.world;
+                                        var $3879 = self.subst;
+                                        var $3880 = self.fresh;
+                                        var $3881 = self.gas;
+                                        var $3882 = self.term;
+                                        var self = Kindelia$normalize$cases$($3868, _name$2, Kindelia$Runtime$new$($3878, $3879, $3880, $3881, $3871));
                                         switch (self._) {
                                             case 'Kindelia.Runtime.new':
-                                                var $3863 = self.world;
-                                                var $3864 = self.subst;
-                                                var $3865 = self.fresh;
-                                                var $3866 = self.gas;
-                                                var $3867 = self.term;
-                                                var $3868 = Kindelia$Runtime$new$($3863, $3864, $3865, $3866, List$cons$($3861, $3867));
-                                                var $3862 = $3868;
+                                                var $3884 = self.world;
+                                                var $3885 = self.subst;
+                                                var $3886 = self.fresh;
+                                                var $3887 = self.gas;
+                                                var $3888 = self.term;
+                                                var $3889 = Kindelia$Runtime$new$($3884, $3885, $3886, $3887, List$cons$($3882, $3888));
+                                                var $3883 = $3889;
                                                 break;
                                         };
-                                        var $3851 = $3862;
+                                        var $3872 = $3883;
                                         break;
                                 };
-                                var $3848 = $3851;
+                                var $3869 = $3872;
                                 break;
                             case 'List.nil':
-                                var $3869 = _state$3;
-                                var $3848 = $3869;
+                                var $3890 = _state$3;
+                                var $3869 = $3890;
                                 break;
                         };
-                        var $3845 = $3848;
+                        var $3866 = $3869;
                         break;
                     case 'List.nil':
-                        var self = $3844;
+                        var self = $3865;
                         switch (self._) {
                             case 'List.nil':
                             case 'List.cons':
-                                var $3871 = _state$3;
-                                var $3870 = $3871;
+                                var $3892 = _state$3;
+                                var $3891 = $3892;
                                 break;
                         };
-                        var $3845 = $3870;
+                        var $3866 = $3891;
                         break;
                 };
-                var $3839 = $3845;
+                var $3860 = $3866;
                 break;
         };
-        return $3839;
+        return $3860;
     };
     const Kindelia$normalize$cases = x0 => x1 => x2 => Kindelia$normalize$cases$(x0, x1, x2);
 
@@ -13367,233 +13444,233 @@ module.exports = (function() {
         var self = Kindelia$reduce$(_state$1);
         switch (self._) {
             case 'Kindelia.Runtime.new':
-                var $3873 = self.world;
-                var $3874 = self.subst;
-                var $3875 = self.fresh;
-                var $3876 = self.gas;
-                var $3877 = self.term;
-                var self = $3877;
+                var $3894 = self.world;
+                var $3895 = self.subst;
+                var $3896 = self.fresh;
+                var $3897 = self.gas;
+                var $3898 = self.term;
+                var self = $3898;
                 switch (self._) {
                     case 'Kindelia.Term.create':
-                        var $3879 = self.ctor;
-                        var $3880 = self.vals;
-                        var self = Kindelia$normalize$many$(Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3880));
+                        var $3900 = self.ctor;
+                        var $3901 = self.vals;
+                        var self = Kindelia$normalize$many$(Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3901));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3882 = self.world;
-                                var $3883 = self.subst;
-                                var $3884 = self.fresh;
-                                var $3885 = self.gas;
-                                var $3886 = self.term;
-                                var $3887 = Kindelia$Runtime$new$($3882, $3883, $3884, $3885, Kindelia$Term$create$($3879, $3886));
-                                var $3881 = $3887;
+                                var $3903 = self.world;
+                                var $3904 = self.subst;
+                                var $3905 = self.fresh;
+                                var $3906 = self.gas;
+                                var $3907 = self.term;
+                                var $3908 = Kindelia$Runtime$new$($3903, $3904, $3905, $3906, Kindelia$Term$create$($3900, $3907));
+                                var $3902 = $3908;
                                 break;
                         };
-                        var $3878 = $3881;
+                        var $3899 = $3902;
                         break;
                     case 'Kindelia.Term.match':
-                        var $3888 = self.name;
-                        var $3889 = self.data;
-                        var $3890 = self.cses;
-                        var self = Kindelia$get_ctrs$($3873, $3889);
+                        var $3909 = self.name;
+                        var $3910 = self.data;
+                        var $3911 = self.cses;
+                        var self = Kindelia$get_ctrs$($3894, $3910);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3892 = self.value;
-                                var _ctrs$11 = $3892;
+                                var $3913 = self.value;
+                                var _ctrs$11 = $3913;
                                 var self = _ctrs$11;
                                 switch (self._) {
                                     case 'List.nil':
-                                        var self = Kindelia$normalize$cases$(_ctrs$11, $3888, Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3890));
+                                        var self = Kindelia$normalize$cases$(_ctrs$11, $3909, Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3911));
                                         switch (self._) {
                                             case 'Kindelia.Runtime.new':
-                                                var $3895 = self.world;
-                                                var $3896 = self.subst;
-                                                var $3897 = self.fresh;
-                                                var $3898 = self.gas;
-                                                var $3899 = self.term;
-                                                var $3900 = Kindelia$Runtime$new$($3895, $3896, $3897, $3898, Kindelia$Term$match$($3888, $3889, $3899));
-                                                var $3894 = $3900;
+                                                var $3916 = self.world;
+                                                var $3917 = self.subst;
+                                                var $3918 = self.fresh;
+                                                var $3919 = self.gas;
+                                                var $3920 = self.term;
+                                                var $3921 = Kindelia$Runtime$new$($3916, $3917, $3918, $3919, Kindelia$Term$match$($3909, $3910, $3920));
+                                                var $3915 = $3921;
                                                 break;
                                         };
-                                        var $3893 = $3894;
+                                        var $3914 = $3915;
                                         break;
                                     case 'List.cons':
-                                        var self = Kindelia$normalize$cases$(_ctrs$11, $3888, Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3890));
+                                        var self = Kindelia$normalize$cases$(_ctrs$11, $3909, Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3911));
                                         switch (self._) {
                                             case 'Kindelia.Runtime.new':
-                                                var $3902 = self.world;
-                                                var $3903 = self.subst;
-                                                var $3904 = self.fresh;
-                                                var $3905 = self.gas;
-                                                var $3906 = self.term;
-                                                var $3907 = Kindelia$Runtime$new$($3902, $3903, $3904, $3905, Kindelia$Term$match$($3888, $3889, $3906));
-                                                var $3901 = $3907;
+                                                var $3923 = self.world;
+                                                var $3924 = self.subst;
+                                                var $3925 = self.fresh;
+                                                var $3926 = self.gas;
+                                                var $3927 = self.term;
+                                                var $3928 = Kindelia$Runtime$new$($3923, $3924, $3925, $3926, Kindelia$Term$match$($3909, $3910, $3927));
+                                                var $3922 = $3928;
                                                 break;
                                         };
-                                        var $3893 = $3901;
+                                        var $3914 = $3922;
                                         break;
                                 };
-                                var $3891 = $3893;
+                                var $3912 = $3914;
                                 break;
                             case 'Maybe.none':
-                                var $3908 = Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3877);
-                                var $3891 = $3908;
+                                var $3929 = Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3898);
+                                var $3912 = $3929;
                                 break;
                         };
-                        var $3878 = $3891;
+                        var $3899 = $3912;
                         break;
                     case 'Kindelia.Term.compare':
-                        var $3909 = self.val0;
-                        var $3910 = self.val1;
-                        var $3911 = self.iflt;
-                        var $3912 = self.ifeq;
-                        var $3913 = self.ifgt;
-                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3909));
+                        var $3930 = self.val0;
+                        var $3931 = self.val1;
+                        var $3932 = self.iflt;
+                        var $3933 = self.ifeq;
+                        var $3934 = self.ifgt;
+                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3930));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3915 = self.world;
-                                var $3916 = self.subst;
-                                var $3917 = self.fresh;
-                                var $3918 = self.gas;
-                                var $3919 = self.term;
-                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3915, $3916, $3917, $3918, $3910));
+                                var $3936 = self.world;
+                                var $3937 = self.subst;
+                                var $3938 = self.fresh;
+                                var $3939 = self.gas;
+                                var $3940 = self.term;
+                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3936, $3937, $3938, $3939, $3931));
                                 switch (self._) {
                                     case 'Kindelia.Runtime.new':
-                                        var $3921 = self.world;
-                                        var $3922 = self.subst;
-                                        var $3923 = self.fresh;
-                                        var $3924 = self.gas;
-                                        var $3925 = self.term;
-                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3921, $3922, $3923, $3924, $3911));
+                                        var $3942 = self.world;
+                                        var $3943 = self.subst;
+                                        var $3944 = self.fresh;
+                                        var $3945 = self.gas;
+                                        var $3946 = self.term;
+                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3942, $3943, $3944, $3945, $3932));
                                         switch (self._) {
                                             case 'Kindelia.Runtime.new':
-                                                var $3927 = self.world;
-                                                var $3928 = self.subst;
-                                                var $3929 = self.fresh;
-                                                var $3930 = self.gas;
-                                                var $3931 = self.term;
-                                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3927, $3928, $3929, $3930, $3912));
+                                                var $3948 = self.world;
+                                                var $3949 = self.subst;
+                                                var $3950 = self.fresh;
+                                                var $3951 = self.gas;
+                                                var $3952 = self.term;
+                                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3948, $3949, $3950, $3951, $3933));
                                                 switch (self._) {
                                                     case 'Kindelia.Runtime.new':
-                                                        var $3933 = self.world;
-                                                        var $3934 = self.subst;
-                                                        var $3935 = self.fresh;
-                                                        var $3936 = self.gas;
-                                                        var $3937 = self.term;
-                                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3933, $3934, $3935, $3936, $3913));
+                                                        var $3954 = self.world;
+                                                        var $3955 = self.subst;
+                                                        var $3956 = self.fresh;
+                                                        var $3957 = self.gas;
+                                                        var $3958 = self.term;
+                                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3954, $3955, $3956, $3957, $3934));
                                                         switch (self._) {
                                                             case 'Kindelia.Runtime.new':
-                                                                var $3939 = self.world;
-                                                                var $3940 = self.subst;
-                                                                var $3941 = self.fresh;
-                                                                var $3942 = self.gas;
-                                                                var $3943 = self.term;
-                                                                var $3944 = Kindelia$Runtime$new$($3939, $3940, $3941, $3942, Kindelia$Term$compare$($3919, $3925, $3931, $3937, $3943));
-                                                                var $3938 = $3944;
+                                                                var $3960 = self.world;
+                                                                var $3961 = self.subst;
+                                                                var $3962 = self.fresh;
+                                                                var $3963 = self.gas;
+                                                                var $3964 = self.term;
+                                                                var $3965 = Kindelia$Runtime$new$($3960, $3961, $3962, $3963, Kindelia$Term$compare$($3940, $3946, $3952, $3958, $3964));
+                                                                var $3959 = $3965;
                                                                 break;
                                                         };
-                                                        var $3932 = $3938;
+                                                        var $3953 = $3959;
                                                         break;
                                                 };
-                                                var $3926 = $3932;
+                                                var $3947 = $3953;
                                                 break;
                                         };
-                                        var $3920 = $3926;
+                                        var $3941 = $3947;
                                         break;
                                 };
-                                var $3914 = $3920;
+                                var $3935 = $3941;
                                 break;
                         };
-                        var $3878 = $3914;
+                        var $3899 = $3935;
                         break;
                     case 'Kindelia.Term.operate':
-                        var $3945 = self.oper;
-                        var $3946 = self.val0;
-                        var $3947 = self.val1;
-                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3946));
+                        var $3966 = self.oper;
+                        var $3967 = self.val0;
+                        var $3968 = self.val1;
+                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3967));
                         switch (self._) {
                             case 'Kindelia.Runtime.new':
-                                var $3949 = self.world;
-                                var $3950 = self.subst;
-                                var $3951 = self.fresh;
-                                var $3952 = self.gas;
-                                var $3953 = self.term;
-                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3949, $3950, $3951, $3952, $3947));
+                                var $3970 = self.world;
+                                var $3971 = self.subst;
+                                var $3972 = self.fresh;
+                                var $3973 = self.gas;
+                                var $3974 = self.term;
+                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3970, $3971, $3972, $3973, $3968));
                                 switch (self._) {
                                     case 'Kindelia.Runtime.new':
-                                        var $3955 = self.world;
-                                        var $3956 = self.subst;
-                                        var $3957 = self.fresh;
-                                        var $3958 = self.gas;
-                                        var $3959 = self.term;
-                                        var $3960 = Kindelia$Runtime$new$($3955, $3956, $3957, $3958, Kindelia$Term$operate$($3945, $3953, $3959));
-                                        var $3954 = $3960;
+                                        var $3976 = self.world;
+                                        var $3977 = self.subst;
+                                        var $3978 = self.fresh;
+                                        var $3979 = self.gas;
+                                        var $3980 = self.term;
+                                        var $3981 = Kindelia$Runtime$new$($3976, $3977, $3978, $3979, Kindelia$Term$operate$($3966, $3974, $3980));
+                                        var $3975 = $3981;
                                         break;
                                 };
-                                var $3948 = $3954;
+                                var $3969 = $3975;
                                 break;
                         };
-                        var $3878 = $3948;
+                        var $3899 = $3969;
                         break;
                     case 'Kindelia.Term.bind':
-                        var $3961 = self.bond;
-                        var $3962 = self.expr;
-                        var $3963 = self.cont;
-                        var self = Kindelia$get_bond$($3873, $3961);
+                        var $3982 = self.bond;
+                        var $3983 = self.expr;
+                        var $3984 = self.cont;
+                        var self = Kindelia$get_bond$($3894, $3982);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $3965 = self.value;
-                                var _bond$11 = $3965;
+                                var $3986 = self.value;
+                                var _bond$11 = $3986;
                                 var self = _bond$11;
                                 switch (self._) {
                                     case 'Kindelia.Bond.new':
-                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3962));
+                                        var self = Kindelia$normalize$(Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3983));
                                         switch (self._) {
                                             case 'Kindelia.Runtime.new':
-                                                var $3968 = self.world;
-                                                var $3969 = self.subst;
-                                                var $3970 = self.fresh;
-                                                var $3971 = self.gas;
-                                                var $3972 = self.term;
-                                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3968, $3969, $3970, $3971, $3963));
+                                                var $3989 = self.world;
+                                                var $3990 = self.subst;
+                                                var $3991 = self.fresh;
+                                                var $3992 = self.gas;
+                                                var $3993 = self.term;
+                                                var self = Kindelia$normalize$(Kindelia$Runtime$new$($3989, $3990, $3991, $3992, $3984));
                                                 switch (self._) {
                                                     case 'Kindelia.Runtime.new':
-                                                        var $3974 = self.world;
-                                                        var $3975 = self.subst;
-                                                        var $3976 = self.fresh;
-                                                        var $3977 = self.gas;
-                                                        var $3978 = self.term;
-                                                        var $3979 = Kindelia$Runtime$new$($3974, $3975, $3976, $3977, Kindelia$Term$bind$($3961, $3972, $3978));
-                                                        var $3973 = $3979;
+                                                        var $3995 = self.world;
+                                                        var $3996 = self.subst;
+                                                        var $3997 = self.fresh;
+                                                        var $3998 = self.gas;
+                                                        var $3999 = self.term;
+                                                        var $4000 = Kindelia$Runtime$new$($3995, $3996, $3997, $3998, Kindelia$Term$bind$($3982, $3993, $3999));
+                                                        var $3994 = $4000;
                                                         break;
                                                 };
-                                                var $3967 = $3973;
+                                                var $3988 = $3994;
                                                 break;
                                         };
-                                        var $3966 = $3967;
+                                        var $3987 = $3988;
                                         break;
                                 };
-                                var $3964 = $3966;
+                                var $3985 = $3987;
                                 break;
                             case 'Maybe.none':
-                                var $3980 = _state$1;
-                                var $3964 = $3980;
+                                var $4001 = _state$1;
+                                var $3985 = $4001;
                                 break;
                         };
-                        var $3878 = $3964;
+                        var $3899 = $3985;
                         break;
                     case 'Kindelia.Term.var':
                     case 'Kindelia.Term.call':
                     case 'Kindelia.Term.let':
                     case 'Kindelia.Term.word':
-                        var $3981 = Kindelia$Runtime$new$($3873, $3874, $3875, $3876, $3877);
-                        var $3878 = $3981;
+                        var $4002 = Kindelia$Runtime$new$($3894, $3895, $3896, $3897, $3898);
+                        var $3899 = $4002;
                         break;
                 };
-                var $3872 = $3878;
+                var $3893 = $3899;
                 break;
         };
-        return $3872;
+        return $3893;
     };
     const Kindelia$normalize = x0 => Kindelia$normalize$(x0);
 
@@ -13601,22 +13678,22 @@ module.exports = (function() {
         var self = _type$2;
         switch (self._) {
             case 'Kindelia.Type.data':
-                var $3983 = self.name;
-                var $3984 = $3983;
-                var $3982 = $3984;
+                var $4004 = self.name;
+                var $4005 = $4004;
+                var $4003 = $4005;
                 break;
             case 'Kindelia.Type.word':
-                var $3985 = "#word";
-                var $3982 = $3985;
+                var $4006 = "#word";
+                var $4003 = $4006;
                 break;
         };
-        return $3982;
+        return $4003;
     };
     const Kindelia$show$type = x0 => x1 => Kindelia$show$type$(x0, x1);
 
     function Word$show$(_size$1, _a$2) {
-        var $3986 = Nat$show$(Word$to_nat$(_a$2));
-        return $3986;
+        var $4007 = Nat$show$(Word$to_nat$(_a$2));
+        return $4007;
     };
     const Word$show = x0 => x1 => Word$show$(x0, x1);
     const U64$show = a0 => (String(a0));
@@ -13625,299 +13702,310 @@ module.exports = (function() {
         var self = _term$3;
         switch (self._) {
             case 'Kindelia.Term.var':
-                var $3988 = self.name;
-                var $3989 = $3988;
-                var $3987 = $3989;
+                var $4009 = self.name;
+                var $4010 = $4009;
+                var $4008 = $4010;
                 break;
             case 'Kindelia.Term.call':
-                var $3990 = self.bond;
-                var $3991 = self.args;
-                var self = Kindelia$get_bond$(_world$1, $3990);
+                var $4011 = self.bond;
+                var $4012 = self.args;
+                var self = Kindelia$get_bond$(_world$1, $4011);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $3993 = self.value;
-                        var _bond$7 = $3993;
+                        var $4014 = self.value;
+                        var _bond$7 = $4014;
                         var self = _bond$7;
                         switch (self._) {
                             case 'Kindelia.Bond.new':
-                                var $3995 = self.args;
-                                var _args$13 = List$zipped_with$($3995, $3991, (_inp$13 => _arg$14 => {
-                                    var $3997 = Kindelia$show$term$(_world$1, (() => {
+                                var $4016 = self.args;
+                                var _args$13 = List$zipped_with$($4016, $4012, (_inp$13 => _arg$14 => {
+                                    var $4018 = Kindelia$show$term$(_world$1, (() => {
                                         var self = _inp$13;
                                         switch (self._) {
                                             case 'Pair.new':
-                                                var $3998 = self.snd;
-                                                var $3999 = $3998;
-                                                return $3999;
+                                                var $4019 = self.snd;
+                                                var $4020 = $4019;
+                                                return $4020;
                                         };
                                     })(), _arg$14);
-                                    return $3997;
+                                    return $4018;
                                 }));
-                                var $3996 = ($3990 + ("(" + (String$join$(",", _args$13) + ")")));
-                                var $3994 = $3996;
+                                var $4017 = ($4011 + ("(" + (String$join$(",", _args$13) + ")")));
+                                var $4015 = $4017;
                                 break;
                         };
-                        var $3992 = $3994;
+                        var $4013 = $4015;
                         break;
                     case 'Maybe.none':
-                        var $4000 = "[call?]";
-                        var $3992 = $4000;
+                        var $4021 = "[call?]";
+                        var $4013 = $4021;
                         break;
                 };
-                var $3987 = $3992;
+                var $4008 = $4013;
                 break;
             case 'Kindelia.Term.let':
-                var $4001 = self.name;
-                var $4002 = self.type;
-                var $4003 = self.expr;
-                var $4004 = self.body;
-                var _name$8 = $4001;
-                var _etyp$9 = Kindelia$show$type$(_world$1, $4002);
-                var _expr$10 = Kindelia$show$term$(_world$1, $4002, $4003);
-                var _body$11 = Kindelia$show$term$(_world$1, _type$2, $4004);
-                var $4005 = ("let " + (_name$8 + (" : " + (_etyp$9 + (" = " + (_expr$10 + (" " + _body$11)))))));
-                var $3987 = $4005;
+                var $4022 = self.name;
+                var $4023 = self.type;
+                var $4024 = self.expr;
+                var $4025 = self.body;
+                var _name$8 = $4022;
+                var _etyp$9 = Kindelia$show$type$(_world$1, $4023);
+                var _expr$10 = Kindelia$show$term$(_world$1, $4023, $4024);
+                var _body$11 = Kindelia$show$term$(_world$1, _type$2, $4025);
+                var $4026 = ("let " + (_name$8 + (" : " + (_etyp$9 + (" = " + (_expr$10 + (" " + _body$11)))))));
+                var $4008 = $4026;
                 break;
             case 'Kindelia.Term.create':
-                var $4006 = self.ctor;
-                var $4007 = self.vals;
+                var $4027 = self.ctor;
+                var $4028 = self.vals;
                 var self = _type$2;
                 switch (self._) {
                     case 'Kindelia.Type.data':
-                        var $4009 = self.name;
-                        var self = Kindelia$get_data$(_world$1, $4009);
+                        var $4030 = self.name;
+                        var self = Kindelia$get_data$(_world$1, $4030);
                         switch (self._) {
                             case 'Maybe.some':
-                                var $4011 = self.value;
-                                var _data$8 = $4011;
+                                var $4032 = self.value;
+                                var _data$8 = $4032;
                                 var self = _data$8;
                                 switch (self._) {
                                     case 'Kindelia.Data.new':
-                                        var $4013 = self.name;
-                                        var $4014 = self.ctrs;
-                                        var self = List$get$($4006, $4014);
+                                        var $4034 = self.name;
+                                        var $4035 = self.ctrs;
+                                        var self = List$get$($4027, $4035);
                                         switch (self._) {
                                             case 'Maybe.some':
-                                                var $4016 = self.value;
-                                                var _ctor$12 = $4016;
+                                                var $4037 = self.value;
+                                                var _ctor$12 = $4037;
                                                 var self = _ctor$12;
                                                 switch (self._) {
                                                     case 'Kindelia.Constructor.new':
-                                                        var $4018 = self.name;
-                                                        var $4019 = self.args;
-                                                        var _atyp$15 = List$mapped$($4019, (_x$15 => {
+                                                        var $4039 = self.name;
+                                                        var $4040 = self.args;
+                                                        var _atyp$15 = List$mapped$($4040, (_x$15 => {
                                                             var self = _x$15;
                                                             switch (self._) {
                                                                 case 'Pair.new':
-                                                                    var $4022 = self.snd;
-                                                                    var $4023 = $4022;
-                                                                    var $4021 = $4023;
+                                                                    var $4043 = self.snd;
+                                                                    var $4044 = $4043;
+                                                                    var $4042 = $4044;
                                                                     break;
                                                             };
-                                                            return $4021;
+                                                            return $4042;
                                                         }));
-                                                        var _vals$16 = List$zipped_with$($4007, (() => {
+                                                        var _vals$16 = List$zipped_with$($4028, (() => {
                                                             var self = _ctor$12;
                                                             switch (self._) {
                                                                 case 'Kindelia.Constructor.new':
-                                                                    var $4024 = self.args;
-                                                                    var $4025 = $4024;
-                                                                    return $4025;
+                                                                    var $4045 = self.args;
+                                                                    var $4046 = $4045;
+                                                                    return $4046;
                                                             };
                                                         })(), (_val$16 => _arg$17 => {
-                                                            var $4026 = Kindelia$show$term$(_world$1, (() => {
+                                                            var $4047 = Kindelia$show$term$(_world$1, (() => {
                                                                 var self = _arg$17;
                                                                 switch (self._) {
                                                                     case 'Pair.new':
-                                                                        var $4027 = self.snd;
-                                                                        var $4028 = $4027;
-                                                                        return $4028;
+                                                                        var $4048 = self.snd;
+                                                                        var $4049 = $4048;
+                                                                        return $4049;
                                                                 };
                                                             })(), _val$16);
-                                                            return $4026;
+                                                            return $4047;
                                                         }));
-                                                        var $4020 = ($4013 + ("@" + ($4018 + ("{" + (String$join$(",", _vals$16) + "}")))));
-                                                        var $4017 = $4020;
+                                                        var $4041 = ($4034 + ("@" + ($4039 + ("{" + (String$join$(",", _vals$16) + "}")))));
+                                                        var $4038 = $4041;
                                                         break;
                                                 };
-                                                var $4015 = $4017;
+                                                var $4036 = $4038;
                                                 break;
                                             case 'Maybe.none':
-                                                var $4029 = "[create?]";
-                                                var $4015 = $4029;
+                                                var $4050 = "[create?]";
+                                                var $4036 = $4050;
                                                 break;
                                         };
-                                        var $4012 = $4015;
+                                        var $4033 = $4036;
                                         break;
                                 };
-                                var $4010 = $4012;
+                                var $4031 = $4033;
                                 break;
                             case 'Maybe.none':
-                                var $4030 = "[create?]";
-                                var $4010 = $4030;
+                                var $4051 = "[create?]";
+                                var $4031 = $4051;
                                 break;
                         };
-                        var $4008 = $4010;
+                        var $4029 = $4031;
                         break;
                     case 'Kindelia.Type.word':
-                        var $4031 = (Nat$show$($4006) + ("{" + (String$join$(",", List$mapped$($4007, Kindelia$show$term(_world$1)(Kindelia$Type$word))) + "}")));
-                        var $4008 = $4031;
+                        var $4052 = (Nat$show$($4027) + ("{" + (String$join$(",", List$mapped$($4028, Kindelia$show$term(_world$1)(Kindelia$Type$word))) + "}")));
+                        var $4029 = $4052;
                         break;
                 };
-                var $3987 = $4008;
+                var $4008 = $4029;
                 break;
             case 'Kindelia.Term.match':
-                var $4032 = self.name;
-                var $4033 = self.data;
-                var $4034 = self.cses;
-                var self = Kindelia$get_data$(_world$1, $4033);
+                var $4053 = self.name;
+                var $4054 = self.data;
+                var $4055 = self.cses;
+                var self = Kindelia$get_data$(_world$1, $4054);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $4036 = self.value;
-                        var _data$8 = $4036;
+                        var $4057 = self.value;
+                        var _data$8 = $4057;
                         var self = _data$8;
                         switch (self._) {
                             case 'Kindelia.Data.new':
-                                var $4038 = self.ctrs;
-                                var _name$11 = $4032;
-                                var _cses$12 = List$zipped_with$($4038, $4034, (_case_ctor$12 => _case_body$13 => {
-                                    var $4040 = ((() => {
+                                var $4059 = self.ctrs;
+                                var _name$11 = $4053;
+                                var _cses$12 = List$zipped_with$($4059, $4055, (_case_ctor$12 => _case_body$13 => {
+                                    var $4061 = ((() => {
                                         var self = _case_ctor$12;
                                         switch (self._) {
                                             case 'Kindelia.Constructor.new':
-                                                var $4041 = self.name;
-                                                var $4042 = $4041;
-                                                return $4042;
+                                                var $4062 = self.name;
+                                                var $4063 = $4062;
+                                                return $4063;
                                         };
                                     })() + (": " + Kindelia$show$term$(_world$1, _type$2, _case_body$13)));
-                                    return $4040;
+                                    return $4061;
                                 }));
-                                var $4039 = ("case " + (_name$11 + (" : " + ($4033 + (" { " + (String$join$(", ", _cses$12) + " }"))))));
-                                var $4037 = $4039;
+                                var $4060 = ("case " + (_name$11 + (" : " + ($4054 + (" { " + (String$join$(", ", _cses$12) + " }"))))));
+                                var $4058 = $4060;
                                 break;
                         };
-                        var $4035 = $4037;
+                        var $4056 = $4058;
                         break;
                     case 'Maybe.none':
-                        var $4043 = "?";
-                        var $4035 = $4043;
+                        var $4064 = "?";
+                        var $4056 = $4064;
                         break;
                 };
-                var $3987 = $4035;
+                var $4008 = $4056;
                 break;
             case 'Kindelia.Term.word':
-                var $4044 = self.numb;
-                var $4045 = ("#" + (String($4044)));
-                var $3987 = $4045;
+                var $4065 = self.numb;
+                var $4066 = ("#" + (String($4065)));
+                var $4008 = $4066;
                 break;
             case 'Kindelia.Term.compare':
-                var $4046 = self.val0;
-                var $4047 = self.val1;
-                var $4048 = self.iflt;
-                var $4049 = self.ifeq;
-                var $4050 = self.ifgt;
-                var _val0$9 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4046);
-                var _val1$10 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4047);
-                var _iflt$11 = Kindelia$show$term$(_world$1, _type$2, $4048);
-                var _ifeq$12 = Kindelia$show$term$(_world$1, _type$2, $4049);
-                var _ifgt$13 = Kindelia$show$term$(_world$1, _type$2, $4050);
-                var $4051 = ("compare " + (_val0$9 + (" " + (_val1$10 + (" { _<_: " + (_iflt$11 + (" _=_: " + (_ifeq$12 + (" _>_: " + (_ifgt$13 + " }"))))))))));
-                var $3987 = $4051;
+                var $4067 = self.val0;
+                var $4068 = self.val1;
+                var $4069 = self.iflt;
+                var $4070 = self.ifeq;
+                var $4071 = self.ifgt;
+                var _val0$9 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4067);
+                var _val1$10 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4068);
+                var _iflt$11 = Kindelia$show$term$(_world$1, _type$2, $4069);
+                var _ifeq$12 = Kindelia$show$term$(_world$1, _type$2, $4070);
+                var _ifgt$13 = Kindelia$show$term$(_world$1, _type$2, $4071);
+                var $4072 = ("compare " + (_val0$9 + (" " + (_val1$10 + (" { _<_: " + (_iflt$11 + (" _=_: " + (_ifeq$12 + (" _>_: " + (_ifgt$13 + " }"))))))))));
+                var $4008 = $4072;
                 break;
             case 'Kindelia.Term.operate':
-                var $4052 = self.oper;
-                var $4053 = self.val0;
-                var $4054 = self.val1;
-                var self = $4052;
+                var $4073 = self.oper;
+                var $4074 = self.val0;
+                var $4075 = self.val1;
+                var self = $4073;
                 switch (self._) {
                     case 'Kindelia.Operation.add':
-                        var $4056 = "#add";
-                        var _oper$7 = $4056;
+                        var $4077 = "#add";
+                        var _oper$7 = $4077;
                         break;
                     case 'Kindelia.Operation.sub':
-                        var $4057 = "#sub";
-                        var _oper$7 = $4057;
+                        var $4078 = "#sub";
+                        var _oper$7 = $4078;
                         break;
                     case 'Kindelia.Operation.mul':
-                        var $4058 = "#mul";
-                        var _oper$7 = $4058;
+                        var $4079 = "#mul";
+                        var _oper$7 = $4079;
                         break;
                     case 'Kindelia.Operation.div':
-                        var $4059 = "#div";
-                        var _oper$7 = $4059;
+                        var $4080 = "#div";
+                        var _oper$7 = $4080;
                         break;
                     case 'Kindelia.Operation.mod':
-                        var $4060 = "#mod";
-                        var _oper$7 = $4060;
+                        var $4081 = "#mod";
+                        var _oper$7 = $4081;
                         break;
                     case 'Kindelia.Operation.or':
-                        var $4061 = "#or";
-                        var _oper$7 = $4061;
+                        var $4082 = "#or";
+                        var _oper$7 = $4082;
                         break;
                     case 'Kindelia.Operation.and':
-                        var $4062 = "#and";
-                        var _oper$7 = $4062;
+                        var $4083 = "#and";
+                        var _oper$7 = $4083;
                         break;
                     case 'Kindelia.Operation.xor':
-                        var $4063 = "#xor";
-                        var _oper$7 = $4063;
+                        var $4084 = "#xor";
+                        var _oper$7 = $4084;
                         break;
                 };
-                var _val0$8 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4053);
-                var _val1$9 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4054);
-                var $4055 = (_oper$7 + ("(" + (_val0$8 + ("," + (_val1$9 + ")")))));
-                var $3987 = $4055;
+                var _val0$8 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4074);
+                var _val1$9 = Kindelia$show$term$(_world$1, Kindelia$Type$word, $4075);
+                var $4076 = (_oper$7 + ("(" + (_val0$8 + ("," + (_val1$9 + ")")))));
+                var $4008 = $4076;
                 break;
             case 'Kindelia.Term.bind':
-                var $4064 = self.bond;
-                var $4065 = self.expr;
-                var $4066 = self.cont;
-                var self = Kindelia$get_bond$(_world$1, $4064);
+                var $4085 = self.bond;
+                var $4086 = self.expr;
+                var $4087 = self.cont;
+                var self = Kindelia$get_bond$(_world$1, $4085);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $4068 = self.value;
-                        var _bond$8 = $4068;
+                        var $4089 = self.value;
+                        var _bond$8 = $4089;
                         var self = _bond$8;
                         switch (self._) {
                             case 'Kindelia.Bond.new':
-                                var $4070 = self.otyp;
-                                var _expr$14 = Kindelia$show$term$(_world$1, $4070, $4065);
-                                var _cont$15 = Kindelia$show$term$(_world$1, _type$2, $4066);
-                                var $4071 = ("bind " + ($4064 + (" { " + (_expr$14 + (" } " + _cont$15)))));
-                                var $4069 = $4071;
+                                var $4091 = self.otyp;
+                                var _expr$14 = Kindelia$show$term$(_world$1, $4091, $4086);
+                                var _cont$15 = Kindelia$show$term$(_world$1, _type$2, $4087);
+                                var $4092 = ("bind " + ($4085 + (" { " + (_expr$14 + (" } " + _cont$15)))));
+                                var $4090 = $4092;
                                 break;
                         };
-                        var $4067 = $4069;
+                        var $4088 = $4090;
                         break;
                     case 'Maybe.none':
-                        var $4072 = "[bind?]";
-                        var $4067 = $4072;
+                        var $4093 = "[bind?]";
+                        var $4088 = $4093;
                         break;
                 };
-                var $3987 = $4067;
+                var $4008 = $4088;
                 break;
         };
-        return $3987;
+        return $4008;
     };
     const Kindelia$show$term = x0 => x1 => x2 => Kindelia$show$term$(x0, x1, x2);
+
+    function Kindelia$Names$new$(_count$1, _name_to_index$2, _index_to_name$3) {
+        var $4094 = ({
+            _: 'Kindelia.Names.new',
+            'count': _count$1,
+            'name_to_index': _name_to_index$2,
+            'index_to_name': _index_to_name$3
+        });
+        return $4094;
+    };
+    const Kindelia$Names$new = x0 => x1 => x2 => Kindelia$Names$new$(x0, x1, x2);
 
     function Kindelia$transact$(_world$1, _transaction$2) {
         var self = _transaction$2;
         switch (self._) {
             case 'Kindelia.Transaction.new_data':
-                var $4074 = self.data;
-                var _data$4 = $4074;
+                var $4096 = self.data;
+                var _data$4 = $4096;
                 var self = _data$4;
                 switch (self._) {
                     case 'Kindelia.Data.new':
-                        var $4076 = self.name;
-                        var self = Map$get$($4076, (() => {
+                        var $4098 = self.name;
+                        var self = Map$get$($4098, (() => {
                             var self = _world$1;
                             switch (self._) {
                                 case 'Kindelia.World.new':
-                                    var $4078 = self.entry;
-                                    var $4079 = $4078;
-                                    return $4079;
+                                    var $4100 = self.entry;
+                                    var $4101 = $4100;
+                                    return $4101;
                             };
                         })());
                         switch (self._) {
@@ -13925,42 +14013,42 @@ module.exports = (function() {
                                 var self = _world$1;
                                 switch (self._) {
                                     case 'Kindelia.World.new':
-                                        var $4081 = self.names;
-                                        var $4082 = self.entry;
-                                        var $4083 = Kindelia$World$new$($4081, Map$set$($4076, Kindelia$Entry$data$(_data$4), $4082));
-                                        var _world$7 = $4083;
+                                        var $4103 = self.names;
+                                        var $4104 = self.entry;
+                                        var $4105 = Kindelia$World$new$($4103, Map$set$($4098, Kindelia$Entry$data$(_data$4), $4104));
+                                        var _world$7 = $4105;
                                         break;
                                 };
-                                var $4080 = Maybe$some$(Pair$new$(_world$7, ("[data] " + $4076)));
-                                var $4077 = $4080;
+                                var $4102 = Maybe$some$(Pair$new$(_world$7, ("[data] " + $4098)));
+                                var $4099 = $4102;
                                 break;
                             case 'Maybe.some':
-                                var $4084 = Maybe$none;
-                                var $4077 = $4084;
+                                var $4106 = Maybe$none;
+                                var $4099 = $4106;
                                 break;
                         };
-                        var $4075 = $4077;
+                        var $4097 = $4099;
                         break;
                 };
-                var $4073 = $4075;
+                var $4095 = $4097;
                 break;
             case 'Kindelia.Transaction.new_bond':
-                var $4085 = self.bond;
-                var _bond$4 = $4085;
+                var $4107 = self.bond;
+                var _bond$4 = $4107;
                 var self = _bond$4;
                 switch (self._) {
                     case 'Kindelia.Bond.new':
-                        var $4087 = self.name;
-                        var $4088 = self.args;
-                        var $4089 = self.otyp;
-                        var $4090 = self.main;
-                        var self = Map$get$($4087, (() => {
+                        var $4109 = self.name;
+                        var $4110 = self.args;
+                        var $4111 = self.otyp;
+                        var $4112 = self.main;
+                        var self = Map$get$($4109, (() => {
                             var self = _world$1;
                             switch (self._) {
                                 case 'Kindelia.World.new':
-                                    var $4092 = self.entry;
-                                    var $4093 = $4092;
-                                    return $4093;
+                                    var $4114 = self.entry;
+                                    var $4115 = $4114;
+                                    return $4115;
                             };
                         })());
                         switch (self._) {
@@ -13968,69 +14056,69 @@ module.exports = (function() {
                                 var self = _world$1;
                                 switch (self._) {
                                     case 'Kindelia.World.new':
-                                        var $4095 = self.names;
-                                        var $4096 = self.entry;
-                                        var $4097 = Kindelia$World$new$($4095, Map$set$($4087, Kindelia$Entry$bond$(_bond$4), $4096));
-                                        var _world$10 = $4097;
+                                        var $4117 = self.names;
+                                        var $4118 = self.entry;
+                                        var $4119 = Kindelia$World$new$($4117, Map$set$($4109, Kindelia$Entry$bond$(_bond$4), $4118));
+                                        var _world$10 = $4119;
                                         break;
                                 };
-                                var self = List$unzip$($4088);
+                                var self = List$unzip$($4110);
                                 switch (self._) {
                                     case 'Pair.new':
-                                        var $4098 = self.fst;
-                                        var $4099 = self.snd;
-                                        var _context$13 = Kindelia$extend$(Map$from_list$(List$nil), List$zip$($4098, $4099));
-                                        var self = Kindelia$check$(_context$13, _world$10, $4090, $4089);
+                                        var $4120 = self.fst;
+                                        var $4121 = self.snd;
+                                        var _context$13 = Kindelia$extend$(Map$from_list$(List$nil), List$zip$($4120, $4121));
+                                        var self = Kindelia$check$(_context$13, _world$10, $4112, $4111);
                                         if (self) {
-                                            var $4101 = Maybe$some$(Pair$new$(_world$10, ("[bond] " + $4087)));
-                                            var $4100 = $4101;
+                                            var $4123 = Maybe$some$(Pair$new$(_world$10, ("[bond] " + $4109)));
+                                            var $4122 = $4123;
                                         } else {
-                                            var $4102 = Maybe$none;
-                                            var $4100 = $4102;
+                                            var $4124 = Maybe$none;
+                                            var $4122 = $4124;
                                         };
-                                        var $4094 = $4100;
+                                        var $4116 = $4122;
                                         break;
                                 };
-                                var $4091 = $4094;
+                                var $4113 = $4116;
                                 break;
                             case 'Maybe.some':
-                                var $4103 = Maybe$none;
-                                var $4091 = $4103;
+                                var $4125 = Maybe$none;
+                                var $4113 = $4125;
                                 break;
                         };
-                        var $4086 = $4091;
+                        var $4108 = $4113;
                         break;
                 };
-                var $4073 = $4086;
+                var $4095 = $4108;
                 break;
             case 'Kindelia.Transaction.new_eval':
-                var $4104 = self.eval;
-                var _eval$4 = $4104;
+                var $4126 = self.eval;
+                var _eval$4 = $4126;
                 var self = _eval$4;
                 switch (self._) {
                     case 'Kindelia.Eval.new':
-                        var $4106 = self.auth;
-                        var $4107 = self.term;
-                        var $4108 = self.type;
-                        var self = $4106;
+                        var $4128 = self.auth;
+                        var $4129 = self.term;
+                        var $4130 = self.type;
+                        var self = $4128;
                         switch (self._) {
                             case 'Maybe.some':
-                                var $4110 = self.value;
+                                var $4132 = self.value;
                                 var _call$9 = Kindelia$Term$call$((() => {
-                                    var self = $4110;
+                                    var self = $4132;
                                     switch (self._) {
                                         case 'Kindelia.Auth.new':
-                                            var $4112 = self.bond;
-                                            var $4113 = $4112;
-                                            return $4113;
+                                            var $4134 = self.bond;
+                                            var $4135 = $4134;
+                                            return $4135;
                                     };
                                 })(), (() => {
-                                    var self = $4110;
+                                    var self = $4132;
                                     switch (self._) {
                                         case 'Kindelia.Auth.new':
-                                            var $4114 = self.args;
-                                            var $4115 = $4114;
-                                            return $4115;
+                                            var $4136 = self.args;
+                                            var $4137 = $4136;
+                                            return $4137;
                                     };
                                 })());
                                 var self = Kindelia$check$(Map$from_list$(List$nil), _world$1, _call$9, Kindelia$Type$word);
@@ -14038,13 +14126,13 @@ module.exports = (function() {
                                     var self = Kindelia$normalize$(Kindelia$Runtime$new$(_world$1, Map$from_list$(List$nil), 0n, 0n, _call$9));
                                     switch (self._) {
                                         case 'Kindelia.Runtime.new':
-                                            var $4117 = self.term;
-                                            var self = $4117;
+                                            var $4139 = self.term;
+                                            var self = $4139;
                                             switch (self._) {
                                                 case 'Kindelia.Term.word':
-                                                    var $4119 = self.numb;
-                                                    var $4120 = ($4119 === 1n);
-                                                    var $4118 = $4120;
+                                                    var $4141 = self.numb;
+                                                    var $4142 = ($4141 === 1n);
+                                                    var $4140 = $4142;
                                                     break;
                                                 case 'Kindelia.Term.var':
                                                 case 'Kindelia.Term.call':
@@ -14054,79 +14142,190 @@ module.exports = (function() {
                                                 case 'Kindelia.Term.compare':
                                                 case 'Kindelia.Term.operate':
                                                 case 'Kindelia.Term.bind':
-                                                    var $4121 = Bool$false;
-                                                    var $4118 = $4121;
+                                                    var $4143 = Bool$false;
+                                                    var $4140 = $4143;
                                                     break;
                                             };
-                                            var $4116 = $4118;
+                                            var $4138 = $4140;
                                             break;
                                     };
-                                    var $4111 = $4116;
+                                    var $4133 = $4138;
                                 } else {
-                                    var $4122 = Bool$false;
-                                    var $4111 = $4122;
+                                    var $4144 = Bool$false;
+                                    var $4133 = $4144;
                                 };
-                                var _auth$8 = $4111;
+                                var _auth$8 = $4133;
                                 break;
                             case 'Maybe.none':
-                                var $4123 = Bool$true;
-                                var _auth$8 = $4123;
+                                var $4145 = Bool$true;
+                                var _auth$8 = $4145;
                                 break;
                         };
-                        var self = (_auth$8 && Kindelia$check$(Map$from_list$(List$nil), _world$1, $4107, $4108));
+                        var self = (_auth$8 && Kindelia$check$(Map$from_list$(List$nil), _world$1, $4129, $4130));
                         if (self) {
-                            var self = Kindelia$sanitize$(_world$1, Map$from_list$(List$nil), 0n, $4107);
+                            var self = Kindelia$sanitize$(_world$1, Map$from_list$(List$nil), 0n, $4129);
                             switch (self._) {
                                 case 'Pair.new':
-                                    var $4125 = self.fst;
-                                    var $4126 = self.snd;
-                                    var self = Kindelia$normalize$(Kindelia$Runtime$new$(_world$1, Map$from_list$(List$nil), $4125, 0n, $4126));
+                                    var $4147 = self.fst;
+                                    var $4148 = self.snd;
+                                    var self = Kindelia$normalize$(Kindelia$Runtime$new$(_world$1, Map$from_list$(List$nil), $4147, 0n, $4148));
                                     switch (self._) {
                                         case 'Kindelia.Runtime.new':
-                                            var $4128 = self.world;
-                                            var $4129 = self.gas;
-                                            var $4130 = self.term;
-                                            var $4131 = Maybe$some$(Pair$new$($4128, ("[eval] " + ("<$" + (Nat$show$($4129) + ("> " + Kindelia$show$term$($4128, $4108, $4130)))))));
-                                            var $4127 = $4131;
+                                            var $4150 = self.world;
+                                            var $4151 = self.gas;
+                                            var $4152 = self.term;
+                                            var $4153 = Maybe$some$(Pair$new$($4150, ("[eval] " + ("<$" + (Nat$show$($4151) + ("> " + Kindelia$show$term$($4150, $4130, $4152)))))));
+                                            var $4149 = $4153;
                                             break;
                                     };
-                                    var $4124 = $4127;
+                                    var $4146 = $4149;
                                     break;
                             };
-                            var $4109 = $4124;
+                            var $4131 = $4146;
                         } else {
-                            var $4132 = Maybe$none;
-                            var $4109 = $4132;
+                            var $4154 = Maybe$none;
+                            var $4131 = $4154;
                         };
-                        var $4105 = $4109;
+                        var $4127 = $4131;
                         break;
                 };
-                var $4073 = $4105;
+                var $4095 = $4127;
                 break;
             case 'Kindelia.Transaction.new_name':
-                var $4133 = self.name;
-                var _name$4 = $4133;
-                var self = _world$1;
+                var $4155 = self.name;
+                var _name$4 = $4155;
+                var self = Map$get$(_name$4, (() => {
+                    var self = _world$1;
+                    switch (self._) {
+                        case 'Kindelia.World.new':
+                            var $4157 = self.names;
+                            var $4158 = $4157;
+                            var self = $4158;
+                            break;
+                    };
+                    switch (self._) {
+                        case 'Kindelia.Names.new':
+                            var $4159 = self.name_to_index;
+                            var $4160 = $4159;
+                            return $4160;
+                    };
+                })());
                 switch (self._) {
-                    case 'Kindelia.World.new':
-                        var $4135 = self.entry;
-                        var $4136 = Kindelia$World$new$(List$concat$((() => {
+                    case 'Maybe.none':
+                        var _indx$5 = Nat$show$((() => {
                             var self = _world$1;
                             switch (self._) {
                                 case 'Kindelia.World.new':
-                                    var $4137 = self.names;
-                                    var $4138 = $4137;
-                                    return $4138;
+                                    var $4162 = self.names;
+                                    var $4163 = $4162;
+                                    var self = $4163;
+                                    break;
                             };
-                        })(), List$cons$(_name$4, List$nil)), $4135);
-                        var _world$5 = $4136;
+                            switch (self._) {
+                                case 'Kindelia.Names.new':
+                                    var $4164 = self.count;
+                                    var $4165 = $4164;
+                                    return $4165;
+                            };
+                        })());
+                        var self = _world$1;
+                        switch (self._) {
+                            case 'Kindelia.World.new':
+                                var $4166 = self.names;
+                                var $4167 = self.entry;
+                                var $4168 = Kindelia$World$new$((() => {
+                                    var self = $4166;
+                                    switch (self._) {
+                                        case 'Kindelia.Names.new':
+                                            var $4169 = self.count;
+                                            var $4170 = self.name_to_index;
+                                            var $4171 = self.index_to_name;
+                                            var $4172 = Kindelia$Names$new$($4169, Map$set$(_name$4, (() => {
+                                                var self = _world$1;
+                                                switch (self._) {
+                                                    case 'Kindelia.World.new':
+                                                        var $4173 = self.names;
+                                                        var $4174 = $4173;
+                                                        var self = $4174;
+                                                        break;
+                                                };
+                                                switch (self._) {
+                                                    case 'Kindelia.Names.new':
+                                                        var $4175 = self.count;
+                                                        var $4176 = $4175;
+                                                        return $4176;
+                                                };
+                                            })(), $4170), $4171);
+                                            return $4172;
+                                    };
+                                })(), $4167);
+                                var _world$6 = $4168;
+                                break;
+                        };
+                        var self = _world$6;
+                        switch (self._) {
+                            case 'Kindelia.World.new':
+                                var $4177 = self.names;
+                                var $4178 = self.entry;
+                                var $4179 = Kindelia$World$new$((() => {
+                                    var self = $4177;
+                                    switch (self._) {
+                                        case 'Kindelia.Names.new':
+                                            var $4180 = self.count;
+                                            var $4181 = self.name_to_index;
+                                            var $4182 = self.index_to_name;
+                                            var $4183 = Kindelia$Names$new$($4180, $4181, Map$set$(_indx$5, _name$4, $4182));
+                                            return $4183;
+                                    };
+                                })(), $4178);
+                                var _world$7 = $4179;
+                                break;
+                        };
+                        var self = _world$7;
+                        switch (self._) {
+                            case 'Kindelia.World.new':
+                                var $4184 = self.names;
+                                var $4185 = self.entry;
+                                var $4186 = Kindelia$World$new$((() => {
+                                    var self = $4184;
+                                    switch (self._) {
+                                        case 'Kindelia.Names.new':
+                                            var $4187 = self.name_to_index;
+                                            var $4188 = self.index_to_name;
+                                            var $4189 = Kindelia$Names$new$(((() => {
+                                                var self = _world$7;
+                                                switch (self._) {
+                                                    case 'Kindelia.World.new':
+                                                        var $4190 = self.names;
+                                                        var $4191 = $4190;
+                                                        var self = $4191;
+                                                        break;
+                                                };
+                                                switch (self._) {
+                                                    case 'Kindelia.Names.new':
+                                                        var $4192 = self.count;
+                                                        var $4193 = $4192;
+                                                        return $4193;
+                                                };
+                                            })() + 1n), $4187, $4188);
+                                            return $4189;
+                                    };
+                                })(), $4185);
+                                var _world$8 = $4186;
+                                break;
+                        };
+                        var $4161 = Maybe$some$(Pair$new$(_world$8, ("[name] " + _name$4)));
+                        var $4156 = $4161;
+                        break;
+                    case 'Maybe.some':
+                        var $4194 = Maybe$none;
+                        var $4156 = $4194;
                         break;
                 };
-                var $4134 = Maybe$some$(Pair$new$(_world$5, ("[name] " + _name$4)));
-                var $4073 = $4134;
+                var $4095 = $4156;
                 break;
         };
-        return $4073;
+        return $4095;
     };
     const Kindelia$transact = x0 => x1 => Kindelia$transact$(x0, x1);
 
@@ -14134,54 +14333,54 @@ module.exports = (function() {
         var self = _transactions$4;
         switch (self._) {
             case 'List.cons':
-                var $4140 = self.head;
-                var $4141 = self.tail;
-                var self = Kindelia$transact$(_world$1, $4140);
+                var $4196 = self.head;
+                var $4197 = self.tail;
+                var self = Kindelia$transact$(_world$1, $4196);
                 switch (self._) {
                     case 'Maybe.some':
-                        var $4143 = self.value;
-                        var self = $4143;
+                        var $4199 = self.value;
+                        var self = $4199;
                         switch (self._) {
                             case 'Pair.new':
-                                var $4145 = self.fst;
-                                var $4146 = self.snd;
-                                var $4147 = IO$monad$((_m$bind$10 => _m$pure$11 => {
-                                    var $4148 = _m$bind$10;
-                                    return $4148;
-                                }))(IO$print$(("- " + $4146)))((_$10 => {
-                                    var $4149 = Kindelia$api$run$go$transactions$($4145, _block_number$2, _code$3, $4141);
-                                    return $4149;
+                                var $4201 = self.fst;
+                                var $4202 = self.snd;
+                                var $4203 = IO$monad$((_m$bind$10 => _m$pure$11 => {
+                                    var $4204 = _m$bind$10;
+                                    return $4204;
+                                }))(IO$print$(("- " + $4202)))((_$10 => {
+                                    var $4205 = Kindelia$api$run$go$transactions$($4201, _block_number$2, _code$3, $4197);
+                                    return $4205;
                                 }));
-                                var $4144 = $4147;
+                                var $4200 = $4203;
                                 break;
                         };
-                        var $4142 = $4144;
+                        var $4198 = $4200;
                         break;
                     case 'Maybe.none':
-                        var $4150 = IO$monad$((_m$bind$7 => _m$pure$8 => {
-                            var $4151 = _m$bind$7;
-                            return $4151;
+                        var $4206 = IO$monad$((_m$bind$7 => _m$pure$8 => {
+                            var $4207 = _m$bind$7;
+                            return $4207;
                         }))(IO$print$("- [fail]"))((_$7 => {
-                            var $4152 = Kindelia$api$run$go$transactions$(_world$1, _block_number$2, _code$3, $4141);
-                            return $4152;
+                            var $4208 = Kindelia$api$run$go$transactions$(_world$1, _block_number$2, _code$3, $4197);
+                            return $4208;
                         }));
-                        var $4142 = $4150;
+                        var $4198 = $4206;
                         break;
                 };
-                var $4139 = $4142;
+                var $4195 = $4198;
                 break;
             case 'List.nil':
-                var $4153 = IO$monad$((_m$bind$5 => _m$pure$6 => {
-                    var $4154 = _m$bind$5;
-                    return $4154;
+                var $4209 = IO$monad$((_m$bind$5 => _m$pure$6 => {
+                    var $4210 = _m$bind$5;
+                    return $4210;
                 }))(IO$print$(""))((_$5 => {
-                    var $4155 = Kindelia$api$run$go$(_world$1, Nat$succ$(_block_number$2), _code$3);
-                    return $4155;
+                    var $4211 = Kindelia$api$run$go$(_world$1, Nat$succ$(_block_number$2), _code$3);
+                    return $4211;
                 }));
-                var $4139 = $4153;
+                var $4195 = $4209;
                 break;
         };
-        return $4139;
+        return $4195;
     };
     const Kindelia$api$run$go$transactions = x0 => x1 => x2 => x3 => Kindelia$api$run$go$transactions$(x0, x1, x2, x3);
 
@@ -14190,111 +14389,111 @@ module.exports = (function() {
         var self = _parsed$4;
         switch (self._) {
             case 'Parser.Reply.error':
-                var $4157 = self.err;
-                var self = $4157;
+                var $4213 = self.err;
+                var self = $4213;
                 switch (self._) {
                     case 'Parser.Error.new':
-                        var $4159 = self.nam;
-                        var $4160 = self.ini;
-                        var $4161 = self.idx;
-                        var $4162 = self.msg;
-                        var self = ($4161 < String$length$(_code$3));
+                        var $4215 = self.nam;
+                        var $4216 = self.ini;
+                        var $4217 = self.idx;
+                        var $4218 = self.msg;
+                        var self = ($4217 < String$length$(_code$3));
                         if (self) {
-                            var _err$10 = ($4162 + (() => {
-                                var self = $4159;
+                            var _err$10 = ($4218 + (() => {
+                                var self = $4215;
                                 if (self.length === 0) {
-                                    var $4165 = "";
-                                    return $4165;
+                                    var $4221 = "";
+                                    return $4221;
                                 } else {
-                                    var $4166 = self.charCodeAt(0);
-                                    var $4167 = self.slice(1);
-                                    var $4168 = (" Inside " + ($4159 + ":"));
-                                    return $4168;
+                                    var $4222 = self.charCodeAt(0);
+                                    var $4223 = self.slice(1);
+                                    var $4224 = (" Inside " + ($4215 + ":"));
+                                    return $4224;
                                 };
                             })());
-                            var _hig$11 = Kind$Code$highlight$(_code$3, $4160, $4161, Nat$succ$($4161));
+                            var _hig$11 = Kind$Code$highlight$(_code$3, $4216, $4217, Nat$succ$($4217));
                             var _str$12 = String$flatten$(List$cons$(_err$10, List$cons$("\u{a}", List$cons$(_hig$11, List$nil))));
-                            var $4164 = IO$monad$((_m$bind$13 => _m$pure$14 => {
-                                var $4169 = _m$bind$13;
-                                return $4169;
+                            var $4220 = IO$monad$((_m$bind$13 => _m$pure$14 => {
+                                var $4225 = _m$bind$13;
+                                return $4225;
                             }))(IO$print$(("Error parsing block #" + Nat$show$(_block_number$2))))((_$13 => {
-                                var $4170 = IO$print$(_str$12);
-                                return $4170;
+                                var $4226 = IO$print$(_str$12);
+                                return $4226;
                             }));
-                            var $4163 = $4164;
+                            var $4219 = $4220;
                         } else {
-                            var $4171 = IO$print$("Done.");
-                            var $4163 = $4171;
+                            var $4227 = IO$print$("Done.");
+                            var $4219 = $4227;
                         };
-                        var $4158 = $4163;
+                        var $4214 = $4219;
                         break;
                 };
-                var $4156 = $4158;
+                var $4212 = $4214;
                 break;
             case 'Parser.Reply.value':
-                var $4172 = self.pst;
-                var $4173 = self.val;
-                var _block$7 = $4173;
-                var $4174 = IO$monad$((_m$bind$8 => _m$pure$9 => {
-                    var $4175 = _m$bind$8;
-                    return $4175;
+                var $4228 = self.pst;
+                var $4229 = self.val;
+                var _block$7 = $4229;
+                var $4230 = IO$monad$((_m$bind$8 => _m$pure$9 => {
+                    var $4231 = _m$bind$8;
+                    return $4231;
                 }))(IO$print$(("Block #" + Nat$show$(_block_number$2))))((_$8 => {
                     var _bits_0$9 = Kindelia$serialize$block$(_world$1, _block$7);
                     var _bits_1$10 = Kindelia$serialize$block$(_world$1, (() => {
                         var self = Kindelia$deserialize$block$(_world$1, _bits_0$9);
                         switch (self._) {
                             case 'Pair.new':
-                                var $4177 = self.snd;
-                                var $4178 = $4177;
-                                return $4178;
+                                var $4233 = self.snd;
+                                var $4234 = $4233;
+                                return $4234;
                         };
                     })());
-                    var $4176 = IO$monad$((_m$bind$11 => _m$pure$12 => {
-                        var $4179 = _m$bind$11;
-                        return $4179;
+                    var $4232 = IO$monad$((_m$bind$11 => _m$pure$12 => {
+                        var $4235 = _m$bind$11;
+                        return $4235;
                     }))(IO$print$(("$ " + (Bits$hex$encode$(_bits_0$9) + (" " + (() => {
                         var self = (_bits_1$10 === _bits_0$9);
                         if (self) {
-                            var $4180 = "ok";
-                            return $4180;
+                            var $4236 = "ok";
+                            return $4236;
                         } else {
-                            var $4181 = "bad_serialization";
-                            return $4181;
+                            var $4237 = "bad_serialization";
+                            return $4237;
                         };
                     })())))))((_$11 => {
-                        var $4182 = Kindelia$api$run$go$transactions$(_world$1, _block_number$2, (() => {
-                            var self = $4172;
+                        var $4238 = Kindelia$api$run$go$transactions$(_world$1, _block_number$2, (() => {
+                            var self = $4228;
                             switch (self._) {
                                 case 'Parser.State.new':
-                                    var $4183 = self.str;
-                                    var $4184 = $4183;
-                                    return $4184;
+                                    var $4239 = self.str;
+                                    var $4240 = $4239;
+                                    return $4240;
                             };
                         })(), _block$7);
-                        return $4182;
+                        return $4238;
                     }));
-                    return $4176;
+                    return $4232;
                 }));
-                var $4156 = $4174;
+                var $4212 = $4230;
                 break;
         };
-        return $4156;
+        return $4212;
     };
     const Kindelia$api$run$go = x0 => x1 => x2 => Kindelia$api$run$go$(x0, x1, x2);
-    const Kindelia$genesis = Kindelia$World$new$(List$nil, Map$from_list$(List$nil));
+    const Kindelia$genesis = Kindelia$World$new$(Kindelia$Names$new$(0n, Map$from_list$(List$nil), Map$from_list$(List$nil)), Map$from_list$(List$nil));
 
     function Kindelia$api$run$(_code$1) {
-        var $4185 = Kindelia$api$run$go$(Kindelia$genesis, 0n, _code$1);
-        return $4185;
+        var $4241 = Kindelia$api$run$go$(Kindelia$genesis, 0n, _code$1);
+        return $4241;
     };
     const Kindelia$api$run = x0 => Kindelia$api$run$(x0);
     const Kindelia = (() => {
         var _x$1 = Kindelia$api$run;
-        var $4186 = IO$monad$((_m$bind$2 => _m$pure$3 => {
-            var $4187 = _m$pure$3;
-            return $4187;
+        var $4242 = IO$monad$((_m$bind$2 => _m$pure$3 => {
+            var $4243 = _m$pure$3;
+            return $4243;
         }))(Unit$new);
-        return $4186;
+        return $4242;
     })();
     return {
         '$main$': () => run(Kindelia),
@@ -14529,14 +14728,15 @@ module.exports = (function() {
         'Word.to_nat': Word$to_nat,
         'U16.to_nat': U16$to_nat,
         'Bits.concat': Bits$concat,
+        'Kindelia.serialize.letters': Kindelia$serialize$letters,
+        'Kindelia.serialize.varlen.go': Kindelia$serialize$varlen$go,
+        'Kindelia.serialize.varlen': Kindelia$serialize$varlen,
         'Kindelia.serialize.name': Kindelia$serialize$name,
         'Kindelia.serialize.list': Kindelia$serialize$list,
         'Kindelia.serialize.pair': Kindelia$serialize$pair,
         'Kindelia.serialize.type': Kindelia$serialize$type,
         'Kindelia.serialize.constructor': Kindelia$serialize$constructor,
         'Kindelia.serialize.data': Kindelia$serialize$data,
-        'Kindelia.serialize.varlen.go': Kindelia$serialize$varlen$go,
-        'Kindelia.serialize.varlen': Kindelia$serialize$varlen,
         'Kindelia.serialize.name.local': Kindelia$serialize$name$local,
         'List.map': List$map,
         'List.concat': List$concat,
@@ -14553,6 +14753,9 @@ module.exports = (function() {
         'Bits.is_empty': Bits$is_empty,
         'Kindelia.deserialize.fixlen': Kindelia$deserialize$fixlen,
         'U16.from_nat': U16$from_nat,
+        'Kindelia.deserialize.letters': Kindelia$deserialize$letters,
+        'Kindelia.deserialize.varlen.go': Kindelia$deserialize$varlen$go,
+        'Kindelia.deserialize.varlen': Kindelia$deserialize$varlen,
         'Kindelia.deserialize.name': Kindelia$deserialize$name,
         'Kindelia.deserialize.list': Kindelia$deserialize$list,
         'Kindelia.deserialize.pair': Kindelia$deserialize$pair,
@@ -14560,8 +14763,6 @@ module.exports = (function() {
         'Kindelia.deserialize.constructor': Kindelia$deserialize$constructor,
         'Kindelia.deserialize.data': Kindelia$deserialize$data,
         'U64.from_nat': U64$from_nat,
-        'Kindelia.deserialize.varlen.go': Kindelia$deserialize$varlen$go,
-        'Kindelia.deserialize.varlen': Kindelia$deserialize$varlen,
         'List.get': List$get,
         'Kindelia.deserialize.name.local': Kindelia$deserialize$name$local,
         'Kindelia.deserialize.cases': Kindelia$deserialize$cases,
@@ -14640,6 +14841,7 @@ module.exports = (function() {
         'Word.show': Word$show,
         'U64.show': U64$show,
         'Kindelia.show.term': Kindelia$show$term,
+        'Kindelia.Names.new': Kindelia$Names$new,
         'Kindelia.transact': Kindelia$transact,
         'Kindelia.api.run.go.transactions': Kindelia$api$run$go$transactions,
         'Kindelia.api.run.go': Kindelia$api$run$go,

@@ -1,1 +1,1 @@
-@(names:(List String)) @(entry:(Map Kindelia.Entry)) Kindelia.World
+@(names:Kindelia.Names) @(entry:(Map Kindelia.Entry)) Kindelia.World
