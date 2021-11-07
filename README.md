@@ -33,7 +33,7 @@ Table of Contents
     * [Why not just impose an evaluation order?](#why-not-just-impose-an-evaluation-order)
     * [Kindelia's solution](#kindelias-solution)
 * [Specification](#specification)
-  * [Types]
+  * [Types](#types)
     * [Name](#name)
     * [Term](#term)
     * [Operation](#operation)
