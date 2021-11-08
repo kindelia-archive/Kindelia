@@ -1,6 +1,10 @@
-// TODO optimize these
+type Bool {
+  true{}
+  false{}
+}
 
 // add: "+", sub: "-", mul: "*", div: "/", mod: "%", or: "|", and: "&", xor: "^" 
+
 bond add_words(fst: #word, snd: #word): #word {
   *(fst, snd)
 }
@@ -8,7 +12,7 @@ bond add_words(fst: #word, snd: #word): #word {
 type Array {
   new{
     length: #word
-    buffer: buffer
+    buffer: Buffer
   }
 }
 
@@ -17,250 +21,267 @@ type Buffer {
     value: #word
   }
   tie{
-    left: buffer
-    right: buffer
+    left: Buffer
+    right: Buffer
   }
 }
 
-type buffer7 {
-  new{
-    left: buffer6
-    right: buffer6
-  }
-}
-
-type buffer6 {
-  new{
-    left: buffer5
-    right: buffer5
-  }
-}
-
-type buffer5 {
-  new{
-    left: buffer4
-    right: buffer4
-  }
-}
-
-type buffer4 {
-  new{
-    left: buffer3
-    right: buffer3
-  }
-}
-
-type buffer3 {
-  new{
-    left: buffer2
-    right: buffer2
-  }
-}
-
-type buffer2 {
-  new{
-    left: buffer1
-    right: buffer1
-  }
-}
-
-type buffer1 {
-  new{
-    left: buffer0
-    right: buffer0
-  }
-}
-
-type buffer0 {
-  new{
-    left: #word
-    right: #word
+type MaybeWord {
+  none{}
+  some{
+    value: #word
   }
 }
 
 save
 
-bond get_buffer0(buf: buffer0, idx: #word): #word {
-  case buf : buffer0 {
-    new:
+bond buffer_get(buf: Buffer, idx: #word): #word {
+  case buf : Buffer {
+    tip:
+      buf.value
+    tie:
       compare &(idx, #1) #0 {
-        _<_: #0 // never happens
-        _=_: buf.left
-        _>_: buf.right
+        _<_:
+          #0 // never happens
+        _=_:
+          buffer_get(buf.left, /(idx, #2))
+        _>_:
+          buffer_get(buf.right, /(idx, #2))
       }
   }
 }
 
-bond get_buffer1(buf: buffer1, idx: #word): #word {
-  case buf : buffer1 {
-    new:
-      compare &(idx, #2) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer0(buf.left, idx)
-        _>_: get_buffer0(buf.right, idx)
-      }
-  }
-}
-
-bond get_buffer2(buf: buffer2, idx: #word): #word {
-  case buf : buffer2 {
-    new:
-      compare &(idx, #4) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer1(buf.left, idx)
-        _>_: get_buffer1(buf.right, idx)
-      }
-  }
-}
-
-bond get_buffer3(buf: buffer3, idx: #word): #word {
-  case buf : buffer3 {
-    new:
-      compare &(idx, #8) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer2(buf.left, idx)
-        _>_: get_buffer2(buf.right, idx)
-      }
-  }
-}
-
-bond get_buffer4(buf: buffer4, idx: #word): #word {
-  case buf : buffer4 {
-    new:
-      compare &(idx, #16) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer3(buf.left, idx)
-        _>_: get_buffer3(buf.right, idx)
-      }
-  }
-}
-
-bond get_buffer5(buf: buffer5, idx: #word): #word {
-  case buf : buffer5 {
-    new:
-      compare &(idx, #32) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer4(buf.left, idx)
-        _>_: get_buffer4(buf.right, idx)
-      }
-  }
-}
-
-bond get_buffer6(buf: buffer6, idx: #word): #word {
-  case buf : buffer6 {
-    new:
-      compare &(idx, #64) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer5(buf.left, idx)
-        _>_: get_buffer5(buf.right, idx)
-      }
-  }
-}
-
-bond get_buffer7(buf: buffer7, idx: #word): #word {
-  case buf : buffer7 {
-    new:
-      compare &(idx, #128) #0 {
-        _<_: #0 // never happens
-        _=_: get_buffer6(buf.left, idx)
-        _>_: get_buffer6(buf.right, idx)
-      }
-  }
-}
-
-bond set_buffer0(buf: buffer0, idx: #word, val: #word): buffer0 {
-  case buf : buffer0 {
-    new:
+bond buffer_set(buf: Buffer, idx: #word, value: #word): Buffer {
+  case buf: Buffer {
+    tip:
+      tip{value}
+    tie:
       compare &(idx, #1) #0 {
-        _<_: buf // never happens
-        _=_: new{val, buf.right}
-        _>_: new{buf.left, val}
+        _<_:
+          tip{#0} // never happpens
+        _=_:
+          tie{buffer_set(buf.left, /(idx, #2), value), buf.right}
+        _>_:
+          tie{buf.left, buffer_set(buf.right, /(idx, #2), value)}
       }
   }
 }
 
-bond set_buffer1(buf: buffer1, idx: #word, val: #word): buffer1 {
-  case buf : buffer1 {
-    new:
-      compare &(idx, #2) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer0(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer0(buf.right, idx, val)}
+bond buffer_alloc(depth: #word): Buffer {
+  compare depth #0 {
+    _<_:
+      tip{#0} // never happens
+    _=_:
+      tip{#0}
+    _>_:
+      let buf : Buffer = buffer_alloc(-(depth, #1))
+      tie{buf, buf}
+  }
+}
+
+bond check_integrity(buf: Buffer): MaybeWord {
+  case buf : Buffer {
+    tip:
+      some{#0}
+    tie:
+      let left_ok : MaybeWord = check_integrity(buf.left)
+      case left_ok : MaybeWord {
+        none:
+          none{}
+        some:
+          let right_ok : MaybeWord = check_integrity(buf.right)
+          case right_ok : MaybeWord {
+            none:
+              none{}
+            some:
+              compare left_ok.value right_ok.value {
+                _<_:
+                  none{}
+                _=_:
+                  some{+(left_ok.value, #1)}
+                _>_:
+                  none{}
+              }
+          }
       }
   }
 }
 
-bond set_buffer2(buf: buffer2, idx: #word, val: #word): buffer2 {
-  case buf : buffer2 {
-    new:
-      compare &(idx, #4) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer1(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer1(buf.right, idx, val)}
-      }
-  }
-}
-
-bond set_buffer3(buf: buffer3, idx: #word, val: #word): buffer3 {
-  case buf : buffer3 {
-    new:
-      compare &(idx, #8) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer2(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer2(buf.right, idx, val)}
-      }
-  }
-}
-
-bond set_buffer4(buf: buffer4, idx: #word, val: #word): buffer4 {
-  case buf : buffer4 {
-    new:
-      compare &(idx, #16) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer3(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer3(buf.right, idx, val)}
-      }
-  }
-}
-
-bond set_buffer5(buf: buffer5, idx: #word, val: #word): buffer5 {
-  case buf : buffer5 {
-    new:
-      compare &(idx, #32) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer4(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer4(buf.right, idx, val)}
-      }
-  }
-}
-
-bond set_buffer6(buf: buffer6, idx: #word, val: #word): buffer6 {
-  case buf : buffer6 {
-    new:
-      compare &(idx, #64) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer5(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer5(buf.right, idx, val)}
-      }
-  }
-}
-
-bond set_buffer7(buf: buffer7, idx: #word, val: #word): buffer7 {
-  case buf : buffer7 {
-    new:
-      compare &(idx, #128) #0 {
-        _<_: buf // never happens
-        _=_: new{set_buffer6(buf.left, idx, val), buf.right}
-        _>_: new{buf.left, set_buffer6(buf.right, idx, val)}
-      }
-  }
-}
-
-save
-
-bond keccak.f.go(i: #word, buf: buffer6) : buffer6 {
+bond keccak.f.go(i: #word, buf: Buffer) : Buffer {
   compare i #24 {
     _<_:
+      let c0c1 = ^(read(#0, buf), ^(read(#5, buf), ^(read(#10, buf), ^(read(#15, buf), read(#20, buf)))))
+      let c2c3 = ^(read(#1, buf), ^(read(#6, buf), ^(read(#11, buf), ^(read(#16, buf), read(#21, buf)))))
+      let c4c5 = ^(read(#2, buf), ^(read(#7, buf), ^(read(#12, buf), ^(read(#17, buf), read(#22, buf)))))
+      let c6c7 = ^(read(#3, buf), ^(read(#8, buf), ^(read(#13, buf), ^(read(#18, buf), read(#23, buf)))))
+      let c8c9 = ^(read(#4, buf), ^(read(#9, buf), ^(read(#14, buf), ^(read(#19, buf), read(#24, buf)))))
+
+      let hl = ^(c8c9, |(shl(c2c3, #1), shr(c2c3, #63)))
+
+      let buf = write(#0,  ^(hl, read( #0, buf)), buf)
+      let buf = write(#5,  ^(hl, read( #5, buf)), buf)
+      let buf = write(#10, ^(hl, read(#10, buf)), buf)
+      let buf = write(#15, ^(hl, read(#15, buf)), buf)
+      let buf = write(#20, ^(hl, read(#20, buf)), buf)
+
+      let hl = ^(c0c1, |(shl(c4c5, #1), shr(c4c5, #63)))
+
+      let buf = write(#1,  ^(hl, read( #1, buf)), buf)
+      let buf = write(#6,  ^(hl, read( #6, buf)), buf)
+      let buf = write(#11, ^(hl, read(#11, buf)), buf)
+      let buf = write(#16, ^(hl, read(#16, buf)), buf)
+      let buf = write(#21, ^(hl, read(#21, buf)), buf)
+
+      let hl = ^(c2c3, |(shl(c6c7, #1), shr(c6c7, #63)))
+
+      let buf = write(#2,  ^(hl, read( #2, buf)), buf)
+      let buf = write(#7,  ^(hl, read( #7, buf)), buf)
+      let buf = write(#12, ^(hl, read(#12, buf)), buf)
+      let buf = write(#17, ^(hl, read(#17, buf)), buf)
+      let buf = write(#22, ^(hl, read(#22, buf)), buf)
+
+      let hl = ^(c4c5, |(shl(c8c9, #1), shr(c8c9, #63)))
+
+      let buf = write(#3,  ^(hl, read(#3,  buf)), buf)
+      let buf = write(#8,  ^(hl, read(#8,  buf)), buf)
+      let buf = write(#13, ^(hl, read(#13, buf)), buf)
+      let buf = write(#18, ^(hl, read(#18, buf)), buf)
+      let buf = write(#23, ^(hl, read(#23, buf)), buf)
+
+      let hl = ^(c6c7, |(shl(c0c1, #1), shr(c0c1, #63)))
+
+      let buf = write(#4,  ^(hl, read(#4,  buf)), buf)
+      let buf = write(#9,  ^(hl, read(#9,  buf)), buf)
+      let buf = write(#15, ^(hl, read(#15, buf)), buf)
+      let buf = write(#19, ^(hl, read(#19, buf)), buf)
+      let buf = write(#24, ^(hl, read(#24, buf)), buf)
+
+      let b00b01 = read(#0, arr)
+
+      let b32b33 =
+        let r = read(#5)
+        |(shl(r, #4), shr(r, #60))
+
+      let b14b15 =
+        let r = read(#10)
+        |(shl(r, #3), shr(r, #61))
+
+      let b46b47 =
+        let r = read(#15)
+        |(shl(r, #9), shr(r, #55))
+
+      let b28b29 =
+        let r = read(#20)
+        |(shl(r, #18), shr(r, #44))
+
+      let b20b21 =
+        let r = read(#1)
+        |(shl(r, #1), shr(r, #63))
+
+      let b02b03 =
+        let r = read(#6)
+        |(shl(r, #12), shr(r, #52))
+
+      let b34b35 =
+        let r = read(#11)
+        |(shl(r, #10), shr(r, #54))
+
+      let b16b17 =
+        let r = read(#16)
+        |(shl(r, #13), shr(r, #51))
+
+      let b48b49 =
+        let r = read(#21)
+        |(shl(r, #2), shr(r, #62))
+
+      let b40b41 =
+        let r = read(#2)
+        |(shl(r, #30), shr(r, #34))
+
+      let b22b23 =
+        let r = read(#7)
+        |(shl(r, #6), shr(r, #58))
+
+      let b04b05 =
+        let r = read(#12)
+        |(shl(r, #11), shr(r, #53))
+
+      let b36b37 =
+        let r = read(#17)
+        |(shl(r, #15), shr(r, #49))
+
+      let b18b19 =
+        let r = read(#22)
+        |(shl(r, #29), shr(r, #35))
+
+      let b10b11 =
+        let r = read(#3)
+        |(shl(r, #28), shr(r, #36))
+
+      let b42b43 =
+        let r = read(#8)
+        |(shl(r, #23), shr(r, #41))
+
+      let b24b25 =
+        let r = read(#13)
+        |(shl(r, #25), shr(r, #39))
+
+      let b06b07 =
+        let r = read(#18)
+        |(shl(r, #21), shr(r, #43))
+
+      let b38b39 =
+        let r = read(#23)
+        |(shl(r, #24), shr(r, #8))
+
+      let b30b31 =
+        let r = read(#4)
+        |(shl(r, #27), shr(r, #37))
+
+      let b12b13 =
+        let r = read(#9)
+        |(shl(r, #20), shr(r, #44))
+
+      let b44b45 =
+        let r = read(#17)
+        |(shl(r, #7), shr(r, #57))
+
+      let b26b27 =
+        let r = read(#19)
+        |(shl(r, #8), shr(r, #56))
+
+      let b08b09 =
+        let r = read(#24)
+        |(shl(r, #14), shr(r, #50))
+
+      let arr = write(#00, ^(b00b01, &(nott(b02b03), b04b05)), arr)
+      let arr = write(#05, ^(b10b11, &(nott(b12b13), b14b15)), arr)
+      let arr = write(#10, ^(b20b21, &(nott(b22b23), b24b25)), arr)
+      let arr = write(#15, ^(b30b31, &(nott(b32b33), b34b35)), arr)
+      let arr = write(#20, ^(b40b41, &(nott(b42b43), b44b45)), arr)
+      let arr = write(#01, ^(b02b03, &(nott(b04b05), b06b07)), arr)
+      let arr = write(#06, ^(b12b13, &(nott(b14b15), b16b17)), arr)
+      let arr = write(#11, ^(b22b23, &(nott(b24b25), b26b27)), arr)
+      let arr = write(#16, ^(b32b33, &(nott(b34b35), b36b37)), arr)
+      let arr = write(#21, ^(b42b43, &(nott(b44b45), b46b47)), arr)
+      let arr = write(#02, ^(b04b05, &(nott(b06b07), b08b09)), arr)
+      let arr = write(#07, ^(b14b15, &(nott(b16b17), b18b19)), arr)
+      let arr = write(#12, ^(b24b25, &(nott(b26b27), b28b29)), arr)
+      let arr = write(#17, ^(b34b35, &(nott(b36b37), b38b39)), arr)
+      let arr = write(#22, ^(b44b45, &(nott(b46b47), b48b49)), arr)
+      let arr = write(#03, ^(b06b07, &(nott(b08b09), b00b01)), arr)
+      let arr = write(#08, ^(b16b17, &(nott(b18b19), b10b11)), arr)
+      let arr = write(#13, ^(b26b27, &(nott(b28b29), b20b21)), arr)
+      let arr = write(#13, ^(b36b37, &(nott(b38b39), b30b31)), arr)
+      let arr = write(#23, ^(b46b47, &(nott(b48b49), b40b41)), arr)
+      let arr = write(#04, ^(b08b09, &(nott(b00b01), b02b03)), arr)
+      let arr = write(#09, ^(b18b19, &(nott(b10b11), b12b13)), arr)
+      let arr = write(#14, ^(b28b29, &(nott(b20b21), b22b23)), arr)
+      let arr = write(#19, ^(b38b39, &(nott(b30b31), b32b33)), arr)
+      let arr = write(#24, ^(b48b49, and(nott(b40b41), b42b43)), arr)
+
+      let arr = write(#0, ^(read(i, Crypto.Keccak.RC), read(#0, arr)), arr)
+      arr
       keccak.f.go( +(i, #1) )
     _=_:
       buf
@@ -269,8 +290,15 @@ bond keccak.f.go(i: #word, buf: buffer6) : buffer6 {
   }
 }
 
-//eval {
-//  add_words(two, two)
-//} : #word
+//bond inf_buffer(): Buffer {
+//  tie{tip{#0}, inf_buffer()}
+//}
+
+save
+
+eval {
+  let buf : Buffer = tie{buffer_alloc(#7), buffer_alloc(#8)}
+  check_integrity(buf)
+} : MaybeWord
 
 save
