@@ -129,9 +129,58 @@ bond buffer_set(idx: #word, value: #word, buf: Buffer): Buffer {
       }
   }
 }
+
 bond Crypto.Keccak.RC(): Buffer {
-  // TODO
-  Buffer@tip{#0}
+  let arr : Buffer = buffer_alloc(#6)
+  let arr : Buffer = buffer_set(#0,  #1,          arr)
+  let arr : Buffer = buffer_set(#1,  #0,          arr)
+  let arr : Buffer = buffer_set(#2,  #32898,      arr)
+  let arr : Buffer = buffer_set(#3,  #0,          arr)
+  let arr : Buffer = buffer_set(#4,  #32906,      arr)
+  let arr : Buffer = buffer_set(#5,  #2147483648, arr)
+  let arr : Buffer = buffer_set(#6,  #2147516416, arr)
+  let arr : Buffer = buffer_set(#7,  #2147483648, arr)
+  let arr : Buffer = buffer_set(#8,  #32907,      arr)
+  let arr : Buffer = buffer_set(#9,  #0,          arr)
+  let arr : Buffer = buffer_set(#10, #2147483649, arr)
+  let arr : Buffer = buffer_set(#11, #0,          arr)
+  let arr : Buffer = buffer_set(#12, #2147516545, arr)
+  let arr : Buffer = buffer_set(#13, #2147483648, arr)
+  let arr : Buffer = buffer_set(#14, #32777,      arr)
+  let arr : Buffer = buffer_set(#15, #2147483648, arr)
+  let arr : Buffer = buffer_set(#16, #138,        arr)
+  let arr : Buffer = buffer_set(#17, #0,          arr)
+  let arr : Buffer = buffer_set(#18, #136,        arr)
+  let arr : Buffer = buffer_set(#19, #0,          arr)
+  let arr : Buffer = buffer_set(#20, #2147516425, arr)
+  let arr : Buffer = buffer_set(#21, #0,          arr)
+  let arr : Buffer = buffer_set(#22, #2147483658, arr)
+  let arr : Buffer = buffer_set(#23, #0,          arr)
+  let arr : Buffer = buffer_set(#24, #2147516555, arr)
+  let arr : Buffer = buffer_set(#25, #0,          arr)
+  let arr : Buffer = buffer_set(#26, #139,        arr)
+  let arr : Buffer = buffer_set(#27, #2147483648, arr)
+  let arr : Buffer = buffer_set(#28, #32905,      arr)
+  let arr : Buffer = buffer_set(#29, #2147483648, arr)
+  let arr : Buffer = buffer_set(#30, #32771,      arr)
+  let arr : Buffer = buffer_set(#31, #2147483648, arr)
+  let arr : Buffer = buffer_set(#32, #32770,      arr)
+  let arr : Buffer = buffer_set(#33, #2147483648, arr)
+  let arr : Buffer = buffer_set(#34, #128,        arr)
+  let arr : Buffer = buffer_set(#35, #2147483648, arr)
+  let arr : Buffer = buffer_set(#36, #32778,      arr)
+  let arr : Buffer = buffer_set(#37, #0,          arr)
+  let arr : Buffer = buffer_set(#38, #2147483658, arr)
+  let arr : Buffer = buffer_set(#39, #2147483648, arr)
+  let arr : Buffer = buffer_set(#40, #2147516545, arr)
+  let arr : Buffer = buffer_set(#41, #2147483648, arr)
+  let arr : Buffer = buffer_set(#42, #32896,      arr)
+  let arr : Buffer = buffer_set(#43, #2147483648, arr)
+  let arr : Buffer = buffer_set(#44, #2147483649, arr)
+  let arr : Buffer = buffer_set(#45, #0,          arr)
+  let arr : Buffer = buffer_set(#46, #2147516424, arr)
+  let arr : Buffer = buffer_set(#47, #2147483648, arr)
+  arr
 }
 
 bond keccak.f.go(i: #word, buf: Buffer) : Buffer {
