@@ -1290,8 +1290,8 @@ Kindelia.parse.term.create.fields(
         Kindelia.parse.text(":")
       })
       get head = Kindelia.parse.term(world)
-      get tail = Kindelia.parse.term.create.fields(world, fields.tail)
       Parser.maybe!(Kindelia.parse.text(","))
+      get tail = Kindelia.parse.term.create.fields(world, fields.tail)
       return head & tail
     }
   }
