@@ -1,1 +1,0 @@
-#size #n #value !n_nat = ((Word.to_nat size) n); (((Word.shift_left size) value) n_nat)
