@@ -379,11 +379,11 @@ bond keccak.f.go(i: #word, buf: Buffer) : Buffer {
 //  tie{tip{#0}, inf_buffer()}
 //}
 
-//save
-//
-//eval {
-//  let buf : Buffer = tie{buffer_alloc(#7), buffer_alloc(#8)}
-//  check_integrity(buf)
-//} : MaybeWord
-//
+save
+
+eval {
+  let arr: Buffer = buffer_alloc(#7)
+  check_integrity(keccak.f.go(#0, arr))
+} : MaybeWord
+
 save
