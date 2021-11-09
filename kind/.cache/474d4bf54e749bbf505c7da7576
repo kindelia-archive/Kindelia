@@ -1,1 +1,0 @@
-#A #xs #f #i (((xs #xs (Maybe ((Pair Nat) A))) (Maybe.none ((Pair Nat) A))) #xs.head #xs.tail (((((f i) xs.head) #self (Maybe ((Pair Nat) A))) ((Maybe.some ((Pair Nat) A)) ((((Pair.new Nat) A) i) xs.head))) ((((List.ifind.go A) xs.tail) f) (Nat.succ i))))

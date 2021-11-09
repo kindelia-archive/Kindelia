@@ -1,1 +1,0 @@
-%(A:*) @(as:(List A)) %(B:*) @(f:@(:Nat) @(:A) B) (List B)

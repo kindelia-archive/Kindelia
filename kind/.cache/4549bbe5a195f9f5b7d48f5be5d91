@@ -1,0 +1,1 @@
+#fresh ((((Pair.new Nat) String) (Nat.succ fresh)) ((String.concat "$") (Nat.show fresh)))

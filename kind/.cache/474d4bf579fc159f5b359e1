@@ -1,1 +1,0 @@
-%(A:*) %(B:*) @(xs:(List ((Pair A) B))) ((Pair (List A)) (List B))

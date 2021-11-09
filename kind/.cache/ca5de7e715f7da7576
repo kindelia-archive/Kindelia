@@ -1,1 +1,0 @@
-#S #state #from #til #func (((((Nat.eql from) til) # S) state) (((((Nat.for S) ((func from) state)) (Nat.succ from)) til) func))

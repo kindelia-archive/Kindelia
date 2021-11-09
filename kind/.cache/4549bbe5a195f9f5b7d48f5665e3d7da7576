@@ -1,0 +1,1 @@
+#fresh #count (((count #count ((Pair Nat) (List String))) ((((Pair.new Nat) (List String)) fresh) (List.nil String))) #count.pred (((Kindelia.fresh fresh) # ((Pair Nat) (List String))) #fresh #head ((((Kindelia.fresh.many fresh) count.pred) # ((Pair Nat) (List String))) #fresh #tail ((((Pair.new Nat) (List String)) (Nat.succ fresh)) (((List.cons String) head) tail)))))

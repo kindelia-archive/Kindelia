@@ -1,1 +1,0 @@
-#A #index #list (((list #list (List ((Pair Nat) A))) (List.nil ((Pair Nat) A))) #list.head #list.tail (((List.cons ((Pair Nat) A)) ((((Pair.new Nat) A) index) list.head)) (((List.index.go A) (Nat.succ index)) list.tail)))

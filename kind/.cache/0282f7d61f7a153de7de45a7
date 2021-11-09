@@ -1,1 +1,0 @@
-%(K:*) %(V:*) @(map:((BBT K) V)) (List ((Pair K) V))

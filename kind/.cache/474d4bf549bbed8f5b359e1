@@ -1,1 +1,0 @@
-%(A:*) @(list:(List A)) (List ((Pair Nat) A))

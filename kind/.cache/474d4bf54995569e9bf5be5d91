@@ -1,1 +1,0 @@
-#A #as #B #f (((as #as (List B)) (List.nil B)) #as.head #as.tail (((List.cons B) ((f +0) as.head)) ((((List.imapped A) as.tail) B) #n (f (Nat.succ n)))))
