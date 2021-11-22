@@ -7,11 +7,11 @@ transactions to be settled without third parties. Notably, Ethereum's built-in
 virtual machine made it a general-purpose computer, even though most of the
 protocol's complexity was not required to achieve Turing completeness. Kindelia
 is a massive simplification of this concept, trading features for raw
-simplicity, in order to build a minimal decenralized computer. Since it does not
-have a native token, it is not a cryptocurrency itself, but currencies can be
-deployed as bonds. In essence, Kindelia is just a peer-to-peer interpreter for a
-functional programming language, making it a minimal, token-less decentralized
-application platform.
+simplicity, in order to build a minimal decentralized computer. Since it does
+not have a native token, it is not a cryptocurrency itself, but currencies can
+be deployed as bonds. In essence, Kindelia is just a peer-to-peer interpreter
+for a functional programming language, making it a minimal, token-less
+decentralized application platform.
 
 Table of Contents
 =================
@@ -27,7 +27,7 @@ Table of Contents
   * [Accounts](#accounts)
   * [Miner incentives](#miner-incentives)
   * [Space efficiency](#space-efficiency)
-  * [Formal Verificatoin](#formal-verification)
+  * [Formal Verification](#formal-verification)
   * [The beta reduction problem](#the-beta-reduction-problem)
     * [What is a beta reduction?](#what-is-a-beta-reduction)
     * [Counting beta reductions](#counting-beta-reductions)
