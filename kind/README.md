@@ -1,12 +1,12 @@
-# Litereum in Kind
+# Kindelia in Kind
 
-### Install:
+### Install
 
 ```
 npm i -g kindelia
 ```
 
-### Usage:
+### Usage
 
 To execute a block:
 
