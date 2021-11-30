@@ -480,10 +480,10 @@ SMOD STOP CALLER
 ```
 
 If looking at that code and identifying where the "sum" function even begins,
-imagine proving a mathematical theorem about its execution. It would be almost
-impossible. A saner approach would be to implement a program in a higher level
-language, prove theorems under that language, and, finally, compile it to the
-EVM. This raises two problems:
+proving a mathematical theorem about its execution is almost impossible.  A
+saner approach would be to implement a program in a higher level language, prove
+theorems under that language, and, finally, compile it to the EVM. This raises
+two problems:
 
 1. Proving that the compiler is correct, which is very hard
 
@@ -556,7 +556,7 @@ submit an `eval` transaction with a very expensive computation that would crash
 the entire network.
 
 In Ethereum, this problem is solved by assigning a `gas` cost to each primitive
-operation. Transactions that consume too much gas are stopped. In Kindelia, we
+operation. Transactions that consume too much gas are aborted. In Kindelia, we
 also use gas costs, but, since our language follows a different paradigm -
 functional instead of a stack machine - a big challenge emerges: how do we
 measure the cost of beta reduction?
@@ -688,53 +688,25 @@ Which, again, uses less beta reductions. The underlying issue is that, for any
 reduction strategy you choose, there will be some other reduction strategy that
 is better in some cases. There is no optimal choice!
 
-### Why not just impose an evaluation order?
-
-But why is that an issue? As long as nodes agree to use the same strategy, they
-should get the same count, even if isn't the best one, right? Sure, but miners
-would not agree with a single strategy. To understand why, imagine what would
-happen if the network imposed the Python reduction order.
-
-Initially, all would be fine. Miners would evaluate arguments first, and
-everyone would agree about the costs. Problem is, eventually, a miner would
-realize he/she is able to validate blocks faster by using a different strategy,
-so he/she will update his/her node to use it. If the network charges 1000 beta
-reductions for certain evaluation, but that miner is able to evaluate it using
-only 50, then he/she is having a massive computational advantage over everyone
-else. That is good for the miner, but bad for the network.
-
-So, why can't everyone else just update their nodes to use the alternate
-strategy, too? They could, but, in that case, the entire network would be
-operating under a new strategy, which would be better in some cases, but worse
-in others. Eventually, the cost model would have no relationship with the actual
-computational cost of the transactions, and that is terrible.
-
-In short, it is not possible to measure the cost of evaluating a functional
-program in a decentralized network, and any attempt to do so will, over time, be
-no more accurate than just throwing dices. The only way to avoid this dance is
-to ship every one with an optimal evaluation strategy to begin with, but, other
-than subset restricteds of the lambda calculus, such a thing doesn't exist! Any
-decentralized computer that claims to feature lambdas must either provide a
-solution to the optimal evaluation of functional programs, or deal with all
-sorts of overpriced, or underpriced, opcode spam attacks.
-
 ### Kindelia's solution
 
-So, how does Kindelia solve this problem?
+Since counting how many beta-reductions a functional program takes to run is, in
+general, not possible, our best bet would be to set up a fixed evaluation
+strategy and count how many beta-reductions a program takes using it. This would
+do a great job at measuring a maximum cost for users to execute that
+transaction, but, due to the problem above, in many cases, it would overcharge,
+impacting the throughput of the network.
 
-It doesn't. And it is important to stress that. Kindelia aims to be as
-functional as possible, while still being robust against spam. As such, it
-completely gives up on high-order functions. Note that Kindelia still feature
-datatypes, pattern-matching, global functions and recursion. Overall, this
-design makes it as efficient and predictable as a stack machine, while still
-retaining most of the benefits of a functional language. 
+Kindelia aims to be blazingly fast and to have optimal layer-1 throughput, so,
+our solution is different. Instead of fixing an evaluation strategy, we select a
+subset of the λ-calculus on which an optimal evaluation order is known.
+Specifically, we demand that high-order functions are used linearly; i.e.,
+lambdas are trated like mutable arrays, and can't be copied. This limitation is
+barely impactiful in practice, as there is rarely the need to clone high-order
+lambdas in general, let alone in smart-contracts.
 
-Note that we could actually feature high order functions, with some caution. For
-example, if functions could only be used linearly, or, even better, if they
-could be duplicated, but under the constraints of elementary affine logic, then
-it would still be possible to provide optimal evaluators for Kindelia. For the
-sake of simplicity, though, we just exclude high-order functions entirely, as
-these checks would greatly complicate the full node implementation.
+TODO: should we allow elementary affine lambdas? That would be even less
+restrictive, but would make the type-checker more complex.
 
 Type-checking costs
 -------------------
