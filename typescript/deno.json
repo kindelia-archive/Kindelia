@@ -1,0 +1,20 @@
+{
+  "lint": {
+    "files": {
+      "exclude": []
+    },
+    "rules": {
+      "exclude": ["camelcase"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/*.ts"],
+      "exclude": []
+    },
+    "options": {
+      "lineWidth": 80,
+      "indentWidth": 2
+    }
+  }
+}

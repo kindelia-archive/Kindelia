@@ -1,0 +1,16 @@
+{
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "deno.config": "typescript/deno.json",
+    "cSpell.words": [
+        "Kindelia",
+        "reentrancy",
+        "statefulness",
+        "Ubilog"
+    ],
+    "cSpell.ignoreWords": [
+        "Lamport",
+        "deno"
+    ]
+}
